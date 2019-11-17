@@ -9,7 +9,8 @@
 * [How-to-guide](how-to-guide/README.md)
   * [Unity](how-to-guide/unity.md)
 * [Explanation](explanation/README.md)
-  * [Unity](explanation/unity.md)
+  * [Unity](explanation/unity/README.md)
+    * [PhysicsObject](explanation/unity/physicsobject.md)
 * [Technical reference](technical-reference/README.md)
   * [Unity](technical-reference/unity.md)
 
