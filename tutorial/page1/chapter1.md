@@ -40,7 +40,9 @@ Unity는 Visual Scripting, 즉 UI를 이용하여 보다 편리하게 Game 작�
 
 
 
-1.  URL을 타고 들어가 ' Download the asset package [here](http://bit.ly/unity2dController)' 
+1.  URL을 타고 들어가 ' Download the asset package [here](http://bit.ly/unity2dController)' 의 here 부분을 누르거나 이 페이지의 here을 눌러서 필요한 Asset들을 다운 받고 파일안에 있는 Asset 파일들을 복사하고,                                           새로이 Unity Project를 생성하여 생성된 파일경로의 Asset에 복사 붙여넣기는 합니다.
+
+        그렇게 된다면 새로이 2DPlatformer라는 파일이 생기고 그 안에 Scene에 들어가서 
 
 
 
