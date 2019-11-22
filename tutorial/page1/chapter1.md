@@ -18,15 +18,17 @@ Unity는 Visual Scripting, 즉 UI를 이용하여 보다 편리하게 Game 작�
 
 [ **Live Session: 2D Platformer Character Controller - URL**](https://learn.unity.com/tutorial/live-session-2d-platformer-character-controller#)
 
+\*\*\*\*
+
 
 
 ## **무엇을 하려고 하는가?**
 
 ![Scripting&#xC744; &#xD1B5;&#xD55C; &#xC6C0;&#xC9C1;&#xC784; &#xC81C;&#xC5B4;](../../.gitbook/assets/gif.gif)
 
- **Unity를 공부하면서 다른 프로젝트를 통해 움직임을 구현하는 것은 Unity 자체에 내장되어 있는 기능들을 통해 쉽게 구현이 가능하고 재미또한 있었다.** 
+ **Unity를 공부하면서 다른 프로젝트를 통해 움직임을 구현하는 것은 Unity 자체에 내장되어 있는 기능들을 통해 쉽게 구현이 가능하고 재미 또한 있었습니다.**
 
-**하지만 움직임을 Scripting으로 제어한다는 것은 기본적으로 Unity에 있는 기능들을 기존보다 깊게             파고들어야 하기 때문에 어려움이 있었으나, 분명 스킬업이 되었다.**
+**하지만 움직임을 Scripting으로 제어한다는 것은 기본적으로 Unity에 있는 기능들을 기존보다 깊게             파고들어야 하기 때문에 어려움이 있었으나, 분명 스킬업이 되었습니다.**
 
 1. 2D platformer game을 위한 맞춤형 스크립트 기반 물리학을 만드는 법을 배웁니다.
 2. 수평 이동, 중력 및 취소 가능한 점프를 스크립트를 통해 배웁니다.
