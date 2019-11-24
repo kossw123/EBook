@@ -38,17 +38,15 @@ Unity는 Visual Scripting, 즉 UI를 이용하여 보다 편리하게 Game 작�
 
 ## 작성법
 
+ URL을 타고 들어가 ' Download the asset package [here](http://bit.ly/unity2dController)' 의 here 부분을 누르거나 이 페이지의 here을 눌러서 필요한 Asset들을 다운 받고 파일안에 있는 Asset 파일들을 복사하고, 새로이 Unity Project를 생성하여 생성된 파일경로의 Asset에 복사 붙여넣기는 합니다.                                           
 
+그렇게 된다면 새로이 2DPlatformer라는 파일이 생기고 그 안에 Scene에 들어가서 2DPlatformerMain을    클릭하여 배경화면을 표시합니다. 
 
-1.  URL을 타고 들어가 ' Download the asset package [here](http://bit.ly/unity2dController)' 의 here 부분을 누르거나 이 페이지의 here을 눌러서 필요한 Asset들을 다운 받고 파일안에 있는 Asset 파일들을 복사하고,                                           새로이 Unity Project를 생성하여 생성된 파일경로의 Asset에 복사 붙여넣기는 합니다.                                           
-
-        그렇게 된다면 새로이 2DPlatformer라는 파일이 생기고 그 안에 Scene에 들어가서                                           2DPlatformerMain 을 클릭하여 배경화면을 표시합니다. 
-
-  다음으로 Prefab Folder로 들어가서 'PlayerStart' Prefab을 드래그 앤 드롭으로 적당한 위치에 배치합니다.
+다음으로 Prefab Folder로 들어가서 'PlayerStart' Prefab을 드래그 앤 드롭으로 적당한 위치에 배치합니다.
 
 ![PlayerStart&#xB97C; Scene&#xC5D0; &#xBC30;&#xCE58;&#xD55C; &#xC0C1;&#xD0DC;](../../.gitbook/assets/tutorial-2.gif)
 
- Play를 눌러서 배치한 Scene을 Play한다면 위 그림과 같은 PlayerStart가 멈춰 있는 현상을 볼 수 있는데 Script를 이용하여 중력 적용 및 움직임을 구현해 보겠습니다.
+Play를 눌러서 배치한 Scene을 Play한다면 위 그림과 같은 PlayerStart가 멈춰 있는 현상을 볼 수 있는데 Script를 이용하여 중력 적용 및 움직임을 구현해 보겠습니다.
 
 project에 존재하고 있는 Script File에서 'PhysicsObject'라는 새로운 C\# Script를 하나 생성하여 아래와 같은 소스를 복사하여 저장 후 미리 배치한 PlayerStart에 Script Component를 넣습니다.
 
