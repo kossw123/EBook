@@ -46,11 +46,9 @@ Unity는 Visual Scripting, 즉 UI를 이용하여 보다 편리하게 Game 작�
 
   다음으로 Prefab Folder로 들어가서 'PlayerStart' Prefab을 드래그 앤 드롭으로 적당한 위치에 배치합니다.
 
+![PlayerStart&#xB97C; Scene&#xC5D0; &#xBC30;&#xCE58;&#xD55C; &#xC0C1;&#xD0DC;](../../.gitbook/assets/tutorial-2.gif)
 
-
-
-
- Play를 눌러서 배치한 Scene을 Play한다면 PlayerStart가 멈춰 있는 현상을 볼 수 있는데 Script를 이용하여 중력 적용 및 움직임을 구현해 보겠습니다.
+ Play를 눌러서 배치한 Scene을 Play한다면 위 그림과 같은 PlayerStart가 멈춰 있는 현상을 볼 수 있는데 Script를 이용하여 중력 적용 및 움직임을 구현해 보겠습니다.
 
 project에 존재하고 있는 Script File에서 'PhysicsObject'라는 새로운 C\# Script를 하나 생성하여 아래와 같은 소스를 복사하여 저장 후 미리 배치한 PlayerStart에 Script Component를 넣습니다.
 
@@ -166,5 +164,60 @@ public class PhysicsObject : MonoBehaviour {
 
 그리고 저장 후에 Scene을 Play 해보면 PlayerStart가 중력의 영향을 받아 아래로 떨어지는 모습을 확인할 수 있습니다. 
 
-그리고 새로운 'PlayerPlatformerController'라는 Script를 하나 생성하여 위와 마찬가지로 PlayerStart Object에 Component로 추가합니다.
+![&#xC911;&#xB825;&#xC758; &#xC601;&#xD5A5;&#xC744; &#xBC1B;&#xC544; &#xC544;&#xB798;&#xB85C; &#xB5A8;&#xC5B4;&#xC9C0;&#xB294; PlayerStart](../../.gitbook/assets/tutorial-3.gif)
+
+그리고 새로운 'PlayerPlatformerController'라는 Script를 하나 생성하여 위와 마찬가지로 PlayerStart Object에 Component로 추가하고 아래와 같은 코드를 복사합니다.
+
+```text
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerPlatformerController : PhysicsObject {
+
+    public float maxSpeed = 7;
+    public float jumpTakeOffSpeed = 7;
+
+    private SpriteRenderer spriteRenderer;
+    private Animator animator;
+
+    // Use this for initialization
+    void Awake () 
+    {
+        spriteRenderer = GetComponent<SpriteRenderer> ();    
+        animator = GetComponent<Animator> ();
+    }
+
+    protected override void ComputeVelocity()
+    {
+        Vector2 move = Vector2.zero;
+
+        move.x = Input.GetAxis ("Horizontal");
+
+        if (Input.GetButtonDown ("Jump") && grounded) {
+            velocity.y = jumpTakeOffSpeed;
+        } else if (Input.GetButtonUp ("Jump")) 
+        {
+            if (velocity.y > 0) {
+                velocity.y = velocity.y * 0.5f;
+            }
+        }
+
+        bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f));
+        if (flipSprite) 
+        {
+            spriteRenderer.flipX = !spriteRenderer.flipX;
+        }
+
+        animator.SetBool ("grounded", grounded);
+        animator.SetFloat ("velocityX", Mathf.Abs (velocity.x) / maxSpeed);
+
+        targetVelocity = move * maxSpeed;
+    }
+}
+```
+
+추가를 끝마쳤다면 아래와 같은 그림을 움직이는 PlayerStart Object를 보실 수 있습니다.
+
+![PlayerStart &#xC6C0;&#xC9C1;&#xC784; &#xC801;&#xC6A9;](../../.gitbook/assets/tutorial-4.gif)
 
