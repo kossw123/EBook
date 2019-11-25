@@ -12,19 +12,35 @@ description: PhysicsObject tutorial에 이은 How-to-guide
 
 ## Scripting Gravity
 
+
+
 ## Detecting Overlaps
+
+
 
 ## Scripting Collision
 
+
+
 ## Horizontal Movement
+
+
 
 ## Player Controller Script
 
+
+
 ## Adding Player Animation
 
-## Scripting Gravity
 
-## Scripting Gravity
+
+
+
+## Scripting Grav
+
+
+
+
 
 
 
