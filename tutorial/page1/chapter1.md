@@ -219,3 +219,5 @@ public class PlayerPlatformerController : PhysicsObject {
 
 ![PlayerStart &#xC6C0;&#xC9C1;&#xC784; &#xC801;&#xC6A9;](../../.gitbook/assets/tutorial-4.gif)
 
+자세한 내용은 How-to-guide에서 설명하도록 하겠습니다.
+
