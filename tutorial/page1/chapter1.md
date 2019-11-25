@@ -2,7 +2,7 @@
 description: Unity Object의 Kinematic RigidBody를 이용한 Scripting
 ---
 
-# PhysicsObject
+# tutorial PhysicsObject
 
 ## 왜 해야 하는가?
 
@@ -221,7 +221,7 @@ public class PlayerPlatformerController : PhysicsObject {
 
 자세한 내용은 How-to-guide에서 설명하도록 하겠습니다.
 
-{% page-ref page="chapter1.md" %}
+{% page-ref page="../../how-to-guide/unity/physicsobject.md" %}
 
 
 
