@@ -40,15 +40,19 @@ void Movement(Vector2 move) {
 ```text
 protected const float minMoveDistance = 0.001f;
 protected ContactFilter2D contactFilter;
+protected RayCastHit2D[] hitBuffer = new RayCastHit2D[16];
+protected const float shellRadius = 0.01f;
 
 void Start() {
     contactFilter.useTrigger = false;
+    contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
+    contactFilter.useLayerMask = true;
 }
 
 void Movement(Vector2 move) {
     float distance = move.magnitude;
     if(distance > minMoveDistance) {
-    
+        int count = rb2d.Cast(move, contactFilter, hitBuffer, distance + shellRadius);
     }
     rb2d.position = rb2d.position + move;
     
