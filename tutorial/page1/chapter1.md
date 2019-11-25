@@ -221,3 +221,7 @@ public class PlayerPlatformerController : PhysicsObject {
 
 자세한 내용은 How-to-guide에서 설명하도록 하겠습니다.
 
+{% page-ref page="chapter1.md" %}
+
+
+
