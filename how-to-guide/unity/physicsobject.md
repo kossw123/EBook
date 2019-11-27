@@ -14,7 +14,7 @@ description: PhysicsObject tutorial에 이은 How-to-guide
 
 ```text
 public float gravityModifier = 1f;            // 중력 변수
-protected RigidBody rb2d;                      // RigidBody2D Component를 가져오는 변수
+protected RigidBody2D rb2d;                      // RigidBody2D Component를 가져오는 변수
 protected Vector2 velocity;                    // RigidBody를 움직이기 위한 Vector2 변
 
 void OnEnable() {
@@ -71,7 +71,7 @@ protected Vector2 groundNormal;
 void FixedUpdate()
 {
     grounded = false;
-    move(move, true) // 교
+    move(move, true)
 }
 
 
@@ -110,7 +110,22 @@ void Movement(Vector2 move, bool yMovement)
 
 ## Horizontal Movement
 
+```text
+protected Vector2 targetVelocity;
 
+void FixedUpdate()
+{
+    velocity.x = targetVelocity.x;
+    
+    Vector2 moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
+    Vector2 move = moveAlongGround * delataPosition.x;
+    Movement(move, false);
+}
+```
+
+```text
+
+```
 
 ## Player Controller Script
 
