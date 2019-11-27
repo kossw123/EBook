@@ -13,23 +13,29 @@ description: PhysicsObject tutorial에 이은 How-to-guide
 ## Scripting Gravity
 
 ```text
-public float gravityModifier = 1f;            // 중력 변수
-protected RigidBody2D rb2d;                      // RigidBody2D Component를 가져오는 변수
-protected Vector2 velocity;                    // RigidBody를 움직이기 위한 Vector2 변
+PhysicsObject.cs
 
-void OnEnable() {
-    rb2d = GetComponent < RigidBody2D > ();    
-}
 
-void FixedUpdate() {
-    velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
-    Vector2 deltaPosition = velocity * Time.deltaTime;
-    Vector2 move = Vector2.up * deltaPosition.y;
-    Movement(move);
-}
+using System.Collection;
+using System.Collection.Generic;
+using UnityEngine;
 
-void Movement(Vector2 move) {
-    rb2d.position = rb2d.position + move;
+public class PlayerPlatformerController: PhysicsObject {
+    public float gravityModifier = 1 f;
+    protected RigidBody2D rb2d;
+    protected Vector2 velocity;
+    void OnEnable() {
+        rb2d = GetComponent < RigidBody2D > ();
+    }
+    void FixedUpdate() {
+        velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
+        Vector2 deltaPosition = velocity * Time.deltaTime;
+        Vector2 move = Vector2.up * deltaPosition.y;
+        Movement(move);
+    }
+    void Movement(Vector2 move) {
+        rb2d.position = rb2d.position + move;
+    }
 }
 ```
 
@@ -38,23 +44,30 @@ void Movement(Vector2 move) {
 ## Detecting Overlaps
 
 ```text
-protected const float minMoveDistance = 0.001f;
-protected ContactFilter2D contactFilter;
-protected RayCastHit2D[] hitBuffer = new RayCastHit2D[16];
-protected const float shellRadius = 0.01f;
+PhysicsObject.cs
 
-void Start() {
-    contactFilter.useTrigger = false;
-    contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
-    contactFilter.useLayerMask = true;
-}
 
-void Movement(Vector2 move) {
-    float distance = move.magnitude;
-    if(distance > minMoveDistance) {
-        int count = rb2d.Cast(move, contactFilter, hitBuffer, distance + shellRadius);
+using System.Collection;
+using System.Collection.Generic;
+using UnityEngine;
+
+public class PhysicsObject: MonoBehaviour {
+    protected const float minMoveDistance = 0.001 f;
+    protected ContactFilter2D contactFilter;
+    protected RayCastHit2D[] hitBuffer = new RayCastHit2D[16];
+    protected const float shellRadius = 0.01 f;
+    void Start() {
+        contactFilter.useTrigger = false;
+        contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
+        contactFilter.useLayerMask = true;
     }
-    rb2d.position = rb2d.position + move;
+    void Movement(Vector2 move) {
+        float distance = move.magnitude;
+        if (distance > minMoveDistance) {
+            int count = rb2d.Cast(move, contactFilter, hitBuffer, distance + shellRadius);
+        }
+        rb2d.position = rb2d.position + move;
+    }
 }
 ```
 
@@ -63,49 +76,44 @@ void Movement(Vector2 move) {
 ## Scripting Collision
 
 ```text
-protected List<RayCastHit2D>hitBufferList = new List<RayCastHit2D>(16);
-public float minGroundNormalY = 0.65f;
-protected bool grounded;
-protected Vector2 groundNormal;
+PhysicsObject.cs
 
-void FixedUpdate()
-{
-    grounded = false;
-    move(move, true)
-}
-
-
-void Movement(Vector2 move, bool yMovement)
-{
-    hitBufferList.Clear();
-    for(int i = 0; i < count; i++)
-    {
-        hitBufferList.Add(hitBuffer[i]);
+using System.Collection;
+using System.Collection.Generic;
+using UnityEngine;
+public class PhysicsObject: MonoBehaviour {
+    protected List < RayCastHit2D > hitBufferList = new List<RayCastHit2D>(16);
+    public float minGroundNormalY = 0.65 f;
+    protected bool grounded;
+    protected Vector2 groundNormal;
+    void FixedUpdate() {
+        grounded = false;
+        move(move, true)
     }
-    for(int i = 0; i < hitBufferList.count; i++)
-    {
-        Vector2 currentNormal = hitBufferList[i].normal;
-        if(currnetNormal.y > minGroundNormalY)
-        {
-            grounded = true;
-            if(yMovement)
-            {
-                groundNormal = currentNormal;
-                currentNormal.x = 0;
+    void Movement(Vector2 move, bool yMovement) {
+        hitBufferList.Clear();
+        for (int i = 0; i < count; i ++) {
+            hitBufferList.Add(hitBuffer[i]);
+        }
+        for (int i = 0; i < hitBufferList.count; i ++) {
+            Vector2 currentNormal = hitBufferList[i].normal;
+            if (currnetNormal.y > minGroundNormalY) {
+                grounded = true;
+                if (yMovement) {
+                    groundNormal = currentNormal;
+                    currentNormal.x = 0;
+                }
             }
+            float projection = Vector2.Dot(velocity, currentNormal);
+            if (projection < 0) {
+                velocity = velocity - projection * currentNormal;
+            }
+            float modifiedDistance = hitBufferList[i].distance - shellRadius;
+            distance = modifiedDistance < distance
+                ? modifiedDistance
+                : distance;
         }
-        
-        float projection = Vector2.Dot(velocity, currentNormal);
-        if(projection < 0)
-        {
-            velocity = velocity - projection * currentNormal;
-        }
-        
-        float modifiedDistance = hitBufferList[i].distance - shellRadius;
-        distance = modifiedDistance < distance ? modifiedDistance : distance;
     }
-}
-
 ```
 
 ## Horizontal Movement
