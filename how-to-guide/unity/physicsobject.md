@@ -119,29 +119,131 @@ public class PhysicsObject: MonoBehaviour {
 ## Horizontal Movement
 
 ```text
-protected Vector2 targetVelocity;
+PhysicsObject.cs
 
-void FixedUpdate()
-{
-    velocity.x = targetVelocity.x;
-    
-    Vector2 moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
-    Vector2 move = moveAlongGround * delataPosition.x;
-    Movement(move, false);
+
+using System.Collection;
+using System.Collection.Generic;
+using UnityEngine;
+
+public class PhysicsObject: MonoBehaviour {
+    protected Vector2 targetVelocity;
+    void Update() {
+        targetVelocity = Vector2.zero;
+        ComputeVelocity();
+    }
+    void FixedUpdate() {
+        velocity.x = targetVelocity.x;
+        Vector2 moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
+        Vector2 move = moveAlongGround * delataPosition.x;
+        Movement(move, false);
+    }
 }
 ```
 
 ```text
+PlayerPlatformerController.cs
 
+
+using System.Collection;
+using System.Collection.Generic;
+using UnityEngine;
+
+public class PlayerPlatformerController: PhysicsObject {
+    public float jumpTakeOffSpeed = 7;
+    public float maxSpeed = 7;
+    void Start() {}
+    void Update() {
+        targetVelocity = Vector2.left;
+    }
+}
 ```
 
 ## Player Controller Script
 
+```text
+PhysicsObject.cs
 
+
+using System.Collection;
+using System.Collection.Generic;
+using UnityEngine;
+
+public class PhysicsObject: MonoBehaviour {
+    protected Vector2 targetVelocity;
+    void Update() {
+        targetVelocity = Vector2.zero;
+        ComputeVelocity();
+    }
+    void FixedUpdate() {
+        velocity.x = targetVelocity.x;
+        Vector2 moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
+        Vector2 move = moveAlongGround * delataPosition.x;
+        Movement(move, false);
+    }
+    protected virtual void ComputeVelocity() {}
+}
+```
+
+```text
+PlayerPlatformerController.cs
+
+
+using System.Collection;
+using System.Collection.Generic;
+using UnityEngine;
+
+public class PlayerPlatformerController: PhysicsObject {
+    public float jumpTakeOffSpeed = 7;
+    public float maxSpeed = 7;
+    void Start() {}
+    void Update() {}
+    protected override void ComputeVelocity() {
+        Vector2 move = Vector2.zero;
+        move.x = Input.GetAxis("Horizontal");
+        if (Input.GetButtonDown("Jump") && grounded) {
+            velocity.y = jumpTakeOffSpeed;
+        } else if (Input.GetButtonUp("Jump")) {
+            if (velocity.y > 0) {
+                velocity.y = velocity.y * 0.5 f;
+            }
+        }
+        targetVelocity = move * maxSpeed;
+    }
+
+```
 
 ## Adding Player Animation
 
+```text
+PlayerPlatformerController.cs
 
+
+using System.Collection;
+using System.Collection.Generic;
+using UnityEngine;
+
+public class PlayerPlatformerController: PhysicsObject {
+    private SpriteRenderer spriteRenderer;
+    private Animator animator;
+    void Awake() {
+        spriteRenderer = GetComponent < SpriteRenderer > ();
+        animator = GetComponent < Animator > ();
+    }
+    protected override void ComputeVelocity() {
+        bool filpSprite = (
+            spriteRenderer.filpX
+                ? (move.x > 0.01 f)
+                : (move.x < 0.01 f)
+        );
+        if (filpSprite) {
+            spriteRenderer.filpX = !spriteRenderer.filpX;
+        }
+        animator.SetBool("grounded", grounded);
+        animator.SetFloat("velocityX", Math.Abs(velocity.x) / maxSpeed);
+    }
+}
+```
 
 
 
