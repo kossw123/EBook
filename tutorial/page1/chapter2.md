@@ -1,8 +1,8 @@
 ---
-description: Chapter2
+description: TileMap을 이용한 Map Design 제작
 ---
 
-# Chapter2
+# TileMap
 
-Chapter2
+TileMap을 이용한 Map Design 제작
 

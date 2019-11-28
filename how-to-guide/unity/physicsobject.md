@@ -1,14 +1,18 @@
 ---
-description: PhysicsObject tutorial에 이은 How-to-guide
+description: tutorial PhysicsObject에 이은 How-to-guide
 ---
 
 # How-to-guide PhysicsObject
 
 ## 무엇을 하려고 하는가?
 
-* tutorial보다 자세한 설명 및 작성 단계를 표시합니다.
-* tutorial 영상을 보고 각 단계에 따른 리뷰를 작
-* 작성 단계에서 나타나는 문제점을 이의제기, 해결방법 등을 업데이트 할 예정입니다.
+* 강의의 흐름에 따라 내용들을 Code Block으로 정리했으며, 각 단계에 따른 코드의 흐름을                           작성했습니다.
+* 강의의 영상에 초점을 맞췄기 때문에 따라하기에 불편함이 있을수 있으니                                            How-to-guide를 보고 하시는 것보다는 tutorial의 코드를 참조하시길 바랍니다. 하지만 똑같은 코드이기 때문에 딱히 수정은 안하셔도 될듯합니다.
+* 보다 자세한 설명은 아래의 링크의 해설문서로 작성하겠습니다.
+
+{% page-ref page="../../explanation/unity/physicsobject.md" %}
+
+
 
 ## Scripting Gravity
 
@@ -21,7 +25,7 @@ using System.Collection.Generic;
 using UnityEngine;
 
 public class PlayerPlatformerController: PhysicsObject {
-    public float gravityModifier = 1 f;
+    public float gravityModifier = 1f;
     protected RigidBody2D rb2d;
     protected Vector2 velocity;
     void OnEnable() {
@@ -38,8 +42,6 @@ public class PlayerPlatformerController: PhysicsObject {
     }
 }
 ```
-
-
 
 ## Detecting Overlaps
 
@@ -70,8 +72,6 @@ public class PhysicsObject: MonoBehaviour {
     }
 }
 ```
-
-
 
 ## Scripting Collision
 
@@ -244,8 +244,6 @@ public class PlayerPlatformerController: PhysicsObject {
     }
 }
 ```
-
-
 
 ## etc
 

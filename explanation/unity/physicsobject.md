@@ -1,8 +1,8 @@
 ---
-description: PhysicsObject 해설문서
+description: How-to-guide PhysicsObject에 이은 Explanation
 ---
 
-# PhysicsObject
+# Explanation PhysicsObject
 
 ## Kinematic Scripting을 통해 얻을 수 있는 것
 
