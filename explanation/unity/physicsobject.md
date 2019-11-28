@@ -13,5 +13,7 @@ description: How-to-guide PhysicsObject에 이은 Explanation
 
 ## Scripting Gravity
 
+PhysicsObject.cs는 물체에 중력을 적용함과 동시에 움직임을 부여하고, 충돌관련 기능들을                                    가지고 있습니다. 
 
+우선적으로 중력을 적용시키기 위
 

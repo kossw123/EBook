@@ -24,12 +24,12 @@ using System.Collection;
 using System.Collection.Generic;
 using UnityEngine;
 
-public class PlayerPlatformerController: PhysicsObject {
+public class PhysicsObject : MonoBehaviour {
     public float gravityModifier = 1f;
-    protected RigidBody2D rb2d;
+    protected Rigidbody2D rb2d;
     protected Vector2 velocity;
     void OnEnable() {
-        rb2d = GetComponent < RigidBody2D > ();
+        rb2d = GetComponent<Rigidbody2D>();
     }
     void FixedUpdate() {
         velocity += gravityModifier * Physics2D.gravity * Time.deltaTime;
