@@ -4,27 +4,14 @@ description: How-to-guide PhysicsObject에 이은 Explanation
 
 # Explanation PhysicsObject
 
-## Kinematic Scripting을 통해 얻을 수 있는 것
+## 무엇을 하려고 하는가?
 
-Scripting 능력
+* How-to-guide PhysicsObject에서는 코드의 흐름을 단계적으로 나눴다면 이 페이지 에서는 단계적으로 나눈 Code Block들에 대한 설명과 전반지식에 대한 설명을 합니다.
+* 설명에 대한 함수 설명과 사용법들은 아래의 기술문서 링크를 타고 보실수 있습니다.
 
-Vector2를 활용한 Object의 이동
+{% page-ref page="../../technical-reference/unity/tr-physicsobject.md" %}
 
-게임에서 자주 이용하는  RigidBody와 RayCastHit2D Component를 이용한 충돌처리 과정
+## Scripting Gravity
 
-Object가 움직이는데 있어서 필요한 요소들
-
-DeltaTime을 이용하는 이유
-
- 여러가지 Script를 이용하여 상속 및 Animation을 적용 
-
-
-
-
-
-## 본론
-
-1.  Scripting 능력
-2. 
 
 
