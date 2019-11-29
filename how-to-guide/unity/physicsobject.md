@@ -59,7 +59,7 @@ public class PhysicsObject: MonoBehaviour {
     protected RayCastHit2D[] hitBuffer = new RayCastHit2D[16];
     protected const float shellRadius = 0.01 f;
     void Start() {
-        contactFilter.useTrigger = false;
+        contactFilter.useTriggers = false;
         contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
         contactFilter.useLayerMask = true;
     }
