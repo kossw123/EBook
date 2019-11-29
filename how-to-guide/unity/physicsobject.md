@@ -54,10 +54,10 @@ using System.Collection.Generic;
 using UnityEngine;
 
 public class PhysicsObject: MonoBehaviour {
-    protected const float minMoveDistance = 0.001 f;
+    protected const float minMoveDistance = 0.001f;
     protected ContactFilter2D contactFilter;
     protected RayCastHit2D[] hitBuffer = new RayCastHit2D[16];
-    protected const float shellRadius = 0.01 f;
+    protected const float shellRadius = 0.01f;
     void Start() {
         contactFilter.useTriggers = false;
         contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(gameObject.layer));
@@ -76,11 +76,13 @@ public class PhysicsObject: MonoBehaviour {
 ## Scripting Collision
 
 ```text
-PhysicsObject.cs
+PhysicsObject.cs 
+
 
 using System.Collection;
 using System.Collection.Generic;
 using UnityEngine;
+
 public class PhysicsObject: MonoBehaviour {
     protected List < RayCastHit2D > hitBufferList = new List<RayCastHit2D>(16);
     public float minGroundNormalY = 0.65 f;
@@ -91,29 +93,32 @@ public class PhysicsObject: MonoBehaviour {
         move(move, true)
     }
     void Movement(Vector2 move, bool yMovement) {
-        hitBufferList.Clear();
-        for (int i = 0; i < count; i ++) {
-            hitBufferList.Add(hitBuffer[i]);
-        }
-        for (int i = 0; i < hitBufferList.count; i ++) {
-            Vector2 currentNormal = hitBufferList[i].normal;
-            if (currnetNormal.y > minGroundNormalY) {
-                grounded = true;
-                if (yMovement) {
-                    groundNormal = currentNormal;
-                    currentNormal.x = 0;
+        if (distance > minMoveDistance) {
+            hitBufferList.Clear();
+            for (int i = 0; i < count; i ++) {
+                hitBufferList.Add(hitBuffer[i]);
+            }
+            for (int i = 0; i < hitBufferList.count; i ++) {
+                Vector2 currentNormal = hitBufferList[i].normal;
+                if (currnetNormal.y > minGroundNormalY) {
+                    grounded = true;
+                    if (yMovement) {
+                        groundNormal = currentNormal;
+                        currentNormal.x = 0;
+                    }
                 }
+                float projection = Vector2.Dot(velocity, currentNormal);
+                if (projection < 0) {
+                    velocity = velocity - projection * currentNormal;
+                }
+                float modifiedDistance = hitBufferList[i].distance - shellRadius;
+                distance = modifiedDistance < distance
+                    ? modifiedDistance
+                    : distance;
             }
-            float projection = Vector2.Dot(velocity, currentNormal);
-            if (projection < 0) {
-                velocity = velocity - projection * currentNormal;
-            }
-            float modifiedDistance = hitBufferList[i].distance - shellRadius;
-            distance = modifiedDistance < distance
-                ? modifiedDistance
-                : distance;
         }
     }
+}
 ```
 
 ## Horizontal Movement
