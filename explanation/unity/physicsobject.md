@@ -36,7 +36,28 @@ rb2d = GetComponent&lt;Rigidbody2D&gt;\(\);
 
 ## Detecting Overlaps
 
-위에서 중력을 적용하고 움직임을 부여 했지만 그 움직임은 기본적으로 중력을 적용하기 위한 움직임이지 PlayerStart가 움직이기 위한 움직임은 아닙니다. ㅇ
+위에서 중력을 적용하고 움직임을 부여 했지만 그 움직임은 기본적으로 중력을 적용하기 위한 움직임이지 PlayerStart가 움직이기 위한 움직임은 아닙니다. PlayerStart가 움직이기 위해서는  여러 작업이 필요합니다. 그 중에 이 단락에서는 충돌체가 겹치는지 안겹치는지 확인하기 위한 작업을 합니다.
+
+핵심적으로는 Rigidbody2D.cast라는 함수가 존재합니다. 이 함수를 이용하여 충돌체를 반환하고 결과를     int형 배열에 저장 하는 기능을 가진 함수인데 이것을 가지고 충돌을 감지하는 이 단락에서 핵심 기능입니다.
+
+{% hint style="info" %}
+int count = rb2d.Cast\(move, contactFilter, hitBuffer, distance + shellRadius\);
+
+위와 같은 parameter를 가지고 그 결과를 int형 배열로 반환하기 때문에 int형 변수에                   저장합니다.
+{% endhint %}
+
+ 이 기능을 사용하기 위해서는 RayCastHit2D, ContactFilter2D Component가 필요한데 각각 아래의 기능을 가지고 있습니다.
+
+* RayCastHit2D : 2D physics에서 RayCast\(광선을 따라 놓여 있는 물체를 감지하기 위해 사용\)에 의해           감지된 물체에 대한 정보를 반환합니다.
+* ContactFilter2D : 접촉한 물체에 대한 정보를 반환합니다. ContactFilter를 사용한다면 접촉 결과를     나중에 필터링 할 필요없이 더 빠르고 편리하게 사용 가능합니다.
+
+ 대충 흐름을 보자면 충돌을 감지하기 위해 RayCastHit2D로 PlayerStart에서 시작되는 광선을 따라 놓여있는 물체를 감지하고 ContactFilter2D로 결과를 미리 필터링하여 닿는 물체를 확인한다는 의미 인듯합니다.
+
+## Scripting Collision
+
+ 위에서는 충돌을 감지하는 기능이 대부분 이였다면 여기서는 직접 충돌에 관한 처리를 Scripting을 합니다.
+
+
 
 
 

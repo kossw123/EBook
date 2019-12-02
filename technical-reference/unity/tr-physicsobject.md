@@ -4,3 +4,13 @@ description: Explanation PhysicsObject에 사용된 함수의 기능과 사용�
 
 # TR PhysicsObject
 
+## Scripting Gravity
+
+리지드바디 캐스트 함수
+
+
+
+## Detecting Overlaps
+
+ ContactFilter2D, RayCastHit2D, 
+
