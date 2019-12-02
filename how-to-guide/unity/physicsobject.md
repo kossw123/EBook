@@ -90,7 +90,7 @@ public class PhysicsObject: MonoBehaviour {
     protected Vector2 groundNormal;
     void FixedUpdate() {
         grounded = false;
-        move(move, true)
+        Movement(move, true);
     }
     void Movement(Vector2 move, bool yMovement) {
         if (distance > minMoveDistance) {
