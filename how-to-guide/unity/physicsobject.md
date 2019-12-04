@@ -197,7 +197,6 @@ public class PlayerPlatformerController: PhysicsObject {
     public float jumpTakeOffSpeed = 7;
     public float maxSpeed = 7;
     void Start() {}
-    void Update() {}
     protected override void ComputeVelocity() {
         Vector2 move = Vector2.zero;
         move.x = Input.GetAxis("Horizontal");

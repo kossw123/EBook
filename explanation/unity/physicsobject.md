@@ -69,7 +69,7 @@ List&lt;RayCastHit2D&gt; hitBufferList = new List&lt;RayCastHit2D&gt;\(\);
 
 그 후 List에 들어간 결과물을 가지고 반복문을 돌려서 normal Vector를 뽑아냅니다. 이 normal Vector는    캐릭터를 표면에 세우거나 발사체의 반사, 도탄을 정렬하는 방법으로 유용하게 사용할 수 있습니다.               즉, normal Vector\(방향만 가지고 있는 벡터\)는 표면에 수직이면 양수값을 반환하기 때문에 표면에 수직인지 아닌지를 판별 할 수 있습니다.
 
-표면인지 아닌지를 판별했다면 groundNormal = currentNormal를 하여 ground에 있다고 체크 후 currentNoraml.x = 0으로 함으로써 초기화 하는 과정을 거칩니다.   //이부분확
+표면인지 아닌지를 판별했다면 groundNormal = currentNormal를 하여 ground에 있다고 체크 후 currentNoraml.x = 0으로 함으로써 초기화 하는 과정을 거칩니다.   //이부분 왜 x값을 0으로 하는가에 대한 확
 
 float projection = Vector2.Dot함수를 통해 Velocity와 currentNoraml의 내적을 구합니다.                               양수를 가리킨다면 정확히 같은 방향을 가지고 있기 때문에 따로 처리를 하진 않지만 다른 방향을 가리킨다면 예외 처리를 해줘야 합니다. 그렇기 때문에 velocity에 projection\(음수\) \* currentNormal\(음수\)를 하여 velocity에 더하여 \(x + a, y + a\)와 같은 과정을 통해 땅 위에 고정시켜 놓습니다.
 
@@ -100,6 +100,8 @@ Vector의 내적을 구했다면 rb2d변수를 가지고 이동 시 move.normali
 이제 실질적으로 PlayerStart를 움직이기 위한 Script를 제작해야 하는데 따로 PlayerPlatformerController.cs를 생성하고 생성한 Script에서 Update\(\)문에서 Vector2.left를 통해 Update마다 왼쪽으로 가도록 설정합니다.
 
 ## Player Controller Script
+
+
 
 
 

@@ -14,3 +14,11 @@ description: Explanation PhysicsObject에 사용된 함수의 기능과 사용�
 
  ContactFilter2D, RayCastHit2D, 
 
+## Scripting Collision
+
+Vector에 관한 전반적인 내용, normalVector, Vector2.Dot
+
+## Horizontal Movement
+
+moveAlongGround을 왜쓰는가? 2D 평면상에서의 x,y축 Swap에 대한 의미와 사용법
+
