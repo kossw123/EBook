@@ -181,12 +181,6 @@ public class PhysicsObject: MonoBehaviour {
         targetVelocity = Vector2.zero;
         ComputeVelocity();
     }
-    void FixedUpdate() {
-        velocity.x = targetVelocity.x;
-        Vector2 moveAlongGround = new Vector2(groundNormal.y, -groundNormal.x);
-        Vector2 move = moveAlongGround * delataPosition.x;
-        Movement(move, false);
-    }
     protected virtual void ComputeVelocity() {}
 }
 ```
