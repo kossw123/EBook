@@ -77,5 +77,13 @@ float projection = Vector2.Dot함수를 통해 Velocity와 currentNoraml의 내�
 
 ////// 이 부분 상세설명
 
+## Horizontal Movement
+
+
+
+## Player Controller Script
+
+
+
 
 
