@@ -8,6 +8,7 @@ description: How-to-guide PhysicsObject에 이은 Explanation
 
 * How-to-guide PhysicsObject에서는 코드의 흐름을 단계적으로 나눴다면 이 페이지 에서는 단계적으로 나눈 Code Block들에 대한 설명과 전반지식에 대한 설명을 합니다.
 * 설명에 대한 함수 설명과 사용법들은 아래의 기술문서 링크를 타고 보실수 있습니다.
+* 아래의 글들은 영상을보고 정리한 것이니 일부의 오류가 있을 수도 있습니다. 이러한 부분에서는         오류를 수정 발견 및 수정을 원하신다면 이메일로 지적해 주신다면 확인 및 수정절차에                            들어가겠습니다.
 
 {% page-ref page="../../technical-reference/unity/tr-physicsobject.md" %}
 
@@ -73,9 +74,15 @@ float projection = Vector2.Dot함수를 통해 Velocity와 currentNoraml의 내�
 
 ////// 이 부분 상세설명
 
-원점에서 충돌지점 까지의 거리구하여 shellRadius보다 가까운 지점에 충돌시  기존의 distance\(이동 길이\)를 수정합니다.
+원점에서 충돌지점 까지의 거리구하여 shellRadius보다 가까운 지점에 충돌시  기존의 distance\(이동 길이\)를 수정합니다. 
 
 ////// 이 부분 상세설명
+
+projection 이라는 변수가 등장하는데 이 변수는 velocity와 currentNormal의 내적을 구하는 변수로써 어떤 충돌체와 충돌시에 그 충돌체가 앞인지 뒤인지 판별하는 변수입니다. 이 변수가 양수, 혹은 음수를 가지게 되는데 양수면 정면에 있고, 음수면 후방에 있는 것으로 판별 난다. 하지만 이 변수를 왜 쓰는가?
+
+/////// 이부분 확인 필요 및 전체적으로 왜 쓰는가에 대한 의문이 필요할 
+
+Vector의 내적을 구했다면 rb2d변수를 가지고 이동 시 move.normalized \* distance의 공식을 더해                  \(단위벡터값  \* 앞에 있는지 뒤에 있는지\)의 식을 통하여 움직이게 됩니다.
 
 ## Horizontal Movement
 
