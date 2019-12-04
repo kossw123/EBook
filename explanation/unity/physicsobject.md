@@ -55,9 +55,27 @@ int count = rb2d.Cast\(move, contactFilter, hitBuffer, distance + shellRadius\);
 
 ## Scripting Collision
 
- 위에서는 충돌을 감지하는 기능이 대부분 이였다면 여기서는 직접 충돌에 관한 처리를 Scripting을 합니다.
+ 위에서는 충돌을 감지하는 기능이 대부분 이였다면 여기서는 직접 충돌에 관한 처리를 Scripting을 합니다. RayCastHit2D List를 가지고 광선에 따라 놓여진 물체들을 List형식으로 관리합니다.
 
+ 그 후 move.magnitude를 반환하는 distance 변수를 가지고 움직인 Vector2의 길이를 알아낼 수 있습니다. 이 변수는 곧 움직인 거리가 되며 최소 minMoveDistance변수와 비교하여 조금이라도 움직였을 시 hitBufferList, 즉 놓여진 물체를 조사하는 List에 넣습니다.
 
+{% hint style="info" %}
+List&lt;RayCastHit2D&gt; hitBufferList = new List&lt;RayCastHit2D&gt;\(\);
+
+위의 List는 RayCastHit2D가 반환하는 결과물들을 List형식으로 정리하여 탐색하기 위한 List
+{% endhint %}
+
+그 후 List에 들어간 결과물을 가지고 반복문을 돌려서 normal Vector를 뽑아냅니다. 이 normal Vector는    캐릭터를 표면에 세우거나 발사체의 반사, 도탄을 정렬하는 방법으로 유용하게 사용할 수 있습니다.               즉, normal Vector\(방향만 가지고 있는 벡터\)는 표면에 수직이면 양수값을 반환하기 때문에 표면에 수직인지 아닌지를 판별 할 수 있습니다.
+
+표면인지 아닌지를 판별했다면 groundNormal = currentNormal를 하여 ground에 있다고 체크 후 currentNoraml.x = 0으로 함으로써 초기화 하는 과정을 거칩니다.   //이부분확
+
+float projection = Vector2.Dot함수를 통해 Velocity와 currentNoraml의 내적을 구합니다.                               양수를 가리킨다면 정확히 같은 방향을 가지고 있기 때문에 따로 처리를 하진 않지만 다른 방향을 가리킨다면 예외 처리를 해줘야 합니다. 그렇기 때문에 velocity에 projection\(음수\) \* currentNormal\(음수\)를 하여 velocity에 더하여 \(x + a, y + a\)와 같은 과정을 통해 땅 위에 고정시켜 놓습니다.
+
+////// 이 부분 상세설명
+
+원점에서 충돌지점 까지의 거리구하여 shellRadius보다 가까운 지점에 충돌시  기존의 distance\(이동 길이\)를 수정합니다.
+
+////// 이 부분 상세설명
 
 
 
