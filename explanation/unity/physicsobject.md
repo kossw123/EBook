@@ -9,6 +9,7 @@ description: How-to-guide PhysicsObject에 이은 Explanation
 * How-to-guide PhysicsObject에서는 코드의 흐름을 단계적으로 나눴다면 이 페이지 에서는 단계적으로 나눈 Code Block들에 대한 설명과 전반지식에 대한 설명을 합니다.
 * 설명에 대한 함수 설명과 사용법들은 아래의 기술문서 링크를 타고 보실수 있습니다.
 * 아래의 글들은 영상을보고 정리한 것이니 일부의 오류가 있을 수도 있습니다. 이러한 부분에서는         오류를 수정 발견 및 수정을 원하신다면 이메일로 지적해 주신다면 확인 및 수정절차에                            들어가겠습니다.
+* 보다 쉽게 설명한 예가 있어서 링크한 URL 들에 대해 상업적 목적이 없다는 뜻을 미리 알립니다.
 
 {% page-ref page="../../technical-reference/unity/tr-physicsobject.md" %}
 
@@ -86,9 +87,21 @@ Vector의 내적을 구했다면 rb2d변수를 가지고 이동 시 move.normali
 
 ## Horizontal Movement
 
+새로이 ComputeVelocity\(\)라는 함수와 기존에 쓰지 않았던 moveAlongGround라는 Vector2변수가               등장합니다. 각각 앞의 함수는 다른 Script에서 지금 작업중인 Script를 상속받아 쓰기 위함이고, 뒤의 변수는  땅에 수직인 Vector2를 구하기 위함입니다. 앞의 함수를 상속받는 것은 기능을 분할 시키기 위함이라고 쳐도 뒤에 moveAlongGround라는 변수가 왜 필요한지 보면 아래의 링크의 원문을 보고 이해했습니다.
 
+{% embed url="https://tharindumathew.com/2014/03/01/finding-a-normal-perpendicular-vector-on-a-2d-plane/" caption="2D 평면에서 정상\(수직\) 벡터를 찾는 이유" %}
+
+즉, 어떤 공간에서 두 지점은 같은 공간을 공유하지만 반대 방향을 가리키는 두 개의 평면이 실제로 지나가고 있기 때문에 두 지점에서 정상적으로 계산하려면 먼저 방향 벡터\(vector2.dot\)를 확보한 다음 양쪽으로 90도 회전해야 하기 때문입니다.
+
+{% embed url="https://ddomyangggung.tistory.com/entry/%EA%B3%A0%EB%8F%84%EC%97%94%EC%A7%84-%ED%8A%9C%ED%86%A0%EB%A6%AC%EC%96%BC-17-%EB%B2%A1%ED%84%B0-%EC%88%98%ED%95%99Vector-math" caption="2D 평면에서의 정상\(수직\)벡터를 찾는 이유2" %}
+
+위와 같은 이유로 moveAlongGround라는 변수는 2D 평면상에서 정상적으로 계산하기 위한 절차라고        이해했습니다.
+
+이제 실질적으로 PlayerStart를 움직이기 위한 Script를 제작해야 하는데 따로 PlayerPlatformerController.cs를 생성하고 생성한 Script에서 Update\(\)문에서 Vector2.left를 통해 Update마다 왼쪽으로 가도록 설정합니다.
 
 ## Player Controller Script
+
+
 
 
 
