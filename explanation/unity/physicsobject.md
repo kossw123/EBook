@@ -127,7 +127,9 @@ Unity에서의 Animation은 Animator를 가지고 있으며 이는 Inspector에�
 
 그리고 SpriteRenderer는 기본적으로 Object가 추가 될 때 보여지는 형체이기 때문
 
-첫 단락 Scripting Gravity에서 했던 것처럼 Component를 가져와야 합니다. GetComponent로 Animator와 SpriteRenderer를 가져와서 
+첫 단락 Scripting Gravity에서 했던 것처럼 Component를 가져와야 합니다. GetComponent로 Animator와 SpriteRenderer를 가져와서 ComputeVelocity\(\) 함수에서 GetAxis를 통해 수평적인\(Horizontal\) 움직임을 보였을 때 반환되는 값을 가지고 0을 기준으로 하여 양수, 음수의 값을 가진다면 움직임\(오른쪽 혹은 왼쪽\)을 보인다는 것이니 그 값에 따라 Flip해줍니다. 
+
+그리고 Animator에서는 특정 변수의 값에 따라 해당 Animation을 실행하는 parameter가 있습니다. 이번 예제에서는 bool, float 변수의 통제를 통해 미리  설정한 조건이 참일 시 실행하도록 코딩했습니다.
 
 
 
