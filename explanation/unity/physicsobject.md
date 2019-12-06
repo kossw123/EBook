@@ -123,7 +123,11 @@ move.x = Input.GetAxis\("Horizontal"\);
 
 이 단락에서는 Animation, PlayerStart가 움직이는 것처럼 보이는 방법에 대하여 설명하고 있습니다.
 
-Unity에서의 Animation은 Animator를 가지고 있으며 이는 Inspector에서 따로 Animator를 추가해야            합니다. 그러나 이 예제에서는 기본적으로 추가가 되어있기 때문에 좀더 깊게 들어가는 설명은 하지 않고 따로 기술문서에서 다루겠습니다.
+Unity에서의 Animation은 Animator를 가지고 있으며 이는 Inspector에서 따로 Animator Component를 추가해야 합니다. 그러나 이 예제에서는 기본적으로 추가가 되어있기 때문에 좀더 깊게 들어가는 설명은 하지   않고 따로 기술문서에서 다루겠습니다.
+
+그리고 SpriteRenderer는 기본적으로 Object가 추가 될 때 보여지는 형체이기 때문
+
+첫 단락 Scripting Gravity에서 했던 것처럼 Component를 가져와야 합니다. GetComponent로 Animator와 SpriteRenderer를 가져와서 
 
 
 
