@@ -11,6 +11,10 @@ description: Explanation PhysicsObject에 사용된 함수의 기능과 사용�
 
 ## Scripting Gravity
 
+이 단락에서는 아래와 같은 기술문서를 다루고 있습니다.
+
+* Rigidbody2D.cast
+
 {% embed url="https://docs.unity3d.com/ScriptReference/Rigidbody2D.Cast.html" caption="Rigidbody2D.Cast Document" %}
 
 두 종류의 Rigidbody2D.cast 함수가 존재합니다. 각각 아래의 parameter를 가지고 있습니다.
@@ -19,7 +23,7 @@ description: Explanation PhysicsObject에 사용된 함수의 기능과 사용�
 2. public int Cast\([Vector2](https://docs.unity3d.com/ScriptReference/Vector2.html) direction, [ContactFilter2D](https://docs.unity3d.com/ScriptReference/ContactFilter2D.html) contactFilter, List&lt;RaycastHit2D&gt; results, float distance = Mathf.Infinity\);
 
 {% tabs %}
-{% tab title="first Tab" %}
+{% tab title="parameter 1" %}
 All the [Collider2D](https://docs.unity3d.com/ScriptReference/Collider2D.html) shapes attached to the [Rigidbody2D](https://docs.unity3d.com/ScriptReference/Rigidbody2D.html) are cast into the Scene starting at each Collider position ignoring the Colliders attached to the same [Rigidbody2D](https://docs.unity3d.com/ScriptReference/Rigidbody2D.html).
 
 **Rigidbody2D에 부착된 모든 Collider2D 형상은 Scene이 시작될 때 동일한 Rigidbody2D에 부착된 충돌체를 무시하고 각 충돌체 위치에서 만들어집니다.**
@@ -38,7 +42,7 @@ Additionally, this will also detect other Collider\(s\) overlapping the collider
 **또한, 이것은 Collider 시작 위치와 겹치는 다른 Collider도 탐지합니다. 이 경우 cast shape은 충돌기 내부에서 시작되고 Collider 표면을 교차하지 않을 수 있다. 즉, 충돌 정상값이 시험 중인 방향 벡터의 역방향으로 설정된 경우 충돌 정상값을 계산할 수 없다.**
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="parameter 2" %}
 
 {% endtab %}
 {% endtabs %}
@@ -49,7 +53,26 @@ Additionally, this will also detect other Collider\(s\) overlapping the collider
 
 ## Detecting Overlaps
 
- ContactFilter2D, RayCastHit2D, 
+이 단락에서는 아래와 같은 기술문서를 다루고 있습니다.
+
+* ContactFilter2D
+* RayCastHit2D
+
+{% embed url="https://docs.unity3d.com/ScriptReference/ContactFilter2D.html" caption="ContactFilter2D Document" %}
+
+접촉한 결과물을 필터링하기 위한 매개 변수 집합입니다.
+
+{% tabs %}
+{% tab title="First Tab" %}
+
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
+
+
 
 ## Scripting Collision
 
