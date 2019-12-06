@@ -43,7 +43,11 @@ Additionally, this will also detect other Collider\(s\) overlapping the collider
 {% endtab %}
 
 {% tab title="parameter 2" %}
+paramter 1과 같지만 아래와 같은 추가 기능이 있습니다.
 
+ The `contactFilter` parameter can filter the returned results by the options in [ContactFilter2D](https://docs.unity3d.com/ScriptReference/ContactFilter2D.html).
+
+ContactFilter 매개변수는 ContactFilter2D의 옵션에 의해 반환된 결과를 필터링할 수 있습니다.  
 {% endtab %}
 {% endtabs %}
 
@@ -60,15 +64,29 @@ Additionally, this will also detect other Collider\(s\) overlapping the collider
 
 {% embed url="https://docs.unity3d.com/ScriptReference/ContactFilter2D.html" caption="ContactFilter2D Document" %}
 
+{% tabs %}
+{% tab title="ContactFilter2D" %}
+A set of parameters for filtering contact results.
+
 접촉한 결과물을 필터링하기 위한 매개 변수 집합입니다.
 
-{% tabs %}
-{% tab title="First Tab" %}
+Use a contact filter to precisely control which contact results get returned. This removes the need to filter the results later, is faster, and more convenient.
 
+어떤 접촉한 결과물이 반환되는지 정확하게 제어하려면 ContactFilter를 사용하십시오. 이렇게 하면 나중에 접촉한 결과물을 필터링할 필요가 없어지고, 더 빠르고, 더 편리해집니다.
+
+ If you are using a function that requires a [ContactFilter2D](https://docs.unity3d.com/ScriptReference/ContactFilter2D.html), but you don't want to perform any filtering, then use [ContactFilter2D.NoFilter](https://docs.unity3d.com/ScriptReference/ContactFilter2D.NoFilter.html).
+
+ContactFilter2D가 필요한 기능을 사용하고 있지만 필터링을 수행하지 않으려면 ContactFilter2D.NoFilter를 사용하시면 됩니다.
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="RayCastHit2D" %}
+Information returned about an object detected by a raycast in 2D physics.
 
+2D physics에서는 레이캐스트에 의해 감지된 물체에 대한 정보를 반환합니다.
+
+ A _raycast_ is used to detect objects that lie along the path of a _ray_ and is conceptually like firing a laser beam into the scene and observing which objects are hit by it. The RaycastHit2D class is used by [Physics2D.Raycast](https://docs.unity3d.com/kr/530/ScriptReference/Physics2D.Raycast.html) and other functions to return information about the objects detected by raycasts.
+
+레이캐스트는 광선의 경로를 따라 놓여 있는 물체를 감지하기 위해 사용되며 개념적으로 레이저 빔을 현장으로 발사하여 어떤 물체가 부딪히는지 관찰하는 것과 같습니다. RaycastHit2D 클래스는 Physical2D.RayCast에 의해 사용되고 raycasts 및 기타 기능을 통해 레이캐스트에서 탐지된 물체에 대한 정보를 반환할 수 있습니다.
 {% endtab %}
 {% endtabs %}
 
