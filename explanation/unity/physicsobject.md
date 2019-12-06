@@ -101,11 +101,29 @@ Vector의 내적을 구했다면 rb2d변수를 가지고 이동 시 move.normali
 
 ## Player Controller Script
 
+PhysicsObject.cs에서는 충돌에 관한 기능들을 만들었다면 PlayerPlatformerController.cs에서는 실질적으로 움직이기 위한 Script로 기능을 나눕니다.
 
+PlayerPlatformerController.cs에서는 기존 PhysicsObject.cs의 기능들을 상속받아서 씁니다. 그렇기 때문에 길게 어떠한 기능들에 대해서 작성하는 것도 아니며, 이미 Unity에 내장되어 있는 기능들을 활용합니다.
 
+{% hint style="info" %}
+move.x = Input.GetAxis\("Horizontal"\);
 
+위의 GetAxis기능은 따로 기능에 관해서 설명하진 않겠습니다. 기존 Unity Document 및 Google에 검색만 하면 해당 글보다 좀 더 자세하게 얻을 수 있으며, 제가 정보를 얻은 글에 대한 링크는 아래에 남기겠습니다. 
 
+그러니 여기서는 그냥 모니터를 보는 시선을 기준으로 하여 좌우를 눌렀을 때 -1 ~ 1의 값을 가지고 입력이 없을시에는  0의 값을 가지며 독립적인 프레임속도를 가지기 때문에 이 기능이 사용시 프레임의 속도 변화량에 따른 문제를 고민하지 않아도 된다는 것입니다.
 
+[https://docs.unity3d.com/kr/530/ScriptReference/Input.GetAxis.html](https://docs.unity3d.com/kr/530/ScriptReference/Input.GetAxis.html)
+{% endhint %}
+
+그리고 Jump Button을 눌렀을 시에 velocity.y = jumpTakeOffSpeed  즉, PhysicsObject.cs에서 쓰인 velocity변수가 중력의 영향을 받아 0이하로 떨어지게 되고 이는 물체가 낙하한다는 것을 의미하니까 위의 문법은 velocity.y에 7의 힘을 주겠다는 의미이고 아래의 else if문에서 velocity.y &gt; 0일때 0.5씩 곱하여 매 프레임마다 중력기능과 같이 적용하여 점프하는 기능을 작성한다는 뜻으로 보입니다.
+
+결국 최종적인 PlayerStart에 대한 속도는 targetVelocity = move \* maxSpeed의 문법으로  확정짓게 됩니다.
+
+## Adding Player Animation
+
+이 단락에서는 Animation, PlayerStart가 움직이는 것처럼 보이는 방법에 대하여 설명하고 있습니다.
+
+Unity에서의 Animation은 Animator를 가지고 있으며 이는 Inspector에서 따로 Animator를 추가해야            합니다. 그러나 이 예제에서는 기본적으로 추가가 되어있기 때문에 좀더 깊게 들어가는 설명은 하지 않고 따로 기술문서에서 다루겠습니다.
 
 
 
