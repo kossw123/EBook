@@ -90,15 +90,39 @@ Information returned about an object detected by a raycast in 2D physics.
 {% endtab %}
 {% endtabs %}
 
-
+  ContactFilter2D 기능은 Rigidbody2D.cast의 parameter로써 필요하지만 기본적으로 접촉한 결과물, 즉 
 
 ## Scripting Collision
 
 이 단락에서는 아래와 같은 기술문서를 다루고 있습니다.
 
 * Vector
+* normal Vector
+* Vector2.Dot
 
-Vector에 관한 전반적인 내용, normalVector, Vector2.Dot
+{% tabs %}
+{% tab title="Vector" %}
+Vector에 관한 개념적인 이야기는 잘 설명되어 있는 글이 많고 여기서 정리하는 것이 그것보다 좋진 않기 때문에 굳이 여기서 하지 않겠습니다.
+
+여기서 설명드릴 Vector에 관한 이야기는 이 강의 영상을 보면서 정리한 글이니, 참고바랍니다.
+
+
+
+{% hint style="info" %}
+
+{% endhint %}
+
+Vector2 = \(x, y\) 값을 이용하여 Position\(위치\)를 지정함과 동시에 가산연산자\(+=\)를 통해 매 프레임마다 움직일 수 있도록 연산을 합니다.
+{% endtab %}
+
+{% tab title="normal Vector" %}
+
+{% endtab %}
+
+{% tab title="Vector2.Dot" %}
+
+{% endtab %}
+{% endtabs %}
 
 ## Horizontal Movement
 
