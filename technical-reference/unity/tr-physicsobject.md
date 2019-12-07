@@ -113,7 +113,7 @@ Vector2 = \(x, y\) 값을 이용하여 Position\(위치\)를 지정함과 동시
 {% embed url="https://docs.unity3d.com/kr/530/ScriptReference/Vector2.html" caption="Vector2 Document" %}
 {% endtab %}
 
-{% tab title="normal Vector2" %}
+{% tab title="normal Vector" %}
 Vector에 관한 이야기가 정리가 되셨다면                                                                                                            _**왜 normal Vector\(법선 벡터 or 수직 벡터\)라는 변수를 구하여 적용시켜야 하는가?**_ 에 관해서             설명하겠습니다.
 
 groundNormal 이라는 변수를 통해 RaycastHit2D.normal\(광선에 부딪힌 물체의 법선벡터\)를 구해야 PlayerStart가 **땅위에 서있는지 판별 할 수 있기 때문**입니다.
@@ -125,6 +125,12 @@ groundNormal 이라는 변수를 통해 RaycastHit2D.normal\(광선에 부딪힌
 이러한 좌표계를 가지고 어떤 Object를 중심으로 로컬, 월드 좌표계로 나누고, 상대적이냐, 절대적이냐를 따지는데 Collider가 충돌 시 RayCastHit2D를 사용하여 광선을 쏴서 부딪힌 물체의 법선벡터를 구하여 표면에 수직인 경우 양수를 반환합니다.
 
 그리고 **면의 앞뒤를 구분하는데 있어서 유용하기 때문입니다**. 만약 음수를 반환한다면 물체의 안쪽에 있는 것으로 판별이 되어 그만큼의 렌더링을 해야하고 이는 성능 저하 및 Light연산과 밀접하게 관련이 있습니다. 어차피 2D게임이기 때문에 Light관해서는 크게 신경을 쓰지 않으셔도 괜찮습니다만 3D게임으로 넘어가면 Lighting 연산은 필수적으로 신경써야하는 부분이기 때문에 기술문서에 넣었습니다.
+{% endtab %}
+
+{% tab title="Vector2.Dot" %}
+normal Vector를 구하는 이유에 관해서 이해가 가셨다면 Vector2.Dot\(\), 즉 내적에 관한 이야기를     하겠습니다. 
+
+내적이란 쉽게 말하면 임의의 Vector A, B 가 있다면 A, B의 각 성분끼리 곱한 값하여 더한 값이 Vector2.Dot\(\)의 값입니다. 이를 활용한다면 
 {% endtab %}
 {% endtabs %}
 
