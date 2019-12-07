@@ -106,23 +106,25 @@ Vector에 관한 개념적인 이야기는 잘 설명되어 있는 글이 많고
 
 여기서 설명드릴 Vector에 관한 이야기는 이 강의 영상을 보면서 정리한 글이니, 참고바랍니다.
 
+Scripting Gravity에서의 한 문장을 가지고 예시를 들겠습니다.                                                                          `velocity + gravityModifier Physics2D.gravity Time.deltaTime;`
 
+Vector2 = \(x, y\) 값을 이용하여 Position\(위치\)를 지정함과 동시에 가산연산자\(+=\)를 통해 매 프레임마다 움직일 수 있도록 연산을 합니다. 위의 중력을 부여하는데도 이와 같은 원리를 적용합니다. 물론 위치뿐만이 아니라 길이를 가지고 있는 것이 Vector변수 이기 때문에 Vector.magnitude\(\)함수를 가지고 Vector의 길를 구할 수 있습니다. 자세한 내용은 구글링 혹은 아래의 링크를 보시면 되겠습니다.
 
-{% hint style="info" %}
-
-{% endhint %}
-
-Vector2 = \(x, y\) 값을 이용하여 Position\(위치\)를 지정함과 동시에 가산연산자\(+=\)를 통해 매 프레임마다 움직일 수 있도록 연산을 합니다.
+{% embed url="https://docs.unity3d.com/kr/530/ScriptReference/Vector2.html" caption="Vector2 Document" %}
 {% endtab %}
 
-{% tab title="normal Vector" %}
-
-{% endtab %}
-
-{% tab title="Vector2.Dot" %}
-
+{% tab title="normal Vector2" %}
+Vector에 관한 이야기가 정리가 되셨다면                                                                                                            _**왜 normal Vector\(법선 벡터 or 수직 벡터\)라는 변수를 구하여 적용시켜야 하는가?**_ 에 관해서             설명하겠습니다.
 {% endtab %}
 {% endtabs %}
+
+
+
+
+
+
+
+
 
 ## Horizontal Movement
 
