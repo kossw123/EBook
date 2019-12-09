@@ -131,5 +131,14 @@ Unity에서의 Animation은 Animator를 가지고 있으며 이는 Inspector에�
 
 그리고 Animator에서는 특정 변수의 값에 따라 해당 Animation을 실행하는 parameter가 있습니다. 이번 예제에서는 bool, float 변수의 통제를 통해 미리  설정한 조건이 참일 시 실행하도록 코딩했습니다.
 
+## 마치며
+
+* 이상으로 해설 문서를 마치겠습니다.
+* 각 해설에 따른 기술적인 문서는 아래의 링크에 기재했습니다.
+
+{% page-ref page="../../technical-reference/unity/tr-physicsobject.md" %}
+
+
+
 
 
