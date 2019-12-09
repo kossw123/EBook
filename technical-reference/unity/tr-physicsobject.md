@@ -158,7 +158,7 @@ normal Vector를 구하는 이유에 관해서 이해가 가셨다면 Vector2.Do
 {% endtab %}
 
 {% tab title="Second Tab" %}
-moveAlongGround를 사용하는 이유는 이전의 Explanation PhysicsObject에서 설명한 바와 같이 
+moveAlongGround 이전의 Explanation PhysicsObject에서 설명한 바와 같이 groundNorma의                     \(x, y\)를 \(-y, x\)값으로 치환하 고 있습니다. 그리고 deltaPosition.x, 실제로 PlayerStart가 위치해 있는 x축의 값에 곱연산을 하여 최종적인 위치값을 나타내게 되는데 
 {% endtab %}
 {% endtabs %}
 
