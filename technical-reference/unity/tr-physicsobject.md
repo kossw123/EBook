@@ -137,6 +137,13 @@ normal Vector를 구하는 이유에 관해서 이해가 가셨다면 Vector2.Do
 그렇게 된다면 Vector2.Dot 내부적으로 반환값을 가지고 방향을 판별할 수 있게 됩니다. Vector의 Dot Product의 값을 구하는데는 또 한가지 방법이 있는데 이는, 임의의 두 Vector변수의 각 성분들 끼리 곱하여 더한 값으로 값을 구할 수 있습니다.
 
 ![Vector.Dot&#xB97C; &#xC774;&#xC6A9;&#xD55C; &#xBB3C;&#xCCB4;&#xC758; &#xC704;&#xCE58; &#xD30C;&#xC545;](../../.gitbook/assets/normal-vector.png)
+
+정리를 하자면 아래와 같습니다.
+
+1. 어떤 한 Object에서 RaycastHit2D를 통해 충돌체를 감지 한다는 것은 알겠는데 그 물체가                 도대체 어디쯤에 위치한 것인가를 파악해야한다. 그래서 Vector를 이용하여 구한다.
+2. normal Vector를 통하여 표면에 수직인 Vector를 구한다면 해당 normal Vector와 어떤 물체가 위치하여 있는 Vector의 내적을 통해 어디쯤 위치해 있는지 구할 수 있을 것이다. 왜냐하면 Vector는 Position의 성질도 같이 가지고 있기 때문이다.
+3. 이를 위해 RaycastHit2D의 normal Vector를 통해 표면에 수직인 Vector와 물체가 움직이기 위해 만든 velocity를 통해 Dot Product를 통하여 projection, 즉 사영공간을 구한다. 굳이 velocity라는 중력작용 변수를 통하여 움직이는 이유는 어차피 velocity라는 변수는 해당 Object에만 적용 시키기 때문이다. 그렇기 때문에 물체에 기준이 되는 Vector라고 볼수 있기 때문이다.
+4. 
 {% endtab %}
 {% endtabs %}
 
@@ -152,7 +159,7 @@ normal Vector를 구하는 이유에 관해서 이해가 가셨다면 Vector2.Do
 {% endtab %}
 
 {% tab title="Second Tab" %}
-
+moveAlongGround를 사용하는 이유는 이전의 Explanation PhysicsObject에서 설명한 바와 같이 
 {% endtab %}
 {% endtabs %}
 
