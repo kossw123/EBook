@@ -143,7 +143,6 @@ normal Vector를 구하는 이유에 관해서 이해가 가셨다면 Vector2.Do
 1. 어떤 한 Object에서 RaycastHit2D를 통해 충돌체를 감지 한다는 것은 알겠는데 그 물체가                 도대체 어디쯤에 위치한 것인가를 파악해야한다. 그래서 Vector를 이용하여 구한다.
 2. normal Vector를 통하여 표면에 수직인 Vector를 구한다면 해당 normal Vector와 어떤 물체가 위치하여 있는 Vector의 내적을 통해 어디쯤 위치해 있는지 구할 수 있을 것이다. 왜냐하면 Vector는 Position의 성질도 같이 가지고 있기 때문이다.
 3. 이를 위해 RaycastHit2D의 normal Vector를 통해 표면에 수직인 Vector와 물체가 움직이기 위해 만든 velocity를 통해 Dot Product를 통하여 projection, 즉 사영공간을 구한다. 굳이 velocity라는 중력작용 변수를 통하여 움직이는 이유는 어차피 velocity라는 변수는 해당 Object에만 적용 시키기 때문이다. 그렇기 때문에 물체에 기준이 되는 Vector라고 볼수 있기 때문이다.
-4. 
 {% endtab %}
 {% endtabs %}
 
