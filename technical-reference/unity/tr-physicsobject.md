@@ -154,13 +154,19 @@ normal Vector를 구하는 이유에 관해서 이해가 가셨다면 Vector2.Do
 
 {% tabs %}
 {% tab title="moveAlongGround" %}
-사실 moveAlongGround 변수를 통해 Vector2 끼리의 Swap이 일어나지 않아도 정상적인 움직임을 보입니다. 하지만 경사면 위에 있을 때 Character는 진행방향과 반대로 위치하게 됩니다. 
+사실 moveAlongGround 변수를 통해 Vector2 끼리의 Swap이 일어나지 않아도 정상적인 움직임을 보입니다. 하지만 경사면 위에 있을 때 Character는 움직이는 것으로 간주되어 Run의 움직임을             보이게 됩니다.
 
-이런 이유를 보이는 까닭은 경사면을 조사할 때 RaycastHit2D.normal\(법선벡터\)
-{% endtab %}
+이런 이유를 보이는 까닭은 경사면을 조사할 때 RaycastHit2D.normal\(법선벡터\)을 조사해서 Rigidbody2D.position으로 움직이는데 이때 velocity.x가 초기화 되지않기 때문입니다.
 
-{% tab title="Second Tab" %}
-moveAlongGround 이전의 Explanation PhysicsObject에서 설명한 바와 같이 groundNorma의                     \(x, y\)를 \(-y, x\)값으로 치환하 고 있습니다. 그리고 deltaPosition.x, 실제로 PlayerStart가 위치해 있는 x축의 값에 곱연산을 하여 최종적인 위치값을 나타내게 되는데 
+또한 절벽으로 떨어질 때 벽에 붙어버리면 벽을 타고 올라가는 현상이 발생합니다. 이 현상은 normal Vector에 대한 처리를 안할시 발생합니다. 
+
+{% hint style="info" %}
+Vector2 moveAlongGround = new Vector2\(groundNormal.y, -groundNormal.x\);
+
+Vector2 move = moveAlongGround \* deltaPosition.x;
+{% endhint %}
+
+위와 같은 코드를 거쳐 deltaPosition에 관한 예외처리를 해줍니다. 위와 같은 작업을 거치면 normal Vector\(법선벡터\)에 parameter를 바꿔서 
 {% endtab %}
 {% endtabs %}
 
