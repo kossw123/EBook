@@ -166,7 +166,9 @@ Vector2 moveAlongGround = new Vector2\(groundNormal.y, -groundNormal.x\);
 Vector2 move = moveAlongGround \* deltaPosition.x;
 {% endhint %}
 
-위와 같은 코드를 거쳐 deltaPosition에 관한 예외처리를 해줍니다. 위와 같은 작업을 거치면 normal Vector\(법선벡터\)에 parameter를 바꿔서 
+위와 같은 코드를 거쳐 deltaPosition에 관한 예외처리를 해줍니다. 위와 같은 작업을 거치면 normal Vector\(법선벡터\)에 parameter를 바꿔서 perpendicular Vector\(법선벡터의 수직 벡터\)를 구할 수 있습니다.
+
+즉, 어떤 물체의 법선벡터의 수직벡터를 구하면 어차피 -1~1값이 나오니, 이 값을 deltaPosition.x에 곱연산을 해서 땅인지 아닌지를 판별한다. 땅이라면 \(1,0\) or \(-1,0\)이 나올것이고 경사면이라면                                                            \(-1 ~ 1, -1 ~ 1\) 사이의 값이 나오니까 경사면을 판별 가능하다.
 {% endtab %}
 {% endtabs %}
 
