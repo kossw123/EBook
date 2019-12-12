@@ -140,7 +140,7 @@ Unity에서의 Animation은 Animator를 가지고 있으며 이는 Inspector에�
 
 {% page-ref page="../../technical-reference/unity/tr-physicsobject.md" %}
 
-
+사실 CharacterController라는 기능을 써서 처리하는 것이 코딩하는데 있어서 더 편하거나 강의 영상의 코딩보다 효율적일 수 있습니다. 하지만 Collision Scripting을 통해서 많은 것을 얻을 수 있었고, 엔진의 이해가 좀더 쉽게 된다는 점이 장점으로써 크게 와닿았습니다.
 
 
 
