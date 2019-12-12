@@ -154,7 +154,9 @@ normal Vector를 구하는 이유에 관해서 이해가 가셨다면 Vector2.Do
 
 {% tabs %}
 {% tab title="moveAlongGround" %}
+사실 moveAlongGround 변수를 통해 Vector2 끼리의 Swap이 일어나지 않아도 정상적인 움직임을 보입니다. 하지만 경사면 위에 있을 때 Character는 진행방향과 반대로 위치하게 됩니다. 
 
+이런 이유를 보이는 까닭은 경사면을 조사할 때 RaycastHit2D.normal\(법선벡터\)
 {% endtab %}
 
 {% tab title="Second Tab" %}
