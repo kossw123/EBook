@@ -83,7 +83,15 @@ Rule Tile을 생성했다면 위 그림과 같은 Inspector가 생성됩니다.
 
 ![9&#xAC1C;&#xC758; Tile &#xCD94;&#xAC00;](../../.gitbook/assets/image%20%289%29.png)
 
-9개의 Tile을 추가하여 임의의 RuleTile을 Palette에 넣어서 확인
+위 그림은 9개의 Tile을 추가해서 원하는 모양이 나오도록 각 Tile에 Rule을 추가한 모습입니다. 각 Tile마다 화살표로 방향을 정해줘서 화살표 방향대로 생성되게끔 합니다. X라고 표시된 방향은 생성이 불가합니다.
+
+![RuleTile &#xC0DD;&#xC131;](../../.gitbook/assets/ruletile.gif)
+
+방향을 제대로 설정했다면 위 그림과 같이 어떤 Size 상관없이 다음과 같은 블록이 생성됩니다.
+
+
+
+
 
 
 
