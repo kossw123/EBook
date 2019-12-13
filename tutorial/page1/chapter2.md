@@ -53,7 +53,19 @@ Tile Palette 기능을 표시했다면 여기에 필요한 Tile들을 넣어야 
 
 ## Rule Tile 작성법
 
-기존에 있던 Tilemap의 보조하는 기능으로써 Unity 내부에 잧체적으로 존재하는것이 아니라 
+기존에 있던 Tilemap의 보조하는 기능으로써 Unity 내부에 자체적으로 존재하는것이 아니라 외부적으로      기능을 import해야합니다. 여기서는 아래의 Github에서 다운을 받아 Project에 직접 import 합니다.
+
+{% embed url="https://github.com/Unity-Technologies/2d-extras" caption="Asset Store에 가도 Rule Tile기능들은 존재합니다." %}
+
+자료를 다운받아 압축을 풀고 Project에 넣는다면 2d-extras-master라는 File이 Project View에 생성되면서 "Project View"에서 우클릭 후 Create로 가면 가장 위쪽에 Tile이라는 항목이 생성되고 여기서 Rule Tile들을 생성할 수 있습니다.
+
+![Hierarchy&#xCC3D;&#xC5D0;&#xC11C; Create&#xD558;&#xBA74; &#xC0DD;&#xC131;&#xC774; &#xC548;&#xB418;&#xACE0; &quot;Project View&quot;&#xC5D0;&#xC11C; &#xC6B0;&#xD074;&#xB9AD;&#xC2DC; &#xC774;&#xB807;&#xAC8C; &#xB739;&#xB2C8;&#xB2E4;.](../../.gitbook/assets/image%20%284%29.png)
+
+
+
+
+
+
 
 
 
