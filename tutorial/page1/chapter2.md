@@ -892,17 +892,7 @@ public class MapSettings_Editor: Editor {
 * Procedural Pattern Tilemap에 대해서는 How-to-guide가 짧을 수 있습니다. 
 * 해설문서\(Explanation\)에서 구체적인 Generate Method에 대해서 부연설명을 하겠습니다.
 
-{% page-ref page="chapter2.md" %}
-
-
-
-
-
-
-
-
-
-
+{% page-ref page="../../how-to-guide/unity/tilemap.md" %}
 
 {% embed url="https://docs.unity3d.com/Manual/class-Tilemap.html" %}
 
