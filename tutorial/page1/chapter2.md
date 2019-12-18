@@ -2,7 +2,7 @@
 description: TileMap을 이용한 Map Design 제작
 ---
 
-# TileMap
+# tutorial TileMap
 
 ## 왜 해야 하는가?
 

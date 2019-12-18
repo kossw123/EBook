@@ -1,2 +1,2 @@
-# Tilemap
+# How-to-guide Tilemap
 
