@@ -121,6 +121,8 @@ Good to know before you read further:
 {% tab title="Generate Array" %}
 GenerateArray creates a new int array of the size given to it. We can also say whether the array should be full or empty \(1 or 0\). Here’s the code:
 
+GenerateArray는 주어진 크기의 새로운 int 배열을 만듭니다. 또한 배열이 꽉 찼는 지 아니면 비어 있어야하는지 \(1 또는 0\) 말할 수도 있습니다. 코드는 다음과 같습니다
+
 ```text
 public static int[] GenerateArray(int width, int height, bool empty) {
     int[] map = new int[width, height];
@@ -137,7 +139,21 @@ public static int[] GenerateArray(int width, int height, bool empty) {
 }
 ```
 {% endtab %}
+
+{% tab title="Render Map" %}
+
+{% endtab %}
+
+{% tab title="Update Map" %}
+
+{% endtab %}
+
+{% tab title="Perlin Noise" %}
+
+{% endtab %}
 {% endtabs %}
+
+
 
 
 
