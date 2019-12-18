@@ -31,8 +31,26 @@ Good to know before you read further:
 5. 모든 코드는 C\#으로 작성됩니다.
 {% endtab %}
 
-{% tab title="" %}
+{% tab title="Generate Array" %}
+GenerateArray creates a new int array of the size given to it. We can also say whether the array should be full or empty \(1 or 0\). Here’s the code:
 
+GenerateArray는 주어진 크기의 새로운 int 배열을 만듭니다. 또한 배열이 꽉 찼는 지 아니면 비어 있어야하는지 \(1 또는 0\) 말할 수도 있습니다. 코드는 다음과 같습니다
+
+```text
+public static int[] GenerateArray(int width, int height, bool empty) {
+    int[] map = new int[width, height];
+    for (int x = 0; x < map.GetUpperBound(0); x ++) {
+        for (int y = 0; y < map.GetUpperBound(1); y ++) {
+            if (empty) {
+                map[x, y] = 0;
+            } else {
+                map[x, y] = 1;
+            }
+        }
+    }
+    return map;
+}
+```
 {% endtab %}
 {% endtabs %}
 
