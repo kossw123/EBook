@@ -17,5 +17,6 @@
     * [Explanation Tilemap](explanation/unity/explanation-tilemap.md)
 * [Technical reference](technical-reference/README.md)
   * [Unity](technical-reference/unity/README.md)
+    * [TR Tilemap](technical-reference/unity/tr-tilemap.md)
     * [TR PhysicsObject](technical-reference/unity/tr-physicsobject.md)
 
