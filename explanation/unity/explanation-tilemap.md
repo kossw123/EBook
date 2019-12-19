@@ -1,3 +1,7 @@
+---
+description: Explanation Tilemap
+---
+
 # Explanation Tilemap
 
 Procedural Pattern Tilemap
@@ -50,13 +54,40 @@ public static int[] GenerateArray(int width, int height, bool empty) {
 }
 ```
 
-> public static으로 2차원 배열의 함수를 선언하고 각각 parameter로                                                           행\(width, 폭 or 넓이\), 열\(height, 길이\), empty 여부를 넘기고, C\#의 API인 Array.GetUpperBound\(\)함수로 길이의 가장 최상단
+> public static으로 2차원 배열의 함수를 선언하고 각각 parameter로                                                           행\(width, 폭 or 넓이\), 열\(height, 길이\), empty 여부를 넘기고, C\#의 API인 Array.GetUpperBound\(\)함수로 배열의 가장 끝 요소를 반환 받습니다. 그리고 반복문을 통해 width, height를 탐색하여 empty 여부로 0, 1을 판별하고 map을 리턴 받습니다.
+>
+> 여기서 empty가 필요한 이유는 후에 기술하겠습니다.
 {% endtab %}
 
 {% tab title="Render Map" %}
 This function is used to render our map to the tilemap. We cycle through the width and height of the map, only placing tiles if the array has a 1 at the location we are checking.
 
 이 함수는 맵을 타일 맵에 렌더링하는 데 사용됩니다. 우리는지도의 너비와 높이를 순환하면서 배열이 우리가 확인하는 위치에 1이있는 경우에만 타일을 배치합니다.
+
+```text
+public static void RenderMap(int[,] map, Tilemap tilemap, TileBase tile)
+{
+    //Clear the map (ensures we dont overlap)
+    tilemap.ClearAllTiles(); 
+    //Loop through the width of the map
+    for (int x = 0; x < map.GetUpperBound(0) ; x++) 
+    {
+        //Loop through the height of the map
+        for (int y = 0; y < map.GetUpperBound(1); y++) 
+        {
+            // 1 = tile, 0 = no tile
+            if (map[x, y] == 1) 
+            {
+                tilemap.SetTile(new Vector3Int(x, y, 0), tile); 
+            }
+        }
+    }
+}
+```
+
+ Generate Array를 통하여 Map을 empty의 여부에 따라 판별 후 Map을 실질적으로 그리기 위한 함수입니다. UnityEngine.Tilemaps; 을 사용하여 Tilemap에 대한 Component에 접근할 수 있습니다.
+
+{% embed url="https://docs.unity3d.com/ScriptReference/Tilemaps.Tilemap.html" caption="Tilemap Document" %}
 {% endtab %}
 {% endtabs %}
 
