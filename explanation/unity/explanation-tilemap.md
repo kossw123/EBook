@@ -49,22 +49,16 @@ public static int[] GenerateArray(int width, int height, bool empty) {
     return map;
 }
 ```
+
+> public static으로 2차원 배열의 함수를 선언하고 각각 parameter로                                                           행\(width, 폭 or 넓이\), 열\(height, 길이\), empty 여부를 넘기고, C\#의 API인 Array.GetUpperBound\(\)함수로 길이의 가장 최상단
 {% endtab %}
 
-{% tab title="" %}
+{% tab title="Render Map" %}
+This function is used to render our map to the tilemap. We cycle through the width and height of the map, only placing tiles if the array has a 1 at the location we are checking.
 
-{% endtab %}
-
-{% tab title="" %}
-
-{% endtab %}
-
-{% tab title="" %}
-
-{% endtab %}
-
-{% tab title="" %}
-
+이 함수는 맵을 타일 맵에 렌더링하는 데 사용됩니다. 우리는지도의 너비와 높이를 순환하면서 배열이 우리가 확인하는 위치에 1이있는 경우에만 타일을 배치합니다.
 {% endtab %}
 {% endtabs %}
+
+
 
