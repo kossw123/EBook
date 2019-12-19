@@ -2,8 +2,6 @@
 
 Procedural Pattern Tilemap
 
-
-
 {% tabs %}
 {% tab title="What is this blog post about?" %}
 We’ll take a look at some of the most common methods of creating a procedural world, and a couple of custom variations that I have created.  Here’s an example of what you may be able to create after reading this article. Three algorithms are working together to create one map, using a [Tilemap](https://docs.unity3d.com/Manual/class-Tilemap.html) and a [RuleTile](https://github.com/Unity-Technologies/2d-extras):
@@ -51,6 +49,22 @@ public static int[] GenerateArray(int width, int height, bool empty) {
     return map;
 }
 ```
+{% endtab %}
+
+{% tab title="" %}
+
+{% endtab %}
+
+{% tab title="" %}
+
+{% endtab %}
+
+{% tab title="" %}
+
+{% endtab %}
+
+{% tab title="" %}
+
 {% endtab %}
 {% endtabs %}
 
