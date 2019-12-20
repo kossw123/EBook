@@ -129,8 +129,44 @@ public static void UpdateMap(int[,] map, Tilemap tilemap) //Takes in our map and
 
 {% tab title="Perlin Noise" %}
 Perlin Noise란?
+
+자연스럽게 정렬된\("부드럽게"\) 의사 난수 시퀀스를 생성하는 알고리즘이라고 설명 할 수 있습니다. 즉, 우리가 쓰는 난수 함수들은 어떤 범위 안에서 무작위로 선택 할 수 있다는 것인데, Perlin Noise를 사용한다면 이를 보다 자연스럽게 선택 할 수 있다는 뜻이 됩니다.
+
+![Khan Academy - Perlin Noise&#xC5D0;&#xC11C; &#xBC1C;&#xCDCC;](../../.gitbook/assets/image%20%281%29.png)
+
+오른쪽의 그림은 시간에 따른 순수한 난수를 표시하고, 왼쪽의 그림은 Perlin Noise를 사용한 시간에 따른 난수 그래프 입니다. 확연하게 왼쪽이 좀 더 자연스럽게 표시되고 이는 텍스쳐에 이용이 되어  절차적\(어떤 상황을 거치기 위한 단계를 가리키는 말\)인 텍스쳐를 표현합니다.
+
+{% hint style="success" %}
+Perlin Noise는 보통 난수를 표현하는 것보다 좀 더 자연스럽게 표현이 가능하기 때문에 이를 Tilemap 배치의 알고리즘으로 사용하여 자연스러운 지형지물을 표시한다.
+{% endhint %}
+
+```text
+public static int[,] PerlinNoise(int[,] map, float seed)
+{
+    int newPoint;
+    //Used to reduced the position of the Perlin point
+    float reduction = 0.5f;
+    //Create the Perlin
+    for (int x = 0; x < map.GetUpperBound(0); x++)
+    {
+        newPoint = Mathf.FloorToInt((Mathf.PerlinNoise(x, seed) - reduction) * map.GetUpperBound(1));
+ 
+        //Make sure the noise starts near the halfway point of the height
+        newPoint += (map.GetUpperBound(1) / 2); 
+        for (int y = newPoint; y >= 0; y--)
+        {
+            map[x, y] = 1;
+        }
+    }
+    return map;
+}
+```
 {% endtab %}
 {% endtabs %}
+
+
+
+
 
 
 
