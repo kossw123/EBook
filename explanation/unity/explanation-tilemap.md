@@ -150,7 +150,15 @@ Perlin Noise는 보통 난수를 표현하는 것보다 좀 더 자연스럽게 
 
 코드를 보면서 나름 나름대로 해석한 것에 대해 설명하겠습니다.
 
-Perlin Noise는 자연스러운 난수 생성을 위한 알고리즘으로써 본 강의에는 Mathf.PerlinNoise\(\)함수를 사용하여 Mathf.FloorToInt\(\)함수를 사용하여 parameter로 받은 값과 작거나 같은 값을 반환시키는데, 이를 흔히 난수에서 사용하는 Seed의 개념으로 인식하여 
+Perlin Noise는 자연스러운 난수 생성을 위한 알고리즘으로써 본 강의에는 Mathf.PerlinNoise\(\)함수를 사용합니다.
+
+ Mathf.FloorToInt\(\)함수를 사용하여 parameter로 받은 값과 작거나 같은 값을 반환시키는데, Seed값에 기반한 난수 생성기인 PerlinNoise\(\)를 가지고 0부터 Map의 x축 끝 길이까지 반복하여 newPoint로 반환 받은 다음 GetUpperBound\(1\)로 x축길이를 반환받고 그것을 반으로 나눠서                 \(x축 길이 / 2\)의 값으로 받는다.
+
+1. map.x값의 길이를 받아와 반복문을 돌립니다.
+2. Mathf.FloorToInt\(\)함수를 사용하여 Mathf.PerlinNoise\(\) - reduction값을 적거나 같게 받습니다.
+3. newPoint에 \(map.y의 길이 / 2\)를 통하여 가산연산을 합니다.
+4. 다시 반복문을 돌리는데 이때 반복변수를 newPoint로 지정하고 0과 같아질 때 까지 감산반복   합니다.
+5. x, y = 1로 설정하여 Tile을 채워 넣습니다.
 
 ```text
 public static int[,] PerlinNoise(int[,] map, float seed)
@@ -177,10 +185,12 @@ public static int[,] PerlinNoise(int[,] map, float seed)
 {% hint style="info" %}
 int newPoint : 새로운 정수형 Point를 지정하여 Map Tile  위치를 지정합니다.                              float reduction : Mathf.PerlinNoise\(\)함수
 {% endhint %}
-
-{% embed url="https://m.blog.naver.com/PostView.nhn?blogId=dj3630&logNo=221512874599&categoryNo=0&proxyReferer=https%3A%2F%2Fwww.google.com%2F" %}
 {% endtab %}
 {% endtabs %}
+
+
+
+
 
 
 
