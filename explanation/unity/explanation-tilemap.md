@@ -130,7 +130,7 @@ public static void UpdateMap(int[,] map, Tilemap tilemap) //Takes in our map and
 {% tab title="Perlin Noise" %}
 This generation takes the simplest form of implementing Perlin Noise into level generation. We can use the Unity function for Perlin Noise to help us, so there is no fancy programming going into it. We are also going to ensure that we have whole numbers for our tilemap by using the function Mathf.FloorToInt\(\).
 
-이 세대는 Perlin Noise를 레벨 생성으로 구현하는 가장 간단한 형태를 취합니다. Perlin Noise의 Unity 기능을 사용하면 도움이되므로 멋진 프로그래밍이 필요하지 않습니다. 또한 Mathf.FloorToInt \(\) 함수를 사용하여 타일 맵의 정수를 확보 할 것입니다.
+이 세대는 Perlin Noise를 레벨 생성으로 구현하는 **가장 간단한 형태**를 취합니다. Perlin Noise의 Unity 기능을 사용하면 도움이되므로 멋진 프로그래밍이 필요하지 않습니다. 또한 Mathf.FloorToInt \(\) 함수를 사용하여 타일 맵의 정수를 확보 할 것입니다.
 
 
 
@@ -145,8 +145,10 @@ Perlin Noise란?
 오른쪽의 그림은 시간에 따른 순수한 난수를 표시하고, 왼쪽의 그림은 Perlin Noise를 사용한 시간에 따른 난수 그래프 입니다. 확연하게 왼쪽이 좀 더 자연스럽게 표시되고 이는 텍스쳐에 이용이 되어  절차적\(어떤 상황을 거치기 위한 단계를 가리키는 말\)인 텍스쳐를 표현합니다.
 
 {% hint style="success" %}
-Perlin Noise는 보통 난수를 표현하는 것보다 좀 더 자연스럽게 표현이 가능하기 때문에 이를 Tilemap 배치의 알고리즘으로 사용하여 자연스러운 지형지물을 표시한다.
+Perlin Noise는 보통 난수를 표현하는 것보다 좀 더 자연스럽게 표현이 가능하기 때문에 이를 Tilemap 배치의 알고리즘으로 사용하여 자연스러운 지형지물을 표시합니다.
 {% endhint %}
+
+
 
 코드를 보면서 나름 나름대로 해석한 것에 대해 설명하겠습니다.
 
@@ -157,6 +159,10 @@ Perlin Noise는 자연스러운 난수 생성을 위한 알고리즘으로써 �
 3. newPoint에 \(map.y의 길이 / 2\)를 통하여 가산연산을 합니다.
 4. 다시 반복문을 돌리는데 이때 반복변수를 newPoint로 지정하고 0과 같아질 때 까지 감산반복   합니다.
 5. x, y = 1로 설정하여 Tile을 채워 넣습니다.
+
+{% hint style="info" %}
+2. MathfFloorToInt\(\)함수를 사용하여 Mathf.PerlinNoise\(x, seed\) - reduction의 값을       적거나 같은 값으로 반환하는데 이는 보간을 위한 작업입니다. 즉, 좀 더 자연스러운 패턴을 위해 WaveLength를
+{% endhint %}
 
 ```text
 public static int[,] PerlinNoise(int[,] map, float seed)
@@ -177,14 +183,11 @@ public static int[,] PerlinNoise(int[,] map, float seed)
         }
     }
     return map;
-}
 ```
-
-{% hint style="info" %}
-int newPoint : 새로운 정수형 Point를 지정하여 Map Tile  위치를 지정합니다.                              float reduction : Mathf.PerlinNoise\(\)함수
-{% endhint %}
 {% endtab %}
 {% endtabs %}
+
+
 
 
 
