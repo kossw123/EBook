@@ -9,9 +9,6 @@
 
 {% embed url="https://blogs.unity3d.com/kr/2018/06/07/procedural-patterns-to-use-with-tilemaps-part-ii/" caption="Procedural Pattern Tilemap blog - 2" %}
 
-
-
-* 공
 * 좀 더 자세한 설명은 아래의 해설문서\(Explanation\)에 넣도록 하겠습니다.
 
 {% page-ref page="../../explanation/unity/explanation-tilemap.md" %}
