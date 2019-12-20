@@ -18,14 +18,14 @@ description: Tilemap Technical reference
 
 여기서 요소라 함은 
 
-|  | Column 1 | Column 2 | Column 3 | Column 4 |
-| :--- | :--- | :--- | :--- | :--- |
-| Row 1 | 0 , 0 | 0 , 1 | 0, 2 | 0, 3 |
-| Row 2 | 1, 0 | 1, 1 | 1, 2 | 1, 3 |
-| Row 3 | 2, 0 | 2, 1 | 2, 2 | 2, 3 |
-| Row 4 | 3, 0 | 3, 1 | 3, 2 | 3, 3 |
+|  | Column 1 | Column 2 | Column 3 | Column 4 | Column 5 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| Row 1 | 0 , 0 | 0 , 1 | 0, 2 | 0, 3 | 0, 4 |
+| Row 2 | 1, 0 | 1, 1 | 1, 2 | 1, 3 | 1, 4 |
+| Row 3 | 2, 0 | 2, 1 | 2, 2 | 2, 3 | 2, 4 |
+| Row 4 | 3, 0 | 3, 1 | 3, 2 | 3, 3 | 3, 4 |
 
-위의 도표는 임의로 2차원 배열의 4\*4행렬을 배치 한 것인데, 각 칸마다 들어가 있는 번호는 위치를 의미합니다. 여기서 width의 GetUpperBound를 반환한다면 Row 4까지의 길이가 4이기 때문에 4를 반환하게 될 것이고, height의 GetUppperBound를 반환한다면 Column 4까지의 길이는 4이기 때문에 4를 반환하게 될 것입니다.
+위의 도표는 임의로 2차원 배열의 5\*4행렬을 배치 한 것인데, 각 칸마다 들어가 있는 번호는 위치를 의미합니다. 여기서 GetUpperBound\(0\)을 한다면 1차원에 있는 배열중 가장 큰 요소를 반환하기 때문에 4를 반환합니다. 마찬가지로 GetUpperBound\(1\)을 한다면 2차원에 있는 배열중 가장 큰요소를 반환하기 때문에 5를 반환합니다.
 
 {% embed url="https://docs.microsoft.com/ko-kr/dotnet/api/system.array.getupperbound?view=netframework-4.8" caption="Array.GetUpperBound, GetLowerBound 예시" %}
 
