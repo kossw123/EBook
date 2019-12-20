@@ -100,8 +100,35 @@ tilemap parameter를 이용하여 SetTile을 통해 위치 지정 및 tile을 �
 {% endhint %}
 {% endtab %}
 
-{% tab title="" %}
+{% tab title="Update Map" %}
+This function is used only to update the map, rather than rendering again. This way we can use less resources as we aren’t redrawing every single tile and its tile data.
 
+이 함수는 다시 렌더링하는 대신 맵을 업데이트하는 데만 사용됩니다. 이렇게하면 **모든 단일 타일과 타일 데이터를 다시 그릴 필요가 없으므로 더 적은 리소스를 사용할 수 있습니다.**
+
+```text
+public static void UpdateMap(int[,] map, Tilemap tilemap) //Takes in our map and tilemap, setting null tiles where needed
+{
+    for (int x = 0; x < map.GetUpperBound(0); x++)
+    {
+        for (int y = 0; y < map.GetUpperBound(1); y++)
+        {
+            //We are only going to update the map, rather than rendering again
+            //This is because it uses less resources to update tiles to null
+            //As opposed to re-drawing every single tile (and collision data)
+            if (map[x, y] == 0)
+            {
+                tilemap.SetTile(new Vector3Int(x, y, 0), null);
+            }
+        }
+    }
+}
+```
+
+중간의 조건문을 통하여 Tile이 비어있는지 아닌지를 검사하여 비어 있다면 SetTile을 하여 위에 굵은 글씨로 표시한 문장이 적용됩니다.
+{% endtab %}
+
+{% tab title="Perlin Noise" %}
+Perlin Noise란?
 {% endtab %}
 {% endtabs %}
 
