@@ -4,7 +4,7 @@ description: Explanation Tilemap
 
 # Explanation Tilemap
 
-Procedural Pattern Tilemap
+
 
 {% tabs %}
 {% tab title="What is this blog post about?" %}
@@ -132,6 +132,10 @@ This generation takes the simplest form of implementing Perlin Noise into level 
 
 이 세대는 Perlin Noise를 레벨 생성으로 구현하는 가장 간단한 형태를 취합니다. Perlin Noise의 Unity 기능을 사용하면 도움이되므로 멋진 프로그래밍이 필요하지 않습니다. 또한 Mathf.FloorToInt \(\) 함수를 사용하여 타일 맵의 정수를 확보 할 것입니다.
 
+
+
+우선 Perlin Noise에 대해서 알아 보겠습니다.
+
 Perlin Noise란?
 
 자연스럽게 정렬된\("부드럽게"\) 의사 난수 시퀀스를 생성하는 알고리즘이라고 설명 할 수 있습니다. 즉, 우리가 쓰는 난수 함수들은 어떤 범위 안에서 무작위로 선택 할 수 있다는 것인데, Perlin Noise를 사용한다면 이를 보다 자연스럽게 선택 할 수 있다는 뜻이 됩니다.
@@ -142,9 +146,11 @@ Perlin Noise란?
 
 {% hint style="success" %}
 Perlin Noise는 보통 난수를 표현하는 것보다 좀 더 자연스럽게 표현이 가능하기 때문에 이를 Tilemap 배치의 알고리즘으로 사용하여 자연스러운 지형지물을 표시한다.
-
-어찌 됐든 난수를 자연스러운 패턴을 위하여 범위를 지정한 상태에서 
 {% endhint %}
+
+코드를 보면서 나름 나름대로 해석한 것에 대해 설명하겠습니다.
+
+Perlin Noise는 자연스러운 난수 생성을 위한 알고리즘으로써 본 강의에는 Mathf.PerlinNoise\(\)함수를 사용하여 Mathf.FloorToInt\(\)함수를 사용하여 parameter로 받은 값과 작거나 같은 값을 반환시키는데, 이를 흔히 난수에서 사용하는 Seed의 개념으로 인식하여 
 
 ```text
 public static int[,] PerlinNoise(int[,] map, float seed)
@@ -171,6 +177,8 @@ public static int[,] PerlinNoise(int[,] map, float seed)
 {% hint style="info" %}
 int newPoint : 새로운 정수형 Point를 지정하여 Map Tile  위치를 지정합니다.                              float reduction : Mathf.PerlinNoise\(\)함수
 {% endhint %}
+
+{% embed url="https://m.blog.naver.com/PostView.nhn?blogId=dj3630&logNo=221512874599&categoryNo=0&proxyReferer=https%3A%2F%2Fwww.google.com%2F" %}
 {% endtab %}
 {% endtabs %}
 
