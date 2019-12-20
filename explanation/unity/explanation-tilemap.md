@@ -88,8 +88,24 @@ public static void RenderMap(int[,] map, Tilemap tilemap, TileBase tile)
  Generate Array를 통하여 Map을 empty의 여부에 따라 판별 후 Map을 실질적으로 그리기 위한 함수입니다. UnityEngine.Tilemaps; 을 사용하여 Tilemap에 대한 Component에 접근할 수 있습니다.
 
 {% embed url="https://docs.unity3d.com/ScriptReference/Tilemaps.Tilemap.html" caption="Tilemap Document" %}
+
+Tilemaps namespace에서 쓸 것은 Tilemap 자체의 Component, TileBase Component 두가지를 이용하여 Render Map Method를 구성합니다.
+
+{% hint style="info" %}
+Tilemap tilemap : Tilemap Component 자체를 가져와 조작합니다.
+
+TileBase tile : Tilemap의 요소에 tile을 배치하기 위해서 사용합니다.
+
+tilemap parameter를 이용하여 SetTile을 통해 위치 지정 및 tile을 배치하는데 이때 필요한 것이 TileBase tile입니다.
+{% endhint %}
+{% endtab %}
+
+{% tab title="" %}
+
 {% endtab %}
 {% endtabs %}
+
+
 
 
 
