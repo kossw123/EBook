@@ -5,7 +5,11 @@
 * Tilemap 제작 및 Rule Tile관련해서는 tutorial에서 설명하고, Editor를 조작하는 성향이 강하기 때문에, 이번 How-to-guide에서는 Procedural pattern Tilemap에 관련한 Script들에 대한 문서들을 작성합니다.
 * 아래의 URL의 Blog를 따라 정리했습니다.
 
-[https://blogs.unity3d.com/kr/2018/05/29/procedural-patterns-you-can-use-with-tilemaps-part-i/](https://blogs.unity3d.com/kr/2018/05/29/procedural-patterns-you-can-use-with-tilemaps-part-i/) [https://blogs.unity3d.com/kr/2018/06/07/procedural-patterns-to-use-with-tilemaps-part-ii/](https://blogs.unity3d.com/kr/2018/06/07/procedural-patterns-to-use-with-tilemaps-part-ii/)
+{% embed url="https://blogs.unity3d.com/kr/2018/05/29/procedural-patterns-you-can-use-with-tilemaps-part-i/" caption="Procedural Pattern Tilemap blog - 1" %}
+
+{% embed url="https://blogs.unity3d.com/kr/2018/06/07/procedural-patterns-to-use-with-tilemaps-part-ii/" caption="Procedural Pattern Tilemap blog - 2" %}
+
+
 
 * 공
 * 좀 더 자세한 설명은 아래의 해설문서\(Explanation\)에 넣도록 하겠습니다.
