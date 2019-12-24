@@ -145,11 +145,19 @@ Perlin Noise란?
 {% hint style="success" %}
 Perlin Noise 함수의 원리
 
-Perlin Noise는 보통 난수를 표현하는 것보다 좀 더 자연스럽게 표현이 가능하기 때문에 이를 Tilemap 배치의 알고리즘으로 사용하여 자연스러운 지형지물을 표시합니다. 이를 표시하기 위해 의사 난수\(pseduo random\)가 필요한데 이를 이용하여 
+Perlin Noise는 보통 난수를 표현하는 것보다 좀 더 자연스럽게 표현이 가능하기 때문에 이를 Tilemap 배치의 알고리즘으로 사용하여 자연스러운 지형지물을 표시합니다. Perlin Noise라는 개념을 설명하기 위해서는 몇가지 알아 둬야 할점이 있습니다.
 
-1. 2차원 좌표평면상 임의의 점 \(x, y\)가 있는 경우 모두 정수가 아닌 경우라면 이는 항상 주변의 가까운 정수 좌표로 이루어진 Grid안에 위치합니다.
-2. 점 \(x, y\)를 둘러싼 Grid의 꼭지점에 각각 gradient라는 크기가 1인 임의의 Vector를   생성합니다.
-3. 
+1. 진폭\(amplitude\) : 함수가 가질수 있는 최소, 최대 값의 차이
+2. 파장\(waveLength\) : 같은 위상을 가진 서로 이웃한 두 점 사이의 거리,                                                        혹은 한 주기 동안 파동이 진행한 거리
+3. 주파수\(frequency\) : 1/waveLength로 단위 시간동안 어떤 현상이 일어난 횟수
+4. 옥타브\(octave\) : 각각의 더해지는 연속적인 Noise함수
+5. 지속성\(Persistence\) : 진폭의 변화 정도
+
+위의 다섯가지 용어는 아래에서 첨부할 링크에서 알아두면 좋은 용어들입니다. 
+{% endhint %}
+
+{% hint style="success" %}
+
 {% endhint %}
 
 코드를 보면서 나름 나름대로 해석한 것에 대해 설명하겠습니다.
@@ -164,7 +172,7 @@ Perlin Noise는 자연스러운 난수 생성을 위한 알고리즘으로써 �
 6. map을 반환받아서 LevelGenerator에서 switch문으로 Method들을 호출합니다.
 
 {% hint style="info" %}
-2. MathfFloorToInt\(\)함수를 사용하여 Mathf.PerlinNoise\(x, seed\) - reduction의 값을       적거나 같은 값으로 반환하는데 이는 보간을 위한 작업입니다. 즉, 좀 더 자연스러운 패턴을 위해 WaveLength를
+MathfFloorToInt\(\)함수를 사용하여 Mathf.PerlinNoise\(x, seed\) - reduction의 값을 적거나 같은 값으로 반환하는데 이 좀 더 자연스러운 패턴을 위해 생성과정에서 임의로 넣은 값입니다. 값이 낮아 질수록 뭉특하게 생성됩니다.
 {% endhint %}
 
 ```text
