@@ -154,18 +154,30 @@ Perlin Noise는 보통 난수를 표현하는 것보다 좀 더 자연스럽게 
 5. 지속성\(Persistence\) : 진폭의 변화 정도
 
 위의 다섯가지 용어는 아래에서 첨부할 링크에서 알아두면 좋은 용어들입니다. 
+
+
+
+Perlin Noise의 과정
+
+1. Noise 입히고자 하는 평면을 Grid 시키고 각 꼭지점에 랜덤한 Vector를 부여합니다.  1. 이때 2D에서는 x,y가 모두 정수가 아닌 경우 항상 주변의 가까운 정수 좌표로 이루어진 Grid안에 위치하는데, Unity Grid Component를 쓰기 때문에 이러한 걱정은 할 필요가 없습니다.                                                                                                                    2. 각각의 점에 랜덤한 Vector를 부여한다는데 여기서는 map\[ , \]을 통하여 맵을 생성했기 때문에 x축을 반복문을 돌면서 구하면 됩니다.
+2. 임의의 점\(x, y\)를 둘러싼 Grid의 꼭지점에 gradient Vector를 생성합니다.                                                                      1.이때 gradient라는 임의의 방향을 가진 크기가 1인 Vector로 지칭합니다.                                                 2.이 Vector는 pseudo random이라고 할 수 있는데 각 정수 좌표에 매번 동일한 Vector를 부여하기 때문입니다.
+3. 임의의 좌표 \(x, y\)에서 Grid의 각 모서리 점의 위치를 빼서 distance Vector를 만듭니다. 즉, grid 꼭지점에서 점\(x, y\)로 향하는 Vector를 생성한다.
+4. gradient Vector와 거리 Vector 사이의 내적을 구합니다.                                                                              1. 내적해서 나온 결과가 즉, 최종적으로 나오는 결과값에 영향을 줍니다.                           2. 두 벡터들의 크기를 곱한 두 벡터의 내적은 두 벡터 사이의 cos함수와 같습니다.                                                     3. 이로 인해 Vector가 같은방향을 가리키면 양수, 반대 방향이면 음수를 가지게 되고, 수직이면 0입니다. 이 방식을 통해 gradient Vector의 값에 적용시켜서 방향을 가지게 합니다.
+5. 4개의 값 사이를 일종의 가중 평균을 통해 보간합니다.
+   1. 여기서 보간에 관한 설명은 부족하기 때문에 추후 추가하도록 하겠습니다.
+6. 여러 Noise함수의 값이 생성 되면 그 값을 합하면 Octave를 얻게 되고 Perlin Noise가 완성됩니다.
 {% endhint %}
 
-{% hint style="success" %}
 
-{% endhint %}
+
+
 
 코드를 보면서 나름 나름대로 해석한 것에 대해 설명하겠습니다.
 
 Perlin Noise는 자연스러운 난수 생성을 위한 알고리즘으로써 본 강의에는 Mathf.PerlinNoise\(\)함수를 사용합니다.
 
 1. map.x값의 길이를 받아와 반복문을 돌립니다.
-2. Mathf.FloorToInt\(\)함수를 사용하여 Mathf.PerlinNoise\(\) - reduction값을 적거나 같게 받습니다.
+2. Mathf.FloorToInt\(\)함수를 사용하여 Mathf.PerlinNoise\(\) - reduction값을 적거나 같게 받습니다.그 후 map.GetUpperBound\(1\)을 통해 2차원의 가장 큰 요소를 곱하여 새로운 newPoint를 생성합니다.
 3. newPoint에 \(map.y의 길이 / 2\)를 통하여 가산연산을 합니다.
 4. 다시 반복문을 돌리는데 이때 반복변수를 newPoint로 지정하고 0과 같아질 때 까지 감산반복   합니다.
 5. x, y = 1로 설정하여 Tile을 채워 넣습니다.
