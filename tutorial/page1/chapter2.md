@@ -92,7 +92,10 @@ Rule Tile을 생성했다면 위 그림과 같은 Inspector가 생성됩니다.
 ## Procedural patterns With Tilemap 작성법
 
 * 아래의 링크에서 해당 Procedural pattern Tilemap example Project 받으실 수 있습니다.
-* [https://github.com/UnityTechnologies/ProceduralPatterns2D](https://github.com/UnityTechnologies/ProceduralPatterns2D)
+
+{% embed url="https://github.com/UnityTechnologies/ProceduralPatterns2D" %}
+
+
 
   Rule Tile Project에서 작성한 결과물들을 가지고 새로운 LevelGenerator Object를 생성합니다.
 
