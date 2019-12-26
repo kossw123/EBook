@@ -170,7 +170,13 @@ Perlin Noise의 과정
 6. 여러 Noise함수의 값이 생성 되면 그 값을 합하면 Octave를 얻게 되고 Perlin Noise가 완성됩니다.
 {% endhint %}
 
+ - 참고자료
 
+{% embed url="https://m.blog.naver.com/PostView.nhn?blogId=dj3630&logNo=221512874599&categoryNo=0&proxyReferer=https%3A%2F%2Fwww.google.com%2F" %}
+
+{% embed url="https://mzucker.github.io/html/perlin-noise-math-faq.html\#toc-about" %}
+
+{% embed url="https://3dmpengines.tistory.com/170" caption="Perlin Noise 참고자료" %}
 
 
 
