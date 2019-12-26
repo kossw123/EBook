@@ -42,6 +42,10 @@ description: Tilemap Technical reference
 {% tabs %}
 {% tab title="UnityEngine.Tilemaps" %}
 The tile map stores sprites in a layout marked by a Grid component
+
+Tilemap은 Sprite를 Grid Component로 표시된 레이아웃에 저장합니다.
+
+{% embed url="https://docs.unity3d.com/ScriptReference/Tilemaps.Tilemap.html" caption="UnityEngine.Tilemaps Document" %}
 {% endtab %}
 {% endtabs %}
 
