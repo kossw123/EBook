@@ -42,41 +42,6 @@ description: Tilemap Technical reference
 {% tabs %}
 {% tab title="UnityEngine.Tilemaps" %}
 The tile map stores sprites in a layout marked by a Grid component
-
-Tilemap은 Sprite를 Grid Component로 표시된 레이아웃에 저장합니다.
-
-{% embed url="https://docs.unity3d.com/ScriptReference/Tilemaps.Tilemap.html" caption="UnityEngine.Tilemaps Document" %}
-
-{% hint style="info" %}
-Render Map에 쓰인 Method
-
-Tilemap tilemap : Tilemap Component 자체를 가져와 조작합니다.
-
-TileBase tile : Tilemap의 요소에 tile을 배치하기 위해서 사용합니다.
-
-tilemap parameter를 이용하여 SetTile을 통해 위치 지정 및 tile을 배치하는데 이때 필요한 것이 TileBase tile입니다.
-{% endhint %}
 {% endtab %}
 {% endtabs %}
-
-## Perlin Noise
-
-이 단락에서는 아래와 같은 기술문서를 다루고 있습니다.
-
-* Mathf.PerlinNoise\(\)
-* Mathf.FloorToInt\(\)
-
-{% tabs %}
-{% tab title="Mathf.PerlinNoise\(\)" %}
-
-{% endtab %}
-
-{% tab title="Mathf.FloorToInt\(\)" %}
-{% embed url="https://docs.unity3d.com/ScriptReference/Mathf.FloorToInt.html" caption="Mathf.FloorToInt\(\) Document" %}
-
-{% embed url="https://m.blog.naver.com/yoohee2018/220692802850" caption="FloorToInt\(\)의 정의 및 Mathf를 사용한 Object Movement에 유용한 함수들" %}
-{% endtab %}
-{% endtabs %}
-
-
 
