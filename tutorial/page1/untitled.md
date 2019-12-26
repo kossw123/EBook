@@ -15,4 +15,9 @@ description: tutorial Celeste's Movement
 ## 왜 하려고 하는가?
 
 * 외부에서 여러가지 효과를 쉽게 적용하기 위한 API소개와 Particle System을 이용한 Effect 적용을 학습
-* 
+* 기존의 Tilemap을 이용하여 Map Design을 하기 때문에 연속적인 학습효과 기대
+
+## 작성법
+
+
+
