@@ -8,7 +8,6 @@ description: Explanation Tilemap
 
 * Tilemap에 관한 tutorial을 하면서 쓰였던 Script들의 해설문서를 담고 있습니다.
 * 수작업의 최소한을 위해 절차적인 패턴을 기반으로 한 Tilemap 생성\(Procedural pattern Tilemap\)에 관한 내용이 전반적으로 많기 때문에 이 문서와 동시에 구글링을 통하여 나름대로 이해하는 것이 좋을 수 있습니다.
-* 잘못되거나 수정해야할 항목들이 있으면 page guide에 있는 이메일로 지적해 주시면 수정작업에 들어가도록 하겠습니다.
 
 
 
@@ -98,6 +97,14 @@ public static void RenderMap(int[,] map, Tilemap tilemap, TileBase tile)
 {% embed url="https://docs.unity3d.com/ScriptReference/Tilemaps.Tilemap.html" caption="Tilemap Document" %}
 
 Tilemaps namespace에서 쓸 것은 Tilemap 자체의 Component, TileBase Component 두가지를 이용하여 Render Map Method를 구성합니다.
+
+{% hint style="info" %}
+Tilemap tilemap : Tilemap Component 자체를 가져와 조작합니다.
+
+TileBase tile : Tilemap의 요소에 tile을 배치하기 위해서 사용합니다.
+
+tilemap parameter를 이용하여 SetTile을 통해 위치 지정 및 tile을 배치하는데 이때 필요한 것이 TileBase tile입니다.
+{% endhint %}
 {% endtab %}
 
 {% tab title="Update Map" %}
@@ -170,13 +177,7 @@ Perlin Noise의 과정
 6. 여러 Noise함수의 값이 생성 되면 그 값을 합하면 Octave를 얻게 되고 Perlin Noise가 완성됩니다.
 {% endhint %}
 
- - 참고자료
 
-{% embed url="https://m.blog.naver.com/PostView.nhn?blogId=dj3630&logNo=221512874599&categoryNo=0&proxyReferer=https%3A%2F%2Fwww.google.com%2F" %}
-
-{% embed url="https://mzucker.github.io/html/perlin-noise-math-faq.html\#toc-about" %}
-
-{% embed url="https://3dmpengines.tistory.com/170" caption="Perlin Noise 참고자료" %}
 
 
 
