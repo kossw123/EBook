@@ -15,7 +15,7 @@ description: tutorial Celeste's Movement
 
 
 * 아래의 영상을 통해 어떠한 수익창출도 이루어 지지 않고 오직 학습한 내용을 공유하는 목적에 있다는 것을 알립니다.
-  * The video below indicates that no revenue is generated.
+  * The video below indicates that no revenue is generated.  It only informs the purpose of sharing what they have learned.
 * 잘못된 내용이나 수정할 점이 있으면 page guide에 있는 이메일로 해당 내용을 보내주시면 수정작업에 들어가도록 하겠습니다.
 
 ## 왜 하려고 하는가?
