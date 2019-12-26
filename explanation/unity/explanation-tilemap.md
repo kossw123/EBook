@@ -97,14 +97,6 @@ public static void RenderMap(int[,] map, Tilemap tilemap, TileBase tile)
 {% embed url="https://docs.unity3d.com/ScriptReference/Tilemaps.Tilemap.html" caption="Tilemap Document" %}
 
 Tilemaps namespace에서 쓸 것은 Tilemap 자체의 Component, TileBase Component 두가지를 이용하여 Render Map Method를 구성합니다.
-
-{% hint style="info" %}
-Tilemap tilemap : Tilemap Component 자체를 가져와 조작합니다.
-
-TileBase tile : Tilemap의 요소에 tile을 배치하기 위해서 사용합니다.
-
-tilemap parameter를 이용하여 SetTile을 통해 위치 지정 및 tile을 배치하는데 이때 필요한 것이 TileBase tile입니다.
-{% endhint %}
 {% endtab %}
 
 {% tab title="Update Map" %}
