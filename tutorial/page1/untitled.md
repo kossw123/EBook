@@ -32,7 +32,11 @@ description: tutorial Celeste's Movement
 
 ## 작성법
 
-임의의 Project를 하나 생성 합니다. 그리고 Tilemap Object를 하나 생성합니다. 그 후
+임의의 Project를 하나 생성 합니다. 그리고 Tilemap Object를 하나 생성합니다. 그 후 이전 tutorial인 Tilemap을 활용하여 임의의 Map Design을 만듭니다.
+
+![LevelGenerator&#xB97C; &#xC0AC;&#xC6A9;&#xD55C; Procedural pattern Tilemap](../../.gitbook/assets/image%20%2810%29.png)
+
+위에서 부적절한 Tile들은 RuleTile의 잘못된 설정으로 인해 생겨난 이슈입니다. 하지만 위의 작업을 하는데 크게 불편한 점은 없으니 참고해 주시기 바랍니다.
 
 {% tabs %}
 {% tab title="Movement.cs" %}
