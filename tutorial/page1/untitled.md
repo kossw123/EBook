@@ -9,6 +9,7 @@ description: tutorial Celeste's Movement
 * 유명 인디게임 Celeste의 움직임을 모방합니다.
 * 기존의 Velocity로 움직이던 Jump의 보완하는 새로운 Script 작성합니다.
 * 외부 API인 DOTween을 사용하여 카메라에 RippleEffect를 적용합니다.
+* 동일하게 GhostTrail이라는 Script를 사용하여 Character가 움직이면서 나타나는 Effect를 적용합니다.
 * Collision을 Gizmo를 사용하여 Editor상에서 편집하기 쉽게 작성합니다.
 * Particle System을 이용한 Effect 적용을 연습합니다.
 
