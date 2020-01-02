@@ -537,5 +537,13 @@ public class AnimationScript : MonoBehaviour
 {% endtab %}
 {% endtabs %}
 
-그리고 몇가지 수정해야 할것이 있는
+위의 Script들을 넣은 후 Editor 상에서 몇가지를 조정해야 합니다.
 
+* Sorting Layer에 "Ground" Layer를 하나 추가합니다.
+* Collision Script Component에서 Ground Layer를 Ground로 바꿉니다.
+* Collision Script의 Collision 항목에서 수치를 조정합니다. 임의로 조정하는 것이기 때문에 다른 수치를 적용시켜도 상관 없습니다. 다만 좀 더 Editor상에서 보기 좋게 하기 위한 수치입니다.
+  * Collsion Radius : 0.25
+  * Bottom Offset : x\(0\), y\(-0.76\)
+  * Right Offset : x\(0.4\), y\(-0.5\)
+  * Left Offset : x\(-0.4\), y\(-0.5\)
+* 
