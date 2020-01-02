@@ -35,7 +35,7 @@ description: tutorial Celeste's Movement
 
 임의의 Project를 하나 생성 합니다. 그리고 Tilemap Object를 하나 생성합니다. 그 후 이전 tutorial인 Tilemap을 활용하여 임의의 Map Design을 만듭니다.
 
-![&#xC900;&#xBE44;&#xB41C; Asset&#xC744; &#xD65C;&#xC6A9;&#xD55C; Map Design](../../.gitbook/assets/image%20%282%29.png)
+![&#xC900;&#xBE44;&#xB41C; Asset&#xC744; &#xD65C;&#xC6A9;&#xD55C; Map Design](../../.gitbook/assets/image%20%284%29.png)
 
 위 그림은 위에서 첨부한 Github에 등재된 Palette 기준으로 작성했습니다.
 
@@ -45,11 +45,19 @@ Tilemap에 Rigidbody2D와 Tilemap Collider 2D, Composite Collider 2D Component�
 
 그리고 Character Object에는 Box Collider 2D, Rigidbody2D Component를 추가합니다. 아래의 그림에서는 첨부한 Github의 Asset Sprite를 사용하여 Sprite를 사용하였으며 굳이 그림의 Sprite가 아닌 다른 Sprite를 사용해도 무방합니다.
 
-![&#xC67C;&#xCABD;&#xC740; Tilemap Inspector, &#xC624;&#xB978;&#xCABD;&#xC740; Character Inspector](../../.gitbook/assets/image%20%285%29.png)
+![&#xC67C;&#xCABD;&#xC740; Tilemap Inspector, &#xC624;&#xB978;&#xCABD;&#xC740; Character Inspector](../../.gitbook/assets/image%20%287%29.png)
 
+Character Object에 대한 작업을 하기 전에 Character Object의 하위 Object를 만들어서 따로 관리 하도록 합니다. 아래의 그림과 같이 Empty Object를 생성하여 Hierarchy를 만듭니다.
 
+![Character Object&#xC758; &#xD558;&#xC704; Object](../../.gitbook/assets/image%20%283%29.png)
 
+이렇게 관리하는 이유는 작업하는데 있어서 확실하게 구분하기 위함이라고 봅니다. Character, Visual, Particle등 각 항목을 세분화 하고 수정하는데 있어서 시간이 단축됩니다.
 
+* Character Object : 움직임, 충돌처리의 시각화, 시각화를 바탕으로 한 충돌처리
+* Visual Object : Sprite Renderer와 Animator를 통한 Animation Clip 재생
+* Particle : Character Object에 쓰일 Particle System Component
+
+Character Object에는 Movement, BetterJumping, Collision Script를 넣고 Visual Object에는 Animator Component와 AnimationScript를 넣습니다.
 
 {% tabs %}
 {% tab title="Movement.cs" %}
@@ -529,5 +537,5 @@ public class AnimationScript : MonoBehaviour
 {% endtab %}
 {% endtabs %}
 
-그 후에 Animation 작업을 하는데 필요한 Asset 및 
+그리고 몇가지 수정해야 할것이 있는
 
