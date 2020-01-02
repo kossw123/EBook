@@ -35,9 +35,21 @@ description: tutorial Celeste's Movement
 
 임의의 Project를 하나 생성 합니다. 그리고 Tilemap Object를 하나 생성합니다. 그 후 이전 tutorial인 Tilemap을 활용하여 임의의 Map Design을 만듭니다.
 
-![LevelGenerator&#xB97C; &#xC0AC;&#xC6A9;&#xD55C; Procedural pattern Tilemap](../../.gitbook/assets/image%20%2810%29.png)
+![&#xC900;&#xBE44;&#xB41C; Asset&#xC744; &#xD65C;&#xC6A9;&#xD55C; Map Design](../../.gitbook/assets/image%20%282%29.png)
 
-위에서 부적절한 Tile들은 RuleTile의 잘못된 설정으로 인해 생겨난 이슈입니다. 하지만 위의 작업을 하는데 크게 불편한 점은 없으니 참고해 주시기 바랍니다.
+위 그림은 위에서 첨부한 Github에 등재된 Palette 기준으로 작성했습니다.
+
+Map Design이 갖춰졌다면 이를 바탕으로 Character Object, Tilemap 충돌처리를 작성 하겠습니다.
+
+Tilemap에 Rigidbody2D와 Tilemap Collider 2D, Composite Collider 2D Component를 추가하여 작성합니다. **이때 Rigidbody2D는 Body Type이 Static으로 설정**하여 충돌은 주되 힘의 영향을 받지 않도록 설정합니다. 
+
+그리고 Character Object에는 Box Collider 2D, Rigidbody2D Component를 추가합니다. 아래의 그림에서는 첨부한 Github의 Asset Sprite를 사용하여 Sprite를 사용하였으며 굳이 그림의 Sprite가 아닌 다른 Sprite를 사용해도 무방합니다.
+
+![&#xC67C;&#xCABD;&#xC740; Tilemap Inspector, &#xC624;&#xB978;&#xCABD;&#xC740; Character Inspector](../../.gitbook/assets/image%20%285%29.png)
+
+
+
+
 
 {% tabs %}
 {% tab title="Movement.cs" %}
