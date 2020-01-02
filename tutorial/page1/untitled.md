@@ -546,4 +546,6 @@ public class AnimationScript : MonoBehaviour
   * Bottom Offset : x\(0\), y\(-0.76\)
   * Right Offset : x\(0.4\), y\(-0.5\)
   * Left Offset : x\(-0.4\), y\(-0.5\)
+* Character에 추가한 Movement Script Component에서 Boolean 부분의 CanMove 항목 체크
+* Animator Component에서의 Controller를  "Visual"이라는 Controller를 선택합니다.
 * 
