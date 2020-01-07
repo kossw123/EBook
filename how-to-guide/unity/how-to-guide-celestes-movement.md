@@ -9,11 +9,13 @@ description: How-to-guide Celeste's Movement
 * Celeste Movement 강의에 나온 영상을 가지고 코드 리뷰를 작성합니다.
 * 각 코드마다 if문의 사용으로 보기 어려울 수 있으니 코드 옆에 줄 수를 바탕으로 작성하겠습니다.
 
-## Celeste Code
+## Celeste Code Review
+
+* 여기서 쓰인 Component에 대한 설명보다는 
 
 {% tabs %}
 {% tab title="Movement.cs" %}
-```text
+```cpp
 using System; 
 using System.Collections; 
 using System.Collections.Generic;
@@ -486,6 +488,4 @@ public class AnimationScript : MonoBehaviour
 ```
 {% endtab %}
 {% endtabs %}
-
-}
 
