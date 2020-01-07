@@ -16,7 +16,7 @@ description: How-to-guide Celeste's Movement
 
 {% tabs %}
 {% tab title="Movement.cs" %}
-```cpp
+```csharp
 using System; 
 using System.Collections; 
 using System.Collections.Generic;
@@ -329,7 +329,7 @@ int ParticleSide()
 {% endtab %}
 
 {% tab title="BetterJumping.cs" %}
-```
+```csharp
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -360,7 +360,7 @@ public class BetterJumping : MonoBehaviour
 {% endtab %}
 
 {% tab title="Collision.cs" %}
-```
+```csharp
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -422,7 +422,7 @@ public class Collision : MonoBehaviour
 {% endtab %}
 
 {% tab title="AnimationScript.cs" %}
-```
+```csharp
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
