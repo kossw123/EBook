@@ -539,13 +539,18 @@ public class AnimationScript : MonoBehaviour
 
 위의 Script들을 넣은 후 Editor 상에서 몇가지를 조정해야 합니다.
 
-* Sorting Layer에 "Ground" Layer를 하나 추가합니다.
+* Grid Object의 자식 Object인 Tilemap의 Layer를 Ground로 바꿉니다
+  * Ground라는 Layer가 없다면 Add Layer를 통해 추가하도록 합니다.
 * Collision Script Component에서 Ground Layer를 Ground로 바꿉니다.
 * Collision Script의 Collision 항목에서 수치를 조정합니다. 임의로 조정하는 것이기 때문에 다른 수치를 적용시켜도 상관 없습니다. 다만 좀 더 Editor상에서 보기 좋게 하기 위한 수치입니다.
   * Collsion Radius : 0.25
-  * Bottom Offset : x\(0\), y\(-0.76\)
-  * Right Offset : x\(0.4\), y\(-0.5\)
-  * Left Offset : x\(-0.4\), y\(-0.5\)
-* Character에 추가한 Movement Script Component에서 Boolean 부분의 CanMove 항목 체크
+  * Bottom Offset : x\(0\), y\(-0.88\)
+  * Right Offset : x\(0.5\), y\(-0.33\)
+  * Left Offset : x\(-0.5\), y\(-0.33\)
+* Character에 추가한 Movement Script Component에서 Boolean 부분의 CanMove 항목 체크합니다.
 * Animator Component에서의 Controller를  "Visual"이라는 Controller를 선택합니다.
-* 
+
+![Celeste Movement](../../.gitbook/assets/celeste-movement.gif)
+
+위의 작업들을 마치면 그림과 같은 움직임을 띄게 됩니다. 
+
