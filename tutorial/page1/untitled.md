@@ -35,7 +35,7 @@ description: tutorial Celeste's Movement
 
 임의의 Project를 하나 생성 합니다. 그리고 Tilemap Object를 하나 생성합니다. 그 후 이전 tutorial인 Tilemap을 활용하여 임의의 Map Design을 만듭니다.
 
-![&#xC900;&#xBE44;&#xB41C; Asset&#xC744; &#xD65C;&#xC6A9;&#xD55C; Map Design](../../.gitbook/assets/image%20%284%29.png)
+![&#xC900;&#xBE44;&#xB41C; Asset&#xC744; &#xD65C;&#xC6A9;&#xD55C; Map Design](../../.gitbook/assets/image%20%286%29.png)
 
 위 그림은 위에서 첨부한 Github에 등재된 Palette 기준으로 작성했습니다.
 
@@ -45,11 +45,11 @@ Tilemap에 Rigidbody2D와 Tilemap Collider 2D, Composite Collider 2D Component�
 
 그리고 Character Object에는 Box Collider 2D, Rigidbody2D Component를 추가합니다. 아래의 그림에서는 첨부한 Github의 Asset Sprite를 사용하여 Sprite를 사용하였으며 굳이 그림의 Sprite가 아닌 다른 Sprite를 사용해도 무방합니다.
 
-![&#xC67C;&#xCABD;&#xC740; Tilemap Inspector, &#xC624;&#xB978;&#xCABD;&#xC740; Character Inspector](../../.gitbook/assets/image%20%287%29.png)
+![&#xC67C;&#xCABD;&#xC740; Tilemap Inspector, &#xC624;&#xB978;&#xCABD;&#xC740; Character Inspector](../../.gitbook/assets/image%20%289%29.png)
 
 Character Object에 대한 작업을 하기 전에 Character Object의 하위 Object를 만들어서 따로 관리 하도록 합니다. 아래의 그림과 같이 Empty Object를 생성하여 Hierarchy를 만듭니다.
 
-![Character Object&#xC758; &#xD558;&#xC704; Object](../../.gitbook/assets/image%20%283%29.png)
+![Character Object&#xC758; &#xD558;&#xC704; Object](../../.gitbook/assets/image%20%285%29.png)
 
 이렇게 관리하는 이유는 작업하는데 있어서 확실하게 구분하기 위함이라고 봅니다. Character, Visual, Particle등 각 항목을 세분화 하고 수정하는데 있어서 시간이 단축됩니다.
 
@@ -553,4 +553,20 @@ public class AnimationScript : MonoBehaviour
 ![Celeste Movement](../../.gitbook/assets/celeste-movement%20%281%29.gif)
 
 위의 작업들을 마치면 그림과 같은 움직임을 띄게 됩니다. 
+
+위의 작업을 마쳤다면 다음은 잔상효과를 주기 위한 GhostTrail이 필요합니다. 이것을 위해 아래의 그림과 같이 Hierarchy에 Object를 배치합니다.
+
+![GhostTrail&#xC744; &#xC704;&#xD55C; Object &#xBC30;&#xCE58;](../../.gitbook/assets/image%20%2823%29.png)
+
+그 후에 GhostTrail Script Component를 배치 후 임의의 색상을 지정을 합니다. 그리고 아래의 자식 Object에 Sprite Rendere Component를 넣고 Material을 Ghost로 지정합니다.
+
+![Ghost Object&#xC758; Inspector\(&#xC67C;&#xCABD;\), Ghost Object&#xC758; &#xC790;&#xC2DD; Object&#xB4E4;&#xC758; Material &#xC9C0;&#xC815;\(&#xC624;&#xB978;&#xCABD;\)](../../.gitbook/assets/image%20%282%29.png)
+
+이로써 Celeste Movement에 필요한 요소들은 다 작성했습니다.
+
+## 마치며
+
+* Map Design에 관해서는 제대로 작서앟려면 오랜 시간이 걸리기 때문에 간소한 Map Design을 사용한점 양해 부탁드립니다.
+* 해당 코드에 if문의 다수 사용으로 햇갈릴만한 요소들이 산재해 있습니다. 하지만 여기서는 Celeste 게임을 모방한 움직임을 표현하는 Project이기 때문에 다수의 혼란스러운 코드를 보기에 불편하실 수      있습니다.
+* How-to-guide에서 코드에 대한 
 
