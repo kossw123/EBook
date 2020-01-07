@@ -11,7 +11,8 @@ description: How-to-guide Celeste's Movement
 
 ## Celeste Code Review
 
-* 여기서 쓰인 Component에 대한 설명보다는 
+* 여기서 쓰인 Component에 대한 설명보다는 해당 코드에 대한 부분내용과 조건문에 대한 설명이 주가 됩니다.
+* 자세한 설명은 해설문서\(Explanation\)에서 설명하도록 하겠습니다.
 
 {% tabs %}
 {% tab title="Movement.cs" %}

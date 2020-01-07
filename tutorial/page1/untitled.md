@@ -570,5 +570,7 @@ public class AnimationScript : MonoBehaviour
 
 * Map Design에 관해서는 제대로 작서앟려면 오랜 시간이 걸리기 때문에 간소한 Map Design을 사용한점 양해 부탁드립니다.
 * 해당 코드에 if문의 다수 사용으로 햇갈릴만한 요소들이 산재해 있습니다. 하지만 여기서는 Celeste 게임을 모방한 움직임을 표현하는 Project이기 때문에 다수의 혼란스러운 코드를 보기에 불편하실 수      있습니다.
-* How-to-guide에서 코드에 대한 
+* 좀 더 자세한 설명은 How-to-guide에서 설명하도록 하겠습니다.
+
+{% page-ref page="../../how-to-guide/unity/how-to-guide-celestes-movement.md" %}
 
