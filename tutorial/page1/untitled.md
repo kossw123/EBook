@@ -564,6 +564,8 @@ public class AnimationScript : MonoBehaviour
 
 이로써 Celeste Movement에 필요한 요소들은 다 작성했습니다.
 
+![&#xC644;&#xC131;](../../.gitbook/assets/celeste.gif)
+
 ## 마치며
 
 * Map Design에 관해서는 제대로 작서앟려면 오랜 시간이 걸리기 때문에 간소한 Map Design을 사용한점 양해 부탁드립니다.
