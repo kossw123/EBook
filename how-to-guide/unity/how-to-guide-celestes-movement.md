@@ -4,8 +4,15 @@ description: How-to-guide Celeste's Movement
 
 # How-to-guide Celeste's Movement\(작업중\)
 
+## 무엇을 하려고 하는가?
 
+* Celeste Movement 강의에 나온 영상을 가지고 코드 리뷰를 작성합니다.
+* 각 코드마다 if문의 사용으로 보기 어려울 수 있으니 코드 옆에 줄 수를 바탕으로 작성하겠습니다.
 
+## Celeste Code
+
+{% tabs %}
+{% tab title="Movement.cs" %}
 ```text
 using System; 
 using System.Collections; 
@@ -316,6 +323,169 @@ int ParticleSide()
     return particleSide;
 }
 ```
+{% endtab %}
+
+{% tab title="BetterJumping.cs" %}
+```
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BetterJumping : MonoBehaviour
+{
+    private Rigidbody2D rb;
+    public float fallMultiplier = 2.5f;
+    public float lowJumpMultiplier = 2f;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Update()
+    {
+        if(rb.velocity.y < 0)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }else if(rb.velocity.y > 0 && !Input.GetButton("Jump"))
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }
+    }
+}
+```
+{% endtab %}
+
+{% tab title="Collision.cs" %}
+```
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Collision : MonoBehaviour
+{
+
+    [Header("Layers")]
+    public LayerMask groundLayer;
+
+    [Space]
+
+    public bool onGround;
+    public bool onWall;
+    public bool onRightWall;
+    public bool onLeftWall;
+    public int wallSide;
+
+    [Space]
+
+    [Header("Collision")]
+
+    public float collisionRadius = 0.25f;
+    public Vector2 bottomOffset, rightOffset, leftOffset;
+    private Color debugCollisionColor = Color.red;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {  
+        onGround = Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, collisionRadius, groundLayer);
+        onWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, groundLayer) 
+            || Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, groundLayer);
+
+        onRightWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, groundLayer);
+        onLeftWall = Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, groundLayer);
+
+        wallSide = onRightWall ? -1 : 1;
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+
+        var positions = new Vector2[] { bottomOffset, rightOffset, leftOffset };
+
+        Gizmos.DrawWireSphere((Vector2)transform.position  + bottomOffset, collisionRadius);
+        Gizmos.DrawWireSphere((Vector2)transform.position + rightOffset, collisionRadius);
+        Gizmos.DrawWireSphere((Vector2)transform.position + leftOffset, collisionRadius);
+    }
+}
+
+```
+{% endtab %}
+
+{% tab title="AnimationScript.cs" %}
+```
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class AnimationScript : MonoBehaviour
+{
+
+    private Animator anim;
+    private Movement move;
+    private Collision coll;
+    [HideInInspector]
+    public SpriteRenderer sr;
+
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+        coll = GetComponentInParent<Collision>();
+        move = GetComponentInParent<Movement>();
+        sr = GetComponent<SpriteRenderer>();
+    }
+
+    void Update()
+    {
+        anim.SetBool("onGround", coll.onGround);
+        anim.SetBool("onWall", coll.onWall);
+        anim.SetBool("onRightWall", coll.onRightWall);
+        anim.SetBool("wallGrab", move.wallGrab);
+        anim.SetBool("wallSlide", move.wallSlide);
+        anim.SetBool("canMove", move.canMove);
+        anim.SetBool("isDashing", move.isDashing);
+
+    }
+
+    public void SetHorizontalMovement(float x,float y, float yVel)
+    {
+        anim.SetFloat("HorizontalAxis", x);
+        anim.SetFloat("VerticalAxis", y);
+        anim.SetFloat("VerticalVelocity", yVel);
+    }
+
+    public void SetTrigger(string trigger)
+    {
+        anim.SetTrigger(trigger);
+    }
+
+    public void Flip(int side)
+    {
+
+        if (move.wallGrab || move.wallSlide)
+        {
+            if (side == -1 && sr.flipX)
+                return;
+
+            if (side == 1 && !sr.flipX)
+            {
+                return;
+            }
+        }
+
+        bool state = (side == 1) ? false : true;
+        sr.flipX = state;
+    }
+}
+```
+{% endtab %}
+{% endtabs %}
 
 }
 
