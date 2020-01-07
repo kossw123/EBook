@@ -550,7 +550,7 @@ public class AnimationScript : MonoBehaviour
 * Character에 추가한 Movement Script Component에서 Boolean 부분의 CanMove 항목 체크합니다.
 * Animator Component에서의 Controller를  "Visual"이라는 Controller를 선택합니다.
 
-![Celeste Movement](../../.gitbook/assets/celeste-movement.gif)
+![Celeste Movement](../../.gitbook/assets/celeste-movement%20%281%29.gif)
 
 위의 작업들을 마치면 그림과 같은 움직임을 띄게 됩니다. 
 
