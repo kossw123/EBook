@@ -35,7 +35,7 @@ description: tutorial Celeste's Movement
 
 임의의 Project를 하나 생성 합니다. 그리고 Tilemap Object를 하나 생성합니다. 그 후 이전 tutorial인 Tilemap을 활용하여 임의의 Map Design을 만듭니다.
 
-![&#xC900;&#xBE44;&#xB41C; Asset&#xC744; &#xD65C;&#xC6A9;&#xD55C; Map Design](../../.gitbook/assets/image%20%286%29.png)
+![&#xC900;&#xBE44;&#xB41C; Asset&#xC744; &#xD65C;&#xC6A9;&#xD55C; Map Design](../../.gitbook/assets/image%20%287%29.png)
 
 위 그림은 위에서 첨부한 Github에 등재된 Palette 기준으로 작성했습니다.
 
@@ -43,13 +43,13 @@ Map Design이 갖춰졌다면 이를 바탕으로 Character Object, Tilemap 충�
 
 Tilemap에 Rigidbody2D와 Tilemap Collider 2D, Composite Collider 2D Component를 추가하여 작성합니다. **이때 Rigidbody2D는 Body Type이 Static으로 설정**하여 충돌은 주되 힘의 영향을 받지 않도록 설정합니다. 
 
-그리고 Character Object에는 Box Collider 2D, Rigidbody2D Component를 추가합니다. 아래의 그림에서는 첨부한 Github의 Asset Sprite를 사용하여 Sprite를 사용하였으며 굳이 그림의 Sprite가 아닌 다른 Sprite를 사용해도 무방합니다.
+그리고 Character Object에는 Capsule Collider 2D, Rigidbody2D Component를 추가합니다. 아래의 그림에서는 첨부한 Github의 Asset Sprite를 사용하여 Sprite를 사용하였으며 굳이 그림의 Sprite가 아닌 다른 Sprite를 사용해도 무방합니다.
 
-![&#xC67C;&#xCABD;&#xC740; Tilemap Inspector, &#xC624;&#xB978;&#xCABD;&#xC740; Character Inspector](../../.gitbook/assets/image%20%289%29.png)
+![&#xC67C;&#xCABD;\(Tilemap Inspector\), &#xC624;&#xB978;&#xCABD;\(Character Inspector\)](../../.gitbook/assets/image%20%281%29.png)
 
 Character Object에 대한 작업을 하기 전에 Character Object의 하위 Object를 만들어서 따로 관리 하도록 합니다. 아래의 그림과 같이 Empty Object를 생성하여 Hierarchy를 만듭니다.
 
-![Character Object&#xC758; &#xD558;&#xC704; Object](../../.gitbook/assets/image%20%285%29.png)
+![Character Object&#xC758; &#xD558;&#xC704; Object](../../.gitbook/assets/image%20%286%29.png)
 
 이렇게 관리하는 이유는 작업하는데 있어서 확실하게 구분하기 위함이라고 봅니다. Character, Visual, Particle등 각 항목을 세분화 하고 수정하는데 있어서 시간이 단축됩니다.
 
@@ -542,7 +542,7 @@ public class AnimationScript : MonoBehaviour
 * Grid Object의 자식 Object인 Tilemap의 Layer를 Ground로 바꿉니다
   * Ground라는 Layer가 없다면 Add Layer를 통해 추가하도록 합니다.
 * Collision Script Component에서 Ground Layer를 Ground로 바꿉니다.
-* Collision Script의 Collision 항목에서 수치를 조정합니다. 임의로 조정하는 것이기 때문에 다른 수치를 적용시켜도 상관 없습니다. 다만 좀 더 Editor상에서 보기 좋게 하기 위한 수치입니다.
+* Collision Script의 Collision 항목에서 수치를 조정합니다. 임의로 조정하는 것이기 때문에 다른 수치를 적용시켜도 상관 없습니다. 하지만 Offset수치는 OverlapCircle\(\) 함수를 이용한 충돌 지점이기도 하기에 적어도 Caps
   * Collsion Radius : 0.25
   * Bottom Offset : x\(0\), y\(-0.88\)
   * Right Offset : x\(0.5\), y\(-0.33\)
@@ -556,11 +556,11 @@ public class AnimationScript : MonoBehaviour
 
 위의 작업을 마쳤다면 다음은 잔상효과를 주기 위한 GhostTrail이 필요합니다. 이것을 위해 아래의 그림과 같이 Hierarchy에 Object를 배치합니다.
 
-![GhostTrail&#xC744; &#xC704;&#xD55C; Object &#xBC30;&#xCE58;](../../.gitbook/assets/image%20%2823%29.png)
+![GhostTrail&#xC744; &#xC704;&#xD55C; Object &#xBC30;&#xCE58;](../../.gitbook/assets/image%20%2824%29.png)
 
 그 후에 GhostTrail Script Component를 배치 후 임의의 색상을 지정을 합니다. 그리고 아래의 자식 Object에 Sprite Rendere Component를 넣고 Material을 Ghost로 지정합니다.
 
-![Ghost Object&#xC758; Inspector\(&#xC67C;&#xCABD;\), Ghost Object&#xC758; &#xC790;&#xC2DD; Object&#xB4E4;&#xC758; Material &#xC9C0;&#xC815;\(&#xC624;&#xB978;&#xCABD;\)](../../.gitbook/assets/image%20%282%29.png)
+![Ghost Object&#xC758; Inspector\(&#xC67C;&#xCABD;\), Ghost Object&#xC758; &#xC790;&#xC2DD; Object&#xB4E4;&#xC758; Material &#xC9C0;&#xC815;\(&#xC624;&#xB978;&#xCABD;\)](../../.gitbook/assets/image%20%283%29.png)
 
 이로써 Celeste Movement에 필요한 요소들은 다 작성했습니다.
 
