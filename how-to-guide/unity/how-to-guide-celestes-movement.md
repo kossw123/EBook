@@ -2,7 +2,7 @@
 description: How-to-guide Celeste's Movement
 ---
 
-# How-to-guide Celeste's Movement\(작업중\)
+# How-to-guide Celeste's Movement
 
 ## 무엇을 하려고 하는가?
 
