@@ -16,6 +16,7 @@ description: How-to-guide Celeste's Movement
 
 {% tabs %}
 {% tab title="Movement.cs" %}
+{% code title="Movement.cs" %}
 ```csharp
 using System; 
 using System.Collections; 
@@ -332,6 +333,7 @@ int ParticleSide()
     return particleSide;
 }
 ```
+{% endcode %}
 
 해당 스크립트에서는 조건문을 자주 사용하기 때문에 조건에 따른 기능파악이 쉽지 않을때가 있었습니다. 그러므로 이 문서에서는 다소 내용자체가 길어질 수 있으니 양해 부탁드립니다.
 {% endtab %}
