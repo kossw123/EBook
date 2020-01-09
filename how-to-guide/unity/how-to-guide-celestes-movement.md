@@ -406,15 +406,24 @@ using UnityEngine;
 
 public class BetterJumping : MonoBehaviour
 {
+    /// <summary>
+    /// Rigidbody2D, 낙하 곱 수치, 낮게 Jump하면 곱 수치
+    /// </summary>
     private Rigidbody2D rb;
     public float fallMultiplier = 2.5f;
     public float lowJumpMultiplier = 2f;
 
+    /// <summary>
+    /// 초기화
+    /// </summary>
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
+    /// <summary>
+    /// Rigidbody.velocity.y의 값에 따라 Jump 동작시 적용
+    /// </summary>
     void Update()
     {
         if(rb.velocity.y < 0)
@@ -426,6 +435,7 @@ public class BetterJumping : MonoBehaviour
         }
     }
 }
+
 ```
 {% endtab %}
 
@@ -452,17 +462,13 @@ public class Collision : MonoBehaviour
     [Space]
 
     [Header("Collision")]
-
     public float collisionRadius = 0.25f;
     public Vector2 bottomOffset, rightOffset, leftOffset;
     private Color debugCollisionColor = Color.red;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+    /// <summary>
+    /// Physics2D.OverlapCircle로 충돌 검사, onRightWall값에 따라 좌우 벽 판별
+    /// </summary>
     // Update is called once per frame
     void Update()
     {  
@@ -476,6 +482,9 @@ public class Collision : MonoBehaviour
         wallSide = onRightWall ? -1 : 1;
     }
 
+    /// <summary>
+    /// Gizmo
+    /// </summary>
     void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -506,6 +515,9 @@ public class AnimationScript : MonoBehaviour
     [HideInInspector]
     public SpriteRenderer sr;
 
+    /// <summary>
+    /// Component 초기화
+    /// </summary>
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -514,6 +526,9 @@ public class AnimationScript : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
     }
 
+    /// <summary>
+    /// Animator parameter에 따른 transition 조건식
+    /// </summary>
     void Update()
     {
         anim.SetBool("onGround", coll.onGround);
@@ -526,6 +541,12 @@ public class AnimationScript : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// HorizontalMovement 설정
+    /// </summary>
+    /// <param name="x">GetAxis Horizontal</param>
+    /// <param name="y">GetAxis Vertical</param>
+    /// <param name="yVel">GetAxisRaw Vertical</param>
     public void SetHorizontalMovement(float x,float y, float yVel)
     {
         anim.SetFloat("HorizontalAxis", x);
@@ -533,11 +554,19 @@ public class AnimationScript : MonoBehaviour
         anim.SetFloat("VerticalVelocity", yVel);
     }
 
+    /// <summary>
+    /// Trigger parameter
+    /// </summary>
+    /// <param name="trigger"></param>
     public void SetTrigger(string trigger)
     {
         anim.SetTrigger(trigger);
     }
 
+    /// <summary>
+    /// GetAxis horizontal값에 따른 Sprite Flip
+    /// </summary>
+    /// <param name="side">좌우판별 변수</param>
     public void Flip(int side)
     {
 
@@ -556,6 +585,7 @@ public class AnimationScript : MonoBehaviour
         sr.flipX = state;
     }
 }
+
 ```
 {% endtab %}
 {% endtabs %}
