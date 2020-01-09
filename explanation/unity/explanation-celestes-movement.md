@@ -8,17 +8,50 @@ description: Explanation Celeste's Movement
 
 * How-to-guide에서 설명하지 못한 Code Reivew의 해설문서\(Explanation\)을 적고 있습니다.
 
-## Celeste's Movement
+## Scriptin
 
-* 
 {% tabs %}
 {% tab title="Movement.cs" %}
-Movement.cs에서는 크게 기능함수와 Particle함 두 단락으로 구분지어서 설명을 하겠습니다.
+크게 기능함수, 효과\(Particle\)함수로 구분지어서 설명하도록 하겠습니다. 하지만 기능이 실행됨과 동시에 효과\(Particle\)도 적용해야하고, 보다 쉬운 설명을 위해 임의로 나누었습니다.
 
-
+> ## 기능함수
+>
+> 먼저 Movement.cs에서 Object를 움직이기 위해 쓰인 기능들을 보겠습니다.
 
 {% hint style="info" %}
-## 기능함수
+{% code title="Movement.cs" %}
+```csharp
+///<summary>
+/// InputManager에서 설정한 정보를 axisName을 통해 가져옵니다.
+///</summary>
+float x = Input.GetAxis("Horizontal");
+float y = Input.GetAxis("Vertical");
+```
+{% endcode %}
+
+뒤의 GetAxis의 Parameter를 통해 정보를 가져옵니다.                                                               해당 정보는 Edit-&gt;Project Setting-&gt;Axes에서 확인할 수 있습니다.
+
+그리고 Walk함수를 통해 Rigidbody2D를 움직여서 이동시킵니다.
+
+```
+private void Walk(Vector2 dir) {
+    if (!canMove) 
+        return;
+    
+    if (wallGrab) 
+        return;
+    
+    if (!wallJumped) {
+        rb.velocity = new Vector2(dir.x * speed, rb.velocity.y);
+    } else {
+        rb.velocity = Vector2.Lerp(rb.velocity, (new Vector2(dir.x * speed, rb.velocity.y)), wallJumpLerp * Time.deltaTime);
+    }
+}
+```
+
+rb.velocity에 새로운 Vector를 줘서 방향을 부여하고, y축으로는 점프로만 움직이기         때문에 고정 시킵니다. 여기서는 wallJumped 상태변수를 조건문에 넣어서 특정 조건을 만족할때는 else구문을 실행시킵니다.
+
+Vector2.Lerp\(\) 함수는 
 {% endhint %}
 {% endtab %}
 
