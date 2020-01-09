@@ -590,5 +590,11 @@ public class AnimationScript : MonoBehaviour
 {% endtab %}
 {% endtabs %}
 
+## 마치며
+
+* 주석을 활용해서 코드에 간단한 쓰임새와 변수에 관하여 설명만 했습니다. 좀 더 자세한 설명은           해설문서\(Explanation\)에서 서술하도록 하겠습니다.
+
+{% page-ref page="../../explanation/unity/explanation-celestes-movement.md" %}
+
 
 
