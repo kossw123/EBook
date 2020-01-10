@@ -12,7 +12,7 @@ description: Explanation Celeste's Movement
 
 {% tabs %}
 {% tab title="Movement.cs" %}
-크게 기능함수, 효과\(Particle\)함수로 구분지어서 설명하도록 하겠습니다. 하지만 기능이 실행됨과 동시에 효과\(Particle\)도 적용해야하고, 보다 쉬운 설명을 위해 임의로 나누었습니다.
+동작하는데 예외처리문이 많기 때문에 주요 Method만 소개하고 해설하는 형식으로 
 
 
 
