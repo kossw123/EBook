@@ -14,9 +14,7 @@ description: Explanation Celeste's Movement
 {% tab title="Movement.cs" %}
 크게 기능함수, 효과\(Particle\)함수로 구분지어서 설명하도록 하겠습니다. 하지만 기능이 실행됨과 동시에 효과\(Particle\)도 적용해야하고, 보다 쉬운 설명을 위해 임의로 나누었습니다.
 
-> ## 기능함수
->
-> 먼저 Movement.cs에서 Object를 움직이기 위해 쓰인 기능들을 보겠습니다.
+
 
 {% hint style="info" %}
 {% code title="Movement.cs" %}
