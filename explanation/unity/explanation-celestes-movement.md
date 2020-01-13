@@ -102,7 +102,7 @@ Camera.main.transform.DOShakePosition\(float duration, float/Vector3 strength, i
 * fadeOut : default가 true입니다. 만약 true라면 흔들림이 자동으로 부드럽게 사라집니다.
 {% endhint %}
 
-위와 같은 함수가 실행된 후 RippleEffect Script를 FindObjectOfType으로 찾고 Script 내부의 Emit함수를 실행시킵니다.
+위와 같은 함수가 실행된 후 RippleEffect Script를 FindObjectOfType으로 찾고 Script 내부의 Emit함수를 실행시킵니다. 그 후 새로운 Vector2를 생성하여 방향을 설정하고 normalized \* dashSpeed를 통해 이동시키고 Coroutine을 시작합니다.
 {% endtab %}
 
 {% tab title="Second Tab" %}
