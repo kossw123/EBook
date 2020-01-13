@@ -12,7 +12,7 @@ description: Explanation Celeste's Movement
 
 {% tabs %}
 {% tab title="Movement.cs" %}
-동작의 예외처리문이 많기 때문에 주요 Method만 소개하고 해설하는 형식으로 서술하겠습니다. 
+동작의 예외처리문이 많기 때문에 주요 함만 소개하고 해설하는 형식으로 서술하겠습니다. 
 
 {% hint style="info" %}
 {% code title="Movement.cs" %}
