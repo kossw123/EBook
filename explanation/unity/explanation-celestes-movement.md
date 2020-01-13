@@ -83,6 +83,8 @@ DoTween이 알려주는 몇가지 특징이 있습니다.
 
 API를 사용하는데 있어서 참고 시 이 문서가 유용하게 사용되길 바랍니다.
 
+다시 Code  Review로 돌아가서 Movement.cs의 Dash\(\) 함수에서 사용되는 DoTween은 아래와 같습니다.
+
 {% hint style="info" %}
 Camera.main.transform.DOComplete\(\);
 
@@ -96,8 +98,11 @@ Camera.main.transform.DOShakePosition\(float duration, float/Vector3 strength, i
 
 * duration : 흔들림 강도. float 대신 Vector3를 사용하면 각 축의 강도를 선택할 수 있습니다.
 * strength : 진동 세기
-* randomness : 임의의 흔들림 정
+* randomness : 임의의 흔들림 정도, 0으로 설정하면 한 방향으로 흔들립니다.
+* fadeOut : default가 true입니다. 만약 true라면 흔들림이 자동으로 부드럽게 사라집니다.
 {% endhint %}
+
+위와 같은 함수가 실행된 후 RippleEffect Script를 FindObject로 찾습니다.
 {% endtab %}
 
 {% tab title="Second Tab" %}
