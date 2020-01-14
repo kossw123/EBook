@@ -21,6 +21,5 @@
   * [Unity](technical-reference/unity/README.md)
     * [TR PhysicsObject](technical-reference/unity/tr-physicsobject.md)
     * [TR Tilemap](technical-reference/unity/tr-tilemap.md)
-    * [TR Celeste's Movement](technical-reference/unity/tr-celestes-movement.md)
     * [TR Celeste's Movement](technical-reference/unity/tr-celestes-movement-1.md)
 
