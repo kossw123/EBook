@@ -248,6 +248,18 @@ DashWait에서 DOVirtual\(\)함수를 이용하여 Rigidbody Component의 Drag�
 ```
 
 WallParticle 함수는 var변수를 통하여 암시적 변수 타입을 통해 대입되는 값으로 변수형을 결정하여 이를 통해 particle의 Color를 제어합니다. 그리고 조건문에 따라 Particle의 Local Position과 Scale을 정합니다.
+
+{% code title="Movement.cs" %}
+```csharp
+    int ParticleSide()
+    {
+        int particleSide = coll.onRightWall ? 1 : -1;
+        return particleSide;
+    }
+```
+{% endcode %}
+
+위의 WallParticle\(\)함수에서 ParticleSide함수를 통해 왼쪽, 오른쪽을 조절합니다.
 {% endtab %}
 
 {% tab title="Second Tab" %}
