@@ -2,7 +2,7 @@
 description: Explanation Celeste's Movement
 ---
 
-# Explanation Celeste's Movement\(작업중\)
+# Explanation Celeste's Movement
 
 ## 무엇을 하려고 하는가?
 
