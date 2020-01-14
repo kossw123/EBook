@@ -44,7 +44,7 @@ private void Walk(Vector2 dir) {
 
 rb.velocity에 새로운 Vector를 줘서 방향을 부여하고, y축으로는 점프로만 움직이기 때문에 고정 시킵니다. 
 
-여기서는 wallJumped 상태변수를 조건문에 어서 특정 조건을 만족할때는 else구문을 실행시킵니다. 
+여기서는 wallJumped 상태변수를 조건문에 넣어서 특정 조건을 만족할때는 else구문을 실행시킵니다. 
 
 Vector2.Lerp\(\) 함수는 rb.velocity와 \(new Vector2\(dir.x  _speed, rb.velocity.y\)\) 사이를 연결해서 0부터 1사이의 값을 가진 wallJumpLerp_  Time.deltaTime의 비율에 따라 값을 반환합니다. 
 
@@ -129,147 +129,13 @@ IEnumerator DashWait()
 
 IEnumerator를 사용하여 함수포인터의 역할 yield문을 만나고 함수의 실행이 종료될 때 까지 반복합니다. 그 후 DOVirtual.Float를 사용합니다.
 
-DOVirtual.Float\(\)를 사용하여 RigidbodyDrag\(\) 함수를 호출하여 14, 0, .8f의 강도로 함수를 실행시킵니다. 다음은 아래의 코드를 실행시키고 yield문을 만나 0.3f Time 후에 아래의 코드를 실행시킵니다.
-
-```csharp
-IEnumerator GroundDash()
-    {
-        yield return new WaitForSeconds(.15f);
-        if (coll.onGround)
-            hasDashed = false;
-    }
-```
-
-GroundDash IEnumerator\(열거자\) 입니다. 0.15f Time 후에 아래의 코드를 실행키고 종료합니다.
-
-```csharp
-private void WallJump()
-    {
-        if ((side == 1 && coll.onRightWall) || side == -1 && !coll.onRightWall)
-        {
-            side *= -1;
-            anim.Flip(side);
-        }
-
-        StopCoroutine(DisableMovement(0));
-        StartCoroutine(DisableMovement(.1f));
-
-        Vector2 wallDir = coll.onRightWall ? Vector2.left : Vector2.right;
-
-        Jump((Vector2.up / 1.5f + wallDir / 1.5f), true);
-
-        wallJumped = true;
-    }
-```
-
-Update\(\)에서 조건문에 따라 WallJump\(\) 함수를 실행시키는데 조건문에 따라 Sprite Flip을 하고 Coroutine을 실행 시킵니다. 그 후 새로운 Vector2를 생성하는데 coll.onRightWall, 즉 오른쪽인가 아닌가에 따라 Vector2를 할당하고 Jump함수를 실행시킵니다. 
-
-여기서 Jump\(\)함수의 parameter를 보자면 Vector2.up으로 위쪽 Vector를 주고 1.5f + wallDir을 누고 또 1.5f로 나눕니다. 이 부분은 기존의 Jump와는 다르게 벽에서 뛰는 Jump이기 때문에 각도를 조절해줘야 합니다. 이를 위해 Vector2에서 나눈다는 것인데, 
-
-**Vector의 연산에서는 나누기가 없습니다. 내적과 외적은 벡터의 곱이라고 볼 수 있는데 나눗셈은 내적과 외적의 역원이 성립되지 않기 때문에 나눗셈이 정의 될 수 없습니다.** 
-
-이는 Vector와 Vector의 나눗셈이 아니라 스칼라와 Vector의 나눗셈이라고 볼 수 있습니다. 그렇기 때문에 방향에 영향을 주지않고 크기에만 영향을 줄 수 있습니다. 이를 통해 WallJump시 크기만 조절할 수 있게 됩니다.
-
-```text
-    IEnumerator DisableMovement(float time)
-    {
-        canMove = false;
-        yield return new WaitForSeconds(time);
-        canMove = true;
-    }
-```
-
-위의 IEnumerator\(열거자\)는 Coroutine으로 행동에 딜레이를 거는 함수입니다.
-
-```csharp
-    private void Jump(Vector2 dir, bool wall)
-    {
-        slideParticle.transform.parent.localScale = new Vector3(ParticleSide(), 1, 1);
-        ParticleSystem particle = wall ? wallJumpParticle : jumpParticle;
-
-        rb.velocity = new Vector2(rb.velocity.x, 0);
-        rb.velocity += dir * jumpForce;
-
-        particle.Play();
-    }
-```
-
-Jump\(\)함수는 Walk\(\)함수와 마찬가지로 Rigidbody2D의 velocity를 조절하여 방향 Vector인 dir과 jumpForce인 크기를 곱하여 세기를 조절합니다.
-
-```csharp
-private void WallSlide()
-    {
-        if(coll.wallSide != side)
-         anim.Flip(side * -1);  
-
-        if (!canMove)
-            return;
-
-        bool pushingWall = false;
-        if((rb.velocity.x > 0 && coll.onRightWall) || (rb.velocity.x < 0 && coll.onLeftWall))
-        {
-            pushingWall = true;
-        }
-        float push = pushingWall ? 0 : rb.velocity.x;
-
-        rb.velocity = new Vector2(push, -slideSpeed);
-
-    }
-```
-
-WallSlide\(\)함수에서는 Sprite Flip과 움직일 수 없을 때의 예외\(!canMove\)처리 후 pushingWall이라는 변수를 통해 오른쪽 벽에서 Rigidbody2D.velocity가 움직이거나, 왼쪽 벽에서 Rigidbody2D.velocity가 움직 일때 true로 바꾸고 push변수를 통해 pushingWall에 따라 true면 0, false면 Rigidbody2D.velocity.x를 할당합니다. 그 후 최종적인 Rigidbody2D.velocity의 Vector를 x값이 push, y값이 미끌어져서 떨어지는 수치인 slideSpeed로 할당합니다.
-
-{% code title="Movement.cs" %}
-```csharp
-    void RigidbodyDrag(float x)
-    {
-        rb.drag = x;
-    }
-```
-{% endcode %}
-
-DashWait에서 DOVirtual\(\)함수를 이용하여 Rigidbody Component의 Drag기능을 조절합니다.
-
-```text
-    void WallParticle(float vertical)
-    {
-        var main = slideParticle.main;
-
-        if (wallSlide || (wallGrab && vertical < 0))
-        {
-            slideParticle.transform.parent.localScale = new Vector3(ParticleSide(), 1, 1);
-            main.startColor = Color.white;
-        }
-        else
-        {
-            main.startColor = Color.clear;
-        }
-    }
-```
-
-WallParticle 함수는 var변수를 통하여 암시적 변수 타입을 통해 대입되는 값으로 변수형을 결정하여 이를 통해 particle의 Color를 제어합니다. 그리고 조건문에 따라 Particle의 Local Position과 Scale을 정합니다.
-
-{% code title="Movement.cs" %}
-```csharp
-    int ParticleSide()
-    {
-        int particleSide = coll.onRightWall ? 1 : -1;
-        return particleSide;
-    }
-```
-{% endcode %}
-
-위의 WallParticle\(\)함수에서 ParticleSide함수를 통해 왼쪽, 오른쪽을 조절합니다.
+DOVirtual.Float\(\)를 사용하여 RigidbodyDrag\(\) 함수를 호출하여 14, 0, .8f의 강도로 함수를 실행시킵니다. 다음은 아래의 코드를 실행시키고 yield문을 만나 함수의 실행
 {% endtab %}
 
 {% tab title="Second Tab" %}
 
 {% endtab %}
 {% endtabs %}
-
-
-
-
 
 
 
