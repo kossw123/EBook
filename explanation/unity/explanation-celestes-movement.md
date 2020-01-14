@@ -311,7 +311,11 @@ Jump기능에 사용할 Rigidbody와 떨어질 때 필요한 변수\(fallMultipl
 1. 떨어질 때
 2. 점프하고 Jump Button을 손에서 땔 시
 
-기존의 Rigidbody에 가산연산을 통해 중력을 적용시키는데 기존의 Physics2D.gravity.y를 통해
+Jump\(\) 기능이 동작하면 Rigidbody.velocity.y가 증가하고 떨어진다면 음수값을 띄게 됩니다. 이를 통해 if\(rb.velocity.y &lt; 0\)에서 velocity에 새로운 가산을 더해줍니다. 
+
+Physics2D.gravity는 -9.81값을 가지고 있고 이를 낙하시 중력값을 변경하기 위해 fallMultiplier를 곱합니다.
+
+2번 예외처리를 할 때도 같은 원리로 동작합니다. 하지만 변수값이 다르기 때문에 좀 더 자연스럽게 움직이도록 수를 조정합니다.
 {% endtab %}
 {% endtabs %}
 
