@@ -317,7 +317,42 @@ Physics2D.gravity는 -9.81값을 가지고 있고 이를 낙하시 중력값을 
 
 2번 예외처리를 할 때도 같은 원리로 동작합니다. 하지만 변수값이 다르기 때문에 좀 더 자연스럽게 움직이도록 수를 조정합니다.
 {% endtab %}
+
+{% tab title="Collision.cs" %}
+Collision.cs에서는 Physics2D.OverlapCircle\(\)함수를 이용하여 충돌검사를 합니다.
+
+```csharp
+onWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, collisionRadius, groundLayer) 
+            || Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, collisionRadius, groundLayer);
+```
+
+아래의 링크에 들어가시면 좀 더 자세한 문서를 살펴볼 수 있습니다.
+
+{% embed url="https://docs.unity3d.com/ScriptReference/Physics2D.OverlapCircle.html" caption="OverlapCircle\(\) Document" %}
+
+Checks if a collider falls within a circular area. 
+
+충돌체가 원형 영역 내에 있는지 확인합니다.
+
+ The circle is defined by its centre coordinate in world space and by its radius. The optional _layerMask_ allows the test to check only for objects on specific layers.
+
+원은 월드 공간의 중심 좌표와 반지름으로 정의됩니다. 선택적 layerMask를 사용하면 테스트에서 특정 레이어의 객체 만 확인할 수 있습니다.
+
+ Although the Z axis is not relevant for rendering or collisions in 2D, you can use the _minDepth_ and _maxDepth_ parameters to filter objects based on their Z coordinate. If more than one collider falls within the circle then the one returned will be the one with the lowest Z coordinate value. Null is returned if there are no colliders in the circle. See Also: [OverlapCircleAll](https://docs.unity3d.com/ScriptReference/Physics2D.OverlapCircleAll.html), [OverlapCircleNonAlloc](https://docs.unity3d.com/ScriptReference/Physics2D.OverlapCircleNonAlloc.html).
+
+Z 축은 2D의 렌더링 또는 충돌과 관련이 없지만 minDepth 및 maxDepth 매개 변수를 사용하여 Z 좌표를 기준으로 객체를 필터링 할 수 있습니다. 하나 이상의 충돌체가 원 안에 있으면 Z 좌표 값이 가장 낮은 것이 반환됩니다. 원 안에 충돌체가 없으면 널이 반환됩니다. 참조 : OverlapCircleAll, OverlapCircleNonAlloc.
+
+
+
+OverlapCircle\(\)함수와 transform.position + rightOffset, leftOffset, bottomOffset을 더하여 위치를 지정하고 collisionRadius를 통하여 지름을 지정하고 groundLayer를 통하여 LayerMask를 설정합니다. 이렇게 한다면 Inspector에서 설정한 특정 Layer에 접근 할 수 있습니다.
+{% endtab %}
+
+{% tab title="AnimationScript.cs" %}
+
+{% endtab %}
 {% endtabs %}
+
+
 
 
 
