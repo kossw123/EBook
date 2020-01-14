@@ -7,6 +7,7 @@ description: Explanation Celeste's Movement
 ## 무엇을 하려고 하는가?
 
 * How-to-guide에서 설명하지 못한 Code Reivew의 해설문서\(Explanation\)을 적고 있습니다.
+* Scripting, Animation, Particle System에 관하여 작성합니다.
 
 ## Scripting
 
@@ -387,6 +388,14 @@ side라는 Movement.cs에 존재하는 정수형 변수를 통해 방향을 설�
 state변수를 가지고 SpriteRenderer에 flipX를 설정합니다.
 {% endtab %}
 {% endtabs %}
+
+## Animation
+
+{% embed url="https://docs.unity3d.com/kr/530/ScriptReference/Animation.html" caption="Animation Document" %}
+
+Animation에 대한 문서를 보자면 
+
+
 
 ## 마치며
 
