@@ -348,6 +348,18 @@ OverlapCircle\(\)함수와 transform.position + rightOffset, leftOffset, bottomO
 {% endtab %}
 
 {% tab title="AnimationScript.cs" %}
+해당 Script에서는 아래와 같은 Component를 사용합니다.
+
+```csharp
+    private Animator anim;    // parameter를 Script에서 사용하기 위한 Component
+    private Movement move;    // Movement.cs에 있는 bool변수들을 가져오기 위한 Component
+    private Collision coll;    // 충돌검사의 결과를 가져오기 위한 Component
+    [HideInInspector]
+    public SpriteRenderer sr;    // Flip을 위하여 가져오는 Component
+```
+
+HideInInspector라는 Attribute를 사용하여 SpriteRenderer를 Inspector에서 숨겨서 이미 있는 Component의 중복을 막습니다.
+
 AnimationScript.cs에서는 Animator에서 설정한 parameter를 Set하는 코드가 주가 되지만 Flip이라는 함수를 통해 Sprite를 Flip합니다.
 
 ```csharp
