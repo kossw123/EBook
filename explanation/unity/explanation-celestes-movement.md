@@ -263,7 +263,7 @@ WallParticle 함수는 var변수를 통하여 암시적 변수 타입을 통해 
 {% endtab %}
 
 {% tab title="BetterJumping.cs" %}
-기존의 Jump기능들은 Rigidbody의 Velocity에 방향과 크기를 곱하여 설정함으로써 기능하지만 부자연스러운 경우가 많습니다. 이때 아래의 Script를 적용시키면 좀 더 자연스럽게 동작합니다.
+기존의 Jump기능들은 Rigidbody의 Velocity에 방향과 크기를 곱하여 설정함으로써 기능하지만 부자연스러운 경우가 많습니다. 이때 아래의 Script를 적용시키면 좀 더 자연스럽게 떨어지는 수치를 적합니다.
 
 ```csharp
 using System.Collections;
@@ -305,6 +305,13 @@ public class BetterJumping : MonoBehaviour
 ```
 
 Jump기능에 사용할 Rigidbody와 떨어질 때 필요한 변수\(fallMultiplier\), 점프를 할 시 동작할 float 변수\(lowJumpMultiplier\)가 필요합니다.
+
+여기서 필요한 예외처리는 
+
+1. 떨어질 때
+2. 점프하고 Jump Button을 손에서 땔 시
+
+기존의 Rigidbody에 가산연산을 통해 중력을 적용시키는데 기존의 Physics2D.gravity.y를 통해
 {% endtab %}
 {% endtabs %}
 
