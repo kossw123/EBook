@@ -348,7 +348,31 @@ OverlapCircle\(\)함수와 transform.position + rightOffset, leftOffset, bottomO
 {% endtab %}
 
 {% tab title="AnimationScript.cs" %}
+AnimationScript.cs에서는 Animator에서 설정한 parameter를 Set하는 코드가 주가 되지만 Flip이라는 함수를 통해 Sprite를 Flip합니다.
 
+```csharp
+public void Flip(int side)
+    {
+
+        if (move.wallGrab || move.wallSlide)
+        {
+            if (side == -1 && sr.flipX)
+                return;
+
+            if (side == 1 && !sr.flipX)
+            {
+                return;
+            }
+        }
+
+        bool state = (side == 1) ? false : true;
+        sr.flipX = state;
+    }
+```
+
+side라는 Movement.cs에 존재하는 정수형 변수를 통해 방향을 설정할 수 있습니다. 삼항연산자를 통해 side가 1일 때 false, side가 1이 아닐 때 true를 할당하여 state변수에 할당합니다.
+
+state변수를 가지고 SpriteRenderer에 flipX를 설정합니다.
 {% endtab %}
 {% endtabs %}
 
