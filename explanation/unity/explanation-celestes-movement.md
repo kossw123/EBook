@@ -263,7 +263,48 @@ WallParticle 함수는 var변수를 통하여 암시적 변수 타입을 통해 
 {% endtab %}
 
 {% tab title="BetterJumping.cs" %}
+기존의 Jump기능들은 Rigidbody의 Velocity에 방향과 크기를 곱하여 설정함으로써 기능하지만 부자연스러운 경우가 많습니다. 이때 아래의 Script를 적용시키면 좀 더 자연스럽게 동작합니다.
 
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BetterJumping : MonoBehaviour
+{
+    /// <summary>
+    /// Rigidbody2D, 낙하 곱 수치, 낮게 Jump하면 곱 수치
+    /// </summary>
+    private Rigidbody2D rb;
+    public float fallMultiplier = 2.5f;
+    public float lowJumpMultiplier = 2f;
+
+    /// <summary>
+    /// 초기화
+    /// </summary>
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    /// <summary>
+    /// Rigidbody.velocity.y의 값에 따라 Jump 동작시 적용
+    /// </summary>
+    void Update()
+    {
+        if(rb.velocity.y < 0)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }else if(rb.velocity.y > 0 && !Input.GetButton("Jump"))
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }
+    }
+}
+
+```
+
+Jump기능에 사용할 Rigidbody와 떨어질 때 필요한 변수\(fallMultiplier\), 점프를 할 시 동작할 float 변수\(lowJumpMultiplier\)가 필요합니다.
 {% endtab %}
 {% endtabs %}
 
