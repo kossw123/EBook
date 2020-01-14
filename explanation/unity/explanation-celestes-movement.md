@@ -262,7 +262,7 @@ WallParticle 함수는 var변수를 통하여 암시적 변수 타입을 통해 
 위의 WallParticle\(\)함수에서 ParticleSide함수를 통해 왼쪽, 오른쪽을 조절합니다.
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="BetterJumping.cs" %}
 
 {% endtab %}
 {% endtabs %}
