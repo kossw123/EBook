@@ -407,7 +407,7 @@ Unity에서는 위에서 설명한 기능들을 추가하여 좀 더 쉽게 여�
 
 ![Celeste&apos;s Movement Animator](../../.gitbook/assets/image%20%281%29.png)
 
-옆창의 parameter에 따라 State에서 다른 State로 이동하는 화살표\(Transistion\)가 동작합니다. 앞서 Script에서 설정한 조건문들은 여기 Animator에 따른 조건들을 설정하고 있으며 기본적으로 주황색 State인 Idle이 Default가 되어 실행됩니다.
+옆창의 parameter에 따라 State에서 다른 State로 이동하는 화살표\(Transistion\)가 동작합니다. 앞서 AniamtionScript.cs에서 설정한 조건문들은 여기 Animator에 따른 조건들을 설정하고 있으며 기본적으로 주황색 State인 Idle이 Default가 되어 실행됩니다.
 {% endtab %}
 
 {% tab title="Second Tab" %}
