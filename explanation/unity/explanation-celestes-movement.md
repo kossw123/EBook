@@ -391,9 +391,29 @@ state변수를 가지고 SpriteRenderer에 flipX를 설정합니다.
 
 ## Animation
 
-{% embed url="https://docs.unity3d.com/kr/530/ScriptReference/Animation.html" caption="Animation Document" %}
+{% embed url="https://docs.unity3d.com/kr/530/Manual/AnimationOverview.html" caption="Animation System" %}
 
-Animation에 대한 문서를 보자면 
+{% tabs %}
+{% tab title="Animation 개요" %}
+Unity’s Animation features include retargetable animations, full control of animation weights at runtime, event calling from within the animation playback, sophisticated state machine hierarchies and transitions, blend shapes for facial animations, and much more.
+
+Unity의 애니메이션 기능에는 대상 변경 가능 애니메이션, 런타임시 애니메이션 가중치를 완벽하게 제어, 애니메이션 재생 내에서의 이벤트 호출, 정교한 상태 머신 계층 및 전환, 얼굴 애니메이션을위한 블렌드 셰이프 등이 포함됩니다.
+
+
+
+Animation에 대한 대략적인 개요입니다. Unity에서의 Animation System은 보통 우리가 Animation이라고 부르는 화면에서 미리 만든 Animation Clip을 활용하여 State Transition의 조건에 따라 Clip을 변경해 나가는 것으로 간추릴 수 있습니다.
+
+Unity에서는 위에서 설명한 기능들을 추가하여 좀 더 쉽게 여러상황에서 편집 기능들을 추가했습니다. 이를 이용하여 Celeste's Movement의 Animation을 작성하는데 아래와 같은 State를 가지고 있습니다.
+
+![Celeste&apos;s Movement Animator](../../.gitbook/assets/image%20%281%29.png)
+
+옆창의 parameter에 따라 State에서 다른 State로 이동하는 화살표\(Transistion\)가 동작합니다. 앞서 Script에서 설정한 조건문들은 여기 Animator에 따른 조건들을 설정하고 있으며 기본적으로 주황색 State인 Idle이 Default가 되어 실행됩니다.
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
 
 
 
