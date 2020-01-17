@@ -415,11 +415,19 @@ Unity에서는 위에서 설명한 기능들을 추가하여 좀 더 쉽게 여�
 
 Animation을 넣고싶은 Object를 클릭하고 Animation창에서 Create를 누르면 아래와 같은 창이 나타납니다.
 
-![Animation Window](../../.gitbook/assets/image%20%2823%29.png)
+![Animation Window](../../.gitbook/assets/image%20%2824%29.png)
 
 중앙에 위치해있는 0:00, 0:01...과 같은 TimeLine에 Sprite를 삽입 하여 하나의 Clip으로 생성합니다.
 
 Celeste's Movement에서는 각 움직임마다 Image가 따로 만들어져 있기에 Sprite를 이어붙여서 동작마다 따로 생성하면 되지만 3D인 경우 혹은, 따로 Animation Clip을 만들기 어려운 경우 Add Property를 이용하여 움직이려고 하는 Animation을 제작할 수 있습니다.
+{% endtab %}
+
+{% tab title="Animator" %}
+Unity Animation에서는 하나의 Conttroller를 가지고 Clip을 조작합니다. 이를 Object에 Component로 넣어서 Transition에 따라 Clip을 변화시킵니다. 그 역활을 하는 Component가 Animator입니다.
+
+![Celeste&apos;s Movement Animator](../../.gitbook/assets/image%20%287%29.png)
+
+Animator를 가지고
 {% endtab %}
 {% endtabs %}
 
