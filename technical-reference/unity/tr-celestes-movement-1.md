@@ -8,7 +8,7 @@ description: TR Celeste's Movement
 
 * 해설문서\(Explanation\)에서 설명하지 못한 함수의 상세 내용과 사용법을 명시합니다.
 * 외부 API에 관한 상세 설명을 명시합니다.
-* 해당자료는 상업적인 용도로 이용하지 않습니다.
+* 해당자료는 학습적인 목적 이외에는 이용하지 않습니다.
 
 ## Scripting
 
@@ -101,6 +101,12 @@ description: TR Celeste's Movement
 * 특정 시간, 특정 작업을 할 때 유용하게 쓰이는 기능입니다.
 * Unity는 Single Thread를 사용하기 때문에 Multi Thread 사용시 일어나는 경합조건 같은 side effect에 대해 신경쓸 필요가 없지만 어쩔수 없이 Multi Thread처럼 사용을 해야할 때 이를 이용하여 해결할 수 있습니다.
 * Unity에서는 Multi Thread의 사용을 지양합니다.
+* Coroutine에서는 IEnumerator\(열거자\)를 사용하여 특정 시간 및 반환값을 조절할 수 있습니다.
+* **한 프레임에서 동작하는 Update\(\)문에 StartCoroutine을 사용하여 제어권을 가져온 다음 Coroutine이 끝난 다음 프레임부터는 다시 제어권을 넘겨서 중지된 곳부터 실행시킵니다.**
+* Coroutine을 사용할 시 필요한 요소들을 정리해봤습니다.
+  * StartCoroutine\(IEnumerator enum\); 을 사용하여 진입점을 설정합니다.
+  * IEnumerator\(\)를 사용하여 진입점 이후 실행될 내용을 설정합니다. 
+  * IEnumerator\(\)의 실행이 끝나면 다음 프레임부터 Update\(\)문의 중단된 지점부터 다시 시작합니다.
 {% endtab %}
 {% endtabs %}
 
