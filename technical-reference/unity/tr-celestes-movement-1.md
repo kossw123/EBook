@@ -15,7 +15,7 @@ description: TR Celeste's Movement
 
 {% tabs %}
 {% tab title="Movement.cs" %}
-다음과 같은 목차를 가지고 있습니다.
+다음과 같은 목차를 가지고 있습니다. 이번 문서에서는 불편하시겠지만 GitBook 양식의 한계로 인해  목차를 가지고 Ctrl+F로 검색하시기 바랍니다.
 
 1. Input.GetAxis\(\)
 2. Vector2.Lerp\(\)
@@ -28,7 +28,9 @@ description: TR Celeste's Movement
 
 * 키보드, 조이스틱에 입력값에 대해서 -1~1의 값을 가집니다.
 * 독립적인 프레임 속도로 작동하기 때문에 가변적인 프레임 변경을 신경쓰지 
-* 아래의 링크의 Example을 본다면 좀 더 확실하게 이해할 수 있습니다.
+* 아래의 링크를 본다면 좀 더 확실하게 이해하실 수 있습니다.
+
+{% embed url="https://icancodeclub.mvcode.com/lessons/unity-physics-workshop" %}
 {% endtab %}
 
 {% tab title="Second Tab" %}

@@ -415,17 +415,17 @@ Unity에서는 위에서 설명한 기능들을 추가하여 좀 더 쉽게 여�
 
 Animation을 넣고싶은 Object를 클릭하고 Animation창에서 Create를 누르면 아래와 같은 창이 나타납니다.
 
-![Animation Window](../../.gitbook/assets/image%20%2829%29.png)
+![Animation Window](../../.gitbook/assets/image%20%2831%29.png)
 
 중앙에 위치해있는 0:00, 0:01...과 같은 TimeLine에 Sprite를 삽입 하여 하나의 Clip으로 생성합니다.
 
 Celeste's Movement에서는 각 움직임마다 Image가 따로 만들어져 있기에 Sprite를 이어붙여서 동작마다 따로 생성하면 되지만 3D인 경우 혹은, 따로 Animation Clip을 만들기 어려운 경우 Add Property를 이용하여 움직이려고 하는 Animation을 제작할 수 있습니다.
 
-![Idle Animation Clip](../../.gitbook/assets/image%20%2818%29.png)
+![Idle Animation Clip](../../.gitbook/assets/image%20%2820%29.png)
 
 우선 기본 Asset으로 받아놓은 roboMJ\_Spritesheet의 0~7까지의 Sprite를 시간의 변화\(TimeLine\)에 따라 순차적으로 배치하여 Clip을 생성했습니다.
 
-![Walk Animation Clip](../../.gitbook/assets/image%20%2815%29.png)
+![Walk Animation Clip](../../.gitbook/assets/image%20%2817%29.png)
 
 Walk Animation도 마찬가지로 8~15까지의 Sprite를 순차적으로 배치하여 Clip을 생성합니다.
 
@@ -435,15 +435,15 @@ Walk Animation도 마찬가지로 8~15까지의 Sprite를 순차적으로 배치
 {% tab title="Animator" %}
 Unity Animation에서는 하나의 Conttroller를 가지고 Clip을 조작합니다. 이를 Object에 Component로 넣어서 Transition에 따라 Clip을 변화시킵니다. 그 역활을 하는 Component가 Animator입니다.
 
-![Celeste&apos;s Movement Animator](../../.gitbook/assets/image%20%288%29.png)
+![Celeste&apos;s Movement Animator](../../.gitbook/assets/image%20%289%29.png)
 
 Animator를 가지고 원하는 Animation Clip들을 parameter의 변화에 맞춰 조정합니다.
 
-![Test Animator](../../.gitbook/assets/image%20%2817%29.png)
+![Test Animator](../../.gitbook/assets/image%20%2819%29.png)
 
 Animation을 만들기 위해 필요한 Clip을 넣고 왼쪽 창에 HorizontalAxis parameter를 생성합니다.   생성한 parameter를 가지고 State에서 다른 State로 이동하기 위한 Transition\(전이\)의 조건으로      넣습니다.
 
-![Idle -&amp;gt; Walk Transition &#xC870;&#xAC74;](../../.gitbook/assets/image%20%286%29.png)
+![Idle -&amp;gt; Walk Transition &#xC870;&#xAC74;](../../.gitbook/assets/image%20%287%29.png)
 
 위의 Animator에서는 조건을 2가지를 넣었는데 이는 Make Transition을 2번 하면 화살표가 여러개 생기며 조건이 여러개 있다는 것을 위의 그림과 같이 표시됩니다.
 {% endtab %}
