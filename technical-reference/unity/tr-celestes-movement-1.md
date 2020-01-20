@@ -24,6 +24,7 @@ description: TR Celeste's Movement
 4. 삼항연산자
 5. FindObjectOfType\(Type type\)
 6. Coroutine
+7. DoTween
 
 
 
@@ -107,6 +108,12 @@ description: TR Celeste's Movement
   * StartCoroutine\(IEnumerator enum\); 을 사용하여 진입점을 설정합니다.
   * IEnumerator\(\)를 사용하여 진입점 이후 실행될 내용을 설정합니다. 
   * IEnumerator\(\)의 실행이 끝나면 다음 프레임부터 Update\(\)문의 중단된 지점부터 다시 시작합니다.
+
+
+
+7. DoTween
+
+* Unity에서의 외부 API입니다. 이를 사용하여 statement의 간략화와, 여러가지 성능을 알아볼 수 있습니다.
 {% endtab %}
 {% endtabs %}
 
