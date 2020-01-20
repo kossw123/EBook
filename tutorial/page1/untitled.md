@@ -542,7 +542,7 @@ public class AnimationScript : MonoBehaviour
 * Grid Object의 자식 Object인 Tilemap의 Layer를 Ground로 바꿉니다
   * Ground라는 Layer가 없다면 Add Layer를 통해 추가하도록 합니다.
 * Collision Script Component에서 Ground Layer를 Ground로 바꿉니다.
-* Collision Script의 Collision 항목에서 수치를 조정합니다. 임의로 조정하는 것이기 때문에 다른 수치를 적용시켜도 상관 없습니다. 하지만 Offset수치는 OverlapCircle\(\) 함수를 이용한 충돌 지점이기도 하기에 적어도 Caps
+* Collision Script의 Collision 항목에서 수치를 조정합니다. 임의로 조정하는 것이기 때문에 다른 수치를 적용시켜도 상관 없습니다. 하지만 Offset수치는 OverlapCircle\(\) 함수를 이용한 충돌 지점이기도 하기에 적어도 Capsule Collider2D Size에 맞게 조절하는 것을 권장합니다.
   * Collsion Radius : 0.25
   * Bottom Offset : x\(0\), y\(-0.88\)
   * Right Offset : x\(0.5\), y\(-0.33\)
