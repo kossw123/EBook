@@ -143,6 +143,30 @@ Camera.main.transform.DOShakePosition\(float duration, float/Vector3 strength, i
 * fadeOut : default가 true입니다. 만약 true라면 흔들림이 자동으로 부드럽게 사라집니다.
 {% endhint %}
 {% endtab %}
+
+{% tab title="Collision.cs" %}
+다음과 같은 목차를 가지고 있습니다. 이번 문서에서는 불편하시겠지만 GitBook 양식의 한계로 인해  목차를 가지고 Ctrl+F로 검색하시기 바랍니다.
+
+1. Physics2D.OverlapCircle\(\)
+
+1.Physics2D.OverlapCircle\(\)
+
+{% embed url="https://m.blog.naver.com/PostView.nhn?blogId=pxkey&logNo=221324857701&proxyReferer=https%3A%2F%2Fwww.google.com%2F" %}
+
+* Physics2D.OverlapCircle\(\) 함수는 Overloading된 2가지의 함수형태를 가지고 있습니다.
+
+```csharp
+1. public static Collider2D OverlapCircle(Vector2 point, float radius, int layerMask = DefaultRaycastLayers, float minDepth = -Mathf.Infinity, float maxDepth = Mathf.Infinity);
+2. public static int OverlapCircle(Vector2 point, float radius, ContactFilter2D contactFilter, Collider2D[] results);
+```
+
+* 위와 같은 내용을 가지고 있으며, 이번에 사용한 것은 1번 형태입니다. 그렇기 때문에 1번 형태 위주로 해설문서\(Explanation\)을 작성하겠습니다.
+
+
+
+* Collider\(충돌체\)가 Radius로 생성된 Circle영역 안에 있는지 확인합니다.
+* LayerMask parameter를 이용해서 특정 Layer의 Object만 검사할 수 있습니다.
+{% endtab %}
 {% endtabs %}
 
 
