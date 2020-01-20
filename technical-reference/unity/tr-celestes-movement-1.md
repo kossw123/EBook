@@ -23,6 +23,7 @@ description: TR Celeste's Movement
 3. Vector2.Lerp\( [Vector2 ](https://docs.unity3d.com/kr/530/ScriptReference/Vector2.html)a, [Vector2 ](https://docs.unity3d.com/kr/530/ScriptReference/Vector2.html)b, float t\)
 4. 삼항연산자
 5. FindObjectOfType\(Type type\)
+6. Coroutine
 
 
 
@@ -80,12 +81,32 @@ description: TR Celeste's Movement
 
 * 첫번째로 활성화한 Load된 type의 Object를 반환합니다.
 * Component는 Object의 기능적인 조각들이기 때문에 Component도 탐색하여 반환가능합니다.
+* Component를 찾을 때는 Generic Function을 넣어서 찾습니다.
+* ex\)myCube = GameObject.FindObjectOfType&lt;Cubey&gt;\(\);
+
+{% embed url="https://docs.unity3d.com/kr/530/Manual/GenericFunctions.html" %}
 
 
 
 6. Coroutine
+
+{% embed url="https://docs.unity3d.com/kr/530/Manual/Coroutines.html" caption="Coroutine Document" %}
+
+{% embed url="http://theeye.pe.kr/archives/2725" caption="" %}
+
+{% embed url="https://teddy.tistory.com/13" %}
+
+
+
+* 특정 시간, 특정 작업을 할 때 유용하게 쓰이는 기능입니다.
+* Unity는 Single Thread를 사용하기 때문에 Multi Thread 사용시 일어나는 경합조건 같은 side effect에 대해 신경쓸 필요가 없지만 어쩔수 없이 Multi Thread처럼 사용을 해야할 때 이를 이용하여 해결할 수 있습니다.
+* Unity에서는 Multi Thread의 사용을 지양합니다.
 {% endtab %}
 {% endtabs %}
+
+
+
+
 
 
 
