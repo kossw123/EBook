@@ -68,7 +68,11 @@ description: TR Celeste's Movement
 * Celeste's Movement에서 어떤 동작에 있어서 조건문이 많이 들어갑니다. 하지만 Flip이나, 간단한 값의 교환에 필요한 조건문을 삼항연산자로 대체해 쓰고 있습니다.
 * 하지만 조건문을 자주쓰는 것은 속도면에서 부적절합니다. 그렇기 때문에 비교적 간단하고 조건이 짧은 것들에 대해서는 삼항연산자를 쓰는 것을 권장하고 있습니다.
 
-{% embed url="https://programmers.co.kr/learn/questions/3499" caption=" Compare to Speed of ?: operator" %}
+{% embed url="https://programmers.co.kr/learn/questions/3499" caption=" if문과 삼항연산자의 속도비교" %}
+
+
+
+5.
 {% endtab %}
 {% endtabs %}
 
