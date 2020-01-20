@@ -21,7 +21,8 @@ description: TR Celeste's Movement
 1. Input.GetAxis\(string axisName\)
 2. Input.GetAxisRaw\(string axisName\)
 3. Vector2.Lerp\( [Vector2 ](https://docs.unity3d.com/kr/530/ScriptReference/Vector2.html)a, [Vector2 ](https://docs.unity3d.com/kr/530/ScriptReference/Vector2.html)b, float t\)
-4. 삼항연산
+4. 삼항연산자
+5. FindObjectOfType\(Type type\)
 
 
 
@@ -67,12 +68,18 @@ description: TR Celeste's Movement
 
 * Celeste's Movement에서 어떤 동작에 있어서 조건문이 많이 들어갑니다. 하지만 Flip이나, 간단한 값의 교환에 필요한 조건문을 삼항연산자로 대체해 쓰고 있습니다.
 * 하지만 조건문을 자주쓰는 것은 속도면에서 부적절합니다. 그렇기 때문에 비교적 간단하고 조건이 짧은 것들에 대해서는 삼항연산자를 쓰는 것을 권장하고 있습니다.
+* **또한 ref 식을 사용하여 두 식 중 하나의 결과에 대한 참조를 반환할 수 있습니다.**
 
 {% embed url="https://programmers.co.kr/learn/questions/3499" caption=" if문과 삼항연산자의 속도비교" %}
 
 
 
-5.
+5. FindObjectOfType\(Type type\)
+
+{% embed url="https://docs.unity3d.com/kr/530/ScriptReference/Object.FindObjectOfType.html" caption="Object.FindObjectOfType\(Type type\) Document" %}
+
+* 첫번째로 활성화한 Load된 type의 Object를 반환합니다. Component도 Object로 취급하여 찾을 수 있습니다.
+* 
 {% endtab %}
 {% endtabs %}
 
