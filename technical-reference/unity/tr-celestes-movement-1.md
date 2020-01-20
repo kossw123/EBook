@@ -114,6 +114,12 @@ description: TR Celeste's Movement
 7. DoTween
 
 * Unity에서의 외부 API입니다. 이를 사용하여 statement의 간략화와, 여러가지 성능을 알아볼 수 있습니다.
+* 아래에서 설명되는 Tween은 DoTween namespace에 포함된 method들을 뜻합니다.
+
+1. Tween을 만들면 모든 루프가 완료 될 때까지 \(전역 defaultAutoPlay 동작을 변경하지 않는 한\) 자동으로 재생됩니다.
+2. Tween이 완료되면 전역 defaultAutoKill 동작을 변경하지 않는 한 자동으로 종료되므로 더 이상 사용할 수 없습니다.
+3. 동일한 Tween을 재사용하려면 모든 Tween에 대한 global autoKill 설정을 변경하거나 SetAutoKill \(false\)을 Tween에 연결하여 자동 킬 동작을 FALSE로 설정하십시오.
+4. Tween이 재생되는 동안 Tween의 대상이 NULL이되면 오류가 발생할 수 있습니다. 조심하거나 안전 모드를 활성화해야합니다.
 {% endtab %}
 {% endtabs %}
 
