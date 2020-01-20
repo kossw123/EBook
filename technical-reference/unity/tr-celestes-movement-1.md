@@ -78,10 +78,16 @@ description: TR Celeste's Movement
 
 {% embed url="https://docs.unity3d.com/kr/530/ScriptReference/Object.FindObjectOfType.html" caption="Object.FindObjectOfType\(Type type\) Document" %}
 
-* 첫번째로 활성화한 Load된 type의 Object를 반환합니다. Component도 Object로 취급하여 찾을 수 있습니다.
-* 
+* 첫번째로 활성화한 Load된 type의 Object를 반환합니다.
+* Component는 Object의 기능적인 조각들이기 때문에 Component도 탐색하여 반환가능합니다.
+
+
+
+6. Coroutine
 {% endtab %}
 {% endtabs %}
+
+
 
 
 
