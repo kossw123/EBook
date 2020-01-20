@@ -423,9 +423,13 @@ Celeste's Movement에서는 각 움직임마다 Image가 따로 만들어져 있
 
 ![Idle Animation Clip](../../.gitbook/assets/image%20%2818%29.png)
 
-우선 기본 Asset으로 받아놓은 roboMJ\_Spritesheet의 0~7까지의 Sprite를 시간의 변화\(TimeLine\)에 따라 순차적으로 배치하여 Clip을 생성했습니다. 그리고 Walk Animation도 마찬가지로 8~15까지의 Sprite를 순차적으로 배치하여 Clip을 생성합니다.
+우선 기본 Asset으로 받아놓은 roboMJ\_Spritesheet의 0~7까지의 Sprite를 시간의 변화\(TimeLine\)에 따라 순차적으로 배치하여 Clip을 생성했습니다.
 
 ![Walk Animation Clip](../../.gitbook/assets/image%20%2815%29.png)
+
+Walk Animation도 마찬가지로 8~15까지의 Sprite를 순차적으로 배치하여 Clip을 생성합니다.
+
+다른 Animation도 마찬가지로 각 동작에 맞는 Clip을 생성하고 Transition에 필요한 parameter를     넣어서 최종적으로는 
 {% endtab %}
 
 {% tab title="Animator" %}
@@ -442,6 +446,10 @@ Animation을 만들기 위해 필요한 Clip을 넣고 왼쪽 창에 HorizontalA
 ![Idle -&amp;gt; Walk Transition &#xC870;&#xAC74;](../../.gitbook/assets/image%20%286%29.png)
 
 위의 Animator에서는 조건을 2가지를 넣었는데 이는 Make Transition을 2번 하면 화살표가 여러개 생기며 조건이 여러개 있다는 것을 위의 그림과 같이 표시됩니다.
+{% endtab %}
+
+{% tab title="Scene Transition" %}
+Animator를 가지고 Scene의 교체를 할 수 있는데 
 {% endtab %}
 {% endtabs %}
 
