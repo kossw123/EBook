@@ -123,8 +123,29 @@ description: TR Celeste's Movement
 2. Tween이 완료되면 전역 defaultAutoKill 동작을 변경하지 않는 한 자동으로 종료되므로 더 이상 사용할 수 없습니다.
 3. 동일한 Tween을 재사용하려면 모든 Tween에 대한 global autoKill 설정을 변경하거나 SetAutoKill \(false\)을 Tween에 연결하여 자동 킬 동작을 FALSE로 설정하십시오.
 4. Tween이 재생되는 동안 Tween의 대상이 NULL이되면 오류가 발생할 수 있습니다. 조심하거나 안전 모드를 활성화해야합니다.
+
+* Movement.cs에서 쓰이는 Method들은 다음과 같습니다.
+
+{% hint style="info" %}
+Camera.main.transform.DOComplete\(\);
+
+이 함수를 실행하면 DoTween을 사용한 변경이 즉시 종료되고, 이동이 완료됩니다.
+{% endhint %}
+
+{% hint style="info" %}
+Camera.main.transform.DOShakePosition\(float duration, float/Vector3 strength, int vibrato, float randomness, bool fadeOut\)
+
+카메라를 흔듭니다.
+
+* duration : 흔들림 강도. float 대신 Vector3를 사용하면 각 축의 강도를 선택할 수 있습니다.
+* strength : 진동 세기
+* randomness : 임의의 흔들림 정도, 0으로 설정하면 한 방향으로 흔들립니다.
+* fadeOut : default가 true입니다. 만약 true라면 흔들림이 자동으로 부드럽게 사라집니다.
+{% endhint %}
 {% endtab %}
 {% endtabs %}
+
+
 
 
 
