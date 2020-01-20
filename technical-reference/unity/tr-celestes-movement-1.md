@@ -104,6 +104,9 @@ description: TR Celeste's Movement
 * Unity에서는 Multi Thread의 사용을 지양합니다.
 * Coroutine에서는 IEnumerator\(열거자\)를 사용하여 특정 시간 및 반환값을 조절할 수 있습니다.
 * **한 프레임에서 동작하는 Update\(\)문에 StartCoroutine을 사용하여 제어권을 가져온 다음 Coroutine이 끝난 다음 프레임부터는 다시 제어권을 넘겨서 중지된 곳부터 실행시킵니다.**
+
+\*\*\*\*
+
 * Coroutine을 사용할 시 필요한 요소들을 정리해봤습니다.
   * StartCoroutine\(IEnumerator enum\); 을 사용하여 진입점을 설정합니다.
   * IEnumerator\(\)를 사용하여 진입점 이후 실행될 내용을 설정합니다. 
