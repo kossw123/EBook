@@ -86,24 +86,7 @@ API를 사용하는데 있어서 참고 시 이 문서가 유용하게 사용되
 
 다시 Code  Review로 돌아가서 Movement.cs의 Dash\(\) 함수에서 사용되는 DoTween은 아래와 같습니다.
 
-{% hint style="info" %}
-Camera.main.transform.DOComplete\(\);
-
-이 함수를 실행하면 DoTween을 사용한 변경이 즉시 종료되고, 이동이 완료됩니다.
-{% endhint %}
-
-{% hint style="info" %}
-Camera.main.transform.DOShakePosition\(float duration, float/Vector3 strength, int vibrato, float randomness, bool fadeOut\)
-
-카메라를 흔듭니다.
-
-* duration : 흔들림 강도. float 대신 Vector3를 사용하면 각 축의 강도를 선택할 수 있습니다.
-* strength : 진동 세기
-* randomness : 임의의 흔들림 정도, 0으로 설정하면 한 방향으로 흔들립니다.
-* fadeOut : default가 true입니다. 만약 true라면 흔들림이 자동으로 부드럽게 사라집니다.
-{% endhint %}
-
-위와 같은 함수가 실행된 후 RippleEffect Script를 FindObjectOfType으로 찾고 Script 내부의 Emit함수를 실행시킵니다. 그 후 새로운 Vector2를 생성하여 방향을 설정하고 normalized \* dashSpeed를 통해 이동시키고 Coroutine을 시작합니다.
+Tween method가 실행된 후 RippleEffect Script를 FindObjectOfType으로 찾고 Script 내부의 Emit함수를 실행시킵니다. 그 후 새로운 Vector2를 생성하여 방향을 설정하고 normalized \* dashSpeed를 통해 이동시키고 Coroutine을 시작합니다.
 
 ```csharp
 IEnumerator DashWait()
