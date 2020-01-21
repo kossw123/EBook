@@ -85,7 +85,8 @@ description: TR Celeste's Movement
 
 * 첫번째로 활성화한 Load된 type의 Object를 반환합니다.
 * Component는 Object의 기능적인 조각들이기 때문에 Component도 탐색하여 반환가능합니다.
-  * **Unity의 핵심 GameObject Class는 Component 기반으로 설계 되어있기 때문에 Component, GameObject를 가져오는 탐색함수들은 최소화 하거나, Start\(\), Awake\(\)에 담아두는 방식이 좀 더 최적화에 도움이 됩니다. 아래**
+  * **Unity의 핵심 GameObject Class는 Component 기반으로 설계 되어있기 때문에 Component, GameObject를 가져오는 탐색함수들은 최소화 하거나, Start\(\), Awake\(\)에 담아두는 방식이 좀 더 최적화에 도움이 됩니다.** 
+  * **아래의 링크를 보시면 Component Pattern에 대해 자세하게 나와있습니다.**
 
 {% embed url="http://gameprogrammingpatterns.com/component.html\#cutting-the-knot" caption="결합도를 낮추는 Design Patterns" %}
 
