@@ -2,7 +2,7 @@
 description: TR Celeste's Movement
 ---
 
-# TR Celeste's Movement\(작업중\)
+# TR Celeste's Movement
 
 ## 무엇을 하려고 하는가?
 
