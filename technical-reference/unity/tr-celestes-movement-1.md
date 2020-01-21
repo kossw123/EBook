@@ -113,10 +113,12 @@ description: TR Celeste's Movement
 
 
 * 특정 시간, 특정 작업을 할 때 유용하게 쓰이는 기능입니다.
-* Unity는 Single Thread를 사용하기 때문에 Multi Thread 사용시 일어나는 경합조건 같은 side effect에 대해 신경쓸 필요가 없지만 어쩔수 없이 Multi Thread처럼 사용을 해야할 때 이를 이용하여 해결할 수 있습니다.
-* Unity에서는 Multi Thread의 사용을 지양합니다.
+  * Unity는 Single Thread를 사용하기 때문에 Multi Thread 사용시 일어나는 경합조건 같은 side effect에 대해 신경쓸 필요가 없습니다.
+  * 하지만 어쩔수 없이 Multi Thread처럼 사용을 해야할 때 이를 이용하여 해결할 수 있습니다.
 * Coroutine에서는 IEnumerator\(열거자\)를 사용하여 특정 시간 및 반환값을 조절할 수 있습니다.
-* **한 프레임에서 동작하는 Update\(\)문에 StartCoroutine을 사용하여 제어권을 가져온 다음 Coroutine이 끝난 다음 프레임부터는 다시 제어권을 넘겨서 중지된 곳부터 실행시킵니다.**
+  * **yield return문을 사용함으로써 위치를 기억 후 다음 호출때 기억한 위치부터 다음을 실행 할 수 있도록 합니다.**
+  * **여러개의 Coroutine을 동작시키고 다른 시점에서 yield가 반환됨으로써 Multi Thread의 효과를 가지게 됩니다.**
+  * **IEnumerator\(열거자\)는 C\#에서는 MoveNext\(\); 함수를 통해** 
 
 \*\*\*\*
 
@@ -124,8 +126,21 @@ description: TR Celeste's Movement
   * StartCoroutine\(IEnumerator enum\); 을 사용하여 진입점을 설정합니다.
   * IEnumerator\(\)를 사용하여 진입점 이후 실행될 내용을 설정합니다. 
   * IEnumerator\(\)의 실행이 끝나면 다음 프레임부터 Update\(\)문의 중단된 지점부터 다시 시작합니다.
-
-
+* 매 프레임마다 yield return 할 Coroutine이 있는지 체크하는데 yield문의 종류마다 시점이 다릅니다.
+  * null : Update구문의 수행이 완료될 때까지 대기
+    * ex\) yield return null;
+  * WaitForEndOfFrame : 현재 프레임의 렌더링 작업이 끝날 때까지 대기
+    * ex\) yield return new WaitForEndOfFrame\(\);
+  * WaitForFixedUpdate : FixedUpdate구문의 수행이 완료될 때까지 대기
+    * ex\) yield return new WaitForFixedUpdate\(\);
+  * WaitForSeconds : 지정한 초만큼 대기
+    * ex\) yield return new WaitForSeconds\(0.1f\);
+  * WWW : 웹에서 데이터의 전송이 완료될 때까지 대기 \(WaitForSeconds or null처럼 재시작\)
+    * ex\) yield return WWW;
+  * Another coroutine : 새로운 코루틴은 yielder가 재시작되기 전에 완료
+    * ex\) yield return 
+  * yield break : 즉시 코루틴을 정
+    * ex\) yield break;
 
 7. DoTween
 
