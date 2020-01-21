@@ -95,7 +95,7 @@ description: TR Celeste's Movement
 {% embed url="https://docs.unity3d.com/kr/530/Manual/GenericFunctions.html" caption="\"<Cubey>\" <- 이 부분의 명칭" %}
 
 * 그 밖에도 GameObject를 검색하는데 있어서 많은 Method들이 존재하지만 크게 검색 색인이 2개가 있습니다.
-  * GameObject : 유니티 씬\(scene\)에서 전체 엔티티\(entity\)의 기본 클래스를 나타냅니다.
+  * GameObject : 유니티 씬\(scene\)에서 전체 엔티티\(entity\)의 기본 클래스
   * Transform : 위치, 회전, Scale값을 가지고  있는 Component
 * 그리고 2개의 Class들은 각자 Find, FindObjectOfType, FindWithTag...etc 등 공통된 Method를 가지고 있습니다.
 
