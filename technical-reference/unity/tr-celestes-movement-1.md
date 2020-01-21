@@ -33,8 +33,11 @@ description: TR Celeste's Movement
 {% embed url="https://docs.unity3d.com/kr/530/ScriptReference/Input.GetAxis.html" caption="Input.GetAxis\(\) Document" %}
 
 * 키보드, 조이스틱에 입력값에 대해서 -1~1의 값을 가집니다.
-* 독립적인 프레임 속도로 작동하기 때문에 가변적인 프레임 변경을 신경쓰지 
-* 아래의 링크를 본다면 좀 더 확실하게 이해하실 수 있습니다.
+* 독립적인 프레임 속도로 작동하기 때문에 가변적인 프레임 변경을 신경쓰지
+
+![Input.GetAxis\(axisName\)&#xC758; &#xBC18;&#xD658;&#xAC12; ](../../.gitbook/assets/image%20%2825%29.png)
+
+* 위의 그림과  같은 결과값을 확인하실 수 있습니다.
 
 {% embed url="https://icancodeclub.mvcode.com/lessons/unity-physics-workshop" caption="Input.GetAxis\(\) 참고자료" %}
 
@@ -82,10 +85,16 @@ description: TR Celeste's Movement
 
 * 첫번째로 활성화한 Load된 type의 Object를 반환합니다.
 * Component는 Object의 기능적인 조각들이기 때문에 Component도 탐색하여 반환가능합니다.
-* Component를 찾을 때는 Generic Function을 넣어서 찾습니다.
-* ex\)myCube = GameObject.FindObjectOfType&lt;Cubey&gt;\(\);
+  * GameBoejcctdcddddddd
+* 보통 Component를 찾을 때는 Generic Function을 넣어서 GetComponent&lt;&gt;\(\)와 같은 형식으로 가져옵니다. 이것을 FindObjectOfType\(\) 함수에서도 동일하게 사용 가능합니다.
+  * ex\)GameObject.FindObjectOfType&lt;Cubey&gt;\(\).MethodA;
 
-{% embed url="https://docs.unity3d.com/kr/530/Manual/GenericFunctions.html" %}
+{% embed url="https://docs.unity3d.com/kr/530/Manual/GenericFunctions.html" caption="\"<Cubey>\" <- 이 부분의 명칭" %}
+
+* 그 밖에도 GameObject를 검색하는데 있어서 많은 Method들이 존재하지만 크게 검색 색인이 2개가 있습니다.
+  * GameObject : Unity는 Component 중심으로 설계되었기 때문에 
+  * Transform : 위치, 회전, Scale값을 가지고  있는 Component
+* 그리고 2개의 Class들은 각자 Find, FindObjectOfType, FindWithTag...etc 등 공통된 Method를 가지고 있습니다.
 
 
 
