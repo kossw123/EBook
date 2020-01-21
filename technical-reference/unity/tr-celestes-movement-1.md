@@ -4,7 +4,7 @@ description: TR Celeste's Movement
 
 # TR Celeste's Movement\(작업중\)
 
-## 무엇을 하려고 하는가?
+## d무엇을 하려고 하는가?
 
 * 해설문서\(Explanation\)에서 설명하지 못한 함수의 상세 내용과 사용법을 명시합니다.
 * 외부 API에 관한 상세 설명을 명시합니다.
@@ -85,14 +85,17 @@ description: TR Celeste's Movement
 
 * 첫번째로 활성화한 Load된 type의 Object를 반환합니다.
 * Component는 Object의 기능적인 조각들이기 때문에 Component도 탐색하여 반환가능합니다.
-  * GameBoejcctdcddddddd
+  * **Unity의 핵심 GameObject Class는 Component 기반으로 설계 되어있기 때문에 Component, GameObject를 가져오는 탐색함수들은 최소화 하거나, Start\(\), Awake\(\)에 담아두는 방식이 좀 더 최적화에 도움이 됩니다. 아래**
+
+{% embed url="http://gameprogrammingpatterns.com/component.html\#cutting-the-knot" caption="결합도를 낮추는 Design Patterns" %}
+
 * 보통 Component를 찾을 때는 Generic Function을 넣어서 GetComponent&lt;&gt;\(\)와 같은 형식으로 가져옵니다. 이것을 FindObjectOfType\(\) 함수에서도 동일하게 사용 가능합니다.
   * ex\)GameObject.FindObjectOfType&lt;Cubey&gt;\(\).MethodA;
 
 {% embed url="https://docs.unity3d.com/kr/530/Manual/GenericFunctions.html" caption="\"<Cubey>\" <- 이 부분의 명칭" %}
 
 * 그 밖에도 GameObject를 검색하는데 있어서 많은 Method들이 존재하지만 크게 검색 색인이 2개가 있습니다.
-  * GameObject : Unity는 Component 중심으로 설계되었기 때문에 
+  * GameObject : 유니티 씬\(scene\)에서 전체 엔티티\(entity\)의 기본 클래스를 나타냅니다.
   * Transform : 위치, 회전, Scale값을 가지고  있는 Component
 * 그리고 2개의 Class들은 각자 Find, FindObjectOfType, FindWithTag...etc 등 공통된 Method를 가지고 있습니다.
 
@@ -177,6 +180,8 @@ Camera.main.transform.DOShakePosition\(float duration, float/Vector3 strength, i
 * LayerMask parameter를 이용해서 특정 Layer의 Object만 검사할 수 있습니다.
 {% endtab %}
 {% endtabs %}
+
+
 
 
 
