@@ -436,8 +436,6 @@ Animation을 만들기 위해 필요한 Clip을 넣고 왼쪽 창에 HorizontalA
 
 {% embed url="https://www.youtube.com/watch?v=CE9VOZivb3I&t=943s" caption="Scene Transition" %}
 
-
-
 Animator를 가지고 할 수 있는 것들 중 하나가 Scene의 교체입니다.
 
 Animation Clip을 가지고 Canvas Component의 영향을 받는 Component들을 시간이 지남에 따라 조절하여 줄이거나 변화시킵니다. 보통 Asset들을 Loading하는데 시간이 걸릴 때의 과정을 보여줄 필요가 없기에 Loading시 화면을 삽입합니다.
@@ -503,6 +501,10 @@ public class LevelLoader: MonoBehaviour {
 마우스 왼쪽클릭을 하면 코루틴을 사용하여 SetTrigger로 Start를 True로 만들고 1초의 시간이 흐른 뒤 다음 프레임에서 LoadScene을 실행합니다.
 
 위의 Script를 삽입하여 만든 결과는 아래와 같습니다.
+
+![Scene Transition Result](../../.gitbook/assets/scenetransition.gif)
+
+\*\*\* Scene Transition시 약간의 Scene B가 보이는 현상을 Crossfade\_Start의 Frame을 60이 아닌 15정도로 축소했습니다.
 {% endtab %}
 {% endtabs %}
 
