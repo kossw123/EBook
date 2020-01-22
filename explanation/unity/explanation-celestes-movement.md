@@ -466,9 +466,43 @@ Scene A -&gt; Scene B로 넘어가는 과정은 Animation을 이용합니다. An
 
 ![Crossfade\_End : Property&#xB9C8;&#xB2E4; 0&#xCD08;&#xBD80;&#xD130; 60&#xCD08;&#xAE4C;&#xC9C0;&#xC758; &#xBCC0;&#xD654;&#xD558;&#xB294; &#xBAA8;&#xC2B5;](../../.gitbook/assets/crossfade_end.gif)
 
-두개의 Clip을 가지고 Animator를 작성합니다 아래와 같은 Animator그림과 같이 state를 배치하고 Transition을 삽입합니다. parameter는 Triggergd g
+두개의 Clip을 가지고 Animator를 작성합니다 아래와 같은 Animator그림과 같이 state를 배치하고 Transition을 삽입합니다. Start parameter는 Trigger형이며 아래의 Code Block의 Script와 같이 움직입니다.
 
-![](../../.gitbook/assets/image%20%2818%29.png)
+![LevelLoader Animator](../../.gitbook/assets/image%20%2818%29.png)
+
+{% code title="LevelLoader.cs" %}
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+public class LevelLoader: MonoBehaviour {
+    public Animator transition;
+    [Header("Variable")]
+    public float transitionTime = 1 f;
+    // Update is called once per frame
+    void Update() {
+        if (Input.GetMouseButtonDown(0)) {
+            LoadNextLevel();
+        }
+    }
+    public void LoadNextLevel() {
+        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+    }
+    IEnumerator LoadLevel(int levelIndex) { // Play Animation
+        transition.SetTrigger("Start");
+        // Wait
+        yield return new WaitForSeconds(1);
+        // Load Scene
+        SceneManager.LoadScene(levelIndex);
+    }
+}
+```
+{% endcode %}
+
+마우스 왼쪽클릭을 하면 코루틴을 사용하여 SetTrigger로 Start를 True로 만들고 1초의 시간이 흐른 뒤 다음 프레임에서 LoadScene을 실행합니다.
+
+위의 Script를 삽입하여 만든 결과는 아래와 같습니다.
 {% endtab %}
 {% endtabs %}
 
