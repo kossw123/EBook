@@ -450,9 +450,17 @@ Animation Clip을 가지고 Canvas Component의 영향을 받는 Component들을
 
 * Image의 Anchors를 Anchor Preset에서 최우측 하단의 전체로 설정합니다. 그 후 Transform의 수치\(Left, Right, Top, Bottom, Pos Z\)를 모두 0으로 설정합니다.
 * Crossfade Object에서 Canvas Scaler의 UI Scale Mode = Scale With Screen Scale로 설정합니다.
-* 
+* Text는 표시하고 싶은 임의의 내용을 적습니다.
+
+
+
+Scene A -&gt; Scene B로 넘어가는 과정은 Animation을 이용합니다. Animation을 이용해서 Fade in, Fade Out 효과를 제작할 수 있습니다.
+
+우선 2개의 Fade효과를 주기 위한 Clip이 필요합니다. 각 클립은 Image Object의 Canvas Group Component의 Alpha값을 조정하여 Fade 효과를 부여합니다.
 {% endtab %}
 {% endtabs %}
+
+
 
 
 
