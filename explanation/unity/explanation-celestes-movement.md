@@ -398,7 +398,7 @@ Unity에서는 위에서 설명한 기능들을 추가하여 좀 더 쉽게 여�
 
 Animation을 넣고싶은 Object를 클릭하고 Animation창에서 Create를 누르면 아래와 같은 창이 나타납니다.
 
-![Animation Window](../../.gitbook/assets/image%20%2832%29.png)
+![Animation Window](../../.gitbook/assets/image%20%2834%29.png)
 
 중앙에 위치해있는 0:00, 0:01...과 같은 TimeLine에 Sprite를 삽입 하여 하나의 Clip으로 생성합니다.
 
@@ -432,9 +432,31 @@ Animation을 만들기 위해 필요한 Clip을 넣고 왼쪽 창에 HorizontalA
 {% endtab %}
 
 {% tab title="Scene Transition" %}
-Animator를 가지고 Scene의 교체를 할 수 있는데 
+정리하다가 좋은글이 올라왔길래 같이 문서화 시켜봤습니다.
+
+{% embed url="https://www.youtube.com/watch?v=CE9VOZivb3I&t=943s" caption="Scene Transition" %}
+
+
+
+Animator를 가지고 할 수 있는 것들 중 하나가 Scene의 교체입니다.
+
+Animation Clip을 가지고 Canvas Component의 영향을 받는 Component들을 시간이 지남에 따라 조절하여 줄이거나 변화시킵니다. 보통 Asset들을 Loading하는데 시간이 걸릴 때의 과정을 보여줄 필요가 없기에 Loading시 화면을 삽입합니다.
+
+이를 위해 A, B Scene을 생성하여 우선 Scene A에서 아래와 같은 Hierarchy와 Component를 배치합니다.
+
+![Scene A&#xC5D0; &#xBC30;&#xCE58;&#xD574;&#xC57C;&#xD560; Hierarchy, Component &#xC885;&#xB958;](../../.gitbook/assets/image%20%2833%29.png)
+
+위의 그림과 같이 배치했다면 몇가지 수정할 점이 있습니다.
+
+* Image의 Anchors를 Anchor Preset에서 최우측 하단의 전체로 설정합니다. 그 후 Transform의 수치\(Left, Right, Top, Bottom, Pos Z\)를 모두 0으로 설정합니다.
+* Crossfade Object에서 Canvas Scaler의 UI Scale Mode = Scale With Screen Scale로 설정합니다.
+* 
 {% endtab %}
 {% endtabs %}
+
+
+
+
 
 
 
