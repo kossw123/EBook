@@ -33,7 +33,7 @@ description: tutorial Mario Galaxy's Launch Star
 
 Mixamo를 이용한 3D Modeling의 import 과정은 tutorial이 아닌 다른 문서에서 다루도록 하겠습니다.
 
-![Character &#xBC0F; &#xC0AC;&#xC804;&#xC900;&#xBE44;](../../.gitbook/assets/image%20%2835%29.png)
+![Character &#xBC0F; &#xC0AC;&#xC804;&#xC900;&#xBE44;](../../.gitbook/assets/image%20%2838%29.png)
 
 위의 Github Link에서 다운 받은 Character를 Plane Object 위에 배치하고 몇가지 수정을 합니다.
 
@@ -42,4 +42,20 @@ Mixamo를 이용한 3D Modeling의 import 과정은 tutorial이 아닌 다른 �
 * Plane Object에서 Mesh Renderer의 Materials의 Element 0 = m\_ground라는 Materials로 설
   * Character와 Plane사이의 충돌을 위한 Component들은 따로 추가하지 않습니다.
     * Character Controller Component가 충돌을 위한 Collider, Rigidbody Component를 대신해     사용할 수 있습니다.
-* 
+
+위의 사전준비한 내용을 Play하여 충돌 및 입력을 확인 후 Path SetUp을 위한 Cinemachine Package를 설치합니다.
+
+Window -&gt; Package Manager -&gt; Cinemachine을 설치니다.
+
+![Window -&amp;gt; Package Manager -&amp;gt; Cinemachine Install](../../.gitbook/assets/image%20%2837%29.png)
+
+설치 후 Editor의 상단에는 Cinemachine이라는 탭이 하나 생깁니다. 클릭하여 Create Dolly Track with Cart항목을 눌러 새로운 Dolly Cart라는 Object를 생성합니다. 
+
+Hierarchy에서 DollyTrack1, DollyCart1 Object가 생성되고 아래의 그림과 같은 Scene View가 생성됩니다.
+
+![Create Dolly Track with Cart](../../.gitbook/assets/image%20%2815%29.png)
+
+
+
+
+
