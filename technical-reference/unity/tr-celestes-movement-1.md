@@ -12,7 +12,7 @@ description: TR Celeste's Movement
 
 ## Scripting
 
-* 해설문서\(Explanation\)의 흐름에 따라 목차 및 함수를 게시합니다
+* 해설문서\(Explanation\)의 흐름에 따라 목차 및 함수를 게시합니다.
 
 {% tabs %}
 {% tab title="Movement.cs" %}
