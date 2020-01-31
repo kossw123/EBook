@@ -170,6 +170,8 @@ Camera.main.transform.DOShakePosition\(float duration, float/Vector3 strength, i
 * randomness : 임의의 흔들림 정도, 0으로 설정하면 한 방향으로 흔들립니다.
 * fadeOut : default가 true입니다. 만약 true라면 흔들림이 자동으로 부드럽게 사라집니다.
 {% endhint %}
+
+{% embed url="https://postpiglet.netlify.com/posts/unity-dotween/" caption="DoTween의 사용법 정리" %}
 {% endtab %}
 
 {% tab title="Collision.cs" %}
