@@ -55,6 +55,10 @@ Hierarchy에서 DollyTrack1, DollyCart1 Object가 생성되고 아래의 그림�
 
 ![Create Dolly Track with Cart](../../.gitbook/assets/image%20%2815%29.png)
 
+Import한 Jammo\_Player를 Unpack을 하고 Cinemachine 탭에서 FreeLook Camera를 추가하여 생성된 Object의 Inspector에서 Follow, LookAt Component에 Character를 넣고 Orbits를 아래의 그림과 같이 수정합니다.
+
+![](../../.gitbook/assets/image%20%2848%29.png)
+
 
 
 
