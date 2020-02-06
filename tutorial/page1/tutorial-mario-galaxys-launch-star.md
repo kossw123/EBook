@@ -33,7 +33,7 @@ description: tutorial Mario Galaxy's Launch Star
 
 Mixamo를 이용한 3D Modeling의 import 과정은 tutorial이 아닌 다른 문서에서 다루도록 하겠습니다.
 
-![Character &#xBC0F; &#xC0AC;&#xC804;&#xC900;&#xBE44;](../../.gitbook/assets/image%20%2840%29.png)
+![Character &#xBC0F; &#xC0AC;&#xC804;&#xC900;&#xBE44;](../../.gitbook/assets/image%20%2841%29.png)
 
 위의 Github Link에서 다운 받은 Character를 Plane Object 위에 배치하고 몇가지 수정을 합니다.
 
@@ -47,7 +47,7 @@ Mixamo를 이용한 3D Modeling의 import 과정은 tutorial이 아닌 다른 �
 
 Window -&gt; Package Manager -&gt; Cinemachine을 설치니다.
 
-![Window -&amp;gt; Package Manager -&amp;gt; Cinemachine Install](../../.gitbook/assets/image%20%2838%29.png)
+![Window -&amp;gt; Package Manager -&amp;gt; Cinemachine Install](../../.gitbook/assets/image%20%2839%29.png)
 
 설치 후 Editor의 상단에는 Cinemachine이라는 탭이 하나 생깁니다. 클릭하여 Create Dolly Track with Cart항목을 눌러 새로운 Dolly Cart라는 Object를 생성합니다. 
 
@@ -57,7 +57,7 @@ Hierarchy에서 DollyTrack1, DollyCart1 Object가 생성되고 아래의 그림�
 
 그리고 Import한 Jammo\_Player를 Unpack을 하고 Cinemachine 탭에서 FreeLook Camera를 추가하여 생성된 Object의 Inspector에서 Follow, LookAt Component에 Character를 넣고 Orbits를 아래의 그림과 같이 수정합니다.
 
-![](../../.gitbook/assets/image%20%2850%29.png)
+![](../../.gitbook/assets/image%20%2851%29.png)
 
 후에 Jamoo\_Player에 StarLauncher.cs Script를 넣고 아래의 Script들을 생성합니다.
 
@@ -343,7 +343,7 @@ public class SpeedModifier : MonoBehaviour
 
 StarLauncher.cs에 미리 생성한 FreeLook Camera, Dolly Cart, parent Object를 Empty Component에 넣고 Path Curve를 임의대로 설정 합니다. 후에 실행한다면 Particle Attribute의 Follow, Smoke Particle이 비어있어서 오류가 날 수도 있는데, 이는 임의의 Particle을 넣어서 해결하실 수 있습니다.
 
-![Insert StarLauncher.cs Empty Component](../../.gitbook/assets/image%20%2839%29.png)
+![Insert StarLauncher.cs Empty Component](../../.gitbook/assets/image%20%2840%29.png)
 
 Play시 오류가 없는 것을 확인 하셨다면 본격적으로 Dolly Track을 가지고 Launcher Path를 제작해야 하는데 미리 생성된 Dolly Track1 Object에 Sphere Collider, Camera Trigger, Speed Modifier Script를 넣습니다.그리고 Virtual Camera를 하나 생성하고 "Cameras"라는 Empty Object를 생성하여 ChildObject로 넣습니다.
 
@@ -353,7 +353,13 @@ Play시 오류가 없는 것을 확인 하셨다면 본격적으로 Dolly Track�
 
 그리고 Launch Tag를 하나 생성하여 Dolly Track1 Object의 Tag를 Launch로 설정합니다. 그러면 Launcher Path Object는 아래의 그림과 같은 Component와 설정값을 가지게 됩니다.
 
-![Dolly Track1 Inspector](../../.gitbook/assets/image%20%2824%29.png)
+![Dolly Track1 Inspector](../../.gitbook/assets/image%20%2825%29.png)
+
+이제 LauncherObject에 쓸 별모양의 Trigger Object를 작성하는데 아래의 그림과 같은 모양을 가지고 있습니다.
+
+![LauncherStar Objecct](../../.gitbook/assets/image%20%2822%29.png)
+
+해당 Object를 작성하기 위해서는 아래와 같은 Resources가 필요합니다.
 
 
 

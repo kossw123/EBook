@@ -556,7 +556,7 @@ public class AnimationScript : MonoBehaviour
 
 위의 작업을 마쳤다면 다음은 잔상효과를 주기 위한 GhostTrail이 필요합니다. 이것을 위해 아래의 그림과 같이 Hierarchy에 Object를 배치합니다.
 
-![GhostTrail&#xC744; &#xC704;&#xD55C; Object &#xBC30;&#xCE58;](../../.gitbook/assets/image%20%2846%29.png)
+![GhostTrail&#xC744; &#xC704;&#xD55C; Object &#xBC30;&#xCE58;](../../.gitbook/assets/image%20%2847%29.png)
 
 그 후에 GhostTrail Script Component를 배치 후 임의의 색상을 지정을 합니다. 그리고 아래의 자식 Object에 Sprite Rendere Component를 넣고 Material을 Ghost로 지정합니다.
 
