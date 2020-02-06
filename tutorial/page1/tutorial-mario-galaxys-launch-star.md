@@ -12,11 +12,11 @@ description: tutorial Mario Galaxy's Launch Star
 
 ## 무엇을 하려고 하는가?
 
-* Cinemachine을 이용한 역동적인 카메라 구현
-* 3D Modeling을 이용하여 Character import 및 Mixamo를 이용한 Animation import
-* Scripting을 이용하여 경로 구현
-* DoTween API를 사용하여 간편제작 구현
-
+* Cinemachine의 Dolly Track with Cart를 사용하여 경로와 Camera Trigger Script를 작성하여 역동적인 카메라 액션 구현합니다.
+* 3D Modeling을 이용하여 Character import 및 Mixamo를 이용한 Animation import를 합니다.
+* DoTween API를 사용하여 shortcut way, generic way의 사용방법 등을 작성합니다.
+* Material을 사용하여 Particle System의 모양과 효과를 구현합니다.
+* 
 ## 작성법
 
 {% embed url="https://www.youtube.com/watch?v=T\_3cne2tzYM&t=75s" caption="Mario Galaxy\'s Launch Star tutorial Video" %}
