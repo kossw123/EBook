@@ -16,7 +16,7 @@ description: tutorial Mario Galaxy's Launch Star
 * 3D Modeling을 이용하여 Character import 및 Mixamo를 이용한 Animation import를 합니다.
 * DoTween API를 사용하여 shortcut way, generic way의 사용방법 등을 작성합니다.
 * Material을 사용하여 Particle System의 모양과 효과를 구현합니다.
-* 
+
 ## 작성법
 
 {% embed url="https://www.youtube.com/watch?v=T\_3cne2tzYM&t=75s" caption="Mario Galaxy\'s Launch Star tutorial Video" %}
