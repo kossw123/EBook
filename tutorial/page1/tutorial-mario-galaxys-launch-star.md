@@ -359,7 +359,9 @@ Play시 오류가 없는 것을 확인 하셨다면 본격적으로 Dolly Track�
 
 ![LauncherStar Objecct](../../.gitbook/assets/image%20%2822%29.png)
 
-해당 Object를 작성하기 위해서는 아래와 같은 Resources가 필요합니다.
+해당 Object를 작성하기 위해서는 견본 Object가 필요합니다. 아래의 File을 다운 받아 내부의 Package를 Import 하셔도 무방하고 만약 파일이 손상되었다면, Sample Project 내부의 Images, Models, Animation File들을 Import 하셔도 됩니다.
+
+{% file src="../../.gitbook/assets/launcherstar\_object.zip" %}
 
 
 
