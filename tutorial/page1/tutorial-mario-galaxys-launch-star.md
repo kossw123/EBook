@@ -33,7 +33,7 @@ description: tutorial Mario Galaxy's Launch Star
 
 Mixamo를 이용한 3D Modeling의 import 과정은 tutorial이 아닌 다른 문서에서 다루도록 하겠습니다.
 
-![Character &#xBC0F; &#xC0AC;&#xC804;&#xC900;&#xBE44;](../../.gitbook/assets/image%20%2853%29.png)
+![Character &#xBC0F; &#xC0AC;&#xC804;&#xC900;&#xBE44;](../../.gitbook/assets/image%20%2856%29.png)
 
 위의 Github Link에서 다운 받은 Character를 Plane Object 위에 배치하고 몇가지 수정을 합니다.
 
@@ -47,17 +47,17 @@ Mixamo를 이용한 3D Modeling의 import 과정은 tutorial이 아닌 다른 �
 
 Window -&gt; Package Manager -&gt; Cinemachine을 설치니다.
 
-![Window -&amp;gt; Package Manager -&amp;gt; Cinemachine Install](../../.gitbook/assets/image%20%2851%29.png)
+![Window -&amp;gt; Package Manager -&amp;gt; Cinemachine Install](../../.gitbook/assets/image%20%2854%29.png)
 
 설치 후 Editor의 상단에는 Cinemachine이라는 탭이 하나 생깁니다. 클릭하여 Create Dolly Track with Cart항목을 눌러 새로운 Dolly Cart라는 Object를 생성합니다. 
 
 Hierarchy에서 DollyTrack1, DollyCart1 Object가 생성되고 아래의 그림과 같은 Scene View가 생성됩니다.
 
-![Create Dolly Track with Cart](../../.gitbook/assets/image%20%2817%29.png)
+![Create Dolly Track with Cart](../../.gitbook/assets/image%20%2818%29.png)
 
 그리고 Import한 Jammo\_Player를 Unpack을 하고 Cinemachine 탭에서 FreeLook Camera를 추가하여 생성된 Object의 Inspector에서 Follow, LookAt Component에 Character를 넣고 Orbits를 아래의 그림과 같이 수정합니다.
 
-![](../../.gitbook/assets/image%20%2865%29.png)
+![](../../.gitbook/assets/image%20%2868%29.png)
 
 후에 Jamoo\_Player에 StarLauncher.cs Script를 넣고 아래의 Script들을 생성합니다.
 
@@ -343,7 +343,7 @@ public class SpeedModifier : MonoBehaviour
 
 StarLauncher.cs에 미리 생성한 FreeLook Camera, Dolly Cart, parent Object를 Empty Component에 넣고 Path Curve를 임의대로 설정 합니다. 후에 실행한다면 Particle Attribute의 Follow, Smoke Particle이 비어있어서 오류가 날 수도 있는데, 이는 임의의 Particle을 넣어서 해결하실 수 있습니다.
 
-![Insert StarLauncher.cs Empty Component](../../.gitbook/assets/image%20%2852%29.png)
+![Insert StarLauncher.cs Empty Component](../../.gitbook/assets/image%20%2855%29.png)
 
 Play시 오류가 없는 것을 확인 하셨다면 본격적으로 Dolly Track을 가지고 Launcher Path를 제작해야 하는데 미리 생성된 Dolly Track1 Object에 Sphere Collider, Camera Trigger, Speed Modifier Script를 넣습니다.그리고 Virtual Camera를 하나 생성하고 "Cameras"라는 Empty Object를 생성하여 ChildObject로 넣습니다.
 
@@ -353,11 +353,11 @@ Play시 오류가 없는 것을 확인 하셨다면 본격적으로 Dolly Track�
 
 그리고 Launch Tag를 하나 생성하여 Dolly Track1 Object의 Tag를 Launch로 설정합니다. 그러면 Launcher Path Object는 아래의 그림과 같은 Component와 설정값을 가지게 됩니다.
 
-![Dolly Track1 Inspector](../../.gitbook/assets/image%20%2831%29.png)
+![Dolly Track1 Inspector](../../.gitbook/assets/image%20%2834%29.png)
 
 이제 LauncherObject에 쓸 별모양의 Trigger Object를 작성하는데 아래의 그림과 같은 모양을 가지고 있습니다.
 
-![LauncherStar Objecct](../../.gitbook/assets/image%20%2827%29.png)
+![LauncherStar Objecct](../../.gitbook/assets/image%20%2830%29.png)
 
 해당 Object를 작성하기 위해서는 견본 Object가 필요합니다. 아래의 File을 다운 받아 내부의 Package를 Import 하셔도 무방하고 만약 파일이 손상되었다면, Sample Project 내부의 Images, Models, Animation File들을 Import 하셔도 됩니다. 혹은 Sample Project의 Prefab을 Import 하시면 됩니다.
 
@@ -365,22 +365,24 @@ Play시 오류가 없는 것을 확인 하셨다면 본격적으로 Dolly Track�
 
 LauncherStar\_Object는 아래와 같은 Hierarchy를 가지고 있고 다음과 같이 작성합니다. 
 
-![LauncherStar Hierarchy](../../.gitbook/assets/image%20%2846%29.png)
+![LauncherStar Hierarchy](../../.gitbook/assets/image%20%2849%29.png)
 
 그리고 각 Object에 설정할 Component들을 아래의 Tab에 기재했습니다.
 
 {% tabs %}
 {% tab title="LauncherStar Object" %}
-![LauncherStar Object Component](../../.gitbook/assets/image%20%2828%29.png)
+![LauncherStar Object Component](../../.gitbook/assets/image%20%2831%29.png)
 
 * LauncherStar Object Component
   * Animator = LaunchStart로 설정
   * Cinemachine Dolly Cart Script 추가, Position Units = Normalized로 설정
   * StarAnimation Script 추가, 각 항목에 맞는 Empty Object 생성 후 추가
+
+\*\*\* 그림의 Object들의 이름은 임의로 설정했습니다.
 {% endtab %}
 
 {% tab title="Plane Object" %}
-![Plane Object Component](../../.gitbook/assets/image%20%2863%29.png)
+![Plane Object Component](../../.gitbook/assets/image%20%2866%29.png)
 
 * Plane Object Component
   * Project View에서 Plane Prefab 추가
@@ -397,11 +399,47 @@ LauncherStar\_Object는 아래와 같은 Hierarchy를 가지고 있고 다음과
 {% endtab %}
 
 {% tab title="Inner\_Plane Object" %}
-![Inner Plane Object Component](../../.gitbook/assets/image%20%2832%29.png)
+![Inner Plane Object Component](../../.gitbook/assets/image%20%2835%29.png)
 
 * Inner\_Plane Object Component
   * Project View에서 Plane.001 Prefab 추가
-  * Mesh Renderer의 Material = LaunchStar로 설정![LaunchStar Material Component](../../.gitbook/assets/image%20%282%29.png)
+  * Mesh Renderer의 Material = LaunchStar로 설정
+{% endtab %}
+
+{% tab title="Point Light Object" %}
+![Point Light Object](../../.gitbook/assets/image%20%2817%29.png)
+
+* Color = R : 255 / G: 198 / B: 64 / A: 255
+{% endtab %}
+
+{% tab title="glow Object" %}
+![glow Object Component](../../.gitbook/assets/image%20%2823%29.png)
+
+glow Object들은 Particle System만 있기 때문에 Particle System 설정값만 기재하겠습니다.
+
+* Particle System 
+  * glow
+    * Duration = 1
+    * StartLifetime = 1.5
+    * StartSpeed = 0
+    * StartColor = R : 255 / G : 230 / B : 112 / A : 166
+    * Play On Awake = false
+  * Emission
+    * Rate over Time = 0
+    * Bursts에 list 추가
+  * Shape
+    * Shape = Sphere
+    * Radius = 0.0001
+  * Color Over Lifetime
+    * Color = R : 255 / G : 255 / B : 255 로 통일
+    * Location : 0% / A : 255, 100% / A : 66
+  * Size over Lifetime
+    * x,y : 0 ~ x,y : 1 그래프
+  * Sub Emitters
+    * Birth = Inner\_glow로 설정
+      * Inner\_glow가 미리 존재하고 있거나, 하나 생성하여 Inner\_glow Object로 바꿉니다.
+  * Renderer
+    * 
 {% endtab %}
 {% endtabs %}
 
