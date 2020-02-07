@@ -33,7 +33,7 @@ description: tutorial Mario Galaxy's Launch Star
 
 Mixamo를 이용한 3D Modeling의 import 과정은 tutorial이 아닌 다른 문서에서 다루도록 하겠습니다.
 
-![Character &#xBC0F; &#xC0AC;&#xC804;&#xC900;&#xBE44;](../../.gitbook/assets/image%20%2858%29.png)
+![Character &#xBC0F; &#xC0AC;&#xC804;&#xC900;&#xBE44;](../../.gitbook/assets/image%20%2860%29.png)
 
 위의 Github Link에서 다운 받은 Character를 Plane Object 위에 배치하고 몇가지 수정을 합니다.
 
@@ -47,7 +47,7 @@ Mixamo를 이용한 3D Modeling의 import 과정은 tutorial이 아닌 다른 �
 
 Window -&gt; Package Manager -&gt; Cinemachine을 설치니다.
 
-![Window -&amp;gt; Package Manager -&amp;gt; Cinemachine Install](../../.gitbook/assets/image%20%2856%29.png)
+![Window -&amp;gt; Package Manager -&amp;gt; Cinemachine Install](../../.gitbook/assets/image%20%2858%29.png)
 
 설치 후 Editor의 상단에는 Cinemachine이라는 탭이 하나 생깁니다. 클릭하여 Create Dolly Track with Cart항목을 눌러 새로운 Dolly Cart라는 Object를 생성합니다. 
 
@@ -57,7 +57,7 @@ Hierarchy에서 DollyTrack1, DollyCart1 Object가 생성되고 아래의 그림�
 
 그리고 Import한 Jammo\_Player를 Unpack을 하고 Cinemachine 탭에서 FreeLook Camera를 추가하여 생성된 Object의 Inspector에서 Follow, LookAt Component에 Character를 넣고 Orbits를 아래의 그림과 같이 수정합니다.
 
-![](../../.gitbook/assets/image%20%2873%29.png)
+![](../../.gitbook/assets/image%20%2876%29.png)
 
 후에 Jamoo\_Player에 StarLauncher.cs Script를 넣고 아래의 Script들을 생성합니다.
 
@@ -343,7 +343,7 @@ public class SpeedModifier : MonoBehaviour
 
 StarLauncher.cs에 미리 생성한 FreeLook Camera, Dolly Cart, parent Object를 Empty Component에 넣고 Path Curve를 임의대로 설정 합니다. 후에 실행한다면 Particle Attribute의 Follow, Smoke Particle이 비어있어서 오류가 날 수도 있는데, 이는 임의의 Particle을 넣어서 해결하실 수 있습니다.
 
-![Insert StarLauncher.cs Empty Component](../../.gitbook/assets/image%20%2857%29.png)
+![Insert StarLauncher.cs Empty Component](../../.gitbook/assets/image%20%2859%29.png)
 
 Play시 오류가 없는 것을 확인 하셨다면 본격적으로 Dolly Track을 가지고 Launcher Path를 제작해야 하는데 미리 생성된 Dolly Track1 Object에 Sphere Collider, Camera Trigger, Speed Modifier Script를 넣습니다.그리고 Virtual Camera를 하나 생성하고 "Cameras"라는 Empty Object를 생성하여 ChildObject로 넣습니다.
 
@@ -353,11 +353,11 @@ Play시 오류가 없는 것을 확인 하셨다면 본격적으로 Dolly Track�
 
 그리고 Launch Tag를 하나 생성하여 Dolly Track1 Object의 Tag를 Launch로 설정합니다. 그러면 Launcher Path Object는 아래의 그림과 같은 Component와 설정값을 가지게 됩니다.
 
-![Dolly Track1 Inspector](../../.gitbook/assets/image%20%2835%29.png)
+![Dolly Track1 Inspector](../../.gitbook/assets/image%20%2836%29.png)
 
 이제 LauncherObject에 쓸 별모양의 Trigger Object를 작성하는데 아래의 그림과 같은 모양을 가지고 있습니다.
 
-![LauncherStar Objecct](../../.gitbook/assets/image%20%2831%29.png)
+![LauncherStar Objecct](../../.gitbook/assets/image%20%2832%29.png)
 
 해당 Object를 작성하기 위해서는 견본 Object가 필요합니다. 아래의 File을 다운 받아 내부의 Package를 Import 하셔도 무방하고 만약 파일이 손상되었다면, Sample Project 내부의 Images, Models, Animation File들을 Import 하셔도 됩니다. 혹은 Sample Project의 Prefab을 Import 하시면 됩니다.
 
@@ -365,13 +365,13 @@ Play시 오류가 없는 것을 확인 하셨다면 본격적으로 Dolly Track�
 
 LauncherStar\_Object는 아래와 같은 Hierarchy를 가지고 있고 다음과 같이 작성합니다. 
 
-![LauncherStar Hierarchy](../../.gitbook/assets/image%20%2851%29.png)
+![LauncherStar Hierarchy](../../.gitbook/assets/image%20%2853%29.png)
 
 그리고 각 Object에 설정할 Component들을 아래의 Tab에 기재했습니다.
 
 {% tabs %}
 {% tab title="LauncherStar Object" %}
-![LauncherStar Object Component](../../.gitbook/assets/image%20%2832%29.png)
+![LauncherStar Object Component](../../.gitbook/assets/image%20%2833%29.png)
 
 * LauncherStar Object Component
   * Animator = LaunchStart로 설정
@@ -382,7 +382,7 @@ LauncherStar\_Object는 아래와 같은 Hierarchy를 가지고 있고 다음과
 {% endtab %}
 
 {% tab title="Plane Object" %}
-![Plane Object Component](../../.gitbook/assets/image%20%2871%29.png)
+![Plane Object Component](../../.gitbook/assets/image%20%2874%29.png)
 
 * Plane Object Component
   * Project View에서 Plane Prefab 추가
@@ -399,7 +399,7 @@ LauncherStar\_Object는 아래와 같은 Hierarchy를 가지고 있고 다음과
 {% endtab %}
 
 {% tab title="Inner\_Plane Object" %}
-![Inner Plane Object Component](../../.gitbook/assets/image%20%2836%29.png)
+![Inner Plane Object Component](../../.gitbook/assets/image%20%2837%29.png)
 
 * Inner\_Plane Object Component
   * Project View에서 Plane.001 Prefab 추가
@@ -445,12 +445,12 @@ glow Object들은 Particle System만 있기 때문에 Particle System 설정값�
 {% endtab %}
 
 {% tab title="Inner\_glow Object" %}
-![Inner\_glow Object Component](../../.gitbook/assets/image%20%2867%29.png)
+![Inner\_glow Object Component](../../.gitbook/assets/image%20%2869%29.png)
 
 glow Object와 Inner\_glow Object는 거의 같은 Particle 설정값을 가지고 있기 때문에 달라진 부분만 굵게 표시하여 작성하겠습니다.
 
 * Particle System 
-  * glow
+  * Inner\_glow
     * Duration = 1
     * Looping = false
     * StartLifetime = 1.5
@@ -474,10 +474,10 @@ glow Object와 Inner\_glow Object는 거의 같은 Particle 설정값을 가지�
 {% endtab %}
 
 {% tab title="charge Object" %}
-![charge Object Particle System](../../.gitbook/assets/image%20%2830%29.png)
+![charge Object Particle System](../../.gitbook/assets/image%20%2831%29.png)
 
 * Particle System 
-  * glow
+  * charge
     * Duration = 5
     * Looping = false
     * StartLifetime = 1
@@ -506,7 +506,7 @@ glow Object와 Inner\_glow Object는 거의 같은 Particle 설정값을 가지�
     * Material = starParticle\_1
     * Trail Material = starParticle\_1
 
-![starParticle Material Component](../../.gitbook/assets/image%20%2868%29.png)
+![starParticle Material Component](../../.gitbook/assets/image%20%2870%29.png)
 
 * starParticle\_1 Material Component
   * Shader = Particle / Standard Units
@@ -514,6 +514,90 @@ glow Object와 Inner\_glow Object는 거의 같은 Particle 설정값을 가지�
   * Color Mode = Additive
   * Maps = star
   * Albedo = R : 191 / G : 129 / B : 79 / B : 255 / intensity : 1
+{% endtab %}
+
+{% tab title="explode Object" %}
+![explode Object Particle System](../../.gitbook/assets/image%20%2824%29.png)
+
+* Particle System 
+  * explode 
+    * Duration = 5
+    * Looping = false
+    * StartLifetime = 1
+    * StartSpeed\(Random Between Two Constant\) = 50 / 20
+    * Start Size\(Random Between Two Constants로 전환\) = 0.5 / 0.2 
+    * StartColor = R : 187 / G : 0 / B : 87 / A : 87
+    * Play On Awake = false
+  * Emission
+    * Rate over Time = 0
+    * Bursts에 list 1개 추가 후 
+      * 1번 = Time : 0.000 / Count : 30 / Cycles : 1 / Interval : 0.010 / Probability : 1.0
+  * Shape
+    * Shape = Sphere
+    * Radius = 0.0001
+  * Velocity over Lifetime = true
+  * Limit Velocity over Lifetime
+    * Speed = 2
+    * Dampen = 0.15
+  * Color Over Lifetime
+    * Color = R : 255 / G : 255 / B : 255 로 통일
+      * Location : \(0% / A : 0\),   \(25% / A : 255\),   \(50% / A : 255\),  \(75% / A : 255\),         \(100% / A : 66\)
+  * Size over Lifetime
+    * y = -x Curve
+  * Renderer
+    * Material = starParticle\_1
+    * Trail Material = starParticle\_2
+
+
+
+![starParticle\_2 Material Component](../../.gitbook/assets/image%20%2848%29.png)
+
+* starParticle\_2 Material Component
+  * Shader = Particles / Standard Unit
+  * Rendering Mode = Fad
+  * Color Mode = Additive
+  * Maps = Radius
+  * Albedo = R : 191 / G : 132 / B : 57 / B : 86 / intensity : 1
+{% endtab %}
+
+{% tab title="smoke Object" %}
+![smoke Object Particle System Component](../../.gitbook/assets/image%20%2871%29.png)
+
+* Particle System 
+  * smoke 
+    * Duration = 0.20
+    * Looping = false
+    * StartLifetime = 0.8
+    * StartSpeed = 10
+    * Start Size\(Random Between Two Constants로 전환\) = 0.2 / 0.7 
+    * StartColor = R : 255 / G : 255 / B : 255 / A : 200
+    * Gravity Modifier = -0.19
+    * Play On Awake = false
+  * Emission
+    * Rate over Time = 0
+    * Bursts에 list 1개 추가 후 
+      * 1번 = Time : 0.000 / Count : 30 / Cycles : 1 / Interval : 0.010 / Probability : 1.0
+  * Shape
+    * Shape = Circle
+    * Radius = 0.02
+  * Velocity over Lifetime = true
+  * Limit Velocity over Lifetime
+    * Speed = 1
+    * Dampen = 0.3
+  * Color Over Lifetime
+    * Color = R : 255 / G : 255 / B : 255 로 통일
+      * Location : \(0% / A : 0\),   \(25% / A : 255\),   \(50% / A : 255\),  \(75% / A : 255\),         \(100% / A : 66\)
+  * Size over Lifetime
+    * y = -x Curve
+  * Noise
+    * Strength = 0.3
+  * Texture Sheet Animation 
+    * Tiles = X : 2, Y : 1
+    * Animation = Single Row
+    * Time Mode = Speed
+    * Speed Range = 0 / 1
+    * Start Frame = 0 / 1.9998
+  * Renderer = true
 {% endtab %}
 {% endtabs %}
 
