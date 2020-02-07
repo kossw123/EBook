@@ -69,7 +69,7 @@ Rule Tile이란? Tile을 만들 때 어떤 규칙이 정해진 타일이라는 �
 
 어차피 Tilemap을 작성해 봤자 하나의 Sprite들을 가지고 여러개를 이어 붙여서 만든것인데, 굳이 필요한 이유를 말씀드리자면 아주 큰 Map Design을 작성할 시에 여러 Sprite를 이어서 만든 어떤 그림이 필요할 때가 종종 있습니다. 그를 대비해 알아둔다면 아주 유용하게 사용할 수 있을 것입니다.
 
-![Rule Tile&#xC758; &#xAE30;&#xBCF8;&#xD654;&#xBA74;](../../.gitbook/assets/image%20%2864%29.png)
+![Rule Tile&#xC758; &#xAE30;&#xBCF8;&#xD654;&#xBA74;](../../.gitbook/assets/image%20%2865%29.png)
 
 Rule Tile을 생성했다면 위 그림과 같은 Inspector가 생성됩니다.
 
@@ -81,7 +81,7 @@ Rule Tile을 생성했다면 위 그림과 같은 Inspector가 생성됩니다.
 
 위 그림과 같이 PhysicsObject tutorial에서 썼던 Sprite들로 Rule을 작성해봤습니다. 어떤 나무를 그린다고 했을 때 위의 4개의 그림을 가지고 작성이 가능합니다. 
 
-![9&#xAC1C;&#xC758; Tile &#xCD94;&#xAC00;](../../.gitbook/assets/image%20%2865%29.png)
+![9&#xAC1C;&#xC758; Tile &#xCD94;&#xAC00;](../../.gitbook/assets/image%20%2866%29.png)
 
 위 그림은 9개의 Tile을 추가해서 원하는 모양이 나오도록 각 Tile에 Rule을 추가한 모습입니다. 각 Tile마다 화살표로 방향을 정해줘서 화살표 방향대로 생성되게끔 합니다. X라고 표시된 방향은 생성이 불가합니다.
 

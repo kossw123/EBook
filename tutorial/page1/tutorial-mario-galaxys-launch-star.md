@@ -57,7 +57,7 @@ Hierarchy에서 DollyTrack1, DollyCart1 Object가 생성되고 아래의 그림�
 
 그리고 Import한 Jammo\_Player를 Unpack을 하고 Cinemachine 탭에서 FreeLook Camera를 추가하여 생성된 Object의 Inspector에서 Follow, LookAt Component에 Character를 넣고 Orbits를 아래의 그림과 같이 수정합니다.
 
-![](../../.gitbook/assets/image%20%2868%29.png)
+![](../../.gitbook/assets/image%20%2869%29.png)
 
 후에 Jamoo\_Player에 StarLauncher.cs Script를 넣고 아래의 Script들을 생성합니다.
 
@@ -382,7 +382,7 @@ LauncherStar\_Object는 아래와 같은 Hierarchy를 가지고 있고 다음과
 {% endtab %}
 
 {% tab title="Plane Object" %}
-![Plane Object Component](../../.gitbook/assets/image%20%2866%29.png)
+![Plane Object Component](../../.gitbook/assets/image%20%2867%29.png)
 
 * Plane Object Component
   * Project View에서 Plane Prefab 추가
@@ -439,7 +439,36 @@ glow Object들은 Particle System만 있기 때문에 Particle System 설정값�
     * Birth = Inner\_glow로 설정
       * Inner\_glow가 미리 존재하고 있거나, 하나 생성하여 Inner\_glow Object로 바꿉니다.
   * Renderer
-    * 
+    * Material = chargeParticle\_1
+    * Trail Material = chargeParticle\_1
+{% endtab %}
+
+{% tab title="Inner\_glow Object" %}
+![Inner\_glow Object Component](../../.gitbook/assets/image%20%2864%29.png)
+
+glow Object와 Inner\_glow Object는 거의 같은 Particle 설정값을 가지고 있기 때문에 달라진 부분만 굵게 표시하여 작성하겠습니다.
+
+* Particle System 
+  * glow
+    * Duration = 1
+    * StartLifetime = 1.5
+    * StartSpeed = 0
+    * **StartColor = R : 255 / G : 230 / B : 112 / A : 102**
+    * Play On Awake = false
+  * Emission
+    * Rate over Time = 0
+    * Bursts에 list 추가
+  * Shape
+    * Shape = Sphere
+    * Radius = 0.0001
+  * Color Over Lifetime
+    * Color = R : 255 / G : 255 / B : 255 로 통일
+    * Location : 0% / A : 255, 100% / A : 66
+  * Size over Lifetime
+    * x,y : 0 ~ x,y : 1 그래프
+  * Renderer
+    * **Material = chargeParticle\_2**
+    * **Trail Material = chargeParticle\_2**
 {% endtab %}
 {% endtabs %}
 
