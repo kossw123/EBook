@@ -398,7 +398,7 @@ Unity에서는 위에서 설명한 기능들을 추가하여 좀 더 쉽게 여�
 
 Animation을 넣고싶은 Object를 클릭하고 Animation창에서 Create를 누르면 아래와 같은 창이 나타납니다.
 
-![Animation Window](../../.gitbook/assets/image%20%2861%29.png)
+![Animation Window](../../.gitbook/assets/image%20%2862%29.png)
 
 중앙에 위치해있는 0:00, 0:01...과 같은 TimeLine에 Sprite를 삽입 하여 하나의 Clip으로 생성합니다.
 
