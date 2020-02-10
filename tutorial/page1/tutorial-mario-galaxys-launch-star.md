@@ -611,7 +611,9 @@ Unpack Prefab을 한 LauncherStar\_Path의 하위 Object로 두 개의 그림과
 
 ![Activate Object Component](../../.gitbook/assets/image%20%2860%29.png)
 
-위의 그림과 같이 설정했다면 최종적으로 아래의 그림과 같이 Path가 설정이 될것이고 
+위의 그림과 같이 설정했다면 최종적으로 아래의 그림과 같이 Path가 설정이 될것이고 아래의 그림과 같은 결과가 나옵니다.
+
+![](../../.gitbook/assets/launcherstar_path.gif)
 
 
 
