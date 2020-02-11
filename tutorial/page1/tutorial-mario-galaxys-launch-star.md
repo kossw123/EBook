@@ -620,7 +620,7 @@ Unpack Prefab을 한 LauncherStar\_Path의 하위 Object로 두 개의 그림과
 * Dolly Cart Track과 Material에 대한 자료찾기와 DoTween에 Sequence, Join, Animation에 대한 조사가  좀 더 많았던 문서였던 것 같습니다.
 * 위에서 작성하는 Object에서 좀 더 보완하고 추가한 그림이 아래와 같습니다.
 
-
+![](../../.gitbook/assets/launcherstar_sample.gif)
 
 * Sample Project에 나온 Scene에 대한 Post Processing이나, TimeLine을 이용한 Cameara 이동 등은   후에 작성하도록 하겠습니다.
 * Script에 대한 정리는 How-to-guide문서에서 다루도록 하겠습니다.
