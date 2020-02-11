@@ -622,6 +622,7 @@ Unpack Prefab을 한 LauncherStar\_Path의 하위 Object로 두 개의 그림과
 
 
 
+* Sample Project에 나온 Scene에 대한 Post Processing이나, TimeLine을 이용한 Cameara 이동 등은   후에 작성하도록 하겠습니다.
 * Script에 대한 정리는 How-to-guide문서에서 다루도록 하겠습니다.
 
 {% page-ref page="../../how-to-guide/unity/how-to-guide-mario-galaxys-launch-star.md" %}
