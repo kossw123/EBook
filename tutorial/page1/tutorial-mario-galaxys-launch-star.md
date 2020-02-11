@@ -2,7 +2,7 @@
 description: tutorial Mario Galaxy's Launch Star
 ---
 
-# tutorial Mario Galaxy's Launch Star\(작업중\)
+# tutorial Mario Galaxy's Launch Star\(1차\)
 
 ## 왜 하려고 하는가?
 
