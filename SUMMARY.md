@@ -13,6 +13,7 @@
     * [How-to-guide PhysicsObject](how-to-guide/unity/physicsobject.md)
     * [How-to-guide Tilemap](how-to-guide/unity/tilemap.md)
     * [How-to-guide Celeste's Movement](how-to-guide/unity/how-to-guide-celestes-movement.md)
+    * [How-to-guide Mario Galaxy's Launch Star](how-to-guide/unity/how-to-guide-mario-galaxys-launch-star.md)
 * [Explanation](explanation/README.md)
   * [Unity](explanation/unity/README.md)
     * [Explanation PhysicsObject](explanation/unity/physicsobject.md)

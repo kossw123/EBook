@@ -613,7 +613,18 @@ Unpack Prefab을 한 LauncherStar\_Path의 하위 Object로 두 개의 그림과
 
 위의 그림과 같이 설정했다면 최종적으로 아래의 그림과 같이 Path가 설정이 될것이고 아래의 그림과 같은 결과가 나옵니다.
 
-![](../../.gitbook/assets/launcherstar_path.gif)
+![LauncherStar\_Path Test](../../.gitbook/assets/launcherstar_path.gif)
+
+## 마치며
+
+* Dolly Cart Track과 Material에 대한 자료찾기와 DoTween에 Sequence, Join, Animation에 대한 조사가  좀 더 많았던 문서였던 것 같습니다.
+* 위에서 작성하는 Object에서 좀 더 보완하고 추가한 그림이 아래와 같습니다.
+
+
+
+* Script에 대한 정리는 How-to-guide문서에서 다루도록 하겠습니다.
+
+{% page-ref page="../../how-to-guide/unity/how-to-guide-mario-galaxys-launch-star.md" %}
 
 
 
