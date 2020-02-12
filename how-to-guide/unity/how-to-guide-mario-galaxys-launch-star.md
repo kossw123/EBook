@@ -2,7 +2,7 @@
 description: How-to-guide Mario Galaxy's Launch Star
 ---
 
-# How-to-guide Mario Galaxy's Launch Star\(작업중\)
+# How-to-guide Mario Galaxy's Launch Star\(1차\)
 
 ## 무엇을 하려고 하는가?
 
