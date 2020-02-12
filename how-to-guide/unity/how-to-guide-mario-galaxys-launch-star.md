@@ -491,10 +491,72 @@ public class StarAnimation: MonoBehaviour {
 {% endcode %}
 {% endtab %}
 
-{% tab title="" %}
-```
+{% tab title="CameraTrigger.cs" %}
+{% code title="CameraTrigger.cs" %}
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Cinemachine;
+
+/// <summary>
+/// 
+/// </summary>
+public class CameraTrigger : MonoBehaviour
+{
+    CinemachineBrain brain;
+    Transform camerasGroup;
+
+    [Header("Camera Settings")]
+    public bool activatesCamera = false;
+    public CinemachineVirtualCamera camera;
+    public bool cut;
+
+    private void Start()
+    {
+        camerasGroup = GameObject.Find("Cameras").transform;
+        brain = Camera.main.GetComponent<CinemachineBrain>();
+    }
+
+    public void SetCamera()
+    {
+        brain.m_DefaultBlend.m_Style = cut ? CinemachineBlendDefinition.Style.Cut : CinemachineBlendDefinition.Style.EaseOut;
+
+        if (camerasGroup.childCount <= 0)
+            return;
+        /// Cameras Object의 자식 Object들을 일단 모두 비활성화 한다.
+        /// 초기화
+        for (int i = 0; i < camerasGroup.childCount; i++)
+        {
+            camerasGroup.GetChild(i).gameObject.SetActive(false);
+        }
+        /// VirtualCamera의 Object를 SetActive하는데 activatesCamera = false이기 때문에 비활성화
+        camera.gameObject.SetActive(activatesCamera);
+    }
+
+    // Collider를 표시하기 위한 Circle
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(transform.position, .1f);
+    }
+}
 
 ```
+{% endcode %}
+{% endtab %}
+
+{% tab title="SpeedModifier.cs" %}
+{% code title="SpeedModifier " %}
+```csharp
+using UnityEngine;
+
+public class SpeedModifier : MonoBehaviour
+{
+    public float modifier;
+}
+```
+{% endcode %}
 {% endtab %}
 {% endtabs %}
 
