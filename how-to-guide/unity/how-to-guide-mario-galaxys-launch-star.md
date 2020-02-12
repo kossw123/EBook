@@ -8,7 +8,7 @@ description: How-to-guide Mario Galaxy's Launch Star
 
 * Mario Galaxy's Launch Star에 쓰인 Script들을 가지고 Code Review를 합니다.
 * 제가 테스트를 하며 작성한 흐름에 따라 정리했기 때문에 읽으실 때 개별 Script로 보시는게 나을것     같습니다.
-* DoTween의 Sequnce, Join 함수 등은 동영상에서 보시는 것이 이해가 더빠를 수도 있으니, 초반 시청 바랍니다.
+* DoTween의 Sequence, Join 함수 등은 동영상에서 보시는 것이 이해가 더빠를 수도 있으니, 초반 시청 바랍니다.
 * 이 문서는 상업적인 목적으로 만들어지지 않았습니다.
 
 {% embed url="https://www.youtube.com/watch?v=T\_3cne2tzYM&t=75s" caption="Mario Galaxy\'s Launch Star tutorial Video" %}
