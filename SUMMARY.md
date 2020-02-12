@@ -19,6 +19,7 @@
     * [Explanation PhysicsObject](explanation/unity/physicsobject.md)
     * [Explanation Tilemap](explanation/unity/explanation-tilemap.md)
     * [Explanation Celeste's Movement](explanation/unity/explanation-celestes-movement.md)
+    * [Explanation Mario Galaxy's Launch Star\(작업중\)](explanation/unity/explanation-mario-galaxys-launch-star.md)
 * [Technical reference](technical-reference/README.md)
   * [Unity](technical-reference/unity/README.md)
     * [TR PhysicsObject](technical-reference/unity/tr-physicsobject.md)
