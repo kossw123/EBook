@@ -234,12 +234,267 @@ public class CharacterSkinController: MonoBehaviour {
 * LauncherStar Object 관련 Script
 
 {% tabs %}
-{% tab title="First Tab" %}
-
+{% tab title="StarLauncher.cs" %}
+{% code title="StarLauncher.cs" %}
+```csharp
+using System.Collections;
+using UnityEngine;
+using DG.Tweening;
+using Cinemachine;
+public class StarLauncher: MonoBehaviour {
+    Animator animator;
+    MovementInput movement;
+    StarAnimation starAnimation;
+    TrailRenderer trail;
+    public AnimationCurve pathCurve;
+    [Range(0, 50)] public float speed = 10 f;
+    float speedModifier = 1;
+    [Space][Header("Booleans")] public bool insideLaunchStar;
+    public bool flying;
+    public bool almostFinished;
+    // 여기서 Dolly Cart Object를 return
+    public Transform launchObject;
+    [Space][Header("Public References")] public CinemachineFreeLook thirdPersonCamera;
+    public CinemachineDollyCart dollyCart;
+    float cameraRotation;
+    // / <summary>
+    // / 이 변수를 이용해서 Player Character를 임시로 담는다.
+    // / </summary>
+    public Transform playerParent;
+    [Space][Header("Launch Preparation Sequence")] public float prepMoveDuration = .15 f;
+    public float launchInterval = .5 f;
+    [Space][Header("Particles")] public ParticleSystem followParticles;
+    public ParticleSystem smokeParticle;
+    void Start() {
+        animator = GetComponent < Animator > ();
+        movement = GetComponent < MovementInput > ();
+        trail = dollyCart.GetComponentInChildren<TrailRenderer>();
+    }
+    void Update() {
+        if (insideLaunchStar) 
+            if (Input.GetKeyDown(KeyCode.Space)) 
+                StartCoroutine(CenterLaunch());
+            
+        
+        if (flying) {
+            animator.SetFloat("Path", dollyCart.m_Position);
+            playerParent.transform.position = dollyCart.transform.position;
+            if (!almostFinished) {
+                playerParent.transform.rotation = dollyCart.transform.rotation;
+            }
+        }
+        if (dollyCart.m_Position > .7 f && !almostFinished && flying) {
+            almostFinished = true;
+            // thirdPersonCamera.m_XAxis.Value = cameraRotation;
+            playerParent
+                .DORotate(new Vector3(360 + 180, 0, 0), .5 f, RotateMode.LocalAxisAdd)
+                .SetEase(Ease.Linear)
+                .OnComplete(() => playerParent.DORotate(new Vector3(-90, playerParent.eulerAngles.y, playerParent.eulerAngles.z), .2 f));
+        }
+        // Debug
+        if (Input.GetKeyDown(KeyCode.O)) 
+            Time.timeScale = .2 f;
+        
+        if (Input.GetKeyDown(KeyCode.P)) 
+            Time.timeScale = 1 f;
+        
+        if (Input.GetKeyDown(KeyCode.R)) 
+            UnityEngine
+                .SceneManagement
+                .SceneManager
+                .LoadSceneAsync(UnityEngine
+                    .SceneManagement
+                    .SceneManager
+                    .GetActiveScene()
+                    .name);
+        
+    }
+    // / <summary>
+    // / 1번째로 실행되는 함수 StartCoroutine을 사용한 함수
+    // / </summary>
+    // / <returns></returns>
+    IEnumerator CenterLaunch() { // 조작권을 뺏는다
+        movement.enabled = false;
+        // transform, 즉 Jammo의 parent를 null로 만든다. <- 그 이전에 parent가 있었다는 의미인데 어디에?
+        transform.parent = null;
+        // DoTween을 모두 Kill
+        DOTween.KillAll();
+        // Checks to see if there is a Camera Trigger at the DollyTrack object - if there is activate its camera
+        if (launchObject.GetComponent<CameraTrigger>() != null) 
+            launchObject.GetComponent<CameraTrigger>().SetCamera();
+        
+        // Checks to see if there is a Camera Trigger at the DollyTrack object - if there is activate its camera
+        // / 재밌는게 Script에 변수 한줄만 있는데이것을 Component로 받아와서 다시 할당한다는게 재밌는 구조인데, 이러한 구조의 이유는
+        // / Track의 각자의 속도를 다르게 하기 위함인데, 똑같은 Script를 재활용 했던 방법이 좋았다.
+        if (launchObject.GetComponent<SpeedModifier>() != null) 
+            speedModifier = launchObject.GetComponent<SpeedModifier>().modifier;
+        
+        // Checks to see if there is a Star Animation at the DollyTrack object
+        // / 다시 주소를 받아와야 한다. 왜냐하면 Object의 저장 위치 주소가 다 다르기 때문이다.
+        if (launchObject.GetComponentInChildren<StarAnimation>() != null) 
+            starAnimation = launchObject.GetComponentInChildren<StarAnimation>();
+        
+        dollyCart.m_Position = 0;
+        dollyCart.m_Path = null;
+        // 기존에 Dolly Cart에 있는 CinemachineSmoothPath를 가져온다.
+        dollyCart.m_Path = launchObject.GetComponent<CinemachineSmoothPath>();
+        dollyCart.enabled = true;
+        // / 2번의 yield문을 써야 제대로 돌아감
+        // / 적어도 2프레임을 소모해야 제대로 움직인다는 것인데 이것에 대한 정확한 이유가 필요
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        // / 움직임을 위한 DoTweening 함수들
+        Sequence CenterLaunch = DOTween.Sequence();
+        CenterLaunch.Append(transform.DOMove(dollyCart.transform.position, .2 f));
+        CenterLaunch.Join(transform.DORotate(dollyCart.transform.eulerAngles + new Vector3(90, 0, 0), .2 f));
+        CenterLaunch.Join(starAnimation.Reset(.2 f));
+        // / OnComplete()는 콜백이 끝난 후 바로 호출할 함수를 정하는것
+        CenterLaunch.OnComplete(() => LaunchSequence());
+    }
+    // / <summary>
+    // / DoTween의 Sequnce는 Tweener와 다르게 Animate까지 포함 가능
+    // / </summary>
+    // / <returns></returns>
+    Sequence LaunchSequence() {
+        float distance;
+        CinemachineSmoothPath path = launchObject.GetComponent<CinemachineSmoothPath>();
+        float finalSpeed = path.PathLength / (speed * speedModifier);
+        cameraRotation = transform.eulerAngles.y;
+        // / LaunchObject(별모양 오브젝트)의 position을 playerParent의 Position에 넣는다.
+        playerParent.transform.position = launchObject.position;
+        playerParent.transform.rotation = transform.rotation;
+        // / 애니메이터 parameter Set
+        flying = true;
+        animator.SetBool("flying", true);
+        Sequence s = DOTween.Sequence();
+        // / playerParent의 위치(별모양 Object의 위치)
+        s.AppendCallback(() => transform.parent = playerParent.transform); // Attatch the player to the empty gameObject
+        s.Append(transform.DOMove(transform.localPosition - transform.up, prepMoveDuration)); // Pull player a little bit back
+        s.Join(transform.DOLocalRotate(new Vector3(0, 360 * 2, 0), prepMoveDuration, RotateMode.LocalAxisAdd).SetEase(Ease.OutQuart));
+        s.Join(starAnimation.PullStar(prepMoveDuration));
+        s.AppendInterval(launchInterval); // Wait for a while before the launch
+        s.AppendCallback(() => trail.emitting = true);
+        s.AppendCallback(() => followParticles.Play());
+        s.Append(DOVirtual.Float(dollyCart.m_Position, 1, finalSpeed, PathSpeed).SetEase(pathCurve)); // Lerp the value of the Dolly Cart position from 0 to 1
+        s.Join(starAnimation.PunchStar(.5 f));
+        s.Join(transform.DOLocalMove(new Vector3(0, 0, -.5 f), .5 f)); // Return player's Y position
+        s.Join(transform.DOLocalRotate(new Vector3(0, 360, 0), // Slow rotation for when player is flying
+                (finalSpeed / 1.3 f), RotateMode.LocalAxisAdd)).SetEase(Ease.InOutSine);
+        s.AppendCallback(() => Land()); // Call Land Function
+        return s;
+    }
+    void Land() {
+        playerParent.DOComplete();
+        dollyCart.enabled = false;
+        dollyCart.m_Position = 0;
+        movement.enabled = true;
+        transform.parent = null;
+        flying = false;
+        almostFinished = false;
+        animator.SetBool("flying", false);
+        followParticles.Stop();
+        trail.emitting = false;
+    }
+    public void PathSpeed(float x) {
+        dollyCart.m_Position = x;
+    }
+    public void PlaySmoke() {
+        CinemachineImpulseSource[] impulses = FindObjectsOfType < CinemachineImpulseSource > ();
+        for (int i = 0; i < impulses.Length; i ++) 
+            impulses[i].GenerateImpulse();
+        
+        smokeParticle.Play();
+    }
+    private void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("Launch")) {
+            insideLaunchStar = true;
+            launchObject = other.transform;
+        }
+        if (other.CompareTag("CameraTrigger")) 
+            other.GetComponent<CameraTrigger>().SetCamera();
+        
+    }
+    private void OnTriggerExit(Collider other) {
+        if (other.CompareTag("Launch")) {
+            insideLaunchStar = false;
+        }
+    }
+}
+```
+{% endcode %}
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="StarAnimation.cs" %}
+{% code title="StarAnimation.cs" %}
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using DG.Tweening;
+using Cinemachine;
+// / <summary>
+// / starLauncher 쏘기 위한 ParticleScript
+// / </summary>
+public class StarAnimation: MonoBehaviour {
+    Animator animator;
+    Transform big;
+    Transform small;
+    public AnimationCurve punch;
+    [Space][Header("Particles")] public ParticleSystem glow;
+    public ParticleSystem charge;
+    public ParticleSystem explode;
+    public ParticleSystem smoke;
+    // / <summary>
+    // / GetComponent
+    // / </summary>
+    private void Start() {
+        animator = GetComponent < Animator > ();
+        big = transform.GetChild(0);
+        small = transform.GetChild(1);
+    }
+    // / <summary>
+    // / DoTweening에서 사용할 Sequence.Reset
+    // / </summary>
+    // / <param name="time">시간 조절함수</param>
+    // / <returns></returns>
+    public Sequence Reset(float time) {
+        animator.enabled = false;
+        Sequence s = DOTween.Sequence();
+        s.Append(big.DOLocalRotate(Vector3.zero, time).SetEase(Ease.InOutSine));
+        s.Join(small.DOLocalRotate(Vector3.zero, time).SetEase(Ease.InOutSine));
+        return s;
+    }
+    public Sequence PullStar(float pullTime) {
+        glow.Play();
+        charge.Play();
+        Sequence s = DOTween.Sequence();
+        s.Append(big.DOLocalRotate(new Vector3(0, 0, 360 * 2), pullTime, RotateMode.LocalAxisAdd).SetEase(Ease.OutQuart));
+        s.Join(small.DOLocalRotate(new Vector3(0, 0, 360 * 2), pullTime, RotateMode.LocalAxisAdd).SetEase(Ease.OutQuart));
+        s.Join(small.DOLocalMoveZ(-4.2 f, pullTime));
+        return s;
+    }
+    public Sequence PunchStar(float punchTime) {
+        CinemachineImpulseSource[] impulses = FindObjectsOfType < CinemachineImpulseSource > ();
+        animator.enabled = false;
+        Sequence s = DOTween.Sequence();
+        s.AppendCallback(() => explode.Play());
+        s.AppendCallback(() => smoke.Play());
+        s.AppendCallback(() => impulses[0].GenerateImpulse());
+        s.Append(small.DOLocalMove(Vector3.zero, .8 f).SetEase(punch));
+        s.Join(small.DOLocalRotate(new Vector3(0, 0, 360 * 2), .8 f).SetEase(Ease.OutBack));
+        s.AppendInterval(.8 f);
+        s.AppendCallback(() => animator.enabled = true);
+        return s;
+    }
+}
+```
+{% endcode %}
+{% endtab %}
 
+{% tab title="" %}
+```
+
+```
 {% endtab %}
 {% endtabs %}
 
