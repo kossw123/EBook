@@ -90,6 +90,8 @@ void PlayerMoveAndRotation() {
   * templete, generic 등등의 정해져 있지않는 type을 써야할 때가 있을 때 var type을 쓴다면 유동적으로 변경 가능합니다. 하지만 유동적이기 때문에 실행속도는 다른 변수타입에 비해 느립니다.
 
 여기서 Camera는 움직이면 안되기 때문에 forward, right변수의 Normalize\(\)를 해야 법선벡터를 생성하여 방향벡터를 뽑아내서 새로운 desiredMoveDirection에 할당하여 실질적으로 움직이는 Vector가 됩니다.
+
+\*\*\* LookAt\(\), RotateToCamera\(\)는 여기서 쓰이진 않지만 Sample Project에 기재 되어있기 때문에 아래의 Quaternion 단락에서 정리하도록 하겠습니다.
 {% endtab %}
 
 {% tab title="Second Tab" %}
@@ -97,7 +99,7 @@ void PlayerMoveAndRotation() {
 {% endtab %}
 {% endtabs %}
 
-
+* LaunchStar Object Scripts
 
 ## Blend Tree Animation
 
