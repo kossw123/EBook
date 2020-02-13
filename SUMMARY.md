@@ -1,7 +1,6 @@
 # Table of contents
 
-* [Index](README.md)
-* [page guide](page-guide.md)
+* [Page guide](README.md)
 * [Tutorial](tutorial/README.md)
   * [Unity](tutorial/page1/README.md)
     * [tutorial PhysicsObject](tutorial/page1/chapter1.md)
