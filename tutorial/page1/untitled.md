@@ -61,7 +61,8 @@ Character Object에는 Movement, BetterJumping, Collision Script를 넣고 Visua
 
 {% tabs %}
 {% tab title="Movement.cs" %}
-```text
+{% code title="Movement.cs" %}
+```csharp
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -372,10 +373,12 @@ public class Movement : MonoBehaviour
     }
 }
 ```
+{% endcode %}
 {% endtab %}
 
 {% tab title="BetterJumping.cs" %}
-```text
+{% code title="BetterJumping.cs" %}
+```csharp
   
 using System.Collections;
 using System.Collections.Generic;
@@ -404,10 +407,12 @@ public class BetterJumping : MonoBehaviour
     }
 }
 ```
+{% endcode %}
 {% endtab %}
 
 {% tab title="Collision.cs" %}
-```
+{% code title="Collision.cs" %}
+```csharp
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -466,10 +471,12 @@ public class Collision : MonoBehaviour
 }
 
 ```
+{% endcode %}
 {% endtab %}
 
 {% tab title="AnimationScript.cs" %}
-```
+{% code title="AnimationScript.cs" %}
+```csharp
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -534,6 +541,7 @@ public class AnimationScript : MonoBehaviour
     }
 }
 ```
+{% endcode %}
 {% endtab %}
 {% endtabs %}
 
