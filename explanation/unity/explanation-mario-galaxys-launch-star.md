@@ -103,7 +103,7 @@ void PlayerMoveAndRotation() {
 
 ## Blend Tree Animation
 
-![Jammo\_Player Animator&#xC758; Normal Status Blend Tree](../../.gitbook/assets/image%20%2834%29.png)
+![Jammo\_Player Animator&#xC758; Normal Status Blend Tree](../../.gitbook/assets/image%20%2835%29.png)
 
 {% embed url="https://wergia.tistory.com/54?category=739103" caption="Blend Tree Animation 사용" %}
 
