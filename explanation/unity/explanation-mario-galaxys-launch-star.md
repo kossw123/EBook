@@ -94,12 +94,26 @@ void PlayerMoveAndRotation() {
 \*\*\* LookAt\(\), RotateToCamera\(\)는 여기서 쓰이진 않지만 Sample Project에 기재 되어있기 때문에 아래의 Quaternion 단락에서 정리하도록 하겠습니다.
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="CharacterSkinController.cs" %}
+해당 Script는 CharacterSkin의 Texture를 가져와 Animator parameter에 맞는 표정으로 변경하는 Script입니다.
 
+주요 내용은 ChangeAnimatorIdle\(\), ChangeEyeOffset\(\) 함수이며 Update\(\) 함수에서 입력키에 따라 Animation을 초기화 합니다.
 {% endtab %}
 {% endtabs %}
 
 * LaunchStar Object Scripts
+
+{% tabs %}
+{% tab title="StarLauncher.cs" %}
+해당 Script는 Character Object에 추가하여 Dolly Cart가 움직일 때 Player의 행동을 변경하는 Script입니다.
+
+주요 내용은 
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
 
 ## Blend Tree Animation
 
