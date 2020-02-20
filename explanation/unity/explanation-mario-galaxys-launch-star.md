@@ -107,7 +107,7 @@ void PlayerMoveAndRotation() {
 {% tab title="StarLauncher.cs" %}
 해당 Script는 Character Object에 추가하여 Dolly Cart가 움직일 때 Player의 행동을 변경하는 Script입니다.
 
-주요 내용은 
+주요 내용은
 {% endtab %}
 
 {% tab title="Second Tab" %}
