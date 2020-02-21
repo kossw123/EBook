@@ -107,7 +107,36 @@ void PlayerMoveAndRotation() {
 {% tab title="StarLauncher.cs" %}
 해당 Script는 Character Object에 추가하여 Dolly Cart가 움직일 때 Player의 행동을 변경하는 Script입니다.
 
-주요 내용은
+주요 내용은 Dolly Cart transform에 Character transform을 옮기는 것, 그에 따른 DoTween을 사용한 Dolly Cart의 움직임, Space를 눌렀을 때의 StarLauncher Object의 움직임을 표현한 Coroutine, Object를 Tag로 검색해 LaunchObject에 담아 Dolly Cart로 옮기는 기능으로 나눠져 있습니다.
+
+```csharp
+void Update() 
+{
+    if(insideLaunchStar) 
+        if(Input.GetKeyDown(KeyCode.Space)) 
+            StartCoroutine(CenterLaunch());
+    
+    if(flying) {
+        animator.SetFloat("Path", dollyCart.m_Position);
+        playerParent.transform.position = dollyCart.transform.position;
+        if(!almostFinished) {
+            playerParent.transform.rotation = dollyCart.transform.rotation;
+        }
+    }
+   
+   if(dollyCart.m_Position > 0.7f && !almostFinished && flying) {
+        almostFinished = true;
+        // thirdPersonCamera.m_XAxis.Value = cameraRotation;
+        playerParent.DORotate(new Vector3(360 + 180, 0, 0), 0.5f, RotateMode.LocalAxisAdd).SetEase(Ease.Linear) .OnComplete(() => playerParent.DORotate(new Vector3(-90, playerParent.eulerAngles.y, playerParent.eulerAngles.z), 0.2f));
+    }
+    // Debug
+    if(Input.GetKeyDown(KeyCode.O)) Time.timeScale = .2f;
+    if(Input.GetKeyDown(KeyCode.P)) Time.timeScale = 1f;
+    if(Input.GetKeyDown(KeyCode.R)) UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+}
+```
+
+  Update\(\)에서는 Space를 눌렀을 때, parent에 ObjectCharacter가 옮겨지고, parent를 가지고 회전을 합니다. 아래의 Debug는 게임 play시 TimeScale을 조정해 슬로우 모션 효과를 줍니다.
 {% endtab %}
 
 {% tab title="Second Tab" %}
