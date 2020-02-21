@@ -165,6 +165,14 @@ IEnumerator CenterLaunch() {
     CenterLaunch.OnComplete(() => LaunchSequence());
 }
 ```
+
+Update\(\)에서 Space를 눌렀을 때 실행되는 Coroutine입니다.
+
+순차대로 코드리뷰를 해보자면,
+
+* 3~4 : Movement Input Script를 비활성화, transform.parent을 null로 설정
+  * 여기서 transform.parent는 Jammo\_Player의 Component로 추가되어 있을텐데 이 Object의 parent\(부모\)가 어디있을까에 대한 의문점이 있을 수 있습니다.
+    * 직접 Debug.Log\(transform.parent\) 한다면 null을 확인 할수 있습니다. 그렇기 때문에 Coroutine 함수에서 또 다시 transform.parent = null을 하는 이유를 찾자면 위치정보의 초기화 때문입니다.
 {% endtab %}
 
 {% tab title="Second Tab" %}
