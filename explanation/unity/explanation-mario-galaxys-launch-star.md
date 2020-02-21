@@ -112,10 +112,11 @@ void PlayerMoveAndRotation() {
 ```csharp
 void Update() 
 {
+    /// 1번
     if(insideLaunchStar) 
         if(Input.GetKeyDown(KeyCode.Space)) 
             StartCoroutine(CenterLaunch());
-    
+    /// 2번    
     if(flying) {
         animator.SetFloat("Path", dollyCart.m_Position);
         playerParent.transform.position = dollyCart.transform.position;
@@ -123,10 +124,9 @@ void Update()
             playerParent.transform.rotation = dollyCart.transform.rotation;
         }
     }
-   
+   /// 3번
    if(dollyCart.m_Position > 0.7f && !almostFinished && flying) {
         almostFinished = true;
-        // thirdPersonCamera.m_XAxis.Value = cameraRotation;
         playerParent.DORotate(new Vector3(360 + 180, 0, 0), 0.5f, RotateMode.LocalAxisAdd).SetEase(Ease.Linear) .OnComplete(() => playerParent.DORotate(new Vector3(-90, playerParent.eulerAngles.y, playerParent.eulerAngles.z), 0.2f));
     }
     // Debug
@@ -136,7 +136,35 @@ void Update()
 }
 ```
 
-  Update\(\)에서는 Space를 눌렀을 때, parent에 ObjectCharacter가 옮겨지고, parent를 가지고 회전을 합니다. 아래의 Debug는 게임 play시 TimeScale을 조정해 슬로우 모션 효과를 줍니다.
+ 위에서 번호표시한 함수가 순차대로 실행됩니다. 
+
+1. Space를 눌렀을 때, Couroutine 실행합니다.
+2. playerParent에 Dolly Cart transform을 옮깁니다.
+3. Dolly Cart의 Position과 flying 변수가 true일 때, playerParent\(Character Object\)를 회전합니다.
+4. 아래의 Debug는 게임 play시 TimeScale을 조정해 슬로우 모션 효과를 줍니다.
+
+```csharp
+IEnumerator CenterLaunch() {
+
+    movement.enabled = false;
+    transform.parent = null;
+    DOTween.KillAll();
+    if(launchObject.GetComponent<CameraTrigger>() != null) launchObject.GetComponent<CameraTrigger>().SetCamera();
+    if(launchObject.GetComponent<SpeedModifier>() != null) speedModifier = launchObject.GetComponent<SpeedModifier>().modifier;
+    if(launchObject.GetComponentInChildren<StarAnimation>() != null) starAnimation = launchObject.GetComponentInChildren<StarAnimation>();
+    dollyCart.m_Position = 0;
+    dollyCart.m_Path = null;
+    dollyCart.m_Path = launchObject.GetComponent<CinemachineSmoothPath>();
+    dollyCart.enabled = true;
+    yield return new WaitForEndOfFrame();
+    yield return new WaitForEndOfFrame();
+    Sequence CenterLaunch = DOTween.Sequence();
+    CenterLaunch.Append(transform.DOMove(dollyCart.transform.position, 0.2f));
+    CenterLaunch.Join(transform.DORotate(dollyCart.transform.eulerAngles + new Vector3(90, 0, 0), 0.2f));
+    CenterLaunch.Join(starAnimation.Reset(0.2f));
+    CenterLaunch.OnComplete(() => LaunchSequence());
+}
+```
 {% endtab %}
 
 {% tab title="Second Tab" %}
