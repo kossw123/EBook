@@ -326,6 +326,8 @@ public Sequence Reset(float time) {
 
 Sequence 타입의 Reset 함수입니다. 이 함수는 Tween으로 설정한 모든 Sequence들을 Ease합니다.
 
+* Sequence 타입의 함수가 생소했는데, 
+
 순차적으로 코드리뷰를 하자면,
 
 * 2 : Animator를 비활성화 합니다.
@@ -333,6 +335,24 @@ Sequence 타입의 Reset 함수입니다. 이 함수는 Tween으로 설정한 �
 * 4 : Sequence에 대한 설정값\(LocalRotate\)을 Ease 합니다.
   * DoTween에 대한 자세한 사항은 API, Component reference 항목에 기재하겠습니다.
 * 5 : Sequence에 대한 설정값을 동시에 Ease 합니다.
+
+```csharp
+public Sequence PullStar(float pullTime) {
+    glow.Play();
+    charge.Play();
+    Sequence s = DOTween.Sequence();
+    s.Append(big.DOLocalRotate(new Vector3(0, 0, 360 * 2), pullTime, RotateMode.LocalAxisAdd).SetEase(Ease.OutQuart));
+    s.Join(small.DOLocalRotate(new Vector3(0, 0, 360 * 2), pullTime, RotateMode.LocalAxisAdd).SetEase(Ease.OutQuart));
+    s.Join(small.DOLocalMoveZ(-4.2f, pullTime));
+    return s;
+}
+```
+
+Sequence 타입의 PullStar 함수는 LaunchStar가 Start할 때의 Effect 및, 움직임을 나타냅니다.
+
+순차적으로 코드리뷰를 하자면,
+
+* 
 {% endtab %}
 {% endtabs %}
 
