@@ -173,7 +173,7 @@ Update\(\)에서 Space를 눌렀을 때 실행되는 Coroutine입니다.
 * 3 ~ 4 : Movement Input Script를 비활성화, transform.parent을 null로 설정합니다.
   * 여기서 transform.parent는 Jammo\_Player의 Component로 추가되어 있을텐데 이 Object의 parent\(부모\)가 어디있을까에 대한 의문점이 있을 수 있습니다.
     * 직접 Debug.Log\(transform.parent\) 한다면 null을 확인 할수 있습니다. 그렇기 때문에 Coroutine 함수에서 또 다시 transform.parent = null을 하는 이유를 찾자면 위치정보의 초기화 때문입니다.
-* 5 : DoTween.KillAll\(\)은 DoTween API에서의 Tween, Sequance들을 Destroy하는 함수입니다.
+* 5 : DoTween.KillAll\(\)은 DoTween API에서의 Tween, Sequence들을 Destroy하는 함수입니다.
 * 6 ~ 8 : 다른 Script들의 함수들을 GetComponent를 통해 가져 설정합니다.
 * 9 ~ 12 : Dolly Cart의 Position 초기화 및 Path 설정
 * 13 ~ 14 : WaitForEndOfFrame\(\)를 통해 한 프레임의 렌더링이 완전히 종료 됬을 때, 다음 진행으로 넘어가는데 실제로 확인해보니 완전히 종료되려면 2프레임이 필요하다는 것을 알수 있었습니다.
@@ -181,7 +181,7 @@ Update\(\)에서 Space를 눌렀을 때 실행되는 Coroutine입니다.
 
 {% embed url="https://ejonghyuck.github.io/blog/2016-12-12/unity-coroutine-optimization/" %}
 
-* 15 ~ 19 : DoTween API를 사용하려는 Sequance를 생성하고 작업 끝에 Append로 추가하고 Join으로 동시에 처리되는 작업을 넣습니다.
+* 15 ~ 19 : DoTween API를 사용하려는 Sequence를 생성하고 작업 끝에 Append로 추가하고 Join으로 동시에 처리되는 작업을 넣습니다.
   * 이에 대한 내용은 영상에서 자세히 설명이 되어있습니다.
 
 ```csharp
@@ -303,8 +303,22 @@ private void OnTriggerExit(Collider other) {
 * 11 : insideLaunchStar 변수를 false로 설정합니다.
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="StarAnimation.cs" %}
+ 해당 Script는 LauncherStar Object를 통해 Space를 눌렀을 때 Character가 움직이면서 나오는 Effect를 설정합니다.
 
+주요 내용은 DoTween을 사용한 Animation 구현입니다. 
+
+```csharp
+public Sequence Reset(float time) {
+    animator.enabled = false;
+    Sequence s = DOTween.Sequence();
+    s.Append(big.DOLocalRotate(Vector3.zero, time).SetEase(Ease.InOutSine));
+    s.Join(small.DOLocalRotate(Vector3.zero, time).SetEase(Ease.InOutSine));
+    return s;
+}
+```
+
+Sequence 
 {% endtab %}
 {% endtabs %}
 
