@@ -352,7 +352,9 @@ Sequence 타입의 PullStar 함수는 LaunchStar가 Start할 때의 Effect 및, 
 
 순차적으로 코드리뷰를 하자면,
 
-* 
+* 2 ~ 3 : particle 재
+* 4 : DoTween Sequence 생성 
+* 5 : 
 {% endtab %}
 {% endtabs %}
 
