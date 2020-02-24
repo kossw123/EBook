@@ -168,16 +168,111 @@ IEnumerator CenterLaunch() {
 
 Update\(\)에서 Space를 눌렀을 때 실행되는 Coroutine입니다.
 
-순차대로 코드리뷰를 해보자면,
+순차적로 코드리뷰를 해보자면,
 
-* 3~4 : Movement Input Script를 비활성화, transform.parent을 null로 설정합니다.
+* 3 ~ 4 : Movement Input Script를 비활성화, transform.parent을 null로 설정합니다.
   * 여기서 transform.parent는 Jammo\_Player의 Component로 추가되어 있을텐데 이 Object의 parent\(부모\)가 어디있을까에 대한 의문점이 있을 수 있습니다.
     * 직접 Debug.Log\(transform.parent\) 한다면 null을 확인 할수 있습니다. 그렇기 때문에 Coroutine 함수에서 또 다시 transform.parent = null을 하는 이유를 찾자면 위치정보의 초기화 때문입니다.
 * 5 : DoTween.KillAll\(\)은 DoTween API에서의 Tween, Sequance들을 Destroy하는 함수입니다.
-* 6~8 : 다른 Script들의 함수들을 GetComponent를 통해 가져 설정합니다.
-* 9~12 : Dolly Cart의 Position 초기화 및 Path 설정
-* 13~14 : WaitForEndOfFrame\(\)를 통해 한 프레임이 완전히 종료 됬을 때, 다음 진행으로 넘어가는데 실제로 확인해보니 완전히 종료되려면 2프레임이 필요하다는 것을 알수 있었습니다.
-  * 
+* 6 ~ 8 : 다른 Script들의 함수들을 GetComponent를 통해 가져 설정합니다.
+* 9 ~ 12 : Dolly Cart의 Position 초기화 및 Path 설정
+* 13 ~ 14 : WaitForEndOfFrame\(\)를 통해 한 프레임의 렌더링이 완전히 종료 됬을 때, 다음 진행으로 넘어가는데 실제로 확인해보니 완전히 종료되려면 2프레임이 필요하다는 것을 알수 있었습니다.
+  * Garbage가 남아있는 것으로 추측되며, 이를 해결하기 위해 2개의 yield문을 사용함으로 완전히 초기화 시키는 것으로 추정됩니다.
+
+{% embed url="https://ejonghyuck.github.io/blog/2016-12-12/unity-coroutine-optimization/" %}
+
+* 15 ~ 19 : DoTween API를 사용하려는 Sequance를 생성하고 작업 끝에 Append로 추가하고 Join으로 동시에 처리되는 작업을 넣습니다.
+  * 이에 대한 내용은 영상에서 자세히 설명이 되어있습니다.
+
+```csharp
+Sequence LaunchSequence() {
+
+    float distance;
+    CinemachineSmoothPath path = launchObject.GetComponent<CinemachineSmoothPath>();
+    float finalSpeed = path.PathLength /(speed * speedModifier);
+    cameraRotation = transform.eulerAngles.y;
+    playerParent.transform.position = launchObject.position;
+    playerParent.transform.rotation = transform.rotation;
+    flying = true;
+    animator.SetBool("flying", true);
+    Sequence s = DOTween.Sequence();
+    s.AppendCallback(() => transform.parent = playerParent.transform); // Attatch the player to the empty gameObject
+    s.Append(transform.DOMove(transform.localPosition - transform.up, prepMoveDuration)); // Pull player a little bit back
+    s.Join(transform.DOLocalRotate(new Vector3(0, 360 * 2, 0), prepMoveDuration, RotateMode.LocalAxisAdd).SetEase(Ease.OutQuart));
+    s.Join(starAnimation.PullStar(prepMoveDuration));
+    s.AppendInterval(launchInterval); // Wait for a while before the launch
+    s.AppendCallback(() => trail.emitting = true);
+    s.AppendCallback(() => followParticles.Play());
+    s.Append(DOVirtual.Float(dollyCart.m_Position, 1, finalSpeed, PathSpeed).SetEase(pathCurve)); // Lerp the value of the Dolly Cart position from 0 to 1
+    s.Join(starAnimation.PunchStar(0.5f));
+    s.Join(transform.DOLocalMove(new Vector3(0, 0, -0.5f), 0.5f)); // Return player's Y position
+    s.Join(transform.DOLocalRotate(new Vector3(0, 360, 0), // Slow rotation for when player is flying(finalSpeed / 1.3f), RotateMode.LocalAxisAdd)).SetEase(Ease.InOutSine);
+    s.AppendCallback(() => Land()); // Call Land Function
+    return s;
+}
+```
+
+순차적으로 코드리뷰를 해보자면
+
+* 3 ~ 10 : 
+  * 거리 
+  * LauncherStar\_Path의 CinemachineSmoothPath Component를 가져와 설정
+  * 최종 속도
+  * 카메라 각도,
+  * LaunchObject의 위치를 parent의 위치에 넣고
+  * flying변수 활성화,
+  * Animator parmeter Set을 합니다.
+* 11 ~ 23 : DoTween을 사용하여 Dolly Cart가 Path를 따라 움직임을 표현합니다.
+
+```csharp
+void Land()    {
+        playerParent.DOComplete();
+        dollyCart.enabled = false;
+        dollyCart.m_Position = 0;
+        movement.enabled = true;
+        transform.parent = null
+        flying = false;
+        almostFinished = false;
+        animator.SetBool("flying", false);
+        followParticles.Stop();
+        trail.emitting = false;
+    }
+```
+
+Character가 LauncherStar Object에서 떨어지고 땅에 착지할 시 실행되는 함수입니다.
+
+순차적으로 코드리뷰를 해보자면
+
+* 2 : DoTween 초기화
+* 3 ~ 4 : Dolly Cart의 비활성화와 원래 위치로 초기화 합니다.
+* 5 : MovementInput Script 활성화 합니다.
+* 6 : transform parent = null로 만들어서 LaunchObject 변수 위치 초기화 합니다.
+* 7 : flying 변수 비활성 합니다.
+* 8 : almostFinished를 false 합니다.
+* 9 : flying Animator를 false로 설정 합니다.
+* 10 : particle을 멈춥니다.
+* 11 : trail Renderer의 emitting\(발생\)을 false로 설정합니다.
+
+```csharp
+public void PathSpeed(float x)
+    {
+        dollyCart.m_Position = x;
+    }
+```
+
+Dolly Cart의 속도를 조절합니다.
+
+```csharp
+public void PlaySmoke()
+{
+    CinemachineImpulseSource[] impulses = FindObjectsOfType<CinemachineImpulseSource>();
+    for (int i = 0; i < impulses.Length; i++)
+        impulses[i].GenerateImpulse();
+    smokeParticle.Play();
+}
+```
+
+Cinemachine Dolly Cart with Track이라는 Cinemachine을 생성했기 때문
 {% endtab %}
 
 {% tab title="Second Tab" %}
