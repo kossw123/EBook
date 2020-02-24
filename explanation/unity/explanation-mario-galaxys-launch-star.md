@@ -272,7 +272,13 @@ public void PlaySmoke()
 }
 ```
 
-Cinemachine Dolly Cart with Track이라는 Cinemachine을 생성하고 CinemachineImpulseSource Component를 통해 Camera Shake Effect를 부여합니다. 
+Cinemachine Dolly Cart with Track이라는 Cinemachine을 생성하고 CinemachineImpulseSource Component를 통해 Camera Shake Effect를 부여합니다. tutorial 문서에서는 사용하지 않지만 Sample Project에서는 LaunchStar Object를 타고 Character가 착지할 때, 작동됩니다.
+
+순차적으로 코드리뷰를 하자면,
+
+* 3 : CinemachineImpluseSource 배열을 생성하여 다른 Camera의 CinemachineImpulseSource를 찾아서 넣습니다.
+* 4 ~ 5 : Impulse 배열의 Index 0부터 impulses.Length까지 각 Index에서 GenerateImpulse를 생성합니다.
+* 6 : Smoke particle을 재생합니다.
 
 ```csharp
 private void OnTriggerEnter(Collider other) {
@@ -318,7 +324,13 @@ public Sequence Reset(float time) {
 }
 ```
 
-Sequence 
+Sequence 타입의 Reset 함수입니다. 이 함수는 Tween으로 설정한 모든 Sequence들을 Ease합니다.
+
+순차적으로 코드리뷰를 하자면,
+
+* 2 : Animator를 비활성화 합니다.
+* 3 : Sequence를 생성합니다.
+* 4 : 
 {% endtab %}
 {% endtabs %}
 
