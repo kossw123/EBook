@@ -330,7 +330,9 @@ Sequence 타입의 Reset 함수입니다. 이 함수는 Tween으로 설정한 �
 
 * 2 : Animator를 비활성화 합니다.
 * 3 : Sequence를 생성합니다.
-* 4 : 
+* 4 : Sequence에 대한 설정값\(LocalRotate\)을 Ease 합니다.
+  * DoTween에 대한 자세한 사항은 API, Component reference 항목에 기재하겠습니다.
+* 5 : Sequence에 대한 설정값을 동시에 Ease 합니다.
 {% endtab %}
 {% endtabs %}
 
