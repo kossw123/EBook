@@ -272,7 +272,35 @@ public void PlaySmoke()
 }
 ```
 
-Cinemachine Dolly Cart with Track이라는 Cinemachine을 생성했기 때문
+Cinemachine Dolly Cart with Track이라는 Cinemachine을 생성하고 CinemachineImpulseSource Component를 통해 Camera Shake Effect를 부여합니다. 
+
+```csharp
+private void OnTriggerEnter(Collider other) {
+    if (other.CompareTag("Launch")) {
+        insideLaunchStar = true;
+        launchObject = other.transform;
+    }
+    if (other.CompareTag("CameraTrigger")) 
+        other.GetComponent<CameraTrigger>().SetCamera();
+}
+private void OnTriggerExit(Collider other) {
+    if (other.CompareTag("Launch")) {
+        insideLaunchStar = false;
+    }
+}
+```
+
+ Collider 내장함수를 이용하여 OnTriggerEnter\(충돌 중\), OnTriggerExit\(충돌 종료시\)의 함수를 사용하여 미리 부여한 Tag를 찾아서 내용을 실행시킵니다.
+
+순차적으로 코드리뷰를 해보자면,
+
+* 2 : Launch Tag를 찾습니다.
+* 3 : Collider 충돌 시 활성화 되는 InsideLaunchStar 변수를 true로 설정합니다.
+* 4 : Collider의 transform을 LaunchObject에 넣어서 위치를 설정합니다.
+* 6 : CameraTrigger Tag를 찾습니다.
+* 7 : Collider의 CameraTrigger Component를 가져와 SetCamera함수를 실행합니다.
+* 10 : Launch Tag를 찾습니다.
+* 11 : insideLaunchStar 변수를 false로 설정합니다.
 {% endtab %}
 
 {% tab title="Second Tab" %}
