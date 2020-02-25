@@ -24,6 +24,7 @@
     * [TR PhysicsObject](technical-reference/unity/tr-physicsobject.md)
     * [TR Tilemap](technical-reference/unity/tr-tilemap.md)
     * [TR Celeste's Movement](technical-reference/unity/tr-celestes-movement-1.md)
-* [API, Component reference](api-component-reference.md)
+* [API, Component reference](api-component-reference/README.md)
+  * [DOTween](api-component-reference/dotween.md)
 * [feedback](feedback.md)
 
