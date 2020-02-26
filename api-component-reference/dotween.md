@@ -14,7 +14,7 @@ description: DOTween
 
 ## DOTween 이란?
 
-* Unity에서 동작하는 안전 객체 지 애니메이션 엔진입니다.
+* Unity에서 동작하는 안전 객체 지향  애니메이션 엔진입니다.
 * 기존 버전인 HOTween에 비해 더욱 빠르고, 효율적이며, 쓸모없는 garbage collector 할당을 피합니다.
 * DOTween은 Unity 버전 2019 ~ 4.6과 호환됩니다.
 
