@@ -20,8 +20,8 @@ description: DOTween
 
 ## 명명법\(Nomenclature\)
 
-* Tweener : 
-* Sequence : 값을 제어하는 ​​대신 다른 Tween을 제어하여 그룹으로 애니메이션하는 특수 Tween입니다.
+* Tweener : 변수를 제어해서 Animation을 적용시키는 
+* Sequence : Tweener나 다른 Sequence를 제어해서 
 * Tween : Tweener와 Sequence를 모두 나타내는 일반적인 단어입니다.
 * Nasted Tween : Sequence 안에 포함된 Tween입니다.
 * Prefixes : 접두사는 IntelliSense를 최대한 활용하는 데 중요하므로 다음 사항을 기억하십시오.
@@ -38,6 +38,8 @@ description: DOTween
   * On : Tween에 연결할 수있는 모든 콜백의 접두사입니다.
 
 ## DOTween의 특징
+
+{% embed url="http://blog.demigiant.com/what-is-a-tween-engine/" %}
 
 * **Speed and efficiency**
   * **빠르고 효율적입니다**. 쓸모없는 garbage collector 할당을 피하기 위해 **모든것이 cash로 저장되고 재사용 됩니다.**
@@ -91,5 +93,7 @@ description: DOTween
 * **Extras**
   * 
 * **All the basics**
-  * 
+  * ㅇ
+
+
 
