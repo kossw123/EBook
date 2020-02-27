@@ -360,7 +360,7 @@ Sequence 타입의 PullStar 함수는 LaunchStar가 Start할 때의 Effect 및, 
 
 ## Blend Tree Animation
 
-![Jammo\_Player Animator&#xC758; Normal Status Blend Tree](../../.gitbook/assets/image%20%2835%29.png)
+![Jammo\_Player Animator&#xC758; Normal Status Blend Tree](../../.gitbook/assets/image%20%2836%29.png)
 
 {% embed url="https://wergia.tistory.com/54?category=739103" caption="Blend Tree Animation 사용" %}
 
