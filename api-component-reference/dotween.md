@@ -154,6 +154,8 @@ Sequence의 특징은 다음과 같습니다.
 * Sequence화 시킨 Tween들은 순차적일 필요가 없습니다. 이때 Insert\(\) 함수로 Tween을 겹칠 수 있습니다.
 * 하나의 Sequence에서 쓴 Tween은 다른 Sequence에서 재사용 할 수 없습니다.
 * 빈 Sequence를 사용하면 안됩니다.
+* Sequence가 시작되기 전\(다음 프레임으로 넘어가기 전\)에 아래의 방법을 적용시켜야 합니다. 그렇지 않으면 Sequence가 동작하지 않습니다.
+* Delay, Loop는 중첩된 Tween 내부에서도 작동합니다.
 
 작성 방법은 아래와 같습니다.
 
