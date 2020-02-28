@@ -395,6 +395,55 @@ Sequence를 함수타입으로 사용하여 최종적으로 산출되는 Animati
 {% endtab %}
 {% endtabs %}
 
+* Camera Object Script, Speed Modifier Script
+
+{% tabs %}
+{% tab title="CameraTrigger" %}
+해당 Script는 Camera를 Set하고 활성화 및 충돌체에 대한 Gizmo를 표시합니다.
+
+```csharp
+public void SetCamera() {
+    brain.m_DefaultBlend.m_Style = cut
+        ? CinemachineBlendDefinition.Style.Cut
+        : CinemachineBlendDefinition.Style.EaseOut;
+    if (camerasGroup.childCount <= 0) 
+        return;
+    
+    for (int i = 0; i < camerasGroup.childCount; i ++) {
+        camerasGroup
+            .GetChild(i)
+            .gameObject
+            .SetActive(false);
+    }
+    camera.gameObject.SetActive(activatesCamera);
+}
+```
+
+SetCamera를 통해 CinemachineBrain의 CinemachineBlendDefinition를 설정하고 camerasGroup의 하위 Object를 받아서 활성화 여부를 결정합니다.
+
+순차적으로 코드리뷰를 해보자면,
+
+* 2 ~ 4 : 삼항연산자를 통해 brain Object의 Blend Style을 결정합니다.
+* 5 ~ 6 : camerasGroup의 하위 오브젝트가 존재하지 않을 시에 종료합니다.
+* 8 ~ 12 : 반복문을 통해 camerasGroup의 모든 하위 Object들을 비활성화 합니다.
+* 14 : 필요한 Camera를 활성화 시킵니다.
+{% endtab %}
+
+{% tab title="" %}
+해당 Script에서는 단순하게 속도변수만 존재합니다. 이를 다른 Script에서 사용합니다.
+
+굳이 이렇게 만든 이유는 속도의 관리 측면에 있는 것 같습니다. 예를 들어 각 Path마다 필요한 Speed변수가 존재하는데 이를 해당 Script에 계속 변수로 생성하는 것은 비 효율적이기 때문에 이렇게 속도 Script를 생성하여 할당합니다.
+
+```csharp
+public float modifier;
+```
+
+다른 Script들은 기능을 작성하고 있는데, 이 Script는 재사용성을 중점으로 작성되고 있습니다.
+
+이러한 변수의 관리는 굉장히 중요하기 때문에 굳이 작성할 필요없는 한줄의 코드였지만 해설을 서술하게 되었습니다.
+{% endtab %}
+{% endtabs %}
+
 ## Blend Tree Animation
 
 ![Jammo\_Player Animator&#xC758; Normal Status Blend Tree](../../.gitbook/assets/image%20%2836%29.png)
