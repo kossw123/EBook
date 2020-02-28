@@ -374,7 +374,7 @@ public Sequence PunchStar(float punchTime) {
 }
 ```
 
-Sequence를 함수타입으로 사용하여 최종적으로 산출되는 Animation Sequence를 반환합니다.
+Sequence를 함수타입으로 사용하여 최종적으로 산출되는 Animation Sequence를 반환합니다. 2개의 Transform\(big, small\)을 가지고 각각 회전 시킵니다.
 
 순차적으로 코드리뷰를 하자면,
 
@@ -383,7 +383,15 @@ Sequence를 함수타입으로 사용하여 최종적으로 산출되는 Animati
 * 4 : Sequence를 생성합니다.
 * 5 ~ 6 : AppendCallback\(\)을 람다식을 써서 particle event를 재생합니다.
 * 7 : AppendCallback\(\)으로 배열로 저장한 CinemachineImpulseSource를 발생시킵니다.
-* 8 : 
+* 8 : 전역 변수로 설정한 AnimationCurve를 SetEase\(\)를 사용하여 설정합니다.
+  * 여기서 SetEase는 Sequence에 적용한다면 TimeLine인 것처럼 전체 Sequence에 적용됩니다.
+* 9 : 위와 동일하게 동작하지만 SetEase\(Ease.OutBack\)라는 parameter를 통해 Easing Function을 설정합
+  * Easing Function은 SetEase\(\)에서 쓸 수있는 함수로써 아래의 링크와 같은 method를 쓸 수 있습니다.
+
+{% embed url="https://easings.net/" %}
+
+* 10 : AppendInterval\(0.8f\)를 통해 0.8초 이후에 Append하도록 설정합니다.
+* 11 : 람다식으로 Animator를 활성화 합니다.
 {% endtab %}
 {% endtabs %}
 
