@@ -352,9 +352,36 @@ Sequence 타입의 PullStar 함수는 LaunchStar가 Start할 때의 Effect 및, 
 
 순차적으로 코드리뷰를 하자면,
 
-* 2 ~ 3 : particle 재
-* 4 : DoTween Sequence 생성 
-* 5 : 
+* 2 ~ 3 : particle 재생합니다.
+* 4 : DoTween Sequence 생성 합니다.
+* 5 : Append\(\)를 사용하여 Sequence 끝에 DOLocalRotate를 추가합니다.
+* 6 : Join\(\)을 사용하여 Sequence에 마지막 Tween이나 callback과 동일한 시간에 Tween을 삽입합니다.
+* 7 : 6번 코드와 동일하게 작동합니다.
+
+```csharp
+public Sequence PunchStar(float punchTime) {
+    CinemachineImpulseSource[] impulses = FindObjectsOfType<CinemachineImpulseSource>();
+    animator.enabled = false;
+    Sequence s = DOTween.Sequence();
+    s.AppendCallback(() => explode.Play());
+    s.AppendCallback(() => smoke.Play());
+    s.AppendCallback(() => impulses[0].GenerateImpulse());
+    s.Append(small.DOLocalMove(Vector3.zero, 0.8f).SetEase(punch));
+    s.Join(small.DOLocalRotate(new Vector3(0, 0, 360 * 2), 0.8f).SetEase(Ease.OutBack));
+    s.AppendInterval(0.8f);
+    s.AppendCallback(() => animator.enabled = true);
+    return s;
+}
+```
+
+Sequence를 함수타입으로 사용하여 최종적으로 산출되는 Animation Sequence를 반환합니다.
+
+순차적으로 코드리뷰를 하자면,
+
+* 2 : CinemachineImpulseSource를 통해 Camera Shake효과를 주기 위한 대상을 지정합니다.
+* 3 : Animator 비활성화 합니다.
+* 4 : Sequence를 생성합니다.
+* 5 ~ 6 : AppendCallback\(\)을 람다식을 써서 particle을 재생합니다.
 {% endtab %}
 {% endtabs %}
 
