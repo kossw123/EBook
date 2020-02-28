@@ -398,7 +398,7 @@ Sequence를 함수타입으로 사용하여 최종적으로 산출되는 Animati
 * Camera Object Script, Speed Modifier Script
 
 {% tabs %}
-{% tab title="CameraTrigger" %}
+{% tab title="CameraTrigger.cs" %}
 해당 Script는 Camera를 Set하고 활성화 및 충돌체에 대한 Gizmo를 표시합니다.
 
 ```csharp
@@ -429,7 +429,7 @@ SetCamera를 통해 CinemachineBrain의 CinemachineBlendDefinition를 설정하�
 * 14 : 필요한 Camera를 활성화 시킵니다.
 {% endtab %}
 
-{% tab title="" %}
+{% tab title="SpeedModifier.cs" %}
 해당 Script에서는 단순하게 속도변수만 존재합니다. 이를 다른 Script에서 사용합니다.
 
 굳이 이렇게 만든 이유는 속도의 관리 측면에 있는 것 같습니다. 예를 들어 각 Path마다 필요한 Speed변수가 존재하는데 이를 해당 Script에 계속 변수로 생성하는 것은 비 효율적이기 때문에 이렇게 속도 Script를 생성하여 할당합니다.
