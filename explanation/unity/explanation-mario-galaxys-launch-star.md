@@ -381,7 +381,9 @@ Sequence를 함수타입으로 사용하여 최종적으로 산출되는 Animati
 * 2 : CinemachineImpulseSource를 통해 Camera Shake효과를 주기 위한 대상을 지정합니다.
 * 3 : Animator 비활성화 합니다.
 * 4 : Sequence를 생성합니다.
-* 5 ~ 6 : AppendCallback\(\)을 람다식을 써서 particle을 재생합니다.
+* 5 ~ 6 : AppendCallback\(\)을 람다식을 써서 particle event를 재생합니다.
+* 7 : AppendCallback\(\)으로 배열로 저장한 CinemachineImpulseSource를 발생시킵니다.
+* 8 : 
 {% endtab %}
 {% endtabs %}
 
