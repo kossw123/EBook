@@ -11,6 +11,10 @@ description: Explanation Mario Galaxy's Launch Star
 
 ## Scripting Code Review
 
+* 각 Object별로 할당된 Script를 Tab으로 나눠서 작성합니다.
+
+
+
 * Jammo\_Player Object Scripts
 
 {% tabs %}
