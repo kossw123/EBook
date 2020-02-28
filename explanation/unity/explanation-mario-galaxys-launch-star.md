@@ -102,6 +102,63 @@ void PlayerMoveAndRotation() {
 해당 Script는 CharacterSkin의 Texture를 가져와 Animator parameter에 맞는 표정으로 변경하는 Script입니다.
 
 주요 내용은 ChangeAnimatorIdle\(\), ChangeEyeOffset\(\) 함수이며 Update\(\) 함수에서 입력키에 따라 Animation을 초기화 합니다.
+
+* 해당 Script의 코드리뷰는 한 모든 코드를 한 Block에 담아서 리뷰하겠습니다.
+* 그리고 기능은 같지만 활성화 조건이 다른 코드들은 한번에 묶어서 설명하겠습니다.
+
+```csharp
+void Update() {
+    if(Input.GetKeyDown(KeyCode.Alpha1)) {
+        ChangeEyeOffset(EyePosition.normal);
+        ChangeAnimatorIdle("normal");
+    }
+    if(Input.GetKeyDown(KeyCode.Alpha2)) {
+        ChangeEyeOffset(EyePosition.angry);
+        ChangeAnimatorIdle("angry");
+    }
+    if(Input.GetKeyDown(KeyCode.Alpha3)) {
+        ChangeEyeOffset(EyePosition.happy);
+        ChangeAnimatorIdle("happy");
+    }
+    if(Input.GetKeyDown(KeyCode.Alpha4)) {
+        ChangeEyeOffset(EyePosition.dead);
+        ChangeAnimatorIdle("dead");
+    }
+}
+void ChangeAnimatorIdle(string trigger) {
+    animator.SetTrigger(trigger);
+}
+void ChangeMaterialSettings(int index) {
+    for(int i = 0; i < characterMaterials.Length; i++) {
+        if (characterMaterials[i].transform.CompareTag("PlayerEyes")) characterMaterials[i].material.SetColor("_EmissionColor", eyeColors[index]);
+        else characterMaterials[i].material.SetTexture("_MainTex",albedoList[index]);
+    }
+}
+void ChangeEyeOffset(EyePosition pos) {
+    Vector2 offset = Vector2.zero;
+    switch(pos) {
+        case EyePosition.normal: offset = new Vector2(0, 0);
+        break;
+        case EyePosition.happy: offset = new Vector2(0.33f, 0);
+        break;
+        case EyePosition.angry: offset = new Vector2(0.66f, 0);
+        break;
+        case EyePosition.dead: offset = new Vector2(0.33f, 0.66f);
+        break;
+        default: break;
+    }
+    for(int i = 0; i < characterMaterials.Length; i++) {
+        if (characterMaterials[i].transform.CompareTag("PlayerEyes")) characterMaterials[i].material.SetTextureOffset("_MainTex", offset);
+    }
+}
+```
+
+* 2 ~ 16 : 특정 키를 눌렀다면 ChangeEyeOffset 함수를 실행시켜 표정에 따라 위치를 변화시키고,  Texture를 변화시킵니다. Animator Trigger parameter를 활성화 시키는 ChangeAnimatorIdle을 통해 활성화 시킵니다.
+* 20 : Animator의 Trigger parameter를 활성화 시킵니다.
+* 23 ~ 25 : 모든 CharacterMaterial을 검색 후 미리 설정한 Tag를 비교하여 해당 함수의 parameter의 값에 따라 Material.Color, SetTexture, albedoList를 설정합니다.
+* 29 : 임의의 Vector2 변수인 Offset의 위치를 초기화 합니다.
+* 30 ~ 39 : 미리 선언한 enum문을 parameter로 받아 각 case별로 offset 변수를 다시 설정합니다.
+* 41 ~ 42 : characterMaterial의 길이를 받아서 PlayerEye라는 Tag가 있다면, characterMaterial의 Texture를 위에서 설정한 offset 변수와 함께 원래 default값으로 되돌립니다.
 {% endtab %}
 {% endtabs %}
 
