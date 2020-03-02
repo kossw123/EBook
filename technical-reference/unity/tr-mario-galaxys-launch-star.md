@@ -25,8 +25,13 @@ description: TR Mario Galaxy's Launch Star
     ![](../../.gitbook/assets/image%20%2874%29.png)
 * **2D Simple Directional과 다른 2D Freeform Directional**
   * Simple Directional과 동일하지만 같은 방향에 여러가지 모션을 추가할 수 있습니다.
+  * Simple Directional이랑은 다르게 Blend Diagram을 작성할 때 여러 Motion Field를 추가하는데 좀 더 복잡한 움직임을 표현하는데 있어서 유용합니다.
+
+{% embed url="https://www.youtube.com/watch?v=32eXQhkkgR4" caption="2D Blend Animation - 2D Freeform Directional" %}
+
 *  **2D Freeform Cartesian이란?**
-  * 모션이 다른방향을 가지지 않을 때 유용합니다
+  * 모션이 다른방향을 가지지 않을 때 유용합니다.
+  * 하지만 구글링으로 검색한 결과 제대로 된 tutorial을 찾기 어려웠고, 굳이 사용해야하나 싶기도 해서 기회가 된다면 자세히 문서화 하겠습니다.
 
 ## Quaternion
 
@@ -40,5 +45,9 @@ Unity의 기본좌표계는 왼손좌표계로써, x, y, z축을 가집니다. �
 
 이러한 현상을 방지하기 위해 기존의 3개의 축을 가진 Euler Angles를 확장시켜 4개의 축을 가진 Quaternion이라는 개념을 사용합니다. 
 
+* 이러한 Quaternion을 직접 사용하기 위해서 2가지 방법으로 할 수 있습니다.
+  * Euler Angles를 Quaternion으로 변환
+  * Quaternion type의 변수를 생성하여 할
+* 
 
 
