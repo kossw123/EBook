@@ -511,13 +511,21 @@ public float modifier;
 
 {% embed url="https://wergia.tistory.com/54?category=739103" caption="Blend Tree Animation 사용" %}
 
+{% embed url="https://docs.unity3d.com/kr/2018.4/Manual/BlendTree-2DBlending.html" caption="Blend Type에 대한 Document" %}
+
 * **Blend Animation이란?**
   * Animation을 자연스럽게 움직이게 하기 위해서 작업시간과 인력이 없을 때 사용할 수 있는 기능입니다.
-* **1D Blend Type을 어떻게 만들까?**
+* **가장 기본적인 1D Blend Type을 어떻게 만들까?**
   * Animator에서 State를 생성할 때 Blend Tree 항목을 선택하여 생성하면 float parameter와 하나의 State가 생성됩니다.
   * 생성한 State를 더블클릭하여 들어가면 Inspector창에 Blend Type과 parameter의 값에 따른 Motion이 있는데 여기에서 특정 동작에 대한 Animation의 Clip을 넣고, Threshold라는 옵션의 값에 따라 시간에 따른 Clip의 재생위치를 선형 보간합니다.
     * 선형 보간이란 시작, 끝 값이 존재할 때 그 사이에 위치한 값을 추정하기 위해 선형적
-* **2D Freeform Directional을 어떻게 만들까?**
+* **디테일을 주기 위한 2D Simple Directional을 어떻게 만들까?**
+  * 위와 동일하게 작성하지만 가장 큰 차이점이 parameter가 2개가 존재합니다.
+  * 2개의 parameter로 2D game에서 뒤로 움직일 때 sprite를 Flip해서 움직이는 것과는 달리 Animation만 존재하면 간편하게 작성할 수 있습니다.
+
+    ![](../../.gitbook/assets/image%20%2874%29.png)
+* **2D Simple Directional과 다른 2D Freeform Directional**
+  * Simple Directional과 동일하지만 같은 방향에 여러가지 모션을 추가할 수 있습니다.
   * 
 
 
