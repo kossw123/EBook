@@ -526,15 +526,20 @@ public float modifier;
     ![](../../.gitbook/assets/image%20%2874%29.png)
 * **2D Simple Directional과 다른 2D Freeform Directional**
   * Simple Directional과 동일하지만 같은 방향에 여러가지 모션을 추가할 수 있습니다.
-  * 
-
-
+*  **2D Freeform Cartesian이란?**
+  * 모션이 다른방향을 가지지 않을 때 유용합니다
 
 ## Quaternion
 
 {% embed url="https://docs.unity3d.com/kr/current/Manual/QuaternionAndEulerRotationsInUnity.html" %}
 
+Unity의 기본좌표계는 왼손좌표계로써, x, y, z축을 가집니다. 이러한
 
+그리고 회전을 할 때 각 축을 기준으로 회전을 시키는데 2개 이상의 축을 한번에 움직일 경우가 있습니다. 이런 경우 값이 한번에 움직일 경우 회전축에 치명적인 에러가 발생하게 됩니다.
+
+**이러한 현상을 Gimbal Lock현상이라고 합니다.**
+
+이러한 현상을 방지하기 위해 기존의 3개의 축을 가진 Euler Angles를 확장시켜 4개의 축을 가진 Quaternion이라는 개념을 사용합니다. 
 
 
 
