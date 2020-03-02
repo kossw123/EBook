@@ -26,6 +26,7 @@
     * [TR Celeste's Movement](technical-reference/unity/tr-celestes-movement-1.md)
     * [TR Mario Galaxy's Launch Star](technical-reference/unity/tr-mario-galaxys-launch-star.md)
 * [API, Component reference](api-component-reference/README.md)
-  * [DOTween](api-component-reference/dotween.md)
+  * [Unity](api-component-reference/unity/README.md)
+    * [DOTween](api-component-reference/unity/dotween.md)
 * [feedback](feedback.md)
 

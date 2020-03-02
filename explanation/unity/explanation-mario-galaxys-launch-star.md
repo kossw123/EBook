@@ -505,7 +505,15 @@ public float modifier;
 {% endtab %}
 {% endtabs %}
 
-## 
+## 마치며
+
+* 서식 양식을 여러가지를 시도 했기 때문에 앞의 문서와 비교해 혼동이 올 수 있습니다. 하지만 이러한 양식의 변화는 가장 최적화된 양식을 찾기 위해 다른 문서에도 적용할 예정입니다.
+* Super Mario Galaxy의 Path movement를 적성하며, DOTween에 대한 심화 과정과, Sequence method type을 사용하여 약간의 혼동이 왔지만, 굉장히 문서화 시키면서도 Scripting에 대한 기술이 향상되었다고 생각합니다.
+* Blend Animation, Quaternion에 대한 서술은 아래의 페이지에 작성하였습니다.
+
+{% page-ref page="../../technical-reference/unity/tr-mario-galaxys-launch-star.md" %}
+
+* 원래는 Cinemachine Dolly cart with Track에 대한 기능서술을 작성할 예정이였지만, 코드리뷰와 tutorial을 통해 왠만한 것은 다 기입했다고 느꼈기에 생략했습니다. 다음에 사용할 일이 있다면 Component reference를 통해 문서화 시키도록 하겠습니다.
 
 
 
