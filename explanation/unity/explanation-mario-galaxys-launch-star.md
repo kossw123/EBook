@@ -2,7 +2,7 @@
 description: Explanation Mario Galaxy's Launch Star
 ---
 
-# Explanation Mario Galaxy's Launch Star\(1차\)
+# Explanation Mario Galaxy's Launch Star
 
 ## 무엇을 하려고 하는가?
 

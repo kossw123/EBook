@@ -180,6 +180,8 @@ Sequence의 특징은 다음과 같습니다.
 
 ## 자주 쓰이는 Method
 
+해당 단락을 앞으로 추가할 예정입니다.
+
 * Append\(\) : Sequence 끝에 Tween을 추가합니다.
 * Join\(\) : Sequence 끝에 추가한 Tween과 동일한 시간에서 실행됩니다.
 
