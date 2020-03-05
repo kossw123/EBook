@@ -138,7 +138,7 @@ description: DOTween
 * shortcuts ways
   * Unity Component들에 대한 직접적인 참조가 가능하며 개인적으로는 움직임을 구현하는 것 이외의 Component들을 한줄의 코드로 조절이 가능하여 자주 사용합니다.
 
-![](../../.gitbook/assets/image%20%2879%29.png)
+![](../../.gitbook/assets/image%20%2880%29.png)
 
 * additional generic method
   * 위에 서술한 방법을 제외한 함수입니다.
