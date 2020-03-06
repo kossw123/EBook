@@ -122,7 +122,7 @@ Gizmo를 그리고 싶은 경우 OnDrawGizmos, OnDrawGizmoSelected를 사용합�
 {% endtab %}
 
 {% tab title="Sensor\_Bandit.cs" %}
-Character Object 발 밑에 위치한 Object로써, 충돌을 감지합니다. 원래는 Update\(\)에서 쓰일 Character가 지면 위에 있는지 확인하는 Logic을 Script를 생성하여 따로 할당하여 가독성을 생각한 듯 합니다.
+Character Object 발 밑에 위치한 Object로써, 충돌을 감지합니다. 원래는 Update\(\)에서 쓰일 Character가 지면 위에 있는지 확인하는 Logic을 Script를 생성하여 따로 할당하여 가독성을 높인   설계입니다.
 
 ```csharp
 public class Sensor_Bandit: MonoBehaviour {
@@ -155,6 +155,20 @@ public class Sensor_Bandit: MonoBehaviour {
     }
 }
 ```
+
+코드리뷰 보다는 흐름에 따라 설명하겠습니다.
+
+1. Bandit.cs에서 State를 호출합니다.
+2. State안에서 m\_DisableTimer의 값을 검사합니다.
+3. Update\(\)에서 m\_DisableTimer의 값을 deltaTime을 빼서 0이하로 만듭니다.
+4. m\_ColCount의 값을 검사합니다.
+5. 발 밑의 Box Collider가 충돌 시에는 m\_ColCount를 1 증가시킵니다.
+   1. 충돌이 종료하면 1 감소 시킵니다.
+6. m\_ColCount가 0 초과 일때 Bool type method를 반환시켜 최종적으로 땅에 있을 때 1의 값을 가집니다.
+{% endtab %}
+
+{% tab title="EnemyScript.cs" %}
+Enemy로 설정한 Object에 대한 Script입니다. 해당 Script에는 가장 기초적인 
 {% endtab %}
 {% endtabs %}
 
