@@ -21,7 +21,7 @@
     * [Explanation Tilemap](explanation/unity/explanation-tilemap.md)
     * [Explanation Celeste's Movement](explanation/unity/explanation-celestes-movement.md)
     * [Explanation Mario Galaxy's Launch Star](explanation/unity/explanation-mario-galaxys-launch-star.md)
-    * [Explanation Melee Attack\(작성중\)](explanation/unity/explanation-melee-attack.md)
+    * [Explanation Melee Attack](explanation/unity/explanation-melee-attack.md)
 * [Technical reference](technical-reference/README.md)
   * [Unity](technical-reference/unity/README.md)
     * [TR PhysicsObject](technical-reference/unity/tr-physicsobject.md)

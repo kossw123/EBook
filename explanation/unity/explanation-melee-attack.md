@@ -2,7 +2,7 @@
 description: Explanation Melee Attack
 ---
 
-# Explanation Melee Attack\(작성중\)
+# Explanation Melee Attack
 
 ## 무엇을 하려고 하는가?
 
