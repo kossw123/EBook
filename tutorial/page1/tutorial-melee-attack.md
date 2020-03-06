@@ -32,6 +32,7 @@ description: tutorial Melee Attack
     * 크기를 조정할 대상은 다운받은 Asset의 EnvironmentTiles이나, HeavyBandit, LightBandit에 적용시킵니다.
     * Camera Size가 기본적으로 5에 맞춰져 있기 때문에 Asset의 Pixels Per Unit을 32 정도 맞추는게 적당했습니다. 
     * **이러한 방법은 Pixel이 깨질 수도 있으니, 사용할 때 주의해야할 부분입니다.**
+  * Camera BackGround Color = Black으로 설정합니다.
 
 {% embed url="https://devonce.tistory.com/20" %}
 
@@ -43,12 +44,14 @@ description: tutorial Melee Attack
 
 ![&#xCDA9;&#xB3CC;&#xC744; &#xD655;&#xC778;](../../.gitbook/assets/image%20%282%29.png)
 
-* Camera BackGround Color = Black으로 설정합니다.
-* 기존의 있는 Script에서 코드를 추가해 재사용 하도록 합니다.
+LightBandit을 움직이게 하기 위해 아래와 같이 Component를 수정합니다.
 
-
-
-* 우선 기존의 Bandit.cs Script에 아래의 코드를 복사해서 붙여넣습니다.
+* Tranform : 적당한 곳에 위치 시킵니다.
+* Animator : 기존 Animator를 그대로 씁니다.
+* Sprite Renderer : 변경 사항이 없습니다.
+* Rigidbody2D : Constraints\(z\)값을 true로 설정합니다.
+* Box Collider2D : 변경사항이 없습니다.
+* Bandit\(Script\) : 기존의 Script를 아래의 코드로 붙여넣습니다.
 
 {% code title="Bandit.cs" %}
 ```csharp
@@ -259,9 +262,12 @@ public class EnemyScript : MonoBehaviour
         this.enabled = false;
     }
 }
-
 ```
 {% endcode %}
+
+* 각각의 Component를 수정했다면 아래 그림과 같이 동작합니다.
+
+![&#xACB0;&#xACFC; &#xD654;&#xBA74;](../../.gitbook/assets/result.gif)
 
 
 
