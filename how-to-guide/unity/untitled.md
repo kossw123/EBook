@@ -2,7 +2,7 @@
 description: How-to-guide Melee Attack
 ---
 
-# How-to-guide Melee Attack\(작성중\)
+# How-to-guide Melee Attack
 
 ## 무엇을 하려고 하는가?
 
@@ -19,6 +19,7 @@ description: How-to-guide Melee Attack
 using UnityEngine;
 using System.Collections;
 public class Bandit: MonoBehaviour {
+
     [SerializeField] float m_speed = 1.0 f;
     [SerializeField] float m_jumpForce = 2.0 f;
     private Animator m_animator;
@@ -27,13 +28,16 @@ public class Bandit: MonoBehaviour {
     private bool m_grounded = false;
     private bool m_combatIdle = false;
     private bool m_isDead = false;
-    [Header("Attack Property")] public Transform attackPoint;
+    
+    [Header("Attack Property")] 
+    public Transform attackPoint;
     public int attackDamage = 0;
     public float attackRadius = 0.5 f;
     public LayerMask enemyLayer;
     public float playerHP = 100 f;
     public float attackRate = 2 f;
     float nextAttackTime = 0 f;
+    
     // Use this for initialization
     void Start() {
         m_animator = GetComponent < Animator > ();
@@ -44,7 +48,8 @@ public class Bandit: MonoBehaviour {
     void Update() {
         Movement();
     }
-    void Movement() { // -- Handle input and movement --
+    void Movement() { 
+        // -- Handle input and movement --
         float inputX = Input.GetAxis("Horizontal");
         // Swap direction of sprite depending on walk direction
         if (inputX > 0) 
@@ -116,6 +121,7 @@ public class Bandit: MonoBehaviour {
             enemy.GetComponent<EnemyScript>().TakeDamage(attackDamage);
         }
     }
+    // Draw Sphere Gizmo
     void OnDrawGizmoSelected() {
         if (attackPoint == null) 
             return;
@@ -133,6 +139,10 @@ public class Bandit: MonoBehaviour {
 using UnityEngine;
 using System.Collections;
 public class Sensor_Bandit: MonoBehaviour {
+    /// <summary>
+    /// 충돌시 m_ColCount 1 증가, 비충돌시 1 감소
+    /// 매 프레임마다 Disable에서 설정한 시간만큼 매 프레임마다 deltaTime만큼 감소 시켜서 State를 결정합니다.
+    /// </summary>
     private int m_ColCount = 0;
     private float m_DisableTimer;
     private void OnEnable() {
@@ -198,7 +208,8 @@ public class EnemyScript: MonoBehaviour {
 
 ## 마치며
 
-* ㅇ
+* 손쉽게 Melee Attack에 대한 기능을 완성 시켰습니다.
+* 코드에 대한 자세한 내용은 아래의 해설문서에서 작성하겠습니다.
 
 {% page-ref page="../../explanation/unity/explanation-melee-attack.md" %}
 
