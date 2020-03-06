@@ -168,11 +168,38 @@ public class Sensor_Bandit: MonoBehaviour {
 {% endtab %}
 
 {% tab title="EnemyScript.cs" %}
-Enemy로 설정한 Object에 대한 Script입니다. 해당 Script에는 가장 기초적인 
+Enemy로 설정한 Object에 대한 Script입니다. 해당 Script에는 가장 기초적인 Damage를 받으면 실행되는 함수와, HP가 0 이하일 때 실행되는 Die함수로 이루어져 있습니다.
+
+```csharp
+public void TakeDamage(int damage) {
+    currentHP -= damage;
+    animator.SetTrigger("Hurt");
+    if (currentHP <= 0) Die();
+}
+```
+
+ Bandit.cs에서 Collider를 검색하고 enemyLayer를 가진 Object를 검색하여 위의 함수를 실행시킵니다.
+
+* 2 : currentHP에서 parameter로 받은 damage를 감소시킵니다.
+* 3 : Hurt Animation을 실행합니다.
+* 4 : currentHP가 0 이하일 때 Die\(\)를 실행합니다.
+
+```csharp
+void Die() {
+    Debug.Log("Enemy Died");
+    animator.SetBool("isDead", true);
+    GetComponent<Collider2D>().enabled = false;
+    this.enabled = false;
+}
+```
+
+TakeDamage 함수에서 currentHP가 0 이하일 때 실행되는 함수입니다.
+
+* 3 : Animator의 isDead를 true로 할당합니다.
+* 4 : Enemy가 currentHP가 0이 되었으니 죽었다고 하고 Collider2D Component를 비활성화 시킵니다.
+* 5 : Enemy가 죽었으니 해당 Script도 비활성화 시켜서 불필요한 연산처리를 감소시킵니다.
 {% endtab %}
 {% endtabs %}
-
-
 
 ## 마치며
 

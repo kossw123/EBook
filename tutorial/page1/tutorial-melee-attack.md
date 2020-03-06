@@ -219,6 +219,7 @@ public class Bandit : MonoBehaviour {
 * Animator : 새로운 Animator를 생성하여 할당합니다.
   * 기존의 Animator는 Animator Override Controller 항목을 통해 LightBandit\_AnimController를 상속 받은 것입니다.
   * 아래의 그림과 같은 Animation State를 할당합니다.
+  * 각 Animation Clip을 기존의 HeavyBandit의 Hurt, Dead Clip을 이용합니다.
 
 ![Enemy&#xB85C; &#xC124;&#xC815;&#xD55C; Object&#xC5D0; &#xD560;&#xB2F9;&#xD560; Animator](../../.gitbook/assets/image%20%2878%29.png)
 
