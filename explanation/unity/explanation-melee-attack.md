@@ -11,7 +11,15 @@ description: Explanation Melee Attack
 
 ## Code Explanation
 
+{% tabs %}
+{% tab title="First Tab" %}
 
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
 
 ## 마치며
 
