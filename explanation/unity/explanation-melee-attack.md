@@ -121,8 +121,40 @@ Gizmo를 그리고 싶은 경우 OnDrawGizmos, OnDrawGizmoSelected를 사용합�
 * 5 : DrawWireSphere\(\) 를 통해 Sphere Gizmo를 그립니다.
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="Sensor\_Bandit.cs" %}
+Character Object 발 밑에 위치한 Object로써, 충돌을 감지합니다. 원래는 Update\(\)에서 쓰일 Character가 지면 위에 있는지 확인하는 Logic을 Script를 생성하여 따로 할당하여 가독성을 생각한 듯 합니다.
 
+```csharp
+public class Sensor_Bandit: MonoBehaviour {
+    // / <summary>
+    // / 충돌시 m_ColCount 1 증가, 비충돌시 1 감소
+    // / 매 프레임마다 Disable에서 설정한 시간만큼 매 프레임마다 deltaTime만큼 감소 시켜서 State를 결정합니다.
+    // / </summary>
+    private int m_ColCount = 0;
+    private float m_DisableTimer;
+    private void OnEnable() {
+        m_ColCount = 0;
+    }
+    public bool State() {
+        if (m_DisableTimer > 0) 
+            return false;
+        
+        return m_ColCount > 0;
+    }
+    void OnTriggerEnter2D(Collider2D other) {
+        m_ColCount ++;
+    }
+    void OnTriggerExit2D(Collider2D other) {
+        m_ColCount --;
+    }
+    void Update() {
+        m_DisableTimer -= Time.deltaTime;
+    }
+    public void Disable(float duration) {
+        m_DisableTimer = duration;
+    }
+}
+```
 {% endtab %}
 {% endtabs %}
 
