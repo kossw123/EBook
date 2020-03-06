@@ -13,7 +13,7 @@ description: How-to-guide Mario Galaxy's Launch Star
 
 {% embed url="https://www.youtube.com/watch?v=T\_3cne2tzYM&t=75s" caption="Mario Galaxy\'s Launch Star tutorial Video" %}
 
-## Mario Galaxy's Launch Star Code Review
+## Code Review
 
 * Jammo\_Player와 LauncherStar Object에 대한 Script들을 별개의 단락으로 설명하는게 좀 더 읽기 편할것 같기때문에 나눠서 기재하겠습니다.
 

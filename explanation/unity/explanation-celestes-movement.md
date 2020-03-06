@@ -9,7 +9,7 @@ description: Explanation Celeste's Movement
 * How-to-guide에서 설명하지 못한 Code Reivew의 해설문서\(Explanation\)을 적고 있습니다.
 * Scripting, Animation, Particle System에 관하여 작성합니다.
 
-## Scripting
+## Code Explanation
 
 {% tabs %}
 {% tab title="Movement.cs" %}

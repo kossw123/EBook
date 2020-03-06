@@ -12,7 +12,7 @@ description: Explanation Tilemap
 
 
 
-## Procedural Tilemap
+## Scripting Code Explanation
 
 {% tabs %}
 {% tab title="What is this blog post about?" %}

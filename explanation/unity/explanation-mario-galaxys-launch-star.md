@@ -9,7 +9,7 @@ description: Explanation Mario Galaxy's Launch Star
 * Mario Galaxy's Launch Star Project를 정리하며 How-to-guide에서 기재하지 않은 Script의 설명과 그에 대한 부가 설명을 기재합니다.
 * 각 문서는 상업적인 목적이 없습니다.
 
-## Scripting Code Review
+## Code Explanation
 
 * 각 Object별로 할당된 Script를 Tab으로 나눠서 작성합니다.
 

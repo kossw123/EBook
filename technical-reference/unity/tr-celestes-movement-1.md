@@ -10,7 +10,7 @@ description: TR Celeste's Movement
 * 외부 API에 관한 상세 설명을 명시합니다.
 * 해당자료는 학습적인 목적 이외에는 이용하지 않습니다.
 
-## Scripting
+## Scripting Code Technical reference
 
 * 해설문서\(Explanation\)의 흐름에 따라 목차 및 함수를 게시합니다.
 
