@@ -2,7 +2,7 @@
 description: tutorial Melee Attack
 ---
 
-# tutorial Melee Attack\(작성중\)
+# tutorial Melee Attack
 
 ## 무엇을 하려고 하는가?
 
@@ -269,5 +269,9 @@ public class EnemyScript : MonoBehaviour
 
 ![&#xACB0;&#xACFC; &#xD654;&#xBA74;](../../.gitbook/assets/result.gif)
 
+## 마치며
 
+* 다른 문서보다 난이도가 낮았기 How-to-guide에서 Script 부분만 다루도록 하겠습니다.
+
+{% page-ref page="tutorial-melee-attack.md" %}
 
