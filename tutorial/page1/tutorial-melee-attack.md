@@ -218,6 +218,10 @@ public class Bandit : MonoBehaviour {
 * Tranform : 적당한 곳에 위치 시킵니다.
 * Animator : 새로운 Animator를 생성하여 할당합니다.
   * 기존의 Animator는 Animator Override Controller 항목을 통해 LightBandit\_AnimController를 상속 받은 것입니다.
+  * 아래의 그림과 같은 Animation State를 할당합니다.
+
+![Enemy&#xB85C; &#xC124;&#xC815;&#xD55C; Object&#xC5D0; &#xD560;&#xB2F9;&#xD560; Animator](../../.gitbook/assets/image%20%2878%29.png)
+
 * Sprite Renderer : 변경 사항이 없습니다.
 * Rigidbody2D : Constraints\(x, y, z\)값을 모두 true로 설정합니다.
   * 나중에 HeavyBandit이 Die 상태일 때 Collider를 비활성화 시켜야 하는데, 고정을 안한다면 그대로 떨어지기 때문에, 고정시켜 놓습니다.

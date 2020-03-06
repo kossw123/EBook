@@ -57,7 +57,7 @@ Hierarchy에서 DollyTrack1, DollyCart1 Object가 생성되고 아래의 그림�
 
 그리고 Import한 Jammo\_Player를 Unpack을 하고 Cinemachine 탭에서 FreeLook Camera를 추가하여 생성된 Object의 Inspector에서 Follow, LookAt Component에 Character를 넣고 Orbits를 아래의 그림과 같이 수정합니다.
 
-![](../../.gitbook/assets/image%20%2889%29.png)
+![](../../.gitbook/assets/image%20%2890%29.png)
 
 후에 Jamoo\_Player에 StarLauncher.cs Script를 넣고 아래의 Script들을 생성합니다.
 
@@ -382,7 +382,7 @@ LauncherStar\_Object는 아래와 같은 Hierarchy를 가지고 있고 다음과
 {% endtab %}
 
 {% tab title="Plane Object" %}
-![Plane Object Component](../../.gitbook/assets/image%20%2887%29.png)
+![Plane Object Component](../../.gitbook/assets/image%20%2888%29.png)
 
 * Plane Object Component
   * Project View에서 Plane Prefab 추가
@@ -445,7 +445,7 @@ glow Object들은 Particle System만 있기 때문에 Particle System 설정값�
 {% endtab %}
 
 {% tab title="Inner\_glow Object" %}
-![Inner\_glow Object Component](../../.gitbook/assets/image%20%2882%29.png)
+![Inner\_glow Object Component](../../.gitbook/assets/image%20%2883%29.png)
 
 glow Object와 Inner\_glow Object는 거의 같은 Particle 설정값을 가지고 있기 때문에 달라진 부분만 굵게 표시하여 작성하겠습니다.
 
@@ -506,7 +506,7 @@ glow Object와 Inner\_glow Object는 거의 같은 Particle 설정값을 가지�
     * Material = starParticle\_1
     * Trail Material = starParticle\_1
 
-![starParticle Material Component](../../.gitbook/assets/image%20%2883%29.png)
+![starParticle Material Component](../../.gitbook/assets/image%20%2884%29.png)
 
 * starParticle\_1 Material Component
   * Shader = Particle / Standard Units
@@ -561,7 +561,7 @@ glow Object와 Inner\_glow Object는 거의 같은 Particle 설정값을 가지�
 {% endtab %}
 
 {% tab title="smoke Object" %}
-![smoke Object Particle System Component](../../.gitbook/assets/image%20%2884%29.png)
+![smoke Object Particle System Component](../../.gitbook/assets/image%20%2885%29.png)
 
 * Particle System 
   * smoke 
