@@ -117,6 +117,7 @@ void OnDrawGizmoSelected() {
 
 Gizmo를 그리고 싶은 경우 OnDrawGizmos, OnDrawGizmoSelected를 사용합니다.
 
+* 2 ~ 3 : attackPoint가 없을 경우에 대한 예외 처리입니다.
 * 5 : DrawWireSphere\(\) 를 통해 Sphere Gizmo를 그립니다.
 {% endtab %}
 
