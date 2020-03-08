@@ -29,9 +29,36 @@ description: TR Melee Attack
 **즉, Grid Toggle을 켰을 때 확인되는 Grid 1칸당 1 Unit을 가지고 한 동작을 1:1로 Grid 1칸에 대응 시키려면 PPU를 48로 설정하면 해결된다는 것입니다. 그 결과 pixel간의 간격을 딱 맞출 수 있습니다.**
 
 * **Pixel Per Unit와 Camera사이의 연관관계**
-  * Camera는 PPU를 가지고
+  * Camera가 orthographic일 때 Camera의 Size 수치의 2배를 한 것이 Camera의 세로 Unit입니다.
+  * 만약 Size가 n이라면 2n Unit이 Camera의 세로 Unit입니다.
+  * 가로 Unit은 사용자의 화면 비율에 따라 달라집니다.
+  * **즉, Size의 크기에 따라 orthographic Camera의 크기가 정의 됩니다.**
+  * **결국 Camera의 세로 Unit은 \(Size\*2\)Unit이며 설정값에서 PPU의 값에 따라 1Unit의 값이 달라지기 때문에, Size변경시 Sprite의 크기가 변동되는 현상이 나타납니다.**
 
 {% embed url="https://devonce.tistory.com/20\#recentComments" %}
+
+**일반적으로 Object가 Camera에 표시 될 때 어떻게 표시되는가? 에 대한 의문이 들어서 문서로 남깁니다.** 
+
+**먼저 어떤 Camera Projection\(보여지는 방법\)인가에 따라 다릅니다.**
+
+* **Orthographic와 Perspective?**
+  * Orthographic\(직교\) and Perspective\(원근\)의 차이는 우리가 공간을 볼 때 어떻게 보는가에 대한 방법입니다.
+  * Orthographic\(직교\)
+    * 원근감이 없기 때문에 z축에 따른 거리 표현할 수 없습니다.
+    * 2D게임에서 일반적으로 사용합니다.
+  * Perspective\(원근\)
+    * 원근감이 있기 때문에 z축에 따른 거리를 표현할 수 있습니다.
+    * 3D게임에서 일반적으로 사용합니다.
+
+{% embed url="https://docs.unity3d.com/Manual/CamerasOverview.html" caption="Camera Document" %}
+
+보여지는 방법은 그렇다 쳐도 카메라에 어떻게 투영되는가? 에 대한 의문이 있을 수 있습니다.
+
+이것은 Unity에 내장되어 있는 Graphic PipeLine에 따라 다릅니다.
+
+{% embed url="https://docs.unity3d.com/Manual/render-pipelines.html" %}
+
+
 
 
 
