@@ -32,6 +32,6 @@
 * [API, Component reference](api-component-reference/README.md)
   * [Unity](api-component-reference/unity/README.md)
     * [DOTween](api-component-reference/unity/dotween.md)
-    * [Untitled](api-component-reference/unity/untitled.md)
+    * [Graphic Rendering Pipeline](api-component-reference/unity/untitled.md)
 * [feedback](feedback.md)
 
