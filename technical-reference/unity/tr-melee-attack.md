@@ -54,11 +54,7 @@ description: TR Melee Attack
 
 **보여지는 방법은 그렇다 쳐도 카메라에 어떻게 투영되는가? 에 대한 의문이 있을 수 있습니다.**
 
-**이것은 Unity에 내장되어 있는 Graphic PipeLine에 따라 다릅니다.**
+**이것은 Unity에 내장되어 있는 Graphic PipeLine에 따라 다릅니다. 자세한 내용은 아래 Page Link에 문서를 보시기 바랍니다.**
 
-## .
-
-
-
-
+{% page-ref page="../../api-component-reference/unity/untitled.md" %}
 
