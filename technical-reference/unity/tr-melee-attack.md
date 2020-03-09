@@ -58,7 +58,7 @@ description: TR Melee Attack
 
 {% page-ref page="../../api-component-reference/unity/untitled.md" %}
 
-
+**Game을 제작하다가 Pixel 사이의 미세한 간격이 생기는 문제가 자주 발생하게 됩니다. 이때는 Sprite Editor를 사용하거나 위의 PPU를 이용하여 맞춰주시거나, Pixel Perfect라는 Asset을 import하여 사용하시면 해결됩니다.**
 
 * **Sprite Editor 사용하**
 
