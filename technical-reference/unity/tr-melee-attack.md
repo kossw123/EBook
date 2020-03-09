@@ -2,7 +2,7 @@
 description: TR Melee Attack
 ---
 
-# TR Melee Attack\(작성중\)
+# TR Melee Attack
 
 ## 무엇을 하려고 하는가?
 
