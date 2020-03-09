@@ -1,4 +1,4 @@
-# Graphic Rendering Pipeline
+# Graphic Rendering Pipeline\(작성중\)
 
 ## **Graphic Pipeline**
 
