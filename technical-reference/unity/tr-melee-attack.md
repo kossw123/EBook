@@ -92,3 +92,11 @@ description: TR Melee Attack
 
 * Grid by Cell Count : Grid by Cell Size와 달리 행과 열을 입력하여 Grid를 분배합니다. 그 외의 설정값은 동일합니다.
 
+
+
+## 마치며
+
+* Sprite를 맞추기 위해 겪었던 시행착오를 겪었기 때문에 이번 문서는 쉽게 작성했습니다.
+* 하지만 이러한 Sprite를 조절하기 때문에 나오는 Transform의 Speed문제와 설계 단위에서 Collider Size에 대한 조정이 매번 Test마다 겪었기 때문에 불편하다고 느껴졌습니다.
+* Scripting에서는 어떤 게임에서든지 비슷한 Logic으로 돌아가기 때문에 문제는 없었지만, Editor상에서 조절해야하는 부분이 더욱 부각되어 이 Melee Attack문서는 해볼만한 가치가 있었습니다.
+
