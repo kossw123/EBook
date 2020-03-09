@@ -87,5 +87,3 @@ description: TR Melee Attack
 
 * Grid by Cell Count : Grid by Cell Size와 달리 행과 열을 입력하여 Grid를 분배합니다. 그 외의 설정값은 동일합니다.
 
-위의 Slice Type들을 알맞게 사용하면 되는데 여기서는 Cell Size를 가지고 Slice하여 사용하겠습니다.
-
