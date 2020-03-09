@@ -7,6 +7,7 @@ description: TR Melee Attack
 ## 무엇을 하려고 하는가?
 
 * 이전의 Tilemap 문서를 작성하면서 발생한 issue가 해당 문서를 작성하면서도 발생했기 때문에 기술문서에 작성하게 되었습니다.
+* **Game을 제작하다가 Pixel 사이의 미세한 간격이 생기는 문제가 자주 발생하게 됩니다. 이때는 Sprite Editor를 사용하거나 PPU를 이용하여 맞춰주시거나, Pixel Perfect라는 Asset을 import하여 사용하시면 해결됩니다.**
 * 이 문서는 상업적으로 이용하지 않습니다.
 
 ## Pixel Per Unit과 Camera, Sprite Editor
@@ -58,9 +59,13 @@ description: TR Melee Attack
 
 {% page-ref page="../../api-component-reference/unity/untitled.md" %}
 
-**Game을 제작하다가 Pixel 사이의 미세한 간격이 생기는 문제가 자주 발생하게 됩니다. 이때는 Sprite Editor를 사용하거나 위의 PPU를 이용하여 맞춰주시거나, Pixel Perfect라는 Asset을 import하여 사용하시면 해결됩니다.**
+\*\*\*\*
 
-* **Sprite Editor 사용하**
+\*\*\*\*
+
+\*\*\*\*
+
+* **Sprite Editor 사용하기**
 
 ![LightBandit Sprite Asset](../../.gitbook/assets/image%20%2847%29.png)
 
