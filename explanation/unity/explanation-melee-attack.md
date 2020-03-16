@@ -203,7 +203,8 @@ TakeDamage 함수에서 currentHP가 0 이하일 때 실행되는 함수입니�
 
 ## 마치며
 
-* d
+* 앞의 다른 문서들을 작성하며 느낀 난이도 보다, 수치조정에 대한 난이도가 체감상 낮았습니다.
+* 이에 대한 기술문서는 아래의 링크에 기재하겠습니다.
 
 {% page-ref page="../../technical-reference/unity/tr-melee-attack.md" %}
 
