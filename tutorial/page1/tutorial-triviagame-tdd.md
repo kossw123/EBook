@@ -44,7 +44,7 @@ description: tutorial TriviaGame TDD
 
  여기까지 했으면 아래와 같은 그림의 Object 배치가 완료 됩니다.
 
-![](../../.gitbook/assets/image%20%2896%29.png)
+![](../../.gitbook/assets/image%20%2897%29.png)
 
 * Score
   * Score Object를 추가하고 Image Component를 추가하여, ScoreContainer Sprite로 설
@@ -62,7 +62,7 @@ description: tutorial TriviaGame TDD
   * ScoreLabel과 같이 Font에 대한 설정을 임의 대로 합니다.
     * 작성자는 \(B, 50, Center / Middle\)로 설정하고 Vertex Color를 Black으로 설정했습니다.
 
-![&#xC784;&#xC758;&#xB85C; &#xC791;&#xC131;&#xD55C; Score Object&#xC5D0; &#xB300;&#xD55C; &#xACB0;&#xACFC;](../../.gitbook/assets/image%20%2889%29.png)
+![&#xC784;&#xC758;&#xB85C; &#xC791;&#xC131;&#xD55C; Score Object&#xC5D0; &#xB300;&#xD55C; &#xACB0;&#xACFC;](../../.gitbook/assets/image%20%2890%29.png)
 
 * Question
   * Image Component를 추가하여 QuestionContainer Sprite로 설정합니다.
@@ -122,22 +122,258 @@ description: tutorial TriviaGame TDD
 
 
 
-* 새로운 2D Project를 생성하여 아래의 Hierarchy 처럼 배치합니다. 
-* Script들을 생성하고 아래의 내용을 넣습니다.
+* Script들을 생성하고 아래의 Project View 그림처럼 폴더가 나눠집니다.
+* 각 폴더는 이름과 관련된 Script들이 모아져 있습니다.
+
+![Scirpts&#xC758; &#xD558;&#xC704; &#xD3F4;&#xB354;](../../.gitbook/assets/image%20%2874%29.png)
 
 {% tabs %}
-{% tab title="First Tab" %}
-
+{% tab title="AnswerView.cs" %}
+{% code title="AnswerView.cs" %}
+```csharp
+using System;
+using TMPro;
+using UnityEngine;
+namespace TriviaGame.Delivery {
+    public class AnswerView: MonoBehaviour {
+        [SerializeField] private TMP_Text _answerText;
+        private Action<string> _onAnswerSelected;
+        public void Initialize(Action < string > onAnswerSelected) {
+            _onAnswerSelected = onAnswerSelected;
+        }
+        public void FillData(string answerText) {
+            _answerText.text = answerText;
+        }
+        public void OnClick() {
+            _onAnswerSelected ?. Invoke(_answerText.text);
+        }
+    }
+}
+```
+{% endcode %}
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="TriviaGameView.cs" %}
+{% code title="TriviaGameView.cs" %}
+```csharp
+using System.Linq;
+using TMPro;
+using TriviaGame.Domain;
+using TriviaGame.Presentation;
+using UnityEngine;
 
+namespace TriviaGame.Delivery
+{
+    public class TriviaGameView : MonoBehaviour
+    {
+        private TriviaGamePresenter _presenter;
+
+        [SerializeField] private TMP_Text _scoreText;
+        [SerializeField] private TMP_Text _questionText;
+        [SerializeField] private AnswerView[] _answers;
+        [SerializeField] private Animator _feedbackAnimations;
+
+        private void Start()
+        {
+            _presenter = TriviaGamePresenterBuilder.BuildTriviaGamePresenter(this);
+            foreach (var answerView in _answers)
+            {
+                answerView.Initialize(OnAnswerSelected);
+            }
+        }
+
+        public virtual void ShowNextQuestion(Question question)
+        {
+            _questionText.text = question.QuestionText;
+
+            var allAnswers = question.WrongAnswers.Concat(new string[] { question.RightAnswer }).ToList();
+            allAnswers.Sort((a, b) => Random.Range(0, 2) > 0 ? 1 : -1);
+
+            for (var i = 0; i < _answers.Length; i++)
+            {
+                _answers[i].FillData(allAnswers[i]);
+            }
+        }
+
+        public virtual void ShowPositiveFeedback()
+        {
+            _feedbackAnimations.Play("RightAnswer");
+        }
+
+        public virtual void ShowWinFeedback()
+        {
+            _feedbackAnimations.Play("Win");
+        }
+
+        public virtual void ShowLoseFeedback()
+        {
+            _feedbackAnimations.Play("Lose");
+        }
+
+        public virtual void UpdateScore(int currentScore)
+        {
+            _scoreText.text = currentScore.ToString("000");
+        }
+
+        private void OnAnswerSelected(string selectedAnswer)
+        {
+            _presenter.ReceiveAnswer(selectedAnswer);
+        }
+
+    }
+}
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="Question.cs" %}
+{% code title="Question.cs" %}
+```csharp
+namespace TriviaGame.Domain {
+    public class Question {
+        public string QuestionText {
+            get;
+            private set;
+        }
+        public string RightAnswer {
+            get;
+            private set;
+        }
+        public string[] WrongAnswers {
+            get;
+            private set;
+        }
+        public Question() {}
+        public Question(string questionText, string rightAnswer, string[] wrongAnswers) {
+            QuestionText = questionText;
+            RightAnswer = rightAnswer;
+            WrongAnswers = wrongAnswers;
+        }
+        public virtual bool IsRightAnswer(string anAnswer) {
+            return string.Equals(RightAnswer, anAnswer);
+        }
+    }
+}
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="TriviaGamePresenter.cs" %}
+{% code title="TriviaGamePresenter.cs" %}
+```csharp
+using TriviaGame.Delivery;
+using TriviaGame.Domain;
+namespace TriviaGame.Presentation {
+    public class TriviaGamePresenter {
+        private TriviaGameView _view;
+        private Question[] _questions;
+        private int _currentQuestion;
+        public int Score {
+            get;
+            private set;
+        }
+        public TriviaGamePresenter(TriviaGameView view, Question[] questions) {
+            _view = view;
+            _questions = questions;
+            Score = 0;
+            _currentQuestion = 0;
+            _view.ShowNextQuestion(_questions[_currentQuestion]);
+        }
+        public void ReceiveAnswer(string anAnswer) {
+            if (_questions[_currentQuestion].IsRightAnswer(anAnswer)) {
+                OnRightAnswerReceived();
+            } else {
+                OnWrongAnswerReceived();
+            }
+        }
+        private void OnWrongAnswerReceived() {
+            _view.ShowLoseFeedback();
+        }
+        private void OnRightAnswerReceived() {
+            Score ++;
+            _currentQuestion ++;
+            _view.UpdateScore(Score);
+            if (Score == 3) {
+                _view.ShowWinFeedback();
+            } else {
+                _view.ShowPositiveFeedback();
+                _view.ShowNextQuestion(_questions[_currentQuestion]);
+            }
+        }
+    }
+}
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="TriviaGamePresenterBuilder.cs" %}
+{% code title="TriviaGamePresenterBuilder.cs" %}
+```csharp
+using TriviaGame.Delivery;
+using TriviaGame.Service;
+namespace TriviaGame.Presentation {
+    public class TriviaGamePresenterBuilder {
+        public static TriviaGamePresenter BuildTriviaGamePresenter(TriviaGameView view) {
+            return new TriviaGamePresenter(view, ServicesProvider.QuestionsService().GetQuestions(3));
+        }
+    }
+}
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="QuestionsService.cs" %}
+{% code title="QuestionsService.cs" %}
+```csharp
+using System.Collections.Generic;
+using TriviaGame.Domain;
+using Random = UnityEngine.Random;
+namespace TriviaGame.Service {
+    public class QuestionsService {
+        private List<Question> _allQuestions;
+        public QuestionsService() {
+            _allQuestions = new List<Question>() {
+                new Question("How many months are there in a year?", "12", new[]{"10", "15", "30"}),
+                new Question("How many days are there in a week?", "7", new[]{"12", "6", "5"}),
+                new Question("Witch of these is not an insect", "Cow", new[]{"Worm", "Fly", "Spider"}),
+                new Question("Witch of these is not a country", "Paris", new[]{"England", "Argentina", "Spain"}),
+                new Question("Witch of these is not a city", "Uruguay", new[]{"Tokyo", "Buenos Aires", "Madrid"})
+            };
+        }
+        public Question[] GetQuestions(int amount) {
+            _allQuestions.Sort(
+                (a, b) => Random.Range(0, 2) == 0
+                    ? 1
+                    : -1
+            );
+            return _allQuestions.GetRange(0, amount).ToArray();
+        }
+    }
+}
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="ServicesProvider.cs" %}
+{% code title="ServicesProvider.cs" %}
+```csharp
+namespace TriviaGame.Service {
+    public class ServicesProvider {
+        private static QuestionsService _questionsService = new QuestionsService();
+        public static QuestionsService QuestionsService() {
+            return _questionsService;
+        }
+    }
+}
+```
+{% endcode %}
 {% endtab %}
 {% endtabs %}
 
+* 위의 Script들을 생성 했다면 아래의 가이드라인을 따라 Object에 Script들을 추가합니다.
+  * 
 
-
-
+## 작성법 - TDD
 
 
 

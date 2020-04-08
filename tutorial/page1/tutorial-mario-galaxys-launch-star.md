@@ -33,7 +33,7 @@ description: tutorial Mario Galaxy's Launch Star
 
 Mixamo를 이용한 3D Modeling의 import 과정은 tutorial이 아닌 다른 문서에서 다루도록 하겠습니다.
 
-![Character &#xBC0F; &#xC0AC;&#xC804;&#xC900;&#xBE44;](../../.gitbook/assets/image%20%2879%29.png)
+![Character &#xBC0F; &#xC0AC;&#xC804;&#xC900;&#xBE44;](../../.gitbook/assets/image%20%2880%29.png)
 
 위의 Github Link에서 다운 받은 Character를 Plane Object 위에 배치하고 몇가지 수정을 합니다.
 
@@ -47,7 +47,7 @@ Mixamo를 이용한 3D Modeling의 import 과정은 tutorial이 아닌 다른 �
 
 Window -&gt; Package Manager -&gt; Cinemachine을 설치니다.
 
-![Window -&amp;gt; Package Manager -&amp;gt; Cinemachine Install](../../.gitbook/assets/image%20%2876%29.png)
+![Window -&amp;gt; Package Manager -&amp;gt; Cinemachine Install](../../.gitbook/assets/image%20%2877%29.png)
 
 설치 후 Editor의 상단에는 Cinemachine이라는 탭이 하나 생깁니다. 클릭하여 Create Dolly Track with Cart항목을 눌러 새로운 Dolly Cart라는 Object를 생성합니다. 
 
@@ -57,7 +57,7 @@ Hierarchy에서 DollyTrack1, DollyCart1 Object가 생성되고 아래의 그림�
 
 그리고 Import한 Jammo\_Player를 Unpack을 하고 Cinemachine 탭에서 FreeLook Camera를 추가하여 생성된 Object의 Inspector에서 Follow, LookAt Component에 Character를 넣고 Orbits를 아래의 그림과 같이 수정합니다.
 
-![](../../.gitbook/assets/image%20%28102%29.png)
+![](../../.gitbook/assets/image%20%28103%29.png)
 
 후에 Jamoo\_Player에 StarLauncher.cs Script를 넣고 아래의 Script들을 생성합니다.
 
@@ -343,7 +343,7 @@ public class SpeedModifier : MonoBehaviour
 
 StarLauncher.cs에 미리 생성한 FreeLook Camera, Dolly Cart, parent Object를 Empty Component에 넣고 Path Curve를 임의대로 설정 합니다. 후에 실행한다면 Particle Attribute의 Follow, Smoke Particle이 비어있어서 오류가 날 수도 있는데, 이는 임의의 Particle을 넣어서 해결하실 수 있습니다.
 
-![Insert StarLauncher.cs Empty Component](../../.gitbook/assets/image%20%2878%29.png)
+![Insert StarLauncher.cs Empty Component](../../.gitbook/assets/image%20%2879%29.png)
 
 Play시 오류가 없는 것을 확인 하셨다면 본격적으로 Dolly Track을 가지고 Launcher Path를 제작해야 하는데 미리 생성된 Dolly Track1 Object에 Sphere Collider, Camera Trigger, Speed Modifier Script를 넣습니다.그리고 Virtual Camera를 하나 생성하고 "Cameras"라는 Empty Object를 생성하여 ChildObject로 넣습니다.
 
@@ -382,7 +382,7 @@ LauncherStar\_Object는 아래와 같은 Hierarchy를 가지고 있고 다음과
 {% endtab %}
 
 {% tab title="Plane Object" %}
-![Plane Object Component](../../.gitbook/assets/image%20%28100%29.png)
+![Plane Object Component](../../.gitbook/assets/image%20%28101%29.png)
 
 * Plane Object Component
   * Project View에서 Plane Prefab 추가
@@ -445,7 +445,7 @@ glow Object들은 Particle System만 있기 때문에 Particle System 설정값�
 {% endtab %}
 
 {% tab title="Inner\_glow Object" %}
-![Inner\_glow Object Component](../../.gitbook/assets/image%20%2894%29.png)
+![Inner\_glow Object Component](../../.gitbook/assets/image%20%2895%29.png)
 
 glow Object와 Inner\_glow Object는 거의 같은 Particle 설정값을 가지고 있기 때문에 달라진 부분만 굵게 표시하여 작성하겠습니다.
 
@@ -506,7 +506,7 @@ glow Object와 Inner\_glow Object는 거의 같은 Particle 설정값을 가지�
     * Material = starParticle\_1
     * Trail Material = starParticle\_1
 
-![starParticle Material Component](../../.gitbook/assets/image%20%2895%29.png)
+![starParticle Material Component](../../.gitbook/assets/image%20%2896%29.png)
 
 * starParticle\_1 Material Component
   * Shader = Particle / Standard Units
@@ -561,7 +561,7 @@ glow Object와 Inner\_glow Object는 거의 같은 Particle 설정값을 가지�
 {% endtab %}
 
 {% tab title="smoke Object" %}
-![smoke Object Particle System Component](../../.gitbook/assets/image%20%2897%29.png)
+![smoke Object Particle System Component](../../.gitbook/assets/image%20%2898%29.png)
 
 * Particle System 
   * smoke 
@@ -603,13 +603,13 @@ glow Object와 Inner\_glow Object는 거의 같은 Particle 설정값을 가지�
 
 설정값 대로 LauncherStar Object를 작성합니다.
 
-![LauncherStar\_Path Hierarchy](../../.gitbook/assets/image%20%2874%29.png)
+![LauncherStar\_Path Hierarchy](../../.gitbook/assets/image%20%2875%29.png)
 
 
 
 Unpack Prefab을 한 LauncherStar\_Path의 하위 Object로 두 개의 그림과 같은 Object를 생성합니다.           각 Object는 Dolly Cart로 Camera 이동이 움직이는 순간 활성화 시킬 것인지에 대한 옵션설정 Script입니다. Script에 대한 설정값은 아래의 그림과 같이 설정합니다.
 
-![Activate Object Component](../../.gitbook/assets/image%20%2875%29.png)
+![Activate Object Component](../../.gitbook/assets/image%20%2876%29.png)
 
 위의 그림과 같이 설정했다면 최종적으로 아래의 그림과 같이 Path가 설정이 될것이고 아래의 그림과 같은 결과가 나옵니다.
 
