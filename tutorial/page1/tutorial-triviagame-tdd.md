@@ -27,7 +27,7 @@ description: tutorial TriviaGame TDD
 * UI 배치 관하여 연습을 하고 싶다면 Complete Project를 보면서 하나씩 해보는 것을 추천합니다.
 * 위의 Hierarchy 그림처럼 GameObject를 배치하는 게 최종 목표입니다.
 
-![&#xC704;&#xC758; &#xADF8;&#xB9BC;&#xCC98;&#xB7FC; &#xBC30;&#xCE58;&#xD569;&#xB2C8;&#xB2E4;.](../../.gitbook/assets/image%20%2864%29.png)
+![&#xC704;&#xC758; &#xADF8;&#xB9BC;&#xCC98;&#xB7FC; &#xBC30;&#xCE58;&#xD569;&#xB2C8;&#xB2E4;.](../../.gitbook/assets/image%20%2865%29.png)
 
 * Canvas
   * Canvas Scaler - UI Scale Mode를 Scale With Screen Size로 설정해 1920 \* 1080로 조절합니다.
@@ -44,7 +44,7 @@ description: tutorial TriviaGame TDD
 
  여기까지 했으면 아래와 같은 그림의 Object 배치가 완료 됩니다.
 
-![](../../.gitbook/assets/image%20%2895%29.png)
+![](../../.gitbook/assets/image%20%2896%29.png)
 
 * Score
   * Score Object를 추가하고 Image Component를 추가하여, ScoreContainer Sprite로 설
@@ -62,13 +62,59 @@ description: tutorial TriviaGame TDD
   * ScoreLabel과 같이 Font에 대한 설정을 임의 대로 합니다.
     * 작성자는 \(B, 50, Center / Middle\)로 설정하고 Vertex Color를 Black으로 설정했습니다.
 
-![&#xC784;&#xC758;&#xB85C; &#xC791;&#xC131;&#xD55C; Score Object&#xC5D0; &#xB300;&#xD55C; &#xACB0;&#xACFC;](../../.gitbook/assets/image%20%2888%29.png)
+![&#xC784;&#xC758;&#xB85C; &#xC791;&#xC131;&#xD55C; Score Object&#xC5D0; &#xB300;&#xD55C; &#xACB0;&#xACFC;](../../.gitbook/assets/image%20%2889%29.png)
+
+* Question
+  * Image Component를 추가하여 QuestionContainer Sprite로 설정합니다.
+  * Width, Height\(1050, 920\)를 설정합니다.
+* QuestionContainer
+  * Question의 Child Object로써 Image Component를 추가하여 TextContainer Sprite로 설정합니다.
+  * Anchors를 아래와 같이 설정합니다.
+    * min X : 0.5 / min Y : 1
+    * max X : 0.5 / max Y : 1
+  * Pivot을 설정합니다.
+    * X : 0.5 / Y : 1
+* QuestionText
+  * TextMesh Pro - Text\(UI\) Component를 추가합니다.
+  * Anchors를 아래와 같이 설정합니다.
+    * min X : 0 / min Y : 0
+    * max X : 1 / max Y : 1
+  * Pivot을 설정합니다.
+    * X : 0.5 / Y : 0.5
+  * Font를 아래와 같이 설정합니다.
+    * Font Style : B
+    * Auto Size Check
+      * Min : 18 / Max : 60
+    * Vertex Color : Black
+    * Alignment : Center / Middle
+* ContainerAllAnswer
+  * Question Object의 Child Object로써, Answer 기능에 관련한 Object를 배치하기 위한 BackGround Object입니다.
+  * Image Component를 추가하여 AnswerContainer Sprite를 설정하고 Color.Alpha값을 줄여줍니다.
+  * 아래와 같이 Rect Transform을 설정합니다.
+    * Pos X : 0 / Pos Y : -157 / Pos Z : 0
+    * Width : 1000 / Height : 538
+* Answer
+  * Question Object의 Child Object로써, 해당 Object에 Child Object를 추가하여 Answer Object를 관리합니다.
+  * Vertical Layout Group을 추가하여 Control Child Size의 Width를 Check합니다.
+    * 이렇게 하면 간편하게 수직적으로 Object를 추가할 때 Transform이나 Position, Anchors의 변화 없이 추가할 수 있습니다.
+  * Rect Transform을 아래와 같이 설정합니다.
+    * Anchors
+      * middle Stretch로 설정
+      * Left : 50 / Pos Y : -167 / Pos Z : 0
+      * Right : 50 / Height : 512
+* Answer N Object
+  * Answer Object의 Child Object로써, 해당 Object는 Button Component를 통해 동작합니다.
+  * Button Component 추가 후 On Click\(\) Event를 추가해줍니다.
+
+일단 여기까지 하고 Script를 추가해야 하는데 아래의 Script단락에서 추가 후에 Prefab으로 만들어서 똑같이 추가해 줍니다.
+
+여기까지 하셨다면 아래의 그림과 같은 결과가 나옵니다.
+
+![](../../.gitbook/assets/image%20%283%29.png)
 
 
 
-
-
-## 작성법 - TDD
+## 작성법 - Script
 
 해당 프로젝트의 완전환 파일은 아래의 링크에서 다운 받으실 수 있습니다.
 

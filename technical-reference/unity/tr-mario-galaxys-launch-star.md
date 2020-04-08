@@ -6,7 +6,7 @@ description: TR Mario Galaxy's Launch Star
 
 ## Blend Tree Animation
 
-![Jammo\_Player Animator&#xC758; Normal Status Blend Tree](../../.gitbook/assets/image%20%2842%29.png)
+![Jammo\_Player Animator&#xC758; Normal Status Blend Tree](../../.gitbook/assets/image%20%2843%29.png)
 
 {% embed url="https://wergia.tistory.com/54?category=739103" caption="Blend Tree Animation 사용" %}
 
@@ -22,7 +22,7 @@ description: TR Mario Galaxy's Launch Star
   * 위와 동일하게 작성하지만 가장 큰 차이점이 parameter가 2개가 존재합니다.
   * 2개의 parameter로 2D game에서 뒤로 움직일 때 sprite를 Flip해서 움직이는 것과는 달리 Animation만 존재하면 간편하게 작성할 수 있습니다.
 
-    ![](../../.gitbook/assets/image%20%2889%29.png)
+    ![](../../.gitbook/assets/image%20%2890%29.png)
 * **2D Simple Directional과 다른 2D Freeform Directional**
   * Simple Directional과 동일하지만 같은 방향에 여러가지 모션을 추가할 수 있습니다.
   * Simple Directional이랑은 다르게 Blend Diagram을 작성할 때 여러 Motion Field를 추가하는데 좀 더 복잡한 움직임을 표현하는데 있어서 유용합니다.
