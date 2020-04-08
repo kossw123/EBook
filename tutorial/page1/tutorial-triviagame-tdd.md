@@ -106,11 +106,18 @@ description: tutorial TriviaGame TDD
   * Answer Object의 Child Object로써, 해당 Object는 Button Component를 통해 동작합니다.
   * Button Component 추가 후 On Click\(\) Event를 추가해줍니다.
 
-일단 여기까지 하고 Script를 추가해야 하는데 아래의 Script단락에서 추가 후에 Prefab으로 만들어서 똑같이 추가해 줍니다.
+Answer 0~4 Object를 작성해야 하는데 Script의 추가가 있기 때문에 마지막에 기술 하도록 하겠습니다.
 
 여기까지 하셨다면 아래의 그림과 같은 결과가 나옵니다.
 
 ![](../../.gitbook/assets/image%20%283%29.png)
+
+* Feedback
+  * Animator Component를 추가하여 상황에 따른 동작을 추가합니다.
+    * Feedback Animator를 설정
+* Correct
+  * Feedback의 Child Object로써, 올바른 정답을 맞혔을 때, 화면에 출력되는 이미지 입니다.
+  * 
 
 
 
