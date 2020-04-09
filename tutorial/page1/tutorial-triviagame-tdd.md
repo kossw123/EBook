@@ -26,6 +26,7 @@ description: tutorial TriviaGame TDD
   * 작성법 - TDD 부분으로 넘어가시면 됩니다.
 * UI 배치 관하여 연습을 하고 싶다면 Complete Project를 보면서 하나씩 해보는 것을 추천합니다.
 * 위의 Hierarchy 그림처럼 GameObject를 배치하는 게 최종 목표입니다.
+* **지금 부터 본문에 적는 Object에 대한 설정값은 보기에 편하도록 설정한 것이니, 다르게 설정하셔도 무방합니다.**
 
 ![&#xC704;&#xC758; &#xADF8;&#xB9BC;&#xCC98;&#xB7FC; &#xBC30;&#xCE58;&#xD569;&#xB2C8;&#xB2E4;.](../../.gitbook/assets/image%20%2865%29.png)
 
@@ -106,7 +107,7 @@ description: tutorial TriviaGame TDD
   * Answer Object의 Child Object로써, 해당 Object는 Button Component를 통해 동작합니다.
   * Button Component 추가 후 On Click\(\) Event를 추가해줍니다.
 
-Answer 0~4 Object를 작성해야 하는데 Script의 추가가 있기 때문에 마지막에 기술 하도록 하겠습니다.
+작성법 - Script 단락에서 Answer Object에 대한 Script와 동시에 배치도 기재하겠습니다.
 
 여기까지 하셨다면 아래의 그림과 같은 결과가 나옵니다.
 
@@ -117,7 +118,28 @@ Answer 0~4 Object를 작성해야 하는데 Script의 추가가 있기 때문에
     * Feedback Animator를 설정
 * Correct
   * Feedback의 Child Object로써, 올바른 정답을 맞혔을 때, 화면에 출력되는 이미지 입니다.
-  * 
+  * BG
+    * Correct Object의 Child Object로써 Image Component를 추가하여 Tiny Sprite로 설정합니다.
+    * Rect Transform을 아래와 같이 설정합니다.
+      * Width : 4500 / Height : 2500
+  * Container
+    * Correct Object의 Child Object로써 Image Component를 추가하여 WinContainer Sprite로 설정합니다.
+    * Rect Transform을 아래와 같이 설정합니다.
+      * Width : 600 / Height : 700
+  * Bonzo
+    * Correct Object의 Child Object로써 Image Component를 추가하여 BonzoCorrect Sprite로 설정합니다.
+    * Rect Transform을 아래와 같이 설정합니다.
+      * Width : 268 / Height : 442\(적당한 크기로 설정합니다.\)
+  * Text
+    * Correct Object의 Child Object로써 TextMeshPro - Text\(UI\)를 추가하여 아래와 같이 설정합니다.
+      * Font Style : B
+      * Font Size : 50
+      * Alignmnet : Center / Middle
+    * Rect Transform을 아래와 같이 설정합니다.
+      * Pos X : 0 / Pos Y : 307 / Pos Z : 0
+      * Width : 200 / Height : 50
+
+이 이상으로 설정값을 적으면 길어지기 때문에 Correct Object를 복제하여 나머지 Feedback의 Child Object인 Lose, Win를 Sprite만 변경해서 구성하시면 됩니다.
 
 
 
@@ -378,7 +400,9 @@ namespace TriviaGame.Service {
 {% endtabs %}
 
 * 위의 Script들을 생성 했다면 아래의 가이드라인을 따라 Object에 Script들을 추가합니다.
-  * 
+  * GamePlayScreen -- TriviaGameView.cs 추가
+    * Score Text, Question Text Object 설정 후 Answer Size 4로 조
+  * Answer 0 Object에 AnswerView.cs 추가
 
 ## 작성법 - TDD
 
