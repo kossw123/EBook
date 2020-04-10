@@ -33,7 +33,7 @@ description: tutorial Mario Galaxy's Launch Star
 
 Mixamo를 이용한 3D Modeling의 import 과정은 tutorial이 아닌 다른 문서에서 다루도록 하겠습니다.
 
-![Character &#xBC0F; &#xC0AC;&#xC804;&#xC900;&#xBE44;](../../.gitbook/assets/image%20%2880%29.png)
+![Character &#xBC0F; &#xC0AC;&#xC804;&#xC900;&#xBE44;](../../.gitbook/assets/image%20%2885%29.png)
 
 위의 Github Link에서 다운 받은 Character를 Plane Object 위에 배치하고 몇가지 수정을 합니다.
 
@@ -47,17 +47,17 @@ Mixamo를 이용한 3D Modeling의 import 과정은 tutorial이 아닌 다른 �
 
 Window -&gt; Package Manager -&gt; Cinemachine을 설치니다.
 
-![Window -&amp;gt; Package Manager -&amp;gt; Cinemachine Install](../../.gitbook/assets/image%20%2877%29.png)
+![Window -&amp;gt; Package Manager -&amp;gt; Cinemachine Install](../../.gitbook/assets/image%20%2882%29.png)
 
 설치 후 Editor의 상단에는 Cinemachine이라는 탭이 하나 생깁니다. 클릭하여 Create Dolly Track with Cart항목을 눌러 새로운 Dolly Cart라는 Object를 생성합니다. 
 
 Hierarchy에서 DollyTrack1, DollyCart1 Object가 생성되고 아래의 그림과 같은 Scene View가 생성됩니다.
 
-![Create Dolly Track with Cart](../../.gitbook/assets/image%20%2823%29.png)
+![Create Dolly Track with Cart](../../.gitbook/assets/image%20%2825%29.png)
 
 그리고 Import한 Jammo\_Player를 Unpack을 하고 Cinemachine 탭에서 FreeLook Camera를 추가하여 생성된 Object의 Inspector에서 Follow, LookAt Component에 Character를 넣고 Orbits를 아래의 그림과 같이 수정합니다.
 
-![](../../.gitbook/assets/image%20%28103%29.png)
+![](../../.gitbook/assets/image%20%28108%29.png)
 
 후에 Jamoo\_Player에 StarLauncher.cs Script를 넣고 아래의 Script들을 생성합니다.
 
@@ -343,7 +343,7 @@ public class SpeedModifier : MonoBehaviour
 
 StarLauncher.cs에 미리 생성한 FreeLook Camera, Dolly Cart, parent Object를 Empty Component에 넣고 Path Curve를 임의대로 설정 합니다. 후에 실행한다면 Particle Attribute의 Follow, Smoke Particle이 비어있어서 오류가 날 수도 있는데, 이는 임의의 Particle을 넣어서 해결하실 수 있습니다.
 
-![Insert StarLauncher.cs Empty Component](../../.gitbook/assets/image%20%2879%29.png)
+![Insert StarLauncher.cs Empty Component](../../.gitbook/assets/image%20%2884%29.png)
 
 Play시 오류가 없는 것을 확인 하셨다면 본격적으로 Dolly Track을 가지고 Launcher Path를 제작해야 하는데 미리 생성된 Dolly Track1 Object에 Sphere Collider, Camera Trigger, Speed Modifier Script를 넣습니다.그리고 Virtual Camera를 하나 생성하고 "Cameras"라는 Empty Object를 생성하여 ChildObject로 넣습니다.
 
@@ -353,11 +353,11 @@ Play시 오류가 없는 것을 확인 하셨다면 본격적으로 Dolly Track�
 
 그리고 Launch Tag를 하나 생성하여 Dolly Track1 Object의 Tag를 Launch로 설정합니다. 그러면 Launcher Path Object는 아래의 그림과 같은 Component와 설정값을 가지게 됩니다.
 
-![Dolly Track1 Inspector](../../.gitbook/assets/image%20%2846%29.png)
+![Dolly Track1 Inspector](../../.gitbook/assets/image%20%2850%29.png)
 
 이제 LauncherObject에 쓸 별모양의 Trigger Object를 작성하는데 아래의 그림과 같은 모양을 가지고 있습니다.
 
-![LauncherStar Objecct](../../.gitbook/assets/image%20%2840%29.png)
+![LauncherStar Objecct](../../.gitbook/assets/image%20%2844%29.png)
 
 해당 Object를 작성하기 위해서는 견본 Object가 필요합니다. 아래의 File을 다운 받아 내부의 Package를 Import 하셔도 무방하고 만약 파일이 손상되었다면, Sample Project 내부의 Images, Models, Animation File들을 Import 하셔도 됩니다. 혹은 Sample Project의 Prefab을 Import 하시면 됩니다.
 
@@ -365,13 +365,13 @@ Play시 오류가 없는 것을 확인 하셨다면 본격적으로 Dolly Track�
 
 LauncherStar\_Object는 아래와 같은 Hierarchy를 가지고 있고 다음과 같이 작성합니다. 
 
-![LauncherStar Hierarchy](../../.gitbook/assets/image%20%2868%29.png)
+![LauncherStar Hierarchy](../../.gitbook/assets/image%20%2873%29.png)
 
 그리고 각 Object에 설정할 Component들을 아래의 Tab에 기재했습니다.
 
 {% tabs %}
 {% tab title="LauncherStar Object" %}
-![LauncherStar Object Component](../../.gitbook/assets/image%20%2842%29.png)
+![LauncherStar Object Component](../../.gitbook/assets/image%20%2846%29.png)
 
 * LauncherStar Object Component
   * Animator = LaunchStart로 설정
@@ -382,13 +382,13 @@ LauncherStar\_Object는 아래와 같은 Hierarchy를 가지고 있고 다음과
 {% endtab %}
 
 {% tab title="Plane Object" %}
-![Plane Object Component](../../.gitbook/assets/image%20%28101%29.png)
+![Plane Object Component](../../.gitbook/assets/image%20%28106%29.png)
 
 * Plane Object Component
   * Project View에서 Plane Prefab 추가
   * Mesh Renderer의 Material = LaunchStar로 설
 
-![LaunchStar Material Component](../../.gitbook/assets/image%20%285%29.png)
+![LaunchStar Material Component](../../.gitbook/assets/image%20%287%29.png)
 
 * LaunchStar Material Component
   * Shader = Standard\(Specular setup\)
@@ -399,7 +399,7 @@ LauncherStar\_Object는 아래와 같은 Hierarchy를 가지고 있고 다음과
 {% endtab %}
 
 {% tab title="Inner\_Plane Object" %}
-![Inner Plane Object Component](../../.gitbook/assets/image%20%2847%29.png)
+![Inner Plane Object Component](../../.gitbook/assets/image%20%2851%29.png)
 
 * Inner\_Plane Object Component
   * Project View에서 Plane.001 Prefab 추가
@@ -407,13 +407,13 @@ LauncherStar\_Object는 아래와 같은 Hierarchy를 가지고 있고 다음과
 {% endtab %}
 
 {% tab title="Point Light Object" %}
-![Point Light Object](../../.gitbook/assets/image%20%2822%29.png)
+![Point Light Object](../../.gitbook/assets/image%20%2824%29.png)
 
 * Color = R : 255 / G: 198 / B: 64 / A: 255
 {% endtab %}
 
 {% tab title="glow Object" %}
-![glow Object Component](../../.gitbook/assets/image%20%2830%29.png)
+![glow Object Component](../../.gitbook/assets/image%20%2834%29.png)
 
 glow Object들은 Particle System만 있기 때문에 Particle System 설정값만 기재하겠습니다.
 
@@ -445,7 +445,7 @@ glow Object들은 Particle System만 있기 때문에 Particle System 설정값�
 {% endtab %}
 
 {% tab title="Inner\_glow Object" %}
-![Inner\_glow Object Component](../../.gitbook/assets/image%20%2895%29.png)
+![Inner\_glow Object Component](../../.gitbook/assets/image%20%28100%29.png)
 
 glow Object와 Inner\_glow Object는 거의 같은 Particle 설정값을 가지고 있기 때문에 달라진 부분만 굵게 표시하여 작성하겠습니다.
 
@@ -474,7 +474,7 @@ glow Object와 Inner\_glow Object는 거의 같은 Particle 설정값을 가지�
 {% endtab %}
 
 {% tab title="charge Object" %}
-![charge Object Particle System](../../.gitbook/assets/image%20%2839%29.png)
+![charge Object Particle System](../../.gitbook/assets/image%20%2843%29.png)
 
 * Particle System 
   * charge
@@ -506,7 +506,7 @@ glow Object와 Inner\_glow Object는 거의 같은 Particle 설정값을 가지�
     * Material = starParticle\_1
     * Trail Material = starParticle\_1
 
-![starParticle Material Component](../../.gitbook/assets/image%20%2896%29.png)
+![starParticle Material Component](../../.gitbook/assets/image%20%28101%29.png)
 
 * starParticle\_1 Material Component
   * Shader = Particle / Standard Units
@@ -517,7 +517,7 @@ glow Object와 Inner\_glow Object는 거의 같은 Particle 설정값을 가지�
 {% endtab %}
 
 {% tab title="explode Object" %}
-![explode Object Particle System](../../.gitbook/assets/image%20%2831%29.png)
+![explode Object Particle System](../../.gitbook/assets/image%20%2835%29.png)
 
 * Particle System 
   * explode 
@@ -550,7 +550,7 @@ glow Object와 Inner\_glow Object는 거의 같은 Particle 설정값을 가지�
 
 
 
-![starParticle\_2 Material Component](../../.gitbook/assets/image%20%2861%29.png)
+![starParticle\_2 Material Component](../../.gitbook/assets/image%20%2866%29.png)
 
 * starParticle\_2 Material Component
   * Shader = Particles / Standard Unit
@@ -561,7 +561,7 @@ glow Object와 Inner\_glow Object는 거의 같은 Particle 설정값을 가지�
 {% endtab %}
 
 {% tab title="smoke Object" %}
-![smoke Object Particle System Component](../../.gitbook/assets/image%20%2898%29.png)
+![smoke Object Particle System Component](../../.gitbook/assets/image%20%28103%29.png)
 
 * Particle System 
   * smoke 
@@ -603,13 +603,13 @@ glow Object와 Inner\_glow Object는 거의 같은 Particle 설정값을 가지�
 
 설정값 대로 LauncherStar Object를 작성합니다.
 
-![LauncherStar\_Path Hierarchy](../../.gitbook/assets/image%20%2875%29.png)
+![LauncherStar\_Path Hierarchy](../../.gitbook/assets/image%20%2880%29.png)
 
 
 
 Unpack Prefab을 한 LauncherStar\_Path의 하위 Object로 두 개의 그림과 같은 Object를 생성합니다.           각 Object는 Dolly Cart로 Camera 이동이 움직이는 순간 활성화 시킬 것인지에 대한 옵션설정 Script입니다. Script에 대한 설정값은 아래의 그림과 같이 설정합니다.
 
-![Activate Object Component](../../.gitbook/assets/image%20%2876%29.png)
+![Activate Object Component](../../.gitbook/assets/image%20%2881%29.png)
 
 위의 그림과 같이 설정했다면 최종적으로 아래의 그림과 같이 Path가 설정이 될것이고 아래의 그림과 같은 결과가 나옵니다.
 
