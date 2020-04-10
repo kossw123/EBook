@@ -412,7 +412,7 @@ namespace TriviaGame.Service {
   * Answer Size 4로 조정합니다.
   * 생성한 Answer 0~4를 Answers에 넣습니다.
   * Feedback Animations 항목에 Feedback Animator를 넣습니다.
-* 
+
 
 
 ## 작성법 - TDD
