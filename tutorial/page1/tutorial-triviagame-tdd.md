@@ -400,9 +400,20 @@ namespace TriviaGame.Service {
 {% endtabs %}
 
 * 위의 Script들을 생성 했다면 아래의 가이드라인을 따라 Object에 Script들을 추가합니다.
-  * GamePlayScreen -- TriviaGameView.cs 추가
-    * Score Text, Question Text Object 설정 후 Answer Size 4로 조
-  * Answer 0 Object에 AnswerView.cs 추가
+  * Answer 0 Object에 AnswerView.cs 추가 합니다.
+    * OnClick\(\) Event에 Answer 0 Object를 넣고 Function을 AnswerView.Click으로 설정합니다.
+    * AnswerView.cs의 AnswerText에는 Child Object인 AnswerText를 설정합니다.
+  * 이런 방식으로 Answer 0~4 Object를 생성합니다.
+
+
+
+* GamePlayScreen -- TriviaGameView.cs 추가 합니다.
+  * Score Text, Question Text Object에는 Hierarchy에서 같은 이름의 Object로 설정합니다.
+  * Answer Size 4로 조정합니다.
+  * 생성한 Answer 0~4를 Answers에 넣습니다.
+  * Feedback Animations 항목에 Feedback Animator를 넣습니다.
+* 
+
 
 ## 작성법 - TDD
 
