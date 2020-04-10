@@ -434,9 +434,12 @@ namespace TriviaGame.Service {
 
 ![TriviaGamePresenterTests.cs&#xB97C; &#xB123;&#xC740; Test Runner&#xC758; &#xD654;&#xBA74;](../../.gitbook/assets/image%20%2831%29.png)
 
+* 이미 Script에 필요한 Test Case는 넣었기 때문에 Run All을 해서 모두 초록색 체크 표시가 뜬다면 간단하게 Test를 마칠 수 있습니다.
 
+## 마치며
 
+* TDD에 대한 Explanation 문서가 굉장히 길것 같습니다. 문서를 보실 때 최대한 가독성을 높이는 구성으로 작성하겠지만 불편한 점이 있다면 아래의 메일로 보완점이나, 바라는점을 보내주시면 반영하겠습니다.
+* 8iioww@gmail.com
 
-
-
+{% page-ref page="../../how-to-guide/unity/how-to-guide-triviagame-tdd.md" %}
 
