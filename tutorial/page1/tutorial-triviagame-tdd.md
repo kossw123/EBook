@@ -2,7 +2,7 @@
 description: tutorial TriviaGame TDD
 ---
 
-# tutorial TriviaGame TDD - 작성중
+# tutorial TriviaGame TDD
 
 ##  무엇을 하려고 하는가?
 
