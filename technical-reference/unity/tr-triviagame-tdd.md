@@ -35,6 +35,14 @@ namespace TriviaGame.Delivery
 접근시 using명령문을 써서 상단에 미리 선언해야 합니다.
 
 ex\) using TriviaGame.Domain;
+
+
+
+GamePlayScreen Object에서는 이에 관련된 Component들을 확인 할 수 없는데 어떻게 접근이 가능한 것인가에 대한 고찰을 해보면 namespace는 선언과 동시에 
+
+**자동적으로 전역 namespace 라는 단일 공간에 선언이 됩니다. 이로 인해 전역적인 만큼 Script가 존재하기만 한다면 검색하여 해당 namespace 주소를 가져와 컴파일단위로 함께 처리 됩니다.**
+
+여기까지만 알아도 이 Project에 대한 궁금증을 해결되었기에, 나중에 기회가 된다면 좀 더 깊게 알아보겠습니다.
 {% endhint %}
 
 이제 다른 Script들을 보면 
