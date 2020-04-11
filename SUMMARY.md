@@ -33,7 +33,7 @@
     * [TR Celeste's Movement](technical-reference/unity/tr-celestes-movement-1.md)
     * [TR Mario Galaxy's Launch Star](technical-reference/unity/tr-mario-galaxys-launch-star.md)
     * [TR Melee Attack](technical-reference/unity/tr-melee-attack.md)
-    * [TR TriviaGame TDD](technical-reference/unity/tr-triviagame-tdd.md)
+    * [TR TriviaGame TDD - 작성중](technical-reference/unity/tr-triviagame-tdd.md)
 * [API, Component reference](api-component-reference/README.md)
   * [Unity](api-component-reference/unity/README.md)
     * [DOTween](api-component-reference/unity/dotween.md)

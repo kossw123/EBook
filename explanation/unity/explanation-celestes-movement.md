@@ -398,7 +398,7 @@ Unity에서는 위에서 설명한 기능들을 추가하여 좀 더 쉽게 여�
 
 Animation을 넣고싶은 Object를 클릭하고 Animation창에서 Create를 누르면 아래와 같은 창이 나타납니다.
 
-![Animation Window](../../.gitbook/assets/image%20%2886%29.png)
+![Animation Window](../../.gitbook/assets/image%20%2887%29.png)
 
 중앙에 위치해있는 0:00, 0:01...과 같은 TimeLine에 Sprite를 삽입 하여 하나의 Clip으로 생성합니다.
 
@@ -442,7 +442,7 @@ Animation Clip을 가지고 Canvas Component의 영향을 받는 Component들을
 
 이를 위해 A, B Scene을 생성하여 우선 Scene A에서 아래와 같은 Hierarchy와 Component를 배치합니다.
 
-![Scene A&#xC5D0; &#xBC30;&#xCE58;&#xD574;&#xC57C;&#xD560; Hierarchy, Component &#xC885;&#xB958;](../../.gitbook/assets/image%20%2878%29.png)
+![Scene A&#xC5D0; &#xBC30;&#xCE58;&#xD574;&#xC57C;&#xD560; Hierarchy, Component &#xC885;&#xB958;](../../.gitbook/assets/image%20%2879%29.png)
 
 위의 그림과 같이 배치했다면 몇가지 수정할 점이 있습니다.
 
