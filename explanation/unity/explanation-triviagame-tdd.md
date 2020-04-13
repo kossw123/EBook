@@ -18,6 +18,20 @@ description: Explanation TriviaGame TDD
   * Presentation
   * Service
 
+## 각 Script의 역할 및 Class Diagram
+
+해당 Project의 Diagram은 아래와 같습니다.
+
+![Visual Studio&#xC758; Class Designer&#xB97C; &#xC774;&#xC6A9;&#xD55C; Diagram](../../.gitbook/assets/image%20%2827%29.png)
+
+![TriviaGame Class &#xD638;&#xCD9C; &#xC804;&#xAC1C;&#xB3C4;](../../.gitbook/assets/image%20%2816%29.png)
+
+* TriviaGameView : GamePlayerScreen Object에 추가된 Component로써, 계속적인 GamePlay의 Controller 역할을 합니다.
+* TriviaGamePresenterBuilder : TriviaGamePresenter Class를 받아서 static을 선언하여 전역 데이터 영역에 올리고, 해당 함수인 BuildTriviaGamePresenter 함수를 통해 Controller\(TriviaGameView\), 질문을 가져와\(QuestionsService\(\).GetQuestion\(\)\) 동적으로 생성합니다.
+* TriviaGamePresenter : 
+
+
+
 ## Domain Script
 
 {% code title="TriviaGameView.cs" %}

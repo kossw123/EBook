@@ -35,7 +35,7 @@ description: TR Celeste's Movement
 * 키보드, 조이스틱에 입력값에 대해서 -1~1의 값을 가집니다.
 * 독립적인 프레임 속도로 작동하기 때문에 가변적인 프레임 변경을 신경쓰지
 
-![Input.GetAxis\(axisName\)&#xC758; &#xBC18;&#xD658;&#xAC12; ](../../.gitbook/assets/image%20%2858%29.png)
+![Input.GetAxis\(axisName\)&#xC758; &#xBC18;&#xD658;&#xAC12; ](../../.gitbook/assets/image%20%2861%29.png)
 
 * 위의 그림과  같은 결과값을 확인하실 수 있습니다.
 
