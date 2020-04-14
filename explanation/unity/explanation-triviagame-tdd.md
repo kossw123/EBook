@@ -78,11 +78,9 @@ private void Start()
 ```
 {% endcode %}
 
-Start\(\) 함수를 실행과 동시에 다른 namespace에서 가져온 \_presenter Class 변수에 TriviaGamePresenterBuilder Class에 있는 BuildTriviaGamePresenter함수에 TriviaGameView가 추가된 GameObject를 가지게 합니다.
-
-그리고 선언한 Answer\[\] Class 배열에 접근하여 foreach반복문을 통해 AnswerView에 있는 Initialize함수에 OnAnswerSelected\(\) 함수를 실행한 결과값을 넣습니다.
-
-OnAnswerSelected\(\) 함수는 아래와 같습니다.
+* Start\(\) 함수를 실행과 동시에 다른 namespace에서 가져온 \_presenter Class 변수에 TriviaGamePresenterBuilder Class에 있는 BuildTriviaGamePresenter함수에 TriviaGameView가 추가된 GameObject를 가지게 합니다.
+* 그리고 선언한 Answer\[\] Class 배열에 접근하여 foreach반복문을 통해 AnswerView에 있는 Initialize함수에 OnAnswerSelected\(\) 함수를 실행한 결과값을 넣습니다.
+* OnAnswerSelected\(\) 함수는 아래와 같습니다.
 
 ```csharp
 private void OnAnswerSelected(string selectedAnswer)
@@ -91,11 +89,34 @@ private void OnAnswerSelected(string selectedAnswer)
 }
 ```
 
-위의 함수는 TriviaGamePresenter Class의 string parameter를 가진 ReceiveAnswer함수를 받아와서 비교 함수를 통해 맞는 정답이거나\(OnRightAnswerReceived\(\)\) 틀린 답\(OnWrongAnswerReceived\(\)\)을 가려냅니다.
+* 위의 함수는 TriviaGamePresenter Class의 string parameter를 가진 ReceiveAnswer함수를 받아와서 비교 함수를 통해 맞는 정답이거나\(OnRightAnswerReceived\(\)\) 틀린 답\(OnWrongAnswerReceived\(\)\)을 가려냅니다.
 
+{% hint style="info" %}
 하지만 어떻게 해서 answerView.Initialize\(\) 함수에 아무런 parameter를 넘기지 않고도 동작하는가에 대한 궁금증이 생겼습니다.
 
 이 부분은 answerView.Initialize\(Action&lt;string&gt; onAnswerSelected\)라는 parameter가 Action이기 때문입니다.
 
+반환값도, 인자값도 가지지 않는 Action기능이라면, parameter를 적지 않고도 해당 함수에 대한 주소값을 전달하여 해당 주소의 함수를 실행 시킵니다.
+{% endhint %}
 
+{% code title="TriviaGameView.cs" %}
+```csharp
+    public virtual void ShowNextQuestion(Question question)
+    {
+        _questionText.text = question.QuestionText;
+
+        var allAnswers = question.WrongAnswers.Concat(new string[] { question.RightAnswer }).ToList();
+        allAnswers.Sort((a, b) => Random.Range(0, 2) > 0 ? 1 : -1);
+
+        for (var i = 0; i < _answers.Length; i++)
+        {
+            _answers[i].FillData(allAnswers[i]);
+        }
+    }
+```
+{% endcode %}
+
+ShowNextQuestion\(\) 함수는 \_questionText.text에 Question Class에서 QuestionText를 받아서 할당하고, 실질적으로 QuestionText Object의 Text에 할당합니다.
+
+var type의 allAnswers를 가지고 Question Class의 string\[\] WrongAnswer 배열에 접근하여 Concat함수를 이용해 배열을 합칩니다.
 
