@@ -91,7 +91,11 @@ private void OnAnswerSelected(string selectedAnswer)
 }
 ```
 
+위의 함수는 TriviaGamePresenter Class의 string parameter를 가진 ReceiveAnswer함수를 받아와서 비교 함수를 통해 맞는 정답이거나\(OnRightAnswerReceived\(\)\) 틀린 답\(OnWrongAnswerReceived\(\)\)을 가려냅니다.
 
+하지만 어떻게 해서 answerView.Initialize\(\) 함수에 아무런 parameter를 넘기지 않고도 동작하는가에 대한 궁금증이 생겼습니다.
+
+이 부분은 answerView.Initialize\(Action&lt;string&gt; onAnswerSelected\)라는 parameter가 Action이기 때문입니다.
 
 
 
