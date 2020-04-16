@@ -120,3 +120,49 @@ ShowNextQuestion\(\) 함수는 \_questionText.text에 Question Class에서 Quest
 
 var type의 allAnswers를 가지고 Question Class의 string\[\] WrongAnswer 배열에 접근하여 Concat함수를 이용해 배열을 합칩니다.
 
+이때 new string 배열로 선언 후 Question Class의 RightAnswer를 할당합니다.
+
+{% hint style="info" %}
+var allAnswer = question.WrongAnswers.Concat\(new string\[\] {question.RightAnswer}\).ToList\(\);
+
+Qustion Class의 WrongAnswer\[\] 배열 변수에 접근합니다. 이때 Concat을 통해 병합을 실시하며, 병합의 대상은 string\[\] 배열을 동적으로 생성한 Question Class의 RightAnswer입니다.
+
+최종적으로 ToList\(\) 함수를 통해 Array -&gt; List로 변환하여 List.Sort\(\)를 통해 정렬합니다.
+{% endhint %}
+
+그 후 ToList\(\) 함수를 통해 Array를 List로 변환합니다. 이는 Sort를 통해 정렬하기 위함입니다.
+
+Sort\(\) 함수를 통해 정렬을 하는데 이때 Lambda expression이 쓰이는데 \(a, b\)와 같이 parameter만 전달 하여 배치합니다.
+
+{% hint style="info" %}
+allAnswer.Sort\(\(a, b\) =&gt; Random.Range\(0 ,2\) &gt; 0 ? 1 : -1\);
+
+내부적으로 살펴보면 list로 변환된 allAnswer는 아래의 함수를 사용하여 Sort합니다.
+
+public void Sort\(Comparison&lt;T&gt; comparison\);
+
+Sort는 내부적으로 정렬을 합니다. 
+
+### 하지만 Comparision&lt;T&gt;는 어떤 의미인가? 하는 의문점이 있습니다.
+
+Comparision은 delegate가 선언된 함수 원형입니다. 그 내용은 아래와 같습니다.
+
+public delegate int Comparison\(T x, T y\);
+
+int type의 함수원형을 선언 하고 Delegate를 사용해서 함수 포인터를 사용하는 곳으로 넘깁니다. 이 함수는 Sort\(\)함수로 넘어가서 Sort\(\)에 사용된 Algorithm을 통해 x, y를 비교하게 됩니다.
+
+Lambda식을 사용해서 간결하게 표시하고 최종적으로, 
+
+a와 b를 Random.Range\(0, 2\) &gt; 0 ? 1 : -1의 조건에 따라 배치합니다.
+
+\(a, b\) =&gt; Random.Range\(0, 2\) &gt; 0 ? 1 : -1 
+
+### Sort\(\) 알고리즘은
+
+간단하게 1, -1을 비교하여 두가지의 비교 대상의 위치를 변환합니다.
+{% endhint %}
+
+그리고 마지막으로 반복문을 사용해 AnswerView\[\] 배열 변수인 \_answers를 FillData함수를 통해 Text에 넣습니다.
+
+
+
