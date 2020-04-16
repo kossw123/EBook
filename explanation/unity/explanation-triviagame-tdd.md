@@ -24,7 +24,7 @@ description: Explanation TriviaGame TDD
 
 ![Visual Studio&#xC758; Class Designer&#xB97C; &#xC774;&#xC6A9;&#xD55C; Diagram](../../.gitbook/assets/image%20%2827%29.png)
 
-![&#xC8FC;&#xAD00;&#xC801;&#xC778; TriviaGame Script &#xC791;&#xB3D9; &#xC21C;&#xC11C;](../../.gitbook/assets/image%20%2816%29.png)
+![&#xC8FC;&#xAD00;&#xC801;&#xC778; TriviaGame Script &#xC811;&#xADFC; &#xC21C;&#xC11C;](../../.gitbook/assets/image%20%2816%29.png)
 
 * TriviaGameView : GamePlayerScreen Object에 추가된 Component로써, 계속적인 GamePlay의 Controller 역할을 합니다.
 * TriviaGamePresenterBuilder : TriviaGamePresenter Class를 받아서 static을 선언하여 전역 데이터 영역에 올리고, 해당 함수인 BuildTriviaGamePresenter 함수를 통해 Controller\(TriviaGameView\), 질문을 가져와\(QuestionsService\(\).GetQuestion\(\)\) 동적으로 생성합니다.
@@ -34,6 +34,8 @@ description: Explanation TriviaGame TDD
 
 ## Domain Script
 
+{% tabs %}
+{% tab title="TriviaGameView.cs" %}
 {% code title="TriviaGameView.cs" %}
 ```csharp
 private TriviaGamePresenter _presenter;
@@ -47,11 +49,8 @@ private TriviaGamePresenter _presenter;
 
 맨 처음 GamePlayScreen Object에 삽입된 TriviaGameView Script부터 살펴봅니다.
 
-이 Script에서는 Game을 맨처음 플레이 할 때 바뀌어야 할 ScoreText, QuestionText, Answer Object가 포함되어 있고 마지막으로 각 상황에 조건을 만족하면 실행될 Animation이 포함되어 있습니다. 
-
-이때 Animation에는 GameObject의 활성화 여부, 상황에 맞는 각 UI의 Scale, Text, Image Component들을 조정합니다.
-
-그 결과물이 위와 같은 변수들입니다.
+* 이 Script에서는 Game을 맨처음 플레이 할 때 바뀌어야 할 ScoreText, QuestionText, Answer Object가 포함되어 있고 마지막으로 각 상황에 조건을 만족하면 실행될 Animation이 포함되어 있습니다. 
+* 이때 Animation에는 GameObject의 활성화 여부, 상황에 맞는 각 UI의 Scale, Text, Image Component들을 조정합니다.
 
 {% hint style="info" %}
 이때  아래와 같은 Class변수는 namespace를 통해 다른 Script에서 사용되었습니다. 
@@ -64,6 +63,8 @@ namespace에 대한 보다 자세한 설명은 기술문서에 기재했습니�
 {% page-ref page="../../technical-reference/unity/tr-triviagame-tdd.md" %}
 
 {% embed url="https://docs.microsoft.com/ko-kr/dotnet/csharp/language-reference/language-specification/namespaces" caption="C\# namespace 프로그래밍 가이드" %}
+
+다음으로 TriviaGameView에 사용된 함수를 살펴 보겠습니다.
 
 {% code title="TriviaGameView.cs" %}
 ```csharp
@@ -99,6 +100,8 @@ private void OnAnswerSelected(string selectedAnswer)
 반환값도, 인자값도 가지지 않는 Action기능이라면, parameter를 적지 않고도 해당 함수에 대한 주소값을 전달하여 해당 주소의 함수를 실행 시킵니다.
 {% endhint %}
 
+
+
 {% code title="TriviaGameView.cs" %}
 ```csharp
     public virtual void ShowNextQuestion(Question question)
@@ -116,23 +119,20 @@ private void OnAnswerSelected(string selectedAnswer)
 ```
 {% endcode %}
 
-ShowNextQuestion\(\) 함수는 \_questionText.text에 Question Class에서 QuestionText를 받아서 할당하고, 실질적으로 QuestionText Object의 Text에 할당합니다.
-
-var type의 allAnswers를 가지고 Question Class의 string\[\] WrongAnswer 배열에 접근하여 Concat함수를 이용해 배열을 합칩니다.
-
-이때 new string 배열로 선언 후 Question Class의 RightAnswer를 할당합니다.
+* ShowNextQuestion\(\) 함수는 \_questionText.text에 Question Class에서 QuestionText를 받아서 할당하고, 실질적으로 QuestionText Object의 Text에 할당합니다.
+* var type의 allAnswers를 가지고 Question Class의 string\[\] WrongAnswer 배열에 접근하여 Concat함수를 이용해 배열을 합칩니다.
+* 이때 new string 배열로 선언 후 Question Class의 RightAnswer를 할당합니다.
 
 {% hint style="info" %}
-var allAnswer = question.WrongAnswers.Concat\(new string\[\] {question.RightAnswer}\).ToList\(\);
+r allAnswer = question.WrongAnswers.Concat\(new string\[\] {question.RightAnswer}\).ToList\(\);
 
 Qustion Class의 WrongAnswer\[\] 배열 변수에 접근합니다. 이때 Concat을 통해 병합을 실시하며, 병합의 대상은 string\[\] 배열을 동적으로 생성한 Question Class의 RightAnswer입니다.
 
 최종적으로 ToList\(\) 함수를 통해 Array -&gt; List로 변환하여 List.Sort\(\)를 통해 정렬합니다.
 {% endhint %}
 
-그 후 ToList\(\) 함수를 통해 Array를 List로 변환합니다. 이는 Sort를 통해 정렬하기 위함입니다.
-
-Sort\(\) 함수를 통해 정렬을 하는데 이때 Lambda expression이 쓰이는데 \(a, b\)와 같이 parameter만 전달 하여 배치합니다.
+* 그 후 ToList\(\) 함수를 통해 Array를 List로 변환합니다. 이는 Sort를 통해 정렬하기 위함입니다.
+* Sort\(\) 함수를 통해 정렬을 하는데 이때 Lambda expression이 쓰이는데 \(a, b\)와 같이 parameter만 전달 하여 배치합니다.
 
 {% hint style="info" %}
 allAnswer.Sort\(\(a, b\) =&gt; Random.Range\(0 ,2\) &gt; 0 ? 1 : -1\);
@@ -163,6 +163,54 @@ a와 b를 Random.Range\(0, 2\) &gt; 0 ? 1 : -1의 조건에 따라 배치합니�
 {% endhint %}
 
 그리고 마지막으로 반복문을 사용해 AnswerView\[\] 배열 변수인 \_answers를 FillData함수를 통해 Text에 넣습니다.
+{% endtab %}
+
+{% tab title="AnswerView.cs" %}
+이제 AnswerView.cs를 살펴 보겠습니다.
+
+{% code title="AnswerView.cs" %}
+```csharp
+[SerializeField] private TMP_Text _answerText;
+private Action<string> _onAnswerSelected;
+```
+{% endcode %}
+
+* \_answerText : TextMeshPro - Text의 Text Component를 의미합니다.
+* \_onAnswerSelected : string type의 Action을 의미합니다. Action에 대한 자세한 설명은 아래의 페이지를 참조하세요
+
+{% page-ref page="../../technical-reference/unity/tr-triviagame-tdd.md" %}
+
+다음으로 사용된 함수를 살펴 보겠습니다.
+
+{% code title="AnswerView.cs" %}
+```csharp
+public void Initialize(Action<string> onAnswerSelected) {
+            _onAnswerSelected = onAnswerSelected;
+        }
+
+public void FillData(string answerText) {
+            _answerText.text = answerText;
+        }
+
+public void OnClick() {
+            _onAnswerSelected?.Invoke(_answerText.text);
+        }
+```
+{% endcode %}
+
+* Initialize : string type의 Action을 \_onAnswerSelected 변수에 할당합니다.
+* FillData : answerText string을 \_answerText.text에 할당합니다.
+* OnClick : Button Component의 Click Event에 사용합니다. 이때 onAnswerSelected? statement가 의미하는 것은 __\_onAnswerSelected를 null로 초기화 한다는 표현입니다.
+
+{% hint style="info" %}
+이때 Action.Invoke\(\)는 함수를 호출 하는데 사용합니다. 
+
+\_
+{% endhint %}
+{% endtab %}
+{% endtabs %}
+
+
 
 
 
