@@ -340,7 +340,17 @@ public class TriviaGamePresenterBuilder {
 {% endtab %}
 {% endtabs %}
 
+## Service
 
+{% tabs %}
+{% tab title="QuestionsService.cs" %}
+
+{% endtab %}
+
+{% tab title="ServicesProvider.cs" %}
+
+{% endtab %}
+{% endtabs %}
 
 
 
