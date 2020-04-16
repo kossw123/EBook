@@ -205,8 +205,10 @@ public void OnClick() {
 {% hint style="info" %}
 이때 Action.Invoke\(\)는 함수를 호출 하는데 사용합니다. 
 
-\_
+\_onAnswerSelected는 Action이고, Action은 delegate이기 때문에 Invoke를 통해 전달한 함수를 실행시키는 기능을 하고 있습니다.
 {% endhint %}
+
+{% embed url="http://www.csharpstudy.com/CSharp/CSharp-delegate-concept.aspx" %}
 {% endtab %}
 {% endtabs %}
 
