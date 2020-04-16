@@ -24,7 +24,12 @@ description: Explanation TriviaGame TDD
 
 ![Visual Studio&#xC758; Class Designer&#xB97C; &#xC774;&#xC6A9;&#xD55C; Diagram](../../.gitbook/assets/image%20%2827%29.png)
 
-![&#xC8FC;&#xAD00;&#xC801;&#xC778; TriviaGame Script &#xC811;&#xADFC; &#xC21C;&#xC11C;](../../.gitbook/assets/image%20%2816%29.png)
+* Delivery
+* Domain
+* Presentation
+* Service
+
+
 
 * TriviaGameView : GamePlayerScreen Object에 추가된 Component로써, 계속적인 GamePlay의 Controller 역할을 합니다.
 * TriviaGamePresenterBuilder : TriviaGamePresenter Class를 받아서 static을 선언하여 전역 데이터 영역에 올리고, 해당 함수인 BuildTriviaGamePresenter 함수를 통해 Controller\(TriviaGameView\), 질문을 가져와\(QuestionsService\(\).GetQuestion\(\)\) 동적으로 생성합니다.
@@ -166,7 +171,7 @@ a와 b를 Random.Range\(0, 2\) &gt; 0 ? 1 : -1의 조건에 따라 배치합니�
 {% endtab %}
 
 {% tab title="AnswerView.cs" %}
-이제 AnswerView.cs를 살펴 보겠습니다.
+AnswerView.cs에서는 단순하게 Text를 설정하고, Action&lt;string&gt; 기능을 통해 함수를 전달 합니다.이제 AnswerView.cs를 살펴 보겠습니다. 
 
 {% code title="AnswerView.cs" %}
 ```csharp
@@ -212,7 +217,55 @@ public void OnClick() {
 {% endtab %}
 {% endtabs %}
 
+## Domain
 
+{% tabs %}
+{% tab title="Question.cs" %}
+Domain Folder의 Question.cs를 살펴보겠습니다.
+
+{% code title="Question.cs" %}
+```csharp
+public string QuestionText { get; private set; }
+public string RightAnswer { get; private set; }
+public string[] WrongAnswers { get; private set; }
+```
+{% endcode %}
+
+* QuestionText : TriviaGame의 QuestionContainer Object의 하위 Object인 QuestionText를 의미합니다. 이를 Property로 생성하여 읽기,쓰기 전용으로 설정하여 다른 지역에서 값을 바꾸지 못하게 합니다.
+* RightAnswer : 실제 정답과 비교하기 위한 property 변수입니다.
+* WrongAnswers : 나머지 오답을 담는 property 배열 변수입니다.
+
+{% code title="Question.cs" %}
+```csharp
+public Question() { }
+public Question(string questionText, string rightAnswer, string[] wrongAnswers) {
+    QuestionText = questionText;
+    RightAnswer = rightAnswer;
+    WrongAnswers = wrongAnswers;
+}
+public virtual bool IsRightAnswer(string anAnswer) {
+    return string.Equals(RightAnswer, anAnswer);
+}
+```
+{% endcode %}
+
+* Question\(\) : parameter가 있는 생성자를 생성하기 위한, Default 생성자를 선언합니다.
+* Question\(parameter\) : Class에 property를 통해 타 Class, Class 내부에서 값을 변경하지 못하게 하기 위한 생성자입니다.
+* IsRightAnswer : parameter와 RightAnswer를 비교하여 참, 거짓을 반환합니다.
+{% endtab %}
+{% endtabs %}
+
+## Presentation
+
+{% tabs %}
+{% tab title="TriviaGamePresenter.cs" %}
+
+{% endtab %}
+
+{% tab title="TriviaGamePresenterBuilder.cs" %}
+
+{% endtab %}
+{% endtabs %}
 
 
 
