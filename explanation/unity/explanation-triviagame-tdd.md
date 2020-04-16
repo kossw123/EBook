@@ -25,13 +25,13 @@ description: Explanation TriviaGame TDD
 ![Visual Studio&#xC758; Class Designer&#xB97C; &#xC774;&#xC6A9;&#xD55C; Diagram](../../.gitbook/assets/image%20%2827%29.png)
 
 * Delivery
-  * TriviaGameView : GamePlayerScreen Object에 추가된 Component로써, 계속적인 GamePlay의 Controller 역할을 합니다.
-  * AnswerView :
+  * `TriviaGameView` : GamePlayerScreen Object에 추가된 Component로써, 계속적인 GamePlay의 Controller 역할을 합니다.
+  * `AnswerView` :
 * Domain
-  * Question :
+  * `Question` :
 * Presentation
-  * TriviaGamePresenterBuilder : TriviaGamePresenter Class를 받아서 static을 선언하여 전역 데이터 영역에 올리고, 해당 함수인 BuildTriviaGamePresenter 함수를 통해 Controller\(TriviaGameView\), 질문을 가져와\(QuestionsService\(\).GetQuestion\(\)\) 동적으로 생성합니다.
-  * TriviaGamePresenter : 
+  * `TriviaGamePresenterBuilder` : TriviaGamePresenter Class를 받아서 static을 선언하여 전역 데이터 영역에 올리고, 해당 함수인 BuildTriviaGamePresenter 함수를 통해 Controller\(TriviaGameView\), 질문을 가져와\(QuestionsService\(\).GetQuestion\(\)\) 동적으로 생성합니다.
+  * `TriviaGamePresenter` : 
 * Service
   * 
 
@@ -82,9 +82,9 @@ private void Start()
 ```
 {% endcode %}
 
-* Start\(\) 함수를 실행과 동시에 다른 namespace에서 가져온 \_presenter Class 변수에 TriviaGamePresenterBuilder Class에 있는 BuildTriviaGamePresenter함수에 TriviaGameView가 추가된 GameObject를 가지게 합니다.
-* 그리고 선언한 Answer\[\] Class 배열에 접근하여 foreach반복문을 통해 AnswerView에 있는 Initialize함수에 OnAnswerSelected\(\) 함수를 실행한 결과값을 넣습니다.
-* OnAnswerSelected\(\) 함수는 아래와 같습니다.
+* Start\(\) 함수를 실행과 동시에 다른 namespace에서 가져온 `_presenter` Class 변수에 `TriviaGamePresenterBuilder` Class에 있는 `BuildTriviaGamePresenter`함수에 `TriviaGameView`가 추가된 GameObject를 가지게 합니다.
+* 그리고 선언한 `Answer[]` Class 배열에 접근하여 foreach반복문을 통해 `AnswerView`에 있는 Initialize함수에 `OnAnswerSelected()` 함수를 실행한 결과값을 넣습니다.
+* `OnAnswerSelected()` 함수는 아래와 같습니다.
 
 ```csharp
 private void OnAnswerSelected(string selectedAnswer)
@@ -93,7 +93,7 @@ private void OnAnswerSelected(string selectedAnswer)
 }
 ```
 
-* 위의 함수는 TriviaGamePresenter Class의 string parameter를 가진 ReceiveAnswer함수를 받아와서 비교 함수를 통해 맞는 정답이거나\(OnRightAnswerReceived\(\)\) 틀린 답\(OnWrongAnswerReceived\(\)\)을 가려냅니다.
+* 위의 함수는 `TriviaGamePresenter` Class의 string parameter를 가진 `ReceiveAnswer()`함수를 받아와서 비교 함수를 통해 맞는 정답이거나\(`OnRightAnswerReceived()`\) 틀린 답\(`OnWrongAnswerReceived()`\)을 가려냅니다.
 
 {% hint style="info" %}
 하지만 어떻게 해서 answerView.Initialize\(\) 함수에 아무런 parameter를 넘기지 않고도 동작하는가에 대한 궁금증이 생겼습니다.
@@ -122,20 +122,20 @@ private void OnAnswerSelected(string selectedAnswer)
 ```
 {% endcode %}
 
-* ShowNextQuestion\(\) 함수는 \_questionText.text에 Question Class에서 QuestionText를 받아서 할당하고, 실질적으로 QuestionText Object의 Text에 할당합니다.
-* var type의 allAnswers를 가지고 Question Class의 string\[\] WrongAnswer 배열에 접근하여 Concat함수를 이용해 배열을 합칩니다.
-* 이때 new string 배열로 선언 후 Question Class의 RightAnswer를 할당합니다.
+* `ShowNextQuestion()` 함수는 `_questionText.text`에 `Question` Class에서 `QuestionText`를 받아서 할당하고, 실질적으로 QuestionText Object의 Text에 할당합니다.
+* var type의 `allAnswers`를 가지고 `Question` Class의 `string[] WrongAnswer` 배열에 접근하여 `Concat`함수를 이용해 배열을 합칩니다.
+* 이때 new string 배열로 선언 후 `Question` Class의 `RightAnswer`를 할당합니다.
 
 {% hint style="info" %}
-r allAnswer = question.WrongAnswers.Concat\(new string\[\] {question.RightAnswer}\).ToList\(\);
+var allAnswer = question.WrongAnswers.Concat\(new string\[\] {question.RightAnswer}\).ToList\(\);
 
 Qustion Class의 WrongAnswer\[\] 배열 변수에 접근합니다. 이때 Concat을 통해 병합을 실시하며, 병합의 대상은 string\[\] 배열을 동적으로 생성한 Question Class의 RightAnswer입니다.
 
 최종적으로 ToList\(\) 함수를 통해 Array -&gt; List로 변환하여 List.Sort\(\)를 통해 정렬합니다.
 {% endhint %}
 
-* 그 후 ToList\(\) 함수를 통해 Array를 List로 변환합니다. 이는 Sort를 통해 정렬하기 위함입니다.
-* Sort\(\) 함수를 통해 정렬을 하는데 이때 Lambda expression이 쓰이는데 \(a, b\)와 같이 parameter만 전달 하여 배치합니다.
+* 그 후 `ToList()` 함수를 통해 Array를 List로 변환합니다. 이는 Sort를 통해 정렬하기 위함입니다.
+* `Sort()` 함수를 통해 정렬을 하는데 이때 Lambda expression이 쓰이는데 \(a, b\)와 같이 parameter만 전달 하여 배치합니다.
 
 {% hint style="info" %}
 allAnswer.Sort\(\(a, b\) =&gt; Random.Range\(0 ,2\) &gt; 0 ? 1 : -1\);
@@ -165,7 +165,7 @@ a와 b를 Random.Range\(0, 2\) &gt; 0 ? 1 : -1의 조건에 따라 배치합니�
 간단하게 1, -1을 비교하여 두가지의 비교 대상의 위치를 변환합니다.
 {% endhint %}
 
-그리고 마지막으로 반복문을 사용해 AnswerView\[\] 배열 변수인 \_answers를 FillData함수를 통해 Text에 넣습니다.
+그리고 마지막으로 반복문을 사용해 `AnswerView[]` 배열 변수인 `_answers`를 `FillData()`함수를 통해 Text에 넣습니다.
 {% endtab %}
 
 {% tab title="AnswerView.cs" %}
@@ -231,9 +231,9 @@ public string[] WrongAnswers { get; private set; }
 ```
 {% endcode %}
 
-* QuestionText : TriviaGame의 QuestionContainer Object의 하위 Object인 QuestionText를 의미합니다. 이를 Property로 생성하여 읽기,쓰기 전용으로 설정하여 다른 지역에서 값을 바꾸지 못하게 합니다.
-* RightAnswer : 실제 정답과 비교하기 위한 property 변수입니다.
-* WrongAnswers : 나머지 오답을 담는 property 배열 변수입니다.
+* `QuestionText` : TriviaGame의 QuestionContainer Object의 하위 Object인 QuestionText를 의미합니다. 이를 Property로 생성하여 읽기,쓰기 전용으로 설정하여 다른 지역에서 값을 바꾸지 못하게 합니다.
+* `RightAnswer` : 실제 정답과 비교하기 위한 property 변수입니다.
+* `WrongAnswers` : 나머지 오답을 담는 property 배열 변수입니다.
 
 {% code title="Question.cs" %}
 ```csharp
@@ -249,9 +249,9 @@ public virtual bool IsRightAnswer(string anAnswer) {
 ```
 {% endcode %}
 
-* Question\(\) : parameter가 있는 생성자를 생성하기 위한, Default 생성자를 선언합니다.
-* Question\(parameter\) : Class에 property를 통해 타 Class, Class 내부에서 값을 변경하지 못하게 하기 위한 생성자입니다.
-* IsRightAnswer : parameter와 RightAnswer를 비교하여 참, 거짓을 반환합니다.
+* `Question()` : parameter가 있는 생성자를 생성하기 위한, Default 생성자를 선언합니다.
+* `Question(parameter)` : Class에 property를 통해 타 Class, Class 내부에서 값을 변경하지 못하게 하기 위한 생성자입니다.
+* `IsRightAnswer` : parameter와 `RightAnswer`를 비교하여 참, 거짓을 반환합니다.
 {% endtab %}
 {% endtabs %}
 
@@ -259,6 +259,8 @@ public virtual bool IsRightAnswer(string anAnswer) {
 
 {% tabs %}
 {% tab title="TriviaGamePresenter.cs" %}
+`TriviaGamePresenter`  Class는 
+
 TriviaGamePresenter Class를 살펴 보겠습니다.
 
 {% code title="TriviaGamePresenter.cs" %}
@@ -270,14 +272,75 @@ public int Score { get; private set; }
 ```
 {% endcode %}
 
-* \_view : TriviaGameView Class 변수입니다. 이 변수를 통해 GamePlayScreen Object에 접근하고, Animator를 조작합니다.
-* \_questions : Question Class 배열변수를 선언하고 QuestionContainer Object에 
+* `_view` : TriviaGameView Class 변수입니다. 이 변수를 통해 GamePlayScreen Object에 접근하고, Animator를 조작합니다.
+* `_questions` : Question Class 배열변수를 선언하고 QuestionContainer Object의 Child Object인 QuestionText에 접근합니다.
+* `_currentQuestion` : int type의 Count 변수입니다. 배열의 Index 역할을 합니다.
+* `Score` : int type의 property변수입니다.
+
+{% code title="Question.cs" %}
+```csharp
+public TriviaGamePresenter(TriviaGameView view, Question[] questions) {
+    _view = view;
+    _questions = questions;
+    Score = 0;
+    _currentQuestion = 0;
+    _view.ShowNextQuestion(_questions[_currentQuestion]);
+}
+
+public void ReceiveAnswer(string anAnswer) {
+    if (_questions[_currentQuestion].IsRightAnswer(anAnswer)) {
+        OnRightAnswerReceived();
+    }
+    else {
+        OnWrongAnswerReceived();
+    }
+}
+
+private void OnWrongAnswerReceived() {
+    _view.ShowLoseFeedback();
+}
+
+private void OnRightAnswerReceived() {
+    Score++;
+    _currentQuestion++;
+    _view.UpdateScore(Score);
+    if (Score == 3) {
+        _view.ShowWinFeedback();
+    }
+    else {
+        _view.ShowPositiveFeedback();
+        _view.ShowNextQuestion(_questions[_currentQuestion]);
+    }
+}
+```
+{% endcode %}
+
+* `TriviaGamePresenter()` : 해당 Class의 parameter가 있는 생성자 입니다. 여기서는 parameter 변수들을 미리 선언한 변수에 초기화를 시킵니다. 그리고 \_view.ShowNextQuestion\(\) 함수를 실행시켜 다음 Question문을 호출합니다.
+* `ReceiveAnswer()` : \_questions 배열 변수에 접근하여 IsRightAnswer\(\) 함수로 정답인지 아닌지를 판단하여 분기문의 내용을 실행합니다.
+* `OnWrongAnswerRecevied()` : 틀렸을 때 반응할 Animator 함수를 실행합니다.
+* `OnRightAnswerReceived()` : 정답을 맞췄을 때 해야할 일들을 실행시킵니다.
 {% endtab %}
 
 {% tab title="TriviaGamePresenterBuilder.cs" %}
+`TriviaGamePresenterBuilder`  Class를 살펴 보겠습니다.
 
+{% code title="TriviaGamePresenterBuilder.cs" %}
+```csharp
+public class TriviaGamePresenterBuilder {
+    public static TriviaGamePresenter BuildTriviaGamePresenter
+    (TriviaGameView view) {
+        return new TriviaGamePresenter(view, 
+        ServicesProvider.QuestionsService().GetQuestions(3));
+    }
+}
+```
+{% endcode %}
+
+* `BuildTriviaGamePresenter()` : `TriviaGamePresenter` type의 함수로써 반환 받는 값은 `TriviaGamePresenter` Class의 생성자를 호출합니다. parameter는 `TriviaGameView`와 `ServiceProvider` Class의 `QuestionsService().GetQuestion()` 함수를 호출합니다.
 {% endtab %}
 {% endtabs %}
+
+
 
 
 
