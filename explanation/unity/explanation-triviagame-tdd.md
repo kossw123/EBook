@@ -169,7 +169,9 @@ a와 b를 Random.Range\(0, 2\) &gt; 0 ? 1 : -1의 조건에 따라 배치합니�
 {% endtab %}
 
 {% tab title="AnswerView.cs" %}
-AnswerView.cs에서는 단순하게 Text를 설정하고, Action&lt;string&gt; 기능을 통해 함수를 전달 합니다.이제 AnswerView.cs를 살펴 보겠습니다. 
+AnswerView.cs에서는 단순하게 Text를 설정하고, Action&lt;string&gt; 기능을 통해 함수를 전달하여 다른 namespace의 Class에서 실행 시킵니다.
+
+이제 AnswerView.cs를 살펴 보겠습니다. 
 
 {% code title="AnswerView.cs" %}
 ```csharp
@@ -210,10 +212,10 @@ public void OnClick() {
 
 \_onAnswerSelected는 Action이고, Action은 delegate이기 때문에 Invoke를 통해 전달한 함수를 실행시키는 기능을 하고 있습니다.
 {% endhint %}
-
-{% embed url="http://www.csharpstudy.com/CSharp/CSharp-delegate-concept.aspx" %}
 {% endtab %}
 {% endtabs %}
+
+
 
 ## Domain
 
@@ -257,7 +259,19 @@ public virtual bool IsRightAnswer(string anAnswer) {
 
 {% tabs %}
 {% tab title="TriviaGamePresenter.cs" %}
+TriviaGamePresenter Class를 살펴 보겠습니다.
 
+{% code title="TriviaGamePresenter.cs" %}
+```csharp
+private TriviaGameView _view;
+private Question[] _questions;
+private int _currentQuestion;
+public int Score { get; private set; }
+```
+{% endcode %}
+
+* \_view : TriviaGameView Class 변수입니다. 이 변수를 통해 GamePlayScreen Object에 접근하고, Animator를 조작합니다.
+* \_questions : Question Class 배열변수를 선언하고 QuestionContainer Object에 
 {% endtab %}
 
 {% tab title="TriviaGamePresenterBuilder.cs" %}
