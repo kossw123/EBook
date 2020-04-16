@@ -181,7 +181,7 @@ private Action<string> _onAnswerSelected;
 {% endcode %}
 
 * \_answerText : TextMeshPro - Text의 Text Component를 의미합니다.
-* \_onAnswerSelected : string type의 Action을 의미합니다. Action에 대한 자세한 설명은 아래의 페이지를 참조하세요
+* \_onAnswerSelected : string type의 Action을 의미합니다. Action에 대한 자세한 설명은 아래의 페이지를 참조하세요.
 
 {% page-ref page="../../technical-reference/unity/tr-triviagame-tdd.md" %}
 
