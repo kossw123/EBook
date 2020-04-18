@@ -344,11 +344,43 @@ public class TriviaGamePresenterBuilder {
 
 {% tabs %}
 {% tab title="QuestionsService.cs" %}
+QuestionsService.cs는 질문에 대한 list와, 질문을 정렬하여 복사 후 다시 배열로 전환하는 Script입니다.
 
+{% code title="QuestionsService.cs" %}
+```csharp
+private List<Question> _allQuestions;
+        public QuestionsService() {
+            _allQuestions = new List<Question>() {
+                new Question("How many months are there in a year?", "12", new[] {"10", "15", "30"}),
+                new Question("How many days are there in a week?", "7", new[] {"12", "6", "5"}),
+                new Question("Witch of these is not an insect", "Cow", new[] {"Worm", "Fly", "Spider"}),
+                new Question("Witch of these is not a country", "Paris", new[] {"England", "Argentina", "Spain"}),
+                new Question("Witch of these is not a city", "Uruguay", new[] {"Tokyo", "Buenos Aires", "Madrid"})
+            };
+        }
+        public Question[] GetQuestions(int amount) {
+            _allQuestions.Sort((a, b) => Random.Range(0, 2) == 0 ? 1 : -1);
+            return _allQuestions.GetRange(0, amount).ToArray();
+        }
+```
+{% endcode %}
+
+* `_allQuestions` : 질문에 대한 List 변수를 동적으로 생성합니다.
+* `GetQuestion()` : 생성한 `Question`배열 타입의 함수로써 정렬 하고, parameter로 받은 값을 통해 List의 복사본을 생성 후 배열로 치환합니다.
 {% endtab %}
 
 {% tab title="ServicesProvider.cs" %}
+QuestionsService Class의 Instance를 생성 하고, return 받습니다.
 
+{% code title="ServicesProvider.cs" %}
+```csharp
+private static QuestionsService _questionsService = new QuestionsService();
+
+public static QuestionsService QuestionsService() {
+    return _questionsService;
+}
+```
+{% endcode %}
 {% endtab %}
 {% endtabs %}
 
