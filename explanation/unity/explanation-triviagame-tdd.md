@@ -176,8 +176,8 @@ private Action<string> _onAnswerSelected;
 ```
 {% endcode %}
 
-* \_answerText : TextMeshPro - Text의 Text Component를 의미합니다.
-* \_onAnswerSelected : string type의 Action을 의미합니다. Action에 대한 자세한 설명은 아래의 페이지를 참조하세요.
+* `_answerText` : TextMeshPro - Text의 Text Component를 의미합니다.
+* `_onAnswerSelected` : string type의 Action을 의미합니다. Action에 대한 자세한 설명은 아래의 페이지를 참조하세요.
 
 {% page-ref page="../../technical-reference/unity/tr-triviagame-tdd.md" %}
 
@@ -199,9 +199,9 @@ public void OnClick() {
 ```
 {% endcode %}
 
-* Initialize : string type의 Action을 \_onAnswerSelected 변수에 할당합니다.
-* FillData : answerText string을 \_answerText.text에 할당합니다.
-* OnClick : Button Component의 Click Event에 사용합니다. 이때 onAnswerSelected? statement가 의미하는 것은 __\_onAnswerSelected를 null로 초기화 한다는 표현입니다.
+* `Initialize()` : string type의 Action을 \_onAnswerSelected 변수에 할당합니다.
+* `FillData()` : answerText string을 \_answerText.text에 할당합니다.
+* `OnClick()` : Button Component의 Click Event에 사용합니다. 이때 onAnswerSelected? statement가 의미하는 것은 __\_onAnswerSelected를 null로 초기화 한다는 표현입니다.
 
 {% hint style="info" %}
 이때 Action.Invoke\(\)는 함수를 호출 하는데 사용합니다. 
