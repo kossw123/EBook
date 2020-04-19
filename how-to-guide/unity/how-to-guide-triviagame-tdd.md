@@ -9,7 +9,7 @@ description: How-to-guide TriviaGame TDD
 * Script에 쓰인 모든 Script에 대한 보완점이나 간단한 코드리뷰를 하려고 합니다.
 * 이 문서를 상업적으로 이용하지 않습니다.
 
-## Code Review
+## Code Review - TriviaGame
 
 {% tabs %}
 {% tab title="AnswerView.cs" %}
@@ -254,4 +254,212 @@ namespace TriviaGame.Service {
 {% endtab %}
 {% endtabs %}
 
-* 
+## Code Review - TDD
+
+{% tabs %}
+{% tab title="TriviaGamePresenterTests.cs" %}
+```text
+using NSubstitute;
+using NUnit.Framework;
+using TriviaGame.Delivery;
+using TriviaGame.Domain;
+using TriviaGame.Presentation;
+
+namespace Test.TriviaGame
+{
+    [TestFixture]
+    public class TriviaGamePresenterTests {
+        private TriviaGameView _view;
+        private TriviaGamePresenter _presenter;
+
+        private Question _firstQuestion = Substitute.For<Question>();
+        private Question _secondQuestion = Substitute.For<Question>();
+        private Question _thirdQuestion = Substitute.For<Question>();
+
+        #region SetUp
+        [SetUp] public void SetUp() {
+            _view = Substitute.For<TriviaGameView>();
+            _presenter = new TriviaGamePresenter(_view, new Question[]{_firstQuestion, _secondQuestion, _thirdQuestion});
+
+            _firstQuestion.IsRightAnswer("ok").Returns(true);
+            _firstQuestion.IsRightAnswer("nope").Returns(false);
+            
+            _secondQuestion.IsRightAnswer("ok").Returns(true);
+            _secondQuestion.IsRightAnswer("nope").Returns(false);
+            
+            _thirdQuestion.IsRightAnswer("ok").Returns(true);
+            _thirdQuestion.IsRightAnswer("nope").Returns(false);
+        }
+        #endregion
+        #region Given
+        #endregion
+        #region When Test Case
+        [Test] public void WhenRightAnswerScoreIncreases()
+        {
+            var initialScore = _presenter.Score;
+            WhenRightAnswer();
+            ThenScoreIncreasedByOne(initialScore);
+        }
+        [Test] public void WhenRightAnswerShowsPositiveFeedback()
+        {
+            WhenRightAnswer();
+            ThenShowsPositiveFeedback();
+        }
+        [Test] public void WhenRightAnswerShowsUpdatedScore()
+        {
+            WhenRightAnswer();
+            ThenShowsCurrentScore(_presenter.Score);
+        }
+        [Test] public void WhenRightAnswerShowsNextQuestiion()
+        {
+            WhenRightAnswer();
+            ThenViewIsShowingTheSecondQuestion();
+        }
+        [Test] public void When3RightAnswersWin()
+        {
+            When3RightAnswers();
+            ThenShowsWinningFeedback();
+        }
+        [Test] public void WhenWrongAnswerScoreDoesntChange()
+        {
+            var initialScore = _presenter.Score;
+            WhenWrongAnswer();
+            ThenScoreDoesntChange(initialScore);
+        }
+        [Test] public void WhenWrongAnswerGameOver()
+        {
+            WhenWrongAnswer();
+            ThenShowsLosingFeedback();
+        }
+
+        #region When method
+        private void WhenWrongAnswer()
+        {
+            _presenter.ReceiveAnswer("nope");
+        }
+        private void WhenRightAnswer()
+        {
+            _presenter.ReceiveAnswer("ok");
+        } 
+        private void When3RightAnswers()
+        {
+            WhenRightAnswer();
+            WhenRightAnswer();
+            WhenRightAnswer();
+        }
+        #endregion
+        #endregion
+        #region Then
+        private void ThenScoreIsZero() {
+            Assert.AreEqual(0, _presenter.Score);
+        }
+        private void ThenShowsPositiveFeedback() {
+            _view.Received(1).ShowPositiveFeedback();
+        }
+        private void ThenScoreIncreasedByOne(int initialScore) {
+            Assert.AreEqual(initialScore + 1, _presenter.Score);
+        }
+        private void ThenScoreDoesntChange(int initialScore) {
+            Assert.AreEqual(initialScore, _presenter.Score);
+        }
+        private void ThenViewIsShowingTheFirstQuestion() {
+            _view.Received(1).ShowNextQuestion(_firstQuestion);
+        }
+        private void ThenViewIsShowingTheSecondQuestion() {
+            _view.Received(1).ShowNextQuestion(_secondQuestion);
+        }
+        private void ThenShowsWinningFeedback() {
+            _view.Received(1).ShowWinFeedback();
+        }
+        private void ThenShowsLosingFeedback() {
+            _view.Received(1).ShowLoseFeedback();
+        }
+        private void ThenShowsCurrentScore(int currentScore) {
+            _view.Received().UpdateScore(currentScore);
+        }
+        #endregion
+
+        [Test] public void ANewTriviaGameStartsWithZeroScore() {
+            ThenScoreIsZero();
+        }
+        [Test] public void ANewGameShowsTheFirstQuestion() {
+            ThenViewIsShowingTheFirstQuestion();
+        }
+
+
+        
+    }
+}
+```
+{% endtab %}
+
+{% tab title="QuestionsServiceTests.cs" %}
+```text
+using NUnit.Framework;
+using TriviaGame.Service;
+
+namespace Test.TriviaGame
+{
+    [TestFixture]
+    public class QuestionsServiceTests
+    {
+        private QuestionsService _service;
+        #region SetUp
+        [SetUp]
+        public void SetUp()
+        {
+            _service = new QuestionsService();
+        }
+        #endregion
+        #region Test Case
+        [Test]
+        public void ReturnsTheRequiredAmountOfQuestions()
+        {
+            var amount = 3;            
+            var questions = _service.GetQuestions(amount);
+            Assert.AreEqual(amount, questions.Length);            
+        }
+        #endregion
+    }
+}
+```
+{% endtab %}
+
+{% tab title="QuestionTests.cs" %}
+```
+using NUnit.Framework;
+using TriviaGame.Domain;
+
+namespace Test.TriviaGame
+{
+    [TestFixture]
+    public class QuestionTests
+    {
+        private Question _question;
+
+        #region SetUp
+        [SetUp]
+        public void SetUp()
+        {
+            _question = new Question("question text", "correct", new []{"incorrect 1", "incorrect 2", "incorrect 3"});
+        }
+        #endregion
+        #region Test Case
+        [Test]
+        public void CheckCorrectAnswerReturnsCorrect()
+        {
+            Assert.IsTrue(_question.IsRightAnswer("correct"));
+        }
+        
+        [Test]
+        public void CheckIncorrectAnswerReturnsIncorrect()
+        {
+            Assert.IsFalse(_question.IsRightAnswer("incorrect 1"));            
+        }
+        #endregion
+    }
+}
+```
+{% endtab %}
+{% endtabs %}
+
