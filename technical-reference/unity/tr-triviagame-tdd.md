@@ -45,5 +45,17 @@ GamePlayScreen Object에서는 이에 관련된 Component들을 확인 할 수 �
 여기까지만 알아도 이 Project에 대한 궁금증을 해결되었기에, 나중에 기회가 된다면 좀 더 깊게 알아보겠습니다.
 {% endhint %}
 
-이제 다른 Script들을 보면 
+##  Action, Delegate
+
+delegate는 함수포인터의 기능을 가지고 있고 그렇기 때문에 참조하기 위한 변수를 만들어야 합니다.
+
+{% embed url="https://mrw0119.tistory.com/19" %}
+
+하지만 Action은 반환값과 인자값이 없는 함수 포인터의 기능을 가지고 있습니다.
+
+즉, 일련의 작업과정 수행을 위해 호출합니다.
+
+{% embed url="https://bong9.blog/2014/09/02/action-%EA%B3%BC-delegate-%EB%9E%8C%EB%8B%A4%EC%8B%9D-action-func-event/" %}
+
+Delegate와 Action은 C++에서 사용하는 포인터와 같은 기능을 하고 있지만, 주소를 가리키는게 변수가 아닌 함수 라는 것을 유념해야 합니다. 
 

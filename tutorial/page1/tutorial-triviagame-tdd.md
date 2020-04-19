@@ -2,7 +2,7 @@
 description: tutorial TriviaGame TDD
 ---
 
-# tutorial TriviaGame TDD
+# tutorial TriviaGame TDD - 작성중
 
 ##  무엇을 하려고 하는가?
 
@@ -28,7 +28,7 @@ description: tutorial TriviaGame TDD
 * 위의 Hierarchy 그림처럼 GameObject를 배치하는 게 최종 목표입니다.
 * **지금 부터 본문에 적는 Object에 대한 설정값은 보기에 편하도록 설정한 것이니, 다르게 설정하셔도 무방합니다.**
 
-![&#xC704;&#xC758; &#xADF8;&#xB9BC;&#xCC98;&#xB7FC; &#xBC30;&#xCE58;&#xD569;&#xB2C8;&#xB2E4;.](../../.gitbook/assets/image%20%2874%29.png)
+![&#xC704;&#xC758; &#xADF8;&#xB9BC;&#xCC98;&#xB7FC; &#xBC30;&#xCE58;&#xD569;&#xB2C8;&#xB2E4;.](../../.gitbook/assets/image%20%2875%29.png)
 
 * Canvas
   * Canvas Scaler - UI Scale Mode를 Scale With Screen Size로 설정해 1920 \* 1080로 조절합니다.
@@ -45,7 +45,7 @@ description: tutorial TriviaGame TDD
 
  여기까지 했으면 아래와 같은 그림의 Object 배치가 완료 됩니다.
 
-![](../../.gitbook/assets/image%20%28106%29.png)
+![](../../.gitbook/assets/image%20%28107%29.png)
 
 * Score
   * Score Object를 추가하고 Image Component를 추가하여, ScoreContainer Sprite로 설
@@ -63,7 +63,7 @@ description: tutorial TriviaGame TDD
   * ScoreLabel과 같이 Font에 대한 설정을 임의 대로 합니다.
     * 작성자는 \(B, 50, Center / Middle\)로 설정하고 Vertex Color를 Black으로 설정했습니다.
 
-![&#xC784;&#xC758;&#xB85C; &#xC791;&#xC131;&#xD55C; Score Object&#xC5D0; &#xB300;&#xD55C; &#xACB0;&#xACFC;](../../.gitbook/assets/image%20%2899%29.png)
+![&#xC784;&#xC758;&#xB85C; &#xC791;&#xC131;&#xD55C; Score Object&#xC5D0; &#xB300;&#xD55C; &#xACB0;&#xACFC;](../../.gitbook/assets/image%20%28100%29.png)
 
 * Question
   * Image Component를 추가하여 QuestionContainer Sprite로 설정합니다.
@@ -154,7 +154,7 @@ description: tutorial TriviaGame TDD
 * Script들을 생성하고 아래의 Project View 그림처럼 폴더가 나눠집니다.
 * 각 폴더는 이름과 관련된 Script들이 모아져 있습니다.
 
-![Scirpts&#xC758; &#xD558;&#xC704; &#xD3F4;&#xB354;](../../.gitbook/assets/image%20%2883%29.png)
+![Scirpts&#xC758; &#xD558;&#xC704; &#xD3F4;&#xB354;](../../.gitbook/assets/image%20%2884%29.png)
 
 {% tabs %}
 {% tab title="AnswerView.cs" %}
@@ -413,15 +413,13 @@ namespace TriviaGame.Service {
   * 생성한 Answer 0~4를 Answers에 넣습니다.
   * Feedback Animations 항목에 Feedback Animator를 넣습니다.
 
-
-
 ## 작성법 - TDD
 
 * 이번 TDD는 Edit Mode를 사용한 Script 단위에서의 Testing 방식입니다.
 * Play Mode로 하는 방식은 나중에 서술하겠습니다.
 * Window -&gt; General -&gt; Test Runner창을 실행시키면 아래와 같은 그림이 나옵니다.
 
-![Window -&amp;gt; General -&amp;gt; Test Runner -&amp;gt; Edit mode&#xC758; &#xAE30;&#xBCF8;&#xD654;&#xBA74;](../../.gitbook/assets/image%20%2866%29.png)
+![Window -&amp;gt; General -&amp;gt; Test Runner -&amp;gt; Edit mode&#xC758; &#xAE30;&#xBCF8;&#xD654;&#xBA74;](../../.gitbook/assets/image%20%2867%29.png)
 
 * Create EditMode Test Assembly Folder를 누르면 Test Runner에 필요한 Assembly Definition File을 생성합니다.
 * 해당 파일은 아래와 같습니다.
@@ -430,11 +428,224 @@ namespace TriviaGame.Service {
 
 * **위의 사진은 예시를 들기위한 사진이기 때문에 본문의 Complete Project File이 아닙니다.**
 * 그 후 미리 생성한 TriviaGamePresenterTests.cs파일을 Test Folder에 넣습니다.
-* Test Runner에 다음과 같은 사진의 결과가 됩니다.
+* TriviaGamePresenterTests.cs와 같은 TestCase Script는 아래와 같습니다.
 
-![TriviaGamePresenterTests.cs&#xB97C; &#xB123;&#xC740; Test Runner&#xC758; &#xD654;&#xBA74;](../../.gitbook/assets/image%20%2834%29.png)
+{% tabs %}
+{% tab title="TriviaGamePresenterTests.cs" %}
+{% code title="TriviaGamePresenterTests.cs" %}
+```csharp
+using NSubstitute;
+using NUnit.Framework;
+using TriviaGame.Delivery;
+using TriviaGame.Domain;
+using TriviaGame.Presentation;
 
-* 이미 Script에 필요한 Test Case는 넣었기 때문에 Run All을 해서 모두 초록색 체크 표시가 뜬다면 간단하게 Test를 마칠 수 있습니다.
+namespace Test.TriviaGame
+{
+    [TestFixture]
+    public class TriviaGamePresenterTests {
+        private TriviaGameView _view;
+        private TriviaGamePresenter _presenter;
+
+        private Question _firstQuestion = Substitute.For<Question>();
+        private Question _secondQuestion = Substitute.For<Question>();
+        private Question _thirdQuestion = Substitute.For<Question>();
+
+        #region SetUp
+        [SetUp] public void SetUp() {
+            _view = Substitute.For<TriviaGameView>();
+            _presenter = new TriviaGamePresenter(_view, new Question[]{_firstQuestion, _secondQuestion, _thirdQuestion});
+
+            _firstQuestion.IsRightAnswer("ok").Returns(true);
+            _firstQuestion.IsRightAnswer("nope").Returns(false);
+            
+            _secondQuestion.IsRightAnswer("ok").Returns(true);
+            _secondQuestion.IsRightAnswer("nope").Returns(false);
+            
+            _thirdQuestion.IsRightAnswer("ok").Returns(true);
+            _thirdQuestion.IsRightAnswer("nope").Returns(false);
+        }
+        #endregion
+        #region Given
+        #endregion
+        #region When Test Case
+        [Test] public void WhenRightAnswerScoreIncreases()
+        {
+            var initialScore = _presenter.Score;
+            WhenRightAnswer();
+            ThenScoreIncreasedByOne(initialScore);
+        }
+        [Test] public void WhenRightAnswerShowsPositiveFeedback()
+        {
+            WhenRightAnswer();
+            ThenShowsPositiveFeedback();
+        }
+        [Test] public void WhenRightAnswerShowsUpdatedScore()
+        {
+            WhenRightAnswer();
+            ThenShowsCurrentScore(_presenter.Score);
+        }
+        [Test] public void WhenRightAnswerShowsNextQuestiion()
+        {
+            WhenRightAnswer();
+            ThenViewIsShowingTheSecondQuestion();
+        }
+        [Test] public void When3RightAnswersWin()
+        {
+            When3RightAnswers();
+            ThenShowsWinningFeedback();
+        }
+        [Test] public void WhenWrongAnswerScoreDoesntChange()
+        {
+            var initialScore = _presenter.Score;
+            WhenWrongAnswer();
+            ThenScoreDoesntChange(initialScore);
+        }
+        [Test] public void WhenWrongAnswerGameOver()
+        {
+            WhenWrongAnswer();
+            ThenShowsLosingFeedback();
+        }
+
+        #region When method
+        private void WhenWrongAnswer()
+        {
+            _presenter.ReceiveAnswer("nope");
+        }
+        private void WhenRightAnswer()
+        {
+            _presenter.ReceiveAnswer("ok");
+        } 
+        private void When3RightAnswers()
+        {
+            WhenRightAnswer();
+            WhenRightAnswer();
+            WhenRightAnswer();
+        }
+        #endregion
+        #endregion
+        #region Then
+        private void ThenScoreIsZero() {
+            Assert.AreEqual(0, _presenter.Score);
+        }
+        private void ThenShowsPositiveFeedback() {
+            _view.Received(1).ShowPositiveFeedback();
+        }
+        private void ThenScoreIncreasedByOne(int initialScore) {
+            Assert.AreEqual(initialScore + 1, _presenter.Score);
+        }
+        private void ThenScoreDoesntChange(int initialScore) {
+            Assert.AreEqual(initialScore, _presenter.Score);
+        }
+        private void ThenViewIsShowingTheFirstQuestion() {
+            _view.Received(1).ShowNextQuestion(_firstQuestion);
+        }
+        private void ThenViewIsShowingTheSecondQuestion() {
+            _view.Received(1).ShowNextQuestion(_secondQuestion);
+        }
+        private void ThenShowsWinningFeedback() {
+            _view.Received(1).ShowWinFeedback();
+        }
+        private void ThenShowsLosingFeedback() {
+            _view.Received(1).ShowLoseFeedback();
+        }
+        private void ThenShowsCurrentScore(int currentScore) {
+            _view.Received().UpdateScore(currentScore);
+        }
+        #endregion
+
+        [Test] public void ANewTriviaGameStartsWithZeroScore() {
+            ThenScoreIsZero();
+        }
+        [Test] public void ANewGameShowsTheFirstQuestion() {
+            ThenViewIsShowingTheFirstQuestion();
+        }
+
+
+        
+    }
+}
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="QuestionsServiceTests.cs" %}
+{% code title="QuestionsServiceTests.cs" %}
+```csharp
+using NUnit.Framework;
+using TriviaGame.Service;
+
+namespace Test.TriviaGame
+{
+    [TestFixture]
+    public class QuestionsServiceTests
+    {
+        private QuestionsService _service;
+        #region SetUp
+        [SetUp]
+        public void SetUp()
+        {
+            _service = new QuestionsService();
+        }
+        #endregion
+        #region Test Case
+        [Test]
+        public void ReturnsTheRequiredAmountOfQuestions()
+        {
+            var amount = 3;            
+            var questions = _service.GetQuestions(amount);
+            Assert.AreEqual(amount, questions.Length);            
+        }
+        #endregion
+    }
+}
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="QuestionTests.cs" %}
+{% code title="QuestionTests.cs" %}
+```csharp
+using NUnit.Framework;
+using TriviaGame.Domain;
+
+namespace Test.TriviaGame
+{
+    [TestFixture]
+    public class QuestionTests
+    {
+        private Question _question;
+
+        #region SetUp
+        [SetUp]
+        public void SetUp()
+        {
+            _question = new Question("question text", "correct", new []{"incorrect 1", "incorrect 2", "incorrect 3"});
+        }
+        #endregion
+        #region Test Case
+        [Test]
+        public void CheckCorrectAnswerReturnsCorrect()
+        {
+            Assert.IsTrue(_question.IsRightAnswer("correct"));
+        }
+        
+        [Test]
+        public void CheckIncorrectAnswerReturnsIncorrect()
+        {
+            Assert.IsFalse(_question.IsRightAnswer("incorrect 1"));            
+        }
+        #endregion
+    }
+}
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
+
+* 위의 방식대로 Script를 생성한다면 Test Runner에 다음과 같은 사진의 결과가 됩니다.
+
+![Test Scirpt &#xCD94;&#xAC00; &#xD6C4; TestRunner&#xB97C; &#xB3CC;&#xB9B0; &#xACB0;&#xACFC;](../../.gitbook/assets/image%20%2865%29.png)
 
 ## 마치며
 
