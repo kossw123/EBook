@@ -115,18 +115,9 @@ namespace TriviaGame.Delivery
 ```csharp
 namespace TriviaGame.Domain {
     public class Question {
-        public string QuestionText {
-            get;
-            private set;
-        }
-        public string RightAnswer {
-            get;
-            private set;
-        }
-        public string[] WrongAnswers {
-            get;
-            private set;
-        }
+        public string QuestionText { get; private set; }
+        public string RightAnswer { get; private set; }
+        public string[] WrongAnswers { get; private set; }
         public Question() {}
         public Question(string questionText, string rightAnswer, string[] wrongAnswers) {
             QuestionText = questionText;
@@ -152,10 +143,7 @@ namespace TriviaGame.Presentation {
         private TriviaGameView _view;
         private Question[] _questions;
         private int _currentQuestion;
-        public int Score {
-            get;
-            private set;
-        }
+        public int Score { get; private set; }
         public TriviaGamePresenter(TriviaGameView view, Question[] questions) {
             _view = view;
             _questions = questions;
@@ -258,7 +246,8 @@ namespace TriviaGame.Service {
 
 {% tabs %}
 {% tab title="TriviaGamePresenterTests.cs" %}
-```text
+{% code title="TriviaGamePresenterTests.cs" %}
+```csharp
 using NSubstitute;
 using NUnit.Framework;
 using TriviaGame.Delivery;
@@ -391,18 +380,17 @@ namespace Test.TriviaGame
     }
 }
 ```
+{% endcode %}
 {% endtab %}
 
 {% tab title="QuestionsServiceTests.cs" %}
-```text
+{% code title="QuestionsServiceTests.cs" %}
+```csharp
 using NUnit.Framework;
 using TriviaGame.Service;
 
-namespace Test.TriviaGame
-{
-    [TestFixture]
-    public class QuestionsServiceTests
-    {
+namespace Test.TriviaGame {
+    [TestFixture] public class QuestionsServiceTests {
         private QuestionsService _service;
         #region SetUp
         [SetUp]
@@ -412,9 +400,7 @@ namespace Test.TriviaGame
         }
         #endregion
         #region Test Case
-        [Test]
-        public void ReturnsTheRequiredAmountOfQuestions()
-        {
+        [Test] public void ReturnsTheRequiredAmountOfQuestions() {
             var amount = 3;            
             var questions = _service.GetQuestions(amount);
             Assert.AreEqual(amount, questions.Length);            
@@ -423,43 +409,35 @@ namespace Test.TriviaGame
     }
 }
 ```
+{% endcode %}
 {% endtab %}
 
 {% tab title="QuestionTests.cs" %}
-```
+{% code title="QuestionTests.cs" %}
+```csharp
 using NUnit.Framework;
 using TriviaGame.Domain;
 
-namespace Test.TriviaGame
-{
-    [TestFixture]
-    public class QuestionTests
-    {
+namespace Test.TriviaGame {
+    [TestFixture] public class QuestionTests {
         private Question _question;
-
         #region SetUp
-        [SetUp]
-        public void SetUp()
-        {
+        [SetUp] public void SetUp() {
             _question = new Question("question text", "correct", new []{"incorrect 1", "incorrect 2", "incorrect 3"});
         }
         #endregion
         #region Test Case
-        [Test]
-        public void CheckCorrectAnswerReturnsCorrect()
-        {
+        [Test] public void CheckCorrectAnswerReturnsCorrect() {
             Assert.IsTrue(_question.IsRightAnswer("correct"));
         }
-        
-        [Test]
-        public void CheckIncorrectAnswerReturnsIncorrect()
-        {
+        [Test] public void CheckIncorrectAnswerReturnsIncorrect() {
             Assert.IsFalse(_question.IsRightAnswer("incorrect 1"));            
         }
         #endregion
     }
 }
 ```
+{% endcode %}
 {% endtab %}
 {% endtabs %}
 
