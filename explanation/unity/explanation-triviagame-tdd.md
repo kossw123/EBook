@@ -51,8 +51,8 @@ private TriviaGamePresenter _presenter;
 
 맨 처음 GamePlayScreen Object에 삽입된 TriviaGameView Script부터 살펴봅니다.
 
-* `_presenter`  : 이 변수를 통해 TriviaGamePresenterBuilder Class에서 해당 TriviaGamePresenter Class를 동적 생성하고 할당합니다.
-* `_scoreText` : 
+* `_presenter`  : 이 변수를 통해 `TriviaGamePresenterBuilder` Class에서 해당 `TriviaGamePresenter` Class를 동적 생성하고 할당합니다.
+* `_scoreText` : 점수에 대한 Score 변수입니다. `UpdateScore()`를 통해 조건에 따라 증가 시킵니다.
 * `_questionText` : Question Class의 질문을 Text에 할당하기 위한 변수입니다.
 * `_answers` : AnswerView Class의 배열변수를 생성하여 질문들을 할당합니다.
 * `_feedbackAniamations` : Animator Component를 받아와서 조작하기 위한 변수입니다.
@@ -82,9 +82,9 @@ private void Start() {
 ```
 {% endcode %}
 
-* `Start()` 함수를 실행과 동시에 다른 namespace에서 가져온 `_presenter` Class 변수에 `TriviaGamePresenterBuilder` Class에 있는 `BuildTriviaGamePresenter`함수에 `TriviaGameView`가 추가된 GameObject를 가지게 합니다.
-* 그리고 선언한 `Answer[]` Class 배열에 접근하여 foreach반복문을 통해 `AnswerView`에 있는 `Initialize()` 함수에 `OnAnswerSelected()` 함수를 실행한 결과값을 넣습니다.
-* `OnAnswerSelected()` 함수는 아래와 같습니다.
+* `Start()` : \_presenter 변수를 통해 TriviaGamePresenterBuilder Class에서 TriviaGameView의 instance를 할당합니다.
+  * Foreach문을 통해 내부 Class의 `OnAnswerSelected()`로 AnswerView에 대한 `Initialize()` 를 실행시킵니다.
+  * 아래 Code Block은 `OnAnswerSelected()` 에 대한 함수 입니다.
 
 ```csharp
 private void OnAnswerSelected(string selectedAnswer) {
@@ -118,9 +118,7 @@ public virtual void ShowNextQuestion(Question question) {
 ```
 {% endcode %}
 
-* `ShowNextQuestion()` 함수는 `_questionText.text`에 `Question` Class에서 `QuestionText`를 받아서 할당하고, 실질적으로 QuestionText Object의 Text에 할당합니다.
-* var type의 `allAnswers`를 가지고 `Question` Class의 `string[] WrongAnswer` 배열에 접근하여 `Concat`함수를 이용해 배열을 합칩니다.
-* 이때 new string 배열로 선언 후 `Question` Class의 `RightAnswer`를 할당합니다.
+* `ShowNextQuestion()` : 미리 선언한 questionText에 Question Class의 Text 변수를 할당합니다.
 
 {% hint style="info" %}
 var allAnswer = question.WrongAnswers.Concat\(new string\[\] {question.RightAnswer}\).ToList\(\);
@@ -130,10 +128,9 @@ Qustion Class의 WrongAnswer\[\] 배열 변수에 접근합니다. 이때 Concat
 최종적으로 ToList\(\) 함수를 통해 Array -&gt; List로 변환하여 List.Sort\(\)를 통해 정렬합니다.
 {% endhint %}
 
-* 그 후 `ToList()` 함수를 통해 Array를 List로 변환합니다. 이는 Sort를 통해 정렬하기 위함입니다.
-* `Sort()` 함수를 통해 정렬을 하는데 이때 Lambda expression이 쓰이는데 \(a, b\)와 같이 parameter만 전달 하여 배치합니다.
-
 {% hint style="info" %}
+`Sort()` 함수를 통해 정렬을 하는데 이때 Lambda expression이 쓰이는데 \(a, b\)와 같이 parameter만 전달 하여 배치합니다.
+
 allAnswer.Sort\(\(a, b\) =&gt; Random.Range\(0 ,2\) &gt; 0 ? 1 : -1\);
 
 내부적으로 살펴보면 list로 변환된 allAnswer는 아래의 함수를 사용하여 Sort합니다.
