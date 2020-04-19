@@ -71,11 +71,9 @@ namespace에 대한 보다 자세한 설명은 기술문서에 기재했습니�
 
 {% code title="TriviaGameView.cs" %}
 ```csharp
-private void Start()
-{
+private void Start() {
     _presenter = TriviaGamePresenterBuilder.BuildTriviaGamePresenter(this);
-    foreach (var answerView in _answers)
-    {
+    foreach (var answerView in _answers) {
         answerView.Initialize(OnAnswerSelected);
     }
 }
@@ -87,8 +85,7 @@ private void Start()
 * `OnAnswerSelected()` 함수는 아래와 같습니다.
 
 ```csharp
-private void OnAnswerSelected(string selectedAnswer)
-{
+private void OnAnswerSelected(string selectedAnswer) {
     _presenter.ReceiveAnswer(selectedAnswer);
 }
 ```
@@ -107,18 +104,15 @@ private void OnAnswerSelected(string selectedAnswer)
 
 {% code title="TriviaGameView.cs" %}
 ```csharp
-    public virtual void ShowNextQuestion(Question question)
-    {
-        _questionText.text = question.QuestionText;
+public virtual void ShowNextQuestion(Question question) {
+    _questionText.text = question.QuestionText;
+    var allAnswers = question.WrongAnswers.Concat(new string[] { question.RightAnswer }).ToList();
+    allAnswers.Sort((a, b) => Random.Range(0, 2) > 0 ? 1 : -1);
 
-        var allAnswers = question.WrongAnswers.Concat(new string[] { question.RightAnswer }).ToList();
-        allAnswers.Sort((a, b) => Random.Range(0, 2) > 0 ? 1 : -1);
-
-        for (var i = 0; i < _answers.Length; i++)
-        {
-            _answers[i].FillData(allAnswers[i]);
-        }
+    for (var i = 0; i < _answers.Length; i++) {
+        _answers[i].FillData(allAnswers[i]);
     }
+}
 ```
 {% endcode %}
 
@@ -272,9 +266,9 @@ public int Score { get; private set; }
 ```
 {% endcode %}
 
-* `_view` : TriviaGameView Class 변수입니다. 이 변수를 통해 GamePlayScreen Object에 접근하고, Animator를 조작합니다.
-* `_questions` : Question Class 배열변수를 선언하고 QuestionContainer Object의 Child Object인 QuestionText에 접근합니다.
-* `_currentQuestion` : int type의 Count 변수입니다. 배열의 Index 역할을 합니다.
+* `_view`: `TriviaGameView` Class 변수입니다. 이 변수를 통해 GamePlayScreen Object에 접근하고, Animator를 조작합니다.
+* `_questions`: Question Class 배열변수를 선언하고 QuestionContainer Object의 Child Object인 QuestionText에 접근합니다.
+* `_currentQuestion`: int type의 Count 변수입니다. 배열의 Index 역할을 합니다.
 * `Score` : int type의 property변수입니다.
 
 {% code title="Question.cs" %}
@@ -315,8 +309,8 @@ private void OnRightAnswerReceived() {
 ```
 {% endcode %}
 
-* `TriviaGamePresenter()` : 해당 Class의 parameter가 있는 생성자 입니다. 여기서는 parameter 변수들을 미리 선언한 변수에 초기화를 시킵니다. 그리고 \_view.ShowNextQuestion\(\) 함수를 실행시켜 다음 Question문을 호출합니다.
-* `ReceiveAnswer()` : \_questions 배열 변수에 접근하여 IsRightAnswer\(\) 함수로 정답인지 아닌지를 판단하여 분기문의 내용을 실행합니다.
+* `TriviaGamePresenter()` : 해당 Class의 parameter가 있는 생성자 입니다. 여기서는 parameter 변수들을 미리 선언한 변수에 초기화를 시킵니다. 그리고 `_view.ShowNextQuestion()` 함수를 실행시켜 다음 Question문을 호출합니다.
+* `ReceiveAnswer()` : `_questions` 배열 변수에 접근하여 `IsRightAnswer()` 함수로 정답인지 아닌지를 판단하여 분기문의 내용을 실행합니다.
 * `OnWrongAnswerRecevied()` : 틀렸을 때 반응할 Animator 함수를 실행합니다.
 * `OnRightAnswerReceived()` : 정답을 맞췄을 때 해야할 일들을 실행시킵니다.
 {% endtab %}
