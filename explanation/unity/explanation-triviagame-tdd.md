@@ -42,18 +42,20 @@ description: Explanation TriviaGame TDD
 {% code title="TriviaGameView.cs" %}
 ```csharp
 private TriviaGamePresenter _presenter;
-
-        [SerializeField] private TMP_Text _scoreText;
-        [SerializeField] private TMP_Text _questionText;
-        [SerializeField] private AnswerView[] _answers;
-        [SerializeField] private Animator _feedbackAnimations;
+[SerializeField] private TMP_Text _scoreText;
+[SerializeField] private TMP_Text _questionText;
+[SerializeField] private AnswerView[] _answers;
+[SerializeField] private Animator _feedbackAnimations;
 ```
 {% endcode %}
 
 맨 처음 GamePlayScreen Object에 삽입된 TriviaGameView Script부터 살펴봅니다.
 
-* 이 Script에서는 Game을 맨처음 플레이 할 때 바뀌어야 할 ScoreText, QuestionText, Answer Object가 포함되어 있고 마지막으로 각 상황에 조건을 만족하면 실행될 Animation이 포함되어 있습니다. 
-* 이때 Animation에는 GameObject의 활성화 여부, 상황에 맞는 각 UI의 Scale, Text, Image Component들을 조정합니다.
+* `_presenter`  : 이 변수를 통해 TriviaGamePresenterBuilder Class에서 해당 TriviaGamePresenter Class를 동적 생성하고 할당합니다.
+* `_scoreText` : 
+* `_questionText` : Question Class의 질문을 Text에 할당하기 위한 변수입니다.
+* `_answers` : AnswerView Class의 배열변수를 생성하여 질문들을 할당합니다.
+* `_feedbackAniamations` : Animator Component를 받아와서 조작하기 위한 변수입니다.
 
 {% hint style="info" %}
 이때  아래와 같은 Class변수는 namespace를 통해 다른 Script에서 사용되었습니다. 
@@ -80,8 +82,8 @@ private void Start() {
 ```
 {% endcode %}
 
-* Start\(\) 함수를 실행과 동시에 다른 namespace에서 가져온 `_presenter` Class 변수에 `TriviaGamePresenterBuilder` Class에 있는 `BuildTriviaGamePresenter`함수에 `TriviaGameView`가 추가된 GameObject를 가지게 합니다.
-* 그리고 선언한 `Answer[]` Class 배열에 접근하여 foreach반복문을 통해 `AnswerView`에 있는 Initialize함수에 `OnAnswerSelected()` 함수를 실행한 결과값을 넣습니다.
+* `Start()` 함수를 실행과 동시에 다른 namespace에서 가져온 `_presenter` Class 변수에 `TriviaGamePresenterBuilder` Class에 있는 `BuildTriviaGamePresenter`함수에 `TriviaGameView`가 추가된 GameObject를 가지게 합니다.
+* 그리고 선언한 `Answer[]` Class 배열에 접근하여 foreach반복문을 통해 `AnswerView`에 있는 `Initialize()` 함수에 `OnAnswerSelected()` 함수를 실행한 결과값을 넣습니다.
 * `OnAnswerSelected()` 함수는 아래와 같습니다.
 
 ```csharp
@@ -93,9 +95,9 @@ private void OnAnswerSelected(string selectedAnswer) {
 * 위의 함수는 `TriviaGamePresenter` Class의 string parameter를 가진 `ReceiveAnswer()`함수를 받아와서 비교 함수를 통해 맞는 정답이거나\(`OnRightAnswerReceived()`\) 틀린 답\(`OnWrongAnswerReceived()`\)을 가려냅니다.
 
 {% hint style="info" %}
-하지만 어떻게 해서 answerView.Initialize\(\) 함수에 아무런 parameter를 넘기지 않고도 동작하는가에 대한 궁금증이 생겼습니다.
+하지만 어떻게 해서 `answerView.Initialize()` 함수에 아무런 parameter를 넘기지 않고도 동작하는가에 대한 궁금증이 생겼습니다.
 
-이 부분은 answerView.Initialize\(Action&lt;string&gt; onAnswerSelected\)라는 parameter가 Action이기 때문입니다.
+이 부분은 `answerView.Initialize(Action<string> onAnswerSelected)`라는 parameter가 Action이기 때문입니다.
 
 반환값도, 인자값도 가지지 않는 Action기능이라면, parameter를 적지 않고도 해당 함수에 대한 주소값을 전달하여 해당 주소의 함수를 실행 시킵니다.
 {% endhint %}
