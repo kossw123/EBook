@@ -20,7 +20,7 @@ description: Explanation TriviaGame TDD
 
 
 
-해설문서를 보기전에 전에 Complete Project는 MVP Pattern을 가지고 있습니다.
+해설문서를 보기전에 전에 TriviaGame MVP Pattern을 가지고 있습니다.
 
 ![MVP Pattern&#xC758; &#xAD6C;&#xC870;](../../.gitbook/assets/image%20%2821%29.png)
 
