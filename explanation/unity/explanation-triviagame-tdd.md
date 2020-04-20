@@ -18,11 +18,23 @@ description: Explanation TriviaGame TDD
   * Presentation
   * Service
 
+
+
+해설문서를 보기전에 전에 Complete Project는 MVP Pattern을 가지고 있습니다.
+
+![MVP Pattern&#xC758; &#xAD6C;&#xC870;](../../.gitbook/assets/image%20%2821%29.png)
+
+* MVP Pattern이란?
+  * Model + View + Presenter를 합친 단입니다. MVC Pattern에서 파생되었으며, 각 Component에 대한 역할을 아래와 같습니다.
+    * Model : 사용되는 데이터와 데이터를 처리하는 부분입니다.
+    * View : 사용자에게 보여지는 UI 부분입니다.
+    * Presenter : View에서 사용자가 어떤 정보를 요청을 하면 해당 정보를 가지고 Model로 가공하여 다시 View에 전달합니다.
+
 ## 각 Script의 역할 및 Class Diagram
 
 해당 Project의 Diagram은 아래와 같습니다.
 
-![Visual Studio&#xC758; Class Designer&#xB97C; &#xC774;&#xC6A9;&#xD55C; Diagram](../../.gitbook/assets/image%20%2827%29.png)
+![Visual Studio&#xC758; Class Designer&#xB97C; &#xC774;&#xC6A9;&#xD55C; Diagram](../../.gitbook/assets/image%20%2828%29.png)
 
 * Delivery
   * `TriviaGameView` : GamePlayerScreen Object에 추가된 Component로써, 계속적인 GamePlay의 Controller 역할을 합니다.
@@ -374,6 +386,54 @@ public static QuestionsService QuestionsService() {
 }
 ```
 {% endcode %}
+{% endtab %}
+{% endtabs %}
+
+## Test
+
+Test Script를 작성하기 이전에 TDD에 대한 설명을 먼저 기재하겠습니다.
+
+* TDD란?
+  * Test - Driven - Development의 준말으로써, Test Case를 작성하고 통과 하면 아래의 그림과 같은 Cycle로 계속적으로 수정 및 테스트를 합니다.
+  * TDD를 통해 코드에 대한 자동 테스트를 작성하고 소프트웨어를 변경할 수 있습니다.
+  * 새로운 개발자가 팀에 합류하면 테스트를 통해 모든 기능의 작동 및 요구 사항을 이해할 수 있습니다.
+  * 버그를 일으킬 염려없이 코드에서 Refactor\(크고 작은 것 모두\)로 작업 할 수 있습니다.
+  * 코드에 너무 많은 Coupling이 있는지 감지하는 데 도움이 됩니다.
+
+![TDD](../../.gitbook/assets/image%20%2852%29.png)
+
+1. Write a Test, watch it Fail : 
+
+
+
+{% tabs %}
+{% tab title="TriviaGamePresenterTests.cs" %}
+TriviaGamePresenterTests.cs는 Test Runner를 통해 생성된 Test Script입니다. 해당 Script를 통해 Test Case를 작성하고 조건을 넣어서 참, 거짓을 판별합니다.
+
+{% hint style="info" %}
+해당 Script를 작성하기 위해 NSubstitute라는 라이브러리가 필요하며 이를 사용하려면 Project에 미리 Import해서 Script에 using문을 써서 사용해야 합니다.
+{% endhint %}
+
+{% embed url="https://nsubstitute.github.io/help/getting-started/" %}
+
+{% page-ref page="../../technical-reference/unity/tr-triviagame-tdd.md" %}
+
+
+
+{% code title="TriviaGamePresenterTests.cs" %}
+```csharp
+        private TriviaGameView _view;
+        private TriviaGamePresenter _presenter;
+
+        private Question _firstQuestion = Substitute.For<Question>();
+        private Question _secondQuestion = Substitute.For<Question>();
+        private Question _thirdQuestion = Substitute.For<Question>();
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
 {% endtab %}
 {% endtabs %}
 

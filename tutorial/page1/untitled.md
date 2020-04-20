@@ -35,7 +35,7 @@ description: tutorial Celeste's Movement
 
 임의의 Project를 하나 생성 합니다. 그리고 Tilemap Object를 하나 생성합니다. 그 후 이전 tutorial인 Tilemap을 활용하여 임의의 Map Design을 만듭니다.
 
-![&#xC900;&#xBE44;&#xB41C; Asset&#xC744; &#xD65C;&#xC6A9;&#xD55C; Map Design](../../.gitbook/assets/image%20%2825%29.png)
+![&#xC900;&#xBE44;&#xB41C; Asset&#xC744; &#xD65C;&#xC6A9;&#xD55C; Map Design](../../.gitbook/assets/image%20%2826%29.png)
 
 위 그림은 위에서 첨부한 Github에 등재된 Palette 기준으로 작성했습니다.
 
@@ -49,7 +49,7 @@ Tilemap에 Rigidbody2D와 Tilemap Collider 2D, Composite Collider 2D Component�
 
 Character Object에 대한 작업을 하기 전에 Character Object의 하위 Object를 만들어서 따로 관리 하도록 합니다. 아래의 그림과 같이 Empty Object를 생성하여 Hierarchy를 만듭니다.
 
-![Character Object&#xC758; &#xD558;&#xC704; Object](../../.gitbook/assets/image%20%2823%29.png)
+![Character Object&#xC758; &#xD558;&#xC704; Object](../../.gitbook/assets/image%20%2824%29.png)
 
 이렇게 관리하는 이유는 작업하는데 있어서 확실하게 구분하기 위함이라고 봅니다. Character, Visual, Particle등 각 항목을 세분화 하고 수정하는데 있어서 시간이 단축됩니다.
 
@@ -564,7 +564,7 @@ public class AnimationScript : MonoBehaviour
 
 위의 작업을 마쳤다면 다음은 잔상효과를 주기 위한 GhostTrail이 필요합니다. 이것을 위해 아래의 그림과 같이 Hierarchy에 Object를 배치합니다.
 
-![GhostTrail&#xC744; &#xC704;&#xD55C; Object &#xBC30;&#xCE58;](../../.gitbook/assets/image%20%2899%29.png)
+![GhostTrail&#xC744; &#xC704;&#xD55C; Object &#xBC30;&#xCE58;](../../.gitbook/assets/image%20%28101%29.png)
 
 그 후에 GhostTrail Script Component를 배치 후 임의의 색상을 지정을 합니다. 그리고 아래의 자식 Object에 Sprite Rendere Component를 넣고 Material을 Ghost로 지정합니다.
 

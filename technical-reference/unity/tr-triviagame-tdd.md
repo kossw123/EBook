@@ -59,3 +59,20 @@ delegate는 함수포인터의 기능을 가지고 있고 그렇기 때문에 �
 
 Delegate와 Action은 C++에서 사용하는 포인터와 같은 기능을 하고 있지만, 주소를 가리키는게 변수가 아닌 함수 라는 것을 유념해야 합니다. 
 
+## NSubstitute
+
+* NSubstitute is a friendly substitute for . NET mocking libraries. It has a simple, succinct syntax to help developers write clearer tests. NSubstitute is designed for Arrange-Act-Assert \(AAA\) testing and with Test Driven Development \(TDD\) in mind.
+* NSubstitute은 \(는\) . NET mocking libraries에 대한 친근한 대체품입니다. 개발자가보다 명확한 테스트를 작성할 수 있도록 간결하고 간결한 구문이 있습니다. NSubstitute은 AAA \(Arrange-Act-Assert\) 테스트를 위해 설계되었으며 TDD \(Test Driven Development\)를 염두에두고 설계되었습니다.
+
+{% hint style="info" %}
+Mocking libraries란?
+
+일단 Mocking이라는 단어에 대해 설명해 드리자면
+
+Unit Test\(단위 테스트\)에 사용되는 단어입니다. Test중에 임의의 Object는 다른 Object에 종속되거나 Coupling 될 수 있기 때문에 이것을 분리하기 위해 
+
+**모의 객체\(Mock Object\)를  생성하여 실제 객체의 동작을 시뮬레이션 합니다.**
+
+그렇 다면 Mocking libraries는 어떤 것인가 하
+{% endhint %}
+
