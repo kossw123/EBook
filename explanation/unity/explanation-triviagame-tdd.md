@@ -18,9 +18,9 @@ description: Explanation TriviaGame TDD
   * Presentation
   * Service
 
-
-
 해설문서를 보기전에 전에 TriviaGame MVP Pattern을 가지고 있습니다.
+
+{% embed url="https://beomy.tistory.com/43" %}
 
 ![MVP Pattern&#xC758; &#xAD6C;&#xC870;](../../.gitbook/assets/image%20%2821%29.png)
 
@@ -29,6 +29,7 @@ description: Explanation TriviaGame TDD
     * Model : 사용되는 데이터와 데이터를 처리하는 부분입니다.
     * View : 사용자에게 보여지는 UI 부분입니다.
     * Presenter : View에서 사용자가 어떤 정보를 요청을 하면 해당 정보를 가지고 Model로 가공하여 다시 View에 전달합니다.
+* MVP Pattern를 기초로 하여 Script들을 생성합니다.  그 결과 아래와 같은 그림으로 Script를 나눌 수 있습니다.
 
 ## 각 Script의 역할 및 Class Diagram
 

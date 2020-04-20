@@ -61,6 +61,8 @@ Delegate와 Action은 C++에서 사용하는 포인터와 같은 기능을 하�
 
 ## NSubstitute
 
+{% embed url="https://nsubstitute.github.io/help/getting-started/" caption="NSubstitute Document" %}
+
 * NSubstitute is a friendly substitute for . NET mocking libraries. It has a simple, succinct syntax to help developers write clearer tests. NSubstitute is designed for Arrange-Act-Assert \(AAA\) testing and with Test Driven Development \(TDD\) in mind.
 * NSubstitute은 \(는\) . NET mocking libraries에 대한 친근한 대체품입니다. 개발자가보다 명확한 테스트를 작성할 수 있도록 간결하고 간결한 구문이 있습니다. NSubstitute은 AAA \(Arrange-Act-Assert\) 테스트를 위해 설계되었으며 TDD \(Test Driven Development\)를 염두에두고 설계되었습니다.
 
