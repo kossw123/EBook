@@ -394,15 +394,13 @@ public static QuestionsService QuestionsService() {
 Test Script를 작성하기 이전에 TDD에 대한 설명을 먼저 기재하겠습니다.
 
 * TDD란?
-  * Test - Driven - Development의 준말으로써, Test Case를 작성하고 통과 하면 아래의 그림과 같은 Cycle로 계속적으로 수정 및 테스트를 합니다.
+  * Test - Driven - Development의 준말으로써 **방법론중 하나입니다**. Test Case를 작성하고 통과 하면 아래의 그림과 같은 Cycle로 계속적으로 수정 및 테스트를 합니다.
   * TDD를 통해 코드에 대한 자동 테스트를 작성하고 소프트웨어를 변경할 수 있습니다.
   * 새로운 개발자가 팀에 합류하면 테스트를 통해 모든 기능의 작동 및 요구 사항을 이해할 수 있습니다.
   * 버그를 일으킬 염려없이 코드에서 Refactor\(크고 작은 것 모두\)로 작업 할 수 있습니다.
   * 코드에 너무 많은 Coupling이 있는지 감지하는 데 도움이 됩니다.
 
-![TDD](../../.gitbook/assets/image%20%2852%29.png)
-
-1. Write a Test, watch it Fail : 
+![TDD Flow Chart](../../.gitbook/assets/image%20%2852%29.png)
 
 
 
