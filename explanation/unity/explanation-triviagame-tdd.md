@@ -455,7 +455,7 @@ TriviaGamePresenterTests.cs는 Test Runner를 통해 생성된 Test Script입니
 
 \*\* \#region은 Code Block을 지정하여 Code를 접거나 펼수 있도록 하기 위해 임의로 정의했습니다. \#endregion을 통해 Code Block의 끝 부분을 설정합니다.
 
-* 
+* `SetUp()` : 
 {% endtab %}
 
 {% tab title="Second Tab" %}
