@@ -402,6 +402,8 @@ Test Script를 작성하기 이전에 TDD에 대한 설명을 먼저 기재하�
     * When : 구체화 하고자하는 행동을 기술합니다.
     * Then : 예상되는 변화에 대해 설명합니다.
 
+{% embed url="https://velog.io/@pop8682/%EB%B2%88%EC%97%AD-Given-When-Then-martin-fowler" %}
+
 
 
 {% tabs %}
@@ -416,8 +418,6 @@ TriviaGamePresenterTests.cs는 Test Runner를 통해 생성된 Test Script입니
 
 {% page-ref page="../../technical-reference/unity/tr-triviagame-tdd.md" %}
 
-
-
 {% code title="TriviaGamePresenterTests.cs" %}
 ```csharp
         private TriviaGameView _view;
@@ -428,6 +428,34 @@ TriviaGamePresenterTests.cs는 Test Runner를 통해 생성된 Test Script입니
         private Question _thirdQuestion = Substitute.For<Question>();
 ```
 {% endcode %}
+
+* `_view` : UI부분을 담당하는 TriviaGameView Class를 정의 합니다.  모의 객체를 생성한 뒤 올바른 결과값이 UI에 제대로 들어갔는지 확인하기 위해 정의합니다.
+* `_presenter` : MVP pattern의 Model부분과 View부분의 데이터 가공을 위해 정의합니다.
+* `_firstQuestion` : Question Class의 객체를 모의객체로 생성합니다.
+* `_secondQuestion` : 위와 동일합니다.
+* `_thirdQuestion` : 위와 동일합니다.
+
+```csharp
+#region SetUp
+        [SetUp] public void SetUp() {
+            _view = Substitute.For<TriviaGameView>();
+            _presenter = new TriviaGamePresenter(_view, new Question[]{_firstQuestion, _secondQuestion, _thirdQuestion});
+
+            _firstQuestion.IsRightAnswer("ok").Returns(true);
+            _firstQuestion.IsRightAnswer("nope").Returns(false);
+            
+            _secondQuestion.IsRightAnswer("ok").Returns(true);
+            _secondQuestion.IsRightAnswer("nope").Returns(false);
+            
+            _thirdQuestion.IsRightAnswer("ok").Returns(true);
+            _thirdQuestion.IsRightAnswer("nope").Returns(false);
+        }
+        #endregion
+```
+
+\*\* \#region은 Code Block을 지정하여 Code를 접거나 펼수 있도록 하기 위해 임의로 정의했습니다. \#endregion을 통해 Code Block의 끝 부분을 설정합니다.
+
+* 
 {% endtab %}
 
 {% tab title="Second Tab" %}

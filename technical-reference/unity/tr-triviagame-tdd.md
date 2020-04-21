@@ -67,10 +67,27 @@ Delegate와 Action은 C++에서 사용하는 포인터와 같은 기능을 하�
 >
 > NSubstitute은 \(는\) . NET mocking libraries에 대한 친근한 대체품입니다. 개발자가보다 명확한 테스트를 작성할 수 있도록 간결하고 간결한 구문이 있습니다. NSubstitute은 AAA \(Arrange-Act-Assert\) 테스트를 위해 설계되었으며 TDD \(Test Driven Development\)를 염두에두고 설계되었습니다.
 
+NSubstitute를 사용하기 위해 임의의 interface 예시를 아래의 Code Block과 같이 생성하고 일련의 과을 사용하여 NSubstitute를 생성합니다.
+
+```csharp
+public interface ICalculator
+{
+    int Add(int a, int b);
+    string Mode { get; set; }
+    event EventHandler PoweringUp;
+}
+
+calculator = Substitute.For<ICalculator>();        // NSubstitute 생성 부분
+```
+
+임의의 interface인 ICalculator를 정의 하는데 있어서 `Substitute.For<ICalculator>();`를 사용합니다. 이것은 모의 객체를 생성하는 부분입니다.
 
 
-* Mocking libraries란?
 
+* 주
+
+{% tabs %}
+{% tab title="Mocking Libraries란?" %}
 {% hint style="info" %}
 일단 Mocking이라는 단어에 대해 설명해 드리자면
 
@@ -82,6 +99,14 @@ Unit Test\(단위 테스트\)에 사용되는 단어입니다. Test중에 임의
 {% endhint %}
 
 {% embed url="https://medium.com/@SlackBeck/mock-object%EB%9E%80-%EB%AC%B4%EC%97%87%EC%9D%B8%EA%B0%80-85159754b2ac" %}
+{% endtab %}
+
+{% tab title="" %}
+
+{% endtab %}
+{% endtabs %}
+
+
 
 
 
