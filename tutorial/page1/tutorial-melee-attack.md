@@ -20,7 +20,7 @@ description: tutorial Melee Attack
 
 * Tilemap을 사용하여 Map Design을 간단히 합니다. 하지만 아래의 그림과 같이 각 Grid간 간격에 대해 공백을 가지고 있습니다.
 
-![](../../.gitbook/assets/image%20%2849%29.png)
+![](../../.gitbook/assets/image%20%2850%29.png)
 
 * 위의 그림을 활용할 이를 위해 조정해야 할것이 있습니다.
   * **Tilemap을 생성해 Camera : 0.9 / Grid Sell Size : x\(0.32\), y\(0.2\)정도로 조정합니다.**
@@ -38,7 +38,7 @@ description: tutorial Melee Attack
 
 * 위의 해결 방안을 채택 했다면 아래의 그림과 같이 적절하게 표시됩니다.
 
-![&#xC704; : Camera, Sell Size &#xCD95;&#xC18C; / &#xC544;&#xB798; : Sprite Pixels Per Unit &#xCD95;&#xC18C;](../../.gitbook/assets/image%20%2890%29.png)
+![&#xC704; : Camera, Sell Size &#xCD95;&#xC18C; / &#xC544;&#xB798; : Sprite Pixels Per Unit &#xCD95;&#xC18C;](../../.gitbook/assets/image%20%2891%29.png)
 
 * Tilemap에 Tilemap Collider2D\(Used By Composite = true\), Rigidbody2D\(static\), Composite Collider2D를 추가하고 제대로 충돌되는지 확인합니다.
 
@@ -211,7 +211,7 @@ public class Bandit : MonoBehaviour {
 * Enemy를 생성하기 위해 다운받은 Asset의 HeavyBandit을 화면상에 배치합니다.
 * HeavyBandit은 다른 움직임 없이 오직 Player가 Melee Attack을 할 수 있는지에 대한 Test Object이기 때문에 Component에 대한 수정이 필요합니다.
 
-![HeavyBandit Inspector](../../.gitbook/assets/image%20%2878%29.png)
+![HeavyBandit Inspector](../../.gitbook/assets/image%20%2879%29.png)
 
 아래의 항목들로 각 Component를 수정합니다.
 
@@ -221,7 +221,7 @@ public class Bandit : MonoBehaviour {
   * 아래의 그림과 같은 Animation State를 할당합니다.
   * 각 Animation Clip을 기존의 HeavyBandit의 Hurt, Dead Clip을 이용합니다.
 
-![Enemy&#xB85C; &#xC124;&#xC815;&#xD55C; Object&#xC5D0; &#xD560;&#xB2F9;&#xD560; Animator](../../.gitbook/assets/image%20%28100%29.png)
+![Enemy&#xB85C; &#xC124;&#xC815;&#xD55C; Object&#xC5D0; &#xD560;&#xB2F9;&#xD560; Animator](../../.gitbook/assets/image%20%28101%29.png)
 
 * Sprite Renderer : 변경 사항이 없습니다.
 * Rigidbody2D : Constraints\(x, y, z\)값을 모두 true로 설정합니다.

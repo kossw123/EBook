@@ -31,11 +31,13 @@ description: Explanation TriviaGame TDD
     * Presenter : View에서 사용자가 어떤 정보를 요청을 하면 해당 정보를 가지고 Model로 가공하여 다시 View에 전달합니다.
 * MVP Pattern를 기초로 하여 Script들을 생성합니다.  그 결과 아래와 같은 그림으로 Script를 나눌 수 있습니다.
 
+![](../../.gitbook/assets/image%20%2823%29.png)
+
 ## 각 Script의 역할 및 Class Diagram
 
 해당 Project의 Diagram은 아래와 같습니다.
 
-![Visual Studio&#xC758; Class Designer&#xB97C; &#xC774;&#xC6A9;&#xD55C; Diagram](../../.gitbook/assets/image%20%2828%29.png)
+![Visual Studio&#xC758; Class Designer&#xB97C; &#xC774;&#xC6A9;&#xD55C; Diagram](../../.gitbook/assets/image%20%2829%29.png)
 
 * Delivery
   * `TriviaGameView` : GamePlayerScreen Object에 추가된 Component로써, 계속적인 GamePlay의 Controller 역할을 합니다.
@@ -401,7 +403,7 @@ Test Script를 작성하기 이전에 TDD에 대한 설명을 먼저 기재하�
   * 버그를 일으킬 염려없이 코드에서 Refactor\(크고 작은 것 모두\)로 작업 할 수 있습니다.
   * 코드에 너무 많은 Coupling이 있는지 감지하는 데 도움이 됩니다.
 
-![TDD Flow Chart](../../.gitbook/assets/image%20%2852%29.png)
+![TDD Flow Chart](../../.gitbook/assets/image%20%2853%29.png)
 
 
 
