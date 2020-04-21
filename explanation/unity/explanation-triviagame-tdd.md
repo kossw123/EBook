@@ -8,7 +8,7 @@ description: Explanation TriviaGame TDD
 
 * TriviaGame에 대한 TDD 관련된 설명을 합니다.
 * 보통 Unity LifeCycle flow를 따라 실행이 됩니다. 
-* 하지만 이번 게임에서는 가장 핵심이 되는 Update\(\)함수를 사용하지 않습니다.
+* 하지만 이번 게임에서는 여태까지 가장 중요한 Event\(\) 함수중 하나라고 생각했던 가장 핵심이 되는 Update\(\)함수를 사용하지 않습니다.
 
 {% embed url="https://docs.unity3d.com/kr/2018.4/Manual/ExecutionOrder.html" %}
 
@@ -18,7 +18,7 @@ description: Explanation TriviaGame TDD
   * Presentation
   * Service
 
-해설문서를 보기전에 전에 TriviaGame MVP Pattern을 가지고 있습니다.
+해설문서를 보기전에 TriviaGame은 MVP Pattern을 가지고 있습니다.
 
 {% embed url="https://beomy.tistory.com/43" %}
 
