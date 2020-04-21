@@ -405,6 +405,14 @@ Test Script를 작성하기 이전에 TDD에 대한 설명을 먼저 기재하�
 
 ![TDD Flow Chart](../../.gitbook/assets/image%20%2853%29.png)
 
+이러한 TDD의 개념을 가지고 또 하나의 방법론을 통해 Test Case들을 선언합니다. 그 방법은 아래와 같습니다.
+
+* Given - When - Then
+  * BDD\(Behavior - Driven - Development\) 방법론 중 하나의 스타일로써 Test를 3가지 부분으로 나눕니다.
+    * Given : Test State를 설명하는 부분 입니다.
+    * When : 구체화 하고자하는 행동을 기술합니다.
+    * Then : 예상되는 변화에 대해 설명합니다.
+
 
 
 {% tabs %}
