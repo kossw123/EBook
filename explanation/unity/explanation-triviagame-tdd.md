@@ -470,6 +470,7 @@ namespace Test.TriviaGame
 \*\* \#region은 Code Block을 지정하여 Code를 접거나 펼수 있도록 하기 위해 임의로 정의했습니다. \#endregion을 통해 Code Block의 끝 부분을 설정합니다.
 
 * `SetUp()` : `[Test]` 호출 전에 수행되는 공통 기능 집합입니다.
+* \_view : Substitute.For\(\)
 {% endtab %}
 
 {% tab title="Second Tab" %}
