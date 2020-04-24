@@ -470,13 +470,8 @@ namespace Test.TriviaGame
 \*\* \#region은 Code Block을 지정하여 Code를 접거나 펼수 있도록 하기 위해 임의로 정의했습니다. \#endregion을 통해 Code Block의 끝 부분을 설정합니다.
 
 * `SetUp()` : `[Test]` 호출 전에 수행되는 공통 기능 집합입니다.
-* \_view : Substitute.For\(\)
-{% endtab %}
-
-{% tab title="Second Tab" %}
-
+* `_view` : `Substitute.For()`를 사용하여 TriviaGameView의 모의 객체를 생성합니다.
+* `_presenter` : 미리 생성한 Question 모의 객체를 가지고 Presenter Class의 Question parameter로 넣습니다.
 {% endtab %}
 {% endtabs %}
-
-
 

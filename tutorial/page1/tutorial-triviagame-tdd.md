@@ -451,22 +451,22 @@ namespace Test.TriviaGame
         private Question _secondQuestion = Substitute.For<Question>();
         private Question _thirdQuestion = Substitute.For<Question>();
 
-        #region SetUp
-        [SetUp] public void SetUp() {
+        #region Given
+        [SetUp]
+        public void SetUp()
+        {
             _view = Substitute.For<TriviaGameView>();
-            _presenter = new TriviaGamePresenter(_view, new Question[]{_firstQuestion, _secondQuestion, _thirdQuestion});
+            _presenter = new TriviaGamePresenter(_view, new Question[] { _firstQuestion, _secondQuestion, _thirdQuestion });
 
             _firstQuestion.IsRightAnswer("ok").Returns(true);
             _firstQuestion.IsRightAnswer("nope").Returns(false);
-            
+
             _secondQuestion.IsRightAnswer("ok").Returns(true);
             _secondQuestion.IsRightAnswer("nope").Returns(false);
-            
+
             _thirdQuestion.IsRightAnswer("ok").Returns(true);
             _thirdQuestion.IsRightAnswer("nope").Returns(false);
         }
-        #endregion
-        #region Given
         #endregion
         #region When Test Case
         [Test] public void WhenRightAnswerScoreIncreases()
@@ -505,6 +505,12 @@ namespace Test.TriviaGame
         {
             WhenWrongAnswer();
             ThenShowsLosingFeedback();
+        }
+        [Test] public void ANewTriviaGameStartsWithZeroScore() {
+            ThenScoreIsZero();
+        }
+        [Test] public void ANewGameShowsTheFirstQuestion() {
+            ThenViewIsShowingTheFirstQuestion();
         }
 
         #region When method
@@ -553,16 +559,6 @@ namespace Test.TriviaGame
             _view.Received().UpdateScore(currentScore);
         }
         #endregion
-
-        [Test] public void ANewTriviaGameStartsWithZeroScore() {
-            ThenScoreIsZero();
-        }
-        [Test] public void ANewGameShowsTheFirstQuestion() {
-            ThenViewIsShowingTheFirstQuestion();
-        }
-
-
-        
     }
 }
 ```
