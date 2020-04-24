@@ -603,9 +603,9 @@ namespace Test.TriviaGame {
 ```
 {% endcode %}
 
-* SetUp\(\) : Test Case가 실행되기 전에 변수에 넣을 값을 설정하는 함수입니다.
-* CheckCorrectAnswerReturnsCorrect\(\) : SetUp에서 설정한 값이 올바른 값이 들어갔는지 확인합니다.
-* CheckCorrectAnswerReturnsInCorrect\(\) : 위와 동일하게 동작하지만 오답을 출력합니다.
+* `SetUp()` : Test Case가 실행되기 전에 변수에 넣을 값을 설정하는 함수입니다.
+* `CheckCorrectAnswerReturnsCorrect()` : SetUp에서 설정한 값이 올바른 값이 들어갔는지 확인합니다.
+* `CheckCorrectAnswerReturnsInCorrect()` : 위와 동일하게 동작하지만 오답을 출력합니다.
 {% endtab %}
 
 {% tab title="QuestionsServiceTests.cs" %}
