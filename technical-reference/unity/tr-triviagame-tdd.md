@@ -45,7 +45,7 @@ GamePlayScreen Object에서는 이에 관련된 Component들을 확인 할 수 �
 여기까지만 알아도 이 Project에 대한 궁금증을 해결되었기에, 나중에 기회가 된다면 좀 더 깊게 알아보겠습니다.
 {% endhint %}
 
-##  Action, Delegate
+## Delegate, Action, Func, Event
 
 delegate는 함수포인터의 기능을 가지고 있고 그렇기 때문에 참조하기 위한 변수를 만들어야 합니다.
 
@@ -73,13 +73,12 @@ Delegate와 Action은 C++에서 사용하는 포인터와 같은 기능을 하�
 
 {% embed url="https://www.c-sharpcorner.com/article/introduction-to-nunit-testing-framework/" caption="NUnit을 사용한 Test Case 작성 예시" %}
 
-* 사용된 Syntax, Statement 정리
+* Project에 사용된 Syntax, Statement 정리
   * `[TestFixture]` : Test, Setup, teardown method를 포함하는 클래스를 표시하는 기능입니다.
   * `[SetUp]` : TestFixture 내부에서 사용되어 테스트 메소드 호출전에 수행되는 공통 기능의 집합입니다.
   * `[Test]` : Test할 Method를 식별합니다. 사용하지 않는다면 NUnit을 사용하는 Project에서는 식별이 되지 않습니다. `[TestFixture]` 에서 다른 조건들을 확인하기 위해 `Assert` Class의 함수를 사용합니다.
     * Assert Class
       * `AreEqual(object expected, object actual)` : 기대값과 실제값을 비교하여 모두 null이거나 둘 다 동일한 값을 갖는 경우 두 개체는 동일한 것으로 간주합니다.
-      * 
 
 
 
