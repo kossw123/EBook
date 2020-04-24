@@ -17,7 +17,7 @@
     * [How-to-guide Celeste's Movement](how-to-guide/unity/how-to-guide-celestes-movement.md)
     * [How-to-guide Mario Galaxy's Launch Star](how-to-guide/unity/how-to-guide-mario-galaxys-launch-star.md)
     * [How-to-guide Melee Attack](how-to-guide/unity/untitled.md)
-    * [How-to-guide TriviaGame TDD - 작성중](how-to-guide/unity/how-to-guide-triviagame-tdd-1.md)
+    * [How-to-guide StateMachine - 작성중](how-to-guide/unity/how-to-guide-triviagame-tdd-1.md)
     * [How-to-guide TriviaGame TDD - 작성중](how-to-guide/unity/how-to-guide-triviagame-tdd.md)
 * [Explanation](explanation/README.md)
   * [Unity](explanation/unity/README.md)

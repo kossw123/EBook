@@ -1,2 +1,2 @@
-# How-to-guide TriviaGame TDD - 작성중
+# How-to-guide StateMachine - 작성중
 
