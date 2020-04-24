@@ -609,7 +609,32 @@ namespace Test.TriviaGame {
 {% endtab %}
 
 {% tab title="QuestionsServiceTests.cs" %}
+QuestionsServiceTests.cs 는 필요한 질문의 수만큼 반환되는지 확인하는 Script입니다.
 
+{% code title="QuestionsServiceTests.cs" %}
+```csharp
+using NUnit.Framework;
+using TriviaGame.Service;
+namespace Test.TriviaGame {
+    [TestFixture]
+    public class QuestionsServiceTests {
+        private QuestionsService _service;
+        #region Given
+        [SetUp] public void SetUp() {
+            _service = new QuestionsService();
+        }
+        #endregion
+        #region Test Case
+        [Test] public void ReturnsTheRequiredAmountOfQuestions() {
+            var amount = 3;
+            var questions = _service.GetQuestions(amount);
+            Assert.AreEqual(amount, questions.Length);
+        }
+        #endregion
+    }
+}
+```
+{% endcode %}
 {% endtab %}
 {% endtabs %}
 
