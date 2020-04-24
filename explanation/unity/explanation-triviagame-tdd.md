@@ -575,5 +575,41 @@ TestCase에서 공통적으로 쓰이는 When Method를 먼저 설명하겠습�
 * `ANewGameShowsTheFirstQuestion()` : 새로운 Game을 시작하고 첫번째 질문을 보여줄 경우입니다.
   * `ThenViewIsShowingTheFirstQuestion()` : Received\(\)함수로 횟수만큼 Receive 받았는지 확인 후 다음 질문을 보여줍니다.
 {% endtab %}
+
+{% tab title="QuestionTests.cs" %}
+QuestionTests는 올바른 질문인지 확인하고 올바르게 반환되는지 확인하는 Script입니다.
+
+{% code title="QuestionTests.cs" %}
+```csharp
+using NUnit.Framework;
+using TriviaGame.Domain;
+namespace Test.TriviaGame {
+    [TestFixture] public class QuestionTests {
+        private Question _question;
+        #region Given
+        [SetUp] public void SetUp() {
+            _question = new Question("question text", "correct", new[]{"incorrect 1", "incorrect 2", "incorrect 3"});
+        }
+        #endregion
+        #region Test Case
+        [Test] public void CheckCorrectAnswerReturnsCorrect() {
+            Assert.IsTrue(_question.IsRightAnswer("correct"));
+        }[Test] public void CheckIncorrectAnswerReturnsIncorrect() {
+            Assert.IsFalse(_question.IsRightAnswer("incorrect 1"));
+        }
+        #endregion
+    }
+}
+```
+{% endcode %}
+
+* SetUp\(\) : Test Case가 실행되기 전에 변수에 넣을 값을 설정하는 함수입니다.
+* CheckCorrectAnswerReturnsCorrect\(\) : SetUp에서 설정한 값이 올바른 값이 들어갔는지 확인합니다.
+* CheckCorrectAnswerReturnsInCorrect\(\) : 위와 동일하게 동작하지만 오답을 출력합니다.
+{% endtab %}
+
+{% tab title="QuestionsServiceTests.cs" %}
+
+{% endtab %}
 {% endtabs %}
 
