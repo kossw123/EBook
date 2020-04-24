@@ -566,14 +566,14 @@ TestCase에서 공통적으로 쓰이는 When Method를 먼저 설명하겠습�
   * `ThenViewIsShowingTheSecondQuestion()` : Received\(\) 함수로 횟수만큼 Receive 받았는지 확인 후 다음 질문을 보여줍니다.
 * `When3RightAnswersWin()` : 3개의 정답을 모두 맞췄을 경우입니다.
   * `ThenShowsWinningFeedback()` : Received\(\) 함수로 횟수만큼 확인 후 `ShowWinFeedback()`을 재생합니다.
-* `WhenWrongAnswerScoreDoesntChange()` : 
-  * `ThenScoreDoesntChange()` : 
-* `WhenWrongAnswerGameOver()` : 
-  * `ThenShowsLosingFeedback()` : 
-* `ANewTriviaGameStartsWithZeroScore()` : 
-  * `ThenScoreIsZero()` : 
-* `ANewGameShowsTheFirstQuestion()` : 
-  * `ThenViewIsShowingTheFirstQuestion()` : 
+* `WhenWrongAnswerScoreDoesntChange()` : 오답을 골랐을 때 점수의 변화가 없을 경우입니다.
+  * `ThenScoreDoesntChange()` : parameter로 넘긴 값과 Score를 비교합니다.
+* `WhenWrongAnswerGameOver()` : 오답을 골라 GameOver가 된 경우 입니다.
+  * `ThenShowsLosingFeedback()` : Feedback Animator에서 졌을 때 Animation을 보여줍니다.
+* `ANewTriviaGameStartsWithZeroScore()` : 새로운 Game을 시작하고 0점인 경우 입니다.
+  * `ThenScoreIsZero()` : 0과 Score를 비교합니다.
+* `ANewGameShowsTheFirstQuestion()` : 새로운 Game을 시작하고 첫번째 질문을 보여줄 경우입니다.
+  * `ThenViewIsShowingTheFirstQuestion()` : Received\(\)함수로 횟수만큼 Receive 받았는지 확인 후 다음 질문을 보여줍니다.
 {% endtab %}
 {% endtabs %}
 
