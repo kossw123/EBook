@@ -398,11 +398,18 @@ Test Script를 작성하기 이전에 TDD에 대한 설명을 먼저 기재하�
 
 * Given - When - Then
   * BDD\(Behavior - Driven - Development\) 방법론 중 하나의 스타일로써 Test를 3가지 부분으로 나눕니다.
-    * Given : Test State를 설명하는 부분 입니다.
-    * When : 구체화 하고자하는 행동을 기술합니다.
+    * Given :  Test 수행하기 이전의 상태를 설명하며, Test 위한 사전 조건으로 생각할 수 있습니다.
+    * When : 사용자가 지정하는 동작을 의미합니다.
     * Then : 예상되는 변화에 대해 설명합니다.
 
-{% embed url="https://velog.io/@pop8682/%EB%B2%88%EC%97%AD-Given-When-Then-martin-fowler" %}
+{% embed url="https://velog.io/@pop8682/%EB%B2%88%EC%97%AD-Given-When-Then-martin-fowler" caption="BDD\(Given - When - Then\)" %}
+
+BDD 방법론에 따라 Test Case들을 나눕니다.
+
+* Given - When - Then\(Script\)
+  * Given : Test를 하기 전에 사전 조건으로 필요한 변수들이나, 설정해야 하는 것들을 미리 `[SetUp]` 을 통해 설정합니다.
+  * When : `[SetUp]`을 기반으로 Test Case들을 작성합니다.
+  * Then : When의 결과값에 따라 실행되어야 할 Method들을 작성합니다.
 
 
 
@@ -472,6 +479,7 @@ namespace Test.TriviaGame
 * `SetUp()` : `[Test]` 호출 전에 수행되는 공통 기능 집합입니다.
 * `_view` : `Substitute.For()`를 사용하여 TriviaGameView의 모의 객체를 생성합니다.
 * `_presenter` : 미리 생성한 Question 모의 객체를 가지고 Presenter Class의 Question parameter로 넣습니다.
+* `_IsRightAnswer()` :  해당 함수가 써진 코드 부분은 Data를 넣으면 참,거짓을 판단하는 부분입니다.
 {% endtab %}
 {% endtabs %}
 
