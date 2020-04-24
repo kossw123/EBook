@@ -420,6 +420,20 @@ TriviaGamePresenterTests.cs는 Test Runner를 통해 생성된 Test Script입니
 
 {% code title="TriviaGamePresenterTests.cs" %}
 ```csharp
+namespace Test.TriviaGame
+{
+        [TestFixture]
+        public class TriviaGamePresenterTests {
+        }
+}
+```
+{% endcode %}
+
+* `namespace Test.TriviaGame` : Test.TriviaGame이라는 namespace 생성하여 TriviaGamePresenterTests Class를 구분합니다.
+* `[TestFixture]` : `[Test]`, `[SetUp]`, `[Teardown]` 를 표시하는 Class입니다.
+
+{% code title="TriviaGamePresenterTests.cs" %}
+```csharp
         private TriviaGameView _view;
         private TriviaGamePresenter _presenter;
 
@@ -455,7 +469,7 @@ TriviaGamePresenterTests.cs는 Test Runner를 통해 생성된 Test Script입니
 
 \*\* \#region은 Code Block을 지정하여 Code를 접거나 펼수 있도록 하기 위해 임의로 정의했습니다. \#endregion을 통해 Code Block의 끝 부분을 설정합니다.
 
-* `SetUp()` : 
+* `SetUp()` : `[Test]` 호출 전에 수행되는 공통 기능 집합입니다.
 {% endtab %}
 
 {% tab title="Second Tab" %}

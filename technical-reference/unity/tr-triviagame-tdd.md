@@ -106,6 +106,25 @@ Unit Test\(단위 테스트\)에 사용되는 단어입니다. Test중에 임의
 {% endtab %}
 {% endtabs %}
 
+## NUnit
+
+* 개요
+  * 성공적인 Software를 작성할 때는 SDLC\(Software Development Life Cycle\)이라는 주기에 따라 작성되는 경향이 있다고 합니다.
+  * 보통 이러한 개발 방법론과 같은 경우 적용 범위가 한없이 넓기 때문에 처음 하기에는 적용도 어려울 뿐만 아니라 자칫 잘못하면 개발 난이도가 높아져 난항을 겪으실 수 있습니다.
+  * Nunit은 이러한 개발 주기를 가지고, .NET으로 개발한 Software에서 Test부분에서 유용하게 사용될 수 있습니다.
+  * NUnit은 .NET 언어가 Test Case를 작성하기 위한 필수 Library라고 할 수 있습니다.
+
+![&#xC18C;&#xD504;&#xD2B8;&#xC6E8;&#xC5B4; &#xAC1C;&#xBC1C; &#xC0DD;&#xBA85; &#xC8FC;&#xAE30;\(SDLC\)](../../.gitbook/assets/image%20%2893%29.png)
+
+{% embed url="https://ko.wikipedia.org/wiki/%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4\_%EA%B0%9C%EB%B0%9C\_%EC%88%98%EB%AA%85\_%EC%A3%BC%EA%B8%B0" caption="SDLC에 대한 Document" %}
+
+{% embed url="https://www.c-sharpcorner.com/article/introduction-to-nunit-testing-framework/" caption="NUnit을 사용한 Test Case 작성 예시" %}
+
+* 사용된 Syntax, Statement 정리
+  * `[TestFixture]` : Test, Setup, teardown method를 포함하는 클래스를 표시하는 기능입니다.
+  * `[SetUp]` : TestFixture 내부에서 사용되어 테스트 메소드 호출전에 수행되는 공통 기능의 집합입니다.
+  * `[Test]` : Test할 Method를 식별합니다. 사용하지 않는다면 NUnit을 사용하는 Project에서는 식별이 되지 않습니다. `[TestFixture]` 에서 다른 조건들을 확인하기 위해 `Assert()` 함수를 사용합니다.
+
 
 
 
