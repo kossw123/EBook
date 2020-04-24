@@ -8,7 +8,7 @@
     * [tutorial Celeste's Movement](tutorial/page1/untitled.md)
     * [tutorial Mario Galaxy's Launch Star](tutorial/page1/tutorial-mario-galaxys-launch-star.md)
     * [tutorial Melee Attack](tutorial/page1/tutorial-melee-attack.md)
-    * [tutorial StateMachine](tutorial/page1/tutorial-statemachine.md)
+    * [tutorial StateMachine - 작성중](tutorial/page1/tutorial-statemachine.md)
     * [tutorial TriviaGame TDD - 작성중](tutorial/page1/tutorial-triviagame-tdd.md)
 * [How-to-guide](how-to-guide/README.md)
   * [Unity](how-to-guide/unity/README.md)
