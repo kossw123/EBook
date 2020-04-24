@@ -457,7 +457,7 @@ namespace Test.TriviaGame
 * `_thirdQuestion` : 위와 동일합니다.
 
 ```csharp
-#region SetUp
+#region Given
         [SetUp] public void SetUp() {
             _view = Substitute.For<TriviaGameView>();
             _presenter = new TriviaGamePresenter(_view, new Question[]{_firstQuestion, _secondQuestion, _thirdQuestion});
@@ -480,6 +480,100 @@ namespace Test.TriviaGame
 * `_view` : `Substitute.For()`를 사용하여 TriviaGameView의 모의 객체를 생성합니다.
 * `_presenter` : 미리 생성한 Question 모의 객체를 가지고 Presenter Class의 Question parameter로 넣습니다.
 * `_IsRightAnswer()` :  해당 함수가 써진 코드 부분은 Data를 넣으면 참,거짓을 판단하는 부분입니다.
+
+{% code title="TriviaGamePresenterTests.cs" %}
+```csharp
+    #region When Test Case
+    [Test] public void WhenRightAnswerScoreIncreases()
+    {
+        var initialScore = _presenter.Score;
+        WhenRightAnswer();
+        ThenScoreIncreasedByOne(initialScore);
+    }
+    [Test] public void WhenRightAnswerShowsPositiveFeedback()
+    {
+        WhenRightAnswer();
+        ThenShowsPositiveFeedback();
+    }
+    [Test] public void WhenRightAnswerShowsUpdatedScore()
+    {
+        WhenRightAnswer();
+        ThenShowsCurrentScore(_presenter.Score);
+    }
+    [Test] public void WhenRightAnswerShowsNextQuestiion()
+    {
+        WhenRightAnswer();
+        ThenViewIsShowingTheSecondQuestion();
+    }
+    [Test] public void When3RightAnswersWin()
+    {
+        When3RightAnswers();
+        ThenShowsWinningFeedback();
+    }
+    [Test] public void WhenWrongAnswerScoreDoesntChange()
+    {
+        var initialScore = _presenter.Score;
+        WhenWrongAnswer();
+        ThenScoreDoesntChange(initialScore);
+    }
+    [Test] public void WhenWrongAnswerGameOver()
+    {
+        WhenWrongAnswer();
+        ThenShowsLosingFeedback();
+    }
+    [Test] public void ANewTriviaGameStartsWithZeroScore() {
+        ThenScoreIsZero();
+    }
+    [Test] public void ANewGameShowsTheFirstQuestion() {
+        ThenViewIsShowingTheFirstQuestion();
+    }
+
+    #region When method
+    private void WhenWrongAnswer()
+    {
+        _presenter.ReceiveAnswer("nope");
+    }
+    private void WhenRightAnswer()
+    {
+        _presenter.ReceiveAnswer("ok");
+    } 
+    private void When3RightAnswers()
+    {
+        WhenRightAnswer();
+        WhenRightAnswer();
+        WhenRightAnswer();
+    }
+    #endregion
+    #endregion
+```
+{% endcode %}
+
+TestCase에서 공통적으로 쓰이는 When Method를 먼저 설명하겠습니다.
+
+* `WhenWrongAnswer()` : 오답을 골랐을 시 반환되는 함수이며 앞서 설정한 `[SetUp]` 에서 설정한 `IsRightAnswer`, `IsWrongAnswer`의 값에 따라 참, 거짓을 반환합니다.
+* `WhenRightAnswer()` : 위와 동일합니다.
+* `When3RightAnswers()` : WhenRightAnswer를 3번 반환합니다.
+
+다음으로 Test Case에서 쓰이는 `[Test]`들을 살펴보겠습니다. 이 때 List로 각 Test method들에 대한 설명을 하고 하위 List로 연관 method에 관하여 설명하겠습니다.
+
+* `WhenRightAnswerScoreIncreases()` : 정답을 골랐을 때, Score가 증가 되는 경우입니다.
+  * `ThenScoreIncreasedByOne()` : NUnit의 Assert Class의 AreEqual\(\)를 사용해, 기대값과 결과값이 일치하는지 확인합니다.
+* `WhenRightAnswerShowsPositiveFeedback()` : 정답을 골랐을 때 보여지는 UI를 호출할 경우입니다.
+  * `ThenShowsPositiveFeedback()` : Substitute Class의 `Received()` 함수를 통해 해당 모의 객체가 필요한 횟수만큼 Receive 받았는지 확인합니다.
+* `WhenRightAnswerShowsUpdatedScore()` : 정답을 골랐을 때 Score를 Update 되는 경우입니다.
+  * `ThenShowsCurrentScore()` : Score를 Update합니다.
+* `WhenRightAnswerShowsNextQuestiion()` : 정답을 골랐을 때, 다음 질문을 보여줄 때의 경우입니다.
+  * `ThenViewIsShowingTheSecondQuestion()` : Received\(\) 함수로 횟수만큼 Receive 받았는지 확인 후 다음 질문을 보여줍니다.
+* `When3RightAnswersWin()` : 3개의 정답을 모두 맞췄을 경우입니다.
+  * `ThenShowsWinningFeedback()` : Received\(\) 함수로 횟수만큼 확인 후 `ShowWinFeedback()`을 재생합니다.
+* `WhenWrongAnswerScoreDoesntChange()` : 
+  * `ThenScoreDoesntChange()` : 
+* `WhenWrongAnswerGameOver()` : 
+  * `ThenShowsLosingFeedback()` : 
+* `ANewTriviaGameStartsWithZeroScore()` : 
+  * `ThenScoreIsZero()` : 
+* `ANewGameShowsTheFirstQuestion()` : 
+  * `ThenViewIsShowingTheFirstQuestion()` : 
 {% endtab %}
 {% endtabs %}
 

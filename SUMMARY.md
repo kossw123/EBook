@@ -37,6 +37,7 @@
 * [API, Component reference](api-component-reference/README.md)
   * [Unity](api-component-reference/unity/README.md)
     * [DOTween](api-component-reference/unity/dotween.md)
-    * [Graphic Rendering Pipeline\(작성중\)](api-component-reference/unity/untitled.md)
+    * [Graphic Rendering Pipeline - 작성중](api-component-reference/unity/untitled.md)
+    * [NSubstitute - 작성중](api-component-reference/unity/nsubstitute.md)
 * [feedback](feedback.md)
 
