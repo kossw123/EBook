@@ -635,6 +635,9 @@ namespace Test.TriviaGame {
 }
 ```
 {% endcode %}
+
+* `SetUp()` : QuestionService Class 변수를 동적으로 생성합니다.
+* `ReturnsTheRequiredAmountOfQuestions()` : 3개의 질문 갯수를 반환했는지 question.Length와 비교하여 확인합니다.
 {% endtab %}
 {% endtabs %}
 
