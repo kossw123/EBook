@@ -402,10 +402,6 @@ public static QuestionsService QuestionsService() {
 {% endtab %}
 {% endtabs %}
 
-## Code 흐름
-
-MVP pattern을 적용 
-
 ## Test
 
 Test Script를 작성하기 이전에 TDD에 대한 설명을 먼저 기재하겠습니다.
