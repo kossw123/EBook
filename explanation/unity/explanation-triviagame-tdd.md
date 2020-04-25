@@ -31,13 +31,24 @@ description: Explanation TriviaGame TDD
     * Presenter : View에서 사용자가 어떤 정보를 요청을 하면 해당 정보를 가지고 Model로 가공하여 다시 View에 전달합니다.
 * MVP Pattern를 기초로 하여 Script들을 생성합니다.  그 결과 아래와 같은 그림으로 Script를 나눌 수 있습니다.
 
-![](../../.gitbook/assets/image%20%2823%29.png)
+![TriviaGame MVP &#xD328;&#xD134; &#xD750;&#xB984;](../../.gitbook/assets/image%20%2823%29.png)
 
 ## 각 Script의 역할 및 Class Diagram
 
 해당 Project의 Diagram은 아래와 같습니다.
 
 ![Visual Studio&#xC758; Class Designer&#xB97C; &#xC774;&#xC6A9;&#xD55C; Diagram](../../.gitbook/assets/image%20%2829%29.png)
+
+* Model
+  * `Question` : 질문에 대한 Data 공과 IsRightAnswer를 통한 string.Equal\(\)를 통해 정답과 Player가 선택한 값을 비교하여 참, 거짓을 비교합니다.
+  * `QuestionsService` :  `Question` Class List를 생성하여 `Question` Class에서 생성한 Data공간에 질문, 답, 오답을 생성합니다.
+  * `ServicesProvider` : `QuestionsService` Class를 생성하고 반환합니다. 이렇게 함으로써 원본 정보를 훼손하지 않게 합니다.
+* View
+  * `AnswerView` : Answer Object의 Text를 선언하여 초기화, 생성한 Data를 Answer Object에 넣고, Click Event\(\) 함수를 생성하여 Action이 가리키는 함수를 실행시킵니다.
+  * `TriviaGameView` : `AnswerView` Class를 받아서 UI를  상황에 맞게 Play와 동시에 `TriviaGamePresenter` Class를 받아 Player가 선택한 Data를 Model 부분으로 넘깁니다.
+* Presenter
+  * `TriviaGamePresenter` : Model\(Question\), View\(TriviaGameView\)를 받아와서 Player가 선택한 답이 정답인지, 오답인지 판별하여 Score를 증가시키고, Question List의 Count를 증가시켜서 다음 질문 및 오답, 정답 Data를 불러오는 기능이 담겨 있습니다.
+  * `TriviaGamePresenterBuilder` : `TriviaGamePresenter` Class를 생성하고 반환합니다.
 
 ## Delivery
 
@@ -390,6 +401,10 @@ public static QuestionsService QuestionsService() {
 {% endcode %}
 {% endtab %}
 {% endtabs %}
+
+## Code 흐름
+
+MVP pattern을 적용 
 
 ## Test
 
