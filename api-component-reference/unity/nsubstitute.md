@@ -42,7 +42,7 @@ _firstQuestion.IsRightAnswer("nope").Returns(false);
 2. `IsRightAnswer("ok")` : IsRightAnswer\(\) 함수는 Question Class의 RightAnswer와 parameter로 들어가는 변수에 "ok"를 넣었으니 "ok"와 RightAnswer를 비교합니다.
 3. `Returns` : `IsRightAnswer()` 함수가 Ok를 반환하면 True, Nope을 반환하면 false입니다.
 
-## 주
+## 주석
 
 {% tabs %}
 {% tab title="Mocking Libraries란?" %}
