@@ -73,6 +73,8 @@ Delegate와 Action은 C++에서 사용하는 포인터와 같은 기능을 하�
 
 {% embed url="https://www.c-sharpcorner.com/article/introduction-to-nunit-testing-framework/" caption="NUnit을 사용한 Test Case 작성 예시" %}
 
+**개요를 최종적으로 정리하자면 Test Case를 사용하기 위해서는 NUnit Libaray를 사용하는 것이 필요하고, 실질적으로 Game을 돌리는데 방해가 되지 않도록 모의 객체를 생성하는 Substitute Libaray를 사용하여 Test Case를 작성하는 것입니다.**
+
 * Project에 사용된 Syntax, Statement 정리
   * `[TestFixture]` : Test, Setup, teardown method를 포함하는 클래스를 표시하는 기능입니다.
   * `[SetUp]` : TestFixture 내부에서 사용되어 테스트 메소드 호출전에 수행되는 공통 기능의 집합입니다.
