@@ -39,7 +39,7 @@ description: Explanation TriviaGame TDD
 
 ![Visual Studio&#xC758; Class Designer&#xB97C; &#xC774;&#xC6A9;&#xD55C; Diagram](../../.gitbook/assets/image%20%2829%29.png)
 
-## Domain Script
+## Delivery
 
 {% tabs %}
 {% tab title="TriviaGameView.cs" %}
