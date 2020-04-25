@@ -481,7 +481,8 @@ namespace Test.TriviaGame
 #region Given
         [SetUp] public void SetUp() {
             _view = Substitute.For<TriviaGameView>();
-            _presenter = new TriviaGamePresenter(_view, new Question[]{_firstQuestion, _secondQuestion, _thirdQuestion});
+            _presenter = new TriviaGamePresenter(_view, 
+            new Question[]{_firstQuestion, _secondQuestion, _thirdQuestion});
 
             _firstQuestion.IsRightAnswer("ok").Returns(true);
             _firstQuestion.IsRightAnswer("nope").Returns(false);
