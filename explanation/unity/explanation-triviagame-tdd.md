@@ -340,7 +340,7 @@ TriviaGamePresenterBuilder를 사용하는 이유?
 
 TriviaGameview를 parameter로 받고, public으로 선언된 ServiceProvider의 static변수인 QuestionsService에 접근하는 방식으로 짜여져 있습니다. 
 
-이렇게 짠 이유는 Coupling이라고 서술 되어 있는데, 정확히는 TriviaGamePresenter Class에서의 각 Model\(Question Class\), View\(TriviaGameView\)의 정보를 바꾸지 않기 위해서 입니다. 만약 다른 기능이 추가 되었을 때, MVP 패턴을 유지하기 위해서는 Model과 View, Presenter의 영역이 확실히 나누어져 있어야 합니다. 
+이렇게 짠 이유는 Coupling이라고 서술 되어 있습니다. TriviaGamePresenter Class에서의 각 Model\(Question Class\), View\(TriviaGameView\)의 정보를 바꾸지 않기 위해서 입니다. 만약 다른 기능이 추가 되었을 때, MVP 패턴을 유지하기 위해서는 Model과 View, Presenter의 영역이 확실히 나누어져 있어야 합니다. 
 
 그렇지만, Presenter에 Builder Class를 추가하여 하나의 Class는 하나의 기능만을 가져야 한다는 단일 수행 원칙\(single responsibility principle\)을 지키기 위해서 이렇게 짠 것으로 서술되어 있습니다.
 {% endhint %}
