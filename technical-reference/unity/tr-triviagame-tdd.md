@@ -2,7 +2,7 @@
 description: TR TriviaGame TDD
 ---
 
-# TR TriviaGame TDD
+# TR TriviaGame TDD - 작성중
 
 ## 무엇을 하려고 하는가?
 
@@ -73,8 +73,6 @@ Delegate와 Action은 C++에서 사용하는 포인터와 같은 기능을 하�
 
 {% embed url="https://www.c-sharpcorner.com/article/introduction-to-nunit-testing-framework/" caption="NUnit을 사용한 Test Case 작성 예시" %}
 
-**개요를 최종적으로 정리하자면 Test Case를 사용하기 위해서는 NUnit Libaray를 사용하는 것이 필요하고, 실질적으로 Game을 돌리는데 방해가 되지 않도록 모의 객체를 생성하는 Substitute Libaray를 사용하여 Test Case를 작성하는 것입니다.**
-
 * Project에 사용된 Syntax, Statement 정리
   * `[TestFixture]` : Test, Setup, teardown method를 포함하는 클래스를 표시하는 기능입니다.
   * `[SetUp]` : TestFixture 내부에서 사용되어 테스트 메소드 호출전에 수행되는 공통 기능의 집합입니다.
@@ -82,11 +80,5 @@ Delegate와 Action은 C++에서 사용하는 포인터와 같은 기능을 하�
     * Assert Class
       * `AreEqual(object expected, object actual)` : 기대값과 실제값을 비교하여 모두 null이거나 둘 다 동일한 값을 갖는 경우 두 개체는 동일한 것으로 간주합니다.
 
-## 마치며
 
-* 다양한 패턴을 사용이 되었습니다. 이를 이해하는데 어려움이 있었고, 그에 따른 난이도가 생각보다 높다고 생각되었습니다.
-* 일반적으로 제가 생각하던 Game에 있어서 중요한 부분보다는, C\#에 대한 문법 사용과, Unity 자체의 Component패턴에 대해 좀 더 알 수 있었던 기회가 되었습니다.
-* 기술문서에 기재 하지않은 Substitute Library는 아래의 Page Link를 타고 가시면 있습니다.
-
-{% page-ref page="../../api-component-reference/unity/nsubstitute.md" %}
 

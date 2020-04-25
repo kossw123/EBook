@@ -2,7 +2,7 @@
 description: NSubstitute
 ---
 
-# NSubstitute - 작성중
+# NSubstitute
 
 ## NSubstitute
 
@@ -27,14 +27,29 @@ calculator = Substitute.For<ICalculator>();        // NSubstitute 생성 부분
 
 임의의 interface인 ICalculator를 정의 하는데 있어서 `Substitute.For<ICalculator>();`를 사용합니다. 이것은 모의 객체를 생성하는 부분입니다.
 
+`Substitute.For<생성할 객체의 타입>();` 
 
+위와 같은 문법으로 모의 객체를 생성합니다.
+
+이제 생성한 모의 객체\(Mock Object\)를 가지고 반환값을 가져야 합니다. Complete Project File에서는 Test Script에서의 반환값을 가져야하는 Logic을 아래와 같이 선언하였습니다.
+
+```text
+_firstQuestion.IsRightAnswer("ok").Returns(true);
+_firstQuestion.IsRightAnswer("nope").Returns(false);
+```
+
+1. `_firstQuestion`: 모의 객체 변수
+2. `IsRightAnswer("ok")` : IsRightAnswer\(\) 함수는 Question Class의 RightAnswer와 parameter로 들어가는 변수에 "ok"를 넣었으니 "ok"와 RightAnswer를 비교합니다.
+3. `Returns` : `IsRightAnswer()` 함수가 Ok를 반환하면 True, Nope을 반환하면 false입니다.
+
+## 주
 
 {% tabs %}
 {% tab title="Mocking Libraries란?" %}
 {% hint style="info" %}
 일단 Mocking이라는 단어에 대해 설명해 드리자면
 
-Unit Test\(단위 테스트\)에 사용되는 단어입니다. Test중에 임의의 Object는 다른 Object에 종속되거나 Coupling 될 수 있기 때문에 
+Unit Test\(단위 테스트\)에 사용되는 단어입니다. Test중에 임의의 Object는 다른 Object에 종속되거나 Coupling 될 수 있기 때문에 임의의 Object type의 Mock Object\(모의 객체\)를 생성하여 Object가 동작하는 Logic과 동일하되, Test Case에서는 Mock Object를 통해 Test합니다.
 {% endhint %}
 {% endtab %}
 {% endtabs %}
