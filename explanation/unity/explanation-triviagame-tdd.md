@@ -2,7 +2,7 @@
 description: Explanation TriviaGame TDD
 ---
 
-# Explanation TriviaGame TDD
+# Explanation TriviaGame TDD - 작성중
 
 ## 무엇을 하려고 하는가?
 
@@ -640,14 +640,4 @@ namespace Test.TriviaGame {
 * `ReturnsTheRequiredAmountOfQuestions()` : 3개의 질문 갯수를 반환했는지 question.Length와 비교하여 확인합니다.
 {% endtab %}
 {% endtabs %}
-
-## 마치며
-
-* 정리하면서 느낀점은 TDD에 관한 문서이지만, TDD보다는 TriviaGame을 구성하는 Script들의 관계가 더 중요하다고 느껴졌습니다.
-* TDD, MVP, BDD 방법론을 정리하면서 보다 Game 및 App개발에 중요한 설계부분에 대해 보다 심도 있게 고민한 문서였습니다.
-* 설명이 부족하다고 느껴질 수 있습니다. 
-  * PresenterBuilder, QuestionsServiceProvider 등과 같은 Script의 존재여부와 Attached하지 않은 상태에서 어떻게 돌아가는 지에 대한 설명은 차후 기술하도록 하겠습니다.
-* 부족한 부분은 기술문서를 보시면 조금이나마 궁금증을 해소 하실수 있을 것 같습니다.
-
-{% page-ref page="../../technical-reference/unity/tr-triviagame-tdd.md" %}
 
