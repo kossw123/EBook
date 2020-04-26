@@ -2,7 +2,7 @@
 description: How-to-guide TriviaGame TDD
 ---
 
-# How-to-guide TriviaGame TDD
+# How-to-guide TriviaGame TDD - 작성중
 
 ## 무엇을 하려고 하는가?
 
@@ -16,12 +16,12 @@ description: How-to-guide TriviaGame TDD
 {% code title="AnswerView.cs" %}
 ```csharp
 using System;
-using TMPro;                                    
+using TMPro;                                    // TextMesh Pro를 사용하기 위한 명령문
 using UnityEngine;
-namespace TriviaGame.Delivery {            
+namespace TriviaGame.Delivery {                // namespace를 통해 다른기능 같은이름의 모호성을 방지하기 위해 사용
     public class AnswerView: MonoBehaviour {
         [SerializeField] private TMP_Text _answerText;
-        private Action<string> _onAnswerSelected;    
+        private Action<string> _onAnswerSelected;    // string 형 Action을 통해 함수 포인터를 받는다.
         public void Initialize(Action < string > onAnswerSelected) {
             _onAnswerSelected = onAnswerSelected;
         }
@@ -440,10 +440,4 @@ namespace Test.TriviaGame {
 {% endcode %}
 {% endtab %}
 {% endtabs %}
-
-## Code Review가 없는 이유
-
-* 다양한 패턴 및 문법을 사용하다 보니, 이 내용들이 혼합해서 정리되었고, 이를 분리할만한 성격이 아니라고 판단이 되어 How-to-guide는 작성했지만, 해설문서에서 한번에 다루도록 하겠습니다.
-
-{% page-ref page="../../explanation/unity/explanation-triviagame-tdd.md" %}
 
