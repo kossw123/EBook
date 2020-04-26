@@ -50,7 +50,8 @@ Play를 눌러서 배치한 Scene을 Play한다면 위 그림과 같은 PlayerSt
 
 project에 존재하고 있는 Script File에서 'PhysicsObject'라는 새로운 C\# Script를 하나 생성하여 아래와 같은 소스를 복사하여 저장 후 미리 배치한 PlayerStart에 Script Component를 넣습니다.
 
-```text
+{% code title="PhysicsObject.cs" %}
+```csharp
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -159,6 +160,7 @@ public class PhysicsObject : MonoBehaviour {
 
 }
 ```
+{% endcode %}
 
 그리고 저장 후에 Scene을 Play 해보면 PlayerStart가 중력의 영향을 받아 아래로 떨어지는 모습을 확인할 수 있습니다. 
 
@@ -166,7 +168,8 @@ public class PhysicsObject : MonoBehaviour {
 
 그리고 새로운 'PlayerPlatformerController'라는 Script를 하나 생성하여 위와 마찬가지로 PlayerStart Object에 Component로 추가하고 아래와 같은 코드를 복사합니다.
 
-```text
+{% code title="PlayerPlatformerController.cs" %}
+```csharp
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -214,6 +217,7 @@ public class PlayerPlatformerController : PhysicsObject {
     }
 }
 ```
+{% endcode %}
 
 추가를 끝마쳤다면 아래와 같은 그림을 움직이는 PlayerStart Object를 보실 수 있습니다.
 
