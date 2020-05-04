@@ -15,7 +15,7 @@ description: tutiorial Resuable UI System
 
 * Reusable UI System은 아래의 그림을 모방하여 UI를 구성합니다.
 
-![&#xCD08;&#xAE30;&#xD654;&#xBA74; UI &#xAD6C;&#xC131;](../../.gitbook/assets/image%20%28114%29.png)
+![&#xCD08;&#xAE30;&#xD654;&#xBA74; UI &#xAD6C;&#xC131;](../../.gitbook/assets/image%20%28115%29.png)
 
 ## 작성법
 
@@ -91,9 +91,10 @@ description: tutiorial Resuable UI System
 
 여기까지 과정은 아래의 그림과 같습니다.
 
-![](../../.gitbook/assets/image%20%28127%29.png)
+![Login\_Screen &#xC644;&#xC131;&#xBCF8;](../../.gitbook/assets/image%20%28128%29.png)
 
+* 두번째 Screen인 Register\_Screen을 작성합니다.
+* Register\_Screen은 Login\_Screen과 같은 방법으로 작성하되, 배치와 Text 문구만 변환한 것이기 때문에 자세한 설명은 그림으로 대체하겠습니다.
 
-
-
+![Register\_Screen &#xC644;&#xC131;&#xBCF8;](../../.gitbook/assets/image%20%2884%29.png)
 

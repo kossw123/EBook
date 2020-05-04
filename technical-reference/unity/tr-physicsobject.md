@@ -120,7 +120,7 @@ groundNormal 이라는 변수를 통해 RaycastHit2D.normal\(광선에 부딪힌
 
 기본적으로 Unity는 엄지 : X축, 검지 : Y축, 중지 : Z축으로 왼손 좌표계를 기준으로 합니다. 
 
-![https://wergia.tistory.com/161 - &#xBCA0;&#xB974;&#xC758; &#xD504;&#xB85C;&#xADF8;&#xB798;&#xBC0D; &#xB178;&#xD2B8;](../../.gitbook/assets/image%20%28104%29.png)
+![https://wergia.tistory.com/161 - &#xBCA0;&#xB974;&#xC758; &#xD504;&#xB85C;&#xADF8;&#xB798;&#xBC0D; &#xB178;&#xD2B8;](../../.gitbook/assets/image%20%28105%29.png)
 
 이러한 좌표계를 가지고 어떤 Object를 중심으로 로컬, 월드 좌표계로 나누고, 상대적이냐, 절대적이냐를 따지는데 Collider가 충돌 시 RayCastHit2D를 사용하여 광선을 쏴서 부딪힌 물체의 법선벡터를 구하여 표면에 수직인 경우 양수를 반환합니다.
 
