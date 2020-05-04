@@ -9,6 +9,7 @@ description: tutiorial Resuable UI System
 * 재사용이 가능한 UI System Project를 생성합니다.
 * 프로그램에 있어서 사용자가 사용하기 쉽게 하기 위한 UI를 작성하고, 이를 재사용 가능하게끔 하여, 다른 Project에서도 적용 가능하도록 합니다.
 * 해당 문서는 상업적으로 이용되지 않습니다.
+* 문서보다 영상을 보면서 작성하시는게 좀 더 스킬업에 도움이 될 수 있습니다.
 
 {% embed url="https://www.youtube.com/watch?v=8L9osm0h5J4&list=PL5V9qxkY\_RnJAZUTVXewQrJWbb5B7IU8y&index=2&t=0s" %}
 
@@ -75,6 +76,10 @@ description: tutiorial Resuable UI System
   * 임의로 수정하셔도 무방합니다. 견본은 아래의 그림에 있습니다.
 * Panel Object를 생성하여 위치를 수정하고 Text를 수정하고 Button Object를 생성합니다.
   * 수정된 위치의 옆에 Button Object를 배치하고 Image Component를 제거합니다.
+
+
+
+마지막으로 Canvas Child Object로 Empty Object를 생성 후 Login\_Screen이라고 작성하고 작성한 모든 Object를 하위 Object로써 넣습니다.
 
 이로써 하나의 Screen이 완성되었습니다.
 {% endtab %}
