@@ -47,7 +47,7 @@ Tile Palette 기능을 표시했다면 여기에 필요한 Tile들을 넣어야 
 
 이렇게 새로 생성했다면 드래그 앤 드롭으로 생성할 Tile의 Sprite들을 넣어줍니다. 여기서는 기본적으로 Sprite들이 Tileset Size로 Slice되어 있지만 안되어 있는 Sprite들도 존재합니다. 이에 대한 주의점은 후에 Explanation 문서에 기술 하겠습니다.
 
-![Test Palette&#xC5D0; &#xAE30;&#xC874;&#xC5D0; &#xC788;&#xB358; TileSet&#xB4E4;&#xC744; &#xB123;&#xC5B4;&#xC900; &#xACB0;&#xACFC;](../../.gitbook/assets/image%20%2898%29.png)
+![Test Palette&#xC5D0; &#xAE30;&#xC874;&#xC5D0; &#xC788;&#xB358; TileSet&#xB4E4;&#xC744; &#xB123;&#xC5B4;&#xC900; &#xACB0;&#xACFC;](../../.gitbook/assets/image%20%28100%29.png)
 
 위 그림과 같이 Tile들이 격자형태로 나눠진 것을 확인할 수 있으며 이것을 가지고 Tilemap Object에 넣어 주면 TileMap을 배치 할 수 있습니다.
 
@@ -61,7 +61,7 @@ Tile Palette 기능을 표시했다면 여기에 필요한 Tile들을 넣어야 
 
 자료를 다운받아 압축을 풀고 Project에 넣는다면 2d-extras-master라는 File이 Project View에 생성되면서 "Project View"에서 우클릭 후 Create로 가면 가장 위쪽에 Tile이라는 항목이 생성되고 여기서 Rule Tile들을 생성할 수 있습니다.
 
-![Hierarchy&#xCC3D;&#xC5D0;&#xC11C; Create&#xD558;&#xBA74; &#xC0DD;&#xC131;&#xC774; &#xC548;&#xB418;&#xACE0; &quot;Project View&quot;&#xC5D0;&#xC11C; &#xC6B0;&#xD074;&#xB9AD;&#xC2DC; &#xC774;&#xB807;&#xAC8C; &#xB739;&#xB2C8;&#xB2E4;.](../../.gitbook/assets/image%20%28100%29.png)
+![Hierarchy&#xCC3D;&#xC5D0;&#xC11C; Create&#xD558;&#xBA74; &#xC0DD;&#xC131;&#xC774; &#xC548;&#xB418;&#xACE0; &quot;Project View&quot;&#xC5D0;&#xC11C; &#xC6B0;&#xD074;&#xB9AD;&#xC2DC; &#xC774;&#xB807;&#xAC8C; &#xB739;&#xB2C8;&#xB2E4;.](../../.gitbook/assets/image%20%28102%29.png)
 
 여기서 Rule Tile에 대해 알아보겠습니다. 
 
@@ -69,7 +69,7 @@ Rule Tile이란? Tile을 만들 때 어떤 규칙이 정해진 타일이라는 �
 
 어차피 Tilemap을 작성해 봤자 하나의 Sprite들을 가지고 여러개를 이어 붙여서 만든것인데, 굳이 필요한 이유를 말씀드리자면 아주 큰 Map Design을 작성할 시에 여러 Sprite를 이어서 만든 어떤 그림이 필요할 때가 종종 있습니다. 그를 대비해 알아둔다면 아주 유용하게 사용할 수 있을 것입니다.
 
-![Rule Tile&#xC758; &#xAE30;&#xBCF8;&#xD654;&#xBA74;](../../.gitbook/assets/image%20%28116%29.png)
+![Rule Tile&#xC758; &#xAE30;&#xBCF8;&#xD654;&#xBA74;](../../.gitbook/assets/image%20%28119%29.png)
 
 Rule Tile을 생성했다면 위 그림과 같은 Inspector가 생성됩니다.
 
@@ -81,7 +81,7 @@ Rule Tile을 생성했다면 위 그림과 같은 Inspector가 생성됩니다.
 
 위 그림과 같이 PhysicsObject tutorial에서 썼던 Sprite들로 Rule을 작성해봤습니다. 어떤 나무를 그린다고 했을 때 위의 4개의 그림을 가지고 작성이 가능합니다. 
 
-![9&#xAC1C;&#xC758; Tile &#xCD94;&#xAC00;](../../.gitbook/assets/image%20%28117%29.png)
+![9&#xAC1C;&#xC758; Tile &#xCD94;&#xAC00;](../../.gitbook/assets/image%20%28120%29.png)
 
 위 그림은 9개의 Tile을 추가해서 원하는 모양이 나오도록 각 Tile에 Rule을 추가한 모습입니다. 각 Tile마다 화살표로 방향을 정해줘서 화살표 방향대로 생성되게끔 합니다. X라고 표시된 방향은 생성이 불가합니다.
 
@@ -880,15 +880,15 @@ public class MapSettings_Editor: Editor {
 
 그 후 LevelGenerator Object에 LevelGenerator.cs Script를 추가합니다. LevelGenerator에 필요한 Tilemap Object은 Heierarchy의 Grid의 자식Object인 Tilemap이며, Rule Tile은 위에서 만든 RuleTile을 사용합니다. 그러면 아래와 같은 그림의 Inspector가 존재하게 됩니다.
 
-![LevelGenerator.cs&#xB97C; Object&#xC5D0; &#xCD94;&#xAC00;&#xD55C; &#xD6C4; Inspector](../../.gitbook/assets/image%20%2863%29.png)
+![LevelGenerator.cs&#xB97C; Object&#xC5D0; &#xCD94;&#xAC00;&#xD55C; &#xD6C4; Inspector](../../.gitbook/assets/image%20%2864%29.png)
 
  다음은 LevelGenerator.cs의 MapSetting Component에 들어갈 MapSetting.asset을 생성해야 하는데 이미 Script에서 Editor수정을 통해 Project View에서 생성 가능하도록 코딩했기 때문에 Project View에서 우클릭으로 생성합니다.
 
-![MapSettings.cs&#xB97C; &#xD1B5;&#xD574; Editor &#xC218;&#xC815; &#xACB0;&#xACFC; Project View&#xC5D0;&#xC11C; &#xC0DD;&#xC131; &#xAC00;&#xB2A5;&#xD55C; MapSetting.asset](../../.gitbook/assets/image%20%2860%29.png)
+![MapSettings.cs&#xB97C; &#xD1B5;&#xD574; Editor &#xC218;&#xC815; &#xACB0;&#xACFC; Project View&#xC5D0;&#xC11C; &#xC0DD;&#xC131; &#xAC00;&#xB2A5;&#xD55C; MapSetting.asset](../../.gitbook/assets/image%20%2861%29.png)
 
 이제 MapSetting이 끝났고, LevelGenerator에서 MapSetting을 추가하여 Generation Method를 통해 만들고 싶은 Pattern의 Method를 선택해서 사용합니다.
 
-![Cellular Automata Moore Method&#xB97C; &#xD1B5;&#xD55C; Generate &#xACB0;&#xACFC;](../../.gitbook/assets/image%20%2885%29.png)
+![Cellular Automata Moore Method&#xB97C; &#xD1B5;&#xD55C; Generate &#xACB0;&#xACFC;](../../.gitbook/assets/image%20%2886%29.png)
 
 ## 마치며
 
