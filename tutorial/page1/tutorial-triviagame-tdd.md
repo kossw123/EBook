@@ -2,7 +2,7 @@
 description: tutorial TriviaGame TDD
 ---
 
-# tutorial TriviaGame TDD - 작성중
+# tutorial TriviaGame TDD
 
 ##  무엇을 하려고 하는가?
 
@@ -28,7 +28,7 @@ description: tutorial TriviaGame TDD
 * 위의 Hierarchy 그림처럼 GameObject를 배치하는 게 최종 목표입니다.
 * **지금 부터 본문에 적는 Object에 대한 설정값은 보기에 편하도록 설정한 것이니, 다르게 설정하셔도 무방합니다.**
 
-![&#xC704;&#xC758; &#xADF8;&#xB9BC;&#xCC98;&#xB7FC; &#xBC30;&#xCE58;&#xD569;&#xB2C8;&#xB2E4;.](../../.gitbook/assets/image%20%2878%29.png)
+![&#xC704;&#xC758; &#xADF8;&#xB9BC;&#xCC98;&#xB7FC; &#xBC30;&#xCE58;&#xD569;&#xB2C8;&#xB2E4;.](../../.gitbook/assets/image%20%2880%29.png)
 
 * Canvas
   * Canvas Scaler - UI Scale Mode를 Scale With Screen Size로 설정해 1920 \* 1080로 조절합니다.
@@ -45,7 +45,7 @@ description: tutorial TriviaGame TDD
 
  여기까지 했으면 아래와 같은 그림의 Object 배치가 완료 됩니다.
 
-![](../../.gitbook/assets/image%20%28111%29.png)
+![](../../.gitbook/assets/image%20%28113%29.png)
 
 * Score
   * Score Object를 추가하고 Image Component를 추가하여, ScoreContainer Sprite로 설
@@ -63,7 +63,7 @@ description: tutorial TriviaGame TDD
   * ScoreLabel과 같이 Font에 대한 설정을 임의 대로 합니다.
     * 작성자는 \(B, 50, Center / Middle\)로 설정하고 Vertex Color를 Black으로 설정했습니다.
 
-![&#xC784;&#xC758;&#xB85C; &#xC791;&#xC131;&#xD55C; Score Object&#xC5D0; &#xB300;&#xD55C; &#xACB0;&#xACFC;](../../.gitbook/assets/image%20%28104%29.png)
+![&#xC784;&#xC758;&#xB85C; &#xC791;&#xC131;&#xD55C; Score Object&#xC5D0; &#xB300;&#xD55C; &#xACB0;&#xACFC;](../../.gitbook/assets/image%20%28106%29.png)
 
 * Question
   * Image Component를 추가하여 QuestionContainer Sprite로 설정합니다.
@@ -154,7 +154,7 @@ description: tutorial TriviaGame TDD
 * Script들을 생성하고 아래의 Project View 그림처럼 폴더가 나눠집니다.
 * 각 폴더는 이름과 관련된 Script들이 모아져 있습니다.
 
-![Scirpts&#xC758; &#xD558;&#xC704; &#xD3F4;&#xB354;](../../.gitbook/assets/image%20%2887%29.png)
+![Scirpts&#xC758; &#xD558;&#xC704; &#xD3F4;&#xB354;](../../.gitbook/assets/image%20%2889%29.png)
 
 {% tabs %}
 {% tab title="AnswerView.cs" %}
@@ -419,7 +419,7 @@ namespace TriviaGame.Service {
 * Play Mode로 하는 방식은 나중에 서술하겠습니다.
 * Window -&gt; General -&gt; Test Runner창을 실행시키면 아래와 같은 그림이 나옵니다.
 
-![Window -&amp;gt; General -&amp;gt; Test Runner -&amp;gt; Edit mode&#xC758; &#xAE30;&#xBCF8;&#xD654;&#xBA74;](../../.gitbook/assets/image%20%2870%29.png)
+![Window -&amp;gt; General -&amp;gt; Test Runner -&amp;gt; Edit mode&#xC758; &#xAE30;&#xBCF8;&#xD654;&#xBA74;](../../.gitbook/assets/image%20%2872%29.png)
 
 * Create EditMode Test Assembly Folder를 누르면 Test Runner에 필요한 Assembly Definition File을 생성합니다.
 * 해당 파일은 아래와 같습니다.
@@ -641,7 +641,7 @@ namespace Test.TriviaGame
 
 * 위의 방식대로 Script를 생성한다면 Test Runner에 다음과 같은 사진의 결과가 됩니다.
 
-![Test Scirpt &#xCD94;&#xAC00; &#xD6C4; TestRunner&#xB97C; &#xB3CC;&#xB9B0; &#xACB0;&#xACFC;](../../.gitbook/assets/image%20%2868%29.png)
+![Test Scirpt &#xCD94;&#xAC00; &#xD6C4; TestRunner&#xB97C; &#xB3CC;&#xB9B0; &#xACB0;&#xACFC;](../../.gitbook/assets/image%20%2870%29.png)
 
 ## 마치며
 

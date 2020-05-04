@@ -2,7 +2,7 @@
 description: Explanation TriviaGame TDD
 ---
 
-# Explanation TriviaGame TDD - 작성중
+# Explanation TriviaGame TDD
 
 ## 무엇을 하려고 하는가?
 
@@ -22,7 +22,7 @@ description: Explanation TriviaGame TDD
 
 {% embed url="https://beomy.tistory.com/43" %}
 
-![MVP Pattern&#xC758; &#xAD6C;&#xC870;](../../.gitbook/assets/image%20%2821%29.png)
+![MVP Pattern&#xC758; &#xAD6C;&#xC870;](../../.gitbook/assets/image%20%2822%29.png)
 
 * MVP Pattern이란?
   * Model + View + Presenter를 합친 단입니다. MVC Pattern에서 파생되었으며, 각 Component에 대한 역할을 아래와 같습니다.
@@ -31,15 +31,26 @@ description: Explanation TriviaGame TDD
     * Presenter : View에서 사용자가 어떤 정보를 요청을 하면 해당 정보를 가지고 Model로 가공하여 다시 View에 전달합니다.
 * MVP Pattern를 기초로 하여 Script들을 생성합니다.  그 결과 아래와 같은 그림으로 Script를 나눌 수 있습니다.
 
-![](../../.gitbook/assets/image%20%2823%29.png)
+![TriviaGame MVP &#xD328;&#xD134; &#xD750;&#xB984;](../../.gitbook/assets/image%20%2824%29.png)
 
 ## 각 Script의 역할 및 Class Diagram
 
 해당 Project의 Diagram은 아래와 같습니다.
 
-![Visual Studio&#xC758; Class Designer&#xB97C; &#xC774;&#xC6A9;&#xD55C; Diagram](../../.gitbook/assets/image%20%2829%29.png)
+![Visual Studio&#xC758; Class Designer&#xB97C; &#xC774;&#xC6A9;&#xD55C; Diagram](../../.gitbook/assets/image%20%2830%29.png)
 
-## Domain Script
+* Model
+  * `Question` : 질문에 대한 Data 공과 IsRightAnswer를 통한 string.Equal\(\)를 통해 정답과 Player가 선택한 값을 비교하여 참, 거짓을 비교합니다.
+  * `QuestionsService` :  `Question` Class List를 생성하여 `Question` Class에서 생성한 Data공간에 질문, 답, 오답을 생성합니다.
+  * `ServicesProvider` : `QuestionsService` Class를 생성하고 반환합니다. 이렇게 함으로써 원본 정보를 훼손하지 않게 합니다.
+* View
+  * `AnswerView` : Answer Object의 Text를 선언하여 초기화, 생성한 Data를 Answer Object에 넣고, Click Event\(\) 함수를 생성하여 Action이 가리키는 함수를 실행시킵니다.
+  * `TriviaGameView` : `AnswerView` Class를 받아서 UI를  상황에 맞게 Play와 동시에 `TriviaGamePresenter` Class를 받아 Player가 선택한 Data를 Model 부분으로 넘깁니다.
+* Presenter
+  * `TriviaGamePresenter` : Model\(Question\), View\(TriviaGameView\)를 받아와서 Player가 선택한 답이 정답인지, 오답인지 판별하여 Score를 증가시키고, Question List의 Count를 증가시켜서 다음 질문 및 오답, 정답 Data를 불러오는 기능이 담겨 있습니다.
+  * `TriviaGamePresenterBuilder` : `TriviaGamePresenter` Class를 생성하고 반환합니다.
+
+## Delivery
 
 {% tabs %}
 {% tab title="TriviaGameView.cs" %}
@@ -334,6 +345,16 @@ public class TriviaGamePresenterBuilder {
 {% endcode %}
 
 * `BuildTriviaGamePresenter()` : `TriviaGamePresenter` type의 함수로써 반환 받는 값은 `TriviaGamePresenter` Class의 생성자를 호출합니다. parameter는 `TriviaGameView`와 `ServiceProvider` Class의 `QuestionsService().GetQuestion()` 함수를 호출합니다.
+
+{% hint style="info" %}
+TriviaGamePresenterBuilder를 사용하는 이유?
+
+TriviaGameview를 parameter로 받고, public으로 선언된 ServiceProvider의 static변수인 QuestionsService에 접근하는 방식으로 짜여져 있습니다. 
+
+이렇게 짠 이유는 Coupling이라고 서술 되어 있습니다. TriviaGamePresenter Class에서의 각 Model\(Question Class\), View\(TriviaGameView\)의 정보를 바꾸지 않기 위해서 입니다. 만약 다른 기능이 추가 되었을 때, MVP 패턴을 유지하기 위해서는 Model과 View, Presenter의 영역이 확실히 나누어져 있어야 합니다. 
+
+그렇지만, Presenter에 Builder Class를 추가하여 하나의 Class는 하나의 기능만을 가져야 한다는 단일 수행 원칙\(single responsibility principle\)을 지키기 위해서 이렇게 짠 것으로 서술되어 있습니다.
+{% endhint %}
 {% endtab %}
 {% endtabs %}
 
@@ -392,7 +413,7 @@ Test Script를 작성하기 이전에 TDD에 대한 설명을 먼저 기재하�
   * 버그를 일으킬 염려없이 코드에서 Refactor\(크고 작은 것 모두\)로 작업 할 수 있습니다.
   * 코드에 너무 많은 Coupling이 있는지 감지하는 데 도움이 됩니다.
 
-![TDD Flow Chart](../../.gitbook/assets/image%20%2853%29.png)
+![TDD Flow Chart](../../.gitbook/assets/image%20%2855%29.png)
 
 이러한 TDD의 개념을 가지고 또 하나의 방법론을 통해 Test Case들을 선언합니다. 그 방법은 아래와 같습니다.
 
@@ -460,7 +481,8 @@ namespace Test.TriviaGame
 #region Given
         [SetUp] public void SetUp() {
             _view = Substitute.For<TriviaGameView>();
-            _presenter = new TriviaGamePresenter(_view, new Question[]{_firstQuestion, _secondQuestion, _thirdQuestion});
+            _presenter = new TriviaGamePresenter(_view, 
+            new Question[]{_firstQuestion, _secondQuestion, _thirdQuestion});
 
             _firstQuestion.IsRightAnswer("ok").Returns(true);
             _firstQuestion.IsRightAnswer("nope").Returns(false);
@@ -554,6 +576,8 @@ TestCase에서 공통적으로 쓰이는 When Method를 먼저 설명하겠습�
 * `WhenRightAnswer()` : 위와 동일합니다.
 * `When3RightAnswers()` : WhenRightAnswer를 3번 반환합니다.
 
+
+
 다음으로 Test Case에서 쓰이는 `[Test]`들을 살펴보겠습니다. 이 때 List로 각 Test method들에 대한 설명을 하고 하위 List로 연관 method에 관하여 설명하겠습니다.
 
 * `WhenRightAnswerScoreIncreases()` : 정답을 골랐을 때, Score가 증가 되는 경우입니다.
@@ -640,4 +664,12 @@ namespace Test.TriviaGame {
 * `ReturnsTheRequiredAmountOfQuestions()` : 3개의 질문 갯수를 반환했는지 question.Length와 비교하여 확인합니다.
 {% endtab %}
 {% endtabs %}
+
+## 마치며
+
+* 정리하면서 느낀점은 TDD에 관한 문서이지만, TDD보다는 TriviaGame을 구성하는 Script들의 관계가 더 중요하다고 느껴졌습니다.
+* TDD, MVP, BDD 방법론을 정리하면서 보다 Game 및 App개발에 중요한 설계부분에 대해 보다 심도 있게 고민한 문서였습니다.
+* 부족한 부분은 기술문서를 보시면 조금이나마 궁금증을 해소 하실수 있을 것 같습니다.
+
+{% page-ref page="../../technical-reference/unity/tr-triviagame-tdd.md" %}
 
