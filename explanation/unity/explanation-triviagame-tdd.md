@@ -22,7 +22,7 @@ description: Explanation TriviaGame TDD
 
 {% embed url="https://beomy.tistory.com/43" %}
 
-![MVP Pattern&#xC758; &#xAD6C;&#xC870;](../../.gitbook/assets/image%20%2822%29.png)
+![MVP Pattern&#xC758; &#xAD6C;&#xC870;](../../.gitbook/assets/image%20%2823%29.png)
 
 * MVP Pattern이란?
   * Model + View + Presenter를 합친 단입니다. MVC Pattern에서 파생되었으며, 각 Component에 대한 역할을 아래와 같습니다.
@@ -31,13 +31,13 @@ description: Explanation TriviaGame TDD
     * Presenter : View에서 사용자가 어떤 정보를 요청을 하면 해당 정보를 가지고 Model로 가공하여 다시 View에 전달합니다.
 * MVP Pattern를 기초로 하여 Script들을 생성합니다.  그 결과 아래와 같은 그림으로 Script를 나눌 수 있습니다.
 
-![TriviaGame MVP &#xD328;&#xD134; &#xD750;&#xB984;](../../.gitbook/assets/image%20%2824%29.png)
+![TriviaGame MVP &#xD328;&#xD134; &#xD750;&#xB984;](../../.gitbook/assets/image%20%2825%29.png)
 
 ## 각 Script의 역할 및 Class Diagram
 
 해당 Project의 Diagram은 아래와 같습니다.
 
-![Visual Studio&#xC758; Class Designer&#xB97C; &#xC774;&#xC6A9;&#xD55C; Diagram](../../.gitbook/assets/image%20%2830%29.png)
+![Visual Studio&#xC758; Class Designer&#xB97C; &#xC774;&#xC6A9;&#xD55C; Diagram](../../.gitbook/assets/image%20%2832%29.png)
 
 * Model
   * `Question` : 질문에 대한 Data 공과 IsRightAnswer를 통한 string.Equal\(\)를 통해 정답과 Player가 선택한 값을 비교하여 참, 거짓을 비교합니다.
@@ -413,7 +413,7 @@ Test Script를 작성하기 이전에 TDD에 대한 설명을 먼저 기재하�
   * 버그를 일으킬 염려없이 코드에서 Refactor\(크고 작은 것 모두\)로 작업 할 수 있습니다.
   * 코드에 너무 많은 Coupling이 있는지 감지하는 데 도움이 됩니다.
 
-![TDD Flow Chart](../../.gitbook/assets/image%20%2856%29.png)
+![TDD Flow Chart](../../.gitbook/assets/image%20%2860%29.png)
 
 이러한 TDD의 개념을 가지고 또 하나의 방법론을 통해 Test Case들을 선언합니다. 그 방법은 아래와 같습니다.
 
