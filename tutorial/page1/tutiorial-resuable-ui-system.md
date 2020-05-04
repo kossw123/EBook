@@ -15,7 +15,7 @@ description: tutiorial Resuable UI System
 
 * Reusable UI System은 아래의 그림을 모방하여 UI를 구성합니다.
 
-![&#xCD08;&#xAE30;&#xD654;&#xBA74; UI &#xAD6C;&#xC131;](../../.gitbook/assets/image%20%28115%29.png)
+![&#xCD08;&#xAE30;&#xD654;&#xBA74; UI &#xAD6C;&#xC131;](../../.gitbook/assets/image%20%28116%29.png)
 
 ## 작성법
 
@@ -91,7 +91,7 @@ description: tutiorial Resuable UI System
 
 여기까지 과정은 아래의 그림과 같습니다.
 
-![Login\_Screen &#xC644;&#xC131;&#xBCF8;](../../.gitbook/assets/image%20%28128%29.png)
+![Login\_Screen &#xC644;&#xC131;&#xBCF8;](../../.gitbook/assets/image%20%28129%29.png)
 
 * 두번째 Screen인 Register\_Screen을 작성합니다.
 * Register\_Screen은 Login\_Screen과 같은 방법으로 작성하되, 배치와 Text 문구만 변환한 것이기 때문에 자세한 설명은 그림으로 대체하겠습니다.
@@ -231,5 +231,28 @@ namespace DataPractice.UI {
 {% endtab %}
 {% endtabs %}
 
+* Screen의 작성은 끝났고, FadeIn, Out효과와 Show, Hide Animation을 추가합니다.
 
+{% tabs %}
+{% tab title="1. Animator, Animation 생성" %}
+하나의 IP\_UI\_Base\_Controller라는 이름의 Animator를 생성합니다.
+
+Login\_Screen Object의 Animator에 생성한 Animator를 넣고, Animation View를 열어서 3개의 Clip을 생성합니다.
+
+* IP\_Base\_Screen\_Idle : Show, Hide Animation을 제외한 Animation
+* IP\_Base\_Screen\_Show : 보여줄 때의 Animation
+* IP\_Base\_Screen\_Hide : 숨길 때 Animation
+
+![Animator&#xC5D0; &#xB4E4;&#xC5B4;&#xAC08; Clip &#xBAA9;&#xB85D;](../../.gitbook/assets/image%20%28106%29.png)
+
+* Idle Animation에서 변경할 내용입니다. 0프레임 부터 20프레임까지의 변화를 기입합니다.
+  * Alpha\(0\)
+  * Interactable\(false\)
+  * Block RayCasts\(false\)
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
 

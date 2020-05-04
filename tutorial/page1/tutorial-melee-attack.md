@@ -221,7 +221,7 @@ public class Bandit : MonoBehaviour {
   * 아래의 그림과 같은 Animation State를 할당합니다.
   * 각 Animation Clip을 기존의 HeavyBandit의 Hurt, Dead Clip을 이용합니다.
 
-![Enemy&#xB85C; &#xC124;&#xC815;&#xD55C; Object&#xC5D0; &#xD560;&#xB2F9;&#xD560; Animator](../../.gitbook/assets/image%20%28107%29.png)
+![Enemy&#xB85C; &#xC124;&#xC815;&#xD55C; Object&#xC5D0; &#xD560;&#xB2F9;&#xD560; Animator](../../.gitbook/assets/image%20%28108%29.png)
 
 * Sprite Renderer : 변경 사항이 없습니다.
 * Rigidbody2D : Constraints\(x, y, z\)값을 모두 true로 설정합니다.

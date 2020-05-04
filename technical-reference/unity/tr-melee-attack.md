@@ -25,7 +25,7 @@ description: TR Melee Attack
   * 이 결과는 512 \* 256의 크기에서 한 동작당 48 \* 48의 크기를 확인시켜줍니다.
   * 기존의 Main Camera Size가 1로 설정하고 Project View -&gt; Bandit - Pixel Art -&gt; Sprites -&gt; LightBandit의 PPU를 48로 바꿔준다면 아래의 그림과 같이 설정됩니다.
 
-![LightBandit PPU&#xB97C; 48&#xB85C; &#xBC14;&#xAFBC; &#xACB0;&#xACFC;](../../.gitbook/assets/image%20%28106%29.png)
+![LightBandit PPU&#xB97C; 48&#xB85C; &#xBC14;&#xAFBC; &#xACB0;&#xACFC;](../../.gitbook/assets/image%20%28107%29.png)
 
 **즉, Grid Toggle을 켰을 때 확인되는 Grid 1칸당 1 Unit을 가지고 한 동작을 1:1로 Grid 1칸에 대응 시키려면 PPU를 48로 설정하면 해결된다는 것입니다. 그 결과 pixel간의 간격을 딱 맞출 수 있습니다.**
 
@@ -88,7 +88,7 @@ description: TR Melee Attack
       ![](../../.gitbook/assets/image%20%2837%29.png)
   * Padding : Sprite Editor상에 표시된 Grid들 간의 간격을 설정하고 싶을 때 사용됩니다.
 
-  ![](../../.gitbook/assets/image%20%28112%29.png)
+  ![](../../.gitbook/assets/image%20%28113%29.png)
 
 * Grid by Cell Count : Grid by Cell Size와 달리 행과 열을 입력하여 Grid를 분배합니다. 그 외의 설정값은 동일합니다.
 
