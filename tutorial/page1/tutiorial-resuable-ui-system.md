@@ -98,3 +98,138 @@ description: tutiorial Resuable UI System
 
 ![Register\_Screen &#xC644;&#xC131;&#xBCF8;](../../.gitbook/assets/image%20%2884%29.png)
 
+* 각 Screen을 조정할 Controller Object의 Script를 작성하고 해당 Object에 넣습니다.
+  * 총 2가지 Script가 작성됩니다.
+    * IP\_UI\_System : Controller Object의 Script입니다.
+    * IP\_UI\_Screen : 각 Screen에 삽입될 Script입니다.
+
+{% tabs %}
+{% tab title="IP\_UI\_System.cs" %}
+{% code title="IP\_UI\_System.cs" %}
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Events;
+namespace DataPractice.UI {
+    public class IP_UI_System: MonoBehaviour {
+        [Header("Main Properties")]
+        public IP_UI_Screen m_StartScreen;
+        [Header("System Events")]
+        private UnityEvent onSwitchedScreen = new UnityEvent();
+        [Header("Fade Properties")]
+        public Image m_Fader;
+        public float m_FadeInDuration = 1 f;
+        public float m_FadeOutDuration = 1 f;
+        public Component[] m_Screens = new Component[0];
+        private IP_UI_Screen previousScreen;
+        private IP_UI_Screen currentScreen;
+        public IP_UI_Screen PreviousScreen { get { return previousScreen; } }
+        public IP_UI_Screen CurrentScreen { get { return currentScreen; } }
+        private void Start() {
+            m_Screens = GetComponentsInChildren < IP_UI_Screen > (true);
+            InitializeScreen();
+            if (m_StartScreen) {
+                SwitchScreen(m_StartScreen);
+            }
+            if (m_Fader) {
+                m_Fader.gameObject.SetActive(true);
+            }
+            FadeIn();
+        }
+        public void SwitchScreen(IP_UI_Screen aScreen) {
+            if (aScreen) {
+                if (currentScreen) {
+                    currentScreen.CloseScreen();
+                    previousScreen = currentScreen;
+                }
+                currentScreen = aScreen;
+                currentScreen.gameObject.SetActive(true);
+                currentScreen.StartScreen();
+                if (onSwitchedScreen != null) {
+                    onSwitchedScreen.Invoke();
+                }
+            }
+        }
+        public void GoToPreviousScreen() {
+            if (previousScreen) {
+                SwitchScreen(previousScreen);
+            }
+        }
+        public void FadeIn() {
+            if (m_Fader) {
+                m_Fader.CrossFadeAlpha(0 f, m_FadeInDuration, false);
+            }
+        }
+        public void FadeOut() {
+            if (m_Fader) {
+                m_Fader.CrossFadeAlpha(1 f, m_FadeOutDuration, false);
+            }
+        }
+        public void LoadScene(int sceneIndex) {
+            StartCoroutine(WaitToLoadScene(sceneIndex));
+        }
+        IEnumerator WaitToLoadScene(int sceneIndex) {
+            yield return null;
+        }
+        void InitializeScreen() {
+            foreach(var screen in m_Screens) {
+                screen.gameObject.SetActive(true);
+            }
+        }
+    }
+}
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="IP\_UI\_Screen.cs" %}
+{% code title="IP\_UI\_Screen.cs" %}
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+namespace DataPractice.UI {
+    [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(CanvasGroup))] 
+    public class IP_UI_Screen: MonoBehaviour {
+        public UnityEvent onScreenStart = new UnityEvent();
+        public UnityEvent onScreenClose = new UnityEvent();
+        Animator animator;
+        public Selectable m_StartSelectable;
+        private void Start() {
+            animator = GetComponent < Animator > ();
+            if (m_StartSelectable) {
+                EventSystem.current.SetSelectedGameObject(m_StartSelectable.gameObject);
+            }
+        }
+        public virtual void StartScreen() {
+            if (onScreenStart != null) {
+                onScreenStart.Invoke();
+            }
+            HandleAnimation("show");
+        }
+        public virtual void CloseScreen() {
+            if (onScreenClose != null) {
+                onScreenClose.Invoke();
+            }
+            HandleAnimation("hide");
+        }
+        void HandleAnimation(string Trigger) {
+            if (animator) {
+                animator.SetTrigger(Trigger);
+            }
+        }
+    }
+}
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
+
+
+
