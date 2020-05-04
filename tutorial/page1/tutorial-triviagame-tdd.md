@@ -45,7 +45,7 @@ description: tutorial TriviaGame TDD
 
  여기까지 했으면 아래와 같은 그림의 Object 배치가 완료 됩니다.
 
-![](../../.gitbook/assets/image%20%28113%29.png)
+![](../../.gitbook/assets/image%20%28114%29.png)
 
 * Score
   * Score Object를 추가하고 Image Component를 추가하여, ScoreContainer Sprite로 설

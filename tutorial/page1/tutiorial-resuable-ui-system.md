@@ -37,10 +37,16 @@ description: tutiorial Resuable UI System
     * Image Component를 삭제합니다.
     * Placeholder와 Text Object의 적당히 조정합니다. 이에대한 크기는 아래쪽의 그림에 표시하겠습니다.
     * Image Object를 하위 Object로 생성하여, todo\_user\_icon\_001을 대입하여 User Icon을 최종적으로 생성합니다.
+    * Placeholder의 Text에 UserName이라고 작성합니다.
+    * Font를 LATO-SEMIBOLD로 교체하고 크기와 배치를 적당히 조정합니다.
+  * 생성한 InputField를 복사하여 Password InputField를 생성합니다.
+    * 이때 위에서 변경한 Image Component와, Placeholder의 Text를 변경합니다.
 
 여기까지 과정은 아래의 그림과 같습니다.
 
-![InputField&#xC758; Placeholder, Text&#xC758; &#xD06C;&#xAE30;&#xB97C; &#xC870;&#xC815;&#xD55C; &#xADF8;&#xB9BC;](../../.gitbook/assets/image%20%2816%29.png)
+![Placeholder&#xC640; Text Object&#xC758; &#xD06C;&#xAE30;&#xB97C; &#xB3D9;&#xC77C;&#xD558;&#xAC8C; &#xD569;&#xB2C8;&#xB2E4;.](../../.gitbook/assets/image%20%28110%29.png)
+
+
 
 
 
