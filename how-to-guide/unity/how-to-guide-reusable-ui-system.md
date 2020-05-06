@@ -65,6 +65,129 @@ void Start() {
 {% endtab %}
 
 {% tab title="Helper Methods" %}
+{% code title="IP\_UI\_System.cs" %}
+```csharp
+public void SwitchScreen(IP_UI_Screen screen) {
+    if(screen) {
+        if(currentScreen) {
+            currentScreen.CloseScreen();
+            previousScreen = currentScreen;
+        }
+
+        currentScreen = screen;
+        currentScreen.gameObject.SetActive(true);
+        currentScreen.StartScreen();
+
+        if(onSwitchedScreen != null) {
+            onSwitchedScreen.Invoke();
+        }
+    }
+}
+```
+{% endcode %}
+
+* `SwitchScreen(IP_UI_System screen)` : 화면 전환 함수입니다. 기본적으로 현재화면을 이전화면에 저장하고 다음 현재화면을 띄우는 방식입니다.
+  * `if(screen)` : 기본적으로 screen parameter가 존재해야 하기 때문에 모든 Code를 if문으로 묶어서 Condition을 생성하고, Screen을 활성화 하고 `StartScreen()` 함수를 실행합니다.
+    * `if(currentScreen)` : 최초로 프로그램 실행시 다음화면으로 넘어가기 위해 현재화면을 닫고 이전 화면을 저장합니다.
+  * `if(onSwitchedScreen)` : 화면전환하면 실행되는 Event입니다. 즉, 화면 실행과 동시에 활성화 됩니다.
+
+{% code title="" %}
+```csharp
+public void GoToPreviousScreen() {
+    if(previousScreen) {
+        SwitchScreen(previousScreen);
+    }
+}
+```
+{% endcode %}
+
+* `GoToPreviousScreen()` : 이전화면으로 가기 위한 함수입니다.
+  * `if(previousScreen)` : previousScreen이 존재하면 이전화면으로 돌아갑니다.
+
+{% code title="IP\_UI\_System.cs" %}
+```csharp
+public void LoadScene(int sceneIndex) {
+    StartCoroutine(WaitToLoadScene(sceneIndex));
+}
+
+IEnumerator WaitToLoadScene(int sceneIndex) {
+    yield return null;
+}
+```
+{% endcode %}
+
+* `LoadScene(int sceneIndex)` : Coroutine을 이용하여 Scene을 Load할 때 쓰입니다.
+  * 하지만 해당 Project에는 활용하지 않지만 Reusable이라는 취지를 위해 작성한 것으로 보입니다.
+* `WaitToLoadScene(int sceneIndex)` : Coroutine에 필요한 IEnumerator입니다.
+
+{% code title="IP\_UI\_System.cs" %}
+```csharp
+public void FadeIn() {
+    if(m_Fader) {
+        m_Fader.CrossFadeAlpha(0f, m_FadeInDuration, false);
+    }
+}
+public void FadeOut() {
+    if(m_Fader) {
+        m_Fader.CrossFadeAlpha(1f, m_FadeOutDuration, false);
+    }
+}
+```
+{% endcode %}
+
+* `FadeIn()` , `FadeOut()` : Fade 효과를 위해 Image Component의 CrossFadeAlpha를 이용하여 Alpha값을 조정합니다.
+
+{% code title="IP\_UI\_System.cs" %}
+```csharp
+void InitializeScreens() {
+    foreach(var screen in screens) {
+        screen.gameObject.SetActive(true);
+    }
+}
+```
+{% endcode %}
+
+* `InitializeScreens()` : 초기에 Start\(\) 함수에서 실행되는 함수입니다. 이를 통해 모든 Screen들을 활성화 시킵니다. 이를 통해 혹시나 비활성화 된 Screen이 없도록 합니다.
+{% endtab %}
+{% endtabs %}
+
+## IP\_UI\_Screen.cs
+
+{% tabs %}
+{% tab title="Attribute" %}
+```csharp
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(CanvasGroup))]
+```
+
+RequireComponent Attribute를 사용하여 해당 Script가 붙어있는 Object는 Animator, CanvasGroup을 필수적으로 붙입니다.
+{% endtab %}
+
+{% tab title="Variable" %}
+{% code title="IP\_UI\_Screen.cs" %}
+```csharp
+[Header("Main Properties")]
+public Selectable m_StartSelectable;
+
+[Header("Screen Events")]
+public UnityEvent onScreenStart = new UnityEvent();
+public UnityEvent onScreenClose = new UnityEvent();
+
+private Animator animator;
+```
+{% endcode %}
+
+* m\_StartSelectable : 
+* onScreenStart : 
+* onScreenClose : 
+* animator : 
+{% endtab %}
+
+{% tab title="Main Methods" %}
+
+{% endtab %}
+
+{% tab title="Helper Methods" %}
 
 {% endtab %}
 {% endtabs %}
