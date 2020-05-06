@@ -10,14 +10,18 @@ description: tutiorial Resuable UI System
 * 프로그램에 있어서 사용자가 사용하기 쉽게 하기 위한 UI를 작성하고, 이를 재사용 가능하게끔 하여, 다른 Project에서도 적용 가능하도록 합니다.
 * 해당 문서는 상업적으로 이용되지 않습니다.
 * 문서보다 영상을 보면서 작성하시는게 좀 더 스킬업에 도움이 될 수 있습니다.
-* **Animator를 작성시 Script와 알맞게 넣은 Component들에 대한 문제는 없으나, Animator 자체 오류로 인한 Transition Animation이 안되는 현상이 있습니다. 이에 대한 문제는 Require Attribute사용으로 인한 Component 삽입이 오히려 방해되는 현상이 발견되었습니다.**
-* **이때는 Require Attribute를 쓴 Script와, 추가된 Component를 지우고 다시 추가하는 방식으로 오류를 해결하였습니다.**
 
 {% embed url="https://www.youtube.com/watch?v=8L9osm0h5J4&list=PL5V9qxkY\_RnJAZUTVXewQrJWbb5B7IU8y&index=2&t=0s" %}
 
 * Reusable UI System은 아래의 그림을 모방하여 UI를 구성합니다.
 
 ![&#xCD08;&#xAE30;&#xD654;&#xBA74; UI &#xAD6C;&#xC131;](../../.gitbook/assets/image%20%28123%29.png)
+
+## 주의점
+
+* **Animator를 작성시 Script와 알맞게 넣은 Component들에 대한 문제는 없으나, Animator 자체 오류로 인한 Transition Animation이 안되는 현상이 있습니다. 이에 대한 문제는 Require Attribute사용으로 인한 Component 삽입이 오히려 방해되는 현상이 발견되었습니다.**
+* **이때는 Require Attribute를 쓴 Script와, 추가된 Component를 지우고 다시 추가하는 방식으로 오류를 해결하였습니다.**
+* **Script를 추가했지만 제대로 기능하지 않는 경우에도 똑같이 Script Component를 지우고 다시 추가하는 방식으로 해결할 수 있습니다.**
 
 ## 작성법
 
