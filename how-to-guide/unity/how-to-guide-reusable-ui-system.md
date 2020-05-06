@@ -177,18 +177,112 @@ private Animator animator;
 ```
 {% endcode %}
 
-* m\_StartSelectable : 
-* onScreenStart : 
-* onScreenClose : 
-* animator : 
+* `m_StartSelectable` : Selectable Class 변수입니다. namespace UI에 속한 Class이며, 이를 통해 UI관련된 Object들을 선택할 수 있습니다.
+* `onScreenStart` : Screen이 시작할 때 작동되는 Event입니다.
+* `onScreenClose` : Screen이 끝날 때 작동되는 Event입니다.
+* `animator` : Animator Class 변수입니다. 해당 변수를 통해 Animation parameter의 값을 입력하여 StateTransition합니다.
 {% endtab %}
 
 {% tab title="Main Methods" %}
+{% code title="IP\_UI\_Screen.cs" %}
+```csharp
+void Start() {
+    animator = GetComponent<Animator>();
+    if(m_StartSelectable) {
+        EventSystem.current.SetSelectedGameObject(m_StartSelectable.gameObject);
+    }
+}
+```
+{% endcode %}
 
+* Start\(\) : animator에 Access하여 Animator를 해당 Script에서 조정하기 위해 선언됩니다.
+* `if(m_StartSelectable)` : Selectable Class 변수가 존재한다면 실행되는 조건문 입니다.
+  * 1. `EventSystem.` : EventSystem Class에 접근합니다.
+    2. `current.` : 현재 EventSystem Class를 반환합니다.
+    3. `SetSelectedGameObject()` : SetSelectedGameObject\(\) 함수를 통해 m\_StartSelectable의 GameObject를 선택하여 반환합니다.
 {% endtab %}
 
 {% tab title="Helper Methods" %}
+{% code title="IP\_UI\_Screen.cs" %}
+```csharp
+public virtual void StartScreen() {
+    if (onScreenStart != null) {
+        onScreenStart.Invoke();
+    
+    HandleAnimator("show");
+}
+```
+{% endcode %}
 
+* `StartScreen()` : Screen이 시작하자마자 실행되는 함수입니다.
+  * `if(onScreenStart != null)` : onScreenStart Event가 존재한다면 Event를 Invoke\(\) 함수로 실행합니다.
+  * `HandleAnimator("show")` : Animator Trigger Setting 함수입니다. parameter의 값에 따라 StateTransition을 실행시킵니다.
+
+{% code title="IP\_UI\_Screen.cs" %}
+```csharp
+public virtual void CloseScreen() {
+    if(onScreenClose != null) {
+        onScreenClose.Invoke();
+    }
+
+    HandleAnimator("hide");
+}
+```
+{% endcode %}
+
+* `CloseScreen()` : `StartScreen()` 함수와 동일하게 작동하지만 HandleAnimator의 parameter만 변경됩니다.
+
+{% code title="IP\_UI\_Screen.cs" %}
+```csharp
+void HandleAnimator(string Trigger) {
+    if(animator) {
+        animator.SetTrigger(Trigger);
+    }
+}
+```
+{% endcode %}
+
+* `HandleAnimator(string Trigger)` : string parameter를 통해 Animator의 parameter로 설정하여 StateTransition합니다.
+{% endtab %}
+{% endtabs %}
+
+## IP\_TimedUI\_Screen
+
+{% tabs %}
+{% tab title="Variable" %}
+```csharp
+[Header("Timed Screen Properties")]
+public float m_ScreenTime = 2f;
+private float startTime;
+public UnityEvent onTimeCompleted = new UnityEvent();
+```
+
+* `m_ScreenTime` : Screen이 전환되기 전에 멈추는 시간을 설정하는 변수입니다.
+* `startTime` : Time.time을 통해 이번 프레임이 시작되는 시간을 저장하는 변수입니다.
+* `onTimeCompleted` : Event\(\) 변수입니다. 이 변수를 통해 해당 Script에 EventSystem을 넣어서 m\_ScreenTime 보다 큰 Time이라면, 해당 Event를 실행시킵니다.
+{% endtab %}
+
+{% tab title="Helper Methods" %}
+{% code title="IP\_TimedUI\_Screen.cs" %}
+```csharp
+public override void StartScreen() {
+    base.StartScreen();
+    startTime = Time.time;
+    StartCoroutine(WaitForTime());
+}
+
+IEnumerator WaitForTime() {
+    yield return new WaitForSeconds(m_ScreenTime);
+    if(onTimeCompleted != null) {
+        onTimeCompleted.Invoke();
+    }
+}
+```
+{% endcode %}
+
+* `StartScreen()` : IP\_UI\_Screen의 StartScreen이 Override된 함수입니다.
+  * `base.StartScreen()` : base Class의 StartScreen을 실행시킨 후 Coroutine을 실행시킵니다.
+* `WaitForTime()` : IEnumerator를 통해 yield return new WaitForSeconds\(\) 함수를 통해 delay 시킨 후 아래의 Code를 실행시킵니다.
 {% endtab %}
 {% endtabs %}
 
