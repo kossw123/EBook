@@ -39,9 +39,13 @@ screens = GetComponentsInChildren<IP_UI_Screen>(true);
     * GetComponentsInChildren\(\) 함수는 해당 Object의 Child Object의 모든 Component를 가져오는 함수입니다.
 {% endtab %}
 
+{% tab title="Screen Script" %}
+
+{% endtab %}
+
 {% tab title="SwitchScreen\(\) 함수로 Screen 전환하기" %}
 * 해당 프로젝트에는 Screen Object가 총 3개의 IP\_UI\_Screen Script Component가 존재합니다.
-* 이를 통해 Screen을 가져왔기 때문에, Screen의 전환도 같이 이루어 집니다.
+* 이를 통해 Screen을 가져왔기 때문에, Screen의 전환도 IP\_UI\_Screen Script Component를 통 이루어 집니다.
 
 ```text
 public void SwitchScreen(IP_UI_Screen screen)
@@ -52,7 +56,7 @@ public void SwitchScreen(IP_UI_Screen screen)
 }
 ```
 
-* 위의 내용은 SwitchScreen의 함수를 실행 시켰을 때, parameter로 받은 어떤 Screen이 
+* 위의 내용은 SwitchScreen의 함수를 실행 시켰을 때, parameter로 받은 어떤 Screen이 currentScreen이라는 공간에 저장되고, currentScreen을 활성화 시키고, StartScreen\(\)함수를 통해 
 {% endtab %}
 {% endtabs %}
 
