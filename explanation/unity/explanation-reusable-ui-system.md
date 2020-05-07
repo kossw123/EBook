@@ -28,7 +28,7 @@ screens = GetComponentsInChildren<IP_UI_Screen>(true);
 
 * 이 부분에서 몇가지 의문점이 들 수 있습니다.
   * 왜 GameObject가 아닌 Component type인가?
-    * GameObject type은 전체 Class의 
+    * GameObject는 Scene에서 전체 Entity의  Base Class이고, Component
   * 왜 배열로 받는것 인가?
   * 선언한 type을 가져오기 위한 
 
