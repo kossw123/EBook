@@ -336,18 +336,6 @@ IEnumerator WaitForTime(float time) {
 ```
 {% endcode %}
 {% endtab %}
-
-{% tab title="" %}
-
-{% endtab %}
-
-{% tab title="" %}
-
-{% endtab %}
-
-{% tab title="Second Tab" %}
-
-{% endtab %}
 {% endtabs %}
 
 ## 마치며
