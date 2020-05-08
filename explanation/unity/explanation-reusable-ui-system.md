@@ -17,7 +17,7 @@ description: Explanation Reusable UI System
 
 {% tabs %}
 {% tab title="1. Screen을 가져오기" %}
-## IP\_UI\_System\(Screen을 가져오\)
+## IP\_UI\_System\(Screen을 가져오기 \)
 
 * 화면의 전환\(SwitchScreen\)에 있어서 핵심 Script입니다. 
 * 해당 Script에서 Screen Class 변수를 받아서 받은 변수타입을 가진 모든 Object를 조사한 다음 배열에 저장하도록 합니다.
@@ -37,6 +37,8 @@ screens = GetComponentsInChildren<IP_UI_Screen>(true);
     * 각 Screen은 개별적으로 존재하고, Screen이 여러개 존재하기 때문입니다. 
   * 선언한 type을 가져오기 위한 GetComponentsInChildren은 무엇인가?
     * GetComponentsInChildren\(\) 함수는 해당 Object의 Child Object의 모든 Component를 가져오는 함수입니다.
+
+이렇게 IP\_UI\_Screen 관련된 Object를 받아와서 조작합니다.
 {% endtab %}
 
 {% tab title="2. Screen Script" %}
@@ -95,6 +97,9 @@ void HandleAnimator(string Trigger) {
 }
 ```
 {% endcode %}
+
+* 간단하게 Screen이 시작, 종료 될때의 함수를 뜻합니다. Virtual로 선언하여 상속받아 나중에 IP\_TimedUI\_Screen에서 사용할 수 있도록 합니다.
+* HandleAnimator\(string Trigger\) 함수를 통해 parameter Set을 합니다. 
 {% endtab %}
 
 {% tab title="3. SwitchScreen\(\) 함수로 Screen 전환하기" %}
