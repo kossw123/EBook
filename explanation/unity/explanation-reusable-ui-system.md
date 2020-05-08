@@ -17,7 +17,7 @@ description: Explanation Reusable UI System
 
 {% tabs %}
 {% tab title="1. Screen을 가져오기" %}
-## IP\_UI\_System\(Screen을 가져오기 \)
+## IP\_UI\_System\(Screen을 가져오기\)
 
 * 화면의 전환\(SwitchScreen\)에 있어서 핵심 Script입니다. 
 * 해당 Script에서 Screen Class 변수를 받아서 받은 변수타입을 가진 모든 Object를 조사한 다음 배열에 저장하도록 합니다.
