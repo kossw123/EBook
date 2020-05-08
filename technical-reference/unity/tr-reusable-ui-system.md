@@ -97,8 +97,6 @@ Component, GameObject 둘중 하나만 받아도 상관이 없습니다. 해당 
 {% endtab %}
 {% endtabs %}
 
-
-
 ## Coroutine을 사용한다는 것
 
 {% tabs %}
@@ -113,17 +111,21 @@ Update : 매 프레임마다 호출되는 함수입니다.
 {% endtab %}
 
 {% tab title="왜 이렇게 비교하게 되었는가?" %}
+해당 Project에서는 Update\(\) 함수를 사용하지 않습니다. 그리고 아마 다른 UI Project에서도 Update\(\) 함수를 프레임마다 변화해야 하는 변수 혹은 함수가 아닌 이상 무분별하게 사용하진 않습니다.
+
+이러한 이유를 찾고자 해당 문서는 작성하게 되었습니다.
+{% endtab %}
+
+{% tab title="Coroutine vs Update" %}
 보통 빈번하게 사용하 Update문은 Message System을 가졌기 때문에 Unity Event Life Cycle에서는 보통 Message System을 통해 함수간 통신을 하기 때문에 굉장히 많은 비용이 듭니다.
 
 {% embed url="https://blogs.unity3d.com/kr/2015/12/23/1k-update-calls/" %}
 
 {% embed url="https://hrmrzizon.github.io/2017/04/07/unity-message-system/" %}
 
-그리고 이러한 Message System을
-{% endtab %}
+그리고 이러한 Message System은 비용이 많이 들기 때문에 최적화를 중요시 한다면 지양하는 것이 Unity Tip이라고 합니다.
 
-{% tab title="Coroutine vs Update" %}
-C
+그렇기 때문에 해당 Project에서는 Update\(\) 함수를 사용하지 않고 함수로만 통신하며, Coroutine을 통해 Scene을 Load합니다.
 {% endtab %}
 {% endtabs %}
 
