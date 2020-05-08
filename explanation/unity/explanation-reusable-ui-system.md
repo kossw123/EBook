@@ -42,7 +42,9 @@ screens = GetComponentsInChildren<IP_UI_Screen>(true);
 {% endtab %}
 
 {% tab title="2. Screen Script" %}
-IP\_UI\_System에서 Screen들을 Controller하는 역할을 했다면 Screen에서는 어떤 화면에서 일어나는 일에 대한 행동을 작성합니다.
+## Screen Script에 어떤 기능이 있는가?
+
+**IP\_UI\_System에서 Screen들을 Controller하는 역할을 했다면 Screen에서는 어떤 화면에서 일어나는 일에 대한 행동을 작성합니다.**
 
 {% code title="IP\_UI\_Screen.cs" %}
 ```csharp
@@ -103,12 +105,16 @@ void HandleAnimator(string Trigger) {
 {% endtab %}
 
 {% tab title="3. SwitchScreen\(\) 함수로 Screen 전환하기" %}
+## SwitchScreen\(\) 함수로 Screen 전환하
+
+**Screen을 활성화 하면 시작되는 Event와 종료될 시점의 Event 함수들을 가진 IP\_UI\_Screen Script를 만들었다면 이제는 Screen을 변경하고 활성화하고, 시작 Event 함수를 실행시켜주는 Code가 필요합니다.**
+
 * 해당 프로젝트에는 Screen Object가 총 3개의 IP\_UI\_Screen Script Component가 존재합니다.
 * 이를 통해 Screen을 가져왔기 때문에, Screen의 전환도 IP\_UI\_Screen Script Component를 통 이루어 집니다.
 
 {% code title="IP\_UI\_System.cs" %}
 ```csharp
-// No.1 Method
+// SwitchScreen Method
 public void SwitchScreen(IP_UI_Screen screen)
 {
     currentScreen = screen;
@@ -128,7 +134,7 @@ public void SwitchScreen(IP_UI_Screen screen) {
             previousScreen = currentScreen;
         }
         
-        // No.1 Method
+        // SwitchScreen Method
 
         if(onSwitchedScreen != null) {              // Condition 3
             onSwitchedScreen.Invoke();
@@ -145,9 +151,29 @@ public void SwitchScreen(IP_UI_Screen screen) {
   * 현재화면을 이전화면의 Data 공간으로 넘기고, CloseScreen\(\) 함수를 통해 Screen이 종료될 시 실행되는 Event\(\) 함수를 실행합니다.
 * Condition 3
   * SwitchScreen\(\) 함수가 실행될 때 Inspector에서 Event를 등록한다면 실행되는 조건문입니다.
-{% endtab %}
 
+이제 SwitchScreen\(\) 함수를 통해 바꿨다면 맨 처음에 실행할 화면을 UI System이 시작과 동시에 띄우도록 하겠습니다.
+
+{% code title="IP\_UI\_System.cs" %}
+```csharp
+void Start() {
+    if(m_StartScreen) {
+    SwitchScreen(m_StartScreen);
+    }
+}
+```
+{% endcode %}
+
+* Start와 동시에 SwitchScreen을 통해 m\_StartScreen, 처음에 시작과 동시에 띄울 Screen을 실행합니다.
+{% endtab %}
+{% endtabs %}
+
+{% tabs %}
 {% tab title="4. 이전화면으로 전환하기" %}
+## 이전 화면으로 전환하기
+
+**이전화면으로 돌아가기 위한 기능은 SwitchScreen\(\) 함수를 통해 제작이 되었습니다. 하나의 함수를 만들어서 필요할때 같은기능이지만 parameter는 다르게 실행하면 됩니다.**
+
 SwitchScreen\(\) 함수는 Screen을 전환하기 때문에, 이를 통해 이전화면에 저장한 Screen을 불러옵니다.
 
 ```csharp
@@ -162,9 +188,9 @@ public void GoToPreviousScreen() {
 {% endtab %}
 
 {% tab title="5. LoadScene 함수 구현" %}
-해당 Project에서는 Update\(\) 대신 Coroutine을 사용하여 LoadScene 기능을 구현했습니다.
+## LoadScene\(\) 함수 구현
 
-tutorial에서는 사용하진 않지만 Reusable UI System 이라는 취지를 살린 함수 부분입니다.
+**해당 Project에서는 Update\(\) 대신 Coroutine을 사용하여 LoadScene 기능을 구현했습니다.tutorial에서는 사용하진 않지만 Reusable UI System 이라는 취지를 살린 함수 부분입니다.**
 
 {% code title="IP\_UI\_System.cs" %}
 ```csharp
@@ -180,10 +206,15 @@ IEnumerator WaitToLoadScene(int sceneIndex) {
 
 * LoadScene\(int  sceneIndex\) 함수는 parameter로 int형 변수를 받아서 Load하고 싶은 Scene을 Coroutine을 통해 재생합니다.
 * WaitToLoadScene\(int  sceneIndex\) 함수는 내용은 없지만 추후에 Load하게 될 함수입니다.
+* 이에 대한 내용은 기술문서\(Technical Reference\)에 기술하였으니, 아래의 링크를 따라 들어가시면 좀 더 많은 정보를 얻으실 수 있습니다.
+
+{% page-ref page="../../technical-reference/unity/tr-reusable-ui-system.md" %}
 {% endtab %}
 
 {% tab title="6. InitializeScreen 구현" %}
-맨 처음에 Login\_Screen 이외의 Object들을 비활성화 했기 때문에 맨 처음 만들어줄 때 활성화 시켜야 초기 Screen에서 다음 Screen으로 넘어갈 수 있는 Object가 생깁니다.
+## InitializeScreen\(\) 함수 구
+
+**맨 처음에 Login\_Screen 이외의 Object들을 비활성화 했기 때문에 맨 처음 만들어줄 때 활성화 시켜야 초기 Screen에서 다음 Screen으로 넘어갈 수 있는 Object가 생깁니다.**
 
 ```csharp
 void InitializeScreens() {
@@ -194,14 +225,54 @@ void InitializeScreens() {
 ```
 
 * Foreach 반복문을 통해 Screens을 모두 다 받아와서 SetActive\(\)를 true로 만듭니다.
+* System이 시작과 동시에 초기화를 할 수 있도록 Start\(\) 함수에서 실행시킵니다.
+
+{% code title="IP\_UI\_System.cs" %}
+```csharp
+void Start() {
+    InitializeScreen();
+}
+```
+{% endcode %}
 {% endtab %}
 
 {% tab title="7. Fade 효과" %}
+## Fade 효과
 
+최근의 UI를 보면 여러가지 기법이 사용하여 사용자가 좀 더 부드럽고, 편안한 효과를 볼 수 있도록 하는데 그 중 하나가 Fade 효과입니다.
+
+```csharp
+public void FadeIn() {
+    if(m_Fader) {
+        m_Fader.CrossFadeAlpha(0f, m_FadeInDuration, false);
+    }
+}
+public void FadeOut() {
+    if(m_Fader) {
+        m_Fader.CrossFadeAlpha(1f, m_FadeOutDuration, false);
+    }
+}
+```
+
+* 미리 선언한 Image Component를 가져와서 CrossFadeAlpha\(\) 함수를 통해 Fade 효과를 부여합니다.
+
+{% embed url="https://docs.unity3d.com/kr/530/ScriptReference/UI.Graphic.CrossFadeAlpha.html" %}
+
+* 그리고 시작\[Start\(\)\]과 동시에 Fade Image를 활성화 하고, FadeIn\(\) 함수를 실행합니다.
+
+```csharp
+void Start() {
+    if(m_Fader) {
+        m_Fader.gameObject.SetActive(true);
+    }
+    FadeIn();
+}
+```
+
+* **이때 FadeIn\(\) 함수만 실행하는데, 이와 같이 작성한다면 Code의 간결함은 있지만, 추후에 크기가 커진 Code를 작성시 Side Effect를 발생시킬 확률이 굉장히 높습니다.**
+* **그렇기 때문에 Project를 활용하여 다른 프로그램을 작성시에 이 부분은 필히 수정해야 할 부분입니다.**
 {% endtab %}
 {% endtabs %}
-
-
 
 ## 마치며-
 

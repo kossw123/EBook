@@ -4,7 +4,6 @@
 
 * 해설문서\(Explanation\)에서의 설명이 부족했던 부분을 보완하는 문서입니다.
 * 함수 및 의문점에 대한 문서가 중점입니다.
-* 이 문서는 상업적으로 이용하지 않습니다.
 
 ## GameObject vs Component?
 
@@ -13,43 +12,6 @@
 GameObject : 유니티 씬\(scene\)에서 전체 엔티티\(entity\)의 기본 클래스를 나타냅니다.
 
 Component : GameObject에 첨부된 모든 Component의 기본 클래스를 나타냅니다.
-{% endtab %}
-
-{% tab title="왜 이렇게 비교하게 되었는가?" %}
-**Unity는 Component pattern을 가지고 있습니다**. 정확히는 가장 핵심적인 GameObject Class는 Component pattern을 가지고 있습니다.
-
-Inspector에서 어떤 기능을 추가할 때 Component를 추가한다고 하는데 이러한 pattern을 가지고 있기 때문에 유연성을 가지고 어떠한 Component라도 추가할 수 있습니다.
-
-이러한 장점을 기반하여 Component를 가져올 수 있다면 어떤 것을 어떻게 가져오는게 좋은가?에 대한 의문점에 이 문서를 작성하게 되었습니다.
-
-
-
-* Component Pattern을 가지고는 있는데, Pattern이 가진 장단점은 어떤것인가?
-  * 장 : Class로 분리하여 가독성\(Readability\)을 늘리고, 결합도\(Coupling\)을 줄입니다.
-  * 단 : 확장성이 좋진 않고, 각 Component간에 통신의 비용이 높습니다.
-
-
-
-* 핵심적인 GameObject Class에 Component Pattern을 가졌다면, Script를 작성하는데 이에 대한 정보를 가져와야하는데, 어떠한 방식으로, 어떤 것을  가져오는가?
-  * Unity 자체에서는 GetComponent를 가지고 Component에 Access 할수 있도록 합니다.
-  * 혹은 Access할 변수를 선언 후 변수를 통해 Access합니다.
-  * 왠만한 Component로 추가할 수 있는 모든 것들을 가져올 수 있습니다.
-
-
-
-* GetComponent, 변수선얼을 통한 Access 활용방법은 어떤것이 있는가?
-  * Unity Document를 살펴본다면 Public Function을 통해 확인 할 수 있습니다.
-  * 대부분의 Component를 조작할 때 사용됩니다. 이에 대한 상황은 여러 프로젝트를 하면서 익히는 게 최선이지만 제가 느꼈던 필요한 상황을 아래에 기재 했습니다.
-    * 1. 같은 Object의 Component에 접근할 때
-         1. GetComponent를 통해 접근합니다.
-            1. GetComponent, GetComponentsInChildren, GetComponentsInParent
-      2. Hierarchy상의 현재 Object가 아닌 다른 Object에 접근하고 싶을 때
-         1. Class 변수 선언을 통해 접근합니다.
-            1. ClassType VariableName;
-      3. Message를 통해 Console에 알리고 싶을 때
-         1. BroadcastMessage, SendMessage를 통해 접근합니다.
-
-{% embed url="https://docs.unity3d.com/kr/530/ScriptReference/Component.html" %}
 {% endtab %}
 
 {% tab title="두 개체 간 차이점" %}
@@ -97,37 +59,7 @@ Component, GameObject 둘중 하나만 받아도 상관이 없습니다. 해당 
 {% endtab %}
 {% endtabs %}
 
-## Coroutine을 사용한다는 것
 
-{% tabs %}
-{% tab title="Coroutine과 Update의 간단한 개념" %}
-Coroutine : 특정 함수\(IEnumerator type Function\)를 호출하면 수행할 내용을 완수하고 반환\(yield\) 시킨다음 함수가 호출된 시점으로 돌아가서 다른 Code를 실행시킵니다.
-
-{% embed url="https://docs.unity3d.com/kr/530/Manual/Coroutines.html" %}
-
-Update : 매 프레임마다 호출되는 함수입니다. 
-
-{% embed url="https://docs.unity3d.com/kr/530/ScriptReference/MonoBehaviour.Update.html" %}
-{% endtab %}
-
-{% tab title="왜 이렇게 비교하게 되었는가?" %}
-해당 Project에서는 Update\(\) 함수를 사용하지 않습니다. 그리고 아마 다른 UI Project에서도 Update\(\) 함수를 프레임마다 변화해야 하는 변수 혹은 함수가 아닌 이상 무분별하게 사용하진 않습니다.
-
-이러한 이유를 찾고자 해당 문서는 작성하게 되었습니다.
-{% endtab %}
-
-{% tab title="Coroutine vs Update" %}
-보통 빈번하게 사용하 Update문은 Message System을 가졌기 때문에 Unity Event Life Cycle에서는 보통 Message System을 통해 함수간 통신을 하기 때문에 굉장히 많은 비용이 듭니다.
-
-{% embed url="https://blogs.unity3d.com/kr/2015/12/23/1k-update-calls/" %}
-
-{% embed url="https://hrmrzizon.github.io/2017/04/07/unity-message-system/" %}
-
-그리고 이러한 Message System은 비용이 많이 들기 때문에 최적화를 중요시 한다면 지양하는 것이 Unity Tip이라고 합니다.
-
-그렇기 때문에 해당 Project에서는 Update\(\) 함수를 사용하지 않고 함수로만 통신하며, Coroutine을 통해 Scene을 Load합니다.
-{% endtab %}
-{% endtabs %}
 
 
 
