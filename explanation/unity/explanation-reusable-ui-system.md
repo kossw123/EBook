@@ -16,7 +16,7 @@ description: Explanation Reusable UI System
 ## Code Explanation
 
 {% tabs %}
-{% tab title="Screen을 가져오기" %}
+{% tab title="1. Screen을 가져오기" %}
 ## IP\_UI\_System\(Screen을 가져오\)
 
 * 화면의 전환\(SwitchScreen\)에 있어서 핵심 Script입니다. 
@@ -66,7 +66,35 @@ void Start() {
 {% endcode %}
 
 * Animator에 대한 GetComponent를 통해 Access하여 Set Function을 통해 State Transition을 발생시킵니다.
-* if\(m\_StartSelectable\) : 특정 Object에 대한 
+* if\(m\_StartSelectable\) : 특정 UI Object에 대한 변수가 m\_StartSelectable에 존재한다면 선택한다는 뜻입니다.
+
+  * ex\) Button Click 후 마우스를 옮겼는데도 Highlight가 없어지지 않는 경우  EventSystem.current.SetSelectedGameObject\(null\);
+
+         이라는 문구를 통해 현재 선택된 EventSystem의 Object를 초기화 시켜줍니다.
+
+{% code title="IP\_UI\_Screen.cs" %}
+```csharp
+public virtual void StartScreen() {
+    if (onScreenStart != null) {
+        onScreenStart.Invoke();
+    }
+    HandleAnimator("show");
+}
+
+public virtual void CloseScreen() {
+    if(onScreenClose != null) {
+        onScreenClose.Invoke();
+    }
+    HandleAnimator("hide");
+}
+
+void HandleAnimator(string Trigger) {
+    if(animator) {
+        animator.SetTrigger(Trigger);
+    }
+}
+```
+{% endcode %}
 {% endtab %}
 
 {% tab title="SwitchScreen\(\) 함수로 Screen 전환하기" %}
@@ -163,7 +191,7 @@ void InitializeScreens() {
 * Foreach 반복문을 통해 Screens을 모두 다 받아와서 SetActive\(\)를 true로 만듭니다.
 {% endtab %}
 
-{% tab title="" %}
+{% tab title="Fade 효과" %}
 
 {% endtab %}
 {% endtabs %}
