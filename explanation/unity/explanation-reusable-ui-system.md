@@ -317,12 +317,24 @@ IEnumerator WaitForTime() {
 ```
 {% endcode %}
 
-* Code의 의도는 위에서 설명한 내용인 것 같습니다만, 실제 해당 Code에서는 활용되지 않습니다.
-* 이를 활용하려면 아래와 같이 수정하여 사용하시면 됩니다.
+* Project에서는 m\_ScreenTime을 활용하여 Coroutine을 활용하고 있지만, startTime은 사용되지 않습니다.
+* 이를 활용하려면 여러 방법이 있는데 제가 생각한 방법은 아래와 같습니다.
+  * startTime과 m\_ScreenTime을 비교하는 조건문을 걸어서 검증하는 방법
+  * WaitForTime\(\) 함수에 parameter로 float 변수를 넣어서 startTime과 비교하는 방
 
-```text
+{% code title="startTime 활용 방안" %}
+```csharp
+// Statement 1
+if(startTime > m_ScreenTime)
+StartCoroutine(WaitForTime());
 
+// Statement 2
+IEnumerator WaitForTime(float time) {
+    if(startTime > time)
+    yield return new WaitForSeconds(time);
+}
 ```
+{% endcode %}
 {% endtab %}
 
 {% tab title="" %}
