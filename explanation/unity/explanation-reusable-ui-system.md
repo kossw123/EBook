@@ -47,7 +47,9 @@ screens = GetComponentsInChildren<IP_UI_Screen>(true);
 * 해당 프로젝트에는 Screen Object가 총 3개의 IP\_UI\_Screen Script Component가 존재합니다.
 * 이를 통해 Screen을 가져왔기 때문에, Screen의 전환도 IP\_UI\_Screen Script Component를 통 이루어 집니다.
 
-```text
+{% code title="IP\_UI\_System.cs" %}
+```csharp
+// No.1 Method
 public void SwitchScreen(IP_UI_Screen screen)
 {
     currentScreen = screen;
@@ -55,8 +57,53 @@ public void SwitchScreen(IP_UI_Screen screen)
     currentScreen.StartScreen();
 }
 ```
+{% endcode %}
 
-* 위의 내용은 SwitchScreen의 함수를 실행 시켰을 때, parameter로 받은 어떤 Screen이 currentScreen이라는 공간에 저장되고, currentScreen을 활성화 시키고, StartScreen\(\)함수를 통해 
+* 위의 내용은 SwitchScreen의 함수를 실행 시켰을 때, parameter로 받은 어떤 Screen이 currentScreen이라는 공간에 저장되고, currentScreen을 활성화 시키고, StartScreen\(\)함수를 통해 Screen이 시작하면 실행할 Event\(\) 함수를 실행시킵니다.
+
+```csharp
+public void SwitchScreen(IP_UI_Screen screen) {
+    if(screen) {                                    // Condition 1
+        if(currentScreen) {                         // Condition 2
+            currentScreen.CloseScreen();
+            previousScreen = currentScreen;
+        }
+        
+        // No.1 Method
+
+        if(onSwitchedScreen != null) {              // Condition 3
+            onSwitchedScreen.Invoke();
+        }
+    }
+}
+```
+
+* SwitchScreen 함수를 맨 처음 실행 시켰을 때의 Code는 완성했으니, **다음화면으로 넘어가 "현재화면, 이전화면"이 존재하는 시점의 Code를 작성합니다.**
+* Condition 1
+  * Screen parameter가 존재한다면 아래의 Code를 실행시킵니다.
+  * parameter가 존재하는지 확인하는 성격이 강합니다.
+* Condition 2
+  * 현재화면을 이전화면의 Data 공간으로 넘기고, CloseScreen\(\) 함수를 통해 Screen이 종료될 시 실행되는 Event\(\) 함수를 실행합니다.
+* Condition 3
+  * SwitchScreen\(\) 함수가 실행될 때 Inspector에서 Event를 등록한다면 실행되는 조건문입니다.
+{% endtab %}
+
+{% tab title="이전화면으로 전환하기" %}
+SwitchScreen\(\) 함수는 Screen을 전환하기 때문에, 이를 통해 이전화면에 저장한 Screen을 불러옵니다.
+
+```csharp
+public void GoToPreviousScreen() {
+    if(previousScreen) {
+        SwitchScreen(previousScreen);
+    }
+}
+```
+
+* SwitchScreen\(\) 함수를 통해 previousScreen을 불러옵니다.
+{% endtab %}
+
+{% tab title="" %}
+
 {% endtab %}
 {% endtabs %}
 
