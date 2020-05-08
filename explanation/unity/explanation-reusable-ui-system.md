@@ -13,7 +13,7 @@ description: Explanation Reusable UI System
 * Click Event는 Button Script에 등록하기만 하면 작동하기 때문에, Switch라는 기능이 어느 부분까지 적용되는가에 대한 설명문서를 작성하겠습니다.
 * 영상 강의에서 Script의 작성 순서에 따라 해설문서에 기재하도록 하겠습니다.
 
-
+## Code Explanation
 
 {% tabs %}
 {% tab title="Screen을 가져오기" %}
@@ -40,7 +40,33 @@ screens = GetComponentsInChildren<IP_UI_Screen>(true);
 {% endtab %}
 
 {% tab title="Screen Script" %}
+IP\_UI\_System에서 Screen들을 Controller하는 역할을 했다면 Screen에서는 어떤 화면에서 일어나는 일에 대한 행동을 작성합니다.
 
+{% code title="IP\_UI\_Screen.cs" %}
+```csharp
+public Selectable m_StartSelectable;
+
+public UnityEvent onScreenStart = new UnityEvent();
+public UnityEvent onScreenClose = new UnityEvent();
+```
+{% endcode %}
+
+* Selectable 변수를 통해 선택할수 있는 모든 UI의 Object를 받아옵니다.
+* onScreenStart, Close 변수는 Screen이 시작, 종료할 때 Event를 담는 Data 공간입니다.
+
+{% code title="IP\_UI\_Screen.cs" %}
+```csharp
+void Start() {
+    animator = GetComponent<Animator>(); 
+    if(m_StartSelectable) {
+        EventSystem.current.SetSelectedGameObject(m_StartSelectable.gameObject);
+    }
+}
+```
+{% endcode %}
+
+* Animator에 대한 GetComponent를 통해 Access하여 Set Function을 통해 State Transition을 발생시킵니다.
+* if\(m\_StartSelectable\) : 특정 Object에 대한 
 {% endtab %}
 
 {% tab title="SwitchScreen\(\) 함수로 Screen 전환하기" %}
@@ -102,7 +128,7 @@ public void GoToPreviousScreen() {
 * SwitchScreen\(\) 함수를 통해 미리 저장해놓은 이전화면 변수인 previousScreen을 불러옵니다.
 {% endtab %}
 
-{% tab title="" %}
+{% tab title="LoadScene 함수 구현" %}
 해당 Project에서는 Update\(\) 대신 Coroutine을 사용하여 LoadScene 기능을 구현했습니다.
 
 tutorial에서는 사용하진 않지만 Reusable UI System 이라는 취지를 살린 함수 부분입니다.
@@ -122,9 +148,29 @@ IEnumerator WaitToLoadScene(int sceneIndex) {
 * LoadScene\(int  sceneIndex\) 함수는 parameter로 int형 변수를 받아서 Load하고 싶은 Scene을 Coroutine을 통해 재생합니다.
 * WaitToLoadScene\(int  sceneIndex\) 함수는 내용은 없지만 추후에 Load하게 될 함수입니다.
 {% endtab %}
+
+{% tab title="InitializeScreen 구현" %}
+맨 처음에 Login\_Screen 이외의 Object들을 비활성화 했기 때문에 맨 처음 만들어줄 때 활성화 시켜야 초기 Screen에서 다음 Screen으로 넘어갈 수 있는 Object가 생깁니다.
+
+```csharp
+void InitializeScreens() {
+    foreach(var screen in screens) {
+        screen.gameObject.SetActive(true);
+    }
+}
+```
+
+* Foreach 반복문을 통해 Screens을 모두 다 받아와서 SetActive\(\)를 true로 만듭니다.
+{% endtab %}
+
+{% tab title="" %}
+
+{% endtab %}
 {% endtabs %}
 
-## 마치며
+
+
+## 마치며-
 
 * 해설문서\(Explanation\)을 작성하면서, 부족한 부분의 설명은 모두 기술문서\(Technical Reference\)에 작성했습니다.
 * 재사용이 가능한 UI Project를 작성함으로써 개발에 있어서 할수 있는 영역이 넓어졌다는 느낌이 드는 작업이였습니다.
