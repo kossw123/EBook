@@ -2,7 +2,7 @@
 description: How-to-guide Reusable UI System
 ---
 
-# How-to-guide Reusable UI System - 작성중
+# How-to-guide Reusable UI System
 
 ## 무엇을 하려고 하는가?
 
@@ -285,8 +285,6 @@ IEnumerator WaitForTime() {
 * `WaitForTime()` : IEnumerator를 통해 yield return new WaitForSeconds\(\) 함수를 통해 delay 시킨 후 아래의 Code를 실행시킵니다.
 {% endtab %}
 {% endtabs %}
-
-## CheckList
 
 
 

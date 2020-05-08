@@ -274,7 +274,71 @@ void Start() {
 {% endtab %}
 {% endtabs %}
 
-## 마치며-
+{% tabs %}
+{% tab title="WaitScreen 화면 적용시키기" %}
+## WaitScreen을 적용시키기
+
+WaitScreen Object를 생성하여 기존 Fade 효과가 아닌 우리가 흔히 볼수있는 Loading 화면을 구현합니다.
+
+해당 Object는 Coroutine을 사용하여 onTimedCompleted EventSystem 변수를 통해 Event를 실행시킵니다.
+
+{% code title="IP\_TimedUI\_Screen.cs" %}
+```csharp
+public class IP_TimedUI_Screen : IP_UI_Screen
+{
+        public float m_ScreenTime = 2f;
+        private float startTime;
+        public UnityEvent onTimeCompleted = new UnityEvent();
+}
+```
+{% endcode %}
+
+* Screen이 활성화되는 동안의 시간과\(m\_ScreenTime\), 현재 프레임부터 시간을 Count 하여 Delay Time을 주는 시간\(startTime\)이 있습니다.
+* EventSystem 변수를 통해 이 변수에 어떠한 Event가 등록되는 순간 실행되도록 합니다.
+  * 이 변수는 활성화가 끝나는 시간에 실행되는 Event 변수입니다.
+
+가상함수인 StartScreen에 Coroutine을 사용하여 yield 명령어에 따라 해당 IEnumerator 함수를 종료합니다.
+
+{% code title="IP\_TimedUI\_Screen.cs" %}
+```csharp
+public override void StartScreen() {
+    base.StartScreen();
+    startTime = Time.time;
+
+    StartCoroutine(WaitForTime());
+}
+
+IEnumerator WaitForTime() {
+    yield return new WaitForSeconds(m_ScreenTime);
+    if(onTimeCompleted != null) {
+        onTimeCompleted.Invoke();
+    }
+}
+```
+{% endcode %}
+
+* Code의 의도는 위에서 설명한 내용인 것 같습니다만, 실제 해당 Code에서는 활용되지 않습니다.
+* 이를 활용하려면 아래와 같이 수정하여 사용하시면 됩니다.
+
+```text
+
+```
+{% endtab %}
+
+{% tab title="" %}
+
+{% endtab %}
+
+{% tab title="" %}
+
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
+
+## 마치며
 
 * 해설문서\(Explanation\)을 작성하면서, 부족한 부분의 설명은 모두 기술문서\(Technical Reference\)에 작성했습니다.
 * 재사용이 가능한 UI Project를 작성함으로써 개발에 있어서 할수 있는 영역이 넓어졌다는 느낌이 드는 작업이였습니다.
