@@ -15,7 +15,7 @@ description: tutiorial Resuable UI System
 
 * Reusable UI System은 아래의 그림을 모방하여 UI를 구성합니다.
 
-![&#xCD08;&#xAE30;&#xD654;&#xBA74; UI &#xAD6C;&#xC131;](../../.gitbook/assets/image%20%28123%29.png)
+![&#xCD08;&#xAE30;&#xD654;&#xBA74; UI &#xAD6C;&#xC131;](../../.gitbook/assets/image%20%28125%29.png)
 
 ## 주의점
 
@@ -93,12 +93,12 @@ description: tutiorial Resuable UI System
 
 여기까지 과정은 아래의 그림과 같습니다.
 
-![Login\_Screen &#xC644;&#xC131;&#xBCF8;](../../.gitbook/assets/image%20%28137%29.png)
+![Login\_Screen &#xC644;&#xC131;&#xBCF8;](../../.gitbook/assets/image%20%28139%29.png)
 
 * 두번째 Screen인 Register\_Screen을 작성합니다.
 * Register\_Screen은 Login\_Screen과 같은 방법으로 작성하되, 배치와 Text 문구만 변환한 것이기 때문에 자세한 설명은 그림으로 대체하겠습니다.
 
-![Register\_Screen &#xC644;&#xC131;&#xBCF8;](../../.gitbook/assets/image%20%2888%29.png)
+![Register\_Screen &#xC644;&#xC131;&#xBCF8;](../../.gitbook/assets/image%20%2889%29.png)
 
 * Screen의 작성은 끝났고, FadeIn, Out효과와 Show, Hide Animation을 추가합니다.
 
@@ -112,7 +112,7 @@ Login\_Screen Object의 Animator에 생성한 Animator를 넣고, Animation View
 * IP\_Base\_Screen\_Show : 보여줄 때의 Animation
 * IP\_Base\_Screen\_Hide : 숨길 때 Animation
 
-![Animator&#xC5D0; &#xB4E4;&#xC5B4;&#xAC08; Clip &#xBAA9;&#xB85D;](../../.gitbook/assets/image%20%28113%29.png)
+![Animator&#xC5D0; &#xB4E4;&#xC5B4;&#xAC08; Clip &#xBAA9;&#xB85D;](../../.gitbook/assets/image%20%28114%29.png)
 
 * Idle Animation에서 변경할 내용입니다. Idle Animation은 변경할 Property가 있지만 변화값을 주지 않습니다.
   * Alpha\(0\)
@@ -128,7 +128,7 @@ Login\_Screen Object의 Animator에 생성한 Animator를 넣고, Animation View
   * Interactable : true ~ false
   * Block RayCasts : true ~ false
 
-![Hide Animation](../../.gitbook/assets/image%20%2850%29.png)
+![Hide Animation](../../.gitbook/assets/image%20%2851%29.png)
 
 
 
@@ -137,7 +137,7 @@ Login\_Screen Object의 Animator에 생성한 Animator를 넣고, Animation View
   * Interactable : false ~ true
   * Block RayCasts : false ~ true
 
-![Show Animation](../../.gitbook/assets/image%20%2828%29.png)
+![Show Animation](../../.gitbook/assets/image%20%2829%29.png)
 {% endtab %}
 
 {% tab title="2. StateMachine 설정" %}
@@ -151,7 +151,7 @@ Login\_Screen Object의 Animator에 생성한 Animator를 넣고, Animation View
 
 이와 같이 설정했다면 아래의 그림과 같은 Animator View를 가지게 됩니다.
 
-![Animator View](../../.gitbook/assets/image%20%2835%29.png)
+![Animator View](../../.gitbook/assets/image%20%2836%29.png)
 {% endtab %}
 
 {% tab title="3. Animator Override Controller 생성" %}
@@ -165,19 +165,19 @@ Login\_Screen Object의 Animator에 생성한 Animator를 넣고, Animation View
 
 그 결과 아래의 그림과 같습니다.
 
-![Animator Override Controller &#xACB0;&#xACFC; &#xD654;&#xBA74;](../../.gitbook/assets/image%20%2899%29.png)
+![Animator Override Controller &#xACB0;&#xACFC; &#xD654;&#xBA74;](../../.gitbook/assets/image%20%28100%29.png)
 {% endtab %}
 {% endtabs %}
 
 * Fade 효과를 위해 하나의 Panel Object를 생성하고 검은색으로 변경합니다.
 
-![Fader Panel ](../../.gitbook/assets/image%20%2889%29.png)
+![Fader Panel ](../../.gitbook/assets/image%20%2890%29.png)
 
 * Register\_Screen에서 Join Button을 눌렀을 때 Login\_Screen으로 돌아가는 중에 띄울 Panel Object를 생성합니다.
 * todo\_login\_001을 넣어서 배경을 띄우고, Text Component를 넣어서 대기문구를 작성합니다.
 * 그 결과 아래와 같은 그림을 가지게 됩니다.
 
-![Wait Screen](../../.gitbook/assets/image%20%28101%29.png)
+![Wait Screen](../../.gitbook/assets/image%20%28102%29.png)
 
 * 각 Object에 대해 알맞는 기능의 Script를 추가합니다.
   * 총 3가지 Script가 작성됩니다.
@@ -385,4 +385,53 @@ namespace DataPractice.UI
   * UI Object Controller를 Target Object로 설정하고 IP\_UI\_Screen.SwitchScreen을 Login\_Screen으로 설정합니다.
 {% endtab %}
 {% endtabs %}
+
+ 여기까지 Reusable UI System 작성이 끝났습니다.
+
+## Bouns Menu Editor 작성
+
+* Script를 통해 Editor상의 Menu를 작성합니다.
+* Script가 존재하기만 해도 적용됩니다.
+* 그 내용은 아래와 같습니다.
+
+{% code title="IP\_UI\_Menus.cs" %}
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEditor;
+namespace DataPractice.UI {
+    public class IP_UI_Menus: MonoBehaviour {
+        [MenuItem("ReusableUISystem/UI Tools/Create UI Group")] public static void CreateUIGroup() {
+            GameObject uiGroup = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/ReusableUISystem/Arts/Prefabs/UIBonus.prefab");
+            CreateGameObject(uiGroup, "UIBouns");
+        }[MenuItem("ReusableUISystem/UI Tools/Create InputField Group")] public static void CreateUIInputField() {
+            GameObject inputFieldGroup = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/ReusableUISystem/Arts/Prefabs/InputField.prefab");
+            CreateGameObject(inputFieldGroup, "UI_InputField");
+        }
+        public static GameObject CreateGameObject(GameObject obj, string name) {
+            if (obj) {
+                GameObject createGroup = (GameObject)Instantiate(obj);
+                createGroup.name = name;
+            } else {
+                EditorUtility.DisplayDialog("UI Tools Warning", "Cannot find UI Group Prefabs!", "OK");
+            }
+            return obj;
+        }
+    }
+}
+```
+{% endcode %}
+
+* 해당 내용의 Script를 생성하면 아래와 같은 그림의 항목이 Editor에 생성이 됩니다.
+
+![](../../.gitbook/assets/image%20%28121%29.png)
+
+## 마치며
+
+* UI Project를 만지는게 실제적으로 Game을 제작하는 것보다 좀 더 Code의 흐름이 정제된 느낌을 받았습니다.
+* 해당 Project는 Attribute를 사용하여 해당 항목을 수정하면 동기화가 안되고 새롭게 추가해야 하기 때문에 Project 성질이 굉장히 민감하다고 느꼈습니다.
+* 이에 대한 추가 정보는 아래의 Page Link에 기재했습니다.
+
+{% page-ref page="../../how-to-guide/unity/how-to-guide-reusable-ui-system.md" %}
 
