@@ -370,6 +370,32 @@ public static void CreateUIGroup() {
 
 * 이를 통해 GameObject 변수 공간에 AssetDataBase를 통해 Project 내부의 어떤 Asset에라도 접근가능 하게 합니다.
 * GameObject 변수 공간에 Asset의 경로를 담아 Load하여 알리기만 했다면, 실질적으로 생성하는 부분은 CreateGameObject\(\) 함수가 담당합니다.
+
+{% code title="IP\_UI\_Menus.cs" %}
+```csharp
+public static GameObject CreateGameObject(GameObject obj, string name) {
+    if(obj) {
+        GameObject createGroup = (GameObject)Instantiate(obj);
+        createGroup.name = name;
+    }
+    else {
+        EditorUtility.DisplayDialog("UI Tools Warning", "Cannot find UI Group Prefabs!", "OK");
+    }
+
+    return obj;
+}
+```
+{% endcode %}
+
+* 강의 영상에는 없는 함수이지만 같은 기능을 가지고 있습니다.
+  * 간단하게 GameObject, string을 parameter로 받아서 하나의 GameObject 공간에 Instantiate를 하여 받은 GameObject를 생성하여 넣고 반환합니다.
+  * GameObject가 아닌 다른 변수를 넣는다면 Console에 오류 메시지를 띄웁니다.
+* \*\*\* createGroup.name = name;
+  * 해당 문법은 obj를 생성하여 createGroup 공간에 넣고 name을 변경했는데, 어째서 obj를 반환하는데 이름이 바뀌는가? 에 대한 의문이 드실 수 있습니다.
+    * 이 부분은 name이라는 기능은 공간에 상관없이 같은 변수를 가지고 있다면 적용된다고 합니다.
+    * 즉, obj.name = createGroup.name = obj 와 같은 방식이 될겁니다.
+
+{% embed url="https://docs.unity3d.com/ScriptReference/Object-name.html" %}
 {% endtab %}
 {% endtabs %}
 
