@@ -336,7 +336,44 @@ IEnumerator WaitForTime(float time) {
 ```
 {% endcode %}
 {% endtab %}
+
+{% tab title="Editor 상에서 Script로 Menu 만들기" %}
+Unity에서 지원하는 Attribute중 하나인 MenuItem을 가지고 Editor상에서 Menu를 제작합니다.
+
+{% code title="IP\_UI\_Menus.cs" %}
+```csharp
+public class IP_UI_Menus : MonoBehaviour {
+    [MenuItem("ReusableUISystem/UI Tools/Create UI Group")]
+    public static void CreateUIGroup() {
+        // AssetDataBase를 통한 Prefab Load
+    }
+}
+```
+{% endcode %}
+
+* \[MenuItem\("ReusableUISystem/UI Tools/Create UI Group"\)\]
+  * MenuItem\(Editor 상의 생성할 항목의 경로\)를 통해 Editor를 확장합니다.
+
+{% code title="IP\_UI\_Menus.cs" %}
+```csharp
+public static void CreateUIGroup() {
+    GameObject uiGroup = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/ReusableUISystem/Arts/Prefabs/UIBonus.prefab");
+    CreateGameObject(uiGroup, "UIBouns");
+}
+```
+{% endcode %}
+
+* 함수를 Static으로 선언하여 Life Scope를 프로그램 종료까지로 설정합니다.
+  * Editor에 Menu를 등록하기 위한 Class 내부의 Static 사용은 Instance의 생성여부와 관계없이 Class가 존재하기만 해도 등록이 된다고 합니다.
+
+{% embed url="https://answers.unity.com/questions/716691/setting-static-variables-in-editor-script.html" %}
+
+* 이를 통해 GameObject 변수 공간에 AssetDataBase를 통해 Project 내부의 어떤 Asset에라도 접근가능 하게 합니다.
+* GameObject 변수 공간에 Asset의 경로를 담아 Load하여 알리기만 했다면, 실질적으로 생성하는 부분은 CreateGameObject\(\) 함수가 담당합니다.
+{% endtab %}
 {% endtabs %}
+
+
 
 ## 마치며
 
