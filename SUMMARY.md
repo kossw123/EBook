@@ -32,7 +32,7 @@
     * [Explanation Melee Attack](explanation/unity/explanation-melee-attack.md)
     * [Explanation StateMachine - 작성중](explanation/unity/explanation-statemachine.md)
     * [Explanation TriviaGame TDD](explanation/unity/explanation-triviagame-tdd.md)
-    * [Explanation Reusable UI System - 작성중](explanation/unity/explanation-reusable-ui-system.md)
+    * [Explanation Reusable UI System](explanation/unity/explanation-reusable-ui-system.md)
 * [Technical reference](technical-reference/README.md)
   * [Unity](technical-reference/unity/README.md)
     * [TR PhysicsObject](technical-reference/unity/tr-physicsobject.md)
