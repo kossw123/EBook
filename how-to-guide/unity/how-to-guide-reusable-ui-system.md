@@ -286,6 +286,56 @@ IEnumerator WaitForTime() {
 {% endtab %}
 {% endtabs %}
 
+## IP\_UI\_Menus
+
+{% tabs %}
+{% tab title="Create Methods" %}
+Menu를 Attribute를 사용하여 Editor상의 항목을 제작합니다.
+
+{% code title="IP\_UI\_Menus.cs" %}
+```csharp
+[MenuItem("ReusableUISystem/UI Tools/Create UI Group")]
+public static void CreateUIGroup() {
+    GameObject uiGroup = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/ReusableUISystem/Arts/Prefabs/UIBonus.prefab");
+    CreateGameObject(uiGroup, "UIBouns");
+}
+
+[MenuItem("ReusableUISystem/UI Tools/Create InputField Group")]
+public static void CreateUIInputField() {
+    GameObject inputFieldGroup = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/ReusableUISystem/Arts/Prefabs/InputField.prefab");
+    CreateGameObject(inputFieldGroup, "UI_InputField");
+}
+```
+{% endcode %}
+
+* uiGroup : AssetDataBase inferface를 사용하여 Editor상에서 Menu를 생성합니다.
+  * LoadAssetAtPath를 이용하여 해당 type의 Prefabs을 Hierarchy에 생성합니다.
+* CreateGameObject\(\) : 따로 작성자가 Refactoring 과정을 통해 뽑아낸 Method입니다.
+  * 해당 Method는 Instantiate를 통해 GameObject를 생성합니다.
+
+{% embed url="https://docs.unity3d.com/kr/530/Manual/AssetDatabase.html" %}
+{% endtab %}
+
+{% tab title="Refactoring Methods" %}
+Create Method에서 생성하는 항목을 Refactoring을 한 Method 입니다. 단순하게 Instantiate를 통해 GameObject를 생성하고, 생성을 못하면 Console에 오류 메시지를 표시하는 구조입니다.
+
+{% code title="IP\_UI\_Menus.cs" %}
+```csharp
+public static GameObject CreateGameObject(GameObject obj, string name) {
+    if(obj) {
+        GameObject createGroup = (GameObject)Instantiate(obj);
+        createGroup.name = name;
+    }
+    else {
+        EditorUtility.DisplayDialog("UI Tools Warning", "Cannot find UI Group Prefabs!", "OK");
+    }
+    return obj;
+}
+```
+{% endcode %}
+{% endtab %}
+{% endtabs %}
+
 ## CheckList
 
 
