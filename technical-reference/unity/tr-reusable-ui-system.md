@@ -1,4 +1,4 @@
-# TR Reusable UI System - 작성중
+# TR Reusable UI System
 
 ## 무엇을 하려고 하는가?
 
