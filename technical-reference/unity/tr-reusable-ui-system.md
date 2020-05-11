@@ -125,11 +125,9 @@ Update : 매 프레임마다 호출되는 함수입니다.
 
 그리고 이러한 Message System은 비용이 많이 들기 때문에 최적화를 중요시 한다면 지양하는 것이 Unity Tip이라고 합니다.
 
-그렇기 때문에 해당 Project에서는 Update\(\) 함수를 사용하지 않고 함수로만 통신하며, Coroutine을 통해 Scene을 Load합니다.
+그렇기 때문에 해당 Project에서는 Update\(\) 함수를 사용하지 않고 함수로만 통신하며, Coroutine을 통해 Scene을 Load합니다
 {% endtab %}
 {% endtabs %}
-
-## Shared Data에 관한 내용
 
 
 
