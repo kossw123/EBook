@@ -413,7 +413,7 @@ Test Script를 작성하기 이전에 TDD에 대한 설명을 먼저 기재하�
   * 버그를 일으킬 염려없이 코드에서 Refactor\(크고 작은 것 모두\)로 작업 할 수 있습니다.
   * 코드에 너무 많은 Coupling이 있는지 감지하는 데 도움이 됩니다.
 
-![TDD Flow Chart](../../.gitbook/assets/image%20%2861%29.png)
+![TDD Flow Chart](../../.gitbook/assets/image%20%2862%29.png)
 
 이러한 TDD의 개념을 가지고 또 하나의 방법론을 통해 Test Case들을 선언합니다. 그 방법은 아래와 같습니다.
 

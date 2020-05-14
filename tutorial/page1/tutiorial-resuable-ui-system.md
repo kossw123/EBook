@@ -15,7 +15,7 @@ description: tutiorial Resuable UI System
 
 * Reusable UI System은 아래의 그림을 모방하여 UI를 구성합니다.
 
-![&#xCD08;&#xAE30;&#xD654;&#xBA74; UI &#xAD6C;&#xC131;](../../.gitbook/assets/image%20%28125%29.png)
+![&#xCD08;&#xAE30;&#xD654;&#xBA74; UI &#xAD6C;&#xC131;](../../.gitbook/assets/image%20%28126%29.png)
 
 ## 주의점
 
@@ -93,12 +93,12 @@ description: tutiorial Resuable UI System
 
 여기까지 과정은 아래의 그림과 같습니다.
 
-![Login\_Screen &#xC644;&#xC131;&#xBCF8;](../../.gitbook/assets/image%20%28139%29.png)
+![Login\_Screen &#xC644;&#xC131;&#xBCF8;](../../.gitbook/assets/image%20%28140%29.png)
 
 * 두번째 Screen인 Register\_Screen을 작성합니다.
 * Register\_Screen은 Login\_Screen과 같은 방법으로 작성하되, 배치와 Text 문구만 변환한 것이기 때문에 자세한 설명은 그림으로 대체하겠습니다.
 
-![Register\_Screen &#xC644;&#xC131;&#xBCF8;](../../.gitbook/assets/image%20%2889%29.png)
+![Register\_Screen &#xC644;&#xC131;&#xBCF8;](../../.gitbook/assets/image%20%2890%29.png)
 
 * Screen의 작성은 끝났고, FadeIn, Out효과와 Show, Hide Animation을 추가합니다.
 
@@ -112,7 +112,7 @@ Login\_Screen Object의 Animator에 생성한 Animator를 넣고, Animation View
 * IP\_Base\_Screen\_Show : 보여줄 때의 Animation
 * IP\_Base\_Screen\_Hide : 숨길 때 Animation
 
-![Animator&#xC5D0; &#xB4E4;&#xC5B4;&#xAC08; Clip &#xBAA9;&#xB85D;](../../.gitbook/assets/image%20%28114%29.png)
+![Animator&#xC5D0; &#xB4E4;&#xC5B4;&#xAC08; Clip &#xBAA9;&#xB85D;](../../.gitbook/assets/image%20%28115%29.png)
 
 * Idle Animation에서 변경할 내용입니다. Idle Animation은 변경할 Property가 있지만 변화값을 주지 않습니다.
   * Alpha\(0\)
@@ -128,7 +128,7 @@ Login\_Screen Object의 Animator에 생성한 Animator를 넣고, Animation View
   * Interactable : true ~ false
   * Block RayCasts : true ~ false
 
-![Hide Animation](../../.gitbook/assets/image%20%2851%29.png)
+![Hide Animation](../../.gitbook/assets/image%20%2852%29.png)
 
 
 
@@ -165,19 +165,19 @@ Login\_Screen Object의 Animator에 생성한 Animator를 넣고, Animation View
 
 그 결과 아래의 그림과 같습니다.
 
-![Animator Override Controller &#xACB0;&#xACFC; &#xD654;&#xBA74;](../../.gitbook/assets/image%20%28100%29.png)
+![Animator Override Controller &#xACB0;&#xACFC; &#xD654;&#xBA74;](../../.gitbook/assets/image%20%28101%29.png)
 {% endtab %}
 {% endtabs %}
 
 * Fade 효과를 위해 하나의 Panel Object를 생성하고 검은색으로 변경합니다.
 
-![Fader Panel ](../../.gitbook/assets/image%20%2890%29.png)
+![Fader Panel ](../../.gitbook/assets/image%20%2891%29.png)
 
 * Register\_Screen에서 Join Button을 눌렀을 때 Login\_Screen으로 돌아가는 중에 띄울 Panel Object를 생성합니다.
 * todo\_login\_001을 넣어서 배경을 띄우고, Text Component를 넣어서 대기문구를 작성합니다.
 * 그 결과 아래와 같은 그림을 가지게 됩니다.
 
-![Wait Screen](../../.gitbook/assets/image%20%28102%29.png)
+![Wait Screen](../../.gitbook/assets/image%20%28103%29.png)
 
 * 각 Object에 대해 알맞는 기능의 Script를 추가합니다.
   * 총 3가지 Script가 작성됩니다.
@@ -425,7 +425,7 @@ namespace DataPractice.UI {
 
 * 해당 내용의 Script를 생성하면 아래와 같은 그림의 항목이 Editor에 생성이 됩니다.
 
-![](../../.gitbook/assets/image%20%28121%29.png)
+![](../../.gitbook/assets/image%20%28122%29.png)
 
 ## 마치며
 
