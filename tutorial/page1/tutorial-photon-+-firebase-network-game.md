@@ -135,7 +135,9 @@ Firebase를 다운 받고, goolge-service.json을 통해 인증서를 받았다�
 * 다음 How-to-guide에서는 Sample Project에서 쓰인 AuthManager와 Photon과 통신하는 Script에 대해 기재하고 해당 부분에 대한 설명을 기재하겠습니다.
 * Photon, FireBase에 대한 개요 및 설명 문서는 해설문서\(Explanation\)에 기재하도록 하겠습니다.
 
-{% page-ref page="tutorial-photon-+-firebase-network-game.md" %}
+{% page-ref page="../../how-to-guide/unity/how-to-guide-photon-+-firebase-network-game.md" %}
+
+
 
 
 
