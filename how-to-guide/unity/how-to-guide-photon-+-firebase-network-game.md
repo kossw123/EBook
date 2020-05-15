@@ -4,13 +4,21 @@ description: How-to-guide Photon + FireBase Network Game
 
 # How-to-guide Photon + FireBase Network Game
 
+
+
+{% tabs %}
+{% tab title="Start\(\)" %}
+
+{% endtab %}
+{% endtabs %}
+
 ## 무엇을 하려고 하는가?
 
 * Photon, Firebase를 사용하는 Code에 대한 설명을 합니다.
 * Script에 사용된 Lambda expression, Task Class, Threading과 같은 C\# 문법에 대한 설명은 해설문서\(Explanation\)에 기재하도록 하겠습니다.
 * 해당 문서에서는 tutorial에서의 정보를 좀 더 다듬는 데에 의의를 두고 있습니다.
 
-## AuthManager
+## AuthManager.cs
 
 {% tabs %}
 {% tab title="Variable" %}
@@ -124,4 +132,131 @@ public void SignIn() {
 * `task.IsCanceled` : `ContinueWithOnMainThread()` 함수에서 나온 결과\(task\)가 도중에 Cancel되는 경우입니다.
 {% endtab %}
 {% endtabs %}
+
+## LobbyManager.cs
+
+{% tabs %}
+{% tab title="Variable" %}
+{% code title="LobbyManager.cs" %}
+```csharp
+private readonly string gameVersion = "1";
+
+public Text connectionInfoText;
+public Button joinButton;
+```
+{% endcode %}
+
+* `gameVersion` : Photon Server의 GameVersion을 설정하기 위한 변수입니다.
+{% endtab %}
+
+{% tab title="Start\(\)" %}
+* Start\(\) 함수에서는 PhotonNetwork Class를 사용하여, Lobby에서 PUN2에 대한 설정을 합니다.
+
+```csharp
+private void Start()
+{
+    PhotonNetwork.GameVersion = gameVersion;
+    PhotonNetwork.ConnectUsingSettings();
+
+    joinButton.interactable = false;
+    connectionInfoText.text = "Connecting to Master Server...";
+}
+```
+
+* `PhotonNetwork.GameVersion` : Photon Unity Network에서 돌아가기 위해 GameVersion이 필요한데 이를 설정하기 위한 Code입니다.
+* PhotonNetwork.ConnectUsingSettings\(\) : PhotonNetwork에 대한 연결 설정 함수를 불러옵니다.
+{% endtab %}
+
+{% tab title="OnConnectedToMaster\(\)" %}
+* Master Server\(Photon Cloud Server이자 Match Making을 위한 Server\)에 접근할 수 있는 함수입니다. 
+* 기본적으로 PUN2 Package의 Class이며, 해당함수만 쓴다면 자동으로 Master Server에 접근합니다.
+
+{% code title="LobbyManager.cs" %}
+```csharp
+public override void OnConnectedToMaster() {
+    joinButton.interactable = true;
+    connectionInfoText.text = "Online : Connected to Master Server";
+}
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="OnDisconnected\(\)" %}
+* OnDisconnected\(\) 함수는 PUN2를 Import하면 기본적으로 설치되는 패키지의 Class 함수입니다.
+* PUN2는 Server에 대한 접속을 PhotonNetwork.ConnectUsingSettings\(\) 함수를 통하여 실행합니다.
+
+{% code title="LobbyManager.cs" %}
+```csharp
+public override void OnDisconnected(DisconnectCause cause) {
+    joinButton.interactable = false;
+    connectionInfoText.text = $"Offline : Conntected Disabled {cause.ToString()}";
+
+    PhotonNetwork.ConnectUsingSettings();
+}
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="Connect\(\)" %}
+* 해당 함수는 자체 함수이며, Join Button을 눌렀을 때 실행되는 함수입니다.
+* PhotonNetwork Class 함수를 이용해 상황에 따른 Code를 실행합니다.
+
+{% code title="LobbyManager.cs" %}
+```csharp
+public void Connect() {
+    joinButton.interactable = false;
+    if (PhotonNetwork.IsConnected) {
+        connectionInfoText.text = "Connecting to Random Room...";
+        PhotonNetwork.JoinRandomRoom();
+    } else {
+        connectionInfoText.text = "Offline : Conntected Disabled - Try ReConnecting..";
+        PhotonNetwork.ConnectUsingSettings();
+    }
+}
+```
+{% endcode %}
+
+* PhotonNetwork.IsConnected : Network에 연결 되었을 경우의 bool 변수를 반환합니다.
+* PhotonNetwork.JoinRandomRoom\(\)
+  * Match making Server에서 감지한 RandomRoom에 자동으로 접속하는 함수입니다.
+  * 빈방이 없다면 자동적으로 실패하여 OnJoinRandomFailed\(\) 함수를 실행합니다.
+{% endtab %}
+
+{% tab title="OnJoinRandomFailed\(\)" %}
+* 함수 자체는 Room Join에 실패할 경우 자동으로 실행되는 함수입니다.
+* 그 안에 상황에 따른 Room 생성 Code를 넣습니다.
+
+{% code title="LobbyManager.cs" %}
+```csharp
+public override void OnJoinRandomFailed(short returnCode, string message) {
+    connectionInfoText.text = "There is no empty Room, Creating new Room";
+    PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 2 });
+}
+```
+{% endcode %}
+
+* PhotonNetwork.CreateRoom\(\) : PhotonNetwork Class가 제공하는 Room 생성 함수입니다.
+{% endtab %}
+{% endtabs %}
+
+{% tabs %}
+{% tab title="OnJoinedRoom\(\)" %}
+* Player가 방에 들어온 경우 실행되는 함수입니다.
+* 방에 들어온 경우 다음 Scene인 Main으로 넘어가야 하기 위한 함수입니다.
+
+{% code title="LobbyManager.cs" %}
+```csharp
+public override void OnJoinedRoom()
+{
+    connectionInfoText.text = "Connected with Room";
+    PhotonNetwork.LoadLevel("Main");
+}
+```
+{% endcode %}
+
+* `PhotonNetwork.LoadLevel()` : 보통 Scene을 Load할때는 SceneManager를 통해 하지만, Multiplay의 경우 다른 Client와 동기화를 위해 해당 함수를 사용하여 Scene을 Load합니다.
+{% endtab %}
+{% endtabs %}
+
+
 
