@@ -4,14 +4,6 @@ description: How-to-guide Photon + FireBase Network Game
 
 # How-to-guide Photon + FireBase Network Game
 
-
-
-{% tabs %}
-{% tab title="Start\(\)" %}
-
-{% endtab %}
-{% endtabs %}
-
 ## 무엇을 하려고 하는가?
 
 * Photon, Firebase를 사용하는 Code에 대한 설명을 합니다.
@@ -258,5 +250,5 @@ public override void OnJoinedRoom()
 {% endtab %}
 {% endtabs %}
 
-
+## 
 
