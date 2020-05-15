@@ -19,7 +19,7 @@
     * [How-to-guide Mario Galaxy's Launch Star](how-to-guide/unity/how-to-guide-mario-galaxys-launch-star.md)
     * [How-to-guide Melee Attack](how-to-guide/unity/untitled.md)
     * [How-to-guide TriviaGame TDD](how-to-guide/unity/how-to-guide-triviagame-tdd.md)
-    * [How-to-guide Reusable UI System - 작성중](how-to-guide/unity/how-to-guide-reusable-ui-system.md)
+    * [How-to-guide Reusable UI System](how-to-guide/unity/how-to-guide-reusable-ui-system.md)
 * [Explanation](explanation/README.md)
   * [Unity](explanation/unity/README.md)
     * [Explanation PhysicsObject](explanation/unity/physicsobject.md)

@@ -28,7 +28,7 @@ description: tutorial TriviaGame TDD
 * 위의 Hierarchy 그림처럼 GameObject를 배치하는 게 최종 목표입니다.
 * **지금 부터 본문에 적는 Object에 대한 설정값은 보기에 편하도록 설정한 것이니, 다르게 설정하셔도 무방합니다.**
 
-![&#xC704;&#xC758; &#xADF8;&#xB9BC;&#xCC98;&#xB7FC; &#xBC30;&#xCE58;&#xD569;&#xB2C8;&#xB2E4;.](../../.gitbook/assets/image%20%2887%29.png)
+![&#xC704;&#xC758; &#xADF8;&#xB9BC;&#xCC98;&#xB7FC; &#xBC30;&#xCE58;&#xD569;&#xB2C8;&#xB2E4;.](../../.gitbook/assets/image%20%2896%29.png)
 
 * Canvas
   * Canvas Scaler - UI Scale Mode를 Scale With Screen Size로 설정해 1920 \* 1080로 조절합니다.
@@ -45,7 +45,7 @@ description: tutorial TriviaGame TDD
 
  여기까지 했으면 아래와 같은 그림의 Object 배치가 완료 됩니다.
 
-![](../../.gitbook/assets/image%20%28130%29.png)
+![](../../.gitbook/assets/image%20%28144%29.png)
 
 * Score
   * Score Object를 추가하고 Image Component를 추가하여, ScoreContainer Sprite로 설
@@ -63,7 +63,7 @@ description: tutorial TriviaGame TDD
   * ScoreLabel과 같이 Font에 대한 설정을 임의 대로 합니다.
     * 작성자는 \(B, 50, Center / Middle\)로 설정하고 Vertex Color를 Black으로 설정했습니다.
 
-![&#xC784;&#xC758;&#xB85C; &#xC791;&#xC131;&#xD55C; Score Object&#xC5D0; &#xB300;&#xD55C; &#xACB0;&#xACFC;](../../.gitbook/assets/image%20%28119%29.png)
+![&#xC784;&#xC758;&#xB85C; &#xC791;&#xC131;&#xD55C; Score Object&#xC5D0; &#xB300;&#xD55C; &#xACB0;&#xACFC;](../../.gitbook/assets/image%20%28131%29.png)
 
 * Question
   * Image Component를 추가하여 QuestionContainer Sprite로 설정합니다.
@@ -111,7 +111,7 @@ description: tutorial TriviaGame TDD
 
 여기까지 하셨다면 아래의 그림과 같은 결과가 나옵니다.
 
-![](../../.gitbook/assets/image%20%285%29.png)
+![](../../.gitbook/assets/image%20%286%29.png)
 
 * Feedback
   * Animator Component를 추가하여 상황에 따른 동작을 추가합니다.
@@ -154,7 +154,7 @@ description: tutorial TriviaGame TDD
 * Script들을 생성하고 아래의 Project View 그림처럼 폴더가 나눠집니다.
 * 각 폴더는 이름과 관련된 Script들이 모아져 있습니다.
 
-![Scirpts&#xC758; &#xD558;&#xC704; &#xD3F4;&#xB354;](../../.gitbook/assets/image%20%2898%29.png)
+![Scirpts&#xC758; &#xD558;&#xC704; &#xD3F4;&#xB354;](../../.gitbook/assets/image%20%28108%29.png)
 
 {% tabs %}
 {% tab title="AnswerView.cs" %}
@@ -419,12 +419,12 @@ namespace TriviaGame.Service {
 * Play Mode로 하는 방식은 나중에 서술하겠습니다.
 * Window -&gt; General -&gt; Test Runner창을 실행시키면 아래와 같은 그림이 나옵니다.
 
-![Window -&amp;gt; General -&amp;gt; Test Runner -&amp;gt; Edit mode&#xC758; &#xAE30;&#xBCF8;&#xD654;&#xBA74;](../../.gitbook/assets/image%20%2879%29.png)
+![Window -&amp;gt; General -&amp;gt; Test Runner -&amp;gt; Edit mode&#xC758; &#xAE30;&#xBCF8;&#xD654;&#xBA74;](../../.gitbook/assets/image%20%2887%29.png)
 
 * Create EditMode Test Assembly Folder를 누르면 Test Runner에 필요한 Assembly Definition File을 생성합니다.
 * 해당 파일은 아래와 같습니다.
 
-![ProjectView&#xC758; Assembly File / Assembly File&#xC758; Inspector / Test Runner &#xCC3D;](../../.gitbook/assets/image%20%284%29.png)
+![ProjectView&#xC758; Assembly File / Assembly File&#xC758; Inspector / Test Runner &#xCC3D;](../../.gitbook/assets/image%20%285%29.png)
 
 * **위의 사진은 예시를 들기위한 사진이기 때문에 본문의 Complete Project File이 아닙니다.**
 * 그 후 미리 생성한 TriviaGamePresenterTests.cs파일을 Test Folder에 넣습니다.
@@ -641,7 +641,7 @@ namespace Test.TriviaGame
 
 * 위의 방식대로 Script를 생성한다면 Test Runner에 다음과 같은 사진의 결과가 됩니다.
 
-![Test Scirpt &#xCD94;&#xAC00; &#xD6C4; TestRunner&#xB97C; &#xB3CC;&#xB9B0; &#xACB0;&#xACFC;](../../.gitbook/assets/image%20%2877%29.png)
+![Test Scirpt &#xCD94;&#xAC00; &#xD6C4; TestRunner&#xB97C; &#xB3CC;&#xB9B0; &#xACB0;&#xACFC;](../../.gitbook/assets/image%20%2885%29.png)
 
 ## 마치며
 

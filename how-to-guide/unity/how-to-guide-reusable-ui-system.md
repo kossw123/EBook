@@ -2,7 +2,7 @@
 description: How-to-guide Reusable UI System
 ---
 
-# How-to-guide Reusable UI System - 작성중
+# How-to-guide Reusable UI System
 
 ## 무엇을 하려고 하는가?
 
@@ -336,7 +336,7 @@ public static GameObject CreateGameObject(GameObject obj, string name) {
 {% endtab %}
 {% endtabs %}
 
-## CheckList
+
 
 
 
