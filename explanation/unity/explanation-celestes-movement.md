@@ -388,7 +388,7 @@ Animation에 대한 대략적인 개요입니다. Unity에서의 Animation Syste
 
 Unity에서는 위에서 설명한 기능들을 추가하여 좀 더 쉽게 여러상황에서 편집 기능들을 추가했습니다. 이를 이용하여 Celeste's Movement의 Animation을 작성하는데 아래와 같은 State를 가지고 있습니다.
 
-![Celeste&apos;s Movement Animator](../../.gitbook/assets/image%20%2811%29.png)
+![Celeste&apos;s Movement Animator](../../.gitbook/assets/image%20%288%29.png)
 
 옆창의 parameter에 따라 State에서 다른 State로 이동하는 화살표\(Transistion\)가 동작합니다. 앞서 AniamtionScript.cs에서 설정한 조건문들은 여기 Animator에 따른 조건들을 설정하고 있으며 기본적으로 주황색 State인 Idle이 Default가 되어 실행됩니다.
 {% endtab %}
@@ -398,17 +398,17 @@ Unity에서는 위에서 설명한 기능들을 추가하여 좀 더 쉽게 여�
 
 Animation을 넣고싶은 Object를 클릭하고 Animation창에서 Create를 누르면 아래와 같은 창이 나타납니다.
 
-![Animation Window](../../.gitbook/assets/image%20%28120%29.png)
+![Animation Window](../../.gitbook/assets/image%20%28109%29.png)
 
 중앙에 위치해있는 0:00, 0:01...과 같은 TimeLine에 Sprite를 삽입 하여 하나의 Clip으로 생성합니다.
 
 Celeste's Movement에서는 각 움직임마다 Image가 따로 만들어져 있기에 Sprite를 이어붙여서 동작마다 따로 생성하면 되지만 3D인 경우 혹은, 따로 Animation Clip을 만들기 어려운 경우 Add Property를 이용하여 움직이려고 하는 Animation을 제작할 수 있습니다.
 
-![Idle Animation Clip](../../.gitbook/assets/image%20%2872%29.png)
+![Idle Animation Clip](../../.gitbook/assets/image%20%2864%29.png)
 
 우선 기본 Asset으로 받아놓은 roboMJ\_Spritesheet의 0~7까지의 Sprite를 시간의 변화\(TimeLine\)에 따라 순차적으로 배치하여 Clip을 생성했습니다.
 
-![Walk Animation Clip](../../.gitbook/assets/image%20%2860%29.png)
+![Walk Animation Clip](../../.gitbook/assets/image%20%2853%29.png)
 
 Walk Animation도 마찬가지로 8~15까지의 Sprite를 순차적으로 배치하여 Clip을 생성합니다.
 
@@ -418,15 +418,15 @@ Walk Animation도 마찬가지로 8~15까지의 Sprite를 순차적으로 배치
 {% tab title="Animator" %}
 Unity Animation에서는 하나의 Conttroller를 가지고 Clip을 조작합니다. 이를 Object에 Component로 넣어서 Transition에 따라 Clip을 변화시킵니다. 그 역활을 하는 Component가 Animator입니다.
 
-![Celeste&apos;s Movement Animator](../../.gitbook/assets/image%20%2828%29.png)
+![Celeste&apos;s Movement Animator](../../.gitbook/assets/image%20%2823%29.png)
 
 Animator를 가지고 원하는 Animation Clip들을 parameter의 변화에 맞춰 조정합니다.
 
-![Test Animator](../../.gitbook/assets/image%20%2871%29.png)
+![Test Animator](../../.gitbook/assets/image%20%2863%29.png)
 
 Animation을 만들기 위해 필요한 Clip을 넣고 왼쪽 창에 HorizontalAxis parameter를 생성합니다.   생성한 parameter를 가지고 State에서 다른 State로 이동하기 위한 Transition\(전이\)의 조건으로      넣습니다.
 
-![Idle -&amp;gt; Walk Transition &#xC870;&#xAC74;](../../.gitbook/assets/image%20%2825%29.png)
+![Idle -&amp;gt; Walk Transition &#xC870;&#xAC74;](../../.gitbook/assets/image%20%2821%29.png)
 
 위의 Animator에서는 조건을 2가지를 넣었는데 이는 Make Transition을 2번 하면 화살표가 여러개 생기며 조건이 여러개 있다는 것을 위의 그림과 같이 표시됩니다.
 {% endtab %}
@@ -442,7 +442,7 @@ Animation Clip을 가지고 Canvas Component의 영향을 받는 Component들을
 
 이를 위해 A, B Scene을 생성하여 우선 Scene A에서 아래와 같은 Hierarchy와 Component를 배치합니다.
 
-![Scene A&#xC5D0; &#xBC30;&#xCE58;&#xD574;&#xC57C;&#xD560; Hierarchy, Component &#xC885;&#xB958;](../../.gitbook/assets/image%20%28107%29.png)
+![Scene A&#xC5D0; &#xBC30;&#xCE58;&#xD574;&#xC57C;&#xD560; Hierarchy, Component &#xC885;&#xB958;](../../.gitbook/assets/image%20%2897%29.png)
 
 위의 그림과 같이 배치했다면 몇가지 수정할 점이 있습니다.
 
@@ -466,7 +466,7 @@ Scene A -&gt; Scene B로 넘어가는 과정은 Animation을 이용합니다. An
 
 두개의 Clip을 가지고 Animator를 작성합니다 아래와 같은 Animator그림과 같이 state를 배치하고 Transition을 삽입합니다. Start parameter는 Trigger형이며 아래의 Code Block의 Script와 같이 움직입니다.
 
-![LevelLoader Animator](../../.gitbook/assets/image%20%2861%29.png)
+![LevelLoader Animator](../../.gitbook/assets/image%20%2854%29.png)
 
 {% code title="LevelLoader.cs" %}
 ```csharp
