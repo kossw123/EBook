@@ -10,6 +10,14 @@ description: Explanation Photon + FireBase Network Game
 
 
 
+## Client - Server Model
+
+![Client - Server Model](../../.gitbook/assets/image%20%28160%29.png)
+
+* 다른 사람에게 자신의 행동에 대한 정보\(자신의 위치, 아이템, 상태 등\)을 보낼 때 쓰이는 Model입니다.
+* 보통 Server를 사용하는 모든 프로그램들은 위의 형태와 같습니다.
+* Client에서 직접적으로 다른 Client에 보내면 막대한 계산의 문제가 발생하기 때문에 이와 같은 Network Architecture가 탄생했습니다.
+
 ## Photon\(PUN2\)
 
 {% tabs %}
@@ -18,7 +26,7 @@ description: Explanation Photon + FireBase Network Game
 * 우리가 알고 있는 Client - Server Model을 가지고 있고, PUN2는 Room이라는 공간에 네트워크를 따라 들어온 Client들을 동기화 시켜줍니다.
 * Photon은 Cloud 형식으로 제공됩니다.
   * 게임에서 사용할 수 있는 Server의 집합입니다.
-  * 아래와 같은 방법으로 접근합니다.
+  * 사용자가 Server에 접속하려면 아래와 같은 방법으로 접근합니다.
     * 1. Name Server에 접근합니다.
          1. Name Server를 통해 AppID를 확인하고 어떤 지역으로 접근할지 확인합니다.
          2. 확인이 끝나면 Master Server로 forwarding 합니다.
@@ -50,8 +58,16 @@ description: Explanation Photon + FireBase Network Game
 * d
 {% endtab %}
 
-{% tab title="PUN2 " %}
+{% tab title="Room" %}
+* Room은 GameServer에서 생성되는 Client이 Server에 접속하는 순간 존재하는 공간입니다.
+* Free Trial은 해당 공간안에 최대 10명의 Client가 존재할 수 있습니다.
+* Room은 식별할 수 있는 이름을 가지고 있습니다.
+* 가득차 있거나, 닫혀있지 않는 이상 이름을 가지고 Room에 참여할 수 있습니다.
+* Master Server에서는 App으로 Room의 목록을 제공합니다.
 
+
+
+* 관련된 함수는 아래와 같습니다.
 {% endtab %}
 {% endtabs %}
 
