@@ -50,13 +50,20 @@ FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith()
       * **데이터의 구조가 프로그램 데이터 저장방식을 결정하고, 반대로 프로그램의 데이터 저장방식에 따라 데이터의 저장방식이 바뀌는 것을 의미합니다.**
       * **데이터 구조가 변경되면, 프로그램까지 같이 바뀌는 비용이 들기 때문에 , 프로그램 개발과 유지보수가 어려워지는 문제점이 있습니다.**
       * 여기서는 ContinueWith\(\) 함수의 Chaining CallbackMethod의 내용에 따라, 비동기 로 해당 내용을 실행합니다.
-  * 
 {% endtab %}
 {% endtabs %}
 
 ## Photon 관련 함수
 
+{% tabs %}
+{% tab title="First Tab" %}
 
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
 
 ## Thread
 
@@ -67,23 +74,65 @@ FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith()
 * 보통 인터넷을 하면서, 노래를 듣고, 동시에 작업을 할 수 있습니다. 이러한 작업들을 Process라고 합니다.
 * 이러한 Process는 하나 이상의 Thread로 이루어지고, 독립적인 실행 경로이며, 다른 Thread와 동시에 실행할 수 있는 기능입니다.
 * 단일 Thread를 실행하고 거기서 다른 Thread를 생성하고, 실행하여 Multi Thread를 가능하게 합니다.
+* 즉, Thread는 Process를 여러개의 조각으로 나눈 것으로, Thread 변수를 통해 작업을 동시에 실행하는 것과 같은 효과를 가지게 합니다.
 
 ![Thread &#xACFC;&#xC815;](../../.gitbook/assets/image%20%28160%29.png)
-
-{% embed url="https://wergia.tistory.com/187" caption="Thread에 대한 개념" %}
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="Thread 기본 예제" %}
+{% embed url="https://wergia.tistory.com/187" %}
 
+* 위 사이트 중 하나의 예제를 살펴 보겠습니다.
+
+```csharp
+using System;
+using System.Threading;
+
+namespace ConsoleApp1 {
+    class Program {
+        public static void Main(string[] args) {
+            Thread t1 = new Thread(() => Run(0));
+            t1.Start();
+            Thread t2 = new Thread(() => Run(1));
+            t2.Start();
+        }
+        public static void Run(int idx) {
+            Console.WriteLine(string.Format("Run {0} : Start", idx));
+            for (int i = 0; i < 10; i++) {
+                Console.WriteLine(string.Format("Run {0} : {1}", idx, i));
+                Thread.Sleep(10);
+            }
+            Console.WriteLine(string.Format("Run {0} : End", idx));
+        }
+    }
+}
+
+```
+
+* 아래의 그림을 가지고 정리를 하겠습니다.
+
+![Thread Example](../../.gitbook/assets/image%20%28162%29.png)
+
+* Run\(\) 함수의 작업을 Thread 변수를 가지고 Lambda식을 사용하여 Start\(\) 하면 위의 그림과 같이 출력이 됩니다.
+* 출력 결과를 보면 Run 0, Run 1이 실행되는데 번갈아 가면서 실행하는데, 일정하게 반복해서 출력되는 것이 아니라 나눠서 실행되는 것을 확인할 수 있습니다.
 {% endtab %}
 {% endtabs %}
 
 ## Task Class
 
-* * 
+* Firebase의 Authentication\(인증\) 기능을 사용하기 위해 Firebase가 정상적으로 돌아가는지를 확인하기 위한 ContinueWith\(\) 함수를 알기 위해서는 Task Class에 대해 알아야 합니다.
+* Task Class에 대한 개요, 개념과 간단한 예제를 통해 문서를 작성하겠습니다.
+
 {% tabs %}
 {% tab title="개요" %}
-* Task Class를 알기 위해서 Threading Class에 관하여 
+* Thread를 가져와서 작업을 비동기 처리합니다.
+* 값을 반환하지 않기 때문에 Return 값이 필요하지 않습니다.
+  * 이는 Instance를 생성할 때 반환값이 필요없는 Action Delegate를 넘겨 받기 때문입니다.
+* 가장 일반적으로 Lambda식을 사용하기 때문에 처음 접할시 파악에 어려움을 겪을 수 있습니다.
+* 비동기 처리를 하기 때문에 Code의 실행 흐름이 파악이 안될 수 있습니다.
+* 아래의 그림은 Task를 사용한 한 프로그램의 흐름도입니다.
+
+![](../../.gitbook/assets/image%20%28163%29.png)
 {% endtab %}
 
 {% tab title="Second Tab" %}
