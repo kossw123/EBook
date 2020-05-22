@@ -2,7 +2,7 @@
 description: Explanation Photon + FireBase Network Game
 ---
 
-# Explanation Photon + FireBase Network Game
+# Explanation Photon + FireBase Network Game - 작성중
 
 ## 무엇을 하려고 하는가?
 
@@ -64,6 +64,21 @@ description: Explanation Photon + FireBase Network Game
 * Room은 식별할 수 있는 이름을 가지고 있습니다.
 * 가득차 있거나, 닫혀있지 않는 이상 이름을 가지고 Room에 참여할 수 있습니다.
 * Master Server에서는 App으로 Room의 목록을 제공합니다.
+{% endtab %}
+{% endtabs %}
+
+
+
+## Firebase
+
+{% tabs %}
+{% tab title="개요" %}
+* 보통 Server를 사용하기 위해 이전 내용을 불러오기 위해 저장소가 필요합니다.
+* Firebase는 이런 저장소를 
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
 {% endtab %}
 {% endtabs %}
 
