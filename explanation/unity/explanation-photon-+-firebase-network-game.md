@@ -2,7 +2,7 @@
 description: Explanation Photon + FireBase Network Game
 ---
 
-# Explanation Photon + FireBase Network Game - 작성중
+# Explanation Photon + FireBase Network Game
 
 ## 무엇을 하려고 하는가?
 
@@ -73,14 +73,34 @@ description: Explanation Photon + FireBase Network Game
 
 {% tabs %}
 {% tab title="개요" %}
-* 보통 Server를 사용하기 위해 이전 내용을 불러오기 위해 저장소가 필요합니다.
-* Firebase는 이런 저장소를 
+* 보통 Server를 사용하기 위해 이전 내용을 불러오기 위해 저장소, 인증, DB tool과 같은 것들이 필요합니다.
+* Firebase는 이런 저장소를 추가해주고 인증, DB, 저장소 등과 같은 기능들을 한번에 제공해 줍니다.
+
+![Firebase&#xC758; &#xB3C4;&#xC785;&#xC73C;&#xB85C; &#xC778;&#xD55C; &#xC791;&#xC5C5;&#xB7C9; &#xAC10;&#xC18C; - realm academy](../../.gitbook/assets/image%20%28161%29.png)
+
+* Firebase를 사용하면 위의 그림과 같이 Server 개발에 필요한 작업량의 감소를 할 수 있습니다.
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="Firebase란?" %}
+* Unity와 같이 하나의 Project에서 여러 기능들을 사용하여 최종적으로 통합하여 결과를 출력해주는 프로그램입니다.
+* 그러한 Firebase의 Project는 아래와 같이 정의할 수 있습니다.
+  * Firebase의 Project = 추가적인 관련 구성 및 서비스 + GCP\(Google Cloud Platform\)
+* 
+{% embed url="https://firebase.google.com/docs/projects/learn-more?authuser=0" %}
+{% endtab %}
 
+{% tab title="Authentication" %}
+* Sample Project에서는 Firebase의 Authentication\(인증\)기능을 사용하여, 아래의 기능들을 활성화 합니다.
+  * Login 하기 위한 ID, Password 등록합니다.
+  * Login 제공업체 선택을 하여 Login 방식 선택\(PlayStore, Facebook, google 등\)합니다.
+* 만약 Authentication\(인증\)이 아닌 Game 내부적인 내용을 저장하고 싶다면, 따로 json type의 저장파일을 사용하여, 직렬화/역직렬화를 통해 저장, 불러오기 기능을 작성할 수 있습니다.
 {% endtab %}
 {% endtabs %}
 
+## 마치며
 
+* 해당 문서에서는 개요 및 설명을 통해 Firebase, Photon에 관련한 설명을 했다면 기술문서\(Technical reference\)에서는 관련된 함수를 통해 좀 더 Code에 대한 이해를 더하는 문서가 될 것 같습니다.
+* 그렇기 때문에 여기 까지 읽으셨다면 기술문서\(Technical reference\)를 읽으시는 것을 권장합니다.
+
+{% page-ref page="../../technical-reference/unity/tr-photon-+-firebase-network-game.md" %}
 
