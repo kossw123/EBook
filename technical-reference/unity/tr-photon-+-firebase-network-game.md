@@ -35,8 +35,6 @@ DependencyStatus.Available
 {% endtab %}
 
 {% tab title="Method" %}
-
-
 {% code title="AuthManager.cs" %}
 ```csharp
 FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith()
@@ -47,6 +45,12 @@ FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith()
   * 1. FirebaseApp에 먼저 접근합니다.
     2. FirebaseApp Class의 CheckAndFixDependenciesAsync\(\) 함수에 접근합니다.
     3. CheckAndFixDependenciesAsync\(\) 함수는 Task Class type이기 때문에 System.Threading.Tasks namespace에 접근하여 Task Class의 ContinueWith\(\) 함수를 사용합니다.
+  * 해당 함수는 Firebase에 필요한 모든 종속성이 시스템에 존재하는지, 필요한 상태인지, 비동기적으로 확인하고 그렇지 않는 경우에는 수정하려고 시도합니다.
+    * 종속성?
+      * **데이터의 구조가 프로그램 데이터 저장방식을 결정하고, 반대로 프로그램의 데이터 저장방식에 따라 데이터의 저장방식이 바뀌는 것을 의미합니다.**
+      * **데이터 구조가 변경되면, 프로그램까지 같이 바뀌는 비용이 들기 때문에 , 프로그램 개발과 유지보수가 어려워지는 문제점이 있습니다.**
+      * 여기서는 ContinueWith\(\) 함수의 Chaining CallbackMethod의 내용에 따라, 비동기 로 해당 내용을 실행합니다.
+  * 
 {% endtab %}
 {% endtabs %}
 
@@ -54,5 +58,36 @@ FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith()
 
 
 
-## 
+## Thread
+
+* Task Class를 알기 위해서 Threading Class에 관하여 먼저 정리하겠습니다.
+
+{% tabs %}
+{% tab title="개요" %}
+* 보통 인터넷을 하면서, 노래를 듣고, 동시에 작업을 할 수 있습니다. 이러한 작업들을 Process라고 합니다.
+* 이러한 Process는 하나 이상의 Thread로 이루어지고, 독립적인 실행 경로이며, 다른 Thread와 동시에 실행할 수 있는 기능입니다.
+* 단일 Thread를 실행하고 거기서 다른 Thread를 생성하고, 실행하여 Multi Thread를 가능하게 합니다.
+
+![Thread &#xACFC;&#xC815;](../../.gitbook/assets/image%20%28160%29.png)
+
+{% embed url="https://wergia.tistory.com/187" caption="Thread에 대한 개념" %}
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
+
+## Task Class
+
+* * 
+{% tabs %}
+{% tab title="개요" %}
+* Task Class를 알기 위해서 Threading Class에 관하여 
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
 

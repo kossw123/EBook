@@ -12,7 +12,7 @@ description: Explanation Photon + FireBase Network Game
 
 ## Client - Server Model
 
-![Client - Server Model](../../.gitbook/assets/image%20%28160%29.png)
+![Client - Server Model](../../.gitbook/assets/image%20%28161%29.png)
 
 * 다른 사람에게 자신의 행동에 대한 정보\(자신의 위치, 아이템, 상태 등\)을 보낼 때 쓰이는 Model입니다.
 * 보통 Server를 사용하는 모든 프로그램들은 위의 형태와 같습니다.
@@ -76,7 +76,7 @@ description: Explanation Photon + FireBase Network Game
 * 보통 Server를 사용하기 위해 이전 내용을 불러오기 위해 저장소, 인증, DB tool과 같은 것들이 필요합니다.
 * Firebase는 이런 저장소를 추가해주고 인증, DB, 저장소 등과 같은 기능들을 한번에 제공해 줍니다.
 
-![Firebase&#xC758; &#xB3C4;&#xC785;&#xC73C;&#xB85C; &#xC778;&#xD55C; &#xC791;&#xC5C5;&#xB7C9; &#xAC10;&#xC18C; - realm academy](../../.gitbook/assets/image%20%28161%29.png)
+![Firebase&#xC758; &#xB3C4;&#xC785;&#xC73C;&#xB85C; &#xC778;&#xD55C; &#xC791;&#xC5C5;&#xB7C9; &#xAC10;&#xC18C; - realm academy](../../.gitbook/assets/image%20%28162%29.png)
 
 * Firebase를 사용하면 위의 그림과 같이 Server 개발에 필요한 작업량의 감소를 할 수 있습니다.
 {% endtab %}
