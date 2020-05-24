@@ -7,6 +7,7 @@ description: TR Photon + FireBase Network Game
 ## 무엇을 하려고 하는가?
 
 * Script에 사용된 Photon, Firebase에 관련한 함수 및 기능들을 보며, Code에 대한 이해를 돕습니다.
+* 해설문서\(Explanation\)에 작성하려고 했지만 해당 문서와 해설문서의 성질이 맞지 않다고 생각했기에 기술문서\(Technical reference\)에 작성했습니다.
 
 ## Firebase 관련 함수
 
