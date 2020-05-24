@@ -123,12 +123,14 @@ firebaseAuth.SignInWithEmailAndPasswordAsync().ContinueWithOnMainThread();
 * Firebase에서는 Authentication\(인증\) 기능만을 사용했다면 여기서는 Photon에서 제공하는 API를 사용하여 플레이어 간의 동기화를 제공합니다.
 {% endtab %}
 
-{% tab title="Variable" %}
-```text
+{% tab title="LobbyManager Variable" %}
+{% code title="LobbyManager.cs" %}
+```csharp
 MonoBehaviourPunCallbacks Class
 
 PhotonNetwork.GameVersion = gameVersion;
 ```
+{% endcode %}
 
 * MonoBehaviourPunCallbacks : PUN2를 자동으로 감지할 수 있는 MonoBehaviour입니다.
   * 이를 사용하기 위해서는 기존의 MonoBehaviour를 상속받는 기본 Script의 Main Class를 MonoBehaviourPunCallbacks로 교체해야합니다.
@@ -144,7 +146,8 @@ PhotonNetwork.GameVersion = gameVersion;
   * 때문에, 이 GameVersion이 맞지 않는다면, 다른 그룹으로 간주하여, 멀티플레이가 안될 수 있습니다.
 {% endtab %}
 
-{% tab title="Method" %}
+{% tab title="LobbyManager Method" %}
+{% code title="LobbyManager.cs" %}
 ```csharp
 1. PhotonNetwork.ConnectUsingSettings();
 2. void OnConnectedToMaster()
@@ -153,7 +156,9 @@ PhotonNetwork.GameVersion = gameVersion;
 5. void OnJoinRandomFailed(short returnCode, string message)
 6. PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 2 });
 7. void OnJoinedRoom()
+8. PhotonNetwork.LoadLevel("Main");
 ```
+{% endcode %}
 
 * PhotonNetwork.ConnectUsingSettings\(\) 
   * 이 함수는 Editor에서 설정한 PhotonServerSetting에 접근하여 Server/Cloud Settings의 항목을 검사하고 해당 함수가 끝나면 자동적으로 OnConnectedToMaster\(\) 함수로 접근합니다.
@@ -175,8 +180,17 @@ PhotonNetwork.GameVersion = gameVersion;
   * 이 함수는 주어진 이름으로 방을 생성하지만, 이미 있는 이름이라면 실패합니다.
   * 주어진 이름이 null이라면 Server가 대신 이름을 생성합니다.
   * Master Server에서만 호출할 수 있습니다.
+  * **Lobby는 필요에 따라 자동적으로 생성됩니다.**
+  * 필요에 따라 Option을 줄 수 있습니다.
+* void OnJoinedRoom\(\)
+  * Room에 입장시 모든 Client에서 호출이 됩니다.
+  * 입장을 했다면 Scene의 전환이 필요한데 이는 PhotonNetwork.LoadLevel\(\) 함수를 이용하여 전환합니다.
+* PhotonNetwork.LoadLevel\(\)
+  * Scene을 Load하는데 기존의 SceneManager을 사용하여 LoadLevel한다면 해당 Client에서만 전환되고, 다른 Client에서는 전환이 안되기 때문에, 해당 함수를 이용하여 Scene을 전환합니다.
 {% endtab %}
 {% endtabs %}
+
+## Thread Class
 
 * Task Class를 알기 위해서 Threading Class에 관하여 먼저 정리하겠습니다.
 
