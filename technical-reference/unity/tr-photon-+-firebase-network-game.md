@@ -55,7 +55,38 @@ FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith()
     * 종속성?
       * **데이터의 구조가 프로그램 데이터 저장방식을 결정하고, 반대로 프로그램의 데이터 저장방식에 따라 데이터의 저장방식이 바뀌는 것을 의미합니다.**
       * **데이터 구조가 변경되면, 프로그램까지 같이 바뀌는 비용이 들기 때문에 , 프로그램 개발과 유지보수가 어려워지는 문제점이 있습니다.**
-      * 여기서는 ContinueWith\(\) 함수의 Chaining CallbackMethod의 내용에 따라, 비동기 로 해당 내용을 실행합니다.
+      * 여기서는 ContinueWith\(\) 함수의 Chaining Callback Method의 내용에 따라, 비동기 로 해당 내용을 실행합니다.
+* continuation
+  * Lambda식을 사용하여 ContinueWith\(\) 함수에 Callback Method를 넘깁니다.
+  * 이때 사용된 continuation: 이라는 문장은 named parameter로써 일반적으로 parameter를 넘길 때 순차적으로 넘기지만, 위치와 상관없이 named parameter를 지정하여 전달할 수 있도록 합니다.
+  * ContinueWith\(\) 함수의 parameter는 아래의 그림과 같기 때문에 쓰던지 안쓰던지 상관은 없지만서도, named parameter를 사용하는 의미는 좀 더 모호성이 없는 전달을 위함이라고 생각됩니다.
+  * 보기 쉽게 Code를 정렬하여 보자면 아래와 같습니다.
+
+![ContinueWith\(\) &#xD568;&#xC218;&#xC758; parameter](../../.gitbook/assets/image%20%28165%29.png)
+
+```csharp
+FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(
+    continuationAction: task => { 
+                                    var result = task.Result;
+                                    if(result != DependencyStatus.Available)
+                                    {
+                                        Debug.Log(result.ToString());
+                                        IsFirebaseReady = false;
+                                    }
+                                    else
+                                    {
+                                        IsFirebaseReady = true;
+                                        firebaseApp = FirebaseApp.DefaultInstance;
+                                        firebaseAuth = FirebaseAuth.DefaultInstance;
+                                    }
+                                    signInButton.interactable = IsFirebaseReady;
+                                }
+    );
+```
+
+* _named parameter를 사용하여 넘길 parameter를 지정했는데, 뒤에 task 변수는 약간 생소합니다. Lambda식을 사용한 것은 맞지만, =&gt;의 좌항에는 parameter 변수가 들어가야 하는데, 딱히 괄호를 치고 parameter 변수를 넣지 않아도 성립합니다._
+*  그 후에 Task Class 변수인 task를 선언하고 Action Delegate의 내용으로 위의 내용을 넣습니다.
+* 무명함수\(Anonymous Method\)를 사용하기 위해 C\#에서 미리 선언돼있는, Action Delegate이기 때문에 반환값을 필요없고, 내용만 넣습니다.
 
 {% code title="AuthManager.cs" %}
 ```csharp
@@ -68,7 +99,8 @@ firebaseAuth.SignInWithEmailAndPasswordAsync().ContinueWithOnMainThread();
     2. FirebaseAuth Class의 SignInWithEmailAndPasswordAsync\(\)에 접근합니다.
     3. SignInWithEmailAndPasswordAsync\(\) 함수는 Task Class로 구성되어 있기 때문에 Chaining할 Method를 등록해야 합니다.
   * 해당 함수는 Email이나, Password를 사용하여 Login을 가능하게 하는 함수입니다.
-    * 다른 방식으로 SignInWithCredentialAsync\(\) 함수가 존재하는데 똑같이 Task Class를 사용하기 때문에 Continue Task Method를 사용하여 작업이 완료되면 실행될 다음 Method를 추가합니다.
+    * 똑같이 Task Class를 사용하기 때문에 Continue Task Method를 사용하여 작업이 완료되면 실행될 다음 Method를 추가합니다.
+    * Google, Apple 계정을 이용하여 외부 서비스에서 Login이 가능하게 하는 함수인 SignInWithCredentialAsync\(\) 함수도 있습니다.
 {% endtab %}
 {% endtabs %}
 
