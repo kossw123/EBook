@@ -126,9 +126,12 @@ namespace ConsoleApp1 {
 
 {% tabs %}
 {% tab title="개요" %}
-* Thread를 가져와서 작업을 비동기 처리합니다.
+* Task라는 것은 작성자가 하려고 하는 작업, 작업의 단위를 뜻합니다.
+* Task Class를 사용한다는 것은 Thread를 가져와서 작업을 비동기 처리한다는 것을 의미합니다.
+* Task Class을 사용하기 위해서는 주로  Action Delegate를 사용하여 Instance를 생성해야 합니다.
 * 값을 반환하지 않기 때문에 Return 값이 필요하지 않습니다.
-  * 이는 Instance를 생성할 때 반환값이 필요없는 Action Delegate를 넘겨 받기 때문입니다.
+  * **이는 Instance를 생성할 때 반환값이 필요없는 Action Delegate를 넘겨 받기 때문입니다.**
+  * 만약 값을 반환하는 Task Class를 사용하려면 Task&lt;TResult&gt; Class를 사용하면 됩니다.
 * 가장 일반적으로 Lambda식을 사용하기 때문에 처음 접할시 파악에 어려움을 겪을 수 있습니다.
 * 비동기 처리를 하기 때문에 Code의 실행 흐름이 파악이 안될 수 있습니다.
 * 아래의 그림은 Task를 사용한 한 프로그램의 흐름도입니다.
@@ -136,8 +139,33 @@ namespace ConsoleApp1 {
 ![](../../.gitbook/assets/image%20%28163%29.png)
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="Task 기본 예제" %}
+* 아래의 Code는 Task Class를 사용한 Action Delegate 실행합니다.
 
+```csharp
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+class Program {
+    public static void Main(string[] args) {
+        Action Someaction = () => {
+            Thread.Sleep(1000);
+            Console.WriteLine(string.Format("Printed asynchronously!"));
+        };
+
+        Task task = new Task(Someaction);
+        task.Start();
+        Console.WriteLine("Printed synchronously");
+
+        task.Wait();
+    }
+}
+```
+
+* 출력 결과 task.Start\(\)를 통해 Task Class 변수에서 생성한 Instance는 Someaction이라는 Action Delegate를 가지고 실행합니다. 
+* Thread.Sleep\(1000\) 문장을 통해 1초 뒤 실행하도록 구성되어 있습니다.
+* task.Wait\(\) 함수를 통해 작업이 완료 될 때 까지 대기하고 작업이 끝났다면 출력 하도록 합니다.
 {% endtab %}
 {% endtabs %}
 
