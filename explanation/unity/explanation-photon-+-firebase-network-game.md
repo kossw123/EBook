@@ -2,7 +2,7 @@
 description: Explanation Photon + FireBase Network Game
 ---
 
-# Explanation Photon + FireBase Network Game - 작성중
+# Explanation Photon + FireBase Network Game
 
 ## 무엇을 하려고 하는가?
 
@@ -21,7 +21,7 @@ description: Explanation Photon + FireBase Network Game
 ## Photon\(PUN2\)
 
 {% tabs %}
-{% tab title="Photon, PUN2 Package란?" %}
+{% tab title="개요" %}
 * PUN2는 멀티플레이를 위한 Unity Package입니다.
 * 우리가 알고 있는 Client - Server Model을 가지고 있고, PUN2는 Room이라는 공간에 네트워크를 따라 들어온 Client들을 동기화 시켜줍니다.
 * Photon은 Cloud 형식으로 제공됩니다.
@@ -65,48 +65,28 @@ description: Explanation Photon + FireBase Network Game
 * 가득차 있거나, 닫혀있지 않는 이상 이름을 가지고 Room에 참여할 수 있습니다.
 * Master Server에서는 App으로 Room의 목록을 제공합니다.
 {% endtab %}
-
-{% tab title="동기화 하는 방법" %}
-* PUN2 Unity Package에서는 플레이어간의 동기화를 Photon View.cs라는 Script Component를 사용하여 동기화를 감지합니다.
-  * 본질적으로 Unity는 Component pattern을 가지고 있기 때문에, 이를 사용하려면 Component로 직접 Inspector에 추가해야 하는 부분입니다.
-* 내부적으로 감지하기 때문에, 이에 대해서 심층적인 정보를 원하신다면 아래의 링크를 보시면 됩니다.
-
-{% embed url="https://doc-api.photonengine.com/ko-kr/pun/current/class\_photon\_view.html" %}
-
-* Logic이 어찌 됐든 Photon을 사용하여 플레이어 간의 동기화를 위해서는 PhotonView, PhotonTransformView 등과 같 Script Component를 사용하여 동기화를 합니다.
-* 이에 대한 설명은 해설문서\(Explanation\)과 성질이 맞지 않기 때문에 기술문서\(Technical reference\)에서 다루도록 하겠습니다.
-{% endtab %}
 {% endtabs %}
+
+
 
 ## Firebase
 
 {% tabs %}
-{% tab title="Firebase란?" %}
+{% tab title="개요" %}
 * 보통 Server를 사용하기 위해 이전 내용을 불러오기 위해 저장소, 인증, DB tool과 같은 것들이 필요합니다.
 * Firebase는 이런 저장소를 추가해주고 인증, DB, 저장소 등과 같은 기능들을 한번에 제공해 줍니다.
 
 ![Firebase&#xC758; &#xB3C4;&#xC785;&#xC73C;&#xB85C; &#xC778;&#xD55C; &#xC791;&#xC5C5;&#xB7C9; &#xAC10;&#xC18C; - realm academy](../../.gitbook/assets/image%20%28164%29.png)
 
 * Firebase를 사용하면 위의 그림과 같이 Server 개발에 필요한 작업량의 감소를 할 수 있습니다.
+{% endtab %}
+
+{% tab title="Firebase란?" %}
 * Unity와 같이 하나의 Project에서 여러 기능들을 사용하여 최종적으로 통합하여 결과를 출력해주는 프로그램입니다.
 * 그러한 Firebase의 Project는 아래와 같이 정의할 수 있습니다.
   * Firebase의 Project = 추가적인 관련 구성 및 서비스 + GCP\(Google Cloud Platform\)
-
+* 
 {% embed url="https://firebase.google.com/docs/projects/learn-more?authuser=0" %}
-{% endtab %}
-
-{% tab title="Firebase 사용하는 방법" %}
-* 기본적으로 Firebase에서 제공하는 SDK를 해당 Project에 다운을 받아야 합니다.
-* 다운을 받으면 자동적으로 연동이 되는데, 이를 사용하기 위해서는 Script부분의 도움이 필요합니다.
-* 아래의 링크는 Firebase 관련 API Document입니다.
-
-{% embed url="https://firebase.google.com/docs/reference/unity?hl=ko" %}
-
-* 이 Document를 사용하여 실제적으로 Firebase의 기능과 Unity 간의 연동이 필요합니다.
-* 여기서 쓰는 FirebaseApp, FirebaseAuth, FirebaseUser는 아래의 namespace에 존재합니다.
-  * using Firebase; 
-  * using Firebase.Auth; 
-  * using Firebase.Extensions;
 {% endtab %}
 
 {% tab title="Authentication" %}

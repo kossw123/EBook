@@ -97,7 +97,8 @@ PhotonNetwork.GameVersion = gameVersion;
 * PhotonNetwork.GameVersion = gameVersion
   * 우리가 접할 수 있는 Game에서는 Version이라는 것이 있습니다.
   * 이를 통해 새로운 Content들을 업데이트 하고, 이전 프로그램과 구분 짓기 위해서 만듭니다.
-  * 구분 짓는 동시에, Version변수를 제대로 입력하지 않는다면 Game 자체의 프로그램이 다른것으로 해석되어 실행아 안되거나, 오류를 일으키기도 합니다.
+  * Photon에서는 사용자들을 호환되는 Version으로 그룹지을 수 있습니다.
+  * 때문에, 이 GameVersion이 맞지 않는다면, 다른 그룹으로 간주하여, 멀티플레이가 안될 수 있습니다.
 {% endtab %}
 {% endtabs %}
 
