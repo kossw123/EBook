@@ -100,6 +100,23 @@ PhotonNetwork.GameVersion = gameVersion;
   * Photon에서는 사용자들을 호환되는 Version으로 그룹지을 수 있습니다.
   * 때문에, 이 GameVersion이 맞지 않는다면, 다른 그룹으로 간주하여, 멀티플레이가 안될 수 있습니다.
 {% endtab %}
+
+{% tab title="Method" %}
+
+
+```csharp
+1. PhotonNetwork.ConnectUsingSettings();
+2. void OnConnectedToMaster()
+3. void OnDisconnected(DisconnectCause cause)
+4. PhotonNetwork.JoinRandomRoom();
+5. void OnJoinRandomFailed(short returnCode, string message)
+6. PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 2 });
+7. void OnJoinedRoom()
+```
+
+* PhotonNetwork.ConnectUsingSettings\(\) 
+  * PhotonNetwork Class를 사용하여 
+{% endtab %}
 {% endtabs %}
 
 * Task Class를 알기 위해서 Threading Class에 관하여 먼저 정리하겠습니다.
