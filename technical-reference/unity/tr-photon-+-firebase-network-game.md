@@ -84,9 +84,13 @@ FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(
     );
 ```
 
-* _named parameter를 사용하여 넘길 parameter를 지정했는데, 뒤에 task 변수는 약간 생소합니다. Lambda식을 사용한 것은 맞지만, =&gt;의 좌항에는 parameter 변수가 들어가야 하는데, 딱히 괄호를 치고 parameter 변수를 넣지 않아도 성립합니다._
+_named parameter를 사용하여 넘길 parameter를 지정했는데, 뒤에 task 변수는 약간 생소합니다. Lambda식을 사용한 것은 맞지만, =&gt;의 좌항에는 parameter 변수가 들어가야 하는데, 딱히 괄호를 치고 parameter 변수를 넣지 않아도 성립합니다._
+
+\_\_
+
 *  그 후에 Task Class 변수인 task를 선언하고 Action Delegate의 내용으로 위의 내용을 넣습니다.
 * 무명함수\(Anonymous Method\)를 사용하기 위해 C\#에서 미리 선언돼있는, Action Delegate이기 때문에 반환값을 필요없고, 내용만 넣습니다.
+  * 이 의미는 ContinueWith\(\) 함수를 사용하여 해당 구문이 끝났을 때 실행될 내용을 등록하는 것입니다.
 
 {% code title="AuthManager.cs" %}
 ```csharp
