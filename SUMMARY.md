@@ -30,7 +30,7 @@
     * [Explanation Melee Attack](explanation/unity/explanation-melee-attack.md)
     * [Explanation TriviaGame TDD](explanation/unity/explanation-triviagame-tdd.md)
     * [Explanation Reusable UI System](explanation/unity/explanation-reusable-ui-system.md)
-    * [Explanation Photon + FireBase Network Game](explanation/unity/explanation-photon-+-firebase-network-game.md)
+    * [Explanation Photon + FireBase Network Game - 작성중](explanation/unity/explanation-photon-+-firebase-network-game.md)
 * [Technical reference](technical-reference/README.md)
   * [Unity](technical-reference/unity/README.md)
     * [TR PhysicsObject](technical-reference/unity/tr-physicsobject.md)

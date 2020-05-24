@@ -12,6 +12,11 @@ description: TR Photon + FireBase Network Game
 ## Firebase 관련 함수
 
 {% tabs %}
+{% tab title="Firebase는 어떤 역할인가?" %}
+* Firebase는 외부 저장소 역할과, 인증 역할 등등을 담당하기 때문에, Photon Server간의 동기화가 필요없습니다.
+* 그렇기 때문에, Firebase를 통해 Authentication\(인증\)기능만 사용하여 처음에 Login 기능을 제외한 모든 Logic이나 동기화는 Photon이 제공하는 API를 사용해야 합니다.
+{% endtab %}
+
 {% tab title="Variable" %}
 {% code title="AuthManager.cs" %}
 ```csharp
@@ -51,22 +56,50 @@ FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith()
       * **데이터의 구조가 프로그램 데이터 저장방식을 결정하고, 반대로 프로그램의 데이터 저장방식에 따라 데이터의 저장방식이 바뀌는 것을 의미합니다.**
       * **데이터 구조가 변경되면, 프로그램까지 같이 바뀌는 비용이 들기 때문에 , 프로그램 개발과 유지보수가 어려워지는 문제점이 있습니다.**
       * 여기서는 ContinueWith\(\) 함수의 Chaining CallbackMethod의 내용에 따라, 비동기 로 해당 내용을 실행합니다.
+
+{% code title="AuthManager.cs" %}
+```csharp
+firebaseAuth.SignInWithEmailAndPasswordAsync().ContinueWithOnMainThread();
+```
+{% endcode %}
+
+* firebaseAuth.SignInWithEmailAndPasswordAsync\(\).ContinueWithOnMainThread\(\)
+  * 1. FirebaseAuth Class에 접근합니다.
+    2. FirebaseAuth Class의 SignInWithEmailAndPasswordAsync\(\)에 접근합니다.
+    3. SignInWithEmailAndPasswordAsync\(\) 함수는 Task Class로 구성되어 있기 때문에 Chaining할 Method를 등록해야 합니다.
+  * 해당 함수는 Email이나, Password를 사용하여 Login을 가능하게 하는 함수입니다.
+    * 다른 방식으로 SignInWithCredentialAsync\(\) 함수가 존재하는데 똑같이 Task Class를 사용하기 때문에 Continue Task Method를 사용하여 작업이 완료되면 실행될 다음 Method를 추가합니다.
 {% endtab %}
 {% endtabs %}
 
 ## Photon 관련 함수
 
 {% tabs %}
-{% tab title="First Tab" %}
-
+{% tab title="Photon은 어떤 역할인가?" %}
+* Photon은 Server의 역할을 하기 때문에, 위에서 사용한 Firebase와는 다른 구조를 가지고 있습니다.
+* Firebase에서는 Authentication\(인증\) 기능만을 사용했다면 여기서는 Photon에서 제공하는 API를 사용하여 플레이어 간의 동기화를 제공합니다.
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="Variable" %}
+```text
+MonoBehaviourPunCallbacks Class
 
+PhotonNetwork.GameVersion = gameVersion;
+```
+
+* MonoBehaviourPunCallbacks : PUN2를 자동으로 감지할 수 있는 MonoBehaviour입니다.
+  * 이를 사용하기 위해서는 기존의 MonoBehaviour를 상속받는 기본 Script의 Main Class를 MonoBehaviourPunCallbacks로 교체해야합니다.
+  * 기존의 MonoBehaviour Class는 Unity가 기본적으로 상속받아야할 Class이지만, 이는 기본적으로 Unity 자체적으로 제공되기 때문에 Photon과는 맞지 않는 함수들이 많습니다.
+  * 이러한 이유 때문에 Photon에서는 MonoBehaviourPunCallbacks이라는 Class를 제공함으로써 Photon을 사용할 수 있는 Class를 제공합니다.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+* PhotonNetwork.GameVersion = gameVersion
+  * 우리가 접할 수 있는 Game에서는 Version이라는 것이 있습니다.
+  * 이를 통해 새로운 Content들을 업데이트 하고, 이전 프로그램과 구분 짓기 위해서 만듭니다.
+  * 구분 짓는 동시에, Version변수를 제대로 입력하지 않는다면 Game 자체의 프로그램이 다른것으로 해석되어 실행아 안되거나, 오류를 일으키기도 합니다.
 {% endtab %}
 {% endtabs %}
-
-## Thread
 
 * Task Class를 알기 위해서 Threading Class에 관하여 먼저 정리하겠습니다.
 
