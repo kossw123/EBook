@@ -105,6 +105,13 @@ firebaseAuth.SignInWithEmailAndPasswordAsync().ContinueWithOnMainThread();
   * 해당 함수는 Email이나, Password를 사용하여 Login을 가능하게 하는 함수입니다.
     * 똑같이 Task Class를 사용하기 때문에 Continue Task Method를 사용하여 작업이 완료되면 실행될 다음 Method를 추가합니다.
     * Google, Apple 계정을 이용하여 외부 서비스에서 Login이 가능하게 하는 함수인 SignInWithCredentialAsync\(\) 함수도 있습니다.
+  * ContinueWithOnMainThread\(\)
+    * 해당 함수는 Task Class의 ContinueWith\(\) 함수와 동일하게 기능을 하지만, Main Thread에서 작동한다는 차이점을 가지고 있습니다.
+    * Sample Project는 Unity Version에 따른 Error 때문에 사용했다고 합니다.
+    * 하지만, 애초에 Task Class는 연속 작업의 비동기 처리를 위해 작성되있기 때문에, Thread를 이용하여 작업의 분산화를 시켰지만 처음에 시작하는 Thread인 MainThread에서 실행하는 것이 실행속도가 좀 더 빠르기 때문에, 해당 함수를 사용함에 따라 좀 더 신중하게 사용할 필요가 있을 듯 합니다.
+      * 해당 부분은 OS에 관련된 영역이기 때문에 참고자료만 링크하겠습니다.
+
+{% embed url="https://thecodingmachine.tistory.com/1" caption="Threading에 관련한 개념과 사례 및 구조를 설명한 개인적으로 추천하는 참고자료 입니다." %}
 {% endtab %}
 {% endtabs %}
 
