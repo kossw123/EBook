@@ -145,8 +145,6 @@ PhotonNetwork.GameVersion = gameVersion;
 {% endtab %}
 
 {% tab title="Method" %}
-
-
 ```csharp
 1. PhotonNetwork.ConnectUsingSettings();
 2. void OnConnectedToMaster()
@@ -158,7 +156,25 @@ PhotonNetwork.GameVersion = gameVersion;
 ```
 
 * PhotonNetwork.ConnectUsingSettings\(\) 
-  * PhotonNetwork Class를 사용하여 
+  * 이 함수는 Editor에서 설정한 PhotonServerSetting에 접근하여 Server/Cloud Settings의 항목을 검사하고 해당 함수가 끝나면 자동적으로 OnConnectedToMaster\(\) 함수로 접근합니다.
+* void OnConnectedToMaster\(\)
+  * Master Server에 접근할 수 있는 함수입니다.
+  * Master Server에 연결이 되고, 인증이 되면 자동적으로 호출합니다.
+    * 인증 부분은 ConnectUsingSettings\(\) 함수로 PhotonSeverSetting 접근하여 검사합니다.
+* void OnDisconnected\(DisconnectCause cause\)
+  * 접속을 시도 했지만 실패한 경우 parameter를 통해 실패한 변수를 받습니다.
+* PhotonNetwork.JoinRandomRoom\(\)
+  * Master Server에서의 인증 및 연결이 끝났기 때문에 GameServer에서 Room, Lobby를 생성합니다.
+  * 이 함수는 GameServer에서 감지한 RandomRoom에 자동으로 접속하는 함수입니다.
+  * 빈방이 없다면 자동적으로 실패하여 OnJoinRandomFailed\(\) 함수를 실행합니다.
+  * **맨 처음에는 방이 없기 때문에 의도적으로 이 함수에 접근하여 실패할 경우 방을 만들어 주는 행동을 작성합니다.**
+* void OnJoinRandomFailed\(short returnCode, string message\)
+  * 빈방이 없는 경우 자동적으로 실행하는 함수입니다.
+  * CPhotonNetwork.CreateRoom\(\) 함수를 통해 방을 생성합니다.
+* PhotonNetwork.CreateRoom\(\)
+  * 이 함수는 주어진 이름으로 방을 생성하지만, 이미 있는 이름이라면 실패합니다.
+  * 주어진 이름이 null이라면 Server가 대신 이름을 생성합니다.
+  * Master Server에서만 호출할 수 있습니다.
 {% endtab %}
 {% endtabs %}
 

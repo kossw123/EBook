@@ -33,7 +33,9 @@ description: Explanation Photon + FireBase Network Game
       2. 각 지역의 Photon Server인 Master Server로 접속합니다.
          1. Master Server는 해당 지역내의 모든 Server에 대해 알고있습니다.
          2. Photon.Realtime namespace의 Class에 접근하여 Room에 관련된 함수를 가져 올 수 있습니다.
+         3. Master Server는 Lobby, Room을 생성하는 부분을 담당합니다.
       3. Game Server에서 동기화를 하여 멀티플레이를 할 수 있도록 합니다.
+         1. Game Server는 Room에 입장한 순간부터 Server를 사용하여 플레이어간의 동기화를 합니다.
 
 ![Photon Cloud&#xAC00; &#xC9C0;&#xC5ED;&#xC73C;&#xB85C; &#xC811;&#xADFC;&#xD558;&#xB294; &#xBC29;&#xBC95;](../../.gitbook/assets/image%20%28155%29.png)
 {% endtab %}
