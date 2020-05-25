@@ -225,6 +225,8 @@ PhotonNetwork.GameVersion = gameVersion;
 * `[PunRPC] void RPCUpdateScoreText()`
   * `[PunRPC]`
     * 원격으로 Client의 함수를 호출하기 위해 해당 속성을 적용해야합니다.
+      * 이때 Client는 전체 혹은 다른 특정 Client를 특정할 수 있습니다.
+      * 이를 사용하기 위해서는 `PhotonView.RPC()` 함수를 이용해야 합니다.
     * 적용하기 위해 Attribute를 적용과 PhotonView Component를 사용해야 합니다.
   * `void RPCUpdateScoreText()`
     * 해당 함수는 PUN2 Class가 아닌 사용자 함수지만, PunRPC Attribute를 사용하여 원격으로 호출한다는 것을 알리기 위해 정리 했습니다.

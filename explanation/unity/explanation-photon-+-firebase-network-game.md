@@ -76,7 +76,18 @@ description: Explanation Photon + FireBase Network Game
 {% embed url="https://doc-api.photonengine.com/ko-kr/pun/current/class\_photon\_view.html" %}
 
 * Logic이 어찌 됐든 Photon을 사용하여 플레이어 간의 동기화를 위해서는 PhotonView, PhotonTransformView 등과 같 Script Component를 사용하여 동기화를 합니다.
-* 이에 대한 설명은 해설문서\(Explanation\)과 성질이 맞지 않기 때문에 기술문서\(Technical reference\)에서 다루도록 하겠습니다.
+{% endtab %}
+
+{% tab title="PhotonView" %}
+* Photon에서는 네트워크에서 동작하는 GameObject를 쉽게 생성할 수 있습니다.
+  * 생성된 GameObject에 PhotonView Component를 추가하면 네트워크에서 동작합니다.
+
+![Player prefab&#xC758; Inspector](../../.gitbook/assets/image%20%28167%29.png)
+
+* 위의 그림을 보면 PhotonView, Photon Transform View Component를 추가하여 동기화를 하고 있습니다.
+* PhotonView Compoenent는 네트워크 상의 Object와 정보를 동기화 하기 위해 사용된 것입니다.
+  * Owner : 
+* Photon Transform Vierw Component는 네트워크 상의 Object와 위치정보를 동기화 하기 위해 사용된 것입니다.
 {% endtab %}
 {% endtabs %}
 
