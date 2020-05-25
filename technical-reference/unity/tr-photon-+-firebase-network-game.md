@@ -232,8 +232,12 @@ PhotonNetwork.GameVersion = gameVersion;
   * `void RPCUpdateScoreText()`
     * 해당 함수는 PUN2 Class가 아닌 사용자 함수지만, PunRPC Attribute를 사용하여 원격으로 호출한다는 것을 알리기 위해 정리 했습니다.
     * Logic은 간단하게 string parameter를 2개 받아서 하나의 scoreText를 통해 점수를 출력합니다.
-* photonView.RPC\(\)
-  * 
+* `photonView.RPC()`
+  * Room내의 모든 Client가 특정 Method를 호출하도록 합니다.
+  * 해당 함수는 아래의 parameter를 가지고 지정한 target에게 전송합니다.
+    * methodName : RPC Attribute를 가지고 있는 Method name 입니다.
+    * target : target들의 그룹과 RPC가 전송되는 방법입니다.
+    * parameters : RPC Attribute가 적용된 Method의 parameter들 입니다.
 {% endtab %}
 {% endtabs %}
 
