@@ -6,9 +6,7 @@ description: Explanation Photon + FireBase Network Game
 
 ## 무엇을 하려고 하는가?
 
-* Photon, Firebase에 대한 개요와, Sample Project에서 사용한 함수들에 대한 고찰을 합니다.
-
-
+* Photon, Firebase에 대한 개요와, 기능을 구성하는 Logic등을 살펴봅니다.
 
 ## Client - Server Model
 
