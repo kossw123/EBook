@@ -212,6 +212,7 @@ PhotonNetwork.GameVersion = gameVersion;
 2. void OnLeftRoom()
 3. [PunRPC]
    void RPCUpdateScoreText()
+4. photonView.RPC()
 ```
 {% endcode %}
 
@@ -231,6 +232,8 @@ PhotonNetwork.GameVersion = gameVersion;
   * `void RPCUpdateScoreText()`
     * 해당 함수는 PUN2 Class가 아닌 사용자 함수지만, PunRPC Attribute를 사용하여 원격으로 호출한다는 것을 알리기 위해 정리 했습니다.
     * Logic은 간단하게 string parameter를 2개 받아서 하나의 scoreText를 통해 점수를 출력합니다.
+* photonView.RPC\(\)
+  * 
 {% endtab %}
 {% endtabs %}
 

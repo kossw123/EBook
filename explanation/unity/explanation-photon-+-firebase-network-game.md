@@ -85,9 +85,18 @@ description: Explanation Photon + FireBase Network Game
 ![Player prefab&#xC758; Inspector](../../.gitbook/assets/image%20%28167%29.png)
 
 * 위의 그림을 보면 PhotonView, Photon Transform View Component를 추가하여 동기화를 하고 있습니다.
-* PhotonView Compoenent는 네트워크 상의 Object와 정보를 동기화 하기 위해 사용된 것입니다.
-  * Owner : 
+* PhotonView Component는 네트워크 상의 Object와 정보를 동기화 하기 위해 사용된 것입니다.
+* PhotonStream Class를 통해 직렬화된 정보를 주고 받은 다음 observe option 열거문값에 따라 실행합니다.
+  * Owner : PhotonView Component가 추가된 Object의 주인을 의미합니다.
+    * Owner 항목을 통해 지정한다면 어떤 이유로 인해 프로그램이 Delay되는 경우 소유자에게 알려줄 필요가 있기 때문에 존재합니다.
+  * View ID : ID가 같다면 같은 Object로 취급하고 서로 동기화합니다.
+  * Observe option : 값을 관측하고 동기화 하는 방식을 변경합니다.
+    * Off : null을 반환하기 떄문에, 동기화 하지 않습니다.
+    * Reliable Delta Compressed : DeltaCompressionWrite\(\) 함수를 통해 이전 데이터와 새로운 데이터를 비교하여, 같다면 이전 데이터값들을 null로 만듭니다. 
+    * Unreliable : 어떠한 검사도 하지 않고 바로 최근 데이터를 반환합니다. 
+    * Unreliable On Change : 마지막으로 보낸 데이터\(view.lastOnSerializeDataSent\)가 최근 데이터\(currentValues\)와 같다면 교체합니다. 즉, 데이터를 보내지만 같다면 유지하고, 다르다면 송신합니다.
 * Photon Transform Vierw Component는 네트워크 상의 Object와 위치정보를 동기화 하기 위해 사용된 것입니다.
+  * 해당 Component는 PhotonView Component에 의해 감지 됩니다.
 {% endtab %}
 {% endtabs %}
 
