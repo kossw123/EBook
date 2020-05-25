@@ -195,14 +195,15 @@ PhotonNetwork.GameVersion = gameVersion;
 {% code title="GameManager.cs" %}
 ```csharp
 1. PhotonNetwork.IsMasterClient
-2. PhotonNetwork.LocalPlayer.ActorNumber;
+2. PhotonNetwork.LocalPlayer.ActorNumber
 ```
 {% endcode %}
 
 * `PhotonNetwork.IsMasterClient`
   * Master Server인지 확인하기 위한 PhotonNetwork Class의 bool type 변수입니다.
 * `PhotonNetwork.LocalPlayer.ActorNumber`
-  * 
+  * 현재 방에 있는 플레이어를 식별하는 변수입니다.
+  * 0번 index부터 시작하여 -1의 값은 객실 외부를 가리키고 있습니다.
 {% endtab %}
 
 {% tab title="GameManager Method" %}
@@ -238,6 +239,23 @@ PhotonNetwork.GameVersion = gameVersion;
     * methodName : RPC Attribute를 가지고 있는 Method name 입니다.
     * target : target들의 그룹과 RPC가 전송되는 방법입니다.
     * parameters : RPC Attribute가 적용된 Method의 parameter들 입니다.
+{% endtab %}
+
+{% tab title="Ball Variable" %}
+```text
+1. PhotonNetwork.IsMasterClient
+2. photonView.IsMine
+3. PhotonNetwork.PlayerList
+```
+
+* `PhotonNetwork.IsMasterClient`
+  * Master Client는 일반적으로 다른 Client와 동일하지만, 일반적으로 게임을 시작하는 Host의 역할을 가지고 있습니다.
+  * 이러한 역할을 가진 MasterClient인지 아닌지를 확인하는 변수입니다.
+* `photonView.IsMine`
+  * bool type의 변수이며, true라면 Client를 제어할 수 있다는 것을 의미합니다.
+  * PUN2에는 PhotonView를 제어 하는가에 대한 소유권 개념이 있기 때문에 존재하는 변수입니다.
+* `PhotonNetwork.PlayerList`
+  * 현재 Room에 있는 플레이어들의 목록 List 변수입니다.
 {% endtab %}
 {% endtabs %}
 
