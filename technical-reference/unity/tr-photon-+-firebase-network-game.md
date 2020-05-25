@@ -50,7 +50,7 @@ FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith()
 * FirebaseApp.CheckAndFixDependenciesAsync\(\).ContinueWith\(\)
   * 1. FirebaseApp에 먼저 접근합니다.
     2. FirebaseApp Class의 CheckAndFixDependenciesAsync\(\) 함수에 접근합니다.
-    3. CheckAndFixDependenciesAsync\(\) 함수는 Task Class type이기 때문에 System.Threading.Tasks namespace에 접근하여 Task Class의 ContinueWith\(\) 함수를 사용합니다.
+    3. CheckAndFixDependenciesAsync\(\) 함수는 Task Class type이기 때문에 System.Threading.Tasks namespace에 접근하여 Task Class의 ContinueWith\(\) 함수를 사용합니다. 
   * 해당 함수는 Firebase에 필요한 모든 종속성이 시스템에 존재하는지, 필요한 상태인지, 비동기적으로 확인하고 그렇지 않는 경우에는 수정하려고 시도합니다.
     * 종속성?
       * **데이터의 구조가 프로그램 데이터 저장방식을 결정하고, 반대로 프로그램의 데이터 저장방식에 따라 데이터의 저장방식이 바뀌는 것을 의미합니다.**
@@ -187,6 +187,48 @@ PhotonNetwork.GameVersion = gameVersion;
   * 입장을 했다면 Scene의 전환이 필요한데 이는 PhotonNetwork.LoadLevel\(\) 함수를 이용하여 전환합니다.
 * PhotonNetwork.LoadLevel\(\)
   * Scene을 Load하는데 기존의 SceneManager을 사용하여 LoadLevel한다면 해당 Client에서만 전환되고, 다른 Client에서는 전환이 안되기 때문에, 해당 함수를 이용하여 Scene을 전환합니다.
+{% endtab %}
+{% endtabs %}
+
+{% tabs %}
+{% tab title="GameManager Variable" %}
+{% code title="GameManager.cs" %}
+```csharp
+1. PhotonNetwork.IsMasterClient
+2. PhotonNetwork.LocalPlayer.ActorNumber;
+```
+{% endcode %}
+
+* PhotonNetwork.IsMasterClient
+  * Master Server인지 확인하기 위한 PhotonNetwork Class의 bool type 변수입니다.
+* PhotonNetwork.LocalPlayer.ActorNumber
+  * 
+{% endtab %}
+
+{% tab title="GameManager Method" %}
+{% code title="GameManager.cs" %}
+```csharp
+1. PhotonNetwork.Instantiate()
+2. void OnLeftRoom()
+3. [PunRPC]
+   void RPCUpdateScoreText()
+```
+{% endcode %}
+
+* PhotonNetwork.Instantiate\(\)
+  * 네트워크 상에서 prefab Instance를 생성합니다.
+    * 이 함수는 prefab을 생성하기 위해서는 Unity상에서 prefab을 가져오기 위해서는 무조건 경로상의 "Resources" 라는 폴더가 필요합니다.
+    * "Resources" 폴더는 대소문자 틀림없이 그대로의 이름을 가져야 합니다.
+* void OnLeftRoom\(\)
+  * Master Server가 아닌 Game Server에서 동작하는 함수입니다.
+  * 나가는 플레이어에게만 실행됩니다.
+* \[PunRPC\] void RPCUpdateScoreText\(\)
+  * \[PunRPC\]
+    * 원격으로 Client의 함수를 호출하기 위해 해당 속성을 적용해야합니다.
+    * 적용하기 위해 Attribute를 적용과 PhotonView Component를 사용해야 합니다.
+  * void RPCUpdateScoreText\(\)
+    * 해당 함수는 PUN2 Class가 아닌 사용자 함수지만, PunRPC Attribute를 사용하여 원격으로 호출한다는 것을 알리기 위해 정리 했습니다.
+    * Logic은 간단하게 string parameter를 2개 받아서 하나의 scoreText를 통해 점수를 출력합니다.
 {% endtab %}
 {% endtabs %}
 
