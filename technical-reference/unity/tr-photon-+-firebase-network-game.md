@@ -329,7 +329,7 @@ namespace ConsoleApp1 {
 * 비동기 처리를 하기 때문에 Code의 실행 흐름이 파악이 안될 수 있습니다.
 * 아래의 그림은 Task를 사용한 한 프로그램의 흐름도입니다.
 
-![Task Code &#xD750;&#xB984;&#xB3C4;](../../.gitbook/assets/image%20%28163%29.png)
+![](../../.gitbook/assets/image%20%28163%29.png)
 {% endtab %}
 
 {% tab title="Task 기본 예제" %}
@@ -361,9 +361,4 @@ class Program {
 * task.Wait\(\) 함수를 통해 작업이 완료 될 때 까지 대기하고 작업이 끝났다면 출력 하도록 합니다.
 {% endtab %}
 {% endtabs %}
-
-## 마치며
-
-* Photon, Firebase, Task, Thread등을 사용하면서 할수 있는 영역이 넓어졌다고 느낀 Project입니다.
-* DB나 Server를 사용한다는게 예전서부터 어려움을 느껴왔지만, 이번 Project를 정리하면서 내가 생각했던 SQL이나, Server를 작성하는 Code를 사용한다는 것에 대해 좀 더 접근성이 좋아졌다는 것을 느꼈습니다.
 
