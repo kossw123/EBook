@@ -120,7 +120,7 @@ groundNormal 이라는 변수를 통해 RaycastHit2D.normal\(광선에 부딪힌
 
 기본적으로 Unity는 엄지 : X축, 검지 : Y축, 중지 : Z축으로 왼손 좌표계를 기준으로 합니다. 
 
-![https://wergia.tistory.com/161 - &#xBCA0;&#xB974;&#xC758; &#xD504;&#xB85C;&#xADF8;&#xB798;&#xBC0D; &#xB178;&#xD2B8;](../../.gitbook/assets/image%20%28114%29.png)
+![https://wergia.tistory.com/161 - &#xBCA0;&#xB974;&#xC758; &#xD504;&#xB85C;&#xADF8;&#xB798;&#xBC0D; &#xB178;&#xD2B8;](../../../.gitbook/assets/image%20%28114%29.png)
 
 이러한 좌표계를 가지고 어떤 Object를 중심으로 로컬, 월드 좌표계로 나누고, 상대적이냐, 절대적이냐를 따지는데 Collider가 충돌 시 RayCastHit2D를 사용하여 광선을 쏴서 부딪힌 물체의 법선벡터를 구하여 표면에 수직인 경우 양수를 반환합니다.
 
@@ -132,11 +132,11 @@ normal Vector를 구하는 이유에 관해서 이해가 가셨다면 Vector2.Do
 
 내적이란 쉽게 말하면 임의의 Vector A, B 가 있다면 A, B의 각 성분을 무언가를 쉽게 비교하기 위한 값으로 바꿔주는 정규화 과정을 통하여 치환 후, 단위벡터로 바꿉니다. 그렇게 된다면 두 단위벡터는 결국 1, 혹은 -1의 값을 가지게 됩니다.
 
-![https://mrw0119.tistory.com/12 - &#xBCA1;&#xD130;&#xC758; &#xB0B4;&#xC801;](../../.gitbook/assets/vector2.dot.png)
+![https://mrw0119.tistory.com/12 - &#xBCA1;&#xD130;&#xC758; &#xB0B4;&#xC801;](../../../.gitbook/assets/vector2.dot.png)
 
 그렇게 된다면 Vector2.Dot 내부적으로 반환값을 가지고 방향을 판별할 수 있게 됩니다. Vector의 Dot Product의 값을 구하는데는 또 한가지 방법이 있는데 이는, 임의의 두 Vector변수의 각 성분들 끼리 곱하여 더한 값으로 값을 구할 수 있습니다.
 
-![Vector.Dot&#xB97C; &#xC774;&#xC6A9;&#xD55C; &#xBB3C;&#xCCB4;&#xC758; &#xC704;&#xCE58; &#xD30C;&#xC545;](../../.gitbook/assets/normal-vector.png)
+![Vector.Dot&#xB97C; &#xC774;&#xC6A9;&#xD55C; &#xBB3C;&#xCCB4;&#xC758; &#xC704;&#xCE58; &#xD30C;&#xC545;](../../../.gitbook/assets/normal-vector.png)
 
 정리를 하자면 아래와 같습니다.
 

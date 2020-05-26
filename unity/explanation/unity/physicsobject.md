@@ -55,7 +55,7 @@ int count = rb2d.Cast\(move, contactFilter, hitBuffer, distance + shellRadius\);
 
  대충 흐름을 보자면 충돌을 감지하기 위해 RayCastHit2D로 PlayerStart에서 시작되는 광선을 따라 놓여있는 물체를 감지하고 ContactFilter2D로 결과를 미리 필터링하여 닿는 물체를 확인한다는 의미 인듯합니다.
 
-![gizmo.DrawWireSphere&#xB97C; &#xC774;&#xC6A9;&#xD55C; transform.position &#xBD80;&#xD130;  Rigidbody2D.cast&#xC758; Count](../../.gitbook/assets/explanation-3.gif)
+![gizmo.DrawWireSphere&#xB97C; &#xC774;&#xC6A9;&#xD55C; transform.position &#xBD80;&#xD130;  Rigidbody2D.cast&#xC758; Count](../../../.gitbook/assets/explanation-3.gif)
 
 ## Scripting Collision
 

@@ -24,7 +24,7 @@ Unity는 Visual Scripting, 즉 UI를 이용하여 보다 편리하게 Game 작�
 
 ## **무엇을 하려고 하는가?**
 
-![Scripting&#xC744; &#xD1B5;&#xD55C; &#xC6C0;&#xC9C1;&#xC784; &#xC81C;&#xC5B4;](../../.gitbook/assets/gif.gif)
+![Scripting&#xC744; &#xD1B5;&#xD55C; &#xC6C0;&#xC9C1;&#xC784; &#xC81C;&#xC5B4;](../../../.gitbook/assets/gif.gif)
 
  **Unity를 공부하면서 다른 프로젝트를 통해 움직임을 구현하는 것은 Unity 자체에 내장되어 있는 기능들을 통해 쉽게 구현이 가능하고 재미 또한 있었습니다.**
 
@@ -44,7 +44,7 @@ Unity는 Visual Scripting, 즉 UI를 이용하여 보다 편리하게 Game 작�
 
 다음으로 Prefab Folder로 들어가서 'PlayerStart' Prefab을 드래그 앤 드롭으로 적당한 위치에 배치합니다.
 
-![PlayerStart&#xB97C; Scene&#xC5D0; &#xBC30;&#xCE58;&#xD55C; &#xC0C1;&#xD0DC;](../../.gitbook/assets/tutorial-2.gif)
+![PlayerStart&#xB97C; Scene&#xC5D0; &#xBC30;&#xCE58;&#xD55C; &#xC0C1;&#xD0DC;](../../../.gitbook/assets/tutorial-2.gif)
 
 Play를 눌러서 배치한 Scene을 Play한다면 위 그림과 같은 PlayerStart가 멈춰 있는 현상을 볼 수 있는데 Script를 이용하여 중력 적용 및 움직임을 구현해 보겠습니다.
 
@@ -164,7 +164,7 @@ public class PhysicsObject : MonoBehaviour {
 
 그리고 저장 후에 Scene을 Play 해보면 PlayerStart가 중력의 영향을 받아 아래로 떨어지는 모습을 확인할 수 있습니다. 
 
-![&#xC911;&#xB825;&#xC758; &#xC601;&#xD5A5;&#xC744; &#xBC1B;&#xC544; &#xC544;&#xB798;&#xB85C; &#xB5A8;&#xC5B4;&#xC9C0;&#xB294; PlayerStart](../../.gitbook/assets/tutorial-3.gif)
+![&#xC911;&#xB825;&#xC758; &#xC601;&#xD5A5;&#xC744; &#xBC1B;&#xC544; &#xC544;&#xB798;&#xB85C; &#xB5A8;&#xC5B4;&#xC9C0;&#xB294; PlayerStart](../../../.gitbook/assets/tutorial-3.gif)
 
 그리고 새로운 'PlayerPlatformerController'라는 Script를 하나 생성하여 위와 마찬가지로 PlayerStart Object에 Component로 추가하고 아래와 같은 코드를 복사합니다.
 
@@ -221,7 +221,7 @@ public class PlayerPlatformerController : PhysicsObject {
 
 추가를 끝마쳤다면 아래와 같은 그림을 움직이는 PlayerStart Object를 보실 수 있습니다.
 
-![PlayerStart &#xC6C0;&#xC9C1;&#xC784; &#xC801;&#xC6A9;](../../.gitbook/assets/tutorial-4.gif)
+![PlayerStart &#xC6C0;&#xC9C1;&#xC784; &#xC801;&#xC6A9;](../../../.gitbook/assets/tutorial-4.gif)
 
 위의 코드와 작성 단계를 세부적으로 나누는 것은 How-to-guide에서 설명하도록 하겠습니다.
 

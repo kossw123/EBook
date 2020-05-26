@@ -62,7 +62,7 @@ FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith()
   * `ContinueWith()` 함수의 parameter는 아래의 그림과 같기 때문에 쓰던지 안쓰던지 상관은 없지만서도, named parameter를 사용하는 의미는 좀 더 모호성이 없는 전달을 위함이라고 생각됩니다.
   * 보기 쉽게 Code를 정렬하여 보자면 아래와 같습니다.
 
-![ContinueWith\(\) &#xD568;&#xC218;&#xC758; parameter](../../.gitbook/assets/image%20%28165%29.png)
+![ContinueWith\(\) &#xD568;&#xC218;&#xC758; parameter](../../../.gitbook/assets/image%20%28165%29.png)
 
 ```csharp
 FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(
@@ -270,7 +270,7 @@ PhotonNetwork.GameVersion = gameVersion;
 * 단일 Thread를 실행하고 거기서 다른 Thread를 생성하고, 실행하여 Multi Thread를 가능하게 합니다.
 * 즉, Thread는 Process를 여러개의 조각으로 나눈 것으로, Thread 변수를 통해 작업을 동시에 실행하는 것과 같은 효과를 가지게 합니다.
 
-![Thread &#xACFC;&#xC815;](../../.gitbook/assets/image%20%28160%29.png)
+![Thread &#xACFC;&#xC815;](../../../.gitbook/assets/image%20%28160%29.png)
 {% endtab %}
 
 {% tab title="Thread 기본 예제" %}
@@ -305,7 +305,7 @@ namespace ConsoleApp1 {
 
 * 아래의 그림을 가지고 정리를 하겠습니다.
 
-![Thread Example](../../.gitbook/assets/image%20%28162%29.png)
+![Thread Example](../../../.gitbook/assets/image%20%28162%29.png)
 
 * Run\(\) 함수의 작업을 Thread 변수를 가지고 Lambda식을 사용하여 Start\(\) 하면 위의 그림과 같이 출력이 됩니다.
 * 출력 결과를 보면 Run 0, Run 1이 실행되는데 번갈아 가면서 실행하는데, 일정하게 반복해서 출력되는 것이 아니라 나눠서 실행되는 것을 확인할 수 있습니다.
@@ -329,7 +329,7 @@ namespace ConsoleApp1 {
 * 비동기 처리를 하기 때문에 Code의 실행 흐름이 파악이 안될 수 있습니다.
 * 아래의 그림은 Task를 사용한 한 프로그램의 흐름도입니다.
 
-![](../../.gitbook/assets/image%20%28163%29.png)
+![Task Code &#xD750;&#xB984;&#xB3C4;](../../../.gitbook/assets/image%20%28163%29.png)
 {% endtab %}
 
 {% tab title="Task 기본 예제" %}
@@ -361,4 +361,9 @@ class Program {
 * task.Wait\(\) 함수를 통해 작업이 완료 될 때 까지 대기하고 작업이 끝났다면 출력 하도록 합니다.
 {% endtab %}
 {% endtabs %}
+
+## 마치며
+
+* Photon, Firebase, Task, Thread등을 사용하면서 할수 있는 영역이 넓어졌다고 느낀 Project입니다.
+* DB나 Server를 사용한다는게 예전서부터 어려움을 느껴왔지만, 이번 Project를 정리하면서 내가 생각했던 SQL이나, Server를 작성하는 Code를 사용한다는 것에 대해 좀 더 접근성이 좋아졌다는 것을 느꼈습니다.
 

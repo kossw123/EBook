@@ -6,7 +6,7 @@ description: TR Mario Galaxy's Launch Star
 
 ## Blend Tree Animation
 
-![Jammo\_Player Animator&#xC758; Normal Status Blend Tree](../../.gitbook/assets/image%20%2860%29.png)
+![Jammo\_Player Animator&#xC758; Normal Status Blend Tree](../../../.gitbook/assets/image%20%2860%29.png)
 
 {% embed url="https://wergia.tistory.com/54?category=739103" caption="Blend Tree Animation 사용" %}
 
@@ -22,7 +22,7 @@ description: TR Mario Galaxy's Launch Star
   * 위와 동일하게 작성하지만 가장 큰 차이점이 parameter가 2개가 존재합니다.
   * 2개의 parameter로 2D game에서 뒤로 움직일 때 sprite를 Flip해서 움직이는 것과는 달리 Animation만 존재하면 간편하게 작성할 수 있습니다.
 
-    ![](../../.gitbook/assets/image%20%28120%29.png)
+    ![](../../../.gitbook/assets/image%20%28120%29.png)
 * **2D Simple Directional과 다른 2D Freeform Directional**
   * Simple Directional과 동일하지만 같은 방향에 여러가지 모션을 추가할 수 있습니다.
   * Simple Directional이랑은 다르게 Blend Diagram을 작성할 때 여러 Motion Field를 추가하는데 좀 더 복잡한 움직임을 표현하는데 있어서 유용합니다.
@@ -52,7 +52,7 @@ Unity의 기본좌표계는 왼손좌표계로써, x, y, z축을 가집니다. �
 
 ## DOTween
 
-{% page-ref page="../../api-component-reference/unity/dotween.md" %}
+{% page-ref page="../../../api-component-reference/unity/dotween.md" %}
 
 * DOTween을 적극적으로 쓰고 있습니다.
 * 이 내용을 해당 문서에 다 담기는 어려운감이 있어 위의 Page Link에 기재했습니다.

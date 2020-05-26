@@ -10,7 +10,7 @@ description: Explanation Photon + FireBase Network Game
 
 ## Client - Server Model
 
-![Client - Server Model](../../.gitbook/assets/image%20%28161%29.png)
+![Client - Server Model](../../../.gitbook/assets/image%20%28161%29.png)
 
 * 다른 사람에게 자신의 행동에 대한 정보\(자신의 위치, 아이템, 상태 등\)을 보낼 때 쓰이는 Model입니다.
 * 보통 Server를 사용하는 모든 프로그램들은 위의 형태와 같습니다.
@@ -35,7 +35,7 @@ description: Explanation Photon + FireBase Network Game
       3. Game Server에서 동기화를 하여 멀티플레이를 할 수 있도록 합니다.
          1. Game Server는 Room에 입장한 순간부터 Server를 사용하여 플레이어간의 동기화를 합니다.
 
-![Photon Cloud&#xAC00; &#xC9C0;&#xC5ED;&#xC73C;&#xB85C; &#xC811;&#xADFC;&#xD558;&#xB294; &#xBC29;&#xBC95;](../../.gitbook/assets/image%20%28155%29.png)
+![Photon Cloud&#xAC00; &#xC9C0;&#xC5ED;&#xC73C;&#xB85C; &#xC811;&#xADFC;&#xD558;&#xB294; &#xBC29;&#xBC95;](../../../.gitbook/assets/image%20%28155%29.png)
 {% endtab %}
 
 {% tab title="구성 요소" %}
@@ -53,7 +53,7 @@ description: Explanation Photon + FireBase Network Game
 * Package를 Project에 Import하면 맨 처음 띄워지는 PUN Wizard는 Photon 홈페이지에서 생성한 AppId 혹은 Email을 가지고 연동을 시킵니다. 이로 인해 Photon의 Free Trial의 Server에 대한 사용권한을 받을 수 있습니다.
 * 그 후 Project 내부의 PhotonServerSetting를 통해 허가 받은 Server에 대한 설정을 할 수 있습니다.
 
-![PhotonServerSetting.asset&#xC758; Inspector](../../.gitbook/assets/image%20%28153%29.png)
+![PhotonServerSetting.asset&#xC758; Inspector](../../../.gitbook/assets/image%20%28153%29.png)
 
 * d
 {% endtab %}
@@ -80,7 +80,7 @@ description: Explanation Photon + FireBase Network Game
 * Photon에서는 네트워크에서 동작하는 GameObject를 쉽게 생성할 수 있습니다.
   * 생성된 GameObject에 PhotonView Component를 추가하면 네트워크에서 동작합니다.
 
-![Player prefab&#xC758; Inspector](../../.gitbook/assets/image%20%28167%29.png)
+![Player prefab&#xC758; Inspector](../../../.gitbook/assets/image%20%28167%29.png)
 
 * 위의 그림을 보면 PhotonView, Photon Transform View Component를 추가하여 동기화를 하고 있습니다.
 * PhotonView Component는 네트워크 상의 Object와 정보를 동기화 하기 위해 사용된 것입니다.
@@ -105,7 +105,7 @@ description: Explanation Photon + FireBase Network Game
 * 보통 Server를 사용하기 위해 이전 내용을 불러오기 위해 저장소, 인증, DB tool과 같은 것들이 필요합니다.
 * Firebase는 이런 저장소를 추가해주고 인증, DB, 저장소 등과 같은 기능들을 한번에 제공해 줍니다.
 
-![Firebase&#xC758; &#xB3C4;&#xC785;&#xC73C;&#xB85C; &#xC778;&#xD55C; &#xC791;&#xC5C5;&#xB7C9; &#xAC10;&#xC18C; - realm academy](../../.gitbook/assets/image%20%28164%29.png)
+![Firebase&#xC758; &#xB3C4;&#xC785;&#xC73C;&#xB85C; &#xC778;&#xD55C; &#xC791;&#xC5C5;&#xB7C9; &#xAC10;&#xC18C; - realm academy](../../../.gitbook/assets/image%20%28164%29.png)
 
 * Firebase를 사용하면 위의 그림과 같이 Server 개발에 필요한 작업량의 감소를 할 수 있습니다.
 * Unity와 같이 하나의 Project에서 여러 기능들을 사용하여 최종적으로 통합하여 결과를 출력해주는 프로그램입니다.

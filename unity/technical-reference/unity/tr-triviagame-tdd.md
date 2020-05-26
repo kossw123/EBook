@@ -67,7 +67,7 @@ Delegate와 Action은 C++에서 사용하는 포인터와 같은 기능을 하�
   * Nunit은 이러한 개발 주기를 가지고, .NET으로 개발한 Software에서 Test부분에서 유용하게 사용될 수 있습니다.
   * NUnit은 .NET 언어가 Test Case를 작성하기 위한 필수 Library라고 할 수 있습니다.
 
-![&#xC18C;&#xD504;&#xD2B8;&#xC6E8;&#xC5B4; &#xAC1C;&#xBC1C; &#xC0DD;&#xBA85; &#xC8FC;&#xAE30;\(SDLC\)](../../.gitbook/assets/image%20%28107%29.png)
+![&#xC18C;&#xD504;&#xD2B8;&#xC6E8;&#xC5B4; &#xAC1C;&#xBC1C; &#xC0DD;&#xBA85; &#xC8FC;&#xAE30;\(SDLC\)](../../../.gitbook/assets/image%20%28107%29.png)
 
 {% embed url="https://ko.wikipedia.org/wiki/%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4\_%EA%B0%9C%EB%B0%9C\_%EC%88%98%EB%AA%85\_%EC%A3%BC%EA%B8%B0" caption="SDLC에 대한 Document" %}
 
@@ -88,5 +88,5 @@ Delegate와 Action은 C++에서 사용하는 포인터와 같은 기능을 하�
 * 일반적으로 제가 생각하던 Game에 있어서 중요한 부분보다는, C\#에 대한 문법 사용과, Unity 자체의 Component패턴에 대해 좀 더 알 수 있었던 기회가 되었습니다.
 * 기술문서에 기재 하지않은 Substitute Library는 아래의 Page Link를 타고 가시면 있습니다.
 
-{% page-ref page="../../api-component-reference/unity/nsubstitute.md" %}
+{% page-ref page="../../../api-component-reference/unity/nsubstitute.md" %}
 
