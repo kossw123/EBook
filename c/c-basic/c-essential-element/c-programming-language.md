@@ -155,6 +155,8 @@ Program paradigm을 나눈 목적과 분류에 대한 설은 추후 추가될 �
 
 {% embed url="https://www.c-sharpcorner.com/article/C-Sharp-heaping-vs-stacking-in-net-part-i/" %}
 
-* C\#에서 Code가 실행될 때 .NET Framework는 두 곳의 메모리 영역\(Heap, Stack\)에 저장합니다.
-* 그렇다면 Stack과 Heap은 무엇인가
+* C\#에서 **Code가 실행될 때** .NET Framework는 두 곳의 메모리 영역\(Heap, Stack\)에 저장합니다.
+  * Code가 실행되기 전에 데이터\(코드 영역, 데이터 영역\)들은 실행전에 할당이 됩니다.
+* 이러한 메모리 영역\(Heap, Stack\)의 차이점이 무엇인가에 대한 의문이 들 수 있습니다.
+  * 
 
