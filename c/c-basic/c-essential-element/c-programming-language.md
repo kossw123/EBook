@@ -68,7 +68,7 @@ class Helloworld {
   * 이에 대한 역할은 위의 설명 이외에 다양하게 생각할 수 있는데, 이렇게 따로 단락을 구분한 이유는 Programing Language에 따라 목적이 다르기 때문에 역할이 다르고, 스타일이 다르기 때문입니다.
   * 해당 내용은 Program paradigm의 도표를 통해 알 수 있습니다.
 
-![&#xB9CE;&#xC740; Program paradigm &#xB3C4;&#xD45C;&#xC911; &#xD558;&#xB098;](../../../.gitbook/assets/image%20%28168%29.png)
+![&#xB9CE;&#xC740; Program paradigm &#xB3C4;&#xD45C;&#xC911; &#xD558;&#xB098;](../../../.gitbook/assets/image%20%28170%29.png)
 
 * 작성자가 사용하는 C\#은 multi-paradigmed에 속하는 C\#이기 때문에, 여러 paradigm에 대처하기 위해 주로 OOP\(Object - Oriented Programming\)을 비롯한 여러가지 문법을 사용하여 대응할 수 있습니다.
 
@@ -89,17 +89,14 @@ Program paradigm을 나눈 목적과 분류에 대한 설은 추후 추가될 �
 * Network, Inferface등 많은 작업을 캡슐화\(Encapsulation\)했고, CLR\(Common - Language - Runtime\)이라는 가상머신 위에서 작동합니다.
 * 하드웨어에서 사용자가 프로그램을 사용하기 까지의 컴퓨터가 거치는 과정은 다음과 같습니다.
 
-H/W -&gt; Bare machine -&gt; MacroInstruction Interpreter -&gt; OS -&gt; Virtual Complier -&gt; User
+**H/W -&gt; Bare machine -&gt; MacroInstruction Interpreter -&gt; OS -&gt; Virtual Complier -&gt; User**
 
 자세한 내용은 아래의 링크에 있습니다.
 {% endhint %}
 
 {% embed url="https://www.radford.edu/~nokie/classes/380/Chap1-Lang-Impl.html" %}
 
-
-
 * C\#은 Multi - paradigmed의 스타일을 가지고 있기 때문에, Window, Web, Game, Mobile Programming등 거의 모든 영역에서 사용되는 범용 언어입니다.
-* 작성자는 Unity를 사용하기 때문에 객체지향의 개념을 사용합니다.
 * **C, C++, Java의 장점을 모아서 제작했기 때문에 어느정도 유사성을 띄고 있습니다.**
 
 ## C\#에 대해서 공부하기 전에 살펴보는 메모리 구조
@@ -121,7 +118,45 @@ H/W -&gt; Bare machine -&gt; MacroInstruction Interpreter -&gt; OS -&gt; Virtual
 * C\#은 고급언어에 속하기 때문에 데이터의 성질을 변화 할 수 있습니다.
   * ex\) int, float, double, class, interface 등등...
 * C\#에서는 모든 데이터 타입은 Object type에서 상속 받습니다.
+* Object type은 값의 형식에 따라 아래와 같이 나눠집니다.
+  * Value : 해당 데이터가 직접 저장됩니다.
+    * int, unsigned, float, double, char, struct, bool, byte, enum, long, short
+  * Reference : 데이터에 대한 참조가 저장됩니다.
+    * class, object, string, interface, delegate
+      * 여기서 모든 데이터 타입은 Object type을 상속받는데 따로 나눠진 이유는 아래와 같습니다.
+        * 모든 값형식이 상속받은 Object type과 Reference type의 Object type은 같습니다.
+        * 그럼에도 불구하고, 값의 형식에 따라 2가지로 나눈 이유는 Value type이라는 Class와, Reference type이라는 Class로 상속받아 쓰기 때문입니다.
+        * 그에 대한 설명은 아래의 단락으로 내려가시면 볼 수 있습니다.
+      * 참조
+        * 한 객체가 다른 객체를 연결하거나 연결하는 수단 이라는 사전적 정의입니다.
+        * C\#에서는 어떤 변수에 대한 작업이 연결된 다른 변수에 대해 영향을 미친다는 것을 의미합니다.
+* 최종적으로 이러한 데이터 타입의 변화에 따라 저장되는 메모리 영역이 다르기 때문에, 만약데이터 타입의 저장영역을 확실히 안다면, Runtime\(프로그램이 실행되고 있는 동안의 동작\)에서의 최적화는 물론, Runtime 이전에 메모리를 낭비를 막을 수 있습니다.
+
+데이터 타입에 따른 분류는 아래의 그림을 보면 좀 더 편하게 이해하실 수 있습니다.
 {% endhint %}
 
-* C\#에서의 메모리 구조는 아래와 
+![Data type Hierarchy](../../../.gitbook/assets/image%20%28168%29.png)
+
+* 각 언어마다 메모리에 대한 구조가 약간 상이할 수 있지만, 대부분은 다음과 같습니다.
+* C\#에서의 메모리 구조는 아래와 같습니다.
+
+![&#xCEF4;&#xD4E8;&#xD130; &#xBA54;&#xBAA8;&#xB9AC; &#xAD6C;&#xC870;](../../../.gitbook/assets/image%20%28169%29.png)
+
+* 코드 영역 : 프로그래머가 쓴 Code에 대한 저장 영역입니다.
+* 데이터 영역 : 프로그래머가 미리 선언한 전역, 정적변수에 대한 저장 영역입니다.
+  * ex\) static, const
+* 힙\(Heap\) : new를 통해 사용자가 직접 생성하기 때문에 Reference type의 데이터 타입이 저장됩니다.
+* 스택\(Stack\) : 해당 영역에는 프로그래머가 선언한 Value type의 데이터 타입과, Heap에서 선언된 동적으로 할당된 객체의 주소가 저장됩니다.
+
+## 메모리 구조에 따른 데이터의 전달 방식
+
+* 메모리 구조에 대해 어느정도 인지했다면, 우리가 사용하는 Visual Studio를 통해 코드를 작성하면 어떻게 컴퓨터는 값을 저장하고 읽어오는가에 대한 의문이 들 수 있습니다.
+* 이에 대한 내용은 해당 문서에서 발췌하여 정리한 글입니다.
+
+{% embed url="https://www.c-sharpcorner.com/article/C-Sharp-heaping-vs-stacking-in-net-part-i/" %}
+
+* Code가 실행될 때 .NET Framework는 Heap과 Stack이라는 두 곳의 저장소가 있습니다.
+* Stack은 
+
+
 
