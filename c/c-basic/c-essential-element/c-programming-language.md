@@ -119,15 +119,15 @@ Program paradigm을 나눈 목적과 분류에 대한 설은 추후 추가될 �
   * ex\) int, float, double, class, interface 등등...
 * C\#에서는 모든 데이터 타입은 Object type에서 상속 받습니다.
 * Object type은 값의 형식에 따라 아래와 같이 나눠집니다.
-  * Value : 해당 데이터가 직접 저장됩니다.
+  * **Value : 해당 데이터가 직접 저장됩니다.**
     * int, unsigned, float, double, char, struct, bool, byte, enum, long, short
-  * Reference : 데이터에 대한 참조가 저장됩니다.
+  * **Reference : 데이터에 대한 참조가 저장됩니다.**
     * class, object, string, interface, delegate
       * 여기서 모든 데이터 타입은 Object type을 상속받는데 따로 나눠진 이유는 아래와 같습니다.
         * 모든 값형식이 상속받은 Object type과 Reference type의 Object type은 같습니다.
         * 그럼에도 불구하고, 값의 형식에 따라 2가지로 나눈 이유는 Value type이라는 Class와, Reference type이라는 Class로 상속받아 쓰기 때문입니다.
         * 그에 대한 설명은 아래의 단락으로 내려가시면 볼 수 있습니다.
-      * 참조
+      * 참조\(Reference\)란?
         * 한 객체가 다른 객체를 연결하거나 연결하는 수단 이라는 사전적 정의입니다.
         * C\#에서는 어떤 변수에 대한 작업이 연결된 다른 변수에 대해 영향을 미친다는 것을 의미합니다.
 * 최종적으로 이러한 데이터 타입의 변화에 따라 저장되는 메모리 영역이 다르기 때문에, 만약데이터 타입의 저장영역을 확실히 안다면, Runtime\(프로그램이 실행되고 있는 동안의 동작\)에서의 최적화는 물론, Runtime 이전에 메모리를 낭비를 막을 수 있습니다.
@@ -146,7 +146,7 @@ Program paradigm을 나눈 목적과 분류에 대한 설은 추후 추가될 �
 * 데이터 영역 : 프로그래머가 미리 선언한 전역, 정적변수에 대한 저장 영역입니다.
   * ex\) static, const
 * 힙\(Heap\) : new를 통해 사용자가 직접 생성하기 때문에 Reference type의 데이터 타입이 저장됩니다.
-* 스택\(Stack\) : 해당 영역에는 프로그래머가 선언한 Value type의 데이터 타입과, Heap에서 선언된 동적으로 할당된 객체의 주소가 저장됩니다.
+* 스택\(Stack\) : 해당 영역에는 프로그래머가 선언한 Value type의 데이터 타입과,  사용자가 동적으로 할당된 Heap에 저장된 객체의 주소가 저장됩니다.
 
 ## 메모리 구조에 따른 데이터의 전달 방식
 
@@ -155,8 +155,6 @@ Program paradigm을 나눈 목적과 분류에 대한 설은 추후 추가될 �
 
 {% embed url="https://www.c-sharpcorner.com/article/C-Sharp-heaping-vs-stacking-in-net-part-i/" %}
 
-* Code가 실행될 때 .NET Framework는 Heap과 Stack이라는 두 곳의 저장소가 있습니다.
-* Stack은 
-
-
+* C\#에서 Code가 실행될 때 .NET Framework는 두 곳의 메모리 영역\(Heap, Stack\)에 저장합니다.
+* 그렇다면 Stack과 Heap은 무엇인가
 
