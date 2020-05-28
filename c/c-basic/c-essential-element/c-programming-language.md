@@ -2,7 +2,7 @@
 description: 'C# Programing Language'
 ---
 
-# C\# Programming Language
+# C\# Programming Language - 작성중
 
 ## 무엇을 하려고 하는가?
 
@@ -130,6 +130,9 @@ Program paradigm을 나눈 목적과 분류에 대한 설은 추후 추가될 �
       * 참조\(Reference\)란?
         * 한 객체가 다른 객체를 연결하거나 연결하는 수단 이라는 사전적 정의입니다.
         * C\#에서는 어떤 변수에 대한 작업이 연결된 다른 변수에 대해 영향을 미친다는 것을 의미합니다.
+
+결론?
+
 * 최종적으로 이러한 데이터 타입의 변화에 따라 저장되는 메모리 영역이 다르기 때문에, 만약데이터 타입의 저장영역을 확실히 안다면, Runtime\(프로그램이 실행되고 있는 동안의 동작\)에서의 최적화는 물론, Runtime 이전에 메모리를 낭비를 막을 수 있습니다.
 
 데이터 타입에 따른 분류는 아래의 그림을 보면 좀 더 편하게 이해하실 수 있습니다.
@@ -157,5 +160,86 @@ Program paradigm을 나눈 목적과 분류에 대한 설은 추후 추가될 �
 
 * C\#에서 **Code가 실행될 때** .NET Framework는 두 곳의 메모리 영역\(Heap, Stack\)에 저장합니다.
   * Code가 실행되기 전에 데이터\(코드 영역, 데이터 영역\)들은 실행전에 할당이 됩니다.
-* 그렇다면 각 영역
+* 그렇다면 두 곳의 메모리 영역의 차이는 무엇인가? 하면 아래와 같습니다.
+  * Stack
+    * 자체적으로 메모리 관리가 되기 때문에 필요없는 데이터 영역을 알아서 처리합니다.
+    * Code에서의 데이터 영역의 값들을 실행하면 알아서 추적합니다.
+  * Heap
+    * 메모리 관리를 GC\(Garbage Collector\)에 의해 관리됩니다. 그렇기 때문에 더이상 쓰지 않는 데이터를 처리하기 위해 비용을 많이 소모합니다.
+    * 작성자가 생성한 객체들을 추적합니다.
+
+
+
+* 이러한 메모리 영역에 어떻게 저장이 되는가?
+* 일단 Stack 영역에서의 데이터 저장 과정을 설명하겠습니다.
+
+### Stack에서의 데이터 저장 과
+
+```csharp
+public int AddFive(int pValue)  
+{  
+      int result;  
+      result = pValue + 5;  
+      return result;  
+} 
+```
+
+* 위와 같은 Code가 있다고 한다면 맨 처음 Stack에는 아래의 그림과 같이 됩니다.
+
+![](../../../.gitbook/assets/image%20%28175%29.png)
+
+* 아직 함수 속 Code가 실행되지 않았기에 위와 같은 그림이 됩니다.
+* Code가 실행된다면 아래의 그림과 같습니다.
+
+![](../../../.gitbook/assets/image%20%28177%29.png)
+
+* return result; 부분까지 실행한 그림입니다.
+* 이제 함수가 실행을 완료하고 그 결과를 반환하는데 아래의 그림과 같습니다.
+
+![](../../../.gitbook/assets/image%20%28174%29.png)
+
+* Stack은 자체적으로 메모리가 관리되기 때문에 실행을 완료한다면 아래의 그림과 같이 Stack에서 Delete합니다.
+
+![](../../../.gitbook/assets/image%20%28172%29.png)
+
+### Reference type 유형의 Class를 사용하여 Value type을 선언한다면?
+
+* C\#은 Multi - paradigmed의 스타일을 가졌기 때문에 여러 스타일에 대응이 되기 위해서 Reference type의 Class, 혹은 Array를 선언하여 하는 경우가 있습니다.
+* 즉, Stack에 저장되어야 할 Value type이 때때로 Heap에 저장이 되는 경우를 가집니다.
+
+```csharp
+public class MyInt  
+{            
+   public int MyValue;  
+}
+
+public MyInt AddFive(int pValue)  
+{  
+      MyInt result = new MyInt();  
+      result.MyValue = pValue + 5;  
+      return result;  
+} 
+```
+
+* 위와 같은 Code를 가진 경우 Reference type인 Class와 Value type의 함수가 선언되고, 함수 안에서 Class 객체를 생성하여 Field에 접근하는 Code입니다.
+
+![](../../../.gitbook/assets/image%20%28171%29.png)
+
+* Stack에서는 AddFive\(\) 함수의 데이터와 parameter인 int type pValue 데이터가 생성됩니다.
+* 이 함수가 실행되면 MyInt Class의 Instance가 생성되기 때문에 Heap 영역에서의 int type MyValue가 생성이 됩니다.
+* 내용에 대한 그림은 아래와 같습니다.
+
+![](../../../.gitbook/assets/image%20%28178%29.png)
+
+* 이제 사용이 끝났기 때문에 Stack에서의 메모리 관리에 의해 Stack의 내용을 사라지게 됩니다.
+* 아래의 그림과 같습니다.
+
+![](../../../.gitbook/assets/image%20%28173%29.png)
+
+* 최종적으로 프로그램이 완전히 종료 될 때까지 메모리 영역에 다음과 같은 데이터가 잔류하게 됩니다.
+* 아래의 그림과 같습니다.
+
+![](../../../.gitbook/assets/image%20%28176%29.png)
+
+
 

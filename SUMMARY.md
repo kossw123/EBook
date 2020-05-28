@@ -4,7 +4,7 @@
 * [C\#](c/README.md)
   * [C\# Basic](c/c-basic/README.md)
     * [C\# Essential element](c/c-basic/c-essential-element/README.md)
-      * [C\# Programming Language](c/c-basic/c-essential-element/c-programming-language.md)
+      * [C\# Programming Language - 작성중](c/c-basic/c-essential-element/c-programming-language.md)
     * [C\# Basic Tutorial](c/c-basic/c-basic-tutorial.md)
     * [C\# Basic Example](c/c-basic/c-basic-example.md)
     * [C\# Basic Review](c/c-basic/c-basic-review.md)
