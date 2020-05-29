@@ -209,6 +209,12 @@ public int AddFive(int pValue)
 
 ![](../../.gitbook/assets/image%20%28172%29.png)
 
+
+
+
+
+
+
 ### Reference type 유형의 Class를 사용하여 Value type을 선언한다면?
 
 * C\#은 Multi - paradigmed의 스타일을 가졌기 때문에 여러 스타일에 대응이 되기 위해서 Reference type의 Class, 혹은 Array를 선언하여 하는 경우가 있습니다.
@@ -272,9 +278,11 @@ public int ReturnValue2()
 * MyInt x = new MyInt\(\); / MyInt y = new MyInt\(\);
 * 두 문장은 얼핏보면 다른 객체를 생성하는 것 같지만 실상은, 아래의 그림과 같습니다.
 
-![](../../.gitbook/assets/image%20%28180%29.png)
+![](../../.gitbook/assets/image%20%28181%29.png)
 
 * 각각 Pointer 형식 x, y라는 주소가 같은 객체에 접근하기 때문에, 위의 Code를 출력하면 결국 값은 변하지 않고 4를 출력하게 됩니다.
+
+
 
 
 
@@ -311,15 +319,15 @@ class Class1 {
 
 * 위와 같은 Code가 존재할 때 Stack은 다음 그림과 같이 존재하게 됩니다.
 
-![](../../.gitbook/assets/image%20%28187%29.png)
+![](../../.gitbook/assets/image%20%28189%29.png)
 
 * 다음으로 AddFive함수와 parameter의 데이터가 메모리에 할당되고, **int x는 AddFive의 parameter에 복사됩니다.**
 
-![](../../.gitbook/assets/image%20%28185%29.png)
+![](../../.gitbook/assets/image%20%28187%29.png)
 
 * AddFive\(\) 함수의 실행이 종료된다면, 다시 Go\(\) 함수로 전달이 되고 사용이 끝난 데이터들은 제거됩니다.
 
-![](../../.gitbook/assets/image%20%28188%29.png)
+![](../../.gitbook/assets/image%20%28190%29.png)
 
 #### Stack과 Heap을 사용하는 코드에 대한 메모리 할
 
@@ -342,7 +350,7 @@ public void DoSomething(MyStruct pValue) {
 
 * 위와 같은 Code가 존재할 때 Stack에서는 메모리를 아래와 같이 할당합니다.
 
-![](../../.gitbook/assets/image%20%28181%29.png)
+![](../../.gitbook/assets/image%20%28182%29.png)
 
 * 실제로 위의 그림과 같이 복사본 자체가 용량이 커지기 때문에 특정 상황에서는 굉장히 비효율적일 수 있습니다.
 * 해당 문제를 해결하기 위해 Passing Reference type or Call by Reference와 같은 방법으로 parameter를 전달합니다.
@@ -366,7 +374,13 @@ public void DoSomething(ref MyStruct pValue) {
   * Pointer를 통해 이미 할당되어 있는 메모리의 주소를 가지게 하여 구조체에 접근합니다.
   * 해당 Code에 관한 메모리 할당은 아래의 그림과 같습니다.
 
-![](../../.gitbook/assets/image%20%28179%29.png)
+![](../../.gitbook/assets/image%20%28180%29.png)
+
+
+
+
+
+
 
 ### Passing Reference types
 
@@ -386,7 +400,7 @@ public void Go() {
 
 * 위와 같은 코드는 아래의 그림과 같은 메모리 할당을 가지고 있습니다.
 
-![](../../.gitbook/assets/image%20%28186%29.png)
+![](../../.gitbook/assets/image%20%28188%29.png)
 
 * 위의 코드에서 Go\(\) 함수의 동작을 약간 변형하면 아래와 같습니다.
 
@@ -407,7 +421,7 @@ public void DoSomething(MyInt pValue) {
 
 * 위의 코드에서 실행되는 메모리 할당은 아래와 같습니다.
 
-![](../../.gitbook/assets/image%20%28184%29.png)
+![](../../.gitbook/assets/image%20%28186%29.png)
 
 * 그리고 메모리 할당의 순서는 다음과 같습니다.
 
@@ -418,6 +432,39 @@ public void DoSomething(MyInt pValue) {
 5. DoSomething은 MyInt Class parameter를 가지고 있기 때문에, 이 parameter에 대한 메모리를 할당합니다.
 6. MyInt Class의 멤버 변수인 MyValue에 접근하여 값을 할당하고 할당한 값은 Heap에서의 MyInt 메모리의 멤버변수에 할당합니다.
 7. 마지막으로 Stack의 MyInt Class를 동적 할당한 메모리를 가리키고 있는 x라는 변수의 멤버변수를 ToString\(\)을 통해 string으로 변하여 출력합니다.
+
+이번엔 상속된 Class 메모리 할당과 할당된 메모리의 값을 변경하는 과정에서의 Stack, Heap 동작을 살펴 보겠습니다.
+
+```csharp
+public class Thing  {  }  
+public class Animal:Thing  {  public int Weight;  }  
+public class Vegetable:Thing  {  public int Length;  }  
+
+public void Go()   {  
+   Thing x = new Animal();  
+   Switcharoo(ref x);  
+    Console.WriteLine("x is Animal    :   "  + (x is Animal).ToString());  
+    Console.WriteLine("x is Vegetable :   "  + (x is Vegetable).ToString());  
+}  
+
+public void Switcharoo(ref Thing pValue)  {  
+     pValue = new Vegetable();  
+}  
+```
+
+* 출력된 결과는 아래와 같습니다.
+  * x is Animal : False
+  * x is Vegetable : True
+* Thing의 자식 Class인 Animal Class를 동적할당하여 Thing Class 변수인 x에 할당하고 있습니다.
+* 다음으로 Switcharoo\(\) 함수를 통하여 parameter인 Thing Class 변수 pValue를 ref 키워드를 사용하여 실제 메모리에 할당된 값을 변경합니다.
+* 위 코드에서의 메모리는 아래와 같은 그림을 가지게 됩니다.
+
+![](../../.gitbook/assets/image%20%28185%29.png)
+
+* 위의 그림은 Switcharoo\(\) 함수의 메모리 할당까지의 그림입니다.
+* 함수가 실행된 이후 출력하면 아래와 같은 그림의 메모리 할당을 가지게 됩니다.
+
+![](../../.gitbook/assets/image%20%28179%29.png)
 
 
 
