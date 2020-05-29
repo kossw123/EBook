@@ -180,7 +180,7 @@ Program paradigm을 나눈 목적과 분류에 대한 설은 추후 추가될 �
 * 이러한 메모리 영역에 어떻게 저장이 되는가?
 * 일단 Stack 영역에서의 데이터 저장 과정을 설명하겠습니다.
 
-### Stack에서의 데이터 저장 과
+### Stack에서의 데이터 저장 과정 
 
 ```csharp
 public int AddFive(int pValue)  
