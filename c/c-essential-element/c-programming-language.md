@@ -283,15 +283,16 @@ public int ReturnValue2()
 #### Stack에서의 메모리 할당
 
 * 기본적인 함수 호출시 발생하는 변수와 Class의 메모리 할당에 관하여 알아봤다면 좀 더 자세히 살펴보는 단원입니다.
-* 위의 단락에서 기초적인 Stack, Heap의 메모리 할당과정을 살펴봤다면, 대용량의 데이터는 Stack, Heap에서 어떻게 할당되는가에 대해 서술하겠습니다.
-
+* 
 {% hint style="info" %}
 작성한 Code는 데이터로 환산되어 메모리에 할당합니다. 메모리에 할당한 데이터들의 중복을 막기 위해 우리는 함수를 사용하여 중복을 회피할 수 있습니다.
 
 이때 함수에서 parameter를 전달하는 과정에서 대용량의 데이터를 효율적으로 사용하기 위해 값의 유형에 따라 2가지로 분류되었습니다.
 
 * Call by Value or Passing Value type
+  * 함수 호출을 통해 실제 메모리에 할당된 주소의 값을 변경할 수 없습니다.
 * Call by Reference or Passing Reference type
+  * 함수 호출을 통해 실제 메모리에 할당된 주소의 값을 변경합니다.
 {% endhint %}
 
 ```csharp
