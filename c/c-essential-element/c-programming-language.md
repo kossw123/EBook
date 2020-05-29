@@ -320,15 +320,15 @@ class Class1 {
 
 * 위와 같은 Code가 존재할 때 Stack은 다음 그림과 같이 존재하게 됩니다.
 
-![](../../.gitbook/assets/image%20%28192%29.png)
+![](../../.gitbook/assets/image%20%28193%29.png)
 
 * 다음으로 AddFive함수와 parameter의 데이터가 메모리에 할당되고, **int x는 AddFive의 parameter에 복사됩니다.**
 
-![](../../.gitbook/assets/image%20%28189%29.png)
+![](../../.gitbook/assets/image%20%28190%29.png)
 
 * AddFive\(\) 함수의 실행이 종료된다면, 다시 Go\(\) 함수로 전달이 되고 사용이 끝난 데이터들은 제거됩니다.
 
-![](../../.gitbook/assets/image%20%28193%29.png)
+![](../../.gitbook/assets/image%20%28194%29.png)
 
 #### Stack과 Heap을 사용하는 코드에 대한 메모리 할당
 
@@ -401,7 +401,7 @@ public void Go() {
 
 * 위와 같은 코드는 아래의 그림과 같은 메모리 할당을 가지고 있습니다.
 
-![](../../.gitbook/assets/image%20%28190%29.png)
+![](../../.gitbook/assets/image%20%28191%29.png)
 
 * 위의 코드에서 Go\(\) 함수의 동작을 약간 변형하면 아래와 같습니다.
 
@@ -422,7 +422,7 @@ public void DoSomething(MyInt pValue) {
 
 * 위의 코드에서 실행되는 메모리 할당은 아래와 같습니다.
 
-![](../../.gitbook/assets/image%20%28188%29.png)
+![](../../.gitbook/assets/image%20%28189%29.png)
 
 * 그리고 메모리 할당의 순서는 다음과 같습니다.
 
@@ -595,7 +595,7 @@ public Dude CopyDude() {
   * Ted : Dude!, I have a Red shoe on my right foot, and a Red on my left foot
 * 메모리 할당
 
-![](../../.gitbook/assets/image%20%28191%29.png)
+![](../../.gitbook/assets/image%20%28192%29.png)
 
 ## 마치며
 
