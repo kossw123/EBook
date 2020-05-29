@@ -68,7 +68,7 @@ class Helloworld {
   * 이에 대한 역할은 위의 설명 이외에 다양하게 생각할 수 있는데, 이렇게 따로 단락을 구분한 이유는 Programing Language에 따라 목적이 다르기 때문에 역할이 다르고, 스타일이 다르기 때문입니다.
   * 해당 내용은 Program paradigm의 도표를 통해 알 수 있습니다.
 
-![&#xB9CE;&#xC740; Program paradigm &#xB3C4;&#xD45C;&#xC911; &#xD558;&#xB098;](../../../.gitbook/assets/image%20%28170%29.png)
+![&#xB9CE;&#xC740; Program paradigm &#xB3C4;&#xD45C;&#xC911; &#xD558;&#xB098;](../../.gitbook/assets/image%20%28170%29.png)
 
 * 작성자가 사용하는 C\#은 multi-paradigmed에 속하는 C\#이기 때문에, 여러 paradigm에 대처하기 위해 주로 OOP\(Object - Oriented Programming\)을 비롯한 여러가지 문법을 사용하여 대응할 수 있습니다.
 
@@ -138,18 +138,25 @@ Program paradigm을 나눈 목적과 분류에 대한 설은 추후 추가될 �
 데이터 타입에 따른 분류는 아래의 그림을 보면 좀 더 편하게 이해하실 수 있습니다.
 {% endhint %}
 
-![Data type Hierarchy](../../../.gitbook/assets/image%20%28168%29.png)
+![Data type Hierarchy](../../.gitbook/assets/image%20%28168%29.png)
 
 * 각 언어마다 메모리에 대한 구조가 약간 상이할 수 있지만, 대부분은 다음과 같습니다.
 * C\#에서의 메모리 구조는 아래와 같습니다.
 
-![&#xCEF4;&#xD4E8;&#xD130; &#xBA54;&#xBAA8;&#xB9AC; &#xAD6C;&#xC870;](../../../.gitbook/assets/image%20%28169%29.png)
+![&#xCEF4;&#xD4E8;&#xD130; &#xBA54;&#xBAA8;&#xB9AC; &#xAD6C;&#xC870;](../../.gitbook/assets/image%20%28169%29.png)
 
 * 코드 영역 : 프로그래머가 쓴 Code에 대한 저장 영역입니다.
 * 데이터 영역 : 프로그래머가 미리 선언한 전역, 정적변수에 대한 저장 영역입니다.
   * ex\) static, const
 * 힙\(Heap\) : new를 통해 사용자가 직접 생성하기 때문에 Reference type의 데이터 타입이 저장됩니다.
 * 스택\(Stack\) : 해당 영역에는 프로그래머가 선언한 Value type의 데이터 타입과,  사용자가 동적으로 할당된 Heap에 저장된 객체의 주소가 저장됩니다.
+
+프로그래머가 Code를 작성하여 실행되면 주로 접근하는 두 곳의 메모리 영역\(Stack, Heap\)은 아래와 같은 유형으로 저장이 됩니다.
+
+1. Value type
+2. Reference type
+3. Pointer
+4. Instruction
 
 ## 메모리 구조에 따른 데이터의 전달 방식
 
@@ -186,21 +193,21 @@ public int AddFive(int pValue)
 
 * 위와 같은 Code가 있다고 한다면 맨 처음 Stack에는 아래의 그림과 같이 됩니다.
 
-![](../../../.gitbook/assets/image%20%28175%29.png)
+![](../../.gitbook/assets/image%20%28175%29.png)
 
 * 아직 함수 속 Code가 실행되지 않았기에 위와 같은 그림이 됩니다.
 * Code가 실행된다면 아래의 그림과 같습니다.
 
-![](../../../.gitbook/assets/image%20%28177%29.png)
+![](../../.gitbook/assets/image%20%28177%29.png)
 
 * return result; 부분까지 실행한 그림입니다.
 * 이제 함수가 실행을 완료하고 그 결과를 반환하는데 아래의 그림과 같습니다.
 
-![](../../../.gitbook/assets/image%20%28174%29.png)
+![](../../.gitbook/assets/image%20%28174%29.png)
 
 * Stack은 자체적으로 메모리가 관리되기 때문에 실행을 완료한다면 아래의 그림과 같이 Stack에서 Delete합니다.
 
-![](../../../.gitbook/assets/image%20%28172%29.png)
+![](../../.gitbook/assets/image%20%28172%29.png)
 
 ### Reference type 유형의 Class를 사용하여 Value type을 선언한다면?
 
@@ -223,23 +230,137 @@ public MyInt AddFive(int pValue)
 
 * 위와 같은 Code를 가진 경우 Reference type인 Class와 Value type의 함수가 선언되고, 함수 안에서 Class 객체를 생성하여 Field에 접근하는 Code입니다.
 
-![](../../../.gitbook/assets/image%20%28171%29.png)
+![](../../.gitbook/assets/image%20%28171%29.png)
 
 * Stack에서는 AddFive\(\) 함수의 데이터와 parameter인 int type pValue 데이터가 생성됩니다.
 * 이 함수가 실행되면 MyInt Class의 Instance가 생성되기 때문에 Heap 영역에서의 int type MyValue가 생성이 됩니다.
 * 내용에 대한 그림은 아래와 같습니다.
 
-![](../../../.gitbook/assets/image%20%28178%29.png)
+![](../../.gitbook/assets/image%20%28178%29.png)
 
 * 이제 사용이 끝났기 때문에 Stack에서의 메모리 관리에 의해 Stack의 내용을 사라지게 됩니다.
 * 아래의 그림과 같습니다.
 
-![](../../../.gitbook/assets/image%20%28173%29.png)
+![](../../.gitbook/assets/image%20%28173%29.png)
 
 * 최종적으로 프로그램이 완전히 종료 될 때까지 메모리 영역에 다음과 같은 데이터가 잔류하게 됩니다.
 * 아래의 그림과 같습니다.
 
-![](../../../.gitbook/assets/image%20%28176%29.png)
+![](../../.gitbook/assets/image%20%28176%29.png)
+
+### 같은 Class를 다른 객체로 선언했을 때
+
+* 곧바로 아래와 같은 Code를 살펴보겠습니다.
+
+```csharp
+public class MyInt  
+{  
+       public int MyValue;  
+}  
+
+public int ReturnValue2()  
+{  
+      MyInt x = new MyInt();  
+      x.MyValue = 3;  
+      MyInt y = new MyInt();  
+      y = x;                   
+      y.MyValue = 4;                
+      return x.MyValue;  
+}  
+```
+
+* MyInt x = new MyInt\(\); / MyInt y = new MyInt\(\);
+* 두 문장은 얼핏보면 다른 객체를 생성하는 것 같지만 실상은, 아래의 그림과 같습니다.
+
+![](../../.gitbook/assets/image%20%28180%29.png)
+
+* 각각 Pointer 형식 x, y라는 주소가 같은 객체에 접근하기 때문에, 위의 Code를 출력하면 결국 값은 변하지 않고 4를 출력하게 됩니다.
 
 
+
+### 좀 더 자세한 메모리 할당 과정
+
+#### Stack에서의 메모리 할당
+
+* 기본적인 함수 호출시 발생하는 변수와 Class의 메모리 할당에 관하여 알아봤다면 좀 더 자세히 살펴보는 단원입니다.
+* 위의 단락에서 기초적인 Stack, Heap의 메모리 할당과정을 살펴봤다면, 대용량의 데이터는 Stack, Heap에서 어떻게 할당되는가에 대해 서술하겠습니다.
+
+{% hint style="info" %}
+작성한 Code는 데이터로 환산되어 메모리에 할당합니다. 메모리에 할당한 데이터들의 중복을 막기 위해 우리는 함수를 사용하여 중복을 회피할 수 있습니다.
+
+이때 함수에서 parameter를 전달하는 과정에서 대용량의 데이터를 효율적으로 사용하기 위해 값의 유형에 따라 2가지로 분류되었습니다.
+
+* Call by Value or Passing Value type
+* Call by Reference or Passing Reference type
+{% endhint %}
+
+```csharp
+class Class1 {
+    public void Go() {
+        int x = 5;
+        AddFive(x);
+        Console.WriteLine(x.ToString());
+    }
+    public int AddFive(int pValue) {
+        pValue += 5;
+        return pValue;
+    }
+}
+```
+
+* 위와 같은 Code가 존재할 때 Stack은 다음 그림과 같이 존재하게 됩니다.
+
+![](../../.gitbook/assets/image%20%28184%29.png)
+
+* 다음으로 AddFive함수와 parameter의 데이터가 메모리에 할당되고, **int x는 AddFive의 parameter에 복사됩니다.**
+
+![](../../.gitbook/assets/image%20%28183%29.png)
+
+* AddFive\(\) 함수의 실행이 종료된다면, 다시 Go\(\) 함수로 전달이 되고 사용이 끝난 데이터들은 제거됩니다.
+
+![](../../.gitbook/assets/image%20%28185%29.png)
+
+* 여기서 가장 중요한 부분은 parameter의 데이터가 메모리에 할당되고 다른 함수에서 호출이 된다면, 원본과 복사본이 존재한다는 것입니다.
+* 만약 대용량의 데이터를 Passing Value type으로 parameter를 전달했다면, 매번 복사하고 공간을 할당하는 면에서 굉장히 비용이 비싸집니다.
+* 구조체에 관한 Stack의 할당 과정에서 위의 내용을 증명할 수 있습니다.
+
+```csharp
+public struct MyStruct   {  
+    long a, b, c, d, e, f, g, h, i, j, k, l, m;  
+}  
+public void Go() {
+    MyStruct x = new MyStruct();
+    DoSomething(x);
+}
+public void DoSomething(MyStruct pValue) { 
+    // DO SOMETHING HERE....
+}
+```
+
+* 위와 같은 Code가 존재할 때 Stack에서는 메모리를 아래와 같이 할당합니다.
+
+![](../../.gitbook/assets/image%20%28181%29.png)
+
+* 실제로 위의 그림과 같이 복사본 자체가 용량이 커지기 때문에 특정 상황에서는 굉장히 비효율적일 수 있습니다.
+* 해당 문제를 해결하기 위해 Passing Reference type or Call by Reference와 같은 방법으로 parameter를 전달합니다.
+
+```csharp
+public void Go() {
+    MyStruct x = new MyStruct();
+    DoSomething(ref x);
+}
+ public struct MyStruct  {  
+     long a, b, c, d, e, f, g, h, i, j, k, l, m;  
+ }  
+public void DoSomething(ref MyStruct pValue) { 
+    // DO SOMETHING HERE....
+}
+```
+
+* C\#에서는 C, C++에서 사용하는 Pointer type을 사용하지 않습니다.
+* 대신에 ref, out이라는 키워드를 통하여 pointer의 역할을 대체합니다.
+* 해당 Code는 위에서 사용한 구조체 관련 Code와 유사하지만, new, ref 키워드를 사용하여 동적 할당 및 참조를 통해 프로그램을 실행하고 있습니다.
+  * 해당 Code에 관한 메모리 할당은 아래의 그림과 같습니다.
+
+![](../../.gitbook/assets/image%20%28179%29.png)
 
