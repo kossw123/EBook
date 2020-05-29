@@ -278,12 +278,12 @@ public int ReturnValue2()
 
 
 
-### 좀 더 자세한 메모리 할당 과정
+### Passing Value types
 
 #### Stack에서의 메모리 할당
 
 * 기본적인 함수 호출시 발생하는 변수와 Class의 메모리 할당에 관하여 알아봤다면 좀 더 자세히 살펴보는 단원입니다.
-* 
+
 {% hint style="info" %}
 작성한 Code는 데이터로 환산되어 메모리에 할당합니다. 메모리에 할당한 데이터들의 중복을 막기 위해 우리는 함수를 사용하여 중복을 회피할 수 있습니다.
 
@@ -311,15 +311,17 @@ class Class1 {
 
 * 위와 같은 Code가 존재할 때 Stack은 다음 그림과 같이 존재하게 됩니다.
 
-![](../../.gitbook/assets/image%20%28184%29.png)
+![](../../.gitbook/assets/image%20%28187%29.png)
 
 * 다음으로 AddFive함수와 parameter의 데이터가 메모리에 할당되고, **int x는 AddFive의 parameter에 복사됩니다.**
 
-![](../../.gitbook/assets/image%20%28183%29.png)
+![](../../.gitbook/assets/image%20%28185%29.png)
 
 * AddFive\(\) 함수의 실행이 종료된다면, 다시 Go\(\) 함수로 전달이 되고 사용이 끝난 데이터들은 제거됩니다.
 
-![](../../.gitbook/assets/image%20%28185%29.png)
+![](../../.gitbook/assets/image%20%28188%29.png)
+
+#### Stack과 Heap을 사용하는 코드에 대한 메모리 할
 
 * 여기서 가장 중요한 부분은 parameter의 데이터가 메모리에 할당되고 다른 함수에서 호출이 된다면, 원본과 복사본이 존재한다는 것입니다.
 * 만약 대용량의 데이터를 Passing Value type으로 parameter를 전달했다면, 매번 복사하고 공간을 할당하는 면에서 굉장히 비용이 비싸집니다.
@@ -361,7 +363,61 @@ public void DoSomething(ref MyStruct pValue) {
 * C\#에서는 C, C++에서 사용하는 Pointer type을 사용하지 않습니다.
 * 대신에 ref, out이라는 키워드를 통하여 pointer의 역할을 대체합니다.
 * 해당 Code는 위에서 사용한 구조체 관련 Code와 유사하지만, new, ref 키워드를 사용하여 동적 할당 및 참조를 통해 프로그램을 실행하고 있습니다.
+  * Pointer를 통해 이미 할당되어 있는 메모리의 주소를 가지게 하여 구조체에 접근합니다.
   * 해당 Code에 관한 메모리 할당은 아래의 그림과 같습니다.
 
 ![](../../.gitbook/assets/image%20%28179%29.png)
+
+### Passing Reference types
+
+위 단락에서는 Stack에서의 Value types의 메모리 할당을 살펴봤다면 이번 단락에서는 Reference types의 메모리 할당에 대하여 살펴보겠습니다.
+
+우선 간단한 예제부터 살펴보자면 아래와 같습니다.
+
+```csharp
+public class MyInt {  
+    public int MyValue;  
+}  
+
+public void Go() {  
+   MyInt x = new MyInt();  
+}
+```
+
+* 위와 같은 코드는 아래의 그림과 같은 메모리 할당을 가지고 있습니다.
+
+![](../../.gitbook/assets/image%20%28186%29.png)
+
+* 위의 코드에서 Go\(\) 함수의 동작을 약간 변형하면 아래와 같습니다.
+
+```csharp
+public class MyInt {  
+    public int MyValue;  
+}  
+public void Go() {  
+   MyInt x = new MyInt();  
+   x.MyValue = 2;  
+   DoSomething(x);  
+   Console.WriteLine(x.MyValue.ToString());  
+}  
+public void DoSomething(MyInt pValue) {  
+     pValue.MyValue = 12345;  
+}  
+```
+
+* 위의 코드에서 실행되는 메모리 할당은 아래와 같습니다.
+
+![](../../.gitbook/assets/image%20%28184%29.png)
+
+* 그리고 메모리 할당의 순서는 다음과 같습니다.
+
+1. Go\(\) 함수의 메모리 할당이 일어납니다.
+2. 함수 내부에서 MyInt Class의 동적할당이 일어났기 때문에 Heap에서의 MyInt Class 메모리 할당이 일어납니다.
+3. Stack 내부적으로도 Heap에서 할당된 MyInt Class 변수인 x의 메모리를 할당합니다.
+4. DoSomething\(x\) 함수를 실행함과 동시에 메모리에 할당합니다.
+5. DoSomething은 MyInt Class parameter를 가지고 있기 때문에, 이 parameter에 대한 메모리를 할당합니다.
+6. MyInt Class의 멤버 변수인 MyValue에 접근하여 값을 할당하고 할당한 값은 Heap에서의 MyInt 메모리의 멤버변수에 할당합니다.
+7. 마지막으로 Stack의 MyInt Class를 동적 할당한 메모리를 가리키고 있는 x라는 변수의 멤버변수를 ToString\(\)을 통해 string으로 변하여 출력합니다.
+
+
 
