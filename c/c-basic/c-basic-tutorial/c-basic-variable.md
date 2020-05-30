@@ -50,5 +50,16 @@ Reference type
   * Value type = Stack
   * Reference type = Heap
 
-![](../../../.gitbook/assets/image%20%28188%29.png)
+![](../../../.gitbook/assets/image%20%28195%29.png)
+
+* 위의 그림과 같이 영역에 대한 메모리가 할당됩니다.
+
+## 변수가 살아있는 시간\(LifeTime\)
+
+* 변수를 사용하여 Code를 짜야하는데, 이전에 메모리 할당부분을 보면 Stack과 Heap영역에서 메모리가 관리됨을 알 수 있습니다.
+* Stack 혹은 Heap에서 삭제\(Delete\)되기 전까지의 메모리에서 존재하는 시간을 LifeTime이라고 합니다.
+  * Stack에서의 변수가 삭제되는 경우
+    * 프로그램 종료될 때
+    * Stack에서 자체적으로 필요없는 메모리라고 판단 했을때
+  * Heap에서의 변수가 삭제되는 경우
 
