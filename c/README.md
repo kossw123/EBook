@@ -11,4 +11,7 @@ description: 'C#'
 * Unity에서의 문서화 방식\(Tutorial, How-to-guide, Explanation, Technical reference\)과는 다른 방식으로 진행합니다.
 * 각 문서방식에서는 이름 그대로의 성질을 가진 문서를 작성했지만, C\# Basic, C\# Advanced로 나눠서 진행합니다.
 * 그리고, 각 항목에서의 Tutorial, example, Review의 항목으로 나눠서 각 문서의 성질에 맞게 작성합니다.
+* 아래의 참고문서를 활용했습니다.
+
+{% embed url="https://www.csharpstudy.com/CSharp/CSharp-Intro.aspx" %}
 

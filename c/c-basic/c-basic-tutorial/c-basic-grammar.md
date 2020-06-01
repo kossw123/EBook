@@ -45,4 +45,47 @@ description: 'C# Basic Grammar'
 
 ### 조건문
 
-* 
+* if 조건문
+  * 조건식이 참, 거짓에 따라 서로 다른 문장을 실행합니다.
+
+```csharp
+using System;
+
+namespace ConsoleApp1 {
+    class Program {
+        public static void Main(string[] args) {
+            int Variable1 = 10;
+            int Variable2 = 10;
+
+            if(Variable1 > Variable2) {
+                Console.WriteLine("Variable1 is big");
+            }
+            else {
+                Console.WriteLine("Variable2 is big");
+            }
+        }
+    }
+}
+```
+
+* Switch 조건문
+  * 조건값이 여러 값을 가질 경우 경우의 수를 작성하여 각 경우마다 서로 다른 문장을 실행합니다.
+
+```csharp
+switch (category)
+{
+   case "사과":
+      price = 1000;
+      break;
+   case "딸기":
+      price = 1100;
+      break;
+   case "포도":
+      price = 900;
+      break;
+   default:
+      price = 0;
+      break;
+}
+```
+
