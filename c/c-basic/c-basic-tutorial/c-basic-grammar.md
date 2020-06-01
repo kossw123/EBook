@@ -89,3 +89,57 @@ switch (category)
 }
 ```
 
+
+
+### 반복문
+
+* for 반복문
+  * Counter 변수를 이용하여 일정 범위 동안 블럭의 내용을 실행합니다.
+
+```csharp
+class Program {
+    static void Main(string[] args) {
+        // for 루프
+        for (int i = 0; i < 10; i++) {        // i : Counter 변수, i < 10 : 범
+           Console.WriteLine("Loop {0}", i);
+        }
+    }
+}
+```
+
+* while 반복문
+  * 조건식이 만족할 때 까지 반복합니다.
+
+```csharp
+class Program {
+    static void Main(string[] args) {
+        int i;
+        // while 루프
+        while(i <= 10) {
+           Console.WriteLine("Loop {0}", i);
+           i++;
+        }
+    }
+}
+```
+
+* do - while 반복문
+  * do와 while 키워드 사이 블럭에 내용을 실행합니다.
+  * 최소 한번은 실행됩니다.
+
+```csharp
+class Program {
+    static void Main(string[] args) {
+        int i = 0;
+        // do - while 루프
+        do 
+        {
+           Console.WriteLine("Loop {0}", i);
+           i++;
+        } while(i <= 10)
+    }
+}
+```
+
+
+
