@@ -83,15 +83,27 @@ namespace ConsoleApp1 {
 * 보통 변수를 선언한다면 Class안에 선언을 합니다.
   * 이렇게 Class안에 선언한 변수를 멤버 변수\(Member Variable\) 혹은 필드\(Field\)라고 합니다.
   * Class 안에 선언한 **함수**를 멤버 함수\(Member Method\)라고 합니다.
+  * 이에 대한 자세한 내용은 아래의 Page Link에 있습니다.
+
+{% page-ref page="../../c-essential-element/c-lifetime.md" %}
 
 
 
+## 상수
 
+* const라는 키워드가 붙은 변수를 의미합니다.
+* 초기에 정한 값을 프로그램 실행 도중에 변경할 수 없습니다.
+  * ex\) const int Variable = int.MaxValue;
+  * 위와 같이 설정한다면 Code에서 
 
 ## Literal
 
 * C\#에서는 Code에 값을 직접 쓸 수 있습니다.
 * 이때, 별도의 접미어\(Suffix\) 표시를 해야합니다.
+
+
+
+
 
 ## 최대, 최소값
 
@@ -106,6 +118,10 @@ float f = float.MinValue;
 
 * 어떤 변수가 메모리에 어떤 데이터도 가지지 않다는 것을 표시하기 위한 키워드입니다.
 * Reference type만 가질 수 있습니다.
+
+
+
+
 
 ## Nullable type
 
@@ -126,10 +142,17 @@ j = 10;
 int k = j.Value;
 ```
 
+
+
+
+
 ## 변수명 작성시 주의 사항
 
 * 대소문자를 구별합니다.
-* 
+* 특수문자를 사용하지 않습니다.
+* 첫 글자에 숫자를 사용하지 않습니다.
+* 띄어쓰기를 하지 않습니다.
+
 ## 마치며
 
 {% page-ref page="c-basic-variable.md" %}
