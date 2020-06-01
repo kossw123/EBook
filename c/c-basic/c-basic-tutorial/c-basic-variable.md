@@ -94,7 +94,7 @@ namespace ConsoleApp1 {
 * const라는 키워드가 붙은 변수를 의미합니다.
 * 초기에 정한 값을 프로그램 실행 도중에 변경할 수 없습니다.
   * ex\) const int Variable = int.MaxValue;
-  * 위와 같이 설정한다면 Code에서 
+  * 위와 같이 설정한다면 Code에서 또 다시 변경할 수 없습니다.
 
 ## Literal
 
