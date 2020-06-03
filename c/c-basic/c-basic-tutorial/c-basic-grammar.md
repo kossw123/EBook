@@ -172,5 +172,91 @@ static void Main(string[] args) {
 }
 ```
 
+### Iterator\(반복기\)란?
+
+* Iterator\(반복기\)란?
+  * 컬렉션, 배열, 목록의 요소를 반복하는데 사용합니다.
+    * yield return을 사용하 한번에 각 요소를 반환합니다.
+    * 반복을 종료하고 싶을 때는 yield break를 사용합니다.
+  * 사용하기 위해서는 IEnumerator라는 interface를 구현해야 합니다.
+    * Current\(속성\), MoveNext\(\), Reset\(\)의 기능을 가지고 있고, Current, MoveNext\(\)함수를 꼭 구현해야 합니다.
+  * 동일하게 IEnumerable이라는 interface가 존재하는데, 이는 컬렉션\(Collection\) Class와 같이 열거형으로 전환 가능한 클래스의 반복기 역할을 합니다.
+
+### 
+
+### yield문\(양도\)
+
+* Iterator\(반복기\)에서 데이터의 집합으로부터 데이터를 하나씩 호출자에게 보낼 때 사용합니다.
+  * 즉, 아래와 같은 경우에 사용하면 유리합니다.
+    * 데이터의 양이 커서 한번에 반환이 어려울 때, 조금씩 반환한다면 효율적입니다.
+    * 어떤 함수가 무제한의 데이터를 반환할 때, 데이터 집합을 한번에 반환할 수 없기에 yield문을 사용하여 구현합니다.
+    * 모든 데이터를 미리 계산하는데 비용이 많이 소모될 때, 원할 때 계산하는 형태인 On Demand로 처리할 때 유리합니다.
+
+{% hint style="info" %}
+정리
+
+* 컬렉션, 배열, 목록을 반환하는데, 데이터의 반환을 한번에 하면 안되는 경우 Iterator\(반복기\)라는 interface를 사용합니다.
+* Iterator\(반복기\)를 사용할 때 yield문을 통해 데이터를 반환, 종료합니다.
+* Iterator를 사용하려면 interface에 필요한 기능을 작성해야 합니다.
+  * Current // 필요
+  * MoveNext\(\) // 필요
+  * Reset\(\)
+* Iterator\(반복기\)는 기본적으로 IEnumerator interface를 기반으로 Collection Class에서도 사용할 수 있는 IEnumberable interface가 있습니다.
+  * IEnumerable에는 IEnumerator를 반환하는 단일 함수인 GetEnumerator\(\) 함수가 있습니다.
+{% endhint %}
+
+```csharp
+using System;
+using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
+
+namespace ConsoleApp1 {
+    public class MyList {
+        private int[] data = { 1, 2, 3, 4, 5 };
+        public IEnumerator GetEnumerator() {
+            int i = 0;
+            while (i < data.Length)
+            {
+                yield return data[i];
+                i++;
+            }
+        }
+    }
+    class Program {
+        public static void Main(string[] args) {
+            var list = new MyList();
+
+            foreach(var item in list) {
+                Console.WriteLine(item);
+            }
+
+            IEnumerator it = list.GetEnumerator();
+            Console.WriteLine("\n GetEnumerator를 통한 배열 반환 \n");
+            it.MoveNext();
+            Console.WriteLine("GetEnumerator : " + it.Current);
+            it.MoveNext();
+            Console.WriteLine("GetEnumerator : " + it.Current);
+
+
+            Console.WriteLine("\n IEnumerable를 통한 string 배열 반환 \n");
+            string[] strList = { "jeong", "kang", "won", "lee", "hee" };
+
+            IEnumerable<string> enumerable = from str 
+                                             in strList
+                                             where str.Length <= 3 
+                                             select str;
+
+            IEnumerator<string> enumerator = enumerable.GetEnumerator();
+            
+            while(enumerator.MoveNext()) {
+                Console.WriteLine("Enumerable을 이용한 Enumerator :" + enumerator.Current);
+            }
+        }
+    }
+}
+
+```
+
 
 
