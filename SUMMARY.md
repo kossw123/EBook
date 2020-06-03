@@ -15,7 +15,7 @@
     * [C\# Basic Example](c/c-basic/c-basic-example/README.md)
       * [C\# Basic Example Variable](c/c-basic/c-basic-example/c-basic-example-variable.md)
       * [C\# Basic Example Array](c/c-basic/c-basic-example/c-basic-example-array.md)
-      * [C\# Basic Example Array](c/c-basic/c-basic-example/c-basic-example-array-1.md)
+      * [C\# Basic Example Grammar](c/c-basic/c-basic-example/c-basic-example-array-1.md)
     * [C\# Basic Review](c/c-basic/c-basic-review.md)
   * [C\# Advanced](c/c-advanced/README.md)
     * [C\# Advanced Tutorial](c/c-advanced/c-advanced-tutorial.md)

@@ -262,5 +262,59 @@ namespace ConsoleApp1 {
 
 ```
 
+## LINQ
 
+* C\#에서는 Query라는 데이터 소스에서 데이터를 검색하는 "식"이 존재합니다. 그리고 LINQ는 C\#에서 제공하는 Query입니다.
+* 관계형 DB에는 SQL이라는 Query식이 사용되고, XML에서는 XQuery가 사용됩니다.
+* 이러한 데이터를 검색하는 식을 통해 LINQ는 컬렉션 형태를 띄는 모든 데이터를 검색할 수 있습니다.
+* 또한 Shortcut을 제공하며, 간단하게 필터링, 정렬할 수 있습니다.
+
+모든 LINQ는 3가지의 고유한 작업으로 구성됩니다.
+
+1. 데이터 소스 가져오기
+2. 쿼리 만들기
+3. 쿼리 실행 
+
+```csharp
+class IntroToLINQ {
+    static void Main() {
+        // The Three Parts of a LINQ Query:
+        // 1. Data source.
+        int[] numbers = new int[7] { 0, 1, 2, 3, 4, 5, 6 };
+
+        // 2. Query creation.
+        // numQuery is an IEnumerable<int>
+        var numQuery =
+            from num in numbers
+            where (num % 2) == 0
+            select num;
+
+        // 3. Query execution.
+        foreach (int num in numQuery) {
+            Console.Write("{0,1} ", num);
+        }
+    }
+}
+```
+
+데이터 소스를 가져오는 것은 간단하게 데이터 타입을 선언하고, 원하는 동작을 위해 parameter로 부여하는 것과 같이 작성할 수 있습니다.
+
+하지만 Query를 만들기는 다소 생소하게 구분되는데 아래의 그림을 보면 좀 더 이해가 가실 수 있습니다.
+
+![MSDN - LINQ](../../../.gitbook/assets/image%20%28207%29.png)
+
+Query를 작성하는 것은 어디서 어떤 데이터를 가져오고\(from - in\), 어떤 조건을 통해 필터링을 하여\(where\), 최종적인 결과\(select\)를 뽑아내는 키워드를 사용한다는 것입니다.
+
+키워드에 대한 내용은 아래와 같습니다.
+
+* from - in
+  * foreach 반복문 처럼 작동됩니다.
+  * 하지만, 실제로 데이터에 저장하지 않고, Iterator를 사용하는 형식을 저장한다는 것입니다.
+    * 위의 예제에서는 배열을 사용했는데 배열은 IEnumerable&lt;T&gt;를 상속 받기 때문에 사용이 가능합니다.
+* where
+  * 조건문의 역할을 합니다.
+  * 조건문을 만족한 데이터들만 반환하게 합니다.
+  * 여러개를 사용할 수 있습니다.
+* select
+  * 최종적인 결과를 가진 데이터를 반환합니다.
 
