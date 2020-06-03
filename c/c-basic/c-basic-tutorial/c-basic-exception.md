@@ -2,7 +2,7 @@
 description: 'C# Basic Exception'
 ---
 
-# C\# Basic Exception
+# C\# Basic Exception - 작성중
 
 ## 무엇을 하려고 하는가?
 
