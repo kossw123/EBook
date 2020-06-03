@@ -84,7 +84,10 @@ namespace ConsoleApp1 {
 ```
 
 * Iterator
-  * Iterator중, IEnumerator interface를 통해 
+  * Iterator중, IEnumerator interface의 Current라는 Property를 통해 데이터 집합을 가져오게 됩니다.
+    * 이를 통해 GetEnumerator\(\) 함수를 사용하여 구현한 IEnumerator를 반환합니다.
+      * Main\(\) 함수에서 IEnumerator 변수를 사용하여 MyList의 GetEnumerator\(\) 함수를 통해 작성한 데이터들을 반환받습니다.
+        * Current와 MoveNext\(\) 함수를 통해 현재값을 반환받고, 다음 데이터로 넘어갑니다.
 * LINQ
   * C\#에서는 LINQ라는 쿼리\(Query\)라는 것이 존재합니다.
   * 여기서는 미리 선언된 string 배열에서 IEnumerable&lt;string&gt;을 통해 LINQ를 사용하여 데이터를 뽑아내고 있습니다.
