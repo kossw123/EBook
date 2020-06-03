@@ -141,5 +141,36 @@ class Program {
 }
 ```
 
+* foreach 반복문
+  * 배열\(Array\)이나 컬렉션\(Collection\)에 주로 사용합니다.
+  * 각 요소를 하나씩 꺼내와서 블럭의 내용을 실행합니다.
+* for 반복문 vs foreach 반복문
+  * 성능적 차이는 그렇게 크지 않습니다.
+  * 배열을 사용하는 반복문 경우 foreach 내부의 최적를 거쳐서 for 반복문 보다 효율적으로 사용할 수 있고, 다차원 배열\(Jagged Array\)의 경우 코드의 가독성이 떨어지기 때문에 foreach 반복문을 사용하면 가독성이 훨씬 좋아집니다.
+
+```csharp
+static void Main(string[] args) {
+    // 3차배열 선언
+    string[,,] arr = new string[,,] { 
+            { {"1", "2"}, {"11","22"} }, 
+            { {"3", "4"}, {"33", "44"} }
+    };
+
+    //for 루프 : 3번 루프를 만들어 돌림
+    for (int i = 0; i < arr.GetLength(0); i++) {
+        for (int j = 0; j < arr.GetLength(1); j++) {
+            for (int k = 0; k < arr.GetLength(2); k++) {
+                Debug.WriteLine(arr[i, j, k]);
+            }
+        }
+    }
+
+    //foreach 루프 : 한번에 3차배열 모두 처리
+    foreach (var s in arr) {
+        Debug.WriteLine(s);
+    }
+}
+```
+
 
 
