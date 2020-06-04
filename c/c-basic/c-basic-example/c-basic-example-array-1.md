@@ -14,9 +14,57 @@ description: 'C# Basic Example Grammar'
 
 * 아래와 같은 조건문의 코드가 존재합니다.
 
+```csharp
+using System;
+using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
 
+namespace ConsoleApp1 {
+   
+    class Program {
 
+        public static void Main(string[] args) {
+            int idx = 0;
+            
+            Console.WriteLine("출력할 조건문을 번호 입력");
+            Console.WriteLine("1. if");
+            Console.WriteLine("2. switch");
+            string str = Console.ReadLine();
+            idx = int.Parse(str);
 
+            switch (idx) {
+                case 1:
+                    Console.WriteLine("if 조건문 :: 두 수의 비교");
+                    Console.WriteLine("삼항연산자를 통해 비교");
+                    int a = 3;
+                    int b = 4;
+                    int result = a < b ? b : a;
+                    Console.WriteLine(result);
+                    break;
+                case 2:
+                    Console.WriteLine("switch 조건문 ::");
+                    Console.WriteLine("출력할 Case 입력(1 ~ 2)");
+                    string contain = Console.ReadLine();
+                    int SwitchController = 0;
+                    SwitchController = int.Parse(contain);
+                    switch (SwitchController) {
+                        case 1:
+                            Console.WriteLine("1");
+                            break;
+                        case 2:
+                            Console.WriteLine("2");
+                            break;
+                    }
+                    break;
+            }
+        }
+    }
+}
+
+```
+
+* 간단하게 if, Switch 조건문을 사용해 해당 내용을 출력하는 코드입니다.
 
 ## for, foreach, while, do - while 반복문
 
