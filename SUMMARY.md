@@ -8,7 +8,7 @@
     * [C\# LifeTime](c/c-essential-element/c-lifetime.md)
   * [C\# Basic](c/c-basic/README.md)
     * [C\# Basic Tutorial](c/c-basic/c-basic-tutorial/README.md)
-      * [C\# Basic Tutorial Variable](c/c-basic/c-basic-tutorial/c-basic-variable.md)
+      * [C\# Basic Variable](c/c-basic/c-basic-tutorial/c-basic-variable.md)
       * [C\# Basic Array](c/c-basic/c-basic-tutorial/c-basic-array.md)
       * [C\# Basic Grammar](c/c-basic/c-basic-tutorial/c-basic-grammar.md)
       * [C\# Basic Exception](c/c-basic/c-basic-tutorial/c-basic-exception.md)

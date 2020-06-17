@@ -2,7 +2,7 @@
 description: 'C# Basic Tutorial Variable'
 ---
 
-# C\# Basic Tutorial Variable
+# C\# Basic Variable
 
 ## 무엇을 하려고 하는가?
 
