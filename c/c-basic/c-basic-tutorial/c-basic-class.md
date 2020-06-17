@@ -13,5 +13,5 @@ description: 'C# Basic Class'
 
 ## Class란?
 
-* 값 형식 중에서 Reference type에 분류되어 있습니다. 물론, 작성자가 직접 작성한 Class와 기존에 사용하는 Exception이나, 차후 서술할 
+* 값 형식 중에서 Reference type에 분류되어 있습니다. 물론, 작성자가 직접 작성한 Class와 기존에 사용하는 Exception이나, Object, 
 
