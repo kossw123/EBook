@@ -40,4 +40,10 @@ namespace Exception {
 
 * try문에서의 SafeDivision\(\) 함수가 실행될 때 런타임 오류가 발생하도록 만든 프로그램입니다.
 * 주석을 해제한다면, "Attempted divide by zero"가 출력되며, finally를 사용하여 오류 발생시 프로그램을 종료하지 않고 마지막까지 출력 하도록 작성했습니다.
-* 
+
+![System.DivideByZeroException &#xC624;&#xB958; catch &#xC804;\(&#xC704;\) / &#xD6C4;\(&#xC544;&#xB798;\)](../../../.gitbook/assets/image%20%28208%29.png)
+
+* 해
+
+
+
