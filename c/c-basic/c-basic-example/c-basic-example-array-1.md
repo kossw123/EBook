@@ -2,7 +2,7 @@
 description: 'C# Basic Example Grammar'
 ---
 
-# C\# Basic Example Grammar - 작성중
+# C\# Basic Example Grammar
 
 ## 무엇을 하려고 하는가?
 
@@ -65,12 +65,61 @@ namespace ConsoleApp1 {
 ```
 
 * 간단하게 if, Switch 조건문을 사용해 해당 내용을 출력하는 코드입니다.
+  * Console.ReadLine\(\)의 string 반환값을 Parse를 통해 int 타입으로 변환하고 Switch 조건문의 변수로 넣어서 각 조건문에 대한 내용을 실행합니다.
 
 ## for, foreach, while, do - while 반복문
 
 * 아래와 같은 반복문의 코드가 존재합니다.
+* 예시를 통해 데이터의 집합에서 원하는 데이터를 뽑아내는 LINQ와 혼용해서 사용하겠습니다.
 
+```csharp
+using System;
+using System.Linq;
+using System.Collections;
+using System.Collections.Generic;
 
+namespace ConsoleApp1 {
+
+    class DataClass
+    {
+        int[] int_data;
+        string[] string_data;
+        public DataClass() {
+            int_data = new int[] { 1, 2, 3, 4, 5 };
+            string_data = new string[] { "string", "int", "char", "long", "double" };
+        }
+        
+        public IEnumerator GetEnumerator() {
+            int i = 0;
+            while(i < int_data.Length) {
+                yield return int_data[i];
+                yield return string_data[i];
+                i++;
+            }
+        }
+    }
+
+    class Program {
+        public static void Main(string[] args) {
+            var list = new DataClass();
+
+            IEnumerator it = list.GetEnumerator();
+
+            for (int i = 0; i < 10; i++) {
+                it.MoveNext();
+                Console.WriteLine(it.Current);
+            }
+        }
+    }
+}
+
+```
+
+* DataClass에서 선언한 2개의 배열을 생성자에서 동적 생성을 명시적으로 합니다.
+  * 그 다음 IEnumerator의 GetEnumerator\(\) 함수를 통해 i가 1씩 증가할 때마다 하나씩 데이터를 반환하도록 내용을 작성합니다.
+    *  IEnumerator는 임의로 GetEnumerator\(\) 함수를 작성할 수 있습니다.
+    * 물론 IEnumerable에서는 함수로 제공을 하지만 IEnumerator에서도 가능하다는 것을 전달하고 싶었습니다.
+  * Main\(\) 함수에서는 DataClass의 객체를 생성하고, for문을 통해 MoveNext\(\) 함수로 다음데이터를 반환 후 Current를 통해 조회된 데이터를 반환합니다.
 
 
 
@@ -93,7 +142,7 @@ namespace ConsoleApp1 {
             {
                 yield return data[i];
                 i++;
-            }
+            }    
         }
     }
     class Program {
@@ -143,4 +192,6 @@ namespace ConsoleApp1 {
       * LINQ의 from - in은 Foreach와 동일하기 때문에, 해당 interface를 상속받는 배열을 사용할 수 있습니다.
   * IEnumerable은 컬렉션 클래스에서 사용하는 키워드 이기 때문에, while문을 사용하기 위해서는 IEnumerator 변수로 데이터를 담는 작업이 필요합니다.
     * IEnumerable은 자체적으로 객체를 IEnumerator로 반환하는 GetEnumerator\(\) 함수를 가지고 있기 때문에, 이를 이용하여 while문의 조건식을 완성하고, 결과를 출력합니다.
+
+
 

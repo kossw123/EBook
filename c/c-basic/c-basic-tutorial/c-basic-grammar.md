@@ -2,7 +2,7 @@
 description: 'C# Basic Grammar'
 ---
 
-# C\# Basic Grammar - 작성중
+# C\# Basic Grammar
 
 ## 무엇을 하려고 하는가?
 
@@ -47,6 +47,13 @@ description: 'C# Basic Grammar'
 
 * if 조건문
   * 조건식이 참, 거짓에 따라 서로 다른 문장을 실행합니다.
+  * C\#에서는 Ternary operator라는 삼항연산자가 존재합니다.
+    * 이 Ternary operator는 다른 PL에서도 존재하고 비슷한 형식으로 유지됩니다.
+    * 아래의 Syntax로 구성됩니다.
+      * boolean expression ? first statement : second statement;
+    * **이러한 삼항연산자는 값을 반환하지만 실행하지 않습니다.**
+    * 짧은 if-else를 대체할 수 있습니다.
+    * 중첩된 삼항연산자의 사용이 가능합니다.
 
 ```csharp
 using System;
@@ -63,10 +70,19 @@ namespace ConsoleApp1 {
             else {
                 Console.WriteLine("Variable2 is big");
             }
+            
+
+            string result = x > y ? "x is greater than y" : x < y ? 
+            "x is less than y" : x == y ? 
+            "x is equal to y" : "No result";
+            
+            Console.WriteLine(result);
         }
     }
 }
 ```
+
+
 
 * Switch 조건문
   * 조건값이 여러 값을 가질 경우 경우의 수를 작성하여 각 경우마다 서로 다른 문장을 실행합니다.
@@ -191,6 +207,8 @@ static void Main(string[] args) {
     * 데이터의 양이 커서 한번에 반환이 어려울 때, 조금씩 반환한다면 효율적입니다.
     * 어떤 함수가 무제한의 데이터를 반환할 때, 데이터 집합을 한번에 반환할 수 없기에 yield문을 사용하여 구현합니다.
     * 모든 데이터를 미리 계산하는데 비용이 많이 소모될 때, 원할 때 계산하는 형태인 On Demand로 처리할 때 유리합니다.
+    * 데이터 타입에 따른 종속성을 방지하기 위해서도 사용합니다.
+      * 즉, 데이터를 조작할 수 있는 List를 IEnumerable을 통한 데이터 조회의 Logic을 짜게 된다면, 따로 추후 Logic의 변경될 때 만에 하나의 경우로 데이터를 바꾸는 경우가 생기지 않는 경우를 짤 수 있습니다.
 * yield문의 실행순
   1. 어떤 호출자가 Iterator를 가진 함수를 호출합니다.
   2. yield return문에서 하나의 값을 반환하고, 해당 함수의 위치를 기억합니다.
