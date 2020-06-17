@@ -2,7 +2,7 @@
 description: 'C# Basic Example Exception'
 ---
 
-# C\# Basic Example Exception - 작성중
+# C\# Basic Example Exception
 
 ## 무엇을 하려고 하는가?
 
@@ -43,7 +43,6 @@ namespace Exception {
 
 ![System.DivideByZeroException &#xC624;&#xB958; catch &#xC804;\(&#xC704;\) / &#xD6C4;\(&#xC544;&#xB798;\)](../../../.gitbook/assets/image%20%28208%29.png)
 
-* 해
-
+* 
 
 
