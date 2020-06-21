@@ -18,6 +18,7 @@
       * [C\# Basic Example Array](c/c-basic/c-basic-example/c-basic-example-array.md)
       * [C\# Basic Example Grammar](c/c-basic/c-basic-example/c-basic-example-array-1.md)
       * [C\# Basic Example Exception](c/c-basic/c-basic-example/c-basic-example-exception.md)
+      * [C\# Basic Example Class](c/c-basic/c-basic-example/c-basic-example-class.md)
     * [C\# Basic Review](c/c-basic/c-basic-review.md)
   * [C\# Advanced](c/c-advanced/README.md)
     * [C\# Advanced Tutorial](c/c-advanced/c-advanced-tutorial.md)
