@@ -227,4 +227,16 @@ static void Main(string[] args)
 
 * 보통 동적으로 생성하기 때문에, 객체는 Heap영역에 할당됩니다.
 * 하지만 Stack부분에서 Heap영역에 저장한 부분의 주소를 할당하기 때문에, 일반적으로 동적 생성이란 Stack의 일부분과 Heap의 일정 영역을 사용한다고 생각하시면 될것 같습니다.
-* 
+
+![myClass &#xBA54;&#xBAA8;&#xB9AC; &#xD560;&#xB2F9; &#xC608;&#xC2DC;](../../../.gitbook/assets/image%20%28211%29.png)
+
+* Class는 위의 그림과 같이 메모리 영역에 할당 됩니다.
+* 여러 Class를 사용한다면 위 Heap영역에서 다른 Class의 이름으로 할당되고, Stack에서는 Class를 가리키는 Pointer 주소값이 할당될 것입니다.
+
+### Class 객체간의 데이터 공유
+
+* Class간의 통신을 위해 코드에서 동적으로 생성\(new\)하기 때문에, 해당 Class에서 다른 Class간의 데이터 공유가 일어나지 않습니다.
+* 보통 데이터를 옮긴다는 알고리즘을 짤때는 임시 객체를 선언하여 서로 다른 두값을 임의로 저장하는 방식이나 한 객체를 공유하는 방식\(Singleton Pattern\)으로 
+
+
+
