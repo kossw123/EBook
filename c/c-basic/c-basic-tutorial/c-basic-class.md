@@ -2,7 +2,7 @@
 description: 'C# Basic Class'
 ---
 
-# C\# Basic Class
+# C\# Basic Class - 작성중
 
 ## 무엇을 하려고 하는가?
 
@@ -249,5 +249,47 @@ double b = 10.123;
 int a = (int)b;
 ```
 
+UpCasting의 예시로 아래의 코드를 보시면 좀 더 이해하실 수 있습니다.
 
+```csharp
+public class SuperClass {
+    public int integer = 10;
+    public virtual void DoWork() { integer = 10000; }
+    public virtual int WorkProperty { get { return 0; } }
+}
+
+public class SubClass: SuperClass {
+    public int integer = 140;
+    public override void DoWork() { base.DoWork(); }
+}
+
+static void Main(string[] args) {
+    SubClass sub = new SubClass();
+    sub.DoWork();
+    SuperClass super = (SuperClass)sub;
+    Console.WriteLine(super.integer);
+}
+```
+
+* SubClass의 객체를 생성하고 DoWork\(\) 함수를 실행시키고, SuperClass의 새로운 객체를 선언하고 생성 대신에 형변환\(Casting\)을 통해 자식 클래스인 SubClass로 변환하고 있습니다.
+* 그 후 SubClass의 DoWork\(\) 함수에서 base.DoWork\(\) 문장을 통해 override된 SuperClass의 DoWork\(\)함수를 실행하여 SuperClass의 Field값을 변경합니다.
+* 이에 대한 그림을 아래와 같이 표현해봤습니다.
+
+![](../../../.gitbook/assets/image%20%28212%29.png)
+
+{% hint style="info" %}
+위와 같은 Overriding을 사용하기 위해서는 2개의 Keyword가 필요합니다.
+
+* virtual 
+  * 재정의 한다는 Keyword입니다. 재정의란 선언한 내용을 수정하고, 파생 클래스에서 다시 내용을 쓴다라는 개념입니다.
+  * Field값중에 변수를 제외한 나머지 "함수, 인덱서, 속성, 이벤트"에 대해 사용할 수 있습니다.
+* override
+  * virtual을 사용하여 재정의한 내용에 대해 확장 또는 수정이 되었다는 Keyword입니다.
+
+재정의를 하는 방법은 아래와 같습니다.
+
+1. 부모 클래스에서 정의한 내용을 자식 클래스에서 변경, 수정하고 싶다면 부모 클래스의 값 형식 앞에 virtual을 붙입니다.
+2. 부모 클래스를 상속받은 자식 클래스에서 부모클래스의 이름, parameter의 선언을 똑같이 사용합니다.
+3. 해당 선언 내용을 확장, 수정한다는 의미로써, 값 형식 앞에 override Keyword를 붙입니다.
+{% endhint %}
 

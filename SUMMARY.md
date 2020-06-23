@@ -12,7 +12,7 @@
       * [C\# Basic Array](c/c-basic/c-basic-tutorial/c-basic-array.md)
       * [C\# Basic Grammar](c/c-basic/c-basic-tutorial/c-basic-grammar.md)
       * [C\# Basic Exception](c/c-basic/c-basic-tutorial/c-basic-exception.md)
-      * [C\# Basic Class](c/c-basic/c-basic-tutorial/c-basic-class.md)
+      * [C\# Basic Class - 작성중](c/c-basic/c-basic-tutorial/c-basic-class.md)
     * [C\# Basic Example](c/c-basic/c-basic-example/README.md)
       * [C\# Basic Example Variable](c/c-basic/c-basic-example/c-basic-example-variable.md)
       * [C\# Basic Example Array](c/c-basic/c-basic-example/c-basic-example-array.md)
