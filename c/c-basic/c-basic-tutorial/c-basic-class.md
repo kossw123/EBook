@@ -2,7 +2,7 @@
 description: 'C# Basic Class'
 ---
 
-# C\# Basic Class - 작성중
+# C\# Basic Class
 
 ## 무엇을 하려고 하는가?
 
