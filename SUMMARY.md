@@ -26,6 +26,7 @@
       * [C\# Basic Example Exception](c/c-basic/c-basic-example/c-basic-example-exception.md)
       * [C\# Basic Example Class](c/c-basic/c-basic-example/c-basic-example-class.md)
       * [C\# Basic Example interface](c/c-basic/c-basic-example/c-basic-example-interface.md)
+      * [C\# Basic Example delegate](c/c-basic/c-basic-example/c-basic-example-delegate.md)
     * [C\# Basic Review](c/c-basic/c-basic-review.md)
   * [C\# Advanced](c/c-advanced/README.md)
     * [C\# Advanced Tutorial](c/c-advanced/c-advanced-tutorial.md)

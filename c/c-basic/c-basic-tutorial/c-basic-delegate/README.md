@@ -202,6 +202,32 @@ void method(Delegate1 d, Delegate2 e, System.Delegate f)
 }
 ```
 
+
+
+### delegate의 instance
+
+* C\# 2.0부터는 delegate를 인스턴스화 시킬 수 있습니다.
+* 하지만 이러한 방법으, 
+
+```csharp
+// Declare a delegate.
+delegate void Del(string str);
+
+// Declare a method with the same signature as the delegate.
+static void Notify(string name)
+{
+    Console.WriteLine($"Notification received for: {name}");
+}
+static void Main(string[] args)
+{
+    // Create an instance of the delegate.
+    Del del1 = new Del(Notify);
+}
+
+```
+
+
+
 ### Multicast deletgate
 
 * multicast delegate는 차후 서술할 Event처리에 광범위하게 사용됩니다.
