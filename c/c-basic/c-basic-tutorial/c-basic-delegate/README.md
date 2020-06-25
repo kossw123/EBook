@@ -12,8 +12,14 @@ description: 'C# Basic delegate'
 
 ## 대리자\(delegate\)란?
 
-* 위에서 얘기한대로 안전하게 함수를 캡슐화 하는 문법입니다.
-* 이런 캡슐화를 통해 얻을 수 있는 이점은 아래와 같습니다.
+* Delegate sealed Class에서 파생되었으며, instance화 된 delegate는 매개변수로 전달하거나, 속성에 할당할 수 있습니다.
+  * **이로 인해 어떤 함수에서 나중에 delegate를 호출하여 비동기 콜백이라는 방식을 사용할 수 있습니다.**
+
+{% hint style="info" %}
+비동기 콜백\(Asynchronous callback\)
+{% endhint %}
+
+* 안전하게 함수를 캡슐화 하는 문법입니다. 이런 캡슐화를 통해 얻을 수 있는 이점은 아래와 같습니다.
   * 개체 지향이므로 delegate를 통해 재사용성이 뛰어납니다.
   * 형식이 안전합니다.
   * 보안이 유지됩니다.
