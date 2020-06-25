@@ -8,8 +8,6 @@ description: 'C# Basic Example Grammar'
 
 * C\# Basic Tutorial의 Grammar항목의 예시를 작성합니다.
 
-
-
 ## if, Switch 조건문
 
 * 아래와 같은 조건문의 코드가 존재합니다.
