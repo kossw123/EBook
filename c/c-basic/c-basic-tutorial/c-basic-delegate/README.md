@@ -16,7 +16,19 @@ description: 'C# Basic delegate'
   * **이로 인해 어떤 함수에서 나중에 delegate를 호출하여 비동기 콜백이라는 방식을 사용할 수 있습니다.**
 
 {% hint style="info" %}
-비동기 콜백\(Asynchronous callback\)
+비동기 콜백\(Asynchronous callback\), 동기 콜백\(Synchronous callback\)
+
+delegate를 사용하는 가장 큰 이유는 비동기적인 콜백함수 호출에 있기 때문에 동기, 비동기에 관한 개념부터 잡아보려고 합니다.
+
+* 동기적 처리
+  * 시간의 흐름에 따라 순서대로 코드가 처리되는 방식
+* 비동기적 처리
+  * 시간에 흐름에 따라 순서대로 코드가 실행되지만, 리턴을 기다리지 않는 처리 방식
+  * 이로 인해 프로세스는 요청에 따라 실행되지만, 프로세스가 끝나는 시간에 따라 다르게 리턴을 받습니다.
+
+위의 개념과 같이 작성자가 따로 비동기적인 처리를 하지 않는 이상 코드는 무조건 동기적 처리가 됩니다. 하지만 비동기적 처리를 이용해서 코드를 작성한다면, 
+
+우리가 사용하고 있는 앱이나 프로그램에서 새로고침 버튼을 누른다면, ui는 그대로 있고 내용만 새로 고쳐지는 현상을 재현할 수 있게 됩니다.
 {% endhint %}
 
 * 안전하게 함수를 캡슐화 하는 문법입니다. 이런 캡슐화를 통해 얻을 수 있는 이점은 아래와 같습니다.
@@ -63,11 +75,109 @@ namespace ConsoleApp {
 }
 ```
 
+## delegate의 여러가지 구
 
+해당 단락에서는 delegate는 어떻게 구현하는 사례가 있는가에 대한 내용을 기술하려고 합니다.
 
+### parameter로 넘기기
+
+```csharp
+using System;
+namespace ConsoleApp {
+    class Program { 
+        // 함수를 등록할 delegate 선언
+        public delegate void myDelegate(string str);
+        static void Main(string[] args) {
+            myDelegate del = TargetMethod;
+            MethodWithCallback(1, 2, del);
+            /*
+                Output : Sum : 3
+            */
+        }
+        // 등록할 함수
+        void TargetMethod(string str) => Console.WriteLine(str);
+        // 함수의 parameter로 myDelegate를 할당
+        public static void MethodWithCallback
+        // parameter에 등록한 myDelegate로 등록된 함수를 실행
+        (int a, int b, myDelegate callback) => callback($ "Sum : {(a + b).ToString()}");
+    }
+}
+```
+
+위의 예시는 parameter로 delegate를 넘겨서 해당 함수를 호출하는 콜백함수의 형태를 띄고 있습니다. 이러한 형태로 MethodWithCallback\(\) 함수안에서 myDelegate에 등록된 함수도 실행시키고, 따로 기능을 추가할 수 있게 됩니다. 
+
+{% hint style="danger" %}
 이러한 대리자를 통해 일정 형식만 유지하면서, 보안 및 재사용성을 챙길 수 있는 이점이 있습니다. 하지만 이러한 이점에 저는 아래와 같은 불편함을 느꼈습니다.
 
 * 재사용성이 있기 때문에, 콜백함수의 오류에 빠져 데이터의 종속성이 생기는 점이 있습니다.
 
-이 부분은 설계부터 잘못한 탓이 있을 수 있지만서도, 콜백함수에 대한 흐름을 따라가기가 쉽지 않다는 점도 있었습니다.
+이 부분은 저의 설계부터 잘못한 탓이 있을 수 있지만서도, 콜백함수에 대한 흐름을 따라가기가 쉽지 않다는 점도 있었습니다.
+{% endhint %}
+
+### Wrapping
+
+* delegate는 instance Method를 Wrapping하기 위한 방법으로도 사용됩니다.
+* 이러한 Wrapping을 거친다면 delegate는 등록한 함수에 추가로 다른 함수도 등록할 수 있게 됩니다.
+* 아래와 같은 예시를 보면 수월하게 이해하실 수 있습니다.
+
+```csharp
+using System;
+
+public class MethodClass
+{ 
+    public void Method1(string message)
+    {
+        Console.WriteLine(message);
+    }
+    public void Method2(string message)
+    {
+        Console.WriteLine(message);
+    }
+}
+
+static void Main(string[] args)
+{
+    var obj = new MethodClass();
+    Del d1 = obj.Method1;
+    Del d2 = obj.Method2;
+    Del d3 = DelegateMethod;
+
+    // delegate으 wrawdwdsd
+    Del allDelegate = d1 + d2;
+    allDelegate += d3;
+    DelegateMethodCallback("hello", allDelegate);
+}
+```
+
+{% hint style="info" %}
+!! instance Method
+
+static method와 달리 객체를 생성해야만 사용가능한 함수입니다.
+
+```csharp
+class instance {
+    void Method() { }
+}
+
+static void Main(string[] args)
+{
+    instance ins = new instance();
+    ins.Method();
+}
+```
+
+!!Wrapping
+
+데이터를 감싸는 방법, 또는 디자인패턴이라고도 하는 것 같습니다.
+
+이렇게 애매하게 설명한 이유는 기본적으로 데이터를 감싼다는 객체 지향의 개념과 유사하기 때문에 따로 책에서도 설명하지 않고, 굳이 찾으려고도 하지 않는 것 같습니다.
+
+중요한 것을 생각한대로 풀자면 **"원본 데이터를 훼손하지 않기 위해, 또 다른 데이터를 가지고 접근, 수정하는 방법"** 정도로 해설하면 될 것 같습니다.
+{% endhint %}
+
+
+
+
+
+
 
