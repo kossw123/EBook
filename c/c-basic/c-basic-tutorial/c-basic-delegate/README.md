@@ -114,10 +114,13 @@ namespace ConsoleApp {
 이 부분은 저의 설계부터 잘못한 탓이 있을 수 있지만서도, 콜백함수에 대한 흐름을 따라가기가 쉽지 않다는 점도 있었습니다.
 {% endhint %}
 
+### 
+
 ### Wrapping
 
 * delegate는 instance Method를 Wrapping하기 위한 방법으로도 사용됩니다.
 * 이러한 Wrapping을 거친다면 delegate는 등록한 함수에 추가로 다른 함수도 등록할 수 있게 됩니다.
+  * -= 연산자를 통해 등록을 해제 할 수도 있습니다.
 * 아래와 같은 예시를 보면 수월하게 이해하실 수 있습니다.
 
 ```csharp
@@ -142,12 +145,21 @@ static void Main(string[] args)
     Del d2 = obj.Method2;
     Del d3 = DelegateMethod;
 
-    // delegate으 wrawdwdsd
+    // Del delegate를 allDelegate로 Wrapping
     Del allDelegate = d1 + d2;
     allDelegate += d3;
     DelegateMethodCallback("hello", allDelegate);
 }
+
+public static void DelegateMethodCallback(string str, Del callback)
+{
+    callback(str);
+}
 ```
+
+allDelegate를 통해 Del delegate의 객체를 하나로 Wrapping하여 콜백함수를 통해 호출하는 코드입니다. allDelegate\(\) 함수를 호출하는 순간 순서대로 등록한 d1, d2, d3가 그대로 호출됩니다.
+
+* 함수 중 하나라도 catch를 통해 예외처리한 이외의 Exception이 throw된다면, 해당 Exception이 대리자의 호출자에게 해당 예외가 전달되어 호출목록의 후속 함수는 실행되지 않습니다.
 
 {% hint style="info" %}
 !! instance Method
@@ -176,6 +188,31 @@ static void Main(string[] args)
 {% endhint %}
 
 
+
+### delegate의 비교
+
+* 컴파일 시간에 할당된 delegate를 비교한다면 오류가 발생합니다.
+* 하지만 static delegate형식이면 비교는 허용되나, 런타임에서 Exception이 발생합니다.
+
+```csharp
+void method(Delegate1 d, Delegate2 e, System.Delegate f)
+{
+    Console.WriteLine(d == e);            // CS0019 : 오류 
+    Console.WriteLine(d == f);            // CS0252 : 경
+}
+```
+
+### Multicast deletgate
+
+* multicast delegate는 차후 서술할 Event처리에 광범위하게 사용됩니다.
+* 간단하게 Event에서 delegate가 어떻게 사용되는가를 설명하자면 아래와 같습니다.
+
+1. Event 객체는 해당 Event를 받도록 등록한 개체에 이벤트가 발생하였음을 알립니다.
+2. 알림을 받은 개체는 Event가 처리되도록 설계된 함수를 작성하고 delegate를 통해 Event 객체에게 전달합니다.
+3. delegate에 등록한 함수는 Event가 발생한다면 delegate를 통해 호출됩니다.
+4. delegate가 Event를 등록한 개체에게 데이터를 전달합니다.
+
+해당 단락은 Event page를 통해 연계하여 기술하겠습니다.
 
 
 
