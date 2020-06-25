@@ -63,13 +63,9 @@ This code produces the following output:
 */
 ```
 
-위의 코드는 mySampleClass Class에서 선언한 Field의 string type의 멤버 함수들을 myMethodDelegate에 등록하여 동적으로 생성하고 있습니다.
-
-myMethodDelegate에 대한 delegate 객체는 instance Method와 중첩된 static으로 선언된 mySignMethod에 대해 만들어지고 있습니다.
-
-delegate를 동적으로 생성한다는 것에 
-
-
+* 위의 코드는 mySampleClass Class에서 선언한 Field의 string type의 멤버 함수들을 myMethodDelegate에 등록하여 동적으로 생성하고 있습니다.
+* myMethodDelegate에 대한 delegate 객체는 instance Method와 중첩된 static으로 선언된 mySignMethod에 대해 만들어지고 있습니다.
+* C\# 2.0 부터 delegate를 동적으로 생성할 수 있게 되었습니다. 그로인해 35~36라인에서의 문법이 가능합니다.
 
 {% embed url="https://docs.microsoft.com/ko-kr/dotnet/api/system.delegate?view=netcore-3.1\#examples" %}
 

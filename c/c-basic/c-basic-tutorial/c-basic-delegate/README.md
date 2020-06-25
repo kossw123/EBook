@@ -207,7 +207,7 @@ void method(Delegate1 d, Delegate2 e, System.Delegate f)
 ### delegate의 instance
 
 * C\# 2.0부터는 delegate를 인스턴스화 시킬 수 있습니다.
-* 하지만 이러한 방법으, 
+* 하지만 이러한 방법은 무명함수\(Anonymous Method\)를 이용하는 방법 이전에 나왔기 때문에, 잘 쓰이진 않습니다.
 
 ```csharp
 // Declare a delegate.
