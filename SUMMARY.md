@@ -19,6 +19,8 @@
           * [C\# Basic Anonymous Method](c/c-basic/c-basic-tutorial/c-basic-delegate/c-basic-anonymous-functions/c-basic-anonymous-method.md)
           * [C\# Basic Lambda Expression](c/c-basic/c-basic-tutorial/c-basic-delegate/c-basic-anonymous-functions/c-basic-lambda-expression.md)
         * [C\# Basic inline](c/c-basic/c-basic-tutorial/c-basic-delegate/c-basic-inline.md)
+      * [C\# Basic Event](c/c-basic/c-basic-tutorial/c-basic-event/README.md)
+        * [C\# Basic Observer Pattern](c/c-basic/c-basic-tutorial/c-basic-event/c-basic-observer-pattern.md)
     * [C\# Basic Example](c/c-basic/c-basic-example/README.md)
       * [C\# Basic Example Variable](c/c-basic/c-basic-example/c-basic-example-variable.md)
       * [C\# Basic Example Array](c/c-basic/c-basic-example/c-basic-example-array.md)
