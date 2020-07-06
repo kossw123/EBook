@@ -80,4 +80,8 @@
     * [DOTween](api-component-reference/unity/dotween.md)
     * [Graphic Rendering Pipeline - 작성중](api-component-reference/unity/untitled.md)
     * [NSubstitute](api-component-reference/unity/nsubstitute.md)
+* [용어 정리](undefined/README.md)
+  * [가 나 다 라 마](undefined/undefined.md)
+  * [바 사 아 자 차](undefined/undefined-1.md)
+  * [카 타 파 하](undefined/undefined-2.md)
 
