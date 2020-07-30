@@ -15,7 +15,7 @@
 
 ## Generate Array
 
-```csharp
+```text
 public static int[,] GenerateArray(int width, int height, bool empty)
 {
     int[,] map = new int[width, height];
@@ -39,7 +39,7 @@ public static int[,] GenerateArray(int width, int height, bool empty)
 
 ## Render Map
 
-```csharp
+```text
 public static void RenderMap(int[,] map, Tilemap tilemap, TileBase tile)
 {
     //Clear the map (ensures we dont overlap)
@@ -62,7 +62,7 @@ public static void RenderMap(int[,] map, Tilemap tilemap, TileBase tile)
 
 ## Update Map
 
-```csharp
+```text
 public static void UpdateMap(int[,] map, Tilemap tilemap) //Takes in our map and tilemap, setting null tiles where needed
 {
     for (int x = 0; x < map.GetUpperBound(0); x++)
@@ -83,7 +83,7 @@ public static void UpdateMap(int[,] map, Tilemap tilemap) //Takes in our map and
 
 ## Perlin Noise
 
-```csharp
+```text
 public static int[,] PerlinNoise(int[,] map, float seed)
 {
     int newPoint;
@@ -107,7 +107,7 @@ public static int[,] PerlinNoise(int[,] map, float seed)
 
 ## Perlin Noise Smooth
 
-```csharp
+```text
 public static int[,] PerlinNoiseSmooth(int[,] map, float seed, int interval)
 {
     //Smooth the noise and store it in the int array
@@ -171,7 +171,7 @@ public static int[,] PerlinNoiseSmooth(int[,] map, float seed, int interval)
 
 ## Random Walk
 
-```csharp
+```text
 public static int[,] RandomWalkTop(int[,] map, float seed)
 {
     //Seed our random
@@ -210,7 +210,7 @@ public static int[,] RandomWalkTop(int[,] map, float seed)
 
 ## Random Walk Top Smoothed
 
-```csharp
+```text
 public static int[,] RandomWalkTopSmoothed(int[,] map, float seed, int minSectionWidth)
 {
     //Seed our random
@@ -258,7 +258,7 @@ public static int[,] RandomWalkTopSmoothed(int[,] map, float seed, int minSectio
 
 ## Cellular Automata
 
-```csharp
+```text
 public static int[,] GenerateCellularAutomata(int width, int height, float seed, int fillPercent, bool edgesAreWalls)
 {
     //Seed our random number generator
@@ -291,7 +291,7 @@ public static int[,] GenerateCellularAutomata(int width, int height, float seed,
 
 {% tabs %}
 {% tab title="Method 1" %}
-```csharp
+```text
 static int GetMooreSurroundingTiles(int[,] map, int x, int y, bool edgesAreWalls)
 {
     /* Moore Neighbourhood looks like this ('T' is our tile, 'N' is our neighbours)
@@ -324,7 +324,7 @@ static int GetMooreSurroundingTiles(int[,] map, int x, int y, bool edgesAreWalls
 {% endtab %}
 
 {% tab title="Method 2" %}
-```csharp
+```text
 C#
 public static int[,] SmoothMooreCellularAutomata(int[,] map, bool edgesAreWalls, int smoothCount)
 {
@@ -364,7 +364,7 @@ public static int[,] SmoothMooreCellularAutomata(int[,] map, bool edgesAreWalls,
 
 {% tabs %}
 {% tab title="Method 1" %}
-```csharp
+```text
 static int GetVNSurroundingTiles(int[,] map, int x, int y, bool edgesAreWalls)
 {
 	/* von Neumann Neighbourhood looks like this ('T' is our Tile, 'N' is our Neighbour)
@@ -413,7 +413,7 @@ static int GetVNSurroundingTiles(int[,] map, int x, int y, bool edgesAreWalls)
 {% endtab %}
 
 {% tab title="Method 2" %}
-```csharp
+```text
 public static int[,] SmoothVNCellularAutomata(int[,] map, bool edgesAreWalls, int smoothCount)
 {
 	for (int i = 0; i < smoothCount; i++)

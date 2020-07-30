@@ -70,7 +70,6 @@ public class PhysicsObject : MonoBehaviour {
     protected RaycastHit2D[] hitBuffer = new RaycastHit2D[16];
     protected List<RaycastHit2D> hitBufferList = new List<RaycastHit2D> (16);
 
-
     protected const float minMoveDistance = 0.001f;
     protected const float shellRadius = 0.01f;
 
@@ -105,9 +104,7 @@ public class PhysicsObject : MonoBehaviour {
         grounded = false;
 
         Vector2 deltaPosition = velocity * Time.deltaTime;
-
         Vector2 moveAlongGround = new Vector2 (groundNormal.y, -groundNormal.x);
-
         Vector2 move = moveAlongGround * deltaPosition.x;
 
         Movement (move, false);
