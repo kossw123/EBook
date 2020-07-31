@@ -50,8 +50,6 @@
 
 분산된 시스템 간에 이벤트\(사건\)이 발생하면, 해당 이벤트\(사건\)에 맞는 행동을 생성, 발행\(Publishing\)하여 필요로 하는 수신자에게 전달하는 코드 작성 방식입니다.
 
-
-
 Event Driven Architecture를 구성하기 위해 Event Driven Programming을 하려면 특정 패턴\(Event driven Pattern\)을 사용해야 하는데  해당 패턴의 구성요소는 보통 다음과 같습니다.
 
 * Event generator : 시스템 내, 외부의 상태 변화를 감지하여 표준화된 형식의 이벤트 생성
@@ -89,6 +87,8 @@ Event Driven Architecture를 구성하기 위해 Event Driven Programming을 하
 
 
 ## 자
+
+
 
 
 
