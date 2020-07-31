@@ -16,7 +16,7 @@ description: tutorial PhysicsObject에 이은 How-to-guide
 
 ## Scripting Gravity
 
-```text
+```csharp
 PhysicsObject.cs
 
 
@@ -45,7 +45,7 @@ public class PhysicsObject : MonoBehaviour {
 
 ## Detecting Overlaps
 
-```text
+```csharp
 PhysicsObject.cs
 
 
@@ -75,7 +75,7 @@ public class PhysicsObject: MonoBehaviour {
 
 ## Scripting Collision
 
-```text
+```csharp
 PhysicsObject.cs 
 
 
@@ -124,7 +124,7 @@ public class PhysicsObject: MonoBehaviour {
 
 ## Horizontal Movement
 
-```text
+```csharp
 PhysicsObject.cs
 
 
@@ -147,7 +147,7 @@ public class PhysicsObject: MonoBehaviour {
 }
 ```
 
-```text
+```csharp
 PlayerPlatformerController.cs
 
 
@@ -167,7 +167,7 @@ public class PlayerPlatformerController: PhysicsObject {
 
 ## Player Controller Script
 
-```text
+```csharp
 PhysicsObject.cs
 
 
@@ -185,7 +185,7 @@ public class PhysicsObject: MonoBehaviour {
 }
 ```
 
-```text
+```csharp
 PlayerPlatformerController.cs
 
 
@@ -214,7 +214,7 @@ public class PlayerPlatformerController: PhysicsObject {
 
 ## Adding Player Animation
 
-```text
+```csharp
 PlayerPlatformerController.cs
 
 
