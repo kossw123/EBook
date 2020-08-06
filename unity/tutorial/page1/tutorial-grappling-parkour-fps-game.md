@@ -46,17 +46,21 @@ Tutorial을 보시기 전 주의점
 
 ### Player - Object
 
-Capsule Object를 추가하여 해당 Object의 이동과 카메라 방향으로의 이동을 구현합니다.
+해당 내용에서는 위에서 작성한 클래스 다이어그램을 통해 움직일 Object의 배치를 설명합니다.
 
-![](../../../.gitbook/assets/image%20%28219%29.png)
+Object의 배치는 아래의 그림과 같습니다.
+
+![](../../../.gitbook/assets/image%20%28222%29.png)
 
 해당 그림은 Capsule Object를 추가하여 하위 Object로 Cube Object를 생성하여 이름을 Visor로 놓고 다시 Visor Object 아래에 Main Camera를 둔 형태입니다.
+
+Gun Object는 Probuilder를 통한 Mesh 제작을 통해 Pipe모양의 Mesh를 적용하고 Muzzle이라는 Empty Object을 총구처럼 두고 쓰고 있습니다.
 
 ### Player - Script
 
 해당 프로젝트에서는 다음과 같이 간단한 클래스 다이어그램을 가지고 있습니다.
 
-![](../../../.gitbook/assets/image%20%28222%29.png)
+![](../../../.gitbook/assets/image%20%28224%29.png)
 
 해당 Script는 다음과 같은 내용으로 구성 되어 있습니다.
 
@@ -449,7 +453,6 @@ public class grapplingGun : MonoBehaviour
         Destroy(joint);
     }
 }
-
 ```
 {% endtab %}
 {% endtabs %}
@@ -460,5 +463,9 @@ public class grapplingGun : MonoBehaviour
 
 {% embed url="https://unity3d.com/kr/how-to/set-up-post-processing-stack" %}
 
+## 마치며
 
+* 위의 내용을 가지고 How-to-guide에서 마저 설명하도록 하겠습니다.
+
+{% page-ref page="tutorial-grappling-parkour-fps-game.md" %}
 
