@@ -2,7 +2,7 @@
 description: Explanation Photon + FireBase Network Game
 ---
 
-# Explanation Photon + FireBase Network Game - 작성중
+# Explanation Photon + FireBase Network Game
 
 ## 무엇을 하려고 하는가?
 
