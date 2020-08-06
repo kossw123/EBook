@@ -15,13 +15,18 @@ description: tutorial Grappling Parkour FPS Game
   * Probuilder를 통한 맵제작
   * Post Processing을 이용한 Global Volume 처리
   * UnityEvent를 이용한 상태변수 Callback System 기초 구현
+    * 해당 Callback System 관련된 부분은 기존 프로젝트에 아직 미적용 했기 때문에, 다른 프로젝트에서 구현한 내용을 적용할 예정입니다.
+    * 그렇기 때문에, 구현이 된 기능들과 Callback System을 구현한 내용이 연동이 안될 수 있습니다.
 
 {% hint style="warning" %}
 Tutorial을 보시기 전 주의점
 
 * 해당 문서를 작성하는 이유는 위의 기능의 추가 중 Callback System을 도입하고나서, 즉흥적으로 기능을 추가하는 것에 대해 한계를 느껴 해당 내용을 정리하고자 작성됨을 알립니다.
 * **즉, 설계가 즉흥적으로 추가한 것이다 보니, 해당 프로젝트를 가지고 첨삭하는 것을 추천하지 않습니다.**
+* Grapple 기능에 대해서는 아래의 영상에서 R&D를 했습니다.
 {% endhint %}
+
+
 
 해당 프로젝트는 아래 파일의 압축을 해제하고 Export 하시면 됩니다.
 
@@ -51,5 +56,15 @@ Capsule Object를 추가하여 해당 Object의 이동과 카메라 방향으로
 
 ![](../../../.gitbook/assets/image%20%28222%29.png)
 
+해당 Script는 다음과 같은 내용으로 구성 되어 있습니다.
 
+{% tabs %}
+{% tab title="First Tab" %}
+
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
 
