@@ -59,12 +59,402 @@ Capsule Object를 추가하여 해당 Object의 이동과 카메라 방향으로
 해당 Script는 다음과 같은 내용으로 구성 되어 있습니다.
 
 {% tabs %}
-{% tab title="First Tab" %}
+{% tab title="Playable" %}
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
 
+namespace FPSGame.AbstractClass
+{
+    public abstract class Playerable : MonoBehaviour
+    {
+        public abstract void MyInput();
+        public abstract void Movement();
+        public abstract void Rotation();
+
+        public abstract void Slide();
+        public abstract void Jump();
+        public abstract void Crouch();
+    }
+}
+
+
+```
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="PlayerMovement" %}
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using FPSGame.AbstractClass;
+using FPSGame.Helper;
 
+namespace FPSGame.Movement
+{
+    public class PlayerMovement : Playerable
+    {
+        [Header("Physics Movement")]
+        public bool PhysicsMovement = false;
+        [Space]
+
+        //[Header("Require Component")]
+        public Transform PlayerBody;
+        public Transform cameraArm;
+        private Rigidbody rb;
+
+        private float axisX;
+        private float axisZ;
+        private Vector3 movement;
+        [Range(10, 100)] public float Sensitive = 50f;
+        private float xRotation = 0f;
+
+        [Header("Character float Property")]  
+        [Range(1, 20)] public float speed;
+        public float jump;
+        [Range(5, 10)] public float slide;
+
+      
+
+        [Header("Character bool Property")]
+        public bool readyJump = true;
+        public bool readySlide = true;
+        public bool readyCrouch = true;
+
+        [Header("Button KeyDown")]
+        public bool isJump = false;
+        public bool isSlide = false;
+        public bool isCrouch = false;
+
+        private DetectedLayer detect;
+
+        [Header("Editor Variable")]
+        public Vector3 playerScale;
+        Vector3 crouchScale = new Vector3(1, 0.5f, 1);
+
+        public override void MyInput()
+        {
+            axisX = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
+            axisZ = Input.GetAxis("Vertical") * Time.deltaTime * speed;
+            isJump = Input.GetButton("Jump");
+            isSlide = Input.GetButton("Slide");
+            isCrouch = Input.GetButtonDown("Crouch");
+        }
+
+        public override void Movement()
+        {
+            if(!PhysicsMovement)
+            {
+                Vector3 lookForward = new Vector3(cameraArm.forward.x, 0, cameraArm.forward.z).normalized;
+                Vector3 lookRight = new Vector3(cameraArm.right.x, 0, cameraArm.right.z).normalized;
+                Vector3 movement = lookForward * axisZ + lookRight * axisX;
+                rb.MovePosition(PlayerBody.position + movement);
+            }
+
+            else if(PhysicsMovement)
+            {
+                float physicsSpeed = 10f;
+                float maxVelocityChange = 10.0f;
+                rb.AddForce(Vector3.down * rb.mass);
+
+                Vector3 targetVelocity = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+                targetVelocity = transform.TransformDirection(targetVelocity);
+                targetVelocity *= physicsSpeed;
+
+                Vector3 velocity = rb.velocity;
+                Vector3 velocityChange = (targetVelocity - velocity);
+                velocityChange.x = Mathf.Clamp(velocityChange.x, -maxVelocityChange, maxVelocityChange);
+                velocityChange.z = Mathf.Clamp(velocityChange.z, -maxVelocityChange, maxVelocityChange);
+                velocityChange.y = 0;
+                rb.AddForce(velocityChange, ForceMode.VelocityChange);
+            }
+
+        }
+
+        public override void Rotation()
+        {
+            float mouseX = Input.GetAxis("Mouse X") * Sensitive * Time.deltaTime;
+            float mouseY = Input.GetAxis("Mouse Y") * Sensitive * Time.deltaTime;
+
+            xRotation -= mouseY;
+            xRotation = Mathf.Clamp(xRotation, -70, 90);
+
+            cameraArm.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
+            PlayerBody.Rotate(Vector3.up * mouseX);
+        }
+
+
+        public override void Slide()
+        {
+            if (readySlide && detect.isGround)
+            {
+                readySlide = false;
+                rb.AddForce(slide * cameraArm.forward, ForceMode.Impulse);
+                Invoke("ResetSlide", 1f);
+            }
+        }
+        public void ResetSlide()
+        {
+            readySlide = true;
+        }
+
+
+        public override void Jump()
+        {
+            if(readyJump)
+            {
+                readyJump = false;
+                rb.AddForce(PlayerBody.position * jump * Vector2.up, ForceMode.Impulse);
+                
+                Invoke("ResetJump", 1f);
+            }
+        }
+        public void ResetJump()
+        {
+            readyJump = true;
+        }
+        
+
+        private void Start() {
+            rb = GetComponent<Rigidbody>();
+            Cursor.lockState = CursorLockMode.Locked;
+            detect = GetComponent<DetectedLayer>();
+            playerScale = PlayerBody.localScale;
+        }
+
+        void FixedUpdate() {
+
+            Movement();
+            if (readySlide && isSlide) Slide();
+            if (readyJump && isJump) Jump();
+
+            if (readyCrouch && isCrouch) Crouch();
+            if (!readyCrouch && isCrouch) ResetCrouch();
+        }
+
+        private void Update() {
+            MyInput();
+            Rotation();
+        }
+
+        public override void Crouch()
+        {
+            if (readyCrouch && detect.isGround)
+            {
+                readyCrouch = false;
+                PlayerBody.localScale = crouchScale;
+                PlayerBody.position = new Vector3(PlayerBody.position.x, PlayerBody.position.y - 0.5f, PlayerBody.position.z);
+            }
+        }
+
+        public void ResetCrouch()
+        {
+            PlayerBody.localScale = playerScale;
+            PlayerBody.position = new Vector3(PlayerBody.position.x, PlayerBody.position.y + 0.5f, PlayerBody.position.z);
+        }
+    }
+}
+```
+{% endtab %}
+
+{% tab title="DetectedLayer" %}
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using FPSGame.Movement;
+
+namespace FPSGame.Helper
+{
+    public class DetectedLayer : MonoBehaviour
+    {
+        public Transform body;
+        public LayerMask groundLayer;
+        public LayerMask wallLayer;
+
+        [Space] [Header("Collision Property")]
+        private Collider[] groundColl;
+        private Collider[] frontWallColl;
+        private Collider[] behindWallColl;
+        private Collider[] leftWallColl;
+        private Collider[] rightWallColl;
+        private Collider[] ceilingColl;
+        private float collRadius = 0.25f;
+
+        [Space]
+        [Header("Boolean Property")]
+        public bool isGround;
+        public bool isFrontWall;
+        public bool isBehindWall;
+        public bool isLeftWall;
+        public bool isRightWall;
+        public bool isCeiling;
+
+        [Space]
+        [Header("Offset Property")]
+        public Vector3 bottomOffset;
+        public Vector3 frontOffset;
+        public Vector3 behindOffset;
+        public Vector3 leftOffset;
+        public Vector3 rightOffset;
+        public Vector3 upperOffset;
+
+        public void InitializeOffset()
+        {
+            bottomOffset = -body.up;
+            upperOffset = body.up;
+            frontOffset = body.forward;
+            behindOffset = -body.forward;
+            leftOffset = -body.right;
+            rightOffset = body.right;
+        }
+        public void DetectedToTerrain()
+        {
+            // Ground
+            groundColl = Physics.OverlapSphere(body.position + bottomOffset, collRadius, groundLayer);
+            if(groundColl.Length != 0)  {  isGround = true;  }
+            else  { isGround = false; }
+
+            WallDetected(frontWallColl, frontOffset, wallLayer, ref isFrontWall);
+            WallDetected(behindWallColl, behindOffset, wallLayer, ref isBehindWall);
+            WallDetected(leftWallColl, leftOffset, wallLayer, ref isLeftWall);
+            WallDetected(rightWallColl, rightOffset, wallLayer, ref isRightWall);
+            WallDetected(ceilingColl, upperOffset, wallLayer, ref isCeiling);
+        }
+        public void WallDetected(Collider[] coll, Vector3 offset, LayerMask targetMask, ref bool targetBool)
+        {
+            coll = Physics.OverlapSphere(body.position + offset, collRadius, targetMask);
+            if(coll.Length != 0) 
+            { 
+                targetBool = true;
+                body.GetComponent<Rigidbody>().isKinematic = true;
+            }
+            else 
+            { 
+                targetBool = false;
+                body.GetComponent<Rigidbody>().isKinematic = false;
+            }
+        }
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            var position = new Vector3[] { 
+                bottomOffset, upperOffset, 
+                frontOffset, behindOffset, 
+                leftOffset, rightOffset 
+            };
+
+            foreach(var item in position)
+            {
+                Gizmos.DrawWireSphere((Vector3)body.position + item, collRadius);
+            }
+        }
+        private void Update()
+        {
+            InitializeOffset();
+            DetectedToTerrain();
+        }
+    }
+}
+
+```
+{% endtab %}
+
+{% tab title="GrapplingGun" %}
+```csharp
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class grapplingGun : MonoBehaviour
+{
+    [SerializeField] private LineRenderer line;
+    [SerializeField] private Vector3 grapplePoint;
+    public LayerMask whatIsGrappleable;
+    public Transform Player, playerCamera, pistolMuzzle;
+    private SpringJoint joint;
+
+    public float lineDistance = 100f;
+    public Vector3 currentGrapplePos;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        line = GetComponent<LineRenderer>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            StartGrapple();
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            StopGrapple();
+        }
+    }
+
+    private void LateUpdate()
+    {
+        DrawRope();
+    }
+
+    public void StartGrapple()
+    {
+        RaycastHit hitInfo;
+        if (Physics.Raycast(playerCamera.position, playerCamera.forward, 
+        out hitInfo, lineDistance))
+        {
+            grapplePoint = hitInfo.point;
+
+
+            joint = Player.gameObject.AddComponent<SpringJoint>();
+            joint.autoConfigureConnectedAnchor = false;
+            joint.connectedAnchor = grapplePoint;
+
+            float distanceFromPoint = Vector3.Distance(Player.position, grapplePoint);
+
+            joint.maxDistance = distanceFromPoint * 0.8f;
+            joint.minDistance = distanceFromPoint * 0.25f;
+
+            joint.spring = 4.5f;
+            joint.damper = 7f;
+            joint.massScale = 4.5f;
+
+            line.positionCount = 2f;
+            currentGrapplePos = pistolMuzzle.position;
+        }
+    }
+
+    void DrawRope()
+    {
+        if (!joint)
+            return;
+
+        currentGrapplePos = 
+            Vector3.Lerp(currentGrapplePos, grapplePoint, Time.deltaTime * 8f);
+        line.SetPosition(0, pistolMuzzle.position);
+        line.SetPosition(1, currentGrapplePos);
+    }
+
+    public void StopGrapple()
+    {
+        line.positionCount = 0;
+        Destroy(joint);
+    }
+}
+
+```
 {% endtab %}
 {% endtabs %}
+
+
+
+### Enviroment - Post Processing
+
+* 해당부분은 Post Processing에 관한 기능과 프로젝트에 적용된 Profile에 관하여 설명합니다.
 
