@@ -23,6 +23,10 @@ Tutorial을 보시기 전 주의점
 * **즉, 설계가 즉흥적으로 추가한 것이다 보니, 해당 프로젝트를 가지고 첨삭하는 것을 추천하지 않습니다.**
 {% endhint %}
 
+해당 프로젝트는 아래 파일의 압축을 해제하고 Export 하시면 됩니다.
+
+{% file src="../../../.gitbook/assets/parkour-fps-game.zip" caption="Parkour FPS Game" %}
+
 ## 작성하기 전 받은 Package
 
 해당 프로젝트를 진행하기 전 다음과 같은 Package를 다운 받으시는 것을 추천드립니다.
@@ -43,7 +47,9 @@ Capsule Object를 추가하여 해당 Object의 이동과 카메라 방향으로
 
 ### Player - Script
 
-해당 사이드 프로젝트에서는 하나의 추상 클래스를 상속받는 PlayerMovement Script가 존재합니다.
+해당 프로젝트에서는 다음과 같이 간단한 클래스 다이어그램을 가지고 있습니다.
+
+![](../../../.gitbook/assets/image%20%28222%29.png)
 
 
 
