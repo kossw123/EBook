@@ -26,6 +26,8 @@ Tutorial을 보시기 전 주의점
 * Grapple 기능에 대해서는 아래의 영상에서 R&D를 했습니다.
 {% endhint %}
 
+{% embed url="https://www.youtube.com/watch?v=Xgh4v1w5DxU&t=203s" %}
+
 
 
 해당 프로젝트는 아래 파일의 압축을 해제하고 Export 하시면 됩니다.
@@ -452,9 +454,11 @@ public class grapplingGun : MonoBehaviour
 {% endtab %}
 {% endtabs %}
 
-
-
 ### Enviroment - Post Processing
 
 * 해당부분은 Post Processing에 관한 기능과 프로젝트에 적용된 Profile에 관하여 설명합니다.
+
+{% embed url="https://unity3d.com/kr/how-to/set-up-post-processing-stack" %}
+
+
 
