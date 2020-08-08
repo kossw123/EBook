@@ -74,7 +74,7 @@ Visual Studio에서 Build 버튼을 누르면 Compile이 자동으로 되는 것
 
 ### CICD\(Continuous Integration / Continuous Delivery or Continuous Deploy\)
 
-단어 그대로 지속적인 배포, 지속적인 배포 혹은 결합을 의미하며, 프로그램 개발 단계를 자동화 하여 보다 짧은 주기로 고객에게 제공하는 방법입니다.
+단어 그대로 지속적인 배포, 지속적인 배포 혹은 결합을 의미하며, **프로그램 개발 단계를 자동화 하여 보다 짧은 주기로 고객에게 제공하는 방법**입니다.
 
 CI
 
@@ -89,9 +89,17 @@ CD
   * Continuous Deployment
     * 개발자들의 변경사항을 Repository에서 고객이 사용 가능한 환경까지 자동으로 배포하는 것을 의미합니다.
 
-위 내용의 대한 개략적인 내용을 아래의 그림과 같으며, CICD는 과정을 의미하는 것이기 때문에, 
+위 내용의 대한 개략적인 내용을 아래의 그림과 같습니다.
 
 ![https://www.redhat.com/ko/topics/devops/what-is-ci-cd](../.gitbook/assets/image%20%28231%29.png)
+
+이 방법을 도입하여 구현하기 위해서는 많은 고려해야 할 점들이 있으며, 이를 해결하기 위해 나온 솔루션들은 다음과 같습니다.
+
+* CircleCI, Travis, Jenkins, Bamboo, GitLab 등등
+
+{% embed url="https://www.katalon.com/resources-center/blog/ci-cd-tools" %}
+
+
 
 ## 아
 
