@@ -15,18 +15,32 @@
 
 대중적인 VCS중 하나는 Git, SVN, CVS\(Concurrent Versions System\)등이 있습니다.
 
+
+
 ### 빌드\(Build\)
 
 프로그래밍에서 Build는 작성한 소스 코드를 실행 가능한 결과물로 만드는 일련의 과정을 의미합니다. 이러한 Build Tool은 우리가 흔히 접할 수 있는 Visual Studio, Eclipse 등과 같은 IDE가 있습니다.
 
-Build의 단계 중에는 Compile이 포함되어 있는 관계 입니다.
+하지만 우리가 접하는 IDE는 필요한 기능의 집합이고, 그 중에는 원시 코드를 컴파일 방식 또는 인터프리터 방식으로 기계어로 번역하는 기능도 있을 것이고, 여러 필요한 기능들이 다 각기 다른 개념으로 존재합니다.
+
+**그 중 Build는 궁극적으로 프로그램을 실행 시킬 수 있는 결과물을 만들어 내는 것이며, 위의 과정 또한 Build의 과정이라고 볼 수 있습니다.**
+
+* Unity에서의 Build란?
+  * 타겟 플랫폼을 설정하고 Scene을 통합하여, Build Setting의 설정을 통해 하나의 실행가능한 파일로 바꿔주는 것 입니다.
+  * 이때, 크로스 플랫폼\(Cross Platform\)을 지향하는 경우 하드웨어 및 실행 방식에 따라 기본적인 차이가 생겨, 프로젝트 중 일부는 주 프로그램에서 다른 플랫폼 코드로 이식할 수 없습니다.
+
+{% embed url="https://docs.unity3d.com/kr/530/Manual/CrossPlatformConsiderations.html" %}
 
 
 
 ### 빌드\(Build\) vs 컴파일\(Compile\)
 
+보통 IDE를 사용하기 때문에, Build한다 = Compile한다 라는 의미로 혼용될 여지가 존재합니다.
+
 * Compile = 내가 짠 코드를 기계어로 변환하는 과정
-* Build = 작성한 코드를 실행 가능한 파일로 만드는 과
+* Build = 작성한 코드를 실행 가능한 파일로 만드는 과정 
+
+요약하자면, Compile은 Build화 하기 위한 과정 / Build는 실행 가능한 파일로 만드는 것 입니다.
 
 ## 사
 
@@ -44,11 +58,13 @@ Build의 단계 중에는 Compile이 포함되어 있는 관계 입니다.
 
 
 
-### CICD\(Continuous Integration, Continuous Delivery or Continuous Deploy\)
+### CICD\(Continuous Integration / Continuous Delivery or Continuous Deploy\)
 
 단어 그대로 지속적인 배포, 지속적인 배포 혹은 결합을 의미합니다.
 
-어떤 프로그램을 개발하여, 테스트 후, VCS나, 빌드화를 통해 
+CI
+
+* Continuous Integration은 
 
 ## 아
 
