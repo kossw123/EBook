@@ -16,6 +16,16 @@
 
 
 
+### 깃\(Git\)
+
+
+
+### 깃허브\(Github\)
+
+
+
+### 깃 vs 깃허브 \(Git vs Github\)
+
 
 
 ## 나
@@ -36,6 +46,10 @@
 
 
 ## 마
+
+### 메타 데이터\(Meta Data\)
+
+* Unity에서의 Metadata
 
 
 

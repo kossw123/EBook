@@ -6,7 +6,17 @@
 
 ## 사
 
+### SOLID 원칙
 
+* 단일 책임의 원칙
+
+
+
+
+
+
+
+### CICD\(Continuous Integration Continuous Delivery or Continuous Deploy\)
 
 ## 아
 
