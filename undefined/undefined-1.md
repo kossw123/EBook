@@ -15,19 +15,40 @@
 
 대중적인 VCS중 하나는 Git, SVN, CVS\(Concurrent Versions System\)등이 있습니다.
 
+### 빌드\(Build\)
+
+프로그래밍에서 Build는 작성한 소스 코드를 실행 가능한 결과물로 만드는 일련의 과정을 의미합니다. 이러한 Build Tool은 우리가 흔히 접할 수 있는 Visual Studio, Eclipse 등과 같은 IDE가 있습니다.
+
+Build의 단계 중에는 Compile이 포함되어 있는 관계 입니다.
+
+
+
+### 빌드\(Build\) vs 컴파일\(Compile\)
+
+* Compile = 내가 짠 코드를 기계어로 변환하는 과정
+* Build = 작성한 코드를 실행 가능한 파일로 만드는 과
+
 ## 사
 
 ### SOLID 원칙
 
-* 단일 책임의 원칙
+* 단일 책임의 원칙 \( SRP : Single Responsibility Principle \)
+* 개방 - 폐쇄의 원칙\( OCP : Open - Closed Principle \)
+* 리스코프 치환 원칙 \( Liskov Substitution Principle \)
+* 의존 역전 원칙 \( DIP : Dependency Inversion Principle \)
+* 인터페이스 분리 원칙 \( ISP : Interface Segregation Principle \)
+
+{% embed url="https://dev-momo.tistory.com/entry/SOLID-%EC%9B%90%EC%B9%99" %}
 
 
 
 
 
+### CICD\(Continuous Integration, Continuous Delivery or Continuous Deploy\)
 
+단어 그대로 지속적인 배포, 지속적인 배포 혹은 결합을 의미합니다.
 
-### CICD\(Continuous Integration Continuous Delivery or Continuous Deploy\)
+어떤 프로그램을 개발하여, 테스트 후, VCS나, 빌드화를 통해 
 
 ## 아
 
@@ -106,6 +127,10 @@ Event Driven Architecture를 구성하기 위해 Event Driven Programming을 하
 이를 바탕으로 좀 장기적인 시선으로 본다면, 익숙해 지기만 한다면, GTA나 여러 오픈월드 게임을 비롯한 많은 Event가 발생하는 프로그램에서의 깊은 이해가 가능할 것 같습니다.
 
 
+
+### IDE\(Integrated Development Enviroment\)
+
+통합 개발 환경이라는 직역 그대로의 의미이며, 통합된 개발 환경을 제공하기 위해 GUI를 제공하고, 필요한 기능의 집합입니다.
 
 ## 자
 

@@ -18,11 +18,13 @@
 
 ### 깃\(Git\)
 
-버전관리 Tool중 하나로써 가장 대중적으로 알려진 VCS중 하나로써, Git Repository라는 저장소에 소스 코드를 넣어서 **로컬에서 버전관리를 합니다**.
+
 
 ### 깃허브\(Github\)
 
-Git과 똑같은 개념이지만, Cloud Server를 사용하여 인터넷 상에서 Repository를 생성하여 소스 코드를 관리합니다.
+
+
+### 깃 vs 깃허브 \(Git vs Github\)
 
 
 
