@@ -4,7 +4,7 @@ description: Algorithm
 
 # Algorithm
 
-## 정
+## 정렬 
 
 {% tabs %}
 {% tab title="선택정렬\(Selection Sort\)" %}
@@ -21,6 +21,13 @@ for(int i=0; i<_stack.Length -1; i++)
     _stack[i] = _stack[temp];
     _stack[temp] = tmp;
 }
+
+/// <summary>
+/// 선택 정렬은 첫번째 자료를 두번째 자료부터 마지막까지 비교하여 가장 적은 값을 첫번째로 놓는다.
+/// 이를 반복하면 가장 작은값의 자료가 맨 앞으로 정렬
+
+/// 시간복잡도는 O(n^2)
+/// </summary>
 ```
 {% endtab %}
 
@@ -39,6 +46,13 @@ for (int i=0; i<_stack.Length - 1; i++)
         }
     }
 }
+
+/// <summary>
+/// 첫번째 자료와 두번째 자료, 두번째 자료와 세번째 자료, 이런식으로 n-1번째와 n번째를 비교정렬
+/// 가장 큰 자료가 맨 뒤로 이동
+
+/// 시간복잡도는 O(n^2)
+/// </summary>
 ```
 {% endtab %}
 {% endtabs %}
@@ -106,6 +120,14 @@ void Start()
     t.MakeTree(Array);
     t.searchTree(t.root, 3);
 }
+
+/// <summary>
+/// 어떤 자료구조에서 중간값을 설정 후 root 노드 부터 Leaf노드까지 계속 반으로 나눠서
+/// 작으면 왼쪽, 크면 오른쪽에 위치 시킨다.
+/// 이를 반복하여 Tree 생성
+
+/// 시간 복잡도는 O(n)
+/// </summary>
 ```
 {% endtab %}
 {% endtabs %}
@@ -176,6 +198,11 @@ void Start()
             isFrontPosisRear = false;
         }
     }
+    
+/// <summary>
+/// 선입선출의 구조, front(맨앞 노드 위치), rear(추가 후 노드 위치)를 통해 En, Dequeue시
+/// rear를 이동시킨다.
+/// </summary>
 ```
 {% endtab %}
 
@@ -224,6 +251,11 @@ void Start()
         _stack[count] = 0;
         count--;
     }
+    
+/// <summary>
+/// 선입후출, Stack 자료구조의 count index를 0부터 시작하여 삽입 후 증가
+/// Push, Pop이 있는데, 이를 통해 데이터를 삽입하고, 추출한다.
+/// </summary>
 ```
 {% endtab %}
 {% endtabs %}
