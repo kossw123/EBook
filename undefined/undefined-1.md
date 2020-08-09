@@ -42,20 +42,6 @@
 
 요약하자면, Compile은 Build화 하기 위한 과정 / Build는 실행 가능한 파일로 만드는 것 입니다.
 
-
-
-### 빌드의 자동화
-
-프로그램을 Build를 통해 실행가능한 결과물로 만든 다음 고객에게 제공하면, 고객은 사용 후 버그점과 개선점을 개발자에게 제시합니다.
-
-이때, 프로그램을 수정하고 다시 Build화를 통해 배포하는 과정이 무수히 반복되기 때문에, 도중 일어나는 실수와 비효율적인 방식은 누구도 체험하고 싶지 않습니다.
-
-그렇기 때문에, 자동화를 시킨다면, 비효율적인 방식을 바꾸고, 사람이 하면 실수가 일어날 수 있는 일을 프로그램이 대신한다면 이러한 사고를 예방할 수 있습니다.
-
-**위의 예시처럼 사람이 하지 않기 때문에, 자동화라는 단어가 나온 것이라고 볼 수 있습니다.**
-
-Visual Studio에서 Build 버튼을 누르면 Compile이 자동으로 되는 것도 Compile의 자동화라고도 볼 수 있습니다.
-
 ## 사
 
 ### SOLID 원칙
@@ -74,32 +60,11 @@ Visual Studio에서 Build 버튼을 누르면 Compile이 자동으로 되는 것
 
 ### CICD\(Continuous Integration / Continuous Delivery or Continuous Deploy\)
 
-단어 그대로 지속적인 배포, 지속적인 배포 혹은 결합을 의미하며, **프로그램 개발 단계를 자동화 하여 보다 짧은 주기로 고객에게 제공하는 방법**입니다.
+단어 그대로 지속적인 배포, 지속적인 배포 혹은 결합을 의미합니다.
 
 CI
 
-* Continuous Integration은 자동화된 빌드 및 단위 테스트가 수행된 후 코드의 변경사항을 VCS에 정기적으로 병합하는 개발방식입니다.
-
-CD
-
-* CD는 의미에 따라 최종 목적지가 달라집니다.
-  * Continuous Delivery
-    * 개발자들이 프로그램에 적용한 변경사항이 Unit Test를 통해 Repository에 자동으로 업로드 되는 것을 의미합니다.
-    * 이때 프로그램의 운영자는 해당 Repository에서 실시간으로 배포할 수 있습니다.
-  * Continuous Deployment
-    * 개발자들의 변경사항을 Repository에서 고객이 사용 가능한 환경까지 자동으로 배포하는 것을 의미합니다.
-
-위 내용의 대한 개략적인 내용을 아래의 그림과 같습니다.
-
-![https://www.redhat.com/ko/topics/devops/what-is-ci-cd](../.gitbook/assets/image%20%28231%29.png)
-
-이 방법을 도입하여 구현하기 위해서는 많은 고려해야 할 점들이 있으며, 이를 해결하기 위해 나온 솔루션들은 다음과 같습니다.
-
-* CircleCI, Travis, Jenkins, Bamboo, GitLab 등등
-
-{% embed url="https://www.katalon.com/resources-center/blog/ci-cd-tools" %}
-
-
+* Continuous Integration은 
 
 ## 아
 
