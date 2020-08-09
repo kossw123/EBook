@@ -15,26 +15,43 @@ description: How-to-guide PhysicsObject에 이은 Explanation
 
 ## Scripting Gravity
 
-PhysicsObject.cs는 물체에 중력을 적용함과 동시에 움직임을 부여하고, 충돌관련 기능들을                                    가지고 있습니다. 
+중력을 적용하는 과정입니다.
 
-우선적으로 중력을 적용시키기 위해 Object를 움직여야 하는데 RigidBody의 Position\(위치\)를 가지고 움직임을 부여 합니다.
-
-움직임을 부여하기 위해서 Rigidbody2D Component에 접근을 해야하는데 이를 위해서는 GetComponent를 사용하여 해결할 수 있습니다.
+중력을 적용하기 위해서 Unity에 미리 선언되어 있는 Physics2D.gravity 변수를 이용하여 velocity라는 Vector2 변수에 연산을 하여 낙하 속도 연산을 Time.deltaTime을 곱하여 이전 프레임이 완료된 시간을 곱합니다.
 
 {% hint style="info" %}
-rb2d = GetComponent&lt;Rigidbody2D&gt;\(\);
+Time.deltaTime은 이전 프레임이 완료된 시간을 의미하며, 단위는 초\(s\)단위 입니다.
 
-위와 같이 해당 Script가 있는 Object의 Rigidbody2D에 접근하여 Position이나 다른 Component들을 조절하기 위해서 위와 같은 문법을 씁니다.
-
-  
-허나 이를 쓰기 위해서는 Start\(\), Awake\(\)나 Enable\(\)등 Update\(\)가 시작하기 전에 미리 쓴다고 선언을 해야합니다.
+각기 다른 사양의 컴퓨터에서의 어떤 기능을 동기화 시키기 위해 사용하는데, 해당 프로젝트에서는 아무리 낮은 FPS를 가진 컴퓨터라도, 이전 프레임이 완료된 시간을 곱하여, 프레임당 이동거리를 초당 거리로 바꿔주는 역할을 합니다.
 {% endhint %}
 
-그리고 Rigidbody2D에 움직임을 부여할 Vector2변수를 생성하여 속도를 부여합니다. Velocity는 중력을 적용하기 위한 변수이고, Object의 움직임을 실질적으로 주기 위해서는 deltaPosition이라는 변수를 선언하여 Velocity라는 중력을 적용한 변수를 더한 새로운 Position값을 만들어서 Rigidbody에 부여합니다.
+그 후 새로운 Vector2 변수를 통해 Object에 적용될 새로운 Position변수를 생성하고, velocity \* Time.deltaTime을 통해, 플레이어가 움직일 수 있는 x축을 제외한 y축의 값을 고정시켜 줍니다.
 
-이 자료에서는 Movement라는 Method\(함수\)를 통해 따로 작성하고 그 함수를 FixedUpdate\(\)에서 돌아가게 끔 만들어 움직이고 있습니다.
+{% hint style="info" %}
+이때 고정된 값에 따라 일정 간격으로 호출하는 Unity Framework의 FixedUpdate\(\)함수를 사용하여 해당 연산을 합니다.
 
+이유는 Update\(\) 함수로 호출 시 제대로 물리 충돌에 관한 연산이 이루어지지 않을 가능성이 있기 때문입니다.
+{% endhint %}
 
+```csharp
+Vector2 velocity;
+void FixedUpdate()
+{
+    velocity += gravitymodifier * Physics2D.gravity * Time.deltaTime;
+    Vector2 deltaPosition = velocity * Time.deltaTime;
+    Vector2 move = Vector2.up * deltaPosition.y;
+    Movement(move)
+}
+```
+
+이제 실질적으로 Object를 이동하는 함수인 Movement\(\)를 작성하는데 간단하게 Rigidbody2D의 Position을 가져와 parameter로 받은 변수를 계속 더해줍니다.
+
+```csharp
+void Movement(Vector2 move)
+{
+    rb2d.position = rb2d.position + move
+}
+```
 
 ## Detecting Overlaps
 
@@ -46,46 +63,94 @@ rb2d = GetComponent&lt;Rigidbody2D&gt;\(\);
 int count = rb2d.Cast\(move, contactFilter, hitBuffer, distance + shellRadius\);
 
 위와 같은 parameter를 가지고 그 결과를 int형 배열로 반환하기 때문에 int형 변수에                   저장합니다.
+
+Rigidbody2D는 Collider와 암시적으로 연결되기 때문에, contactFilter에 설정된 Layer에서, distance + shellRadius만큼의 거리를 move 방향으로 투사하여 부딪힌 모든 것들을 반환합니다.
+
+이를 최종적으로 int형 변수에 부딪힌 것들의 갯수를 반환합니다.
+
+hitBuffer의 공간은 최대 RayCastHit 배열의 16칸으로 부딪힌 것들을 최대 16개 반환 할 수 있다는 의미입니다.
 {% endhint %}
 
  이 기능을 사용하기 위해서는 RayCastHit2D, ContactFilter2D Component가 필요한데 각각 아래의 기능을 가지고 있습니다.
 
 * RayCastHit2D : 2D physics에서 RayCast\(광선을 따라 놓여 있는 물체를 감지하기 위해 사용\)에 의해           감지된 물체에 대한 정보를 반환합니다.
-* ContactFilter2D : 접촉한 물체에 대한 정보를 반환합니다. ContactFilter를 사용한다면 접촉 결과를     나중에 필터링 할 필요없이 더 빠르고 편리하게 사용 가능합니다.
-
- 대충 흐름을 보자면 충돌을 감지하기 위해 RayCastHit2D로 PlayerStart에서 시작되는 광선을 따라 놓여있는 물체를 감지하고 ContactFilter2D로 결과를 미리 필터링하여 닿는 물체를 확인한다는 의미 인듯합니다.
+* ContactFilter2D : 접촉한 물체에 대한 정보를 반환합니다. ContactFilter를 사용한다면 접촉 결과를 나중에 필터링 할 필요없이 더 빠르고 편리하게 사용 가능합니다.
 
 ![gizmo.DrawWireSphere&#xB97C; &#xC774;&#xC6A9;&#xD55C; transform.position &#xBD80;&#xD130;  Rigidbody2D.cast&#xC758; Count](../../../.gitbook/assets/explanation-3.gif)
 
 ## Scripting Collision
 
- 위에서는 충돌을 감지하는 기능이 대부분 이였다면 여기서는 직접 충돌에 관한 처리를 Scripting을 합니다. RayCastHit2D List를 가지고 광선에 따라 놓여진 물체들을 List형식으로 관리합니다.
+ 위에서는 충돌을 감지하는 기능이 대부분 이였다면 여기서는 직접 충돌에 관한 처리를 Scripting을 합니다. 
 
- 그 후 move.magnitude를 반환하는 distance 변수를 가지고 움직인 Vector2의 길이를 알아낼 수 있습니다. 이 변수는 곧 움직인 거리가 되며 최소 minMoveDistance변수와 비교하여 조금이라도 움직였을 시 hitBufferList, 즉 놓여진 물체를 조사하는 List에 넣습니다.
+원래는 Physics.RayCast\(\) 함수를 통해 어떤 정점에서 광선을 일정거리만큼 쏴서 걸린 모든 충돌체를 반환하는 형식을 사용하지만 여기서는 RayCastHit2D List를 가지고 놓여진 물체들을 List형식으로 관리합니다.
+
+그렇다면 충돌체를 어떻게 RayCastHit List에 넣을것인가에 대한 의문이 들 수 있는데 해당 프로젝트에서는이미 Count 변수로 Ribidbody2D에 걸린 물체들의 갯수를 반환하기 때문에, for문을 사용하여 충돌된 물체들을 List에 추가합니다.
+
+그리고 충돌체의 법선벡터\(normal Vector\)인 currentNormal변수를 선언해서 List에 있는 충돌체들에 대한 법선 벡터를 선언합니다.
+
+후에 선언한 minGroundNormalY의 값과 비교하여 땅인지 아닌지를 판별하고 yMovement가 true, 즉 점프 하는 중이라면, 땅일때의 플레이어가 움직일 Vector인 groundNormal은 currentNormal이 되고 currentNormal.x의 값을 0으로 만듭니다.
+
+```csharp
+void Movement(Vector2 move, bool yMovement)
+    {
+        float distance = move.magnitude;
+        if (distance > minMoveDistance)
+        {
+            int count = rb2d.Cast(move, contact, hitBuffer, distance + shellRadius);
+            hitBufferList.Clear();
+
+            for(int i=0; i<count; i++)
+            {
+                hitBufferList.Add(hitBuffer[i]);
+            }
+
+            for(int i=0; i<hitBufferList.Count; i++)
+            {
+                Vector2 currentNormal = hitBufferList[i].normal;
+                if(currentNormal.y > minGroundNormalY)
+                {
+                    grounded = true;
+                    if(yMovement)
+                    {
+                        groundNormal = currentNormal;
+                        currentNormal.x = 0;
+                    }
+                }
+            }
+        }
+        
+        rb2d.position = rb2d.position + move;
+    }
+```
 
 {% hint style="info" %}
-List&lt;RayCastHit2D&gt; hitBufferList = new List&lt;RayCastHit2D&gt;\(\);
+왜 normal Vector끼리의 비교가 필요한가에 대한 설명을 하자면, rb2d.cast\(\)함수로 move라는 방향으로 부딪힌 물체를 반환하는데 아직까지 move 변수에는 중력을 적용하는 연산만 적용했기 때문에, 아래쪽 방향으로 움직이는 와중에 어떤 Tile에 걸린다면, 해당 Tile의 수직인 벡터를 반환합니다.
 
-위의 List는 RayCastHit2D가 반환하는 결과물들을 List형식으로 정리하여 탐색하기 위한 List
+즉, 수직인 법선벡터는 캐릭터가 땅에 서있는가를 판별하는데 좋은 역할을 하기 때문에, 공중인지 아닌지를 판별하기 위해 비교를 합니다.
 {% endhint %}
 
-그 후 List에 들어간 결과물을 가지고 반복문을 돌려서 normal Vector를 뽑아냅니다. 이 normal Vector는    캐릭터를 표면에 세우거나 발사체의 반사, 도탄을 정렬하는 방법으로 유용하게 사용할 수 있습니다.               즉, normal Vector\(법선벡\)는 표면에 수직이면 양수값을 반환하기 때문에 표면에 수직인지 아닌지를 판별 할 수 있습니다.
+땅인지 아닌지를 판별했다면, 그 다음으로 velocity와 currentNormal의 내적을 구하여, projection이라는 변수에 담습니다. projection은 다음과 같은 경우의 수로 움직입니다.
 
-표면인지 아닌지를 판별했다면 groundNormal = currentNormal를 하여 ground에 있다고 체크 후 currentNoraml.x = 0으로 함으로써 초기화 하는 과정을 거칩니다.   //이부분 왜 x값을 0으로 하는가에 대한 확
+* velocity와 currentNormal이 같은 방향\(여기서는 추락중이니 아래쪽\)이라면 1
+* 서로 반대방향이라면 -1
+* 그 사이값이라면 연산되고 있는 법선벡터의 
 
-float projection = Vector2.Dot함수를 통해 Velocity와 currentNoraml의 내적을 구합니다.                               양수를 가리킨다면 정확히 같은 방향을 가지고 있기 때문에 따로 처리를 하진 않지만 다른 방향을 가리킨다면 예외 처리를 해줘야 합니다. 그렇기 때문에 velocity에 projection\(음수\) \* currentNormal\(음수\)를 하여 velocity에 더하여 \(x + a, y + a\)와 같은 과정을 통해 땅 위에 고정시켜 놓습니다.
+만약 Projection이 0 이하라면 서로 반대방향이기 때문에, 중력과 반대방향으로 힘을 줘야할 필요가 있기 때문에, 해당 연산을 구현합니다.
 
-////// 이 부분 상세설명
+```csharp
+float projection = Vector2.Dot(velocity, currentNormal);
+if(projection < 0)
+{
+    velocity = velocity - projection * currentNormal;
+}
+```
 
-원점에서 충돌지점 까지의 거리구하여 shellRadius보다 가까운 지점에 충돌시  기존의 distance\(이동 길이\)를 수정합니다. 
+최종적으로 Rigidbody2D.Cast\(\)를 통해 Object에서 일정 거리가 떨어져 있는 탐색 알고리즘을 구현했기 때문에, 만약 캐릭터가 장애물에 부딪힐 때의 속도를 구현합니다.
 
-////// 이 부분 상세설명
-
-projection 이라는 변수가 등장하는데 이 변수는 velocity와 currentNormal의 내적을 구하는 변수로써 어떤 충돌체와 충돌시에 그 충돌체가 앞인지 뒤인지 판별하는 변수입니다. 이 변수가 양수, 혹은 음수를 가지게 되는데 양수면 정면에 있고, 음수면 후방에 있는 것으로 판별 난다. 하지만 이 변수를 왜 쓰는가?
-
-/////// 이부분 확인 필요 및 전체적으로 왜 쓰는가에 대한 의문이 필요할 
-
-Vector의 내적을 구했다면 rb2d변수를 가지고 이동 시 move.normalized \* distance의 공식을 더해                  \(단위벡터값  \* 앞에 있는지 뒤에 있는지\)의 식을 통하여 움직이게 됩니다.
+```csharp
+float modifiedDistance = hitBufferList[i].distance - shellRadius;
+distance = modifiedDistance < distance ? modifiedDistance : distance;
+```
 
 ## Horizontal Movement
 
@@ -99,7 +164,7 @@ Vector의 내적을 구했다면 rb2d변수를 가지고 이동 시 move.normali
 
 위와 같은 이유로 moveAlongGround라는 변수는 2D 평면상에서 정상적으로 계산하기 위한 절차라고        이해했습니다.
 
-이제 실질적으로 PlayerStart를 움직이기 위한 Script를 제작해야 하는데 따로 PlayerPlatformerController.cs를 생성하고 생성한 Script에서 Update\(\)문에서 Vector2.left를 통해 Update마다 왼쪽으로 가도록 설정합니다.
+이미 yMovement의 값에 따라 groundNormal을 currentNormal로 구현했기 때문에, 이를 x, y값을 Swap후 하나를 부정하는 형식으로 구현하면, 땅과 평행선인 벡터를 구할 수 있기 때문에, moveAlongGround와 deltaPosition.x값을 곱하여 새로운 Vector로 정의합니다.
 
 ## Player Controller Script
 
