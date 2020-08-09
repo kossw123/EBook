@@ -184,7 +184,9 @@ Sequence의 특징은 다음과 같습니다.
 
 * Append\(\) : Sequence 끝에 Tween을 추가합니다.
 * Join\(\) : Sequence 끝에 추가한 Tween과 동일한 시간에서 실행됩니다.
-
+* AppendCallback\(\) : 
+* AppendInterval\(\) : 
+* 
 ## 마치며
 
 * 위의 과정과 같이 Tweening을 거친다면 Animation 및 여러 Component를 간략화된 코드로 조절할 수 있어서 굉장히 편합니다.
