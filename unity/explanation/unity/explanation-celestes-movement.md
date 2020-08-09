@@ -73,7 +73,7 @@ DoTween API에 관한 자료는 아래의 링크에 들어가서 확인하실 �
 
 {% embed url="http://dotween.demigiant.com/documentation.php\#genericTo" caption="DoTween Document" %}
 
-간략하게 정리하자면,  DoTween API는 Unity Asset에 import하여 사용할 수 있는 API로써                어떤 기능을 작성하는데 들어가는 Code의 길이를 줄인 Code의 Shortcut을 강점으로 합니다.                 거기서 여러가지 Option을 줘서 작성자가 좀더 유연하게 작성할 수 있도록 도와주는 API라고 설명할 수 있습니다.
+간략하게 정리하자면,  DoTween API는 Unity Asset에 import하여 사용할 수 있는 API로써 어떤 기능을 작성하는데 들어가는 Code의 길이를 줄인 Code의 Shortcut을 강점으로 합니다. 거기서 여러가지 Option을 줘서 작성자가 좀더 유연하게 작성할 수 있도록 도와주는 API라고 설명할 수 있습니다.
 
 DoTween이 알려주는 몇가지 특징이 있습니다.
 
