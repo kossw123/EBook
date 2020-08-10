@@ -126,7 +126,7 @@ public static void insertSorting(int[] arr)
 ```csharp
 class Tree
 { 
-        public class Node
+    public class Node
     {
         public int data;
         public Node left;
