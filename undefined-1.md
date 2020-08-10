@@ -32,7 +32,7 @@ description: 시현 자료
 * Physics2D Collision 감지 함수를 이용한 충돌 여부 탐지 기능 제작--Probuilder를 통한 맵 제작--Post processing을 적용하여 BackGround Effect 추가
 *  동작 추가에 따른 관리의 어려움을 해결하기 위해 Event State 패턴 기초 구현 후 적용 예정
 
-### 움직
+### 움직임 
 
 ![](.gitbook/assets/2-1.gif)
 
