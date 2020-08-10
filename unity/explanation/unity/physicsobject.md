@@ -129,7 +129,7 @@ void Movement(Vector2 move, bool yMovement)
 즉, 수직인 법선벡터는 캐릭터가 땅에 서있는가를 판별하는데 좋은 역할을 하기 때문에, 공중인지 아닌지를 판별하기 위해 비교를 합니다.
 {% endhint %}
 
-![        Debug.DrawRay\(transform.position, groundNormal \* 10f, Color.green\)](../../../.gitbook/assets/image%20%28232%29.png)
+![        Debug.DrawRay\(transform.position, groundNormal \* 10f, Color.green\)](../../../.gitbook/assets/image%20%28233%29.png)
 
 땅인지 아닌지를 판별했다면, 그 다음으로 velocity와 currentNormal의 내적을 구하여, projection이라는 변수에 담습니다. projection은 다음과 같은 경우의 수로 움직입니다.
 
