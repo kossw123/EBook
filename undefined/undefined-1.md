@@ -183,6 +183,18 @@ Event Driven Architecture를 구성하기 위해 Event Driven Programming을 하
 
 통합 개발 환경이라는 직역 그대로의 의미이며, 통합된 개발 환경을 제공하기 위해 GUI를 제공하고, 필요한 기능의 집합입니다.
 
+
+
+### Universal Windows Platform
+
+MS사가 개발한 API중 하나로써, 제각기 개발할 필요 없이 다음과 같은 플랫폼들의 개발을 돕기 위해 사용됩니다.
+
+* Window10
+* Window10 Mobile
+* Xbox One
+* Microsoft HoloLens
+  * MS가 개발한 혼합현실 기반 착용 기
+
 ## 자
 
 
