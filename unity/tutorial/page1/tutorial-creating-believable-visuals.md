@@ -18,5 +18,7 @@ description: tutorial Creating Believe Visual
 
 {% embed url="https://drive.google.com/open?id=1zo9BHEZg12LW8asMxNeIBw0jJ0gLY7jf" caption="Creating Believable Visuals Sample File" %}
 
+{% embed url="https://drive.google.com/file/d/1H4mX9yAwuhBzSbh2bRxM7jIuuUQsDoWu/view" caption="유니티로 시네마틱 제작하기 : 타임라인 & 시네머신 Sample File" %}
+
 
 
