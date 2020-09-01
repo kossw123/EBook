@@ -26,7 +26,7 @@ Unity에는 Rendering Pipeline에는 4가지 종류가 있습니다.
 
 {% embed url="https://parksh86.tistory.com/168" %}
 
-* Post-processing\(후처\)
+* Post-processing\(후처리\)
   * 원본 영상에 생동감 혹은 다른 효과를 부여하는 작업을 뜻합니다.
   * Unity에서는 Post-Processing이라는 Component를 통해 후처리 작업을 삽입할 수 있으며, 이에 대한 자세한 사용방법은 아래의 링크를 따라 문서에 가셔서 메뉴얼을 보시면 됩니다.
 
