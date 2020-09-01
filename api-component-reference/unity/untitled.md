@@ -21,7 +21,7 @@ Unity에는 Rendering Pipeline에는 4가지 종류가 있습니다.
 
 {% embed url="https://www.slideserve.com/stacey/real-time-rendering" %}
 
-* Rendering\(은면을 제외한 작성자가 보기 위한 모델 구\)
+* Rendering\(은면을 제외한 작성자가 보기 위한 모델 구현\)
   * 실질적으로 Object를 표현하기 위한 도형의 배열, 시점, Texture, mapping, lighting, shader의 정보를 표현합니다.
 
 {% embed url="https://parksh86.tistory.com/168" %}
