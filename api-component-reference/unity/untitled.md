@@ -15,18 +15,18 @@ Unity에는 Rendering Pipeline에는 4가지 종류가 있습니다.
 
 그리고 Rendering Pipeline은 아래의 작업들을 수행합니다.
 
-* Culling\(특정 Pixel을 선별해서 은면 탐지\) 
+* Culling\(특정 Pixel을 선별해서 은면 탐\)
   * 보통 3D Graphic에서 보이지 않는 면은 Rendering 하지 않습니다. 이때 Culling이라는 작업을 통해 특정 Pixel들을 선별하는 과정을 거칩니다.
   * Culing을 하는데 여러가지 기법들이 존재합니다.
 
 {% embed url="https://www.slideserve.com/stacey/real-time-rendering" %}
 
-* Rendering\(은면을 제외한 작성자가 보기 위한 모델 구현\)
+* Rendering\(은면을 제외한 작성자가 보기 위한 모델 구\)
   * 실질적으로 Object를 표현하기 위한 도형의 배열, 시점, Texture, mapping, lighting, shader의 정보를 표현합니다.
 
 {% embed url="https://parksh86.tistory.com/168" %}
 
-* Post-processing\(후처리\)
+* Post-processing\(후처\)
   * 원본 영상에 생동감 혹은 다른 효과를 부여하는 작업을 뜻합니다.
   * Unity에서는 Post-Processing이라는 Component를 통해 후처리 작업을 삽입할 수 있으며, 이에 대한 자세한 사용방법은 아래의 링크를 따라 문서에 가셔서 메뉴얼을 보시면 됩니다.
 
