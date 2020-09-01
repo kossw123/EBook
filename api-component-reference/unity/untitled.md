@@ -15,7 +15,7 @@ Unity에는 Rendering Pipeline에는 4가지 종류가 있습니다.
 
 그리고 Rendering Pipeline은 아래의 작업들을 수행합니다.
 
-* Culling\(특정 Pixel을 선별해서 은면 탐\)
+* Culling\(특정 Pixel을 선별해서 은면 탐지\) 
   * 보통 3D Graphic에서 보이지 않는 면은 Rendering 하지 않습니다. 이때 Culling이라는 작업을 통해 특정 Pixel들을 선별하는 과정을 거칩니다.
   * Culing을 하는데 여러가지 기법들이 존재합니다.
 
