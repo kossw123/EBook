@@ -20,5 +20,13 @@ description: 'tutorial 유니티로 시네마틱 제작하기 : 타임라인 & �
 
 **Creating Believable Visuals와 Cinemachine을 작성하기 위한 HRDP package의 라이브러리가 오류가 생기기 때문에, OZTV님의 샘플 프로젝트를 사용하는점 양해 부탁드립니다.**
 
+해당 문서의 중점은 아래와 같습니다.
+
+* Timeline을 통해 Object의 Animation을 시간의 흐름에 따라 이동, 회전 및 활성화 여부를 할당할 수 있습니다.
+* Cinemachine을 통해 생성한 Virtual Camera들로 영화같은 Scene을 표현할 수 있습니다.
+* Unity는 작성한 Scene을 RecorderClip을 통해 영상파일로 추출할 수 있습니다.
+
+
+
 
 
