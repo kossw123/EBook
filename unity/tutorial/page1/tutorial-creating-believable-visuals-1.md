@@ -215,5 +215,11 @@ Dithering 활성화에 관한 내용은 현재 Post Processing Package에 Dither
 
 
 
+### 3. Lighting Strategy
+
+해당 단락에서는 게임에서의 조명에 대한 중요함과, 어떻게 설정하는 것이 좋은가에 대해 설명하고 있습니다.
+
+
+
 
 
