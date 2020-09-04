@@ -14,7 +14,7 @@ description: 'tutorial 유니티로 시네마틱 제작하기 : 타임라인 & �
 * 위의 문서를 기초로 OZTV님의 제작하신 Cinemachine + TimeLine을 기반으로 한 Shortcut Animation영상 제작 tutorial을 통해 R&D합니다.
 * 해당 문서는 상업적인 용도로 사용되지 않고 사용해서는 안됩니다.
 
-## 작성법
+## 개
 
 {% embed url="https://drive.google.com/file/d/1H4mX9yAwuhBzSbh2bRxM7jIuuUQsDoWu/view" caption="유니티로 시네마틱 제작하기 : 타임라인 & 시네머신 Sample File" %}
 
@@ -25,6 +25,26 @@ description: 'tutorial 유니티로 시네마틱 제작하기 : 타임라인 & �
 * Timeline을 통해 Object의 Animation을 시간의 흐름에 따라 이동, 회전 및 활성화 여부를 할당할 수 있습니다.
 * Cinemachine을 통해 생성한 Virtual Camera들로 영화같은 Scene을 표현할 수 있습니다.
 * Unity는 작성한 Scene을 RecorderClip을 통해 영상파일로 추출할 수 있습니다.
+
+지금은 Asset Store에 없는 Adam Character Pack을 쓰고 있습니다. 그렇기 때문에, 실습할 때는 꼭 샘플 프로젝트를 다운받아서 사용하시길 바랍니다.
+
+![](../../../.gitbook/assets/image%20%28243%29.png)
+
+이를 통해 Timeline을 작성합니다. Project View에서 간단한 Timeline Asset을 생성하여 Hierarchy창에 추가한다면, Timeline 이름과 같은 Object가 생성되고 Playable Director Component가 추가됩니다.
+
+![](../../../.gitbook/assets/image%20%28244%29.png)
+
+Playable Director를 통해 **Timeline instance\(Scene에서 사용할 수 있는 Timeline Object\)**와 **Timeline Asset\(Project View에서 Asset형식으로 생성한 데이터\)** 사이의 링크를 저장합니다. Playable Director 컴포넌트는 Timeline instance가 언제 재생되고 어떻게 시계를 업데이트하고, 재생이 종료되면 어떻게 되는지 설정합니다.
+
+Animation과 비슷한 역할 이지만, 여러 Object를 사용하여 Animation들을 만들수 있다는 점에 다른 차별점을 두고 있습니다. 또한 Timeline은 여러 Animation을 엮어 Audio, Cinematic Content, Particle Sequence로 하나의 복잡한 Cut Scene을 만들 수 있다는 점에중점을 두고 있습니다. 
+
+## 작성
+
+![](../../../.gitbook/assets/image%20%28242%29.png)
+
+위의 사진은 해당 프로젝트의 CutScene에 대한 Timeline Asset의 내용입니다.
+
+
 
 
 
