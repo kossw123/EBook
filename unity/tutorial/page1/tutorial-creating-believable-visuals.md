@@ -32,7 +32,7 @@ description: 'tutorial 유니티로 시네마틱 제작하기 : 타임라인 & �
 
 이를 통해 Timeline을 작성합니다. Project View에서 간단한 Timeline Asset을 생성하여 Hierarchy창에 추가한다면, Timeline 이름과 같은 Object가 생성되고 Playable Director Component가 추가됩니다.
 
-![](../../../.gitbook/assets/image%20%28244%29.png)
+![](../../../.gitbook/assets/image%20%28245%29.png)
 
 Playable Director를 통해 **Timeline instance\(Scene에서 사용할 수 있는 Timeline Object\)**와 **Timeline Asset\(Project View에서 Asset형식으로 생성한 데이터\)** 사이의 링크를 저장합니다. Playable Director 컴포넌트는 Timeline instance가 언제 재생되고 어떻게 시계를 업데이트하고, 재생이 종료되면 어떻게 되는지 설정합니다.
 
@@ -40,9 +40,13 @@ Animation과 비슷한 역할 이지만, 여러 Object를 사용하여 Animation
 
 ## 작성
 
-![](../../../.gitbook/assets/image%20%28242%29.png)
+![Red : Key&#xAC12;&#xC744; &#xD1B5;&#xD55C; &#xAC12;&#xC758; &#xC774;&#xB3D9; / Green : Activation Track &#xC124;&#xC815; / Blue : Animation Track &#xC124;&#xC815;](../../../.gitbook/assets/image%20%28244%29.png)
 
 위의 사진은 해당 프로젝트의 CutScene에 대한 Timeline Asset의 내용입니다.
+
+Timeline은 Key, Animation, Activation Track을 통해 Cut Scene을 구성할 수 있습니다.
+
+
 
 
 
