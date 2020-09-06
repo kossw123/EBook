@@ -14,7 +14,7 @@ description: 'tutorial 유니티로 시네마틱 제작하기 : 타임라인 & �
 * 위의 문서를 기초로 OZTV님의 제작하신 Cinemachine + TimeLine을 기반으로 한 Shortcut Animation영상 제작 tutorial을 통해 R&D합니다.
 * 해당 문서는 상업적인 용도로 사용되지 않고 사용해서는 안됩니다.
 
-## 개
+## 개요 
 
 {% embed url="https://drive.google.com/file/d/1H4mX9yAwuhBzSbh2bRxM7jIuuUQsDoWu/view" caption="유니티로 시네마틱 제작하기 : 타임라인 & 시네머신 Sample File" %}
 
@@ -38,7 +38,7 @@ Playable Director를 통해 **Timeline instance\(Scene에서 사용할 수 있�
 
 Animation과 비슷한 역할 이지만, 여러 Object를 사용하여 Animation들을 만들수 있다는 점에 다른 차별점을 두고 있습니다. 또한 Timeline은 여러 Animation을 엮어 Audio, Cinematic Content, Particle Sequence로 하나의 복잡한 Cut Scene을 만들 수 있다는 점에중점을 두고 있습니다. 
 
-## 작성
+## 작성법 
 
 ![Red : Key&#xAC12;&#xC744; &#xD1B5;&#xD55C; &#xAC12;&#xC758; &#xC774;&#xB3D9; / Green : Activation Track &#xC124;&#xC815; / Blue : Animation Track &#xC124;&#xC815;](../../../.gitbook/assets/image%20%28244%29.png)
 
@@ -46,9 +46,45 @@ Animation과 비슷한 역할 이지만, 여러 Object를 사용하여 Animation
 
 Timeline은 Key, Animation, Activation Track을 통해 Cut Scene을 구성할 수 있습니다.
 
+해당 프로젝트는 미리 준비된 Asset을 Timeline Object instance에 필요한데로 나열하는 것에 불과 하지만, 가장 중요한점 2가지가 있습니다.
 
+* Timeline에 등록한 Animation의 Offset 설정
+* Cinemachine의 Virtual Camera의 설정
+* Track과 Key의 추
 
+### Timeline에 등록한 Animation Offset 설정 
 
+Prefab으로 된 Object의 Animation은 위치에 상관없이 자연스럽게 실행되지만, 일부 설정이 안된 Prefab은 Animation을 실행 시킬 때, Animation의 위치 설정값에 따라 실행되는 경우가 있습니다.
+
+이를 해결하기 위해 2가지 방법이 존재합니다.
+
+1. Track에서 Offset을 설정
+2. Clip에서 Offset을 설정
+
+Timeline에 등록한 Track을 설정하면 Offset을 설정할 수 있습니다.
+
+![](../../../.gitbook/assets/image%20%28246%29.png)
+
+Track Offsets의 설정에 따라 다음과 같이 설정됩니다.
+
+* Apply Transform Offsets : 설정한 위치값에서 실행합니다.
+* Apply Scene Offsets : Scene의 위치한 현재 Object의 위치에서 실행합니다.
+
+### Cinemachine의 Virtual Camera 설정
+
+Cinemachine Package는 편한 만큼 이전부터 존재했고, 다양한 설정값이 존재합니다. 그러나 시간이 지나면서 Unity 자습서에 나와있는 사용법과는 다소 괴리감이 존재한다고 생각합니다.
+
+#### Virtual Camera의 개요
+
+Virtual Camera는 Unity에서 Camera를 추가하는 것과는 달리 좀 더 가벼운 감이 있습니다. 기존 Camera Component보다 좀 더 확장된 기능을 가지고 있지만, Camera Controller의 개념으로 생각하시면 될것 같습니다.
+
+Cinemachine은 Cinemachine Brain이라는 Camera Object에 붙어있는 Component를 참조하며, Blend 및 LookAt, Follow 기능등, Script로 작성해야하는 것들에 대한 부담을 줄여줍니다.
+
+* LookAt : 바라볼 대상을 설정합니다.
+* Follow : 대상이 이동함에 따라 Camera도 같이 이동합니다.
+* Lens : 카메라가 대상을 바라볼때 어떻게 바라볼지에 대한 설정값을 입력합니다.
+* Transition : 설정값에 따라 Blend합니다.
+* Body : 카메라가 어디서 
 
 
 
