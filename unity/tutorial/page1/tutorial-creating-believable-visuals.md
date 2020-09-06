@@ -84,7 +84,11 @@ Cinemachine은 Cinemachine Brain이라는 Camera Object에 붙어있는 Componen
 * Follow : 대상이 이동함에 따라 Camera도 같이 이동합니다.
 * Lens : 카메라가 대상을 바라볼때 어떻게 바라볼지에 대한 설정값을 입력합니다.
 * Transition : 설정값에 따라 Blend합니다.
-* Body : 카메라가 어디서 
+* Body : 카메라가 대상을 추적하는 과정의 설정값 입니다.
+  * 기본적으로 Transposer로 설정이 되어 있어서 추적이 되지만, 여러 상황에 맞춰서 설정값을 바꿔서 추적할 수 있습니다.
+* Aim : 카메라가 대상을 어느 시점에서 바라볼지 설정합니다.
+
+
 
 
 
