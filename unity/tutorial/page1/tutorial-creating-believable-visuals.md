@@ -70,6 +70,10 @@ Track Offsets의 설정에 따라 다음과 같이 설정됩니다.
 * Apply Transform Offsets : 설정한 위치값에서 실행합니다.
 * Apply Scene Offsets : Scene의 위치한 현재 Object의 위치에서 실행합니다.
 
+샘플 프로젝트에서는 Apply Scene Offsets을 사용하여 Scene에 위한 현재 Object의 위치에서 실행하고 있으며, Animation Track과 Key값을 통한 Tram\(지하철\)의 이동값을 통해 Timeline을 구성하고 있습니다.
+
+
+
 ### Cinemachine의 Virtual Camera 설정
 
 Cinemachine Package는 편한 만큼 이전부터 존재했고, 다양한 설정값이 존재합니다. 그러나 시간이 지나면서 Unity 자습서에 나와있는 사용법과는 다소 괴리감이 존재한다고 생각합니다.
@@ -87,6 +91,14 @@ Cinemachine은 Cinemachine Brain이라는 Camera Object에 붙어있는 Componen
 * Body : 카메라가 대상을 추적하는 과정의 설정값 입니다.
   * 기본적으로 Transposer로 설정이 되어 있어서 추적이 되지만, 여러 상황에 맞춰서 설정값을 바꿔서 추적할 수 있습니다.
 * Aim : 카메라가 대상을 어느 시점에서 바라볼지 설정합니다.
+
+여기서 중요한 점은 여러대의 Virtual Camera를 사용하여 Camera가 여러대 있는 듯한 연출을 통해, Scene에 퀄리티를 추가하는 것이며, 이를 위해 총 4대의 Virtual Camera를 추가하고 있습니다.
+
+![](../../../.gitbook/assets/image%20%28249%29.png)
+
+4대의 Virtual Camera를 Timeline의 Cinemachine Track을 통해 움직이고 있습니다.
+
+![](../../../.gitbook/assets/image%20%28248%29.png)
 
 
 
