@@ -217,7 +217,121 @@ Dithering 활성화에 관한 내용은 현재 Post Processing Package에 Dither
 
 ### 3. Lighting Strategy
 
-해당 단락에서는 게임에서의 조명에 대한 중요함과, 어떻게 설정하는 것이 좋은가에 대해 설명하고 있습니다.
+해당 단락에서는 게임에서의 조명에 대한 중요함과, 어떻게 설정하는 것이 좋은가에 대해 설명하고 있습니다. 해당 전략의 가장 중요한 점은 시간의 절약과, 성능, 시각적 충실도를 높일 수 있다는 것인데, 이를 위해 조명의 3가지 구성요소로 나눠서 설명하고 있습니다.
+
+* 조명의 3가지 구성요소
+  * Hemisphere\(하늘\)
+  * Direct light\(태양 + 지역 조명\)
+  * inDirect light\(반사 조명\) 
+
+간단하게 보이지만 실시간 조명, 혼합 조명, 베이크 된 조명, 정적 및 동적 오브젝트를 혼합하고 일치시키는 방법을 선택한다면 결국 여러가지 갈래로 나뉘어져 수많은 경우의 수를 낳습니다.
+
+일반적으로 5가지의 조명 설정을 사용합니다.
+
+1. Basic realtime
+2. Baked
+3. Mixed Lighting
+4. Realtime Light and GI
+5. Guns Blazing all options enabled
+
+{% tabs %}
+{% tab title="Basic realtime" %}
+기본 실시간 조명 설입니다.
+
+Console 및 PC에 초점을 두고 있습니다.
+
+일반적으로 시각적 프로젝트 및 프로토타입 단계에서 사용됩니다.
+
+* 이점
+  * 모든 Direct Light와 그림자는 실시간이므로 움직일 수 있습니다.
+  * 사전 계산이나 Bake 및 Mesh의 계산이 필요가 없기에 반복적인 호출이 빠릅니다.
+  * 동적, 정적 Object는 동일한 방법을 사용해서 조명되고 Light Probe를 사용하지 않습니다.
+
+{% hint style="info" %}
+Light Probe?
+
+Scene에 Light가 없어도 Realtime Lighting과 유사한 효과를 줍니다. Scene에 Light가 있는 곳 주변에 Light Probe를 배치하고 Baking할 때 Light Probe는 미리 주변부의 광원 데이터를 저장합니다.
+
+그리고 실시간으로 Dynamic Object\(움직이는 물체\)에 광원 데이터를 전달하여 해당 객체를 보간 시켜 마치 실시간 조명과 같은 효과를 냅니다.
+{% endhint %}
+
+* 단점
+  * Hemisphere의 법선 벡터의 높낮이를 계산하는 Occlusion이 없고, 오직 직선형의 Skybox와 주변 데이터와 색에 Direct Light로 비추지 않습니다.
+  * GI\(Global Illumination\)이 없으며, 간접조명이 없으면 제대로된 시각적 효과를 못낼 수 있습니다.
+
+![](../../../.gitbook/assets/image%20%28248%29.png)
+{% endtab %}
+
+{% tab title="Baked" %}
+모든 조명을 Baked하여 Light Probe를 통해 광원 데이터를 미리 저장하는 설정입니다.
+
+PC, Console VR, 저가형 PC를 대상으로 사용되는 설정입니다. 일반적으로 런타임이 길지만, Isometric Mobile Game, 높은 프레임의 VR Game에 사용됩니다.
+
+* 이점
+  * 모든 조명은 Static Object에 대해 Baked 되고, 주변 Ambient Occulsion 및 inDirect Light를 생성합니다.
+    * 즉, Static Object의 Lighting을 계산하고, 주변의 흠집같은 물체의 높낮이와, 반사되는 빛을 생성합니다.
+  * 지역에 대한 Light Baked를 지원하고 그림자 각도를 Static Object에 적용할 수 있습니다.
+  * 모든 설정중 런타임 성능이 가장 빠릅니다.
+* 단점
+  * Lighting이 미리 Baked되기 때문에, Lighting 계산속도를 늦출 수 있어서 Progressive Light Mapper를 사용하지 않는 경우 Scene 변경시 다시 빌드 해야합니다.
+  * Dynamic lit Object는 Light Probe만 사용하여 조명됩니다.
+  * Cube Map / Reflection\(반사\)에 의존 시 반사광이 없습니다.
+  * Dynamic Object들의 그림자가 없습니다.
+  * Scene에 사용된 Light Texture의 크기에 따라 런타임의 메모리 소모가 다릅니다.
+  * UV Texture의 제작이 필요할 수 있습니다.
+
+{% hint style="info" %}
+Progressive Light Mapper?
+
+Bake된 LightMap을 제공하는 Fast Path - Tracing 알고리즘을 기반으로 한 System입니다. Scene Geometry 위에 오버레이 됩니다.
+{% endhint %}
+{% endtab %}
+
+{% tab title="Mixed Lighting" %}
+Shadow Mask + Light Probe를 Mixed Lighting입니다. ShadowMask를 설정하면 Realtime Direct Lighting과 Baked inDirect Lighting을 결합합니다.
+
+VR, Console, PC를 대상으로 태양의 움직임과 같은 Realtime Lighting이 중요하지 않는 Game에서 사용됩니다.
+
+* 이점
+  * 모든 Baked된 Light와 비슷하지만 Mixed Lighting에서 Dynamic Object는 Realtime Specular\(실시간 반사광\)을 얻고, Realtime Shadow를 그립니다.
+  * Static Object는 Baked된 ShadowMask를 가져와서 더 나은 시각적 품질을 제공합니다.
+* 단점
+  * Object당 4개의 ShadowMask만 가질 수 있습니다.
+  * Realtime Lighting을 위해 런타임에 추가적으로 성능을 사용합니다.
+  * 특정 설정에서 큰 영향을 끼칠 수 있습니다.
+{% endtab %}
+
+{% tab title="Realtime Light and GI" %}
+GI + Light Probe를 통해 전역적인 조명과, Dynamic Object의 광원데이터를 미리 할당합니다.
+
+Console, PC를 대상으로 시간에 따른 조명의 Update가 필요하고, Dynamic Lighting이 필요한 야외를 그리는 Game에서 사용합니다.
+
+* 이점
+  * Realtime inDirect Lighting으로 빠른 Lighting update가 가능합니다.
+  * Dynamic 및 Static Object는 Realtime Specular\(실시간 반사광\) 및 그림자를 얻습니다.
+  * Baked된 Lighting보다 적은 메모리를 사용합니다.
+  * GI Update를 위한 고정된 CPU 비용의 시간적 성능이 향상됩니다.
+* 단점
+  * 렌더링된 Occulsion은 Baked Lighting 만큼 섬세하지 않으며, 일반적으로 SSAO 및 Object별 AO를 사용해서 보충해야 합니다.
+  * Static Object에 대한 지역, Light Angle\(빛이 분산, 방출되는 각도\)  그림자가 없습니다.
+  * Realtime Lighting은 특정 설정을 하면 성능에 큰 영향을 끼칩니다.
+    * 최적화된 UV 설정없이 Static Lighting에 기여하는 Object가 많은 경우 사전에 Lighting Generation 시간이 상당히 오래 걸립니다.
+{% endtab %}
+
+{% tab title="Guns Blazing all options enabled" %}
+모든 설정에 대한 이해와 각 조명에 대한 조합을 이해하는 어려운 조건을 충족했을 시 사용할 수 있는 설정입니다.
+
+PC, Console을 대상으로 메모리 사용량 및 성능이 제한되어 많은 요구사항이 있는 Game에서 활용합니다.
+
+* 이점 
+  * Lighting과 관련된 모든 기능을 사용할 수 있으며, 제작자에게 모든 기능을 제공합니다.
+* 단점
+  * 런타임, 메모리 사용시 성능을 미리 Baked하여 할당합니다.
+    * 애초에 사용하기 어렵기 때문에, 어느 부분에서 비용이 높을 경우 직접적으로 수정을 해야하며, 이는 어려운 난이도를 띄고 있습니다.
+  * 설정하는데 시간이 너무 오래걸립니다.
+    * UV 제작 및 Baked 하는데 걸리는 시
+{% endtab %}
+{% endtabs %}
 
 
 

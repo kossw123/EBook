@@ -94,11 +94,11 @@ Cinemachine은 Cinemachine Brain이라는 Camera Object에 붙어있는 Componen
 
 여기서 중요한 점은 여러대의 Virtual Camera를 사용하여 Camera가 여러대 있는 듯한 연출을 통해, Scene에 퀄리티를 추가하는 것이며, 이를 위해 총 4대의 Virtual Camera를 추가하고 있습니다.
 
-![](../../../.gitbook/assets/image%20%28249%29.png)
+![](../../../.gitbook/assets/image%20%28250%29.png)
 
 4대의 Virtual Camera를 Timeline의 Cinemachine Track을 통해 움직이고 있습니다.
 
-![](../../../.gitbook/assets/image%20%28248%29.png)
+![](../../../.gitbook/assets/image%20%28249%29.png)
 
 
 
