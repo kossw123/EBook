@@ -335,5 +335,60 @@ PC, Console을 대상으로 메모리 사용량 및 성능이 제한되어 많�
 
 
 
+### 4. Modeling
+
+해당 단락에서는 프로젝트를 진행하기 전 Modeling을 설계하는 것이 다음과 같은 이점을 가지고 있다고 서술하고 있습니다. 3D Modeling 전반 프로세스를 다루지 않기 때문에, 각 내용마다 아이디어의 단초를 제공하는 역할을 하고 있습니다.
+
+즉, 하나의 흐름을 가지고서 아래 내용을 읽지 않는 것을 권장합니다.
+
+
+
+Static Object에 대한 LightMap을 표시하는 것은 불필요한 일이라고 서술합니다.
+
+![](../../../.gitbook/assets/image%20%28253%29.png)
+
+* Geometry의 Lighting mode를 기초로한 Modeling 규칙이 필요합니다.
+  * Modeling을 구성하는 Mesh를 보는 Player에게 굳이 보이지 않는 Geometry를 작성하여 불필요한 성능의 낭비, 시간낭비를 할 필요가 없습니다.
+  * Object에 Lighting을 그리고 싶다면, GI를 사용하여 LightMapping의 LightMap에 대한 적절한 값을 넣는 것이 효율적입니다.
+* Dynamic한 Light와 Light Probe에서만 조명을 받는 Object의 경우 Geometry에 대한 UV 제한이 없습니다. 
+
+{% hint style="info" %}
+Geometry??
+
+기하학\(幾何學\)이라고 번역되지만, 컴퓨터에서는 렌더링에 있어서 필요한 Mesh의 치수, 모양, 상대적 위치 등을 포함하고 있는 데이터입니다.
+
+보통 좌표계나, 2D 변환, 3D 변환 같은 개념들이 포함되어 있지만, 정확한 의미는 찾지 못했습니다. 나름 이해한 방식으로 정리를 하자면, Mesh를 그리는데 있어서 필요한 데이터라고 정리하겠습니다.
+{% endhint %}
+
+* Model의 UV Layout을 전략적으로 설계합니다. 아래의 예시는 각 Map에 대한 UV값을 보여주고 있습니다.
+  * Normal Map Baking\(UV1\) / 보통 2D Lighting
+  * Light Map Baking\(UV2\) / 보통 3D Lighting
+  * Realtime Light Map\(UV3\) / 실시간 Lighting
+* Tile로 맞추는 것처럼 딱 맞지 않는 Texture가 있는 경우 Geometry에 대한 동일한 메모리 공간을 사용하면서 시각적 품질을 개선할 수 있습니다.
+
+{% tabs %}
+{% tab title="UV1차트의 경우" %}
+![](../../../.gitbook/assets/image%20%28254%29.png)
+
+필요한 만큼 분할하고 Normal Map Baking을 위해 비어있는 공간을 최소화하여 효율적으로 배치하는 것이 중요합니다.
+{% endtab %}
+
+{% tab title="UV2 차트의 경우" %}
+![](../../../.gitbook/assets/image%20%28251%29.png)
+
+왼쪽의 경우 Lighting된 Mesh의 Shadow가 고르게 분포되지 않는, Seams\(이음새\) issue가 발생하는 경우고 오른쪽의 경우 issue를 해결한 경우입니다.
+
+이를 위해 일관된 Light Map texels을 고르게 분포시켜야 하는데 이는 일관된 UV chart와 Shell 간의 일정한 Scale을 유지해야 합니다.
+{% endtab %}
+
+{% tab title="UV3 차트의 경우" %}
+실시간으로 Lighting을 하기 위해 GI를 사용하며, 이 경우 Model에서 큰 표면을 나타내는 넓은 영역에 대한 UV 공간의 우선순위를 첫번째로 잡습니다.
+
+자세한 내용은 아래의 링크에 있습니다.
+
+{% embed url="https://learn.unity.com/tutorial/precomputed-realtime-gi-global-illumination\#5c7f8528edbc2a002053b559" %}
+{% endtab %}
+{% endtabs %}
+
 
 
