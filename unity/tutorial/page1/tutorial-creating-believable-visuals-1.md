@@ -345,7 +345,7 @@ PC, Console을 대상으로 메모리 사용량 및 성능이 제한되어 많�
 
 Static Object에 대한 LightMap을 표시하는 것은 불필요한 일이라고 서술합니다.
 
-![](../../../.gitbook/assets/image%20%28253%29.png)
+![](../../../.gitbook/assets/image%20%28264%29.png)
 
 * Geometry의 Lighting mode를 기초로한 Modeling 규칙이 필요합니다.
   * Modeling을 구성하는 Mesh를 보는 Player에게 굳이 보이지 않는 Geometry를 작성하여 불필요한 성능의 낭비, 시간낭비를 할 필요가 없습니다.
@@ -368,7 +368,7 @@ Geometry??
 
 {% tabs %}
 {% tab title="UV1차트의 경우" %}
-![](../../../.gitbook/assets/image%20%28254%29.png)
+![](../../../.gitbook/assets/image%20%28265%29.png)
 
 필요한 만큼 분할하고 Normal Map Baking을 위해 비어있는 공간을 최소화하여 효율적으로 배치하는 것이 중요합니다.
 {% endtab %}
@@ -391,4 +391,100 @@ Geometry??
 {% endtabs %}
 
 
+
+### 5. Standard Shader/Material PBS and texturing
+
+해당 단락에서는 물체의 표면을 사실적으로 표현하는 Material의 표면속성을 정의 하는데 있어서, 효율적인  3가지 전략을 제공하고 있습니다.
+
+* 표준 Shader 사용
+* Material PBS의 사용
+* Texturing
+
+#### Standard Shader의 사용
+
+Unity에서는 각 재질별로 사용하는 Shader가 달랐기에, 사실적으로 표현하는 능력이 떨어졌었습니다. 하지만 **Standard Shader의 등장으로 모든 Material을 사실적으로 표현할 수 있게 되었습니다**.
+
+물체의 표면을 정의하는 Material을 만들 때 Unity에서는 기본적으로 Standard Shader를 사용합니다. 기존의 사용하던 Shader는 Legacy Shader를 통해 접근할 수 있습니다.
+
+해당 기능을 활성화, 비활성화를 통해 Material Editor의 다양한 Texture Slot과 parameter를 사용할 수 있습니다. 이때 PBR\(Physics Base Rendering, 물리 기반 렌더링\)의 지원을 받아 Material을 완벽히 표현할 수 있습니다.
+
+{% hint style="info" %}
+PBS? : 현실을 모방하는 방식으로 Material과 빛 사이의 상호작용을 표현합니다.
+{% endhint %}
+
+**결론적으로 Unity의 Standard Shader는 PBS를 포함한, 모든 Material을 표현할 수 있는 Shader라는 것입니다.**
+
+#### Material PBS의 사용
+
+Standard Shader를 사용하기 위해 Material에서 다음과 같은 설정이 필요합니다.
+
+{% tabs %}
+{% tab title="Standard / Standard Specular Setup의 사용" %}
+Material을 보면 Standard가 있고, Standard \(Specular Setup\)이라는 항목이 존재합니다.
+
+각각 Standard Shader를 기반으로 해 모든 Material을 표현하지만, Specular\(반사광\)의 표현을 할지 말지를 결정하는 과정입니다.
+
+Specular Setup은 Material의 Albedo에서 Specular 색상을 제거하고 싶을 때 사용합니다.
+
+* Standard Shader에서 Specular의 밝기와 색상은 Albedo, Metallic, Smoothness Map의 값에 따라 자동으로 계산합니다.
+* Specular Shader에서는 Metallic Map 대신 Specular Map을 설정하여 Specular의 색상과 밝기를  **직접** 정합니다.
+{% endtab %}
+
+{% tab title="Standard Shader Map의 특징" %}
+Standard Shader는 다음과 같은 Map을 가지고 있습니다.
+
+* Albedo : 오직 색만을 가지고 있는 Map
+* Metallic : 금속 재질을 표현하는 Map
+* Normal : 법선 벡터의 높이를 추출하여 사물의 굴곡을 표현하는 Map
+* Occulsion\(Ambient Occulsion\) : 각 점이 광원에 얼마나 노출되었는지 표현하는 Map
+{% endtab %}
+
+{% tab title="Standard Shader Map을 작성시 주의점" %}
+1. 어두운 Albedo, 즉 RGB의 값이 낮을수록 많은 빛을 흡수하여 비정상적인 Light를 연출합니다.
+2. 그렇다고 너무 밝으면 많은 빛을 반사하기에 비정상적인 Light를 연출합니다.
+
+![Non - Metallic &#xD45C;&#xBA74;&#xC758; Albedo&#xC758; inDirect Light](../../../.gitbook/assets/image%20%28252%29.png)
+
+3. Material Validation를 사용하면 Material값이 가이드 라인을 따라 가는지 안가는지 확인할 수 있습니다.
+
+![](../../../.gitbook/assets/image%20%28253%29.png)
+
+기본적인 Guideline을 아래의 링크에 있습니다.
+
+{% embed url="https://docs.unity3d.com/Manual/StandardShaderMaterialCharts.html" %}
+
+
+
+4. Metallic Map의 값에 따라 반사되는 주변 빛을 정의하는 동시에 표시되는 Object의 표면에 Albedo의 크기도 결정합니다.
+
+![](../../../.gitbook/assets/image%20%28259%29.png)
+
+위 그림은 순수 Metallic Material이 빛을 얼마나 반사하고 Albedo의 색을 흡수하는지 보여주는 그림입니다.
+
+5. Material이 아닌 최종적으로 나타는 Object의 표면에 주의를 기울여야 합니다.
+
+![](../../../.gitbook/assets/image%20%28261%29.png)
+
+위 그림은 페인트를 바른 금속난간에 Texture를 적용하여 Shaded에 최종적으로 그리고 있는 과정을 보여주고 있습니다. 
+
+다른 Map들을 보면 "페인트를 바른 부분"을 제외한 영역에 Metallic으로 지정해야 제대로된 품질을 가질 수 있음을 보여줍니다. **결국 계획을 세워도 최종적인 품질에만 신경을 써야하고, Material의 값들까지 신경쓴다면 차후 변경에 어려움을 느낄 수 있다는 점이 핵심입니다.**
+
+6. Metallic의 값을 0, 1의 사이값으로 지정해야 합니다. 부분적으로 먼지나 흙으로 덮인 금속 물체에 대한 표현이 어려워질 수 있음에 초점을 두고 있습니다.
+
+7. Smoothness는 표면의 미세한 세부 사항을 제어하고, 0, 1의 사이값을 설정하여 최종적인 품질에만 신경을 써야합니다. 
+
+8. Normal Map을 추가하는 것이 시각적으로 큰 효과를 가져올 수 있습니다.
+
+![](../../../.gitbook/assets/image%20%28258%29.png)
+
+9. Occlusion Map을 추가하는 것이 좋습니다.
+
+Lighting 부분에서 inDirect Lighting과 Light Baking을 통해 Occlusion에 대한 설정을 했는데, Material에서 다시 설정해야하는 이유는 다음과 같습니다.
+
+* Material에서 설정하는 Occlusion의 경우, 세부적이기 때문에 좋은 품질로부터 오는 데이터를 offline으로 렌더링 하는 동안 더 좋게 만들 수 있습니다.
+* Dynamic Object가 Light Baking에서 Occlusion을 얻지 않고 Light Probe, 주변 빛에서 낮은 품질의 Occlusion값을 얻기 때문에, Object를 Dynamic하게 비추는데 엄청난 도움이 됩니다.
+
+10. 참고용 사진을 통해 더욱 빠르게 Texture를 작성할 수 있습니다. 이때, 흐린 날이나, 빛이 고르게 분산되는 조건이 필요합니다.
+{% endtab %}
+{% endtabs %}
 
