@@ -11,7 +11,13 @@ description: tutorial Creating Believable Visuals
 {% embed url="https://drive.google.com/open?id=1zo9BHEZg12LW8asMxNeIBw0jJ0gLY7jf" %}
 
 * 아래의 Cinemachine + TimeLine기능의 프로젝트를 위한 SpotLight Tunnel에서의 Setting에 대해서 R&D합니다.
-* 해당 문서에 대한 내용은 개인적으로 Programming + 3D Artist의 직업군에 대한 개념이 섞여 있기 때문에 
+* 해당 문서에 대한 내용은 개인적으로 Programming + 3D Artist의 직업군에 대한 개념이 섞여 있기 때문에 알아두면 좋은 정보입니다.
+
+{% hint style="info" %}
+작성자가 사용하고 있는 2020.1.3f1 Version에서 각 Render Pipleline에 대한 Package의 설치로 **Wizard가 추가되어 따로 설정이 필요없이 버튼 하나로, 기본적인 아래의 내용에 대한 자동화가 이루어 집니다.**
+
+하지만 기본적으로 Legacy Project의 HDRP, URP의 변경을 할 시, 사용했던 Material들에 대한 Shader가 다르기 때문에, 따로 조정이 필요합니다.
+{% endhint %}
 
 ## 작성법 및 주의 사항
 
