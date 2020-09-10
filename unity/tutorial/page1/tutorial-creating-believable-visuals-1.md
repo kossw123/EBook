@@ -24,7 +24,7 @@ description: tutorial Creating Believable Visuals
 5. Standard Shader/Material PBS and texturing\(표준 Shader와 Material PBS 및 Texturing 전략\)
 6. Lighting and Setup\(조명 및 설정\)
 7. Understanding Post Process Features\(포스트 프로세스\(후처리\)에 대한 특징 및 이해\)
-8. Dynamically Lit Objects\(동적 조명 개\)
+8. Dynamically Lit Objects\(동적 조명\)
 9. Sample Project File
 
 **시작하기 전에 해당 단락은 원래는 이미 작성한 Graphic Rendering Pipeline 문서에 작성하려고 했으나, 방대한 양의 문서를 또 추가하기에는 양이 많이 때문에 따로 빼낸점 양해 부탁드립니다.**
