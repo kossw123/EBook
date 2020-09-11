@@ -17,6 +17,8 @@ description: tutorial Creating Believable Visuals
 작성자가 사용하고 있는 2020.1.3f1 Version에서 각 Render Pipleline에 대한 Package의 설치로 **Wizard가 추가되어 따로 설정이 필요없이 버튼 하나로, 기본적인 아래의 내용에 대한 자동화가 이루어 집니다.**
 
 하지만 기본적으로 Legacy Project의 HDRP, URP의 변경을 할 시, 사용했던 Material들에 대한 Shader가 다르기 때문에, 따로 조정이 필요합니다.
+
+Wizard에 기본적인 Material을 HDMaterial로 변환하는 기능이 있으니 활용하시면 될 것 같습니다.
 {% endhint %}
 
 ## 작성법 및 주의 사항
