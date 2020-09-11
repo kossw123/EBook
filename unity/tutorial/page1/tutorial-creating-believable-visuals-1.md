@@ -457,7 +457,7 @@ Standard Shader는 다음과 같은 Map을 가지고 있습니다.
 
 ![](../../../.gitbook/assets/image%20%28253%29.png)
 
-기본적인 Guideline을 아래의 링크에 있습니다.
+기본적인 Guideline 아래의 링크에 있습니다.
 
 {% embed url="https://docs.unity3d.com/Manual/StandardShaderMaterialCharts.html" %}
 
