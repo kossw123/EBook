@@ -237,10 +237,10 @@ Dithering 활성화에 관한 내용은 현재 Post Processing Package에 Dither
 일반적으로 5가지의 조명 설정을 사용합니다.
 
 1. Basic realtime
-2. Baked
-3. Mixed Lighting
-4. Realtime Light and GI
-5. Guns Blazing all options enabled
+   1. Baked
+2. Mixed Lighting
+3. Realtime Light and GI
+4. Guns Blazing all options enabled
 
 {% tabs %}
 {% tab title="Basic realtime" %}
