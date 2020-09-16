@@ -496,3 +496,51 @@ Lighting 부분에서 inDirect Lighting과 Light Baking을 통해 Occlusion에 �
 {% endtab %}
 {% endtabs %}
 
+
+
+### 6. Lighting and Setup
+
+
+
+### 7. Understanding Post Process Features
+
+해당 단락에서는 Post Processing에 관한 이해와 특징을 살펴보면서, 이 기능을 통해 어떤식으로 화면을 설정하는지 알아보는 문서입니다.
+
+**Post Processing은 렌더링을 최종적으로 출력하기 전에 효과를 추가하는 기능입니다.**
+
+* 장점
+  * 즉각적인 렌더링 효과의 수정이 가능합니다.
+* 단점
+  * 효과를 추가하는 만큼 빌드하는데 시간이 더 걸릴 수 있습니다.
+
+
+
+* 효과
+  * 안티 앨리어싱
+  * Ambient Occulsion\(주변 폐색\)
+    * Lighting으로 생기는 그림자에 대한 설정을 할 수 있습니다.
+  * Auto Exposure
+    * 어두운 부분에서 빛에 노출되는 부분에 대한 설정을 해서, 터널에서 밝은 조명에 노출 될 때 눈부심 효과를 추가할 수 있습니다.
+  * Depth of Field
+    * 공간의 한 부분만 초점을 잡아 영화 같은 느낌을 줄 수 있습니다.
+  * Motin Blur
+    * 어떤 Motion의 움직임에 대한 Blur 처리를 하여, 움직일 때 잔상효과를 줄 수 있습니다.
+  * Bloom
+    * 어떤 광원을 바라볼 때 초점이 맞지 않는 시각적 효과를 제공합니다.
+  * Screen Space Reflection
+    * 왠만하면 추가하는 것이 좋다고 설명합니다. 이 기능은, SSAO와 유사하게 화면에 렌더링 되는 부분만 반사하는 기능이며, 렌더링 성능에 영향을 줍니다.
+  * Chromatic Aberration
+    * 카메라에 잡히는 색상을 분산시켜서 사실감을 더해줍니다.
+  * Grain
+    * 후처리 하는 과정에서 사용하며, 이름과 동일하게 미세한 곡물같은 Noise를 추가합니다.
+  * Vignette
+    * Scene뷰의 가장자리를 어둡게 만듭니다.
+  * Color Grading\(색 보정\)
+    * 특정 색을 보정하여 강조된 색상에 대한 시각적 효과를 부여합니다.
+  * Lens Distortion
+    * 렌즈 효과를 추가합니다.
+
+
+
+
+
