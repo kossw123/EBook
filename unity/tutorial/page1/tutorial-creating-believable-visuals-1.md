@@ -513,7 +513,7 @@ Lighting 부분에서 inDirect Lighting과 Light Baking을 통해 Occlusion에 �
 * 단점
   * 효과를 추가하는 만큼 빌드하는데 시간이 더 걸릴 수 있습니다.
 
-
+Post Processing을 추가하는 방법은 하나의 Object를 생성하여 Post Process Volume을 추가하고, Main Camera에 Post Process Layer를 추가하는 방법으로 적용합니다.
 
 * 효과
   * 안티 앨리어싱
@@ -541,6 +541,29 @@ Lighting 부분에서 inDirect Lighting과 Light Baking을 통해 Occlusion에 �
     * 렌즈 효과를 추가합니다.
 
 
+
+### 8. Dynamically Lit Objects
+
+Dynamic Object에 대한 Lighting은 Static Object에 대한 Lighting보다 많은 다양한 방법을 써야합니다. Dynamic Object는 Transform에 대한 변경이 자주 일어나기 때문에, 미리 조명을 계산하는 옵션이 아닌, 여러가지 제한을 생각하며 설정해야 합니다.
+
+Dynamic Object에 대한 고려사항은 다음과 같습니다.
+
+* LPPV\(Light Probe Proxy Volume\)
+  * 기본적으로 Light Probe는 주변 광원 데이터를 저장하여 Dynamic Object에 쓰이지만, Scale이 큰 Object에서는 세분화가 필요합니다.
+  * 이 기능에 대한 대안으로 Light Probe Proxy Volume Component를 제공하며, 좀 더 정확한 Lighting을 제공합니다.
+
+![LPPV&#xB97C; &#xC0AC;&#xC6A9;&#xC5EC;&#xBD80;&#xC5D0; &#xB530;&#xB978; Object&#xC758; &#xCC28;&#xC774;&#xC810;](../../../.gitbook/assets/image%20%28267%29.png)
+
+{% embed url="https://docs.unity3d.com/Manual/class-LightProbeProxyVolume.html" %}
+
+* Per object baked Ambient Occlusion\(개별 Object의 Baked된 AO에 대한 설정\) 
+  * Object 내에 실내환경이 조성된 경우 이에 대한 AO는 미리 계산해야 합니다.
+  * 미리 계산하기 위해 Baked 옵션을 사용하며, Normal Map과 마찬가지로 상대적으로 높은 위치의 detailed Mesh에서 낮은 detailed Mesh로 Baking합니다.
+  * **\*\*\*\* 현재 2020.1.3f1버전에서는 해당 설정을 위해서 어떤식으로 접근해야 하는지 확인되지 않았습니다.**
+* Local Reflection\(지역 반사\)
+  * Reflection Probe를 Dynamic Object에 할당하여 Realtime으로 설정하면 이상한 반사를 줄일 수 있습니다.
+* Fake Shadows or occlusion based on assumptions\(추정에 따른 가짜 그림자 또는 폐색\)
+  * Static Object, 즉 항상 그 위치에 있어야하는 Object에는 Material을 통해 가짜 그림자를 부여하여, 간단하게 그림자 품질을 향상 시킬 수 있습니다.
 
 
 
