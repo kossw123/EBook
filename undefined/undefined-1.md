@@ -74,7 +74,7 @@ Visual Studio에서 Build 버튼을 누르면 Compile이 자동으로 되는 것
 
 ### CICD\(Continuous Integration / Continuous Delivery or Continuous Deploy\)
 
-단어 그대로 지속적인 배포, 지속적인 배포 혹은 결합을 의미하며, **프로그램 개발 단계를 자동화 하여 보다 짧은 주기로 고객에게 제공하는 방법**입니다.
+단어 그대로 지속적인 통, 지속적인 배포 혹은 결합을 의미하며, **프로그램 개발 단계를 자동화 하여 보다 짧은 주기로 고객에게 제공하는 방법**입니다.
 
 CI
 
