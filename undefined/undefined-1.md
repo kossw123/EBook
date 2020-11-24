@@ -74,7 +74,7 @@ Visual Studio에서 Build 버튼을 누르면 Compile이 자동으로 되는 것
 
 ### CICD\(Continuous Integration / Continuous Delivery or Continuous Deploy\)
 
-단어 그대로 지속적인 통합, 지속적인 배포 혹은 결합을 의미하며, **프로그램 개발 단계를 자동화 하여 보다 짧은 주기로 고객에게 제공하는 방법**입니다.
+단어 그대로 지속적인 배포, 지속적인 배포 혹은 결합을 의미하며, **프로그램 개발 단계를 자동화 하여 보다 짧은 주기로 고객에게 제공하는 방법**입니다.
 
 CI
 
@@ -213,10 +213,6 @@ MS사가 개발한 API중 하나로써, 제각기 개발할 필요 없이 다음
 {% embed url="https://unity3d.com/kr/partners/microsoft/porting-guides" %}
 
 
-
-### Interpreter
-
-* Complie 방식과는 달리 작성자가 코드를 짜는 도중에 실시간으로 기계어로 번역하는 
 
 ## 자
 
