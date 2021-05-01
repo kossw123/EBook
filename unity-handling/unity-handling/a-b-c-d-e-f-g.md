@@ -47,6 +47,7 @@ IEnumerator ParentCoroutine()
 ```
 
 * ParentCoroutine에서 NestedCoroutine들을 호출하고 있는데, 만약 NestedCoroutine중 하나가 예외를 발생 시킨다면, Parent는 동작을 멈춘다.
+* NestedCoroutine에서 발생한 예외가 ParentCoroutine에 영향이 간다는 것은 불합리 하다.
 * 이를 방지하기 위해 NestedCoroutine 내부에서 예외를 처리하게끔 작성한다.
 
 
