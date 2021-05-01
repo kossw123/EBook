@@ -12,7 +12,13 @@
 
 * Coroutine에 Exception Handling을 할 때 생긴 issue
 
+```csharp
+public class DisposeClass : IDisposable
+{
+    public void Dispose() => Dispose(true);
+}
 
+```
 
 
 
