@@ -132,7 +132,7 @@ public class DisposeClass : IDisposable
         
         if(isDisposing)
         {
-            /// CLR에서 관리되는 모든 managed Resources들을 해제
+            /// *** CLR에서 관리되는 모든 managed Resources들을 해제
             /// ...
             /// Field value is Null
             /// ...
@@ -146,9 +146,14 @@ public class DisposeClass : IDisposable
 
 #### 결말 
 
-애초에 Exception부분에서 검사식만을 넣고 yield는 Exception 밖에서 사용하면 끝이지만, Coroutine Exception Handling이라는 워드와 Internal Coroutine과 같이 Class로 Data를 넘기는 방식을 알게됨
+Exception Handling과는 별개로 Dispose를 통해 객체의 Resources 해제를 한다는 점이 자료를 찾으면서 굉장히 감탄했다.
 
-정리하니 쓸데가 없어 보이지만 Coroutine Class에서 Field로 뭘 넘길지에 대한 고민과 이유를 찾아낸다면 중요한 워드중 하나라고 생각함
+이와 별개로 Microsoft.Win32.SafeHandles Class의 SafeHandle을 사용하여 구현하는 방법도 있다.
+
+Dispose 자료를 찾으면서 알아낸 주의점
+
+* Dispose는 프로그래머가 하나하나 호출하고 CLR에서 관리되는 managed Resources들을 명시적으로 해제하기 때문에 굉장히 귀찮을 수도 있지만, 배치만 잘하면 TestCase 이상으로 편해질 수 있는 양날의 검과 같이 느껴졌음
+* Dispose를 한다고 해서 프로그래머가 모든 managed Resources들을 해제 하려고 하는 것은 하지 말기.
 
 
 
