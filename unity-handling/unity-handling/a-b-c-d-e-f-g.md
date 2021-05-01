@@ -15,7 +15,33 @@
 ```csharp
 public class DisposeClass : IDisposable
 {
-    public void Dispose() => Dispose(true);
+    ...
+    Field
+    ...
+    
+    bool lockable = false;
+
+    ~DisposeClass() => Dispose(false);
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+    
+    public void Dispose(bool isDisposing)
+    {
+        if(lockable) { return; }
+        
+        if(isDisposing)
+        {
+            /// CLR에서 관리되는 모든 managed Resources들을 해제
+            /// ...
+            /// Field value is Null
+            /// ...
+        }
+        
+        lockble = true;
+    }
 }
 
 ```
