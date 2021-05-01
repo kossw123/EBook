@@ -59,6 +59,55 @@ IEnumerator ParentCoroutine()
 
 하지만 중첩된 Coroutine을 사용하는 경우와 Generic Coroutine을 사용하여 반환할 정도로 가면 꽤나 커질 프로젝트의 규모를 생각하면 아찔하긴 하다.
 
+
+
+
+
+### Coroutine Exception Handling\(Single\)
+
+#### 발단
+
+1. 위의 Coroutine Exception Handling을 처리하는 와중에 다른 포스팅을 통해 발견한 Single Coroutine Exception Handling
+
+#### 전개
+
+1. 위의 Coroutine Exception Handling은 "Nested Coroutine에서 Child Coroutine에서의 예외 처리 및 Locking 처리"라고 한다면, 이 문단은 그냥 단순하게 하나의 Corotuine에서 Exception 및 Dispose를 하는 과정이다.
+2. Class로 Data들을 묶기 때문에 동적 할당해야한다는 단점이 존재하지만, 나름 보기 깔끔한거 같아서 정리하고 개선중이다.
+
+Single Coroutine Exception Handling
+
+```csharp
+public class SampleCoroutine
+{
+    public object result;
+    public Coroutine coroutine;
+    private IEnumerator target;
+    Exception e;
+    bool lockable = false;
+
+    public SampleCoroutine(MonoBehaviour owner, IEnumerator target)
+    {
+        this.target = target;
+        this.coroutine = owner.StartCoroutine(InternalCoroutine());
+    }
+    
+    ~SampleCoroutine () => Dispose(false);
+    
+    public IEnumerator InternalCoroutine()
+    {
+        lockable = true;
+        while(lockable)
+        {
+            try
+            {
+            
+            }
+        }
+    }
+}
+
+```
+
 ## D
 
 ### Dispose Pattern
