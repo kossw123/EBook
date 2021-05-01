@@ -6,6 +6,51 @@
 
 ## C
 
+### Coroutine Exception Handling
+
+#### 발단
+
+1. Coroutine 내부에서 while문을 사용하는 중 자꾸 잘못된 조건식과 값을 넣는 느낌이 강하게 들었음
+2. 생기는 오류가 대부분 Runtime에서 발생했기 때문에 Debuging이 힘들었음
+
+#### 전개
+
+1. Coroutine + Exception이라는 워딩을 통해 구글링 중 제목과 같은 이름의 포스팅을 발견
+   1. [http://www.zingweb.com/blog/2013/02/05/unity-coroutine-wrapper](http://www.zingweb.com/blog/2013/02/05/unity-coroutine-wrapper)
+
+
+
+Coroutine Exception Handling의 개요
+
+* Exception문에서 IEnumerator를 통한 yield 명령어가 삽입되지 않는걸 해결하고 이상적인 Coroutine을 만들고 싶다는 내용을 서술하고 있다.
+* 여기서 말하는 이상적인 Coroutine이란 다음과 같은 상황을 이야기 하는 것 같다.
+
+```csharp
+void Start()
+{
+    try { StartCoroutine(ParentCoroutine()); }
+    //can try...catch if there's no yielding
+    catch (Exception e) {
+        Debug.LogError("oh noes we had a problem: " + e.Message);
+    }
+}
+
+IEnumerator ParentCoroutine()
+{
+    yield return StartCoroutine(NestedCoroutineDoSomeStuff());
+    //can't try...catch these
+    yield return StartCoroutine(NestedCoroutineFoo());
+    //if this has an exception nothing below executes
+    if (stuff)
+        yield return StartCoroutine(NestedCoroutineBar());
+}
+```
+
+* ParentCoroutine에서 NestedCoroutine들을 호출하고 있는데, 만약 NestedCoroutine중 하나가 예외를 발생 시킨다면, Parent는 동작을 멈춘다.
+* 이를 방지하기 위해 NestedCoroutine 내부에서 예외를 처리하게끔 작성한다.
+
+
+
 ## D
 
 ### Dispose Pattern
@@ -23,6 +68,8 @@
 2. 해당 워드의 내용을 Interanl Coroutine을 사용하여 내부 Coroutine을 한번 더 돌리는 방식
 3. 하지만 new\(\)를 사용하여 동적 할당을 해야하는 불편함이 존재
 4. using Statement를 통해 객체를 일시적으로 생성하고 해제하는 방식\(Dispose\)을 발견
+
+
 
 Dispose Pattern의 개요
 
@@ -89,7 +136,7 @@ public class DisposeClass : IDisposable
 
 ```
 
-#### 결
+#### 결말 
 
 애초에 Exception부분에서 검사식만을 넣고 yield는 Exception 밖에서 사용하면 끝이지만, Coroutine Exception Handling이라는 워드와 Internal Coroutine과 같이 Class로 Data를 넘기는 방식을 알게됨
 
