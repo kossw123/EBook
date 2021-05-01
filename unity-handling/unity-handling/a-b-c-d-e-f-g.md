@@ -55,7 +55,9 @@ IEnumerator ParentCoroutine()
 
 #### 결말 
 
+해당 포스팅의 내용은 "중첩된 Coroutine을 하나의 IEnumerator에서 제어할 경우" 생기는 문제점과 그에 대한 해결 방법을 포스팅했는데, 아직까지 중첩된 Coroutine을 사용하는 단계까진 아니더라도, 이로 인해 Dispose Pattern에 접근하고, System.Diagnostics, WeakReference 등과 같은 Class를 접하는 계기가 되었다.
 
+하지만 중첩된 Coroutine을 사용하는 경우와 Generic Coroutine을 사용하여 반환할 정도로 가면 꽤나 커질 프로젝트의 규모를 생각하면 아찔하긴 하다.
 
 ## D
 
