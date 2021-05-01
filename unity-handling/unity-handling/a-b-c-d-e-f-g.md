@@ -6,7 +6,7 @@
 
 ## C
 
-### Coroutine Exception Handling
+### Coroutine Exception Handling\(Nested Coroutine\)
 
 #### 발단
 
@@ -76,11 +76,31 @@ IEnumerator ParentCoroutine()
 
 Single Coroutine Exception Handling
 
+{% tabs %}
+{% tab title="Main" %}
 ```csharp
-public class SampleCoroutine
+public class Main : MonoBehaviour
+{
+    void Start()
+    {
+        using(SampleCoroutine s = new SampleCoroutine())
+        {
+            Debug.Log("대괄호 벗어나면 Dispose");
+        }
+    }
+    
+    IEnumerator target()
+    {
+        Debug.Log("Target Call!!");
+        yield return null;
+    }
+}
+
+public class SampleCoroutine : IDisposable
 {
     public object result;
     public Coroutine coroutine;
+    
     private IEnumerator target;
     Exception e;
     bool lockable = false;
@@ -100,13 +120,89 @@ public class SampleCoroutine
         {
             try
             {
-            
+                if(!target.MoveNext())
+                {
+                    lockable = false;
+                    Dispose(false);
+                    yield break;
+                }
             }
+            catch(Exception e)
+            {
+                this.e = e;
+                HelperClass.TraceMessage("Finalizer!!");
+                Dispose(false);
+                yield break;
+            }
+            
+            result = target.Current;
+            yield return result;
         }
     }
-}
+    
+    
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+    
+    public void Dispose(bool isDisposing)
+    {
+        if(lockable) { return; }
 
+        if(isDisposing)
+        {
+            result = null;
+            coroutine = null;
+            target = null;
+            e = null;
+            lockable = false;
+        }
+
+        lockable = true;
+    }
+}
 ```
+{% endtab %}
+
+{% tab title="Helper" %}
+```csharp
+public class HelperClass
+{
+    public static void TraceMessage(
+    string message,
+    [CallerMemberName]string memberName = "",
+    [CallerFilePath]string sourceFilePath = "",
+    [CallerLineNumber]int sourceLineNumber = 0
+    )
+    {
+        UnityEngine.Debug.Log("message: " + message);
+        UnityEngine.Debug.Log("member name: " + memberName);
+        UnityEngine.Debug.Log("source file path: " + sourceFilePath);
+        UnityEngine.Debug.Log("source line number: " + sourceLineNumber);
+    }
+}
+```
+{% endtab %}
+{% endtabs %}
+
+
+
+#### 결말 
+
+아래의 방법들이 사용됨
+
+* Coroutine Exception Handling\(Nested Coroutine\)에서 포스팅된 내용을 바탕으로 Dispose와 Exception Message의 내용
+* 호출 스택을 출력하는 TraceMessage\(\)
+* using statement
+* Dispose Pattern 구
+
+위와 같은 방법들로 나름대로 코드를 리팩토링함과 동시에 최적화를 해봤지만, 여러가지 논리적 허점이 보인다.
+
+1. using statement를 사용하여 객체를 잠깐 생성했다가 회수하는데, 이게 효율적인가?
+2. Field가 너무 비효율적인 Value를 가진다고 생각된다. 코드에서는 Field를 다 사용하지만 감소 시킬 여력이 있다고 느낌이 들지만, 해결방법은 딱히 생각나지 않는다.
+3. Single Coroutine인데 Nested Coroutine에서 사용할 lockable 변수는 딱히 필요없지 않을까?
 
 ## D
 
