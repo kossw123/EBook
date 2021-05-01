@@ -156,6 +156,8 @@ Dispose 자료를 찾으면서 알아낸 주의점
 * Dispose를 한다고 해서 프로그래머가 모든 managed Resources들을 해제 하려고 하는 것은 하지 말기.
 * 행여나 Finalizer를 구현하지 않는다면, 리소스 낭비가 되는 경우도 있다고 함
 
+Advanced Dispose Pattern이 있다고 하는데, Unmanaged Resources들 까지 Dispose가 된다고 한다.
+
 
 
 ## E
