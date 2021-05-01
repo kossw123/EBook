@@ -8,20 +8,21 @@
 
 ## D
 
-###  Dispose Pattern
+### Dispose Pattern
 
-Coroutine에 Exception Handling을 할 때 생긴 issue이다.
+#### 발단
 
 1. Coroutine에서 Exception을 사용하여 예외 처리를 시도하려고 함
 2. 그러나 Exception 내부에서 yield문의 선언이 문법적으로 불가
    1. CS1626 : catch문이 선언된 try 블록 선언문에서 값 생성 불가
       1. Exception 자체가 yield return이라는 개체 생성\(return\) 후 MoveNext\(\)의 과정이 부적
-3. 구글링을 통해 Coroutine Exception Handling 워드 발견
-4. 해당 워드의 내용을 Interanl Coroutine을 사용하여 내부 Coroutine을 한번 더 돌리는 방식
-5. 하지만 new\(\)를 사용하여 동적 할당을 해야하는 불편함이 존재
-6. using Statement를 통해 객체를 일시적으로 생성하고 해제하는 방식\(Dispose\)을 발견
 
+#### 전개
 
+1. 구글링을 통해 Coroutine Exception Handling 워드 발견
+2. 해당 워드의 내용을 Interanl Coroutine을 사용하여 내부 Coroutine을 한번 더 돌리는 방식
+3. 하지만 new\(\)를 사용하여 동적 할당을 해야하는 불편함이 존재
+4. using Statement를 통해 객체를 일시적으로 생성하고 해제하는 방식\(Dispose\)을 발견
 
 Dispose Pattern의 개요
 
@@ -88,9 +89,11 @@ public class DisposeClass : IDisposable
 
 ```
 
-애초에 Exception부분에서 검사식만을 넣고 yield는 Exception 밖에서 사용하면 끝이지만, Coroutine Exception Handling이라는 워드와 Internal Coroutine과 같이 Class로 Data를 넘기는 방식을 알게 되어서 삽질은 아닌 듯하다.
+#### 결
 
-하지만 Coroutine Class에서 Field로 뭘 넘길지에 대한 고민과 이유가 중요한 듯하다.
+애초에 Exception부분에서 검사식만을 넣고 yield는 Exception 밖에서 사용하면 끝이지만, Coroutine Exception Handling이라는 워드와 Internal Coroutine과 같이 Class로 Data를 넘기는 방식을 알게됨
+
+정리하니 쓸데가 없어 보이지만 Coroutine Class에서 Field로 뭘 넘길지에 대한 고민과 이유를 찾아낸다면 중요한 워드중 하나라고 생각함
 
 
 
