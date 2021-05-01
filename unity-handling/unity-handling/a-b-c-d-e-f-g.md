@@ -8,6 +8,14 @@
 
 ## D
 
+###  - Dispose Pattern
+
+* Coroutine에 Exception Handling을 할 때 생긴 issue
+
+
+
+
+
 ## E
 
 ## F
