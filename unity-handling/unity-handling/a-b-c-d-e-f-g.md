@@ -200,7 +200,10 @@ public static class MonoBehaviorExt
 
 #### 결말
 
-아직까진 Generic까지 써서 Coroutine의 returnVal값을 뭘 넘길지는 모르겠지만, 구조 자체는 Generic을 사용할 때 유용하게 사용될 듯
+아직까진 Generic까지 써서 Coroutine의 returnVal값을 뭘 넘길지는 모르겠지만, 구조 자체는 Generic을 사용할 때 유용하게 사용될 듯하다.
+
+현재 static Class에서 object parameter를 가지고, T type이 Value type이 아닌 Reference type일 때 접근하는 방식과 또 다르게 적용할 수 있는 방식을 찾는 중  
+
 
 
 
