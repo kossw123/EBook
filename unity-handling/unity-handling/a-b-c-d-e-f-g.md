@@ -62,6 +62,136 @@ IEnumerator ParentCoroutine()
 
 
 
+### Coroutine Exception Handling\(Nested Coroutine 2\)
+
+#### 발단
+
+1. 위의 Nested Coroutine의 전체 코드가 있는 파일을 보다가 Single Coroutine Exception Handling과는 다른 방식으로 작성된 코드를 발견
+
+#### 전개
+
+1. 해당 포스팅에서는 Coroutine Generic Class를 가지고 객체를 생성 후 
+2. Internal Coroutine으로 따로 실행하는 방법을 채택함
+
+Coroutine Exception Handling\(Nested Coroutine 2\) 개요
+
+* Generic Coroutine Class가 따로 존재
+* static Class로 새로운 Coroutine 객체를 생성하여 Internal Coroutine을 돌림
+
+{% tabs %}
+{% tab title="Main" %}
+```csharp
+public class GenericCoroutine : MonoBehaviour
+{
+    private void Start()
+    {
+        StartCoroutine(Begin());
+    }
+    
+    IEnumerator Begin()
+    {
+        var routine = MonoBehaviorExt.StartCoroutine<TypeICareAbout>(this, TestNewRoutineGivesException());
+        yield return routine.coroutine;
+
+        /// try문에서는 반드시 예외를 발생 시키는 코드를 넣어야 한다.
+        try
+        {
+            MessageHelper.ProcessClass(routine.Value);
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e.Message);
+            // do something
+            Debug.Break();
+        }
+    }
+
+    IEnumerator TestNewRoutineGivesException()
+    {
+        yield return null;
+        yield return new WaitForSeconds(2f);
+        throw new Exception("Bad thing!");
+    }
+}
+
+
+public class Coroutine<T>
+{
+    public T Value
+    {
+        get
+        {
+            if (e != null)
+                throw e;
+
+            return returnVal;
+        }
+    }
+    private T returnVal;
+    private Exception e;
+    public Coroutine coroutine;
+
+    public IEnumerator InternalRoutine(IEnumerator coroutine)
+    {
+        while (true)
+        {
+            if (!coroutine.MoveNext())
+            {
+                yield break;
+            }
+            object yielded = coroutine.Current;
+
+            if (yielded != null && yielded.GetType() == typeof(T))
+            {
+                returnVal = (T)yielded;
+                yield break;
+            }
+            else
+            {
+                yield return coroutine.Current;
+            }
+        }
+    }
+}
+```
+{% endtab %}
+
+{% tab title="Helper" %}
+```csharp
+public static class MessageHelper
+{
+    public static void ProcessClass(object target)
+    {
+        if(target == null)
+        {
+            throw new ArgumentNullException();
+        }
+        else
+        {
+            throw new ArgumentNullException();
+        }
+    }
+}
+```
+{% endtab %}
+
+{% tab title="static" %}
+```csharp
+public static class MonoBehaviorExt
+{
+    public static Coroutine<T> StartCoroutine<T>(this MonoBehaviour obj, 
+                                                IEnumerator coroutine)
+    {
+        Coroutine<T> coroutineObject = new Coroutine<T>();
+        coroutineObject.coroutine = obj.StartCoroutine(
+                                        coroutineObject.InternalRoutine(coroutine));
+        return coroutineObject;
+    }
+}
+```
+{% endtab %}
+{% endtabs %}
+
 
 
 ### Coroutine Exception Handling\(Single\)
