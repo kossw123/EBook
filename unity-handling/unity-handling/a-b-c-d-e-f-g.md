@@ -90,10 +90,14 @@ public class GenericCoroutine : MonoBehaviour
     
     IEnumerator Begin()
     {
-        var routine = MonoBehaviorExt.StartCoroutine<TypeICareAbout>(this, TestNewRoutineGivesException());
+        var routine = MonoBehaviorExt.StartCoroutine<TypeICareAbout>(
+                                        this, 
+                                        TestNewRoutineGivesException());
         yield return routine.coroutine;
 
         /// try문에서는 반드시 예외를 발생 시키는 코드를 넣어야 한다.
+        /// yield return문을 Exception 아래로 넣어서 실행시킨다면 Exception이 되지만
+        /// 포스팅의 내용상으로는 yield return문이 Exception보다 위에 위치
         try
         {
             MessageHelper.ProcessClass(routine.Value);
@@ -191,6 +195,10 @@ public static class MonoBehaviorExt
 ```
 {% endtab %}
 {% endtabs %}
+
+#### 결말
+
+
 
 
 
