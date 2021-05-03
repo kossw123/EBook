@@ -77,6 +77,8 @@ Coroutine Exception Handling\(Nested Coroutine 2\) 개요
 
 * Generic Coroutine Class가 따로 존재
 * static Class로 새로운 Coroutine 객체를 생성하여 Internal Coroutine을 돌림
+* 실행되는 Coroutine은 다시 MonoBehaviour.StartCoroutine에서 실행
+  * 실행되는 이유는 Generic Class에 MonoBehaviour.Coroutine이 존재하기 때문
 
 {% tabs %}
 {% tab title="Main" %}
@@ -198,7 +200,7 @@ public static class MonoBehaviorExt
 
 #### 결말
 
-
+아직까진 Generic까지 써서 Coroutine의 returnVal값을 뭘 넘길지는 모르겠지만, 구조 자체는 Generic을 사용할 때 유용하게 사용될 듯
 
 
 
