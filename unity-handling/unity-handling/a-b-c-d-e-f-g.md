@@ -12,6 +12,7 @@
 
 1. Coroutine 내부에서 while문을 사용하는 중 자꾸 잘못된 조건식과 값을 넣는 느낌이 강하게 들었음
 2. 생기는 오류가 대부분 Runtime에서 발생했기 때문에 Debuging이 힘들었음
+3. 그래서 Debuging에 관한 문제를 해결하고자 구글링 시작
 
 #### 전개
 
@@ -310,6 +311,10 @@ Advanced Dispose Pattern이 있다고 하는데, Unmanaged Resources들 까지 D
 ## F
 
 ## G
+
+### Generic Coroutine
+
+
 
 
 
