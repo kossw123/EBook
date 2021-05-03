@@ -68,7 +68,7 @@ IEnumerator ParentCoroutine()
 
 #### 발단
 
-1. 위의 Coroutine Exception Handling을 처리하는 와중에 다른 포스팅을 통해 발견한 Single Coroutine Exception Handling
+1. 위의 Coroutine Exception Handling을 처리하는 와중에 다른 포스팅을 통해 발견한 자료와 여러가지 Coroutine 제작 방식을 조합
 
 #### 전개
 
