@@ -249,6 +249,34 @@ Job 예약 방법은 다음과 같습니다.
 2. Job의 Field Data를 초기화
 3. Schedule 함수를 호출
 
+```csharp
+using Unity.Burst;
+using Unity.Collections;
+using Unity.Jobs;
+
+public class Fractal : MonoBehaviour
+{
+    struct Fundamental : IJob
+    {
+        ///... Field
+        
+        public void Execute(int index)
+        {
+            ///...Job 구현
+        }
+    }
+    
+    void Start()
+    {
+        /// Job 초기화 후 예약
+        var job = new Fundamental
+        {
+            ///...Field 초기화
+        }.Schedule();
+    }
+}
+```
+
 
 
 
