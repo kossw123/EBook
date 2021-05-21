@@ -279,7 +279,20 @@ public class Fractal : MonoBehaviour
 
 
 
+다음과 같은 Job System을 구현했을 때 장점은 다음과 같습니다.
 
+1. 엄청 빠릅니다. - Fractal을 만들어 1000개 이상의 Object를 회전시키는데, Batch가 10~20정도 입니다.   Job System을 사용하지 않는 경우의 Batch 7000 - 8000정도 입니다.
+2. Worker Thread를 사용하여 다른 Thread를 추가하지 않기 때문에 메모리가 절약됩니다.
+3. Job System 내부에 Safety System이 있어서 Race Condition을 방지 합니다.
+4. Unity 자체 로직에 맞춰 돌아가서 안정적인 프레임이 기대됩니다.
+
+그러나 장점만 보기에는 멀티스레드 방식인 만큼 단점도 그대로 적용됩니다.
+
+1. Job에서 Static Data에 접근할 수 없습니다.
+2. 예약된 Batch는 무조건 Flush\(실행, 출력\)해야 합니다.
+3. NativeContainer의 Variable를 수정하기 위해서는 데이터를 임시로 복사하고 다시 저장해야 합니다.
+4. 일반 멀티 스레드에서는 무한루프 발생 시 해당 스레드만 무한루프에 빠지지만,  Unity는 전체가 무한루프에 빠진다.
+5. Worker Thread에 무거운 기능을 추가하기가 어렵습니다.
 
 ## 
 
