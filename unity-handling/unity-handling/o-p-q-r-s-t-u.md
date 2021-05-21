@@ -73,6 +73,10 @@ public class Main : MonoBehaviour
 }
 ```
 
+#### 결말
+
+* 기존에 new로 동적할당하고 .\(Dot\)을 통해 각 Field에 접근하여 초기화 방식을 다음과 같이 수정하는 것이 맞는듯 하다.
+
 ## T 
 
 ### Tracing Message
