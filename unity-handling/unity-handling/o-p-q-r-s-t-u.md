@@ -10,6 +10,53 @@
 
 ## S 
 
+### Struct Instancing
+
+#### 발단
+
+1. Job System을 적용하여 GPU instancing 작업을 할 때, 새로운 struct instancing 방식을 봤다.
+2. 기존에 struct의 instancing 방식이 굉장히 구리다는 것을 알게됨
+
+#### 전개
+
+두 가지 방법을 봤는데 JobSystem을 적용한 구조체 선언문으로 예시 적용
+
+1. new와 동시에 대괄호 안에서 struct Field를 초기화
+2. 함수의 자료형을 구조체 타입으로 하고 return new와 동시에 대괄호 안에서 struct Field를 초기화
+
+```csharp
+using Unity.Burst;
+using Unity.Collections;
+using Unity.Jobs;
+
+public class Main : MonoBehaviour
+{
+    struct Paragraph
+    {
+        public Vector3 direction;
+        .... Field 작성
+    }
+
+    struct JobHandle : IJobFor
+    {
+        public float delta;
+        public float scale;
+        
+        public NativeArray<Paragraph> parts
+        
+        public void Excute(int index)
+        {
+            
+        }
+    }
+
+
+    void Start()
+    {
+    
+}
+```
+
 ## T 
 
 ### Tracing Message
