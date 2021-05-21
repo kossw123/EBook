@@ -33,8 +33,7 @@ public class Main : MonoBehaviour
 {
     struct Paragraph
     {
-        public Vector3 direction;
-        .... Field 작성
+        ///.... Field 작성
     }
 
     struct JobHandle : IJobFor
@@ -46,14 +45,31 @@ public class Main : MonoBehaviour
         
         public void Excute(int index)
         {
-            
+            /// 실행할 동작 입력
         }
     }
 
-
     void Start()
     {
+        JobHandle handle = default;
+        /// 1번 초기화 방법
+        handle = new JobHandle
+        {
+            ///...Field 초기화
+        }.Schedlue();
+        
+        
+        /// 2번 초기화 방법
+        CreatePart();
+    }
     
+    Paragraph CreatePart()
+    {
+        return new Paragraph
+        {
+            ///...Field 초기화
+        };
+    }
 }
 ```
 
