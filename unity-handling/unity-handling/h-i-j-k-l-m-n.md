@@ -21,7 +21,7 @@ Unity에서는 Burst Compiler를 제공하여 여러가지 후작업에 대한 �
 3. 생성한 Job Instance 뒤에 .\(Dot\)으로 Schedule 함수를 호출하면 미리 작성한 Execute가 실행된다.
 
 {% tabs %}
-{% tab title="Start에서 사용" %}
+{% tab title="간단 사용" %}
 ```csharp
 using Unity.Burst;
 using Unity.Collections;
@@ -46,12 +46,38 @@ public class JobSample: MonoBehaviour
 }
 ```
 {% endtab %}
+
+{% tab title="" %}
+```csharp
+using Unity.Burst;
+using Unity.Collections;
+using Unity.Jobs;
+
+public class JobSample: MonoBehaviour
+{
+    struct Fundamental : IJob
+    {
+        public void Execute()
+        {
+            Debug.Log("Execute");
+        }
+    }
+
+    void Start()
+    {
+        var job = new Fundamental().Schedule();
+    }
+    /// Console 실행 결과 : Excute
+}
+```
+{% endtab %}
 {% endtabs %}
 
+몇가지 확실하게 된 것이 있다.
 
-
-
-
+1. Execute를 호출하려면 Schedule을 호출한다.
+2. Job의 Schedule\(\)을 호출하면 JobHandle type을 반환한다.
+3. 
 ## K 
 
 ## L 
