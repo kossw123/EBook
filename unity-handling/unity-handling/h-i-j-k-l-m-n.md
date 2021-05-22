@@ -53,16 +53,14 @@ public class JobSample: MonoBehaviour
 {% tab title="구조체 Job 사용" %}
 ```csharp
 using UnityEngine;
-
 using Unity.Burst;
 using Unity.Jobs;
-using Unity.Collections;
 
 public class JobSample : MonoBehaviour
 {
     struct Paragraph
     {
-        public string _value;
+        public char _value;
     }
 
     [BurstCompile]
@@ -72,20 +70,22 @@ public class JobSample : MonoBehaviour
 
         public void Execute()
         {
-            Debug.Log("Paragraph string Value : " + paragraph._value);
+            Debug.Log("Paragraph char Value : " + paragraph._value);
         }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        var job = new Fundamental            /// InvalidOperationException
+        var job = new Fundamental
         {
             paragraph = new Paragraph
             {
-                _value = "Paragraph"
+                _value = 'P'
             }
         }.Schedule();
+        /// Console 실행 결과 : Paragraph char Value : P
+
     }
 }
 
