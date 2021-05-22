@@ -262,7 +262,7 @@ public class Fractal : MonoBehaviour
         
         public void Execute(int index)
         {
-            ///...Job 구현
+            ///... Job 구현
         }
     }
     
@@ -271,7 +271,7 @@ public class Fractal : MonoBehaviour
         /// Job 초기화 후 예약
         var job = new Fundamental
         {
-            ///...Field 초기화
+            ///... Field 초기화
         }.Schedule();
     }
 }
@@ -294,5 +294,5 @@ public class Fractal : MonoBehaviour
 4. 일반 멀티 스레드에서는 무한루프 발생 시 해당 스레드만 무한루프에 빠지지만,  Unity는 전체가 무한루프에 빠진다.
 5. Worker Thread에 무거운 기능을 추가하기가 어렵습니다.
 
-## 
+## 차
 

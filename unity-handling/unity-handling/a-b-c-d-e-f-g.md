@@ -4,6 +4,17 @@
 
 ## B
 
+### Burst Compiler의 사용
+
+Burst Compiler
+
+Job System과 같이 사용되는 Burst Compiler에서는 다음과 같은 기능들을 제공하고 있다.
+
+1. Safety Checks
+2. Synchronous Compilation
+3. Native Debug Mode Compilation
+4. Show Timing
+
 ## C
 
 ### Coroutine Exception Handling\(Nested Coroutine\)
