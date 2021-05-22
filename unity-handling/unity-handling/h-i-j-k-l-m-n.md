@@ -76,8 +76,14 @@ public class JobSample: MonoBehaviour
 몇가지 확실하게 된 것이 있다.
 
 1. Execute를 호출하려면 Schedule을 호출한다.
-2. Job의 Schedule\(\)을 호출하면 JobHandle type을 반환한다.
-3. 
+2. Job의 Schedule\(\)을 호출하면 JobHandle struct 반환한다.
+3. 정의된 Struct를 확인해보니 크게 4가지 용도로 나누어져 있었다.
+   1. Dependencies Combine
+   2. Dependencies Check
+   3. Complete
+   4. Job Batch
+4. 그리고 Schedule\(\) 함수는 Extension Method로 선언되어 있다.
+
 ## K 
 
 ## L 
