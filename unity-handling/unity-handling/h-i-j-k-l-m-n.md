@@ -20,7 +20,36 @@ Unity에서는 Burst Compiler를 제공하여 여러가지 후작업에 대한 �
 2. Start\(\)나 Update\(\)같은 익숙하게 Unity엔진에 명령을 내릴 수 있는 Script Cycle에서 Job을 instance화 한다.
 3. 생성한 Job Instance 뒤에 .\(Dot\)으로 Schedule 함수를 호출하면 미리 작성한 Execute가 실행된다.
 
-생성을 한다면
+
+
+Job을 생성했다면 어디서 어떻게 쓰일까에 대한 고민이 많다.
+
+{% tabs %}
+{% tab title="Start에서 사용" %}
+```csharp
+using Unity.Burst;
+using Unity.Collections;
+using Unity.Jobs;
+
+public class JobFundamental : MonoBehaviour
+{
+    struct Fundamental : IJob
+    {
+        public float _value;
+        public void Execute()
+        {
+            Debug.Log("Execute");
+        }
+    }
+
+    void Start()
+    {
+        
+    }
+}
+```
+{% endtab %}
+{% endtabs %}
 
 
 
