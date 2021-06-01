@@ -6,7 +6,30 @@
 
 ### Burst Compiler의 사용
 
-Burst Compiler
+Burst Compiler은 Unity에서 LLVM을 사용하여 .NET Byte Code를 고도로 최적화된 Native Code로   
+변환해주는 Compiler로써, Unity가 추구하는 DOTS\(Data - Oriented - Tech - Stack\)에 맞게 설계되어 있다.
+
+DOTS은 다음과 같이 설명되어 있다.  
+"데이터 지향 방식으로 프로그램을 짜는 코드 작성의 다른 패러다임"
+
+그렇다면 데이터 지향 방식은 어떤 방식인가?
+
+* Unity가 조금 익숙해지다 보면 GameObject를 제외하면서 짠다는게 너무 어렵다
+* 그래서 줄인다고 해도 Player이외의 Data에 접근하기 위해 다양한 Component Class에 대한 접근이 필요했다.
+* 이러한 접근 자체는 Compile Error가 주로 일어나서 상관없지만, Runtime에서의 Error가 문제가 되는 경우가 많다.
+* 그래서 Profiler를 돌려보면 특별히 memory leak이 나거나 하는 부분을 찾을 수 없지만, 문제가 분명 존재한다.
+* 이러한 문제의 대부분은  Random Memory Access Pattern\(무작위 메모리 접근 패턴 / RAM\),과  Cache Miss\(CPU에서 요청한 데이터가 Cache에 없는 경우\) 두 가지 경우가 많다고 한다.
+* 그래서 데이터 지향 방식은 관점을 Data로 옮겨 다음과 같은 항목을 중심으로 짠다. Data의 타입, Data가 Memory에 어떻게 배치 되는가, 게임에서 어떻게 읽어서 처리할 것인가
+
+{% embed url="https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=yilice&logNo=221548434909" %}
+
+
+
+
+
+즉, 새로운 작성 패러다임으로 짜면, 기본 OOP에서 발생하는 문제점들을 해결하고 Memory에 대한 최적화를 이룰 수 있다는 이야기 같다.
+
+물론 Unity에서 자신하는 기능인 만큼 속도가 무진장 빠르다.
 
 Job System과 같이 사용되는 Burst Compiler에서는 다음과 같은 기능들을 제공하고 있다.
 
@@ -14,6 +37,35 @@ Job System과 같이 사용되는 Burst Compiler에서는 다음과 같은 기�
 2. Synchronous Compilation
 3. Native Debug Mode Compilation
 4. Show Timing
+
+#### Safety Checks
+
+사용하고 있는 Job을 감지하여 모든 잠정적인 Race Condition을 감지하고 그로 인해 발생하는 버그를 차단한다.
+
+* Race Condition : 2개 이상의 경쟁 상태인 쓰레드들이 공유된 자원에 접근하려고 할 때,  동기화 메커니즘 없어 실행 순서를 동기화 하지 못해 결과가 달라지는 상
+
+#### Synchronous Compilation
+
+멀티쓰레드 프로그래밍의 대표적인 동기화 문제를 해결한다.
+
+#### Native Debug Mode Compilation
+
+* IDE에 포함된 Native Debugger를 사용하여 다음과 같은 작업을 할 수 있다.
+  * 조건부 중단점을 비롯한 중단점 적중
+  * 프레임 콜 스택 검사
+  * 로컬 변수 검사
+  * 구조체 및 데이터 검사, 포인터 추적
+  * 디버거 감시 사용
+* 그러나 아직은 시험적인 성격이 강해 다음과 같은 항목은 제한되어 있다고 한다.
+  * 쓰레드 디버깅
+  * 변수가 선언되어 사용될 수 있는 영역을 벗어나면 추적 불가
+  * Foreach문에서 Lambda식을 쓰면 값이 제대로 추적이 안된다.
+  * 함수의 인자를 넘길 때 값이 제대로 
+  * 몇가지 명시적인 구조체가 지원이 안되서 값이 제대로 추적이 안된다.
+
+#### Show Timing
+
+z
 
 ## C
 
