@@ -74,13 +74,13 @@ OpenGL은 그래픽스 관련이기 때문에, Modeling Rendering 관련 함수�
 <table>
   <thead>
     <tr>
-      <th style="text-align:center">&#xCD94;&#xC0C1;&#xC801;</th>
-      <th style="text-align:center">&#xAD6C;&#xCCB4;&#xC801;</th>
+      <th style="text-align:left">&#xCD94;&#xC0C1;&#xC801;</th>
+      <th style="text-align:left">&#xAD6C;&#xCCB4;&#xC801;</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align:center">
+      <td style="text-align:left">
         <p>1. Vertex Shader</p>
         <p>2. Shape Assembly</p>
         <p>3. Geometry Shader</p>
@@ -88,7 +88,7 @@ OpenGL은 그래픽스 관련이기 때문에, Modeling Rendering 관련 함수�
         <p>5. Fragment Shader</p>
         <p>6. Tests and Blending</p>
       </td>
-      <td style="text-align:center">
+      <td style="text-align:left">
         <p>&#xCD08;&#xAE30; &#xC900;&#xBE44;&#xBB3C; : Vertex / Index Buffer</p>
         <p>1. Input Assembler</p>
         <p>2. Vertex Shader (&#xC870;&#xC791; &#xAC00;&#xB2A5;)</p>
@@ -99,6 +99,18 @@ OpenGL은 그래픽스 관련이기 때문에, Modeling Rendering 관련 함수�
         <p>7. Color Blending</p>
         <p>&#xACB0;&#xACFC; : FrameBuffer</p>
       </td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <ol>
+          <li>3D &#xC88C;&#xD45C;&#xB97C; 2D &#xC88C;&#xD45C;&#xB85C; &#xBCC0;&#xACBD;&#xD55C;&#xB2E4;.</li>
+          <li>
+            <p>Primitive Shape(&#xC0BC;&#xAC01;&#xD615;)&#xC744; &#xC0DD;&#xC131;&#xD558;&#xACE0;</p>
+            <p>Vertex Shader&#xC5D0;&#xC11C; &#xBC1B;&#xC740; Data&#xB97C;</p>
+          </li>
+        </ol>
+      </td>
+      <td style="text-align:left"></td>
     </tr>
   </tbody>
 </table>
@@ -139,5 +151,5 @@ Shader가 들어가면 다 조작 가능한 부분이라고 보면 되겠다.
 
 ### 이제 그래픽스 파이프라인에 대한 이야기를 해보자
 
-위의 도표에서 
+위의 도표에 대한 부가설명은 다음과 같다.
 
