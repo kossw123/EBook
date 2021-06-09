@@ -131,7 +131,9 @@ void main()
 
 위의 코드가 Shader고, 위 내용은 Vertex에 들어갈 Data를 입력하는 과정이다.
 
-그래서 프로그래머가 직접 입력할 수 있기에 Programmable 
+그래서 프로그래머가 직접 입력할 수 있기에 Programmable Function, 즉 조작 가능한 부분이라고 위의 도표에서 설명한다.
+
+Shader가 들어가면 다 조작 가능한 부분이라고 보면 되겠다.
 
 
 
