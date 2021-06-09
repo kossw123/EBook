@@ -89,9 +89,12 @@ include Directory와 Linker Directory를 설정시켜준다.
 
 이번에 설치해야할 API는 GLAD이고, 주로 OpenGL용 함수 포인터를 관리한다 까지만 알면 될듯 하다.
 
-GLAD API를 다운 받으면 2개의 
+GLAD API를 다운 받으면 include, KHR file이 있는데, include Directory경로에 추가하고,   
+glad.c파일을 프로젝트에 추가한다.
 
 
+
+### 이제 준비는 끝났고, Tutorial 보면서 OpenGL Context랑 Window 생성
 
 
 
