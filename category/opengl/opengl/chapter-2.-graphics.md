@@ -154,5 +154,58 @@ Shader가 들어가면 다 조작 가능한 부분이라고 보면 되겠다.
 
 
 
+### 그렇다면 각 과정은 어떤방식으로 돌아가는가?
+
+* 추상적
+  1. Vertex Shader
+     * Display에 표시하기 위해 3D 좌표를 2D로 변경한다.
+  2. Shape Assembly
+     * Primitive Shape\(기본 삼각형\)을 생성하고 Vertex Shader에서 변경한 Vertex Data\[1\]를  Primitive Shape에 대응 시킨다.
+  3. Geometry Shader
+     * 생성된 Primitive Shape에서 새로운 꼭지점을 생성해 또 다른 Primitive Shape를 생성한다.
+     * 위 과정을 반복해서 모델링한 Object가 될 때까지 반복
+  4. Rasterization
+     * 최종 화면의 해당 Pixel\[3\]에 Geometry Shader의 결과를 전달해 매핑\[2\]하여 Fragment Shader가사용할 Fragment\[4\]를 선택한다.
+     * 선택하기 전에 Cliping등 카메라에 안보여질 면에 대한 처리를 해서 보이지 않는 면에 대한 Fragment를 제거한다.
+  5. Fragement Shader
+     * Pixel의 최종 색상을 계산한다.
+     * 여기에는 조명, 그림자, 조명의 색상등이 들어있다.
+  6. Tests and Blending
+     * Fragment의 깊이값을 확인하고 Fragment를 다른 Object의 앞이나 뒤에 있는지 확인하여  폐기한다.
+
+
+
+* 구체
+  1. Input Assembly
+     * Input\(여기서는 Vertex Data\)를 정리한다.
+  2. Vertex Shader
+     * Vertex Data를 2D 화면\(Screen Space\)로 변경
+  3. Tessellation
+     * 물체의 화질을 높이기 위해 Primitive Shape\(삼각형\)을 특정한  규칙에 따라 작은 삼각형으로 나눈다.
+  4. Geometry Shader
+     * Primitive Shape를 지우거나 추가하는 부분이다.
+  5. Rasterization
+     * 2D Screen Space로 변경된 위치를 사용해 Mesh를 Fragment로 나누는 단계
+  6. Fragment Shader
+     * Rasterization에서 살아남은 Fragment의 색상 및 Depth를 계산하는 부분
+     * 색상을 계산하기 위해 빛과 같은 색상에 영향을 끼치는 요소를 고려해야하는 부분
+  7. Color Blending
+     * Fragment의 색상들을 비교하여 최종 색을 결
+
+
+
+* 첨부 설명
+
+\[1\] : Vertex Data  
+꼭지점이나 다른 도형을 그리기 위한 추가적인 정보  
+보통 Vector3\(float 3개 Struct\)로 이루어져 있다.
+
+\[2\] : 매핑  
+  
+  
+
+
+
+
 
 
