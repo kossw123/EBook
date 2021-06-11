@@ -95,3 +95,15 @@ Unity같은 Framework는 resource조차 Metadata라는 데이터를 가공하여
   * 임계  영역이 존재
     * 둘 이상의 작업이 동시에 실행되는 경우 발생하는 Race Condition
 
+자세하게 알려면 Windows Programming을 찾아 볼 것
+
+
+
+### 매핑
+
+* 하나의 값을 다른 값으로 대응 시키는 것
+* Key에 Value를 넣는 것
+* 해당값이 다른 값을 가리키게 하는 것
+
+
+
