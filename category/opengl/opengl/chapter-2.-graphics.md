@@ -236,9 +236,15 @@ Shader에서도 마찬가지로 Pixel의 위치, 색, 깊이 텍스쳐등 하나
 
 ![](../../../.gitbook/assets/image%20%28271%29.png)
 
+위의 그림을 보면 각 Coordinate\(좌표계\)에서 Matrix를 통해 Transformation을 수행 후  
+최종적으로 Display까지 표시되는 수학적인 관점에서의 그래픽 파이프라인이다.
 
+위의 그림은 OpenGL을 바탕으로 작성되어 있다.
 
+Matrix 관련 변환 행렬\(Transformation Matrix\)부분은 방대한 양때문에 해당 문서에서는 생략했다.  
+하지만 아래의 링크에서 자세하게 나와있기 때문에 참고자료로 대체한다.
 
+{% embed url="http://www.opengl-tutorial.org/kr/beginners-tutorials/tutorial-3-matrices/" %}
 
 
 
