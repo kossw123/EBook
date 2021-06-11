@@ -1,4 +1,4 @@
-# Graphic Rendering Pipeline - 작성중
+# Graphic Rendering Pipeline
 
 ## **Graphic Pipeline**
 
@@ -80,4 +80,6 @@ Unity에는 Rendering Pipeline에는 4가지 종류가 있습니다.
 {% embed url="https://youtu.be/KnueAgpUL3Y" %}
 
 
+
+또한 OpenGL 항목에서도 그래픽스 파이프라인에 대해 다루기 때문에 해당 항목을 참조할 것
 

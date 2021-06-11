@@ -84,7 +84,7 @@
 * [external API, Component reference](category/api-component-reference/README.md)
   * [Unity](category/api-component-reference/unity/README.md)
     * [DOTween](category/api-component-reference/unity/dotween.md)
-    * [Graphic Rendering Pipeline - 작성중](category/api-component-reference/unity/untitled.md)
+    * [Graphic Rendering Pipeline](category/api-component-reference/unity/untitled.md)
     * [NSubstitute](category/api-component-reference/unity/nsubstitute.md)
 * [용어 정리](category/undefined/README.md)
   * [가 나 다 라 마](category/undefined/undefined.md)
