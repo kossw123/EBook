@@ -229,7 +229,12 @@ Shader에서도 마찬가지로 Pixel의 위치, 색, 깊이 텍스쳐등 하나
 
 #### 수학적 관점
 
-* 
+![&#xAC04;&#xB2E8;&#xD558;&#xAC8C; &#xB3C4;&#xD45C;&#xB85C; &#xC815;&#xB9AC;&#xD55C; &#xAC01; &#xADF8;&#xB798;&#xD53D;&#xC2A4; &#xD30C;&#xC774;&#xD504;&#xB77C;&#xC778;&#xC758; Transformation](../../../.gitbook/assets/image%20%28269%29.png)
+
+
+
+
+
 
 
 
