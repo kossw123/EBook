@@ -89,7 +89,8 @@ OpenGL은 그래픽스 관련이기 때문에, Modeling Rendering 관련 함수�
         <p>6. Tests and Blending</p>
       </td>
       <td style="text-align:center">
-        <p>&#xCD08;&#xAE30; &#xC900;&#xBE44;&#xBB3C; : Vertex / Index Buffer</p>
+        <p>&#xCD08;&#xAE30; &#xC900;&#xBE44;&#xBB3C; : Input&#xC744; &#xC785;&#xB825;&#xD560;
+          Vertex / Index Buffer</p>
         <p>1. Input Assembler</p>
         <p>2. Vertex Shader (&#xC870;&#xC791; &#xAC00;&#xB2A5;)</p>
         <p>3. Tessellation (&#xC870;&#xC791; &#xAC00;&#xB2A5;)</p>
@@ -97,7 +98,8 @@ OpenGL은 그래픽스 관련이기 때문에, Modeling Rendering 관련 함수�
         <p>5. Rasterization</p>
         <p>6. Fragment Shader (&#xC870;&#xC791; &#xAC00;&#xB2A5;)</p>
         <p>7. Color Blending</p>
-        <p>&#xACB0;&#xACFC; : FrameBuffer</p>
+        <p>&#xACB0;&#xACFC; : &#xACF5;&#xC815;&#xC744; &#xAC70;&#xCCD0; &#xB098;&#xC628;
+          Data&#xB294; FrameBuffer&#xC5D0; &#xC4F0;&#xC5EC;&#xC9C4;&#xB2E4;.</p>
       </td>
     </tr>
   </tbody>
@@ -212,10 +214,10 @@ Shader가 들어가면 다 조작 가능한 부분이라고 보면 되겠다.
 다른 용어도 그러하듯, 여러가지 의미가 내포되어 있다.
 
 * Android에서의 Fragment : Activity에 포함되는 UI의 "일부"
-* React에서의 Fragment : DOM에 별도의 Node를 추가하지 않고 여러 Children을 "파편\(일부\)"로 만드는 Class
+* React에서의 Fragment : DOM에 별도의 Node를 추가하지 않고 여러 Children을  "하나의 파편\(일부\)"로 만드는 Class
 
-위의 예시와 같이 의미 그대로 요소를 파편까지 끌어 모으는 단계로써 Shader에서도 마찬가지로  
-하나의 그림을 구성하는 여러개의 Pixel을 Fragment\(파편\)화 시키기 위한 모든 정보를 의미한다.
+Shader에서도 마찬가지로 Pixel의 위치, 색, 깊이 텍스쳐등 하나의 Pixel을 채우기 위해 필요한 모든 정보를 지닌 기본단위이다.  
+
 
 
 
@@ -251,7 +253,30 @@ Shader가 들어가면 다 조작 가능한 부분이라고 보면 되겠다.
 
 
 
-* 그렇다면 각 업체마다 다른 파이프라인을 가지고 있는데, Unity는 OpenGL을 사용하고 있고
+* 그렇다면 각 업체마다 다른 파이프라인을 가지고 있는데,  Unity는 OpenGL을 사용하고 있고, Unreal은 DirectX 11을 사용하고 있는데 엔진을 바꿀 때, 혹은 엔진끼리 연동할 때 위의 과정을 모두 알아야 하는게 아닌가?
+  * 그럴 필요까진 없다. 어차피 원리는 비슷하고 비슷한 원리에서 확장해 나가면  나중에 햇갈릴 이유도 없고, 다른 파이프라인이 나와도 원리를 이해 했기 때문에, 좀 더 수월하게 이해할 수 있다는 장점이 있다.
+
+
+
+* 그러면 그 원리가 뭔지?
+  * 아래에 나름대로 이해한 모든 것을 도표화 시켜봤다. 여러 문서에서 참고 했으며 작성자에게 가장 맞는 내용인 듯 하기에 정리했다.
+
+
+
+### 그래픽스 파이프라인 도표
+
+{% embed url="https://itigic.com/pipeline-3d-this-is-how-all-gpus-render-graphics/\#Pixel\_Shaders" %}
+
+
+
+위의 링크에 따르면 파이프라인을 2가지로 나눠서 이해할 수 있었다.
+
+* 월드 스페이스 파이프라인
+* 스크린 스페이스 파이프라인
+
+
+
+
 
 
 
