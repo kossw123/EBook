@@ -74,13 +74,13 @@ OpenGL은 그래픽스 관련이기 때문에, Modeling Rendering 관련 함수�
 <table>
   <thead>
     <tr>
-      <th style="text-align:left">&#xCD94;&#xC0C1;&#xC801;</th>
-      <th style="text-align:left">&#xAD6C;&#xCCB4;&#xC801;</th>
+      <th style="text-align:center">&#xCD94;&#xC0C1;&#xC801;</th>
+      <th style="text-align:center">&#xAD6C;&#xCCB4;&#xC801;</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align:left">
+      <td style="text-align:center">
         <p>1. Vertex Shader</p>
         <p>2. Shape Assembly</p>
         <p>3. Geometry Shader</p>
@@ -88,7 +88,7 @@ OpenGL은 그래픽스 관련이기 때문에, Modeling Rendering 관련 함수�
         <p>5. Fragment Shader</p>
         <p>6. Tests and Blending</p>
       </td>
-      <td style="text-align:left">
+      <td style="text-align:center">
         <p>&#xCD08;&#xAE30; &#xC900;&#xBE44;&#xBB3C; : Vertex / Index Buffer</p>
         <p>1. Input Assembler</p>
         <p>2. Vertex Shader (&#xC870;&#xC791; &#xAC00;&#xB2A5;)</p>
@@ -99,18 +99,6 @@ OpenGL은 그래픽스 관련이기 때문에, Modeling Rendering 관련 함수�
         <p>7. Color Blending</p>
         <p>&#xACB0;&#xACFC; : FrameBuffer</p>
       </td>
-    </tr>
-    <tr>
-      <td style="text-align:left">
-        <ol>
-          <li>3D &#xC88C;&#xD45C;&#xB97C; 2D &#xC88C;&#xD45C;&#xB85C; &#xBCC0;&#xACBD;&#xD55C;&#xB2E4;.</li>
-          <li>
-            <p>Primitive Shape(&#xC0BC;&#xAC01;&#xD615;)&#xC744; &#xC0DD;&#xC131;&#xD558;&#xACE0;</p>
-            <p>Vertex Shader&#xC5D0;&#xC11C; &#xBC1B;&#xC740; Data&#xB97C;</p>
-          </li>
-        </ol>
-      </td>
-      <td style="text-align:left"></td>
     </tr>
   </tbody>
 </table>
@@ -149,7 +137,22 @@ Shader가 들어가면 다 조작 가능한 부분이라고 보면 되겠다.
 
 
 
-### 이제 그래픽스 파이프라인에 대한 이야기를 해보자
+### 위의 도표에서 과정을 알았는데, 각 과정에 대한 설명이 필요한가?
 
-위의 도표에 대한 부가설명은 다음과 같다.
+현재 작성자는 저런 방식을 통해 꼭 그래픽스를 실행해야하는가? 에 대한 답을 찾지 못한 상태이지만,  
+그나마 납득할 수 있는 답변이 존재하긴 했다.
+
+* 저렇게 하는게 가장 쉽다.
+
+도표를 보면 여러가지 Shader들과 과정을 통해 하나의 그림을 출력하는데 각 과정마다 조금 자세하게 들여다 본다면, 수학적 관점과 컴퓨터학적 관점이 가득 들어가 있는 것을 확인할 수 있었다.
+
+* 현재 세상을 양분하는 API\(OpenGL, DirectX\)가 도표와 비슷하게 돌아간다.
+* 물론 저렇게 안돌아 갈수 있겠지만, 여러 문서를 보면 비슷하게 서술 되어 있었다.
+
+하나의 그림을 출력하는데 모든 과정에 Overflow나 Exception이 발생하지 않는다는 가정하에서만 제대로 돌아가는 것이기 때문에, 각 과정마다 하나의 오류라도 있으면 안된다.  
+그리고 Programmable Pipeline은 각 과정에 프로그래머가 직접 최적화를 하는 것이기 때문이기도 하다.
+
+
+
+
 
