@@ -56,6 +56,47 @@
 
 Visual Studio에서 Build 버튼을 누르면 Compile이 자동으로 되는 것도 Compile의 자동화라고도 볼 수 있습니다.
 
+
+
+### 바인딩\(Binding\)
+
+바인딩\(Binding\) 이란 프로그램의 어떤 기본 단위가 가질 수 있는 구성요소의 구체적인 값, 성격을 확정하는 것을 말한다.
+
+C\#같은 경우
+
+* 기본 단위 : value type, reference type
+* 구성요소의 구체적인 값 : 각 type에 맞는 값들
+
+이를 확정하는 경우를 말하는 것 같은데, 대충 써보자면 다음과 같을 수 있겠다.
+
+```csharp
+int a = 10;
+
+/// int : 기본단위
+/// a : 변수의 이름, 즉 구성요소
+/// 10 : 구성요소의 구체적인 
+```
+
+
+
+Binding되는 시간은 각각 다를 수 있고, 여러가지 의미를 내포하는 경우가 많은가 보다.
+
+1. 실행 시간\(Execution time\) : 런타임이라고 불리는 시간 / Dynamic Binding
+2. 번역 시간\(Translation Time\) : 컴파일러가 특정언어를 기반으로 코드를 해석하는 시간 / Static Binding
+3. 언어 정의 시간\(Language Definition Time\) : 언어가 정의될 시간에 확정되는 것들
+4. 언어 구현 시간\(Language Implementation Time\) : 언어를 구현될 시간에 확정되는 것
+
+
+
+이에 따라 나뉘는 것들 중 하나가 Compiled Language / Interpreted Language이다.
+
+* Compiled Language : 대부분 바인딩이 번역시간에 이루어짐
+* Interpreted Language : 대부분 바인딩이 실행시간에 이루어짐
+
+
+
+
+
 ## 사
 
 ### SOLID 원칙
