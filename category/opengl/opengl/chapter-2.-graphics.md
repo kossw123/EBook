@@ -171,7 +171,7 @@ Shader가 들어가면 다 조작 가능한 부분이라고 보면 되겠다.
 
 * 추상적
   1. Vertex Shader
-     * Display에 표시하기 위해 3D 좌표를 2D로 변경한다.
+     * Display에 표시하기 위해 3D 좌표를 2D 좌표로 변경할 수 있는 다른 3D 좌표로 변경한다.
   2. Shape Assembly
      * Primitive Shape\(기본 삼각형\)을 생성하고 Vertex Shader에서 변경한 Vertex Data\[1\]를  Primitive Shape에 대응 시킨다.
   3. Geometry Shader
@@ -192,7 +192,7 @@ Shader가 들어가면 다 조작 가능한 부분이라고 보면 되겠다.
   1. Input Assembly
      * Input\(여기서는 Vertex Data\)를 정리한다.
   2. Vertex Shader
-     * Vertex Data를 2D 화면\(Screen Space\)로 변경
+     * Vertex Data를 2D 화면\(Screen Space\)으로 변경하기 위해 Transformation matirces를 통해 다른 좌표계로 변환
   3. Tessellation
      * 물체의 화질을 높이기 위해 Primitive Shape\(삼각형\)을 특정한  규칙에 따라 작은 삼각형으로 나눈다.
   4. Geometry Shader
