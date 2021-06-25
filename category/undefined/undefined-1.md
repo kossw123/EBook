@@ -308,6 +308,18 @@ Apache, PHP, MySQL의 준말이다.
   * 그러나 GUI를 따로 제공하고 있진 않다.
   * 하지만 PHP와 결합되어 아주 많이 사용된다.
 
+
+
+### 인증
+
+Unity를 사용다가 Google Firebase를 통해 사용자 정보를 로그인하고, Firebase DB에 저장하는 기능을 구현하는 부분이 있었다.
+
+{% hint style="info" %}
+### **인증 : 참이라는 근거가 있는 무언가를 확인하거나 확증하는 행위**
+{% endhint %}
+
+Firebase는 결국 Google에서 사용자 정보를 확인하는 행위인데, 이 간단한 행위가 
+
 ## 자
 
 ### 잡 시스템\(C\# Job System\)
