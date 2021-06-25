@@ -325,8 +325,14 @@ namespace Structure.List.SimpleList
 
 그래서 기본적으로 APM\(Apache - PHP - MySQL\) 환경 구축을 하려고 한다.
 
-  
+APM에 대한 느낌을 간단히 설명하자면
 
+1. 인터넷 상에 가상의 Container에다가 Data를 전송해주는 프로그램 \(Web Server - Apache\)
+2. Data를 볼 수 있는 GUI \(Web Page\(GUI\) - PHP\)
+3. Data를 간단하게 저장할 수 있는 프로그램\(DB - MySQL\)
+
+위의 기능들이 멀쩡히 돌아가기 위해 엄청 많은 또다른 기능들이 존재 하지만, Unity는 게임엔진이기 때문에, 여기서 Save/Load와 Data를 저장하는 부분과 Client에서 Server를 거쳐 Web DB에 저장하기정도  
+구현하면 될듯하다.
 
 ## M 
 
