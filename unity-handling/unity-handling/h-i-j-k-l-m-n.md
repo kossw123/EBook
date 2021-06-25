@@ -325,11 +325,8 @@ namespace Structure.List.SimpleList
 
 그래서 기본적으로 APM\(Apache - PHP - MySQL\) 환경 구축을 하려고 한다.
 
-* Apache
-  * 웹 서버이다.
-  * 웹 서버는 HTTP를 통해 브라우저에서 요청하는 HTML 문서, Object를 전송해주는  서비스 프로그램이다.
-  * HTTP는 W3 상에서 정보를 주고받을 수 있는 프로토콜이다.
-  * 대부분 웹사이트는 www.을 사용하고, HTTPS를 통해 
+  
+
 
 ## M 
 
