@@ -269,7 +269,7 @@ MS사가 개발한 API중 하나로써, 제각기 개발할 필요 없이 다음
 
 Apache, PHP, MySQL의 준말이다.
 
-**그리고 DB - Web Page - Web Server의 일반적인 관계와 요즘 모든 플랫폼을 설명하는데 있어서 하나의 예시가 되기 때문에 해당 내용을 작성한다.**
+**그리고 DB - Web Page - Web Server의 일반적인 관계와 Save / Load와 다른 이벤트들을 설명하는데 있어서 하나의 예시가 되기 때문에 해당 내용을 작성한다.**
 
 보통 Linux OS, Apache, MySQL, PHP의 준말로 LAMP라는 의미로 사용되는 듯 하나,   
 웹쪽을 흔하게 접하고, 대다수의 사람들이 Windows를 사용하기 때문에 Linux OS를 뺀 APM 환경이라고도  
