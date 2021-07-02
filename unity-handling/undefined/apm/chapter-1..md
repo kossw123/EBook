@@ -24,7 +24,10 @@
 
 가장 기초적인 Local Development Enviroment는 APM이기 때문에, 한번 구축해 보자.
 
+Bitnami, yum, XAMPP 등등 개발 환경을 통합적으로 설치하고 설정해주는 웹 서버 설치 프로그램이   
+존재하며, 이를 사용하면 수동으로 하는 것보다 훨씬 더 빠르게 설치가 가능하다.
 
+하지만 여기서는 APM만 설치하고 기본설정까지 한다.
 
 ## 1. [Apache](../../unity-handling/h-i-j-k-l-m-n.md#local-development-enviroment)
 
@@ -32,15 +35,15 @@
 
 W3\(www.\)라는 공간에서 HTTP라는 절차\(혹은 순서가 있는 약속, 규약\)을 통해 HTML문서, Object를 전송해주는 프로그램이다. 
 
-
-
 {% embed url="https://8iiow.gitbook.io/t-h-e-t/category/undefined/undefined-1\#apm" %}
 
 
 
 ## 2. PHP
 
-
+동적 웹 페이지를 생성할 수 있는 프로그래밍 언어의 일종이자, APM에서는
 
 ## 3. MySQL
+
+## 4. phpMyAdmin
 
