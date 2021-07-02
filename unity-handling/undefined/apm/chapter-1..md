@@ -26,7 +26,13 @@
 
 웹서버 이다.
 
-W3라는 
+W3\(www.\)라는 공간에서 HTTP라는 절차\(혹은 순서가 있는 약속, 규약\)을 통해 HTML문서, Object를 전송해주는 프로그램이다. 
+
+
+
+{% embed url="https://8iiow.gitbook.io/t-h-e-t/category/undefined/undefined-1\#apm" %}
+
+
 
 ## 2. PHP
 
