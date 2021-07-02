@@ -31,7 +31,7 @@ Bitnami, yum, XAMPP 등등 개발 환경을 통합적으로 설치하고 설정�
 
 그리고 각자 정의된 기능에 따라서 다음과 같은 전체적인 그림이 그려진다.
 
-![Client 1 &#x3161;&amp;gt; Client 2&#xAE4C;&#xC9C0; HTML&#xBB38;&#xC11C; &#xD639;&#xC740; Object&#xAC00; &#xC804;&#xB2EC;&#xB418;&#xB294; &#xACFC;&#xC815;](../../../.gitbook/assets/image%20%28276%29.png)
+![Client 1 &#x3161;&amp;gt; Client 2&#xAE4C;&#xC9C0; HTML&#xBB38;&#xC11C; &#xD639;&#xC740; Object&#xAC00; &#xC804;&#xB2EC;&#xB418;&#xB294; &#xACFC;&#xC815;](../../../.gitbook/assets/image%20%28277%29.png)
 
 ## 1. [Apache](../../unity-handling/h-i-j-k-l-m-n.md#local-development-enviroment)
 
