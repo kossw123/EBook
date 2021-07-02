@@ -29,6 +29,10 @@ Bitnami, yum, XAMPP 등등 개발 환경을 통합적으로 설치하고 설정�
 
 하지만 여기서는 APM만 설치하고 기본설정까지 한다.
 
+그리고 각자 정의된 기능에 따라서 다음과 같은 전체적인 그림이 그려진다.
+
+![Client 1 &#x3161;&amp;gt; Client 2&#xAE4C;&#xC9C0; HTML&#xBB38;&#xC11C; &#xD639;&#xC740; Object&#xAC00; &#xC804;&#xB2EC;&#xB418;&#xB294; &#xACFC;&#xC815;](../../../.gitbook/assets/image%20%28276%29.png)
+
 ## 1. [Apache](../../unity-handling/h-i-j-k-l-m-n.md#local-development-enviroment)
 
 웹서버 이다.
@@ -36,10 +40,6 @@ Bitnami, yum, XAMPP 등등 개발 환경을 통합적으로 설치하고 설정�
 W3\(www.\)라는 공간에서 HTTP라는 절차\(혹은 순서가 있는 약속, 규약\)을 통해 HTML문서, Object를 전송해주는 프로그램이다. 
 
 {% embed url="https://8iiow.gitbook.io/t-h-e-t/category/undefined/undefined-1\#apm" caption="APM에 대한 정의" %}
-
-그리고 각자 정의된 기능에 따라 대충 그림을 그려보면 다음과 같은 그림이 그려진다.
-
-![Client 1 &#x3161;&amp;gt; Client 2&#xAE4C;&#xC9C0; HTML&#xBB38;&#xC11C; &#xD639;&#xC740; Object&#xAC00; &#xC804;&#xB2EC;&#xB418;&#xB294; &#xACFC;&#xC815;](../../../.gitbook/assets/image%20%28276%29.png)
 
 ## 2. PHP
 
