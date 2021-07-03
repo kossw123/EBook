@@ -119,11 +119,37 @@ net start apache2.4
 
 ## 2. PHP
 
+{% tabs %}
+{% tab title="First Tab" %}
 
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
 
 ## 3.MySQL
 
+{% tabs %}
+{% tab title="First Tab" %}
 
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
 
 ## 4. phpMyAdmin
+
+{% tabs %}
+{% tab title="First Tab" %}
+
+{% endtab %}
+
+{% tab title="Second Tab" %}
+
+{% endtab %}
+{% endtabs %}
 
