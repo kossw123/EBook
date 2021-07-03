@@ -265,7 +265,7 @@ MS사가 개발한 API중 하나로써, 제각기 개발할 필요 없이 다음
 
 
 
-### 인증
+### 인증\(A**uthentication**\)
 
 Unity를 사용다가 Google Firebase를 통해 사용자 정보를 로그인하고, Firebase DB에 저장하는 기능을 구현하는 부분이 있었다.
 
