@@ -265,51 +265,6 @@ MS사가 개발한 API중 하나로써, 제각기 개발할 필요 없이 다음
 
 
 
-### APM 개발 환경
-
-Apache, PHP, MySQL의 준말이다.
-
-**그리고 DB - Web Page - Web Server의 일반적인 관계와 Save / Load와 다른 이벤트들을 설명하는데 있어서 하나의 예시가 되기 때문에 해당 내용을 작성한다.**
-
-보통 Linux OS, Apache, MySQL, PHP의 준말로 LAMP라는 의미로 사용되는 듯 하나,   
-웹쪽을 흔하게 접하고, 대다수의 사람들이 Windows를 사용하기 때문에 Linux OS를 뺀 APM 환경이라고도  
-한다.
-
-* Apache
-  * 웹 서버이다.
-  * 웹 서버는 HTTP를 통해 HTML문서, Object들을 전송해주는 서비스 프로그램이다.
-  * HTTP는 HyperText Transfer Protocol의 준말로, W3상에서 정보를 주고받을 수 있는 프로토콜이다.
-
-즉, 우리가 접하는 웹이란 다음과 같이 정의 될 수 있다는 얘기다.
-
-{% hint style="info" %}
-#### W3\(www.\)상에서 HTTP라는 절차를 통해 HTML문서, Object를 전송해주는 프로그램을 통해 정보를 접하는 공간
-{% endhint %}
-
-{% embed url="https://web.archive.org/web/20170302030636/https://www.koresight.com/hangeul-inteones-tong-gye" caption="위 사이트를 통해 많은 웹 서버가 Apache로 구성되있음을 알 수 있다. " %}
-
-
-
-* PHP
-  * 프로그래밍 언어의 일종
-  * 원래는 동적 웹 페이지를 만들기 위해 설계 되어 PHP로 작성된 코드를 HTML 소스 문서에 넣으면 PHP 처리 기능이 있는 웹 서버에서 작성자가 원하는 페이지를 생성한다.
-  * 그러나 요즘에는 PHP와 HTML 코드를 따로 분리하여 작성하는 경우가 일반적
-  * PHP 또한, 웹 서버가 아닌 php-fpm을 통해 실행되는 경우가 많아졌다.
-
-원래는 웹 서버에 동적 페이지를 생성하기 위해 PHP를 사용해야 했고, 수요가 증가하면서 HTML만을 가지고 정보를 제공하는 것을 벗어나기 위해 CGI가 탄생했다.
-
-차후 수요가 많아지자 하나의 Requset에 하나의 Process를 생성하는 CGI의 성능을 개선하고자, FastCGI가 나왔고, 효율이 너무 좋아 기본적으로 PHP가 FastCGI로 돌아가게끔 하는 기술이 PHP-fpm이다.
-
-
-
-* MySQL
-  * 세계에서 가장 많이 쓰이는 오픈 소스의 관계형 데이터 베이스
-  * DB 자체의 목적이 여러 사람이 공유하여 사용할 목적으로 체계화 시키고 통합, 관리하는 데이터의 집합이다.
-  * 그러나 GUI를 따로 제공하고 있진 않다.
-  * 하지만 PHP와 결합되어 아주 많이 사용된다.
-
-
-
 ### 인증
 
 Unity를 사용다가 Google Firebase를 통해 사용자 정보를 로그인하고, Firebase DB에 저장하는 기능을 구현하는 부분이 있었다.
