@@ -42,12 +42,78 @@
 /// 그리고 로컬 개발환경이기 때문에, 다른 주소는 필요 없다. 
 60 #Listen 80
 ->
-60 Listen 80 -> 주석 해제하고 기본 포트번호 80을 특정 한다 .
+60 Listen 80 -> 주석 해제하고 기본 포트번호 80을 사용한다.
+
+이때 먼저 확인해야 할것은 주소창에 localhost:80을 입력해서 포트가 사용중인지를 
+확인해야한다.
+
+작성자는 이미 Internet infomation Service(IIS)가 이미 포트르 쓰고 있기 때문에 
+작업관리자 -> 서비스 -> W3SVC를 중지 시켜 포트를  확보했다.
+
+아니면 다른 포트를 사용해도 된다.
+
+219 ServerAdmin 이메일 주소 입력 -> 서버에 문제가 생기면 에러문서를 생성해 보낸다.
 
 
+/// SRVROOT를 기반으로 htdocs folder를 찾는 코드
+/// 만약 설정값을 수정할 필요가 생기면 알아두는 것도 나쁘지 않
+252 DocumentRoot "${SRVROOT}/htdocs"
+253 <Directory "${SRVROOT}/htdocs">
+
+
+
+/// 파일명을 지정하지 않고 Apache에 통신을 요청하면, DirectoryIndex의 파일을
+/// 반환한다.
+/// 맨 처음 주소창에 "localhost:포트번호"를 입력하면 index.html을 반환한다.
+285 <IfModule dir_module>
+286    DirectoryIndex index.html
+287 </IfModule>
+->
+285 <IfModule dir_module>
+286    DirectoryIndex index.html index.php 
+        -> 하지만 PHP를 사용하여 웹 페이지를 확인해야 하기 때문에, 
+           index.php의 파일도 확인할 수 있도록 한다.
+           그리고 index.php는 phpinfo()를 통해 PHP정보를 확인한다.
+287 </IfModule>CMD를 관리자 권한을 통해 실행한다.
+그리고 다음과 같은 명령어를 입력하여 설치한다.
 ```
 {% endtab %}
+
+{% tab title="3. 시스템 환경 변수\(Path\)에 Apache 등록" %}
+시스템 환경 변수\(Path\)는 OS가 명령 프롬프트 또는 터미널 창에서   
+필요한 실행 파일을 찾는데 사용하는 시스템 변수다.
+
+즉, Path에 Apache\bin 파일을 등록하면 명령 프롬프트에서 따로 경로를 찾을 필요없이  
+바로 사용할 수있다.
+
+Window Key -&gt; 시스템 환경 변수 편집 -&gt; 환경 변수 -&gt;   
+시스템 변수 박스에서 Path 찾기-&gt; 더블 클릭하고 Apache\bin 경로를 새로만들기 -&gt;   
+확인
+{% endtab %}
+
+{% tab title="4. 명령 프롬프트를 통해 Apache 설치" %}
+CMD\(명령 프롬프트\)를 관리자 권한으로 실행시키고 다음 명령어 입력
+
+{% hint style="info" %}
+httpd -k install
+{% endhint %}
+
+설치 완료라고 표시 된다면 성공.  
+성공 메시지 밑에 자잘한 메시지는 무시해도 된다.
+
+그 다음 명령어 입력
+
+{% hint style="info" %}
+net start apache2.4
+{% endhint %}
+
+그 후 작업 관리자 -&gt; 서비스에서 Apache2.4가 실행중인지 확인한다.
+
+그리고 주소창에 "localhost:포트번호"를 입력하고 "It's work"라는 문구가 뜨면 설치 완료
+{% endtab %}
 {% endtabs %}
+
+
 
 ## 2. PHP
 
