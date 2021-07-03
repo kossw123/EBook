@@ -33,17 +33,28 @@ Bitnami, yum, XAMPP 등등 개발 환경을 통합적으로 설치하고 설정�
 
 ![Client 1 &#x3161;&amp;gt; Client 2&#xAE4C;&#xC9C0; HTML&#xBB38;&#xC11C; &#xD639;&#xC740; Object&#xAC00; &#xC804;&#xB2EC;&#xB418;&#xB294; &#xACFC;&#xC815;](../../../.gitbook/assets/image%20%28277%29.png)
 
-## 1. [Apache](../../unity-handling/h-i-j-k-l-m-n.md#local-development-enviroment)
 
-웹서버 이다.
+
+그리고 최종적으로 phpMyAdmin이라는 프로그램을 통해 웹 페이지에서 DB로 접근하도록 설정한다.
+
+## 1. [Apache](../../unity-handling/h-i-j-k-l-m-n.md#local-development-enviroment)
 
 W3\(www.\)라는 공간에서 HTTP라는 절차\(혹은 순서가 있는 약속, 규약\)을 통해 HTML문서, Object를 전송해주는 프로그램이다. 
 
-{% embed url="https://8iiow.gitbook.io/t-h-e-t/category/undefined/undefined-1\#apm" caption="APM에 대한 정의" %}
+* 웹 서버이다.
+* 웹 서버는 HTTP를 통해 HTML문서, Object들을 전송해주는 서비스 프로그램이다.
+* HTTP는 HyperText Transfer Protocol의 준말로, W3상에서 정보를 주고받을 수 있는 프로토콜이다.
+
+{% embed url="https://web.archive.org/web/20170302030636/https://www.koresight.com/hangeul-inteones-tong-gye" caption="위 사이트를 통해 많은 웹 서버가 Apache로 구성되있음을 알 수 있다. " %}
 
 ## 2. PHP
 
-동적 웹 페이지를 생성할 수 있는 프로그래밍 언어의 일종이자, APM에서는
+프로그래밍 언어의 일종이다.
+
+* 원래는 동적 웹 페이지를 만들기 위해 설계 되어 PHP로 작성된 코드를 HTML 소스 문서에 넣으면
+* PHP 처리 기능이 있는 웹 서버에서 작성자가 원하는 페이지를 생성한다.
+* 그러나 요즘에는 PHP와 HTML 코드를 따로 분리하여 작성하는 경우가 일반적
+* PHP 또한, 웹 서버가 아닌 php-fpm을 통해 실행되는 경우가 많아졌다.
 
 ## 3. MySQL
 
