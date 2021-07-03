@@ -120,7 +120,7 @@ net start apache2.4
 ## 2. PHP
 
 {% tabs %}
-{% tab title="First Tab" %}
+{% tab title="1. 다운로드" %}
 
 {% endtab %}
 
