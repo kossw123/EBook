@@ -26,9 +26,6 @@
 {% tab title="2. 설정값 수정" %}
 다운 받은 Apache 파일을 C:\ 혹은 D:\ 같은 root Directory에 다운받는다.
 
-여기서 중요한 것은 "\"와 "/"는 다른 기능을 하고 있다는 것이다.  
-만약 SRVROOT의 Path로 "\"를 사용했다면, 
-
 그리고 root Directory\(이하 root\):\Apache24\conf\httpd.conf 파일을 찾아서 다음과 같은 Code로   
 수정한다.
 
@@ -129,8 +126,52 @@ net start apache2.4
 자기 OS 환경\(bit, Windows Version 등\)에 맞는 Thread safe Zip 다운 받는다.
 {% endtab %}
 
-{% tab title="2. " %}
+{% tab title="2. 설정값 수정\(php.ini\)" %}
+다운받은 파일의 압축을 풀면, 해당 파일 내부에 2개의 파일이 존재한다.
 
+* php.ini-development
+* php.ini-production
+
+이 중 php.ini-development를 php.ini로 수정한다.  
+그리고 다음과 같이 수정한다.
+
+```php
+198 short_open_tag = false
+->
+198 short_open_tag = On
+
+768 extension_dir = ""
+->
+768 extension_dir = "php파일 내부의 ext 파일 경로"
+
+933 ;extension=mysqli
+937 ;extension=openssl
+->
+933 extension=mysqli
+937 extension=openssl
+```
+{% endtab %}
+
+{% tab title="3. 설정값 수정\(httpd.conf\)" %}
+php와 apache를 연동할 모듈을 Apache파일 httpd.conf의 맨 아래에 추가하도록 한다.
+
+```php
+PHPIniDir "php 파일이 있는 경로"
+LoadModule php_module "php 파일 내부의 apache.dll"
+AddType application/x-httpd-php .htm .html .php
+```
+{% endtab %}
+
+{% tab title="4. phpInfo\(\) 출력" %}
+Apache에서 localhost를 치면 "it's work"라는 index.html이 실행 됐다.
+
+해당 파일은 Apache의 htdocs파일 내부의 index.html에 존재하며,  
+여기에 새로운 php파일을 생성한다.
+
+\*\*\* php파일은 Notepad같은 편집기를 통해 생성이 가능하고, 여기서 주의해야 할 점은  
+      보통 같은 경우는 파일명에 확장자명을 같이 적으면 해당 확장자명의 파일이 생성되지만,  
+      php파일은 그렇지 않다. 꼭 파일 형식을 모든 파일로 변경하고 파일 이름 끝에 php를 붙여 생성  
+      하도록 한다.
 {% endtab %}
 {% endtabs %}
 
