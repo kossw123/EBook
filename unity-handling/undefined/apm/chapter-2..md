@@ -141,7 +141,7 @@ net start apache2.4
 ->
 198 short_open_tag = On
 
-768 extension_dir = ""
+768 ;extension_dir = "./"
 ->
 768 extension_dir = "php파일 내부의 ext 파일 경로"
 
@@ -189,8 +189,8 @@ Apache에서 localhost를 치면 "it's work"라는 index.html이 실행 됐다.
 ## 3.MySQL
 
 {% tabs %}
-{% tab title="First Tab" %}
-
+{% tab title="1. 다운로드" %}
+{% embed url="https://dev.mysql.com/downloads/mysql/" %}
 {% endtab %}
 
 {% tab title="Second Tab" %}
@@ -201,7 +201,7 @@ Apache에서 localhost를 치면 "it's work"라는 index.html이 실행 됐다.
 ## 4. phpMyAdmin
 
 {% tabs %}
-{% tab title="First Tab" %}
+{% tab title="1. 다운로드" %}
 
 {% endtab %}
 
