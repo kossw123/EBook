@@ -26,6 +26,9 @@
 {% tab title="2. 설정값 수정" %}
 다운 받은 Apache 파일을 C:\ 혹은 D:\ 같은 root Directory에 다운받는다.
 
+여기서 중요한 것은 "\"와 "/"는 다른 기능을 하고 있다는 것이다.  
+만약 SRVROOT의 Path로 "\"를 사용했다면, 
+
 그리고 root Directory\(이하 root\):\Apache24\conf\httpd.conf 파일을 찾아서 다음과 같은 Code로   
 수정한다.
 
@@ -121,10 +124,12 @@ net start apache2.4
 
 {% tabs %}
 {% tab title="1. 다운로드" %}
+{% embed url="https://windows.php.net/download/" %}
 
+자기 OS 환경\(bit, Windows Version 등\)에 맞는 Thread safe Zip 다운 받는다.
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="2. " %}
 
 {% endtab %}
 {% endtabs %}
