@@ -68,6 +68,8 @@ W3\(www.\)라는 공간에서 HTTP라는 절차\(혹은 순서가 있는 약속,
 MySQL을 웹 페이지로 관리하기 위해 PHP로 작성된 Tool이다.  
 UI, DB관리, CRUD등과 같은 여러 기능이 존재하기 때문에 웹 호스팅 서비스를 위한 가장 대중적인 MySQL 관리 도구로 대표되고 있다.
 
+![phpMyAdmin try demo version](../../../.gitbook/assets/image%20%28278%29.png)
+
   
 
 
