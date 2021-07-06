@@ -215,7 +215,9 @@ mysql -u 기본사용자ID -p
 
 {% tabs %}
 {% tab title="1. 다운로드" %}
+{% embed url="https://www.phpmyadmin.net/" %}
 
+위 링크를 들어가서 phpMyAdmin을 다운 받는다.
 {% endtab %}
 
 {% tab title="Second Tab" %}
