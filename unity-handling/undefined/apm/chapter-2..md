@@ -191,10 +191,15 @@ Apache에서 localhost를 치면 "it's work"라는 index.html이 실행 됐다.
 {% tabs %}
 {% tab title="1. 다운로드" %}
 {% embed url="https://dev.mysql.com/downloads/mysql/" %}
+
+현재 사용하고 있는 PC를 Server로 사용할 것이기 때문에, 이를 포함해서 여러가지 귀찮은 설치 작업을 Workbench 하나로 통합하여 해결한다.
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="2. 시스템 환경 변수 추가" %}
+설치 하는 과정을 모두 Default로 설정했다면,   
+C 드라이브의 Program Files\MySQL\ 에 있다.
 
+그 후 시스템 Path에 추가
 {% endtab %}
 {% endtabs %}
 
