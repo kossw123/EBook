@@ -231,8 +231,30 @@ Apache라는 웹 호스팅 서비스를 할 수 있는 웹 서버를 통해 phpM
 config.sample.inc.php 파일을 config.inc.php로 수정 후 다음과 같이 설정값을 수정한다.
 
 ```php
+16 $cfg['blowfish_secret'] = '';
+->
+16 $cfg['blowfish_secret'] = '아무 키나 입력';
+
+
+28 $cfg['Servers'][$i]['auth_type'] = 'cookie';
+-> 
+28 $cfg['Servers'][$i]['auth_type'] = 'http';
+
+
+30 $cfg['Servers'][$i]['host'] = 'localhost';
+->
+30 $cfg['Servers'][$i]['host'] = 'localhost';
+
+
+32 $cfg['Servers'][$i]['AllowNoPassword'] = false;
+->
+32 $cfg['Servers'][$i]['AllowNoPassword'] = true;
 
 ```
+{% endtab %}
+
+{% tab title="4. 접속" %}
+주소창에 localhost:포트번호/phpmyadmin 이라고 치고 ID, Password를 입력하는 창이 나오면 성공
 {% endtab %}
 {% endtabs %}
 
