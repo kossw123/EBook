@@ -201,6 +201,14 @@ C 드라이브의 Program Files\MySQL\ 에 있다.
 
 우리가 사용하는 PC를 Server로 사용할 것이기 때문에, MySQL 폴더 안에는 MySQL Server 폴더가 있을 것이고, 이 폴더 안에 bin폴더를 시스템 환경 변수 Path에 추가한다.
 {% endtab %}
+
+{% tab title="3. 명령 프롬프트를 통한 MySQL 설치 확인" %}
+Workbench를 설치 할 때, 기본적인 사용자를 생성할 수 있었는데, 그 사용자 ID와 password를 기억한 후 다음과 같이 입력한다.
+
+mysql -u 기본사용자ID -p
+
+접속 된다면 성공
+{% endtab %}
 {% endtabs %}
 
 ## 4. phpMyAdmin
