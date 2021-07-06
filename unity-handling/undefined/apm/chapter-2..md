@@ -207,7 +207,7 @@ Workbench를 설치 할 때, 기본적인 사용자를 생성할 수 있었는�
 
 mysql -u 기본사용자ID -p
 
-접속 된다면 성공
+password를 입력 후 mysql&gt; 이 뜬다면 연동 성
 {% endtab %}
 {% endtabs %}
 
@@ -220,8 +220,19 @@ mysql -u 기본사용자ID -p
 위 링크를 들어가서 phpMyAdmin을 다운 받는다.
 {% endtab %}
 
-{% tab title="Second Tab" %}
+{% tab title="2. 다운받은 파일 경로 설정" %}
+php를 이용해서   
+Apache라는 웹 호스팅 서비스를 할 수 있는 웹 서버를 통해 phpMyAdmin이라는 웹페이지를 통해 MySQL이라는 데이터베이스를 UI를 통해 볼 수 있다.
 
+라는 개념인데, Apache를 통해 웹에서 볼 수 있게 되기 때문에, htdocs 폴더 내부에 phpmyadmin이라는 파일을 생성 후 압축을 푼다.
+{% endtab %}
+
+{% tab title="3. phpMyAdmin 설정값 수정" %}
+config.sample.inc.php 파일을 config.inc.php로 수정 후 다음과 같이 설정값을 수정한다.
+
+```php
+
+```
 {% endtab %}
 {% endtabs %}
 
