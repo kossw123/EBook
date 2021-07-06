@@ -199,7 +199,7 @@ Apache에서 localhost를 치면 "it's work"라는 index.html이 실행 됐다.
 설치 하는 과정을 모두 Default로 설정했다면,   
 C 드라이브의 Program Files\MySQL\ 에 있다.
 
-그 후 시스템 Path에 추가
+우리가 사용하는 PC를 Server로 사용할 것이기 때문에, MySQL 폴더 안에는 MySQL Server 폴더가 있을 것이고, 이 폴더 안에 bin폴더를 시스템 환경 변수 Path에 추가한다.
 {% endtab %}
 {% endtabs %}
 
