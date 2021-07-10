@@ -125,3 +125,24 @@ SHOW GRANTS FOR TestID@localhost;
 {% endtab %}
 {% endtabs %}
 
+## 3. C\#과 연동
+
+IDE로 Visual studio를 사용하는데, MySQL과 연동 시킬때 필요한 라이브러리가 존재한다.
+
+```csharp
+using MySql.Data.MySqlClient;
+```
+
+해당 라이브러리는 Nuget Package에서 MySql.Data를 검색하여 설치하면   
+위의 라이브러리를 사용할 수 있다.
+
+
+
+이젠 코드를 작성하여 MySQL과 연동을 해야하는데, 이때 연결 방법은 3가지가 존재한다.
+
+* C\#에서 직접적으로 DB에 접근
+  * 연결형 DB 사용
+  * 비연결형 DB 사용
+* C\#에서 간접적으로 DB에 접근
+  * php를 사용하여 DB에 접근
+
