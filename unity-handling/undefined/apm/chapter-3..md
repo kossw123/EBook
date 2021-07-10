@@ -17,7 +17,7 @@ Client와 연동 하기 위해서는 또 다른 설정이 필요하다.
 IDE에서 phpMyAdmin과 연동하여 결과같은 Console로 확인한다.
 {% endhint %}
 
-## 2. DB 설정, 권한 부
+## 2. DB 설정, 권한 부여 
 
 주소창에서 localhost와 포트번호를 붙이고 phpmyadmin 폴더로 들어가서 root로 로그인한다.
 
@@ -94,43 +94,32 @@ SELECT * FROM items;
 
 phpMyAdmin에서는 기본적으로 설치되어 있는 mysql을 통해 다음과 같이 설정한다.
 
-mysql -&gt; user -&gt; SQL 탭 선택 -&gt; 다음과 같은 sql Query 입력
+mysql -&gt; user -&gt; SQL 탭 선택 -&gt; 다음과 같은 sql Query를 순차적으 입력
 
 ```sql
+// User 생성
 CREATE user csharp_user@localhost IDENTIFIED BY '123123';
-```
 
-mysql의 user 테이블에 들어가서 csharp\_user가 생성됐는지 확인 후 아래와 같은 Query로 권한부여
-
-```sql
+// 생성한 User에 권한부여
 GRANT SELECT, UPDATE, DELETE ON csharp.items TO csharp_user@localhost;
 ```
-
-이제 phpMyAdmin을 로그아웃하고 csharp\_user로 로그인 후 csharp DB에 접근할 수 있는지 확
 
 ## CMD로 하는 방법
 
-mysql -u root - p를 통해 mysql에 접속 후 다음과 같은 Query를 입력
+mysql -u root - p를 통해 mysql에 접속 후 다음과 같은 Query 순차적으로 입력
 
 ```sql
+// 사용할 DB 선택
 use mysql
+// User 생성
 CREATE user csharp_user@localhost IDENTIFIED BY '123123';
+// User 목록 확인
 Select * from user;
-```
-
-위의 Query를 순차적으로 입력 후 맨 마지막 Query 입력후 나오는 Table에서 csharp\_user 확
-
-그리고 해당 User에 권한 부여
-
-```sql
+// 생성된 user에서 권한 부여
 GRANT SELECT, UPDATE, DELETE ON csharp.items TO csharp_user@localhost;
-
-/// 아래의 Query를 통해 
+// 부여된 권한 확인
+SHOW GRANTS FOR TestID@localhost;
 ```
 {% endtab %}
 {% endtabs %}
-
-
-
-
 
