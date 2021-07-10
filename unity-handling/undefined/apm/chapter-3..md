@@ -27,8 +27,8 @@ phpMyadmin에서 csharp이라는 이름의 DB와 csharp\_user라는 user를 생�
 {% tab title="csharp DB 생성" %}
 ## phpMyAdmin에서는
 
-왼쪽 목차에서 '새로운' 혹은 New를 클릭하고 생성할 DB 이름 입력후 생성한 DB로 들어가서  
-다음과 같은 Query를 입력한다.
+왼쪽 목차에서 '새로운' 혹은 New를 클릭하고 생성할 DB 이름으로 csharp을 입력후   
+생성한 DB로 들어가서 다음과 같은 Query를 입력한다.
 
 ```sql
 CREATE TABLE IF NOT EXISTS items (
@@ -71,10 +71,13 @@ Table에 element가 입력 됐는지 확
 다음과 같은 Query를 입력한다.
 
 ```sql
+// DB 생성
 CREATE DATABASE csharp;
+// DB 목록 확인
 show databases;
-/// 위 Query를 통해 생성된 것을 확인했다면 다음 Query 입력
+// 사용할 DB 선택
 use csharp
+// 테이블 생성
 CREATE TABLE IF NOT EXISTS items (
   uid int(11) NOT NULL AUTO_INCREMENT,
   ItemName varchar(100) NOT NULL,
@@ -83,13 +86,12 @@ CREATE TABLE IF NOT EXISTS items (
   d_regis datetime NOT NULL,
   PRIMARY KEY (uid)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
-
-/// Table이 성공적으로 생성됐다면 다음 Query를 통해 Table 호출
+// items 테이블 element 목록 호
 SELECT * FROM items;
 ```
 {% endtab %}
 
-{% tab title="csharp\_user 생성" %}
+{% tab title="csharp\_user 생성, 권한 부여" %}
 ## phpMyAdmin에서는 
 
 phpMyAdmin에서는 기본적으로 설치되어 있는 mysql을 통해 다음과 같이 설정한다.
