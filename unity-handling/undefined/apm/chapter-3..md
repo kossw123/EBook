@@ -1,6 +1,6 @@
 # Chapter 3. C\#과 연동
 
-## 1. 목
+## 1. 목적
 
 ![](../../../.gitbook/assets/image%20%28280%29.png)
 
@@ -17,7 +17,7 @@ Client와 연동 하기 위해서는 또 다른 설정이 필요하다.
 IDE에서 phpMyAdmin과 연동하여 결과같은 Console로 확인한다.
 {% endhint %}
 
-## 2. phpMyAdmin
+## 2. DB 설정, 권한 부
 
 주소창에서 localhost와 포트번호를 붙이고 phpmyadmin 폴더로 들어가서 root로 로그인한다.
 
@@ -72,7 +72,20 @@ Table에 element가 입력 됐는지 확
 
 ```sql
 CREATE DATABASE csharp;
-GRANT ALL PRIVILEGES ON csharp.items TO csharp_user@localhost;
+show databases;
+/// 위 Query를 통해 생성된 것을 확인했다면 다음 Query 입력
+use csharp
+CREATE TABLE IF NOT EXISTS items (
+  uid int(11) NOT NULL AUTO_INCREMENT,
+  ItemName varchar(100) NOT NULL,
+  Price double NOT NULL,
+  Quantity int(11) NOT NULL,
+  d_regis datetime NOT NULL,
+  PRIMARY KEY (uid)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
+
+/// Table이 성공적으로 생성됐다면 다음 Query를 통해 Table 호출
+SELECT * FROM items;
 ```
 {% endtab %}
 
@@ -111,6 +124,8 @@ Select * from user;
 
 ```sql
 GRANT SELECT, UPDATE, DELETE ON csharp.items TO csharp_user@localhost;
+
+/// 아래의 Query를 통해 
 ```
 {% endtab %}
 {% endtabs %}
