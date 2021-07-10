@@ -64,7 +64,7 @@ INSERT INTO items (ItemName, Price, Quantity, d_regis) VALUES
 ('식빵', 3000, 5, '2015-09-12 23:44:39');
 ```
 
-Table에 element가 입력 됐는지 확
+Table에 element가 입력 됐는지 확인 
 
 ## CMD에서는 
 
