@@ -19,7 +19,9 @@ IDE에서 phpMyAdmin과 연동하여 결과같은 Console로 확인한다.
 
 ## 2. phpMyAdmin
 
+주소창에서 localhost와 포트번호를 붙이고 phpmyadmin 폴더로 들어가서 root로 로그인한다.
 
+phpMyadmin에서 
 
 
 
