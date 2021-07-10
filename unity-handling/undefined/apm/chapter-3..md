@@ -192,9 +192,24 @@ static void Main(string[] args)
 using을 사용하여 Dispose하기 때문에, 코드상에서는 보이진 않지만,   
 각 Class마다 Close\(\)로 객체를 차단하는 Callback이 있다.
 
+C:/ProgramData/MySQL/Server 8.0/Data/csharp에 들어가보면   
+items Table이 파일형식으로 작성되어 있는 것을 확인할 수 있다.
 
+이 table 파일을 while문을 사용하여 한줄씩 읽어와서, Console로 출력하는 것 까지가   
+해당 예시 코드의 마지막이다.
 
 ![&#xACB0;&#xACFC; &#xD654;&#xBA74;](../../../.gitbook/assets/image%20%28281%29.png)
+
+
+
+## 4. 정리
+
+* C\#에서 DB에 대한 연동은 파일입출력과 동일하게 Open\(\), Close\(\)의 형태로 접근하고
+* MarshalByRefObject Class가  MySqlTransaction Class에 사용된 것을 확인하여  Stream Class의 역할을 비슷하게나마 한다는 것을 알았다.
+
+
+
+* APM을 설치하는 게 쉽지만은 않았고, 중복된 설정파일 때문에 꽤 오래 걸렸다.
 
 
 
