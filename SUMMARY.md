@@ -94,6 +94,7 @@
   * [OpenGL](category/opengl/opengl/README.md)
     * [Chapter 1. OpenGL](category/opengl/opengl/chapter-1.-opengl.md)
     * [Chapter 2. Graphics](category/opengl/opengl/chapter-2.-graphics.md)
+    * [Chapter 3. Shader](category/opengl/opengl/chapter-3.-shader.md)
 
 ## Unity Handling
 
