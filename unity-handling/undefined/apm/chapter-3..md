@@ -142,7 +142,25 @@ using MySql.Data.MySqlClient;
 
 * C\#에서 직접적으로 DB에 접근
   * 연결형 DB 사용
+    * MySqlDataReader Class 사용
   * 비연결형 DB 사용
+    * MySqlDataAdapter Class 사용
+  * 여기서 연결, 비연결의 차이는 Client에서 지속적으로 DB에 접속하는가 안하는가 차이다.
 * C\#에서 간접적으로 DB에 접근
   * php를 사용하여 DB에 접근
+
+그리고 해당 페이지에서는 phpMyAdmin이라는 php를 사용한 DB 접근방식을 미리 설정했기 때문에,   
+C\#에서 간접적으로 접근하도록 한다.
+
+기본적으로 연동하기 위해서는 3가지 Class가 필요하다.
+
+* MySqlConnection Class
+  * DB에 연결하기 위한 Class
+  * Constructor에 URL parameter만 넣었는데 접속이 가능하다.
+* MySqlCommand
+  * 입력할 Query를 접속한 DB의 Query문에 입력해주는 Class
+* MySqlDataReader
+  * 입력한 
+
+
 
