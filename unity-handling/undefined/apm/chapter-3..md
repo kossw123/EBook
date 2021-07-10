@@ -149,8 +149,7 @@ using MySql.Data.MySqlClient;
 * C\#에서 간접적으로 DB에 접근
   * php를 사용하여 DB에 접근
 
-그리고 해당 페이지에서는 phpMyAdmin이라는 php를 사용한 DB 접근방식을 미리 설정했기 때문에,   
-C\#에서 간접적으로 접근하도록 한다.
+
 
 기본적으로 연동하기 위해서는 3가지 Class가 필요하다.
 
@@ -159,8 +158,43 @@ C\#에서 간접적으로 접근하도록 한다.
   * Constructor에 URL parameter만 넣었는데 접속이 가능하다.
 * MySqlCommand
   * 입력할 Query를 접속한 DB의 Query문에 입력해주는 Class
-* MySqlDataReader
-  * 입력한 
+* MySqlDataReader / MySqlDataAdapter
+  * Client와 DB사이에 어떤 연결형태로 데이터를 서버에서 가져올 것인가?를 선택하는 Class
+
+이 3가지 Class를 가지고 작성된 간단한 예시는 다음과 같다.
+
+```csharp
+using System;
+using MySql.Data.MySqlClient;
+
+static void Main(string[] args)
+{
+    string connectionString = 
+    "SERVER =localhost; DATABASE = csharp; UID = csharp_user; PASSWORD = csharp1234";
+    using (MySqlConnection mySql = new MySqlConnection(connectionString)) 
+    {
+        string sql = "select * from items order by uid desc";
+        MySqlCommand cmd = new MySqlCommand(sql, mySql);
+
+        mySql.Open();
+        MySqlDataReader r = new MySqlCommand(sql, mySql).ExecuteReader();
+
+        while (r.Read()) 
+        {            
+            Console.WriteLine(
+            $"[uid] : [{r[0].ToString()}], [Name] : [{r[1].ToString()}]"
+            );
+        }
+    }
+}
+```
+
+using을 사용하여 Dispose하기 때문에, 코드상에서는 보이진 않지만,   
+각 Class마다 Close\(\)로 객체를 차단하는 Callback이 있다.
+
+
+
+![&#xACB0;&#xACFC; &#xD654;&#xBA74;](../../../.gitbook/assets/image%20%28281%29.png)
 
 
 
