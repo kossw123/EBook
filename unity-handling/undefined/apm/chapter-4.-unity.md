@@ -13,5 +13,12 @@
 
 ## 2. 작성법
 
+이전에는 MySqlConnection이라는 MySql.Data에 존재하는 Class를 사용했지만,  
+이번에는 WWWForm으로 localhost에 접속해서 직접 데이터를 가져온다.
 
+DLL이나, 다른 Package를 설치하지 않고 PHP를 이용해서 설치해야 하기 때문에   
+먼저 작성해야 할 것이 있다.
+
+* CRUD를 위한 PHP Script
+* Apache에서 작성한 PHP Script를 실행하기 위한 다른 Folder 생성 및 설정
 
