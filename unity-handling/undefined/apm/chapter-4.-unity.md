@@ -22,5 +22,7 @@ DLL이나, 다른 Package를 설치하지 않고 PHP를 이용해서 설치해�
 * CRUD를 위한 PHP Script
 * Apache에서 작성한 PHP Script를 실행하기 위한 다른 Folder 생성 및 설정
 
+대충 아래와 같은 그림이 완성된다.
 
+![](../../../.gitbook/assets/image%20%28283%29.png)
 
