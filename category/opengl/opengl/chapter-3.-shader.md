@@ -107,5 +107,65 @@ Core mode이기 때문에 Parse가 아닌 각 타입마다 vector를 사용한�
 Core mode이기 때문에 type에 까다롭지만, 반대로 각 요소에 대한 연산은 꽤나 자유로운 편이다.  
 다음과 같은 예시를 통해 Swizzling이라는 기능을 알아보자.
 
-![](../../../.gitbook/assets/image%20%28289%29.png)
+![](../../../.gitbook/assets/image%20%28290%29.png)
+
+
+
+### 3. main\(\) 함수에서 Vertex Attribute에 대한 연산을 한다.
+
+
+
+## Fragment Shader에 양식을 통해 색을 입히기
+
+간단하게, Color 변수와 각 정점에 대한 정보를 GPU로 보내면 된다.
+
+{% tabs %}
+{% tab title="game.cpp" %}
+{% code title="game.cpp" %}
+```c
+float vertices[] = {
+	     // ----위치----  // // ----컬러---- //
+	     0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   // 우측 하단
+	    -0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   // 좌측 하단
+	     0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f    // 위 
+	};
+```
+{% endcode %}
+{% endtab %}
+
+{% tab title="Vertex shader" %}
+```c
+// Vertex Shader, Fragment Shader에게 색 정보를 전달
+	#version 330 core
+	layout (location = 0) in vec3 aPos;   // 위치 변수는 attribute position 0을 가집니다.
+	layout (location = 1) in vec3 aColor; // 컬러 변수는 attribute position 1을 가집니다.
+	  
+	out vec3 ourColor; // 컬러를 fragment shader로 출력
+
+	void main()
+	{
+	    gl_Position = vec4(aPos, 1.0);
+	    ourColor = aColor; // vertex data로부터 가져와 컬러 입력을 ourColor에 설정
+	}       
+```
+{% endtab %}
+
+{% tab title="Fragment Shader" %}
+```c
+// Fragment Shader, Vertex Shader에서 받은 data를 FragColor에 입력
+	#version 330 core
+	out vec4 FragColor;  
+	in vec3 ourColor;
+	  
+	void main()
+	{
+	    FragColor = vec4(ourColor, 1.0);
+	}
+```
+{% endtab %}
+{% endtabs %}
+
+위와 같이 수정하면 다음과 같은 Vertex Buffer 양식을 가진다.
+
+![](../../../.gitbook/assets/image%20%28284%29.png)
 
