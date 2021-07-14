@@ -169,3 +169,11 @@ float vertices[] = {
 
 ![](../../../.gitbook/assets/image%20%28284%29.png)
 
+
+
+## 이제 Shader Class를 생성하여 Window Process와 분리한다.
+
+{% embed url="https://learnopengl.com/Getting-started/Shaders" %}
+
+해당 링크의 Our own shader class 문단을 확인하여 작성할 것
+
