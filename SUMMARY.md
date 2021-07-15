@@ -91,10 +91,10 @@
   * [바 사 아 자 차](category/undefined/undefined-1.md)
   * [카 타 파 하](category/undefined/undefined-2.md)
 * [OpenGL](category/opengl/README.md)
-  * [OpenGL](category/opengl/opengl/README.md)
-    * [Chapter 1. OpenGL](category/opengl/opengl/chapter-1.-opengl.md)
-    * [Chapter 2. Graphics](category/opengl/opengl/chapter-2.-graphics.md)
-    * [Chapter 3. Shader](category/opengl/opengl/chapter-3.-shader.md)
+  * [Chapter 1. OpenGL](category/opengl/chapter-1.-opengl.md)
+  * [Chapter 2. Graphics](category/opengl/chapter-2.-graphics.md)
+  * [Chapter 3. Shader](category/opengl/chapter-3.-shader.md)
+  * [Chapter 4. Texture](category/opengl/opengl.md)
 
 ## Unity Handling
 

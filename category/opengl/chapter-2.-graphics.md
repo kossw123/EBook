@@ -234,7 +234,7 @@ Shader에서도 마찬가지로 Pixel의 위치, 색, 깊이 텍스쳐등 하나
 
 #### 수학적 관점
 
-![](../../../.gitbook/assets/image%20%28271%29.png)
+![](../../.gitbook/assets/image%20%28271%29.png)
 
 위의 그림을 보면 각 Coordinate\(좌표계\)에서 Matrix를 통해 Transformation을 수행 후  
 최종적으로 Display까지 표시되는 수학적인 관점에서의 그래픽 파이프라인이다.
@@ -260,7 +260,7 @@ Matrix 관련 변환 행렬\(Transformation Matrix\)부분은 방대한 양때�
 
 ### 과정과 그에 대한 설명이 대략적으로 이해했는데, 또 다른 파이프라인 그림들이 존재한다.
 
-![https://m.blog.naver.com/jsjhahi/206651669](../../../.gitbook/assets/image%20%28268%29.png)
+![https://m.blog.naver.com/jsjhahi/206651669](../../.gitbook/assets/image%20%28268%29.png)
 
 그래픽스 파이프라인이라고 구글링하면 가장 상단에 위치한 문서의 그림을 보면  
 이제까지 설명한 그림과는 다른 과정이 전개된다.
@@ -303,7 +303,7 @@ Matrix 관련 변환 행렬\(Transformation Matrix\)부분은 방대한 양때�
 
 그리고 위의 도표, 여러 문서, 이해하고 있는 지식을 합해 아래와 같은 도표로 정리할 수 있었다.
 
-![](../../../.gitbook/assets/image%20%28275%29.png)
+![](../../.gitbook/assets/image%20%28275%29.png)
 
 \*\*\* 물론 절단 좌표계 -&gt; 정규화 장치 좌표 사이의 변환과정이 존재한다.  
 이렇게 나눈 이유는 여러가지 나뉜 파이프라인에 대한 이해가 수월하기 때문이다.

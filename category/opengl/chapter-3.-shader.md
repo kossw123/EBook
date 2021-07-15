@@ -57,7 +57,7 @@ VBO, VAO, EBO를 통해 Vertex, Fragment Shader를 작성 했으니 이제는 Sh
 
 ### 1. Version 정보를 CPU에게 알리는데, OpenGL의 어떤 버전과 어떤 모드를 사용하겠다고 알린다.
 
-![OpenGL, GLSL, Shader&#xC5D0;&#xC11C; &#xC120;&#xC5B8;&#xD560; Version&#xC758; &#xC774;&#xB984;](../../../.gitbook/assets/image%20%28282%29.png)
+![OpenGL, GLSL, Shader&#xC5D0;&#xC11C; &#xC120;&#xC5B8;&#xD560; Version&#xC758; &#xC774;&#xB984;](../../.gitbook/assets/image%20%28282%29.png)
 
 이전 문서에서 다음과 같이 Vertex Shader를 선언하고 사용했다.
 
@@ -95,7 +95,7 @@ void main()
 
 변수에 대한 Binding인데, Shader에서 사용하는 변수는 다음과 같다.
 
-![](../../../.gitbook/assets/image%20%28283%29.png)
+![](../../.gitbook/assets/image%20%28283%29.png)
 
 Vector3 변수를 선언한 것과 진배 없지만,   
 Core mode이기 때문에 Parse가 아닌 각 타입마다 vector를 사용한다.
@@ -107,7 +107,7 @@ Core mode이기 때문에 Parse가 아닌 각 타입마다 vector를 사용한�
 Core mode이기 때문에 type에 까다롭지만, 반대로 각 요소에 대한 연산은 꽤나 자유로운 편이다.  
 다음과 같은 예시를 통해 Swizzling이라는 기능을 알아보자.
 
-![](../../../.gitbook/assets/image%20%28290%29.png)
+![](../../.gitbook/assets/image%20%28290%29.png)
 
 
 
@@ -167,7 +167,7 @@ float vertices[] = {
 
 위와 같이 수정하면 다음과 같은 Vertex Buffer 양식을 가진다.
 
-![](../../../.gitbook/assets/image%20%28284%29.png)
+![](../../.gitbook/assets/image%20%28284%29.png)
 
 
 
