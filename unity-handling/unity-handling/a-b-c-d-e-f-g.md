@@ -514,12 +514,20 @@ Advanced Dispose Pattern이 있다고 하는데, Unmanaged Resources들 까지 D
 
 ### Use SafeHandle Disposable Pattern
 
+#### 발단
+
+instance에 id를 random으로 부여하여 관리하기 위해 property를 사용하던 도중 disposable이 안되는 random Class를 Disposable로 바꾸기 위해 사용
+
+#### 전개
+
+* IDisposable를 상속하여 Dispose\(\)를 구현한다.
+* Safe Handle을 사용하면 managed resource로 감싸지기 때문에, GC의 메모리 해제에 미세하게나마 사용자의 의견을 반영할 수 있다는 점을 발견 
+
 Operating System handle의 안전한 사용을 위한 Wrapper Class인 SafeHandle Class를 사용하여   
 managed resource로 Wrapper한다.
 
 ```csharp
 using System;
-
 using Microsoft.Win32.SafeHandles;
 
 public class DisposableRandom : IDisposable
@@ -543,6 +551,8 @@ public class DisposableRandom : IDisposable
     public void Dispose()
     {
         Dispose(true);
+        /// Object.Finallize()가 구현안되면 그냥 있으나한 코드지만,
+        /// 구현할 경우를 대비하여 작성
         GC.SuppressFinalize(this);
     }
 
