@@ -512,6 +512,53 @@ Advanced Dispose Pattern이 있다고 하는데, Unmanaged Resources들 까지 D
 
 
 
+### Use SafeHandle Disposable Pattern
+
+Operating System handle의 안전한 사용을 위한 Wrapper Class인 SafeHandle Class를 사용하여   
+managed resource로 Wrapper한다.
+
+```csharp
+using System;
+
+using Microsoft.Win32.SafeHandles;
+
+public class DisposableRandom : IDisposable
+{
+    Random random;
+    private bool disposed;
+
+    // 해당 class를 사용, 즉 new로 메모리에 올리면 자동으로 managed resource로 취급되어 GC가 관리하기 편해짐
+    private readonly SafeFileHandle safeHandle = new SafeFileHandle(IntPtr.Zero, true);
+    public DisposableRandom()
+    {
+        random = new Random();
+        disposed = false;
+    }
+
+    public int ExtractRandomNumber()
+    {
+        return random.Next(0, 999);
+    }
+
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    public void Dispose(bool disposing)
+    {
+        if(disposed)
+            return;
+
+        if(disposing)
+            safeHandle.Dispose();
+    }
+}
+```
+
+
+
 ## E
 
 ## F
