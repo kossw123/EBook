@@ -85,7 +85,7 @@ Event위주의 설계방식을 채택하기에 Event Driven Programming이라고
 현재는 다음과 같이 기억하면 될 것 같다.
 
 1. parameter로 이용되는 함수
-2. Event에 의해서 호출되는 함
+2. Event에 의해서 호출되는 함수 
 
 ## 타
 
