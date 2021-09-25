@@ -61,6 +61,32 @@ OS의 영역에서는 다음과 같이 정의됩니다.
 
 
 
+### 콜백
+
+{% embed url="https://ko.wikipedia.org/wiki/%EC%BD%9C%EB%B0%B1" %}
+
+call-after function의 다른 말로써,  다른 코드의 "인수로서 넘겨주는 실행 가능한 코드"를 말한다. 
+
+**간단히 말하자면, parameter로 Function을 넘겨줘서, Function을 실행 시킨다는 것을 의미한다.**  
+경우에 따라 지금 당장 실행할지, 나중에 실행할 지 결정할 수 있다.
+
+그러나 필자가 주로 사용하는 C\#은 multiple - paradigmed Language로써 C++과 Java의 패러다임을  
+혼합하여 설계 되었기 때문에, 기본적으로 OOP적으로 설계 되었다.
+
+그러나 Javascript 같은 경우 Java에서 Lambdas\(람다형\)이라는 기능적인 Paradigm의 형식이  
+추가되었기 때문에, Funtional Programming\(기능적 프로그래밍\)이라고도 불리는 것 같지만,   
+Event위주의 설계방식을 채택하기에 Event Driven Programming이라고도 불리는 것 같다.
+
+
+
+어쨋든 결과적으로 공통적으로 들어가는 현재 가장 많이 공유되는 방법론이나 정신론을 의미하는 paradigm은 점점 시간이 지남에 따라 확장될 테고, 세세하게 구분짓는 것은 거의 무의미하다고 생각된다.
+
+결국 Lauguage paradigm에 따른 Callback의 정의가 조금씩 변하기 떄문에   
+현재는 다음과 같이 기억하면 될 것 같다.
+
+1. parameter로 이용되는 함수
+2. Event에 의해서 호출되는 함
+
 ## 타
 
 ### 트랜잭션\(Transaction\)
