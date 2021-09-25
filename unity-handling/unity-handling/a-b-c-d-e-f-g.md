@@ -512,7 +512,7 @@ Advanced Dispose Pattern이 있다고 하는데, Unmanaged Resources들 까지 D
 
 
 
-### Use SafeHandle Disposable Pattern
+### Disposable Pattern\(Use SafeHandle\)
 
 #### 발단
 
