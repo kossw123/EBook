@@ -11,7 +11,9 @@ description: How-to-guide Mario Galaxy's Launch Star
 * DoTween의 Sequence, Join 함수 등은 동영상에서 보시는 것이 이해가 더빠를 수도 있으니, 초반 시청 바랍니다.
 * 이 문서는 상업적인 목적으로 만들어지지 않았습니다.
 
-{% embed url="https://www.youtube.com/watch?v=T\_3cne2tzYM&t=75s" caption="Mario Galaxy\'s Launch Star tutorial Video" %}
+{% embed url="https://www.youtube.com/watch?v=T_3cne2tzYM&t=75s" %}
+Mario Galaxy's Launch Star tutorial Video
+{% endembed %}
 
 ## Code Review
 
@@ -571,6 +573,4 @@ public class SpeedModifier : MonoBehaviour
 {% endcode %}
 {% endtab %}
 {% endtabs %}
-
-
 

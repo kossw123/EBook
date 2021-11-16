@@ -18,15 +18,15 @@ Unity는 Visual Scripting, 즉 UI를 이용하여 보다 편리하게 Game 작�
 
 [ **Live Session: 2D Platformer Character Controller - URL**](https://learn.unity.com/tutorial/live-session-2d-platformer-character-controller#)
 
-\*\*\*\*
+****
 
 
 
 ## **무엇을 하려고 하는가?**
 
-![Scripting&#xC744; &#xD1B5;&#xD55C; &#xC6C0;&#xC9C1;&#xC784; &#xC81C;&#xC5B4;](../../../../.gitbook/assets/gif.gif)
+![Scripting을 통한 움직임 제어](../../../../.gitbook/assets/gif.gif)
 
- **Unity를 공부하면서 다른 프로젝트를 통해 움직임을 구현하는 것은 Unity 자체에 내장되어 있는 기능들을 통해 쉽게 구현이 가능하고 재미 또한 있었습니다.**
+** Unity를 공부하면서 다른 프로젝트를 통해 움직임을 구현하는 것은 Unity 자체에 내장되어 있는 기능들을 통해 쉽게 구현이 가능하고 재미 또한 있었습니다.**
 
 **하지만 움직임을 Scripting으로 제어한다는 것은 기본적으로 Unity에 있는 기능들을 기존보다 깊게             파고들어야 하기 때문에 어려움이 있었으나, 분명 스킬업이 되었습니다.**
 
@@ -38,17 +38,17 @@ Unity는 Visual Scripting, 즉 UI를 이용하여 보다 편리하게 Game 작�
 
 ## 작성법
 
- URL을 타고 들어가 ' Download the asset package [here](http://bit.ly/unity2dController)' 의 here 부분을 누르거나 이 페이지의 here을 눌러서 필요한 Asset들을 다운 받고 파일안에 있는 Asset 파일들을 복사하고, 새로이 Unity Project를 생성하여 생성된 파일경로의 Asset에 복사 붙여넣기는 합니다.                                           
+&#x20;URL을 타고 들어가 ' Download the asset package [here](http://bit.ly/unity2dController)' 의 here 부분을 누르거나 이 페이지의 here을 눌러서 필요한 Asset들을 다운 받고 파일안에 있는 Asset 파일들을 복사하고, 새로이 Unity Project를 생성하여 생성된 파일경로의 Asset에 복사 붙여넣기는 합니다.                                          &#x20;
 
-그렇게 된다면 새로이 2DPlatformer라는 파일이 생기고 그 안에 Scene에 들어가서 2DPlatformerMain을    클릭하여 배경화면을 표시합니다. 
+그렇게 된다면 새로이 2DPlatformer라는 파일이 생기고 그 안에 Scene에 들어가서 2DPlatformerMain을    클릭하여 배경화면을 표시합니다.&#x20;
 
 다음으로 Prefab Folder로 들어가서 'PlayerStart' Prefab을 드래그 앤 드롭으로 적당한 위치에 배치합니다.
 
-![PlayerStart&#xB97C; Scene&#xC5D0; &#xBC30;&#xCE58;&#xD55C; &#xC0C1;&#xD0DC;](../../../../.gitbook/assets/tutorial-2.gif)
+![PlayerStart를 Scene에 배치한 상태](../../../../.gitbook/assets/tutorial-2.gif)
 
 Play를 눌러서 배치한 Scene을 Play한다면 위 그림과 같은 PlayerStart가 멈춰 있는 현상을 볼 수 있는데 Script를 이용하여 중력 적용 및 움직임을 구현해 보겠습니다.
 
-project에 존재하고 있는 Script File에서 'PhysicsObject'라는 새로운 C\# Script를 하나 생성하여 아래와 같은 소스를 복사하여 저장 후 미리 배치한 PlayerStart에 Script Component를 넣습니다.
+project에 존재하고 있는 Script File에서 'PhysicsObject'라는 새로운 C# Script를 하나 생성하여 아래와 같은 소스를 복사하여 저장 후 미리 배치한 PlayerStart에 Script Component를 넣습니다.
 
 {% code title="PhysicsObject.cs" %}
 ```csharp
@@ -159,9 +159,9 @@ public class PhysicsObject : MonoBehaviour {
 ```
 {% endcode %}
 
-그리고 저장 후에 Scene을 Play 해보면 PlayerStart가 중력의 영향을 받아 아래로 떨어지는 모습을 확인할 수 있습니다. 
+그리고 저장 후에 Scene을 Play 해보면 PlayerStart가 중력의 영향을 받아 아래로 떨어지는 모습을 확인할 수 있습니다.&#x20;
 
-![&#xC911;&#xB825;&#xC758; &#xC601;&#xD5A5;&#xC744; &#xBC1B;&#xC544; &#xC544;&#xB798;&#xB85C; &#xB5A8;&#xC5B4;&#xC9C0;&#xB294; PlayerStart](../../../../.gitbook/assets/tutorial-3.gif)
+![중력의 영향을 받아 아래로 떨어지는 PlayerStart](../../../../.gitbook/assets/tutorial-3.gif)
 
 그리고 새로운 'PlayerPlatformerController'라는 Script를 하나 생성하여 위와 마찬가지로 PlayerStart Object에 Component로 추가하고 아래와 같은 코드를 복사합니다.
 
@@ -218,11 +218,11 @@ public class PlayerPlatformerController : PhysicsObject {
 
 추가를 끝마쳤다면 아래와 같은 그림을 움직이는 PlayerStart Object를 보실 수 있습니다.
 
-![PlayerStart &#xC6C0;&#xC9C1;&#xC784; &#xC801;&#xC6A9;](../../../../.gitbook/assets/tutorial-4.gif)
+![PlayerStart 움직임 적용](../../../../.gitbook/assets/tutorial-4.gif)
 
 위의 코드와 작성 단계를 세부적으로 나누는 것은 How-to-guide에서 설명하도록 하겠습니다.
 
-{% page-ref page="../../how-to-guide/unity/physicsobject.md" %}
-
-
+{% content-ref url="../../how-to-guide/unity/physicsobject.md" %}
+[physicsobject.md](../../how-to-guide/unity/physicsobject.md)
+{% endcontent-ref %}
 

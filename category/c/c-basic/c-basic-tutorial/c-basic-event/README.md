@@ -1,22 +1,22 @@
 ---
-description: 'C# Basic Event'
+description: C# Basic Event
 ---
 
-# C\# Basic Event
+# C# Basic Event
 
 ## 무엇을 하려고 하는가?
 
-* C\#에서 도입된 Event라는 Keyword에 대한 개념과 사용방법 및 사례에 대해 기술합니다.
+* C#에서 도입된 Event라는 Keyword에 대한 개념과 사용방법 및 사례에 대해 기술합니다.
 
 
 
 ## Event란?
 
-* 어떠한 문제가 발생하면 Event는 관련된 모든 구성 요소에게 문제가 발생했음을 알리고, 상태가 변화했다면 상태가 변화했음을 알리는 기능입니다. 
-* .NET의 Event는 Observer pattern을 따르는 keyword이기 때문에, Event를 발생시키는 Class\(Publisher\)와 알림을 받는 Class\(Subscriber\)로 구성됩니다.
+* 어떠한 문제가 발생하면 Event는 관련된 모든 구성 요소에게 문제가 발생했음을 알리고, 상태가 변화했다면 상태가 변화했음을 알리는 기능입니다.&#x20;
+* .NET의 Event는 Observer pattern을 따르는 keyword이기 때문에, Event를 발생시키는 Class(Publisher)와 알림을 받는 Class(Subscriber)로 구성됩니다.
 * Publisher Class와 Subscriber Class 각각에 EventHandler라는 시스템에서 정의된 delegate를 가지고 Event에 대한 정보를 주고 받습니다.
 
-![](../../../../../.gitbook/assets/image%20%28217%29.png)
+![](<../../../../../.gitbook/assets/image (217).png>)
 
 {% embed url="https://docs.microsoft.com/ko-kr/dotnet/csharp/events-overview" %}
 
@@ -105,7 +105,7 @@ public delegate void EventHandler(object sender, EventArgs e);
 {% hint style="info" %}
 위에서 설명한 EventArgs parameter는 데이터가 포함이 되지 않은 형식입니다.
 
-C\# 2.0에서는 event delegate의 generic인 EventHandler&lt;TEventArgs&gt;가 도입하여 형식을 지정합니다.
+C# 2.0에서는 event delegate의 generic인 EventHandler\<TEventArgs>가 도입하여 형식을 지정합니다.
 {% endhint %}
 
 내장된 event delegate인 EventHandler 패턴에 따라 이벤트를 개시하려면 아래와 같은 과정을 거칩니다.
@@ -114,7 +114,7 @@ C\# 2.0에서는 event delegate의 generic인 EventHandler&lt;TEventArgs&gt;가 
 
 
 
-  1. 사용자 지정 데이터를 보낼 필요가 없는 경우 이 단계를 건너 뜁니다. 사용자 지정 EventArgs Class가 없는 경우 Event의 값 형식은 Generic이 아닌 EventHandler delegate만 사용합니다. 
+&#x20; 1\. 사용자 지정 데이터를 보낼 필요가 없는 경우 이 단계를 건너 뜁니다. 사용자 지정 EventArgs Class가 없는 경우 Event의 값 형식은 Generic이 아닌 EventHandler delegate만 사용합니다.&#x20;
 
 ```csharp
 public class CustomEventArgs : EventArgs
@@ -128,27 +128,24 @@ public class CustomEventArgs : EventArgs
 }
 ```
 
-  2. EventHandler&lt;TEventArgs&gt; Generic을 사용하는 경우 이 단계를 건너뜁니다. Publisher Class에서 delegate를 선언하고 EventHandler로 끝나는 이름을 지정합니다.
+&#x20; 2\. EventHandler\<TEventArgs> Generic을 사용하는 경우 이 단계를 건너뜁니다. Publisher Class에서 delegate를 선언하고 EventHandler로 끝나는 이름을 지정합니다.
 
-  3. 다음 단계중 하나를 사용하여 Publisher Class에서 Event를 선언합니다.
+&#x20; 3\. 다음 단계중 하나를 사용하여 Publisher Class에서 Event를 선언합니다.
 
-1. 사용자 지정 EventArgs Class가 없는 경우 Event의 유형은 Generic이 아닌 EventHandler delegate를 사용합니다.
+1.  사용자 지정 EventArgs Class가 없는 경우 Event의 유형은 Generic이 아닌 EventHandler delegate를 사용합니다.
 
-   ```csharp
-   public event EventHandler RaiseCustomEvent;
-   ```
+    ```csharp
+    public event EventHandler RaiseCustomEvent;
+    ```
+2.  Generic이 아닌 버전의 EventHandler를 사용 중이고, EventArgs에서 파생된 Subscriber Class가 있는 경우 Publisher Class내에서 Event를 선언하고 다음 단계의 delegate를 사용합니다.
 
-2. Generic이 아닌 버전의 EventHandler를 사용 중이고, EventArgs에서 파생된 Subscriber Class가 있는 경우 Publisher Class내에서 Event를 선언하고 다음 단계의 delegate를 사용합니다.
+    ```csharp
+    public event CustomEventHandler RaiseCustomEvent;
+    ```
 
-   ```csharp
-   public event CustomEventHandler RaiseCustomEvent;
-   ```
-
-   3. Generic을 사용하는 경우 사용자 지정 delegate가 필요하지 않고, Publisher에서 Event를 EventHandler&lt;CustomEventArgs&gt;로 지정합니다.
+&#x20;  3\. Generic을 사용하는 경우 사용자 지정 delegate가 필요하지 않고, Publisher에서 Event를 EventHandler\<CustomEventArgs>로 지정합니다.
 
 ```csharp
 public event EventHandler<CustomEventArgs> RaiseCustomEvent;
 ```
-
-
 

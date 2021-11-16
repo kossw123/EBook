@@ -117,4 +117,7 @@
   * [H I J K L M N](c-handling/c-handling/h-i-j-k-l-m-n.md)
   * [O P Q R S T U](c-handling/c-handling/o-p-q-r-s-t-u.md)
   * [V W X Y Z](c-handling/c-handling/v-w-x-y-z.md)
-* [Object](c-handling/object.md)
+* [Object](c-handling/object/README.md)
+  * [개요](c-handling/object/undefined.md)
+  * [1. 객체 설계](c-handling/object/1./README.md)
+    * [티켓 판매 애플리케이션 구현하기](c-handling/object/1./undefined.md)

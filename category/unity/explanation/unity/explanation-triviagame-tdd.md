@@ -7,8 +7,8 @@ description: Explanation TriviaGame TDD
 ## 무엇을 하려고 하는가?
 
 * TriviaGame에 대한 TDD 관련된 설명을 합니다.
-* 보통 Unity LifeCycle flow를 따라 실행이 됩니다. 
-* 하지만 이번 게임에서는 여태까지 가장 중요한 Event\(\) 함수중 하나라고 생각했던 가장 핵심이 되는 Update\(\)함수를 사용하지 않습니다.
+* 보통 Unity LifeCycle flow를 따라 실행이 됩니다.&#x20;
+* 하지만 이번 게임에서는 여태까지 가장 중요한 Event() 함수중 하나라고 생각했던 가장 핵심이 되는 Update()함수를 사용하지 않습니다.
 
 {% embed url="https://docs.unity3d.com/kr/2018.4/Manual/ExecutionOrder.html" %}
 
@@ -22,7 +22,7 @@ description: Explanation TriviaGame TDD
 
 {% embed url="https://beomy.tistory.com/43" %}
 
-![MVP Pattern&#xC758; &#xAD6C;&#xC870;](../../../../.gitbook/assets/image%20%2824%29.png)
+![MVP Pattern의 구조](<../../../../.gitbook/assets/image (24).png>)
 
 * MVP Pattern이란?
   * Model + View + Presenter를 합친 단입니다. MVC Pattern에서 파생되었으며, 각 Component에 대한 역할을 아래와 같습니다.
@@ -31,23 +31,23 @@ description: Explanation TriviaGame TDD
     * Presenter : View에서 사용자가 어떤 정보를 요청을 하면 해당 정보를 가지고 Model로 가공하여 다시 View에 전달합니다.
 * MVP Pattern를 기초로 하여 Script들을 생성합니다.  그 결과 아래와 같은 그림으로 Script를 나눌 수 있습니다.
 
-![TriviaGame MVP &#xD328;&#xD134; &#xD750;&#xB984;](../../../../.gitbook/assets/image%20%2826%29.png)
+![TriviaGame MVP 패턴 흐름](<../../../../.gitbook/assets/image (26).png>)
 
 ## 각 Script의 역할 및 Class Diagram
 
 해당 Project의 Diagram은 아래와 같습니다.
 
-![Visual Studio&#xC758; Class Designer&#xB97C; &#xC774;&#xC6A9;&#xD55C; Diagram](../../../../.gitbook/assets/image%20%2833%29.png)
+![Visual Studio의 Class Designer를 이용한 Diagram](<../../../../.gitbook/assets/image (33).png>)
 
 * Model
-  * `Question` : 질문에 대한 Data 공과 IsRightAnswer를 통한 string.Equal\(\)를 통해 정답과 Player가 선택한 값을 비교하여 참, 거짓을 비교합니다.
+  * `Question` : 질문에 대한 Data 공과 IsRightAnswer를 통한 string.Equal()를 통해 정답과 Player가 선택한 값을 비교하여 참, 거짓을 비교합니다.
   * `QuestionsService` :  `Question` Class List를 생성하여 `Question` Class에서 생성한 Data공간에 질문, 답, 오답을 생성합니다.
   * `ServicesProvider` : `QuestionsService` Class를 생성하고 반환합니다. 이렇게 함으로써 원본 정보를 훼손하지 않게 합니다.
 * View
-  * `AnswerView` : Answer Object의 Text를 선언하여 초기화, 생성한 Data를 Answer Object에 넣고, Click Event\(\) 함수를 생성하여 Action이 가리키는 함수를 실행시킵니다.
+  * `AnswerView` : Answer Object의 Text를 선언하여 초기화, 생성한 Data를 Answer Object에 넣고, Click Event() 함수를 생성하여 Action이 가리키는 함수를 실행시킵니다.
   * `TriviaGameView` : `AnswerView` Class를 받아서 UI를  상황에 맞게 Play와 동시에 `TriviaGamePresenter` Class를 받아 Player가 선택한 Data를 Model 부분으로 넘깁니다.
 * Presenter
-  * `TriviaGamePresenter` : Model\(Question\), View\(TriviaGameView\)를 받아와서 Player가 선택한 답이 정답인지, 오답인지 판별하여 Score를 증가시키고, Question List의 Count를 증가시켜서 다음 질문 및 오답, 정답 Data를 불러오는 기능이 담겨 있습니다.
+  * `TriviaGamePresenter` : Model(Question), View(TriviaGameView)를 받아와서 Player가 선택한 답이 정답인지, 오답인지 판별하여 Score를 증가시키고, Question List의 Count를 증가시켜서 다음 질문 및 오답, 정답 Data를 불러오는 기능이 담겨 있습니다.
   * `TriviaGamePresenterBuilder` : `TriviaGamePresenter` Class를 생성하고 반환합니다.
 
 ## Delivery
@@ -73,16 +73,20 @@ private TriviaGamePresenter _presenter;
 * `_feedbackAniamations` : Animator Component를 받아와서 조작하기 위한 변수입니다.
 
 {% hint style="info" %}
-이때  아래와 같은 Class변수는 namespace를 통해 다른 Script에서 사용되었습니다. 
+이때  아래와 같은 Class변수는 namespace를 통해 다른 Script에서 사용되었습니다.&#x20;
 
 private TriviaGamePresenter \_presenter;
 
 namespace에 대한 보다 자세한 설명은 기술문서에 기재했습니다.
 {% endhint %}
 
-{% page-ref page="../../technical-reference/unity/tr-triviagame-tdd.md" %}
+{% content-ref url="../../technical-reference/unity/tr-triviagame-tdd.md" %}
+[tr-triviagame-tdd.md](../../technical-reference/unity/tr-triviagame-tdd.md)
+{% endcontent-ref %}
 
-{% embed url="https://docs.microsoft.com/ko-kr/dotnet/csharp/language-reference/language-specification/namespaces" caption="C\# namespace 프로그래밍 가이드" %}
+{% embed url="https://docs.microsoft.com/ko-kr/dotnet/csharp/language-reference/language-specification/namespaces" %}
+C# namespace 프로그래밍 가이드
+{% endembed %}
 
 다음으로 TriviaGameView에 사용된 함수를 살펴 보겠습니다.
 
@@ -107,7 +111,7 @@ private void OnAnswerSelected(string selectedAnswer) {
 }
 ```
 
-* 위의 함수는 `TriviaGamePresenter` Class의 string parameter를 가진 `ReceiveAnswer()`함수를 받아와서 비교 함수를 통해 맞는 정답이거나\(`OnRightAnswerReceived()`\) 틀린 답\(`OnWrongAnswerReceived()`\)을 가려냅니다.
+* 위의 함수는 `TriviaGamePresenter` Class의 string parameter를 가진 `ReceiveAnswer()`함수를 받아와서 비교 함수를 통해 맞는 정답이거나(`OnRightAnswerReceived()`) 틀린 답(`OnWrongAnswerReceived()`)을 가려냅니다.
 
 {% hint style="info" %}
 하지만 어떻게 해서 `answerView.Initialize()` 함수에 아무런 parameter를 넘기지 않고도 동작하는가에 대한 궁금증이 생겼습니다.
@@ -136,39 +140,39 @@ public virtual void ShowNextQuestion(Question question) {
 * `ShowNextQuestion()` : 미리 선언한 questionText에 Question Class의 Text 변수를 할당합니다.
 
 {% hint style="info" %}
-var allAnswer = question.WrongAnswers.Concat\(new string\[\] {question.RightAnswer}\).ToList\(\);
+var allAnswer = question.WrongAnswers.Concat(new string\[] {question.RightAnswer}).ToList();
 
-Qustion Class의 WrongAnswer\[\] 배열 변수에 접근합니다. 이때 Concat을 통해 병합을 실시하며, 병합의 대상은 string\[\] 배열을 동적으로 생성한 Question Class의 RightAnswer입니다.
+Qustion Class의 WrongAnswer\[] 배열 변수에 접근합니다. 이때 Concat을 통해 병합을 실시하며, 병합의 대상은 string\[] 배열을 동적으로 생성한 Question Class의 RightAnswer입니다.
 
-최종적으로 ToList\(\) 함수를 통해 Array -&gt; List로 변환하여 List.Sort\(\)를 통해 정렬합니다.
+최종적으로 ToList() 함수를 통해 Array -> List로 변환하여 List.Sort()를 통해 정렬합니다.
 {% endhint %}
 
 {% hint style="info" %}
-`Sort()` 함수를 통해 정렬을 하는데 이때 Lambda expression이 쓰이는데 \(a, b\)와 같이 parameter만 전달 하여 배치합니다.
+`Sort()` 함수를 통해 정렬을 하는데 이때 Lambda expression이 쓰이는데 (a, b)와 같이 parameter만 전달 하여 배치합니다.
 
-allAnswer.Sort\(\(a, b\) =&gt; Random.Range\(0 ,2\) &gt; 0 ? 1 : -1\);
+allAnswer.Sort((a, b) => Random.Range(0 ,2) > 0 ? 1 : -1);
 
 내부적으로 살펴보면 list로 변환된 allAnswer는 아래의 함수를 사용하여 Sort합니다.
 
-public void Sort\(Comparison&lt;T&gt; comparison\);
+public void Sort(Comparison\<T> comparison);
 
-Sort는 내부적으로 정렬을 합니다. 
+Sort는 내부적으로 정렬을 합니다.&#x20;
 
-### 하지만 Comparision&lt;T&gt;는 어떤 의미인가? 하는 의문점이 있습니다.
+### 하지만 Comparision\<T>는 어떤 의미인가? 하는 의문점이 있습니다.
 
 Comparision은 delegate가 선언된 함수 원형입니다. 그 내용은 아래와 같습니다.
 
-public delegate int Comparison\(T x, T y\);
+public delegate int Comparison(T x, T y);
 
-int type의 함수원형을 선언 하고 Delegate를 사용해서 함수 포인터를 사용하는 곳으로 넘깁니다. 이 함수는 Sort\(\)함수로 넘어가서 Sort\(\)에 사용된 Algorithm을 통해 x, y를 비교하게 됩니다.
+int type의 함수원형을 선언 하고 Delegate를 사용해서 함수 포인터를 사용하는 곳으로 넘깁니다. 이 함수는 Sort()함수로 넘어가서 Sort()에 사용된 Algorithm을 통해 x, y를 비교하게 됩니다.
 
-Lambda식을 사용해서 간결하게 표시하고 최종적으로, 
+Lambda식을 사용해서 간결하게 표시하고 최종적으로,&#x20;
 
-a와 b를 Random.Range\(0, 2\) &gt; 0 ? 1 : -1의 조건에 따라 배치합니다.
+a와 b를 Random.Range(0, 2) > 0 ? 1 : -1의 조건에 따라 배치합니다.
 
-\(a, b\) =&gt; Random.Range\(0, 2\) &gt; 0 ? 1 : -1 
+(a, b) => Random.Range(0, 2) > 0 ? 1 : -1&#x20;
 
-### Sort\(\) 알고리즘은
+### Sort() 알고리즘은
 
 간단하게 1, -1을 비교하여 두가지의 비교 대상의 위치를 변환합니다.
 {% endhint %}
@@ -177,9 +181,9 @@ a와 b를 Random.Range\(0, 2\) &gt; 0 ? 1 : -1의 조건에 따라 배치합니�
 {% endtab %}
 
 {% tab title="AnswerView.cs" %}
-AnswerView.cs에서는 단순하게 Text를 설정하고, Action&lt;string&gt; 기능을 통해 함수를 전달하여 다른 namespace의 Class에서 실행 시킵니다.
+AnswerView.cs에서는 단순하게 Text를 설정하고, Action\<string> 기능을 통해 함수를 전달하여 다른 namespace의 Class에서 실행 시킵니다.
 
-이제 AnswerView.cs를 살펴 보겠습니다. 
+이제 AnswerView.cs를 살펴 보겠습니다.&#x20;
 
 {% code title="AnswerView.cs" %}
 ```csharp
@@ -191,7 +195,9 @@ private Action<string> _onAnswerSelected;
 * `_answerText` : TextMeshPro - Text의 Text Component를 의미합니다.
 * `_onAnswerSelected` : string type의 Action을 의미합니다. Action에 대한 자세한 설명은 아래의 페이지를 참조하세요.
 
-{% page-ref page="../../technical-reference/unity/tr-triviagame-tdd.md" %}
+{% content-ref url="../../technical-reference/unity/tr-triviagame-tdd.md" %}
+[tr-triviagame-tdd.md](../../technical-reference/unity/tr-triviagame-tdd.md)
+{% endcontent-ref %}
 
 다음으로 사용된 함수를 살펴 보겠습니다.
 
@@ -213,10 +219,10 @@ public void OnClick() {
 
 * `Initialize()` : string type의 Action을 \_onAnswerSelected 변수에 할당합니다.
 * `FillData()` : answerText string을 \_answerText.text에 할당합니다.
-* `OnClick()` : Button Component의 Click Event에 사용합니다. 이때 onAnswerSelected? statement가 의미하는 것은 __\_onAnswerSelected를 null로 초기화 한다는 표현입니다.
+* `OnClick()` : Button Component의 Click Event에 사용합니다. 이때 onAnswerSelected? statement가 의미하는 것은_ _\_onAnswerSelected를 null로 초기화 한다는 표현입니다.
 
 {% hint style="info" %}
-이때 Action.Invoke\(\)는 함수를 호출 하는데 사용합니다. 
+이때 Action.Invoke()는 함수를 호출 하는데 사용합니다.&#x20;
 
 \_onAnswerSelected는 Action이고, Action은 delegate이기 때문에 Invoke를 통해 전달한 함수를 실행시키는 기능을 하고 있습니다.
 {% endhint %}
@@ -267,7 +273,7 @@ public virtual bool IsRightAnswer(string anAnswer) {
 
 {% tabs %}
 {% tab title="TriviaGamePresenter.cs" %}
-`TriviaGamePresenter`  Class는 
+`TriviaGamePresenter`  Class는&#x20;
 
 TriviaGamePresenter Class를 살펴 보겠습니다.
 
@@ -349,11 +355,11 @@ public class TriviaGamePresenterBuilder {
 {% hint style="info" %}
 TriviaGamePresenterBuilder를 사용하는 이유?
 
-TriviaGameview를 parameter로 받고, public으로 선언된 ServiceProvider의 static변수인 QuestionsService에 접근하는 방식으로 짜여져 있습니다. 
+TriviaGameview를 parameter로 받고, public으로 선언된 ServiceProvider의 static변수인 QuestionsService에 접근하는 방식으로 짜여져 있습니다.&#x20;
 
-이렇게 짠 이유는 Coupling이라고 서술 되어 있습니다. TriviaGamePresenter Class에서의 각 Model\(Question Class\), View\(TriviaGameView\)의 정보를 바꾸지 않기 위해서 입니다. 만약 다른 기능이 추가 되었을 때, MVP 패턴을 유지하기 위해서는 Model과 View, Presenter의 영역이 확실히 나누어져 있어야 합니다. 
+이렇게 짠 이유는 Coupling이라고 서술 되어 있습니다. TriviaGamePresenter Class에서의 각 Model(Question Class), View(TriviaGameView)의 정보를 바꾸지 않기 위해서 입니다. 만약 다른 기능이 추가 되었을 때, MVP 패턴을 유지하기 위해서는 Model과 View, Presenter의 영역이 확실히 나누어져 있어야 합니다.&#x20;
 
-그렇지만, Presenter에 Builder Class를 추가하여 하나의 Class는 하나의 기능만을 가져야 한다는 단일 수행 원칙\(single responsibility principle\)을 지키기 위해서 이렇게 짠 것으로 서술되어 있습니다.
+그렇지만, Presenter에 Builder Class를 추가하여 하나의 Class는 하나의 기능만을 가져야 한다는 단일 수행 원칙(single responsibility principle)을 지키기 위해서 이렇게 짠 것으로 서술되어 있습니다.
 {% endhint %}
 {% endtab %}
 {% endtabs %}
@@ -410,24 +416,26 @@ Test Script를 작성하기 이전에 TDD에 대한 설명을 먼저 기재하�
   * Test - Driven - Development의 준말으로써 **방법론중 하나입니다**. Test Case를 작성하고 통과 하면 아래의 그림과 같은 Cycle로 계속적으로 수정 및 테스트를 합니다.
   * TDD를 통해 코드에 대한 자동 테스트를 작성하고 소프트웨어를 변경할 수 있습니다.
   * 새로운 개발자가 팀에 합류하면 테스트를 통해 모든 기능의 작동 및 요구 사항을 이해할 수 있습니다.
-  * 버그를 일으킬 염려없이 코드에서 Refactor\(크고 작은 것 모두\)로 작업 할 수 있습니다.
+  * 버그를 일으킬 염려없이 코드에서 Refactor(크고 작은 것 모두)로 작업 할 수 있습니다.
   * 코드에 너무 많은 Coupling이 있는지 감지하는 데 도움이 됩니다.
 
-![TDD Flow Chart](../../../../.gitbook/assets/image%20%2862%29.png)
+![TDD Flow Chart](<../../../../.gitbook/assets/image (62).png>)
 
 이러한 TDD의 개념을 가지고 또 하나의 방법론을 통해 Test Case들을 선언합니다. 그 방법은 아래와 같습니다.
 
 * Given - When - Then
-  * BDD\(Behavior - Driven - Development\) 방법론 중 하나의 스타일로써 Test를 3가지 부분으로 나눕니다.
+  * BDD(Behavior - Driven - Development) 방법론 중 하나의 스타일로써 Test를 3가지 부분으로 나눕니다.
     * Given :  Test 수행하기 이전의 상태를 설명하며, Test 위한 사전 조건으로 생각할 수 있습니다.
     * When : 사용자가 지정하는 동작을 의미합니다.
     * Then : 예상되는 변화에 대해 설명합니다.
 
-{% embed url="https://velog.io/@pop8682/%EB%B2%88%EC%97%AD-Given-When-Then-martin-fowler" caption="BDD\(Given - When - Then\)" %}
+{% embed url="https://velog.io/@pop8682/%EB%B2%88%EC%97%AD-Given-When-Then-martin-fowler" %}
+BDD(Given - When - Then)
+{% endembed %}
 
 BDD 방법론에 따라 Test Case들을 나눕니다.
 
-* Given - When - Then\(Script\)
+* Given - When - Then(Script)
   * Given : Test를 하기 전에 사전 조건으로 필요한 변수들이나, 설정해야 하는 것들을 미리 `[SetUp]` 을 통해 설정합니다.
   * When : `[SetUp]`을 기반으로 Test Case들을 작성합니다.
   * Then : When의 결과값에 따라 실행되어야 할 Method들을 작성합니다.
@@ -444,7 +452,9 @@ TriviaGamePresenterTests.cs는 Test Runner를 통해 생성된 Test Script입니
 
 {% embed url="https://nsubstitute.github.io/help/getting-started/" %}
 
-{% page-ref page="../../technical-reference/unity/tr-triviagame-tdd.md" %}
+{% content-ref url="../../technical-reference/unity/tr-triviagame-tdd.md" %}
+[tr-triviagame-tdd.md](../../technical-reference/unity/tr-triviagame-tdd.md)
+{% endcontent-ref %}
 
 {% code title="TriviaGamePresenterTests.cs" %}
 ```csharp
@@ -496,7 +506,7 @@ namespace Test.TriviaGame
         #endregion
 ```
 
-\*\* \#region은 Code Block을 지정하여 Code를 접거나 펼수 있도록 하기 위해 임의로 정의했습니다. \#endregion을 통해 Code Block의 끝 부분을 설정합니다.
+\*\* #region은 Code Block을 지정하여 Code를 접거나 펼수 있도록 하기 위해 임의로 정의했습니다. #endregion을 통해 Code Block의 끝 부분을 설정합니다.
 
 * `SetUp()` : `[Test]` 호출 전에 수행되는 공통 기능 집합입니다.
 * `_view` : `Substitute.For()`를 사용하여 TriviaGameView의 모의 객체를 생성합니다.
@@ -581,15 +591,15 @@ TestCase에서 공통적으로 쓰이는 When Method를 먼저 설명하겠습�
 다음으로 Test Case에서 쓰이는 `[Test]`들을 살펴보겠습니다. 이 때 List로 각 Test method들에 대한 설명을 하고 하위 List로 연관 method에 관하여 설명하겠습니다.
 
 * `WhenRightAnswerScoreIncreases()` : 정답을 골랐을 때, Score가 증가 되는 경우입니다.
-  * `ThenScoreIncreasedByOne()` : NUnit의 Assert Class의 AreEqual\(\)를 사용해, 기대값과 결과값이 일치하는지 확인합니다.
+  * `ThenScoreIncreasedByOne()` : NUnit의 Assert Class의 AreEqual()를 사용해, 기대값과 결과값이 일치하는지 확인합니다.
 * `WhenRightAnswerShowsPositiveFeedback()` : 정답을 골랐을 때 보여지는 UI를 호출할 경우입니다.
   * `ThenShowsPositiveFeedback()` : Substitute Class의 `Received()` 함수를 통해 해당 모의 객체가 필요한 횟수만큼 Receive 받았는지 확인합니다.
 * `WhenRightAnswerShowsUpdatedScore()` : 정답을 골랐을 때 Score를 Update 되는 경우입니다.
   * `ThenShowsCurrentScore()` : Score를 Update합니다.
 * `WhenRightAnswerShowsNextQuestiion()` : 정답을 골랐을 때, 다음 질문을 보여줄 때의 경우입니다.
-  * `ThenViewIsShowingTheSecondQuestion()` : Received\(\) 함수로 횟수만큼 Receive 받았는지 확인 후 다음 질문을 보여줍니다.
+  * `ThenViewIsShowingTheSecondQuestion()` : Received() 함수로 횟수만큼 Receive 받았는지 확인 후 다음 질문을 보여줍니다.
 * `When3RightAnswersWin()` : 3개의 정답을 모두 맞췄을 경우입니다.
-  * `ThenShowsWinningFeedback()` : Received\(\) 함수로 횟수만큼 확인 후 `ShowWinFeedback()`을 재생합니다.
+  * `ThenShowsWinningFeedback()` : Received() 함수로 횟수만큼 확인 후 `ShowWinFeedback()`을 재생합니다.
 * `WhenWrongAnswerScoreDoesntChange()` : 오답을 골랐을 때 점수의 변화가 없을 경우입니다.
   * `ThenScoreDoesntChange()` : parameter로 넘긴 값과 Score를 비교합니다.
 * `WhenWrongAnswerGameOver()` : 오답을 골라 GameOver가 된 경우 입니다.
@@ -597,7 +607,7 @@ TestCase에서 공통적으로 쓰이는 When Method를 먼저 설명하겠습�
 * `ANewTriviaGameStartsWithZeroScore()` : 새로운 Game을 시작하고 0점인 경우 입니다.
   * `ThenScoreIsZero()` : 0과 Score를 비교합니다.
 * `ANewGameShowsTheFirstQuestion()` : 새로운 Game을 시작하고 첫번째 질문을 보여줄 경우입니다.
-  * `ThenViewIsShowingTheFirstQuestion()` : Received\(\)함수로 횟수만큼 Receive 받았는지 확인 후 다음 질문을 보여줍니다.
+  * `ThenViewIsShowingTheFirstQuestion()` : Received()함수로 횟수만큼 Receive 받았는지 확인 후 다음 질문을 보여줍니다.
 {% endtab %}
 
 {% tab title="QuestionTests.cs" %}
@@ -671,5 +681,6 @@ namespace Test.TriviaGame {
 * TDD, MVP, BDD 방법론을 정리하면서 보다 Game 및 App개발에 중요한 설계부분에 대해 보다 심도 있게 고민한 문서였습니다.
 * 부족한 부분은 기술문서를 보시면 조금이나마 궁금증을 해소 하실수 있을 것 같습니다.
 
-{% page-ref page="../../technical-reference/unity/tr-triviagame-tdd.md" %}
-
+{% content-ref url="../../technical-reference/unity/tr-triviagame-tdd.md" %}
+[tr-triviagame-tdd.md](../../technical-reference/unity/tr-triviagame-tdd.md)
+{% endcontent-ref %}

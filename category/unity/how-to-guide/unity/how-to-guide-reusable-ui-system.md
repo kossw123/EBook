@@ -6,7 +6,7 @@ description: How-to-guide Reusable UI System
 
 ## 무엇을 하려고 하는가?
 
-* Code에 대한 Review를 합니다. 
+* Code에 대한 Review를 합니다.&#x20;
 * 검토가 아닌 Review를 통해 Code의 동작원리를 설명합니다.
 * 전체적인 Code에 대한 흐름이 아닌 Module 단위의 Code를 Review합니다.
 
@@ -42,7 +42,7 @@ public IP_UI_Screen CurrentScreen { get { return currentScreen; } }
 {% endtab %}
 
 {% tab title="Main Methods" %}
-{% code title="IP\_UI\_System.cs" %}
+{% code title="IP_UI_System.cs" %}
 ```csharp
 void Start() {
     screens = GetComponentsInChildren<IP_UI_Screen>(true);
@@ -59,13 +59,13 @@ void Start() {
 {% endcode %}
 
 * `Start()` : Unity Event Life Cycle 중에 `Start()` 함수를 사용하여 초기화에 이용합니다.
-  * `screens` : `GetComponentsInChildren<type>(true)` 를 이용하여 &lt;type&gt; 붙어있는 모든 Object를 가져오고 true, false의 값에 따라 활성화, 비활성화된 Object의 Component도 포함할지 안할지 결정합니다.
+  * `screens` : `GetComponentsInChildren<type>(true)` 를 이용하여 \<type> 붙어있는 모든 Object를 가져오고 true, false의 값에 따라 활성화, 비활성화된 Object의 Component도 포함할지 안할지 결정합니다.
   * `if(m_StartScreen)` : 분기문의 결과값에 따라 SwitchScreen을 하여 m\_StartScreen을 띄웁니다.
   * `if(m_Fader)` : Fade효과를 적용하는데 `Start()` 함수에서 적용함으로써 시작과 동시에 효과를 적용시킵니다.
 {% endtab %}
 
 {% tab title="Helper Methods" %}
-{% code title="IP\_UI\_System.cs" %}
+{% code title="IP_UI_System.cs" %}
 ```csharp
 public void SwitchScreen(IP_UI_Screen screen) {
     if(screen) {
@@ -104,7 +104,7 @@ public void GoToPreviousScreen() {
 * `GoToPreviousScreen()` : 이전화면으로 가기 위한 함수입니다.
   * `if(previousScreen)` : previousScreen이 존재하면 이전화면으로 돌아갑니다.
 
-{% code title="IP\_UI\_System.cs" %}
+{% code title="IP_UI_System.cs" %}
 ```csharp
 public void LoadScene(int sceneIndex) {
     StartCoroutine(WaitToLoadScene(sceneIndex));
@@ -120,7 +120,7 @@ IEnumerator WaitToLoadScene(int sceneIndex) {
   * 하지만 해당 Project에는 활용하지 않지만 Reusable이라는 취지를 위해 작성한 것으로 보입니다.
 * `WaitToLoadScene(int sceneIndex)` : Coroutine에 필요한 IEnumerator입니다.
 
-{% code title="IP\_UI\_System.cs" %}
+{% code title="IP_UI_System.cs" %}
 ```csharp
 public void FadeIn() {
     if(m_Fader) {
@@ -137,7 +137,7 @@ public void FadeOut() {
 
 * `FadeIn()` , `FadeOut()` : Fade 효과를 위해 Image Component의 CrossFadeAlpha를 이용하여 Alpha값을 조정합니다.
 
-{% code title="IP\_UI\_System.cs" %}
+{% code title="IP_UI_System.cs" %}
 ```csharp
 void InitializeScreens() {
     foreach(var screen in screens) {
@@ -147,7 +147,7 @@ void InitializeScreens() {
 ```
 {% endcode %}
 
-* `InitializeScreens()` : 초기에 Start\(\) 함수에서 실행되는 함수입니다. 이를 통해 모든 Screen들을 활성화 시킵니다. 이를 통해 혹시나 비활성화 된 Screen이 없도록 합니다.
+* `InitializeScreens()` : 초기에 Start() 함수에서 실행되는 함수입니다. 이를 통해 모든 Screen들을 활성화 시킵니다. 이를 통해 혹시나 비활성화 된 Screen이 없도록 합니다.
 {% endtab %}
 {% endtabs %}
 
@@ -164,7 +164,7 @@ RequireComponent Attribute를 사용하여 해당 Script가 붙어있는 Object�
 {% endtab %}
 
 {% tab title="Variable" %}
-{% code title="IP\_UI\_Screen.cs" %}
+{% code title="IP_UI_Screen.cs" %}
 ```csharp
 [Header("Main Properties")]
 public Selectable m_StartSelectable;
@@ -184,7 +184,7 @@ private Animator animator;
 {% endtab %}
 
 {% tab title="Main Methods" %}
-{% code title="IP\_UI\_Screen.cs" %}
+{% code title="IP_UI_Screen.cs" %}
 ```csharp
 void Start() {
     animator = GetComponent<Animator>();
@@ -195,15 +195,16 @@ void Start() {
 ```
 {% endcode %}
 
-* Start\(\) : animator에 Access하여 Animator를 해당 Script에서 조정하기 위해 선언됩니다.
+* Start() : animator에 Access하여 Animator를 해당 Script에서 조정하기 위해 선언됩니다.
 * `if(m_StartSelectable)` : Selectable Class 변수가 존재한다면 실행되는 조건문 입니다.
-  * 1. `EventSystem.` : EventSystem Class에 접근합니다.
+  *
+    1. `EventSystem.` : EventSystem Class에 접근합니다.
     2. `current.` : 현재 EventSystem Class를 반환합니다.
-    3. `SetSelectedGameObject()` : SetSelectedGameObject\(\) 함수를 통해 m\_StartSelectable의 GameObject를 선택하여 반환합니다.
+    3. `SetSelectedGameObject()` : SetSelectedGameObject() 함수를 통해 m\_StartSelectable의 GameObject를 선택하여 반환합니다.
 {% endtab %}
 
 {% tab title="Helper Methods" %}
-{% code title="IP\_UI\_Screen.cs" %}
+{% code title="IP_UI_Screen.cs" %}
 ```csharp
 public virtual void StartScreen() {
     if (onScreenStart != null) {
@@ -215,10 +216,10 @@ public virtual void StartScreen() {
 {% endcode %}
 
 * `StartScreen()` : Screen이 시작하자마자 실행되는 함수입니다.
-  * `if(onScreenStart != null)` : onScreenStart Event가 존재한다면 Event를 Invoke\(\) 함수로 실행합니다.
+  * `if(onScreenStart != null)` : onScreenStart Event가 존재한다면 Event를 Invoke() 함수로 실행합니다.
   * `HandleAnimator("show")` : Animator Trigger Setting 함수입니다. parameter의 값에 따라 StateTransition을 실행시킵니다.
 
-{% code title="IP\_UI\_Screen.cs" %}
+{% code title="IP_UI_Screen.cs" %}
 ```csharp
 public virtual void CloseScreen() {
     if(onScreenClose != null) {
@@ -232,7 +233,7 @@ public virtual void CloseScreen() {
 
 * `CloseScreen()` : `StartScreen()` 함수와 동일하게 작동하지만 HandleAnimator의 parameter만 변경됩니다.
 
-{% code title="IP\_UI\_Screen.cs" %}
+{% code title="IP_UI_Screen.cs" %}
 ```csharp
 void HandleAnimator(string Trigger) {
     if(animator) {
@@ -259,11 +260,11 @@ public UnityEvent onTimeCompleted = new UnityEvent();
 
 * `m_ScreenTime` : Screen이 전환되기 전에 멈추는 시간을 설정하는 변수입니다.
 * `startTime` : Time.time을 통해 이번 프레임이 시작되는 시간을 저장하는 변수입니다.
-* `onTimeCompleted` : Event\(\) 변수입니다. 이 변수를 통해 해당 Script에 EventSystem을 넣어서 m\_ScreenTime 보다 큰 Time이라면, 해당 Event를 실행시킵니다.
+* `onTimeCompleted` : Event() 변수입니다. 이 변수를 통해 해당 Script에 EventSystem을 넣어서 m\_ScreenTime 보다 큰 Time이라면, 해당 Event를 실행시킵니다.
 {% endtab %}
 
 {% tab title="Helper Methods" %}
-{% code title="IP\_TimedUI\_Screen.cs" %}
+{% code title="IP_TimedUI_Screen.cs" %}
 ```csharp
 public override void StartScreen() {
     base.StartScreen();
@@ -282,7 +283,7 @@ IEnumerator WaitForTime() {
 
 * `StartScreen()` : IP\_UI\_Screen의 StartScreen이 Override된 함수입니다.
   * `base.StartScreen()` : base Class의 StartScreen을 실행시킨 후 Coroutine을 실행시킵니다.
-* `WaitForTime()` : IEnumerator를 통해 yield return new WaitForSeconds\(\) 함수를 통해 delay 시킨 후 아래의 Code를 실행시킵니다.
+* `WaitForTime()` : IEnumerator를 통해 yield return new WaitForSeconds() 함수를 통해 delay 시킨 후 아래의 Code를 실행시킵니다.
 {% endtab %}
 {% endtabs %}
 
@@ -292,7 +293,7 @@ IEnumerator WaitForTime() {
 {% tab title="Create Methods" %}
 Menu를 Attribute를 사용하여 Editor상의 항목을 제작합니다.
 
-{% code title="IP\_UI\_Menus.cs" %}
+{% code title="IP_UI_Menus.cs" %}
 ```csharp
 [MenuItem("ReusableUISystem/UI Tools/Create UI Group")]
 public static void CreateUIGroup() {
@@ -310,16 +311,18 @@ public static void CreateUIInputField() {
 
 * uiGroup : AssetDataBase inferface를 사용하여 Editor상에서 Menu를 생성합니다.
   * LoadAssetAtPath를 이용하여 해당 type의 Prefabs을 Hierarchy에 생성합니다.
-* CreateGameObject\(\) : 따로 작성자가 Refactoring 과정을 통해 뽑아낸 Method입니다.
+* CreateGameObject() : 따로 작성자가 Refactoring 과정을 통해 뽑아낸 Method입니다.
   * 해당 Method는 Instantiate를 통해 GameObject를 생성합니다.
 
 {% embed url="https://docs.unity3d.com/kr/530/Manual/AssetDatabase.html" %}
+
+
 {% endtab %}
 
 {% tab title="Refactoring Methods" %}
 Create Method에서 생성하는 항목을 Refactoring을 한 Method 입니다. 단순하게 Instantiate를 통해 GameObject를 생성하고, 생성을 못하면 Console에 오류 메시지를 표시하는 구조입니다.
 
-{% code title="IP\_UI\_Menus.cs" %}
+{% code title="IP_UI_Menus.cs" %}
 ```csharp
 public static GameObject CreateGameObject(GameObject obj, string name) {
     if(obj) {
@@ -335,8 +338,6 @@ public static GameObject CreateGameObject(GameObject obj, string name) {
 {% endcode %}
 {% endtab %}
 {% endtabs %}
-
-
 
 
 

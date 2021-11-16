@@ -1,22 +1,22 @@
 ---
-description: 'C# Basic delegate'
+description: C# Basic delegate
 ---
 
-# C\# Basic delegate
+# C# Basic delegate
 
 ## 무엇을 하려고 하는가?
 
-* C,C++의 함수 포인터처럼 함수를 안전히 캡슐화하는 대리자\(delegate\)의 개념과 사용방법 및 사례를 소개합니다.
+* C,C++의 함수 포인터처럼 함수를 안전히 캡슐화하는 대리자(delegate)의 개념과 사용방법 및 사례를 소개합니다.
 
 
 
-## 대리자\(delegate\)란?
+## 대리자(delegate)란?
 
 * Delegate sealed Class에서 파생되었으며, instance화 된 delegate는 매개변수로 전달하거나, 속성에 할당할 수 있습니다.
   * **이로 인해 어떤 함수에서 나중에 delegate를 호출하여 비동기 콜백이라는 방식을 사용할 수 있습니다.**
 
 {% hint style="info" %}
-비동기 콜백\(Asynchronous callback\), 동기 콜백\(Synchronous callback\)
+비동기 콜백(Asynchronous callback), 동기 콜백(Synchronous callback)
 
 delegate를 사용하는 가장 큰 이유는 비동기적인 콜백함수 호출에 있기 때문에 동기, 비동기에 관한 개념부터 잡아보려고 합니다.
 
@@ -26,7 +26,7 @@ delegate를 사용하는 가장 큰 이유는 비동기적인 콜백함수 호�
   * 시간에 흐름에 따라 순서대로 코드가 실행되지만, 리턴을 기다리지 않는 처리 방식
   * 이로 인해 프로세스는 요청에 따라 실행되지만, 프로세스가 끝나는 시간에 따라 다르게 리턴을 받습니다.
 
-위의 개념과 같이 작성자가 따로 비동기적인 처리를 하지 않는 이상 코드는 무조건 동기적 처리가 됩니다. 하지만 비동기적 처리를 이용해서 코드를 작성한다면, 
+위의 개념과 같이 작성자가 따로 비동기적인 처리를 하지 않는 이상 코드는 무조건 동기적 처리가 됩니다. 하지만 비동기적 처리를 이용해서 코드를 작성한다면,&#x20;
 
 우리가 사용하고 있는 앱이나 프로그램에서 새로고침 버튼을 누른다면, ui는 그대로 있고 내용만 새로 고쳐지는 현상을 재현할 수 있게 됩니다.
 {% endhint %}
@@ -38,7 +38,9 @@ delegate를 사용하는 가장 큰 이유는 비동기적인 콜백함수 호�
 
 이런 delegate는 일반적으로 원형을 제공하거나, 익명 함수를 통해 사용하여 생성합니다.
 
-{% page-ref page="c-basic-anonymous-functions/" %}
+{% content-ref url="c-basic-anonymous-functions/" %}
+[c-basic-anonymous-functions](c-basic-anonymous-functions/)
+{% endcontent-ref %}
 
 해당 delegate는 아래와 같은 방법으로 구현합니다.
 
@@ -104,7 +106,7 @@ namespace ConsoleApp {
 }
 ```
 
-위의 예시는 parameter로 delegate를 넘겨서 해당 함수를 호출하는 콜백함수의 형태를 띄고 있습니다. 이러한 형태로 MethodWithCallback\(\) 함수안에서 myDelegate에 등록된 함수도 실행시키고, 따로 기능을 추가할 수 있게 됩니다. 
+위의 예시는 parameter로 delegate를 넘겨서 해당 함수를 호출하는 콜백함수의 형태를 띄고 있습니다. 이러한 형태로 MethodWithCallback() 함수안에서 myDelegate에 등록된 함수도 실행시키고, 따로 기능을 추가할 수 있게 됩니다.&#x20;
 
 {% hint style="danger" %}
 이러한 대리자를 통해 일정 형식만 유지하면서, 보안 및 재사용성을 챙길 수 있는 이점이 있습니다. 하지만 이러한 이점에 저는 아래와 같은 불편함을 느꼈습니다.
@@ -114,13 +116,13 @@ namespace ConsoleApp {
 이 부분은 저의 설계부터 잘못한 탓이 있을 수 있지만서도, 콜백함수에 대한 흐름을 따라가기가 쉽지 않다는 점도 있었습니다.
 {% endhint %}
 
-### 
+###
 
 ### Wrapping
 
 * delegate는 instance Method를 Wrapping하기 위한 방법으로도 사용됩니다.
 * 이러한 Wrapping을 거친다면 delegate는 등록한 함수에 추가로 다른 함수도 등록할 수 있게 됩니다.
-  * -= 연산자를 통해 등록을 해제 할 수도 있습니다.
+  * \-= 연산자를 통해 등록을 해제 할 수도 있습니다.
 * 아래와 같은 예시를 보면 수월하게 이해하실 수 있습니다.
 
 ```csharp
@@ -157,7 +159,7 @@ public static void DelegateMethodCallback(string str, Del callback)
 }
 ```
 
-allDelegate를 통해 Del delegate의 객체를 하나로 Wrapping하여 콜백함수를 통해 호출하는 코드입니다. allDelegate\(\) 함수를 호출하는 순간 순서대로 등록한 d1, d2, d3가 그대로 호출됩니다.
+allDelegate를 통해 Del delegate의 객체를 하나로 Wrapping하여 콜백함수를 통해 호출하는 코드입니다. allDelegate() 함수를 호출하는 순간 순서대로 등록한 d1, d2, d3가 그대로 호출됩니다.
 
 * 함수 중 하나라도 catch를 통해 예외처리한 이외의 Exception이 throw된다면, 해당 Exception이 대리자의 호출자에게 해당 예외가 전달되어 호출목록의 후속 함수는 실행되지 않습니다.
 
@@ -184,7 +186,7 @@ static void Main(string[] args)
 
 이렇게 애매하게 설명한 이유는 기본적으로 데이터를 감싼다는 객체 지향의 개념과 유사하기 때문에 따로 책에서도 설명하지 않고, 굳이 찾으려고도 하지 않는 것 같습니다.
 
-중요한 것을 생각한대로 풀자면 **"원본 데이터를 훼손하지 않기 위해, 또 다른 데이터를 가지고 접근, 수정하는 방법"** 정도로 해설하면 될 것 같습니다.
+중요한 것을 생각한대로 풀자면 **"원본 데이터를 훼손하지 않기 위해, 또 다른 데이터를 가지고 접근, 수정하는 방법" **정도로 해설하면 될 것 같습니다.
 {% endhint %}
 
 
@@ -206,8 +208,8 @@ void method(Delegate1 d, Delegate2 e, System.Delegate f)
 
 ### delegate의 instance
 
-* C\# 2.0부터는 delegate를 인스턴스화 시킬 수 있습니다.
-* 하지만 이러한 방법은 무명함수\(Anonymous Method\)를 이용하는 방법 이전에 나왔기 때문에, 잘 쓰이진 않습니다.
+* C# 2.0부터는 delegate를 인스턴스화 시킬 수 있습니다.
+* 하지만 이러한 방법은 무명함수(Anonymous Method)를 이용하는 방법 이전에 나왔기 때문에, 잘 쓰이진 않습니다.
 
 ```csharp
 // Declare a delegate.
@@ -239,8 +241,6 @@ static void Main(string[] args)
 4. delegate가 Event를 등록한 개체에게 데이터를 전달합니다.
 
 해당 단락은 Event page를 통해 연계하여 기술하겠습니다.
-
-
 
 
 

@@ -2,7 +2,8 @@
 
 * APM을 수동으로 설치함에 따라 설치 과정에서 얻을 수 있는 설정 값이나, 파일들을 보고 전체적인 그림을 파악하는데 의미를 둔다.
 * Window 10 환경에서 적용시킨다.
-* VSCode를 사용했기에 이를 사용한 느낌을 똑같이 문서에 담고자 아래와 같은  Code block Convention을 작성한다.
+* VSCode를 사용했기에 이를 사용한 느낌을 똑같이 문서에 담고자 아래와 같은 \
+  Code block Convention을 작성한다.
 
 ```php
 줄번호     Property       PropertyValue
@@ -10,8 +11,9 @@
 ```
 
 * 혹여나 설정값을 제대로 수정했는데 오류 및 원하는 결과가 안나온 다면, 설치 과정을 점검해야 한다.
-* 그러나 명심해야 할 것은 APM 설치 링크에서 다운받은 파일들을 "전혀 문제가 없다." 
-* 설치 과정을 점검하는데 중점은  "같은 설정값을 쓰는 또다른 파일이 존재" 한다는 가능성이 굉장히 크다.
+* 그러나 명심해야 할 것은 APM 설치 링크에서 다운받은 파일들을 "전혀 문제가 없다."&#x20;
+* 설치 과정을 점검하는데 중점은 \
+  "같은 설정값을 쓰는 또다른 파일이 존재" 한다는 가능성이 굉장히 크다.
 * php까지 연동했다면, phpInfo를 통해 꼭 경로를 확인하도록 한다.
 
 ## 1. Apache
@@ -20,14 +22,14 @@
 {% tab title="1. 다운로드" %}
 {% embed url="https://www.apachelounge.com/download/" %}
 
-위 링크에 들어가서 자신의 컴퓨터의 시스템 종류에 맞는 것을 확인 한 후   
+위 링크에 들어가서 자신의 컴퓨터의 시스템 종류에 맞는 것을 확인 한 후 \
 알맞는 Bit를 선택하여 다운 받는다.
 {% endtab %}
 
 {% tab title="2. 설정값 수정" %}
 다운 받은 Apache 파일을 C:\ 혹은 D:\ 같은 root Directory에 다운받는다.
 
-그리고 root Directory\(이하 root\):\Apache24\conf\httpd.conf 파일을 찾아서 다음과 같은 Code로   
+그리고 root Directory(이하 root):\Apache24\conf\httpd.conf 파일을 찾아서 다음과 같은 Code로 \
 수정한다.
 
 ```php
@@ -84,26 +86,26 @@
 ```
 {% endtab %}
 
-{% tab title="3. 시스템 환경 변수\(Path\)에 Apache 등록" %}
-시스템 환경 변수\(Path\)는 OS가 명령 프롬프트 또는 터미널 창에서   
+{% tab title="3. 시스템 환경 변수(Path)에 Apache 등록" %}
+시스템 환경 변수(Path)는 OS가 명령 프롬프트 또는 터미널 창에서 \
 필요한 실행 파일을 찾는데 사용하는 시스템 변수다.
 
-즉, Path에 Apache\bin 파일을 등록하면 명령 프롬프트에서 따로 경로를 찾을 필요없이  
+즉, Path에 Apache\bin 파일을 등록하면 명령 프롬프트에서 따로 경로를 찾을 필요없이\
 바로 사용할 수있다.
 
-Window Key -&gt; 시스템 환경 변수 편집 -&gt; 환경 변수 -&gt;   
-시스템 변수 박스에서 Path 찾기-&gt; 더블 클릭하고 Apache\bin 경로를 새로만들기 -&gt;   
+Window Key -> 시스템 환경 변수 편집 -> 환경 변수 -> \
+시스템 변수 박스에서 Path 찾기-> 더블 클릭하고 Apache\bin 경로를 새로만들기 -> \
 확인
 {% endtab %}
 
 {% tab title="4. 명령 프롬프트를 통해 Apache 설치" %}
-CMD\(명령 프롬프트\)를 관리자 권한으로 실행시키고 다음 명령어 입력
+CMD(명령 프롬프트)를 관리자 권한으로 실행시키고 다음 명령어 입력
 
 {% hint style="info" %}
 httpd -k install
 {% endhint %}
 
-설치 완료라고 표시 된다면 성공.  
+설치 완료라고 표시 된다면 성공.\
 성공 메시지 밑에 자잘한 메시지는 무시해도 된다.
 
 그 다음 명령어 입력
@@ -112,7 +114,7 @@ httpd -k install
 net start apache2.4
 {% endhint %}
 
-그 후 작업 관리자 -&gt; 서비스에서 Apache2.4가 실행중인지 확인한다.
+그 후 작업 관리자 -> 서비스에서 Apache2.4가 실행중인지 확인한다.
 
 그리고 주소창에 "localhost:포트번호"를 입력하고 "It's work"라는 문구가 뜨면 설치 완료
 {% endtab %}
@@ -124,16 +126,16 @@ net start apache2.4
 {% tab title="1. 다운로드" %}
 {% embed url="https://windows.php.net/download/" %}
 
-자기 OS 환경\(bit, Windows Version 등\)에 맞는 Thread safe Zip 다운 받는다.
+자기 OS 환경(bit, Windows Version 등)에 맞는 Thread safe Zip 다운 받는다.
 {% endtab %}
 
-{% tab title="2. 설정값 수정\(php.ini\)" %}
+{% tab title="2. 설정값 수정(php.ini)" %}
 다운받은 파일의 압축을 풀면, 해당 파일 내부에 2개의 파일이 존재한다.
 
 * php.ini-development
 * php.ini-production
 
-이 중 php.ini-development를 php.ini로 수정한다.  
+이 중 php.ini-development를 php.ini로 수정한다.\
 그리고 다음과 같이 수정한다.
 
 ```php
@@ -153,7 +155,7 @@ net start apache2.4
 ```
 {% endtab %}
 
-{% tab title="3. 설정값 수정\(httpd.conf\)" %}
+{% tab title="3. 설정값 수정(httpd.conf)" %}
 php와 apache를 연동할 모듈을 Apache파일 httpd.conf의 맨 아래에 추가하도록 한다.
 
 ```php
@@ -163,16 +165,16 @@ AddType application/x-httpd-php .htm .html .php
 ```
 {% endtab %}
 
-{% tab title="4. phpInfo\(\) 출력" %}
+{% tab title="4. phpInfo() 출력" %}
 Apache에서 localhost를 치면 "it's work"라는 index.html이 실행 됐다.
 
-해당 파일은 Apache의 htdocs파일 내부의 index.html에 존재하며,  
+해당 파일은 Apache의 htdocs파일 내부의 index.html에 존재하며,\
 여기에 새로운 php파일을 생성한다.
 
-\*\*\* php파일은 Notepad같은 편집기를 통해 생성이 가능하고, 여기서 주의해야 할 점은  
-      보통 같은 경우는 파일명에 확장자명을 같이 적으면 해당 확장자명의 파일이 생성되지만,  
-      php파일은 그렇지 않다. 꼭 파일 형식을 모든 파일로 변경하고 파일 이름 끝에 php를 붙여 생성  
-      하도록 한다.
+\*\*\* php파일은 Notepad같은 편집기를 통해 생성이 가능하고, 여기서 주의해야 할 점은\
+&#x20;     보통 같은 경우는 파일명에 확장자명을 같이 적으면 해당 확장자명의 파일이 생성되지만,\
+&#x20;     php파일은 그렇지 않다. 꼭 파일 형식을 모든 파일로 변경하고 파일 이름 끝에 php를 붙여 생성\
+&#x20;     하도록 한다.
 
 해당 php 파일 내부는 다음과 같이 적는다.
 
@@ -196,7 +198,7 @@ Apache에서 localhost를 치면 "it's work"라는 index.html이 실행 됐다.
 {% endtab %}
 
 {% tab title="2. 시스템 환경 변수 추가" %}
-설치 하는 과정을 모두 Default로 설정했다면,   
+설치 하는 과정을 모두 Default로 설정했다면, \
 C 드라이브의 Program Files\MySQL\ 에 있다.
 
 우리가 사용하는 PC를 Server로 사용할 것이기 때문에, MySQL 폴더 안에는 MySQL Server 폴더가 있을 것이고, 이 폴더 안에 bin폴더를 시스템 환경 변수 Path에 추가한다.
@@ -207,7 +209,7 @@ Workbench를 설치 할 때, 기본적인 사용자를 생성할 수 있었는�
 
 mysql -u 기본사용자ID -p
 
-password를 입력 후 mysql&gt; 이 뜬다면 연동 성
+password를 입력 후 mysql> 이 뜬다면 연동 성
 {% endtab %}
 {% endtabs %}
 
@@ -221,7 +223,7 @@ password를 입력 후 mysql&gt; 이 뜬다면 연동 성
 {% endtab %}
 
 {% tab title="2. 다운받은 파일 경로 설정" %}
-php를 이용해서   
+php를 이용해서 \
 Apache라는 웹 호스팅 서비스를 할 수 있는 웹 서버를 통해 phpMyAdmin이라는 웹페이지를 통해 MySQL이라는 데이터베이스를 UI를 통해 볼 수 있다.
 
 라는 개념인데, Apache를 통해 웹에서 볼 수 있게 되기 때문에, htdocs 폴더 내부에 phpmyadmin이라는 파일을 생성 후 압축을 푼다.
@@ -257,4 +259,3 @@ config.sample.inc.php 파일을 config.inc.php로 수정 후 다음과 같이 �
 주소창에 localhost:포트번호/phpmyadmin 이라고 치고 ID, Password를 입력하는 창이 나오면 성공
 {% endtab %}
 {% endtabs %}
-

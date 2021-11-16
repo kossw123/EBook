@@ -4,10 +4,10 @@ description: tutorial TriviaGame TDD
 
 # tutorial TriviaGame TDD
 
-##  무엇을 하려고 하는가?
+## &#x20;무엇을 하려고 하는가?
 
-* 게임을 제작할 때 많은 버그와, 이슈, Side Effect가 발생됩니다. 이를 해결할 때 QA\(_Quality Assurance_\) 라는 가이드라인을 통한 수정을 할 수도 있지만, 제작하는 과정에서 미리 테스트를 통해서 발견 할 수 있는 버그들은 제작과정에서 고치는 것이 수월합니다.
-* 그 방법의 하나로써 TDD\(Test - Driven - Development\)라는 방법론을 채택하여 Unity 자체에 탑재된 기능의 하나인 Test Runner를 사용하여 Trivia Game을 만들고, Unit 단위로 올바른 값이 들어간지 체크할 수 있습니다.
+* 게임을 제작할 때 많은 버그와, 이슈, Side Effect가 발생됩니다. 이를 해결할 때 QA(_Quality Assurance_) 라는 가이드라인을 통한 수정을 할 수도 있지만, 제작하는 과정에서 미리 테스트를 통해서 발견 할 수 있는 버그들은 제작과정에서 고치는 것이 수월합니다.
+* 그 방법의 하나로써 TDD(Test - Driven - Development)라는 방법론을 채택하여 Unity 자체에 탑재된 기능의 하나인 Test Runner를 사용하여 Trivia Game을 만들고, Unit 단위로 올바른 값이 들어간지 체크할 수 있습니다.
 
 {% hint style="info" %}
 보통 게임을 플레이 하면서 충돌이나, 플레이가 안된다거나, 렌더링이 안된다거나 등에 대한 오류가 대부분을  차지하고, 값에 대한 올바른 값이 들어갔는가에 대한 오류는 아주 극소수입니다.
@@ -18,7 +18,9 @@ description: tutorial TriviaGame TDD
 * 해당 자료는 상업적으로 이용하지 않고 이용되서도 안됩니다.
 * 아래의 링크를 타고 들어가면 해당 문서에 대한 보다 풍부한 자료가 있습니다.
 
-{% embed url="https://engineering.etermax.com/how-to-tdd-in-unity-using-the-mvp-pattern-a646ffbe996f" caption="MVP\(Model ,View, Presenter\)패턴을 사용한 TDD 사용법" %}
+{% embed url="https://engineering.etermax.com/how-to-tdd-in-unity-using-the-mvp-pattern-a646ffbe996f" %}
+MVP(Model ,View, Presenter)패턴을 사용한 TDD 사용법
+{% endembed %}
 
 ## 작성법 - UI 배치
 
@@ -28,7 +30,7 @@ description: tutorial TriviaGame TDD
 * 위의 Hierarchy 그림처럼 GameObject를 배치하는 게 최종 목표입니다.
 * **지금 부터 본문에 적는 Object에 대한 설정값은 보기에 편하도록 설정한 것이니, 다르게 설정하셔도 무방합니다.**
 
-![&#xC704;&#xC758; &#xADF8;&#xB9BC;&#xCC98;&#xB7FC; &#xBC30;&#xCE58;&#xD569;&#xB2C8;&#xB2E4;.](../../../../.gitbook/assets/image%20%2887%29.png)
+![위의 그림처럼 배치합니다.](<../../../../.gitbook/assets/image (87).png>)
 
 * Canvas
   * Canvas Scaler - UI Scale Mode를 Scale With Screen Size로 설정해 1920 \* 1080로 조절합니다.
@@ -43,9 +45,9 @@ description: tutorial TriviaGame TDD
     * Image Component 추가 후 Tina Sprite 설정합니다.
     * 화면의 양 옆에 배치합니다.
 
- 여기까지 했으면 아래와 같은 그림의 Object 배치가 완료 됩니다.
+&#x20;여기까지 했으면 아래와 같은 그림의 Object 배치가 완료 됩니다.
 
-![](../../../../.gitbook/assets/image%20%28130%29.png)
+![](<../../../../.gitbook/assets/image (130).png>)
 
 * Score
   * Score Object를 추가하고 Image Component를 추가하여, ScoreContainer Sprite로 설
@@ -55,19 +57,19 @@ description: tutorial TriviaGame TDD
     * 작성자는 300 / 200정도로 설정했습니다.
   * Score Label Object를 Child Object로 추가합니다.
 * ScoreLabel
-  * Score Object의 Child Object로써, TextMeshPro - Text\(UI\) Component를 추가합니다.
-  * 굵게\(Font Style : B\), 크기는 50\(Font Size : 50\), Alignment\(Center, Middle\)을 설정합니다.
+  * Score Object의 Child Object로써, TextMeshPro - Text(UI) Component를 추가합니다.
+  * 굵게(Font Style : B), 크기는 50(Font Size : 50), Alignment(Center, Middle)을 설정합니다.
     * 임의대로 바꿔도 무방합니다.
 * ScoreText
-  * Score Object Child Object로써, TextMeshPro - Text\(UI\) Component를 추가합니다.
+  * Score Object Child Object로써, TextMeshPro - Text(UI) Component를 추가합니다.
   * ScoreLabel과 같이 Font에 대한 설정을 임의 대로 합니다.
-    * 작성자는 \(B, 50, Center / Middle\)로 설정하고 Vertex Color를 Black으로 설정했습니다.
+    * 작성자는 (B, 50, Center / Middle)로 설정하고 Vertex Color를 Black으로 설정했습니다.
 
-![&#xC784;&#xC758;&#xB85C; &#xC791;&#xC131;&#xD55C; Score Object&#xC5D0; &#xB300;&#xD55C; &#xACB0;&#xACFC;](../../../../.gitbook/assets/image%20%28119%29.png)
+![임의로 작성한 Score Object에 대한 결과](<../../../../.gitbook/assets/image (119).png>)
 
 * Question
   * Image Component를 추가하여 QuestionContainer Sprite로 설정합니다.
-  * Width, Height\(1050, 920\)를 설정합니다.
+  * Width, Height(1050, 920)를 설정합니다.
 * QuestionContainer
   * Question의 Child Object로써 Image Component를 추가하여 TextContainer Sprite로 설정합니다.
   * Anchors를 아래와 같이 설정합니다.
@@ -76,7 +78,7 @@ description: tutorial TriviaGame TDD
   * Pivot을 설정합니다.
     * X : 0.5 / Y : 1
 * QuestionText
-  * TextMesh Pro - Text\(UI\) Component를 추가합니다.
+  * TextMesh Pro - Text(UI) Component를 추가합니다.
   * Anchors를 아래와 같이 설정합니다.
     * min X : 0 / min Y : 0
     * max X : 1 / max Y : 1
@@ -105,13 +107,13 @@ description: tutorial TriviaGame TDD
       * Right : 50 / Height : 512
 * Answer N Object
   * Answer Object의 Child Object로써, 해당 Object는 Button Component를 통해 동작합니다.
-  * Button Component 추가 후 On Click\(\) Event를 추가해줍니다.
+  * Button Component 추가 후 On Click() Event를 추가해줍니다.
 
 작성법 - Script 단락에서 Answer Object에 대한 Script와 동시에 배치도 기재하겠습니다.
 
 여기까지 하셨다면 아래의 그림과 같은 결과가 나옵니다.
 
-![](../../../../.gitbook/assets/image%20%285%29.png)
+![](<../../../../.gitbook/assets/image (5).png>)
 
 * Feedback
   * Animator Component를 추가하여 상황에 따른 동작을 추가합니다.
@@ -129,9 +131,9 @@ description: tutorial TriviaGame TDD
   * Bonzo
     * Correct Object의 Child Object로써 Image Component를 추가하여 BonzoCorrect Sprite로 설정합니다.
     * Rect Transform을 아래와 같이 설정합니다.
-      * Width : 268 / Height : 442\(적당한 크기로 설정합니다.\)
+      * Width : 268 / Height : 442(적당한 크기로 설정합니다.)
   * Text
-    * Correct Object의 Child Object로써 TextMeshPro - Text\(UI\)를 추가하여 아래와 같이 설정합니다.
+    * Correct Object의 Child Object로써 TextMeshPro - Text(UI)를 추가하여 아래와 같이 설정합니다.
       * Font Style : B
       * Font Size : 50
       * Alignmnet : Center / Middle
@@ -147,14 +149,16 @@ description: tutorial TriviaGame TDD
 
 해당 프로젝트의 완전환 파일은 아래의 링크에서 다운 받으실 수 있습니다.
 
-{% embed url="https://github.com/ValeriaColombo/unity\_tdd\_example" caption="Complete Project File " %}
+{% embed url="https://github.com/ValeriaColombo/unity_tdd_example" %}
+Complete Project File&#x20;
+{% endembed %}
 
 
 
 * Script들을 생성하고 아래의 Project View 그림처럼 폴더가 나눠집니다.
 * 각 폴더는 이름과 관련된 Script들이 모아져 있습니다.
 
-![Scirpts&#xC758; &#xD558;&#xC704; &#xD3F4;&#xB354;](../../../../.gitbook/assets/image%20%2898%29.png)
+![Scirpts의 하위 폴더](<../../../../.gitbook/assets/image (98).png>)
 
 {% tabs %}
 {% tab title="AnswerView.cs" %}
@@ -401,30 +405,30 @@ namespace TriviaGame.Service {
 
 * 위의 Script들을 생성 했다면 아래의 가이드라인을 따라 Object에 Script들을 추가합니다.
   * Answer 0 Object에 AnswerView.cs 추가 합니다.
-    * OnClick\(\) Event에 Answer 0 Object를 넣고 Function을 AnswerView.Click으로 설정합니다.
+    * OnClick() Event에 Answer 0 Object를 넣고 Function을 AnswerView.Click으로 설정합니다.
     * AnswerView.cs의 AnswerText에는 Child Object인 AnswerText를 설정합니다.
-  * 이런 방식으로 Answer 0~4 Object를 생성합니다.
+  * 이런 방식으로 Answer 0\~4 Object를 생성합니다.
 
 
 
 * GamePlayScreen -- TriviaGameView.cs 추가 합니다.
   * Score Text, Question Text Object에는 Hierarchy에서 같은 이름의 Object로 설정합니다.
   * Answer Size 4로 조정합니다.
-  * 생성한 Answer 0~4를 Answers에 넣습니다.
+  * 생성한 Answer 0\~4를 Answers에 넣습니다.
   * Feedback Animations 항목에 Feedback Animator를 넣습니다.
 
 ## 작성법 - TDD
 
 * 이번 TDD는 Edit Mode를 사용한 Script 단위에서의 Testing 방식입니다.
 * Play Mode로 하는 방식은 나중에 서술하겠습니다.
-* Window -&gt; General -&gt; Test Runner창을 실행시키면 아래와 같은 그림이 나옵니다.
+* Window -> General -> Test Runner창을 실행시키면 아래와 같은 그림이 나옵니다.
 
-![Window -&amp;gt; General -&amp;gt; Test Runner -&amp;gt; Edit mode&#xC758; &#xAE30;&#xBCF8;&#xD654;&#xBA74;](../../../../.gitbook/assets/image%20%2879%29.png)
+![Window -> General -> Test Runner -> Edit mode의 기본화면](<../../../../.gitbook/assets/image (79).png>)
 
 * Create EditMode Test Assembly Folder를 누르면 Test Runner에 필요한 Assembly Definition File을 생성합니다.
 * 해당 파일은 아래와 같습니다.
 
-![ProjectView&#xC758; Assembly File / Assembly File&#xC758; Inspector / Test Runner &#xCC3D;](../../../../.gitbook/assets/image%20%284%29.png)
+![ProjectView의 Assembly File / Assembly File의 Inspector / Test Runner 창](<../../../../.gitbook/assets/image (4).png>)
 
 * **위의 사진은 예시를 들기위한 사진이기 때문에 본문의 Complete Project File이 아닙니다.**
 * 그 후 미리 생성한 TriviaGamePresenterTests.cs파일을 Test Folder에 넣습니다.
@@ -641,12 +645,13 @@ namespace Test.TriviaGame
 
 * 위의 방식대로 Script를 생성한다면 Test Runner에 다음과 같은 사진의 결과가 됩니다.
 
-![Test Scirpt &#xCD94;&#xAC00; &#xD6C4; TestRunner&#xB97C; &#xB3CC;&#xB9B0; &#xACB0;&#xACFC;](../../../../.gitbook/assets/image%20%2877%29.png)
+![Test Scirpt 추가 후 TestRunner를 돌린 결과](<../../../../.gitbook/assets/image (77).png>)
 
 ## 마치며
 
 * TDD에 대한 Explanation 문서가 굉장히 길것 같습니다. 문서를 보실 때 최대한 가독성을 높이는 구성으로 작성하겠지만 불편한 점이 있다면 아래의 메일로 보완점이나, 바라는점을 보내주시면 반영하겠습니다.
 * 8iioww@gmail.com
 
-{% page-ref page="../../how-to-guide/unity/how-to-guide-triviagame-tdd.md" %}
-
+{% content-ref url="../../how-to-guide/unity/how-to-guide-triviagame-tdd.md" %}
+[how-to-guide-triviagame-tdd.md](../../how-to-guide/unity/how-to-guide-triviagame-tdd.md)
+{% endcontent-ref %}

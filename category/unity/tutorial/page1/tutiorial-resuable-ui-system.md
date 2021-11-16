@@ -11,11 +11,11 @@ description: tutiorial Resuable UI System
 * 해당 문서는 상업적으로 이용되지 않습니다.
 * 문서보다 영상을 보면서 작성하시는게 좀 더 스킬업에 도움이 될 수 있습니다.
 
-{% embed url="https://www.youtube.com/watch?v=8L9osm0h5J4&list=PL5V9qxkY\_RnJAZUTVXewQrJWbb5B7IU8y&index=2&t=0s" %}
+{% embed url="https://www.youtube.com/watch?v=8L9osm0h5J4&list=PL5V9qxkY_RnJAZUTVXewQrJWbb5B7IU8y&index=2&t=0s" %}
 
 * Reusable UI System은 아래의 그림을 모방하여 UI를 구성합니다.
 
-![&#xCD08;&#xAE30;&#xD654;&#xBA74; UI &#xAD6C;&#xC131;](../../../../.gitbook/assets/image%20%28126%29.png)
+![초기화면 UI 구성](<../../../../.gitbook/assets/image (126).png>)
 
 ## 주의점
 
@@ -53,7 +53,7 @@ description: tutiorial Resuable UI System
 
 
 
-* Image Object를 생성하여 Icon Object를 생성합니다. 
+* Image Object를 생성하여 Icon Object를 생성합니다.&#x20;
   * todo\_logo\_001를 대입하여 Icon을 생성합니다.
   * Width, Height를 적당히 조절하여 크기를 설정합니다.
 
@@ -76,9 +76,9 @@ description: tutiorial Resuable UI System
 
 * Forget Password Button을 생성합니다.
   * Image Component를 삭제합니다.
-  * Text Component의 문구를 수정하고, Font\(LATO-SEMIBOLD\), 크기와 색을 수정합니다.
+  * Text Component의 문구를 수정하고, Font(LATO-SEMIBOLD), 크기와 색을 수정합니다.
 * Button Object를 생성하여 Sign In Object를 생성합니다.
-  * Text, Font, Alignment, Color를 수정합니다. 
+  * Text, Font, Alignment, Color를 수정합니다.&#x20;
   * 임의로 수정하셔도 무방합니다. 견본은 아래의 그림에 있습니다.
 * Panel Object를 생성하여 위치를 수정하고 Text를 수정하고 Button Object를 생성합니다.
   * 수정된 위치의 옆에 Button Object를 배치하고 Image Component를 제거합니다.
@@ -93,12 +93,12 @@ description: tutiorial Resuable UI System
 
 여기까지 과정은 아래의 그림과 같습니다.
 
-![Login\_Screen &#xC644;&#xC131;&#xBCF8;](../../../../.gitbook/assets/image%20%28140%29.png)
+![Login\_Screen 완성본](<../../../../.gitbook/assets/image (140).png>)
 
 * 두번째 Screen인 Register\_Screen을 작성합니다.
 * Register\_Screen은 Login\_Screen과 같은 방법으로 작성하되, 배치와 Text 문구만 변환한 것이기 때문에 자세한 설명은 그림으로 대체하겠습니다.
 
-![Register\_Screen &#xC644;&#xC131;&#xBCF8;](../../../../.gitbook/assets/image%20%2890%29.png)
+![Register\_Screen 완성본](<../../../../.gitbook/assets/image (90).png>)
 
 * Screen의 작성은 끝났고, FadeIn, Out효과와 Show, Hide Animation을 추가합니다.
 
@@ -112,32 +112,32 @@ Login\_Screen Object의 Animator에 생성한 Animator를 넣고, Animation View
 * IP\_Base\_Screen\_Show : 보여줄 때의 Animation
 * IP\_Base\_Screen\_Hide : 숨길 때 Animation
 
-![Animator&#xC5D0; &#xB4E4;&#xC5B4;&#xAC08; Clip &#xBAA9;&#xB85D;](../../../../.gitbook/assets/image%20%28115%29.png)
+![Animator에 들어갈 Clip 목록](<../../../../.gitbook/assets/image (115).png>)
 
 * Idle Animation에서 변경할 내용입니다. Idle Animation은 변경할 Property가 있지만 변화값을 주지 않습니다.
-  * Alpha\(0\)
-  * Interactable\(false\)
-  * Block RayCasts\(false\)
+  * Alpha(0)
+  * Interactable(false)
+  * Block RayCasts(false)
 
-![Idle Animation](../../../../.gitbook/assets/image%20%289%29.png)
+![Idle Animation](<../../../../.gitbook/assets/image (9).png>)
 
 
 
 * Hide Animation에서 변경할 내용입니다. 0:00부터 0:20까지의 20프레임의 변화값을 넣습니다.
-  * Alpha : 1 ~ 0
-  * Interactable : true ~ false
-  * Block RayCasts : true ~ false
+  * Alpha : 1 \~ 0
+  * Interactable : true \~ false
+  * Block RayCasts : true \~ false
 
-![Hide Animation](../../../../.gitbook/assets/image%20%2852%29.png)
+![Hide Animation](<../../../../.gitbook/assets/image (52).png>)
 
 
 
 * Show Animation에서 변경할 내용입니다. 0:00부터 0:20까지의 20프레임의 변화값을 넣습니다.
-  * Alpha : 0 ~ 1
-  * Interactable : false ~ true
-  * Block RayCasts : false ~ true
+  * Alpha : 0 \~ 1
+  * Interactable : false \~ true
+  * Block RayCasts : false \~ true
 
-![Show Animation](../../../../.gitbook/assets/image%20%2829%29.png)
+![Show Animation](<../../../../.gitbook/assets/image (29).png>)
 {% endtab %}
 
 {% tab title="2. StateMachine 설정" %}
@@ -145,13 +145,13 @@ Login\_Screen Object의 Animator에 생성한 Animator를 넣고, Animation View
 
 추가한 Animation State끼리의 Transition을 위해 아래의 조건과 같이 설정합니다.
 
-* Idle  -&gt; Show State Condition : show
-* Show -&gt; Hide State Condition : hide
-* Hide -&gt; Idle State Condition : 없음
+* Idle  -> Show State Condition : show
+* Show -> Hide State Condition : hide
+* Hide -> Idle State Condition : 없음
 
 이와 같이 설정했다면 아래의 그림과 같은 Animator View를 가지게 됩니다.
 
-![Animator View](../../../../.gitbook/assets/image%20%2836%29.png)
+![Animator View](<../../../../.gitbook/assets/image (36).png>)
 {% endtab %}
 
 {% tab title="3. Animator Override Controller 생성" %}
@@ -165,19 +165,19 @@ Login\_Screen Object의 Animator에 생성한 Animator를 넣고, Animation View
 
 그 결과 아래의 그림과 같습니다.
 
-![Animator Override Controller &#xACB0;&#xACFC; &#xD654;&#xBA74;](../../../../.gitbook/assets/image%20%28101%29.png)
+![Animator Override Controller 결과 화면](<../../../../.gitbook/assets/image (101).png>)
 {% endtab %}
 {% endtabs %}
 
 * Fade 효과를 위해 하나의 Panel Object를 생성하고 검은색으로 변경합니다.
 
-![Fader Panel ](../../../../.gitbook/assets/image%20%2891%29.png)
+![Fader Panel ](<../../../../.gitbook/assets/image (91).png>)
 
 * Register\_Screen에서 Join Button을 눌렀을 때 Login\_Screen으로 돌아가는 중에 띄울 Panel Object를 생성합니다.
 * todo\_login\_001을 넣어서 배경을 띄우고, Text Component를 넣어서 대기문구를 작성합니다.
 * 그 결과 아래와 같은 그림을 가지게 됩니다.
 
-![Wait Screen](../../../../.gitbook/assets/image%20%28103%29.png)
+![Wait Screen](<../../../../.gitbook/assets/image (103).png>)
 
 * 각 Object에 대해 알맞는 기능의 Script를 추가합니다.
   * 총 3가지 Script가 작성됩니다.
@@ -186,8 +186,8 @@ Login\_Screen Object의 Animator에 생성한 Animator를 넣고, Animation View
     * IP\_TimedUI\_Screen : Register\_Screen에서 특정 Button을 누르면 다시 Login\_Screen으로 돌아가는 Script 입니다.
 
 {% tabs %}
-{% tab title="IP\_UI\_System.cs" %}
-{% code title="IP\_UI\_System.cs" %}
+{% tab title="IP_UI_System.cs" %}
+{% code title="IP_UI_System.cs" %}
 ```csharp
 using System.Collections;
 using System.Collections.Generic;
@@ -266,8 +266,8 @@ namespace DataPractice.UI {
 {% endcode %}
 {% endtab %}
 
-{% tab title="IP\_UI\_Screen.cs" %}
-{% code title="IP\_UI\_Screen.cs" %}
+{% tab title="IP_UI_Screen.cs" %}
+{% code title="IP_UI_Screen.cs" %}
 ```csharp
 using System.Collections;
 using System.Collections.Generic;
@@ -312,8 +312,8 @@ namespace DataPractice.UI {
 {% endcode %}
 {% endtab %}
 
-{% tab title="IP\_TimedUI\_Screen.cs" %}
-{% code title="IP\_TimedUI\_Screen.cs" %}
+{% tab title="IP_TimedUI_Screen.cs" %}
+{% code title="IP_TimedUI_Screen.cs" %}
 ```csharp
 using System.Collections;
 using System.Collections.Generic;
@@ -362,31 +362,31 @@ namespace DataPractice.UI
   * Fader = Fader Object를 추가합니다.
 {% endtab %}
 
-{% tab title="Login\_Screen" %}
+{% tab title="Login_Screen" %}
 * IP\_UI\_Screen Script 추가합니다.
 * Animator를 IP\_UI\_Base\_Screen\_Controller로 설정합니다.
-* SignUp Button Object에 OnClick\(\) Event 추가합니다.
+* SignUp Button Object에 OnClick() Event 추가합니다.
   * Target Object에 UI Object Controller로 설정합니다.
   * Function = IP\_UI\_System.SwitchScreen으로 설정하고 parameter로 Register\_Screen으로 설정합니다.
     * None밖에 안뜨는 경우 다른 Screen에 IP\_UI\_Screen Script를 추가한다면 해결할 수 있습니다.
 {% endtab %}
 
-{% tab title="Register\_Screen" %}
+{% tab title="Register_Screen" %}
 * IP\_UI\_Screen Script를 추가합니다.
 * Animator를 TodoApp\_RegisterScreen\_Controller로 설정합니다.
-* SignIn\_Button Object에 OnClick\(\) Event를 추가합니다.
+* SignIn\_Button Object에 OnClick() Event를 추가합니다.
   * UI Object Controller를 Target Object로 잡고 IP\_UI\_Screen.SwitchScreen을 통해 WaitScreen으로 변경합니다.
 {% endtab %}
 
-{% tab title="Wait\_Screen" %}
+{% tab title="Wait_Screen" %}
 * IP\_TimedUI\_Screen Script를 추가합니다.
 * Animator를 TodoApp\_WaitScreen\_Controller로 설정합니다.
-* OnTimeComplete\(\) Event를 추가합니다.
+* OnTimeComplete() Event를 추가합니다.
   * UI Object Controller를 Target Object로 설정하고 IP\_UI\_Screen.SwitchScreen을 Login\_Screen으로 설정합니다.
 {% endtab %}
 {% endtabs %}
 
- 여기까지 Reusable UI System 작성이 끝났습니다.
+&#x20;여기까지 Reusable UI System 작성이 끝났습니다.
 
 ## Bouns Menu Editor 작성
 
@@ -394,7 +394,7 @@ namespace DataPractice.UI
 * Script가 존재하기만 해도 적용됩니다.
 * 그 내용은 아래와 같습니다.
 
-{% code title="IP\_UI\_Menus.cs" %}
+{% code title="IP_UI_Menus.cs" %}
 ```csharp
 using System.Collections;
 using System.Collections.Generic;
@@ -425,7 +425,7 @@ namespace DataPractice.UI {
 
 * 해당 내용의 Script를 생성하면 아래와 같은 그림의 항목이 Editor에 생성이 됩니다.
 
-![](../../../../.gitbook/assets/image%20%28122%29.png)
+![](<../../../../.gitbook/assets/image (122).png>)
 
 ## 마치며
 
@@ -433,5 +433,6 @@ namespace DataPractice.UI {
 * 해당 Project는 Attribute를 사용하여 해당 항목을 수정하면 동기화가 안되고 새롭게 추가해야 하기 때문에 Project 성질이 굉장히 민감하다고 느꼈습니다.
 * 이에 대한 추가 정보는 아래의 Page Link에 기재했습니다.
 
-{% page-ref page="../../how-to-guide/unity/how-to-guide-reusable-ui-system.md" %}
-
+{% content-ref url="../../how-to-guide/unity/how-to-guide-reusable-ui-system.md" %}
+[how-to-guide-reusable-ui-system.md](../../how-to-guide/unity/how-to-guide-reusable-ui-system.md)
+{% endcontent-ref %}

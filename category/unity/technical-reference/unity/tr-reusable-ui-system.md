@@ -2,7 +2,7 @@
 
 ## 무엇을 하려고 하는가?
 
-* 해설문서\(Explanation\)에서의 설명이 부족했던 부분을 보완하는 문서입니다.
+* 해설문서(Explanation)에서의 설명이 부족했던 부분을 보완하는 문서입니다.
 * 함수 및 의문점에 대한 문서가 중점입니다.
 * 이 문서는 상업적으로 이용하지 않습니다.
 
@@ -10,7 +10,7 @@
 
 {% tabs %}
 {% tab title="GameObject와 Component의 개념" %}
-GameObject : 유니티 씬\(scene\)에서 전체 엔티티\(entity\)의 기본 클래스를 나타냅니다.
+GameObject : 유니티 씬(scene)에서 전체 엔티티(entity)의 기본 클래스를 나타냅니다.
 
 Component : GameObject에 첨부된 모든 Component의 기본 클래스를 나타냅니다.
 {% endtab %}
@@ -25,7 +25,7 @@ Inspector에서 어떤 기능을 추가할 때 Component를 추가한다고 하�
 
 
 * Component Pattern을 가지고는 있는데, Pattern이 가진 장단점은 어떤것인가?
-  * 장 : Class로 분리하여 가독성\(Readability\)을 늘리고, 결합도\(Coupling\)을 줄입니다.
+  * 장 : Class로 분리하여 가독성(Readability)을 늘리고, 결합도(Coupling)을 줄입니다.
   * 단 : 확장성이 좋진 않고, 각 Component간에 통신의 비용이 높습니다.
 
 
@@ -40,7 +40,8 @@ Inspector에서 어떤 기능을 추가할 때 Component를 추가한다고 하�
 * GetComponent, 변수선얼을 통한 Access 활용방법은 어떤것이 있는가?
   * Unity Document를 살펴본다면 Public Function을 통해 확인 할 수 있습니다.
   * 대부분의 Component를 조작할 때 사용됩니다. 이에 대한 상황은 여러 프로젝트를 하면서 익히는 게 최선이지만 제가 느꼈던 필요한 상황을 아래에 기재 했습니다.
-    * 1. 같은 Object의 Component에 접근할 때
+    *
+      1. 같은 Object의 Component에 접근할 때
          1. GetComponent를 통해 접근합니다.
             1. GetComponent, GetComponentsInChildren, GetComponentsInParent
       2. Hierarchy상의 현재 Object가 아닌 다른 Object에 접근하고 싶을 때
@@ -57,10 +58,10 @@ Inspector에서 어떤 기능을 추가할 때 Component를 추가한다고 하�
 
 * GameObjects are all the same type.
 * Components come in many types.
-* GameObjects contain \(instances of\) components.
+* GameObjects contain (instances of) components.
 * Every GameObject contains a Transform component.
 * Every component can access its gameObject.
-* Every component also get convenience accessors \(properties\) that retrieve the corresponding properties of its gameObject, including .transform, as you have observed.
+* Every component also get convenience accessors (properties) that retrieve the corresponding properties of its gameObject, including .transform, as you have observed.
 
 
 
@@ -68,9 +69,11 @@ Inspector에서 어떤 기능을 추가할 때 Component를 추가한다고 하�
 * Components는 많은 타입을 제공합니다.
 * GameObject는 Component를 포함하고 있습니다.
   * 모든 GameObject는 Transform Component를 포함하고 있습니다.
-* 모든 Component 또한 Transform을 포함한 GameObject에 접근하는 편의성 접근자\(convenience accessors\) Properties가 존재합니다. 
+* 모든 Component 또한 Transform을 포함한 GameObject에 접근하는 편의성 접근자(convenience accessors) Properties가 존재합니다.&#x20;
 
-{% embed url="https://answers.unity.com/questions/42472/whats-the-difference-between-the-component-and-gam.html" caption="\\" %}
+{% embed url="https://answers.unity.com/questions/42472/whats-the-difference-between-the-component-and-gam.html" %}
+\\
+{% endembed %}
 
 결론적으로 GameObject Class로 접근하는 방법과, GetComponent를 사용하여 Component에 접근하는 방법이 같습니다. 어떤것을 쓰냐에 따라 Shortcut code를 작성할 수도 있고, Component 내부의 Component를 생성하여 return 받을 수 있습니다.
 
@@ -83,7 +86,7 @@ Inspector에서 어떤 기능을 추가할 때 Component를 추가한다고 하�
 * IP\_UI\_Screen Script Component가 공통적으로 들어가 있기 때문입니다.
 * GameObject를 받기에는 같은 타입을 가지기 때문에 Shortcut으로 작성 할 수 없기 때문입니다.
 
-```text
+```
 GameObject[] screen = new GameObject[0];
 
 screen = gameObject.GetComponentsInChildren<IP_UI_System>(true);
@@ -101,17 +104,17 @@ Component, GameObject 둘중 하나만 받아도 상관이 없습니다. 해당 
 
 {% tabs %}
 {% tab title="Coroutine과 Update의 간단한 개념" %}
-Coroutine : 특정 함수\(IEnumerator type Function\)를 호출하면 수행할 내용을 완수하고 반환\(yield\) 시킨다음 함수가 호출된 시점으로 돌아가서 다른 Code를 실행시킵니다.
+Coroutine : 특정 함수(IEnumerator type Function)를 호출하면 수행할 내용을 완수하고 반환(yield) 시킨다음 함수가 호출된 시점으로 돌아가서 다른 Code를 실행시킵니다.
 
 {% embed url="https://docs.unity3d.com/kr/530/Manual/Coroutines.html" %}
 
-Update : 매 프레임마다 호출되는 함수입니다. 
+Update : 매 프레임마다 호출되는 함수입니다.&#x20;
 
 {% embed url="https://docs.unity3d.com/kr/530/ScriptReference/MonoBehaviour.Update.html" %}
 {% endtab %}
 
 {% tab title="왜 이렇게 비교하게 되었는가?" %}
-해당 Project에서는 Update\(\) 함수를 사용하지 않습니다. 그리고 아마 다른 UI Project에서도 Update\(\) 함수를 프레임마다 변화해야 하는 변수 혹은 함수가 아닌 이상 무분별하게 사용하진 않습니다.
+해당 Project에서는 Update() 함수를 사용하지 않습니다. 그리고 아마 다른 UI Project에서도 Update() 함수를 프레임마다 변화해야 하는 변수 혹은 함수가 아닌 이상 무분별하게 사용하진 않습니다.
 
 이러한 이유를 찾고자 해당 문서는 작성하게 되었습니다.
 {% endtab %}
@@ -125,9 +128,7 @@ Update : 매 프레임마다 호출되는 함수입니다.
 
 그리고 이러한 Message System은 비용이 많이 들기 때문에 최적화를 중요시 한다면 지양하는 것이 Unity Tip이라고 합니다.
 
-그렇기 때문에 해당 Project에서는 Update\(\) 함수를 사용하지 않고 함수로만 통신하며, Coroutine을 통해 Scene을 Load합니다
+그렇기 때문에 해당 Project에서는 Update() 함수를 사용하지 않고 함수로만 통신하며, Coroutine을 통해 Scene을 Load합니다
 {% endtab %}
 {% endtabs %}
-
-
 

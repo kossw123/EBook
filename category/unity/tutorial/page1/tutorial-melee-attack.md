@@ -10,27 +10,29 @@ description: tutorial Melee Attack
 * 이 문서에서는 2D Melee Attack에 관한 기본적인 내용을 다루고 있습니다.
 * 이 문서를 가지고 상업적으로 이용하지 않습니다.
 
-{% embed url="https://www.youtube.com/watch?v=sPiVz1k-fEs&list=WL&index=2&t=218s" caption="Melee Attack Video" %}
+{% embed url="https://www.youtube.com/watch?v=sPiVz1k-fEs&list=WL&index=2&t=218s" %}
+Melee Attack Video
+{% endembed %}
 
 ## 작성법
 
 * 아래의 링크를 들어가 Asset을 다운 받던지 Asset Store에서 "Bandits"라고 검색하면 해당 Pixel Art가 나옵니다.
 
-{% embed url="https://assetstore.unity.com/packages/2d/characters/bandits-pixel-art-104130?aid=1101lPGj&utm\_source=aff" %}
+{% embed url="https://assetstore.unity.com/packages/2d/characters/bandits-pixel-art-104130?aid=1101lPGj&utm_source=aff" %}
 
 * Tilemap을 사용하여 Map Design을 간단히 합니다. 하지만 아래의 그림과 같이 각 Grid간 간격에 대해 공백을 가지고 있습니다.
 
-![](../../../../.gitbook/assets/image%20%2858%29.png)
+![](<../../../../.gitbook/assets/image (58).png>)
 
 * 위의 그림을 활용할 이를 위해 조정해야 할것이 있습니다.
-  * **Tilemap을 생성해 Camera : 0.9 / Grid Sell Size : x\(0.32\), y\(0.2\)정도로 조정합니다.**
+  * **Tilemap을 생성해 Camera : 0.9 / Grid Sell Size : x(0.32), y(0.2)정도로 조정합니다.**
   * **Camera와 Sell Size를 축소 시키고 싶지 않다면, 해당 Tilemap을 구성하는 Sprite의 Pixels Per Unit의 크기를 조정하여 확대 시킵니다.**
     * **Pixels Per Unit이란?**
       * Unit 당 얼마정도의 Pixel을 할당할 것인가에 대한 Component입니다.
-      * Unity는 Unit이라는 고유 단위를 사용하며, 1 Unit = 1M\(meter\)로 사용합니다.
+      * Unity는 Unit이라는 고유 단위를 사용하며, 1 Unit = 1M(meter)로 사용합니다.
       * 즉, 1M당 얼마정도의 Pixel을 할당하여 Sprite를 표시할 것인가에 대한 이야기 입니다. 자세한 내용에 대한 참조는 아래의 링크로 들어가셔서 볼 수 있습니다.
     * 크기를 조정할 대상은 다운받은 Asset의 EnvironmentTiles이나, HeavyBandit, LightBandit에 적용시킵니다.
-    * Camera Size가 기본적으로 5에 맞춰져 있기 때문에 Asset의 Pixels Per Unit을 32 정도 맞추는게 적당했습니다. 
+    * Camera Size가 기본적으로 5에 맞춰져 있기 때문에 Asset의 Pixels Per Unit을 32 정도 맞추는게 적당했습니다.&#x20;
     * **이러한 방법은 Pixel이 깨질 수도 있으니, 사용할 때 주의해야할 부분입니다.**
   * Camera BackGround Color = Black으로 설정합니다.
 
@@ -38,20 +40,20 @@ description: tutorial Melee Attack
 
 * 위의 해결 방안을 채택 했다면 아래의 그림과 같이 적절하게 표시됩니다.
 
-![&#xC704; : Camera, Sell Size &#xCD95;&#xC18C; / &#xC544;&#xB798; : Sprite Pixels Per Unit &#xCD95;&#xC18C;](../../../../.gitbook/assets/image%20%28105%29.png)
+![위 : Camera, Sell Size 축소 / 아래 : Sprite Pixels Per Unit 축소](<../../../../.gitbook/assets/image (105).png>)
 
-* Tilemap에 Tilemap Collider2D\(Used By Composite = true\), Rigidbody2D\(static\), Composite Collider2D를 추가하고 제대로 충돌되는지 확인합니다.
+* Tilemap에 Tilemap Collider2D(Used By Composite = true), Rigidbody2D(static), Composite Collider2D를 추가하고 제대로 충돌되는지 확인합니다.
 
-![&#xCDA9;&#xB3CC;&#xC744; &#xD655;&#xC778;](../../../../.gitbook/assets/image%20%282%29.png)
+![충돌을 확인](<../../../../.gitbook/assets/image (2).png>)
 
 LightBandit을 움직이게 하기 위해 아래와 같이 Component를 수정합니다.
 
 * Tranform : 적당한 곳에 위치 시킵니다.
 * Animator : 기존 Animator를 그대로 씁니다.
 * Sprite Renderer : 변경 사항이 없습니다.
-* Rigidbody2D : Constraints\(z\)값을 true로 설정합니다.
+* Rigidbody2D : Constraints(z)값을 true로 설정합니다.
 * Box Collider2D : 변경사항이 없습니다.
-* Bandit\(Script\) : 기존의 Script를 아래의 코드로 붙여넣습니다.
+* Bandit(Script) : 기존의 Script를 아래의 코드로 붙여넣습니다.
 
 {% code title="Bandit.cs" %}
 ```csharp
@@ -211,7 +213,7 @@ public class Bandit : MonoBehaviour {
 * Enemy를 생성하기 위해 다운받은 Asset의 HeavyBandit을 화면상에 배치합니다.
 * HeavyBandit은 다른 움직임 없이 오직 Player가 Melee Attack을 할 수 있는지에 대한 Test Object이기 때문에 Component에 대한 수정이 필요합니다.
 
-![HeavyBandit Inspector](../../../../.gitbook/assets/image%20%2888%29.png)
+![HeavyBandit Inspector](<../../../../.gitbook/assets/image (88).png>)
 
 아래의 항목들로 각 Component를 수정합니다.
 
@@ -221,10 +223,10 @@ public class Bandit : MonoBehaviour {
   * 아래의 그림과 같은 Animation State를 할당합니다.
   * 각 Animation Clip을 기존의 HeavyBandit의 Hurt, Dead Clip을 이용합니다.
 
-![Enemy&#xB85C; &#xC124;&#xC815;&#xD55C; Object&#xC5D0; &#xD560;&#xB2F9;&#xD560; Animator](../../../../.gitbook/assets/image%20%28117%29.png)
+![Enemy로 설정한 Object에 할당할 Animator](<../../../../.gitbook/assets/image (117).png>)
 
 * Sprite Renderer : 변경 사항이 없습니다.
-* Rigidbody2D : Constraints\(x, y, z\)값을 모두 true로 설정합니다.
+* Rigidbody2D : Constraints(x, y, z)값을 모두 true로 설정합니다.
   * 나중에 HeavyBandit이 Die 상태일 때 Collider를 비활성화 시켜야 하는데, 고정을 안한다면 그대로 떨어지기 때문에, 고정시켜 놓습니다.
 * Box Collider2D : 변경사항이 없습니다.
 * EnemyScript : Script를 생성하고 아래의 내용을 넣습니다.
@@ -272,11 +274,12 @@ public class EnemyScript : MonoBehaviour
 
 * 각각의 Component를 수정했다면 아래 그림과 같이 동작합니다.
 
-![&#xACB0;&#xACFC; &#xD654;&#xBA74;](../../../../.gitbook/assets/result.gif)
+![결과 화면](../../../../.gitbook/assets/result.gif)
 
 ## 마치며
 
 * 다른 문서보다 난이도가 낮았기 How-to-guide에서 Script 부분만 다루도록 하겠습니다.
 
-{% page-ref page="../../how-to-guide/unity/untitled.md" %}
-
+{% content-ref url="../../how-to-guide/unity/untitled.md" %}
+[untitled.md](../../how-to-guide/unity/untitled.md)
+{% endcontent-ref %}

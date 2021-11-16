@@ -2,22 +2,22 @@
 
 ## 바
 
-### 버전 관리 시스템\(Version Control System : VCS\)
+### 버전 관리 시스템(Version Control System : VCS)
 
-협업을 하여 어떠한 응용 프로그램을 제작시, 여러 인력과 똑같은 Convention\(협업시 지켜야할 규약\)을 가지고 일을 하는데 있어서, 가장 중요한 코드의 추가 및 변경을 기록하여 
+협업을 하여 어떠한 응용 프로그램을 제작시, 여러 인력과 똑같은 Convention(협업시 지켜야할 규약)을 가지고 일을 하는데 있어서, 가장 중요한 코드의 추가 및 변경을 기록하여&#x20;
 
-* 특정 시점으로 돌아가거나, 
+* 특정 시점으로 돌아가거나,&#x20;
 * 문제가 생긴 파일을 복원하는 등,
 
 프로그램을 개발하는 현장에서 사용하는 프로그램입니다.
 
 보통 어떤 프로젝트를 진행하는 과정에서 수정사항이나, 백업이 필요한 부분을 저장하기 위해 여러 개의 파일을 같은 장소에 복사하고 파일명을 구분되게 하는 방법을 사용하는데, **진행될수록 어떤파일이 어떤 부분을 변경하는 이유에 대해 찾기 어려워 지고, 최악의 경우 파일을 지워버릴 수 있기 때문에**, 이런 시스템이 탄생하게 되었습니다.
 
-대중적인 VCS중 하나는 Git, SVN, CVS\(Concurrent Versions System\)등이 있습니다.
+대중적인 VCS중 하나는 Git, SVN, CVS(Concurrent Versions System)등이 있습니다.
 
 
 
-### 빌드\(Build\)
+### 빌드(Build)
 
 프로그래밍에서 Build는 작성한 소스 코드를 실행 가능한 결과물로 만드는 일련의 과정을 의미합니다. 이러한 Build Tool은 우리가 흔히 접할 수 있는 Visual Studio, Eclipse 등과 같은 IDE가 있습니다.
 
@@ -27,18 +27,18 @@
 
 * Unity에서의 Build란?
   * 타겟 플랫폼을 설정하고 Scene을 통합하여, Build Setting의 설정을 통해 하나의 실행가능한 파일로 바꿔주는 것 입니다.
-  * 이때, 크로스 플랫폼\(Cross Platform\)을 지향하는 경우 하드웨어 및 실행 방식에 따라 기본적인 차이가 생겨, 프로젝트 중 일부는 주 프로그램에서 다른 플랫폼 코드로 이식할 수 없습니다.
+  * 이때, 크로스 플랫폼(Cross Platform)을 지향하는 경우 하드웨어 및 실행 방식에 따라 기본적인 차이가 생겨, 프로젝트 중 일부는 주 프로그램에서 다른 플랫폼 코드로 이식할 수 없습니다.
 
 {% embed url="https://docs.unity3d.com/kr/530/Manual/CrossPlatformConsiderations.html" %}
 
 
 
-### 빌드\(Build\) vs 컴파일\(Compile\)
+### 빌드(Build) vs 컴파일(Compile)
 
 보통 IDE를 사용하기 때문에, Build한다 = Compile한다 라는 의미로 혼용될 여지가 존재합니다.
 
 * Compile = 내가 짠 코드를 기계어로 변환하는 과정
-* Build = 작성한 코드를 실행 가능한 파일로 만드는 과정 
+* Build = 작성한 코드를 실행 가능한 파일로 만드는 과정&#x20;
 
 요약하자면, Compile은 Build화 하기 위한 과정 / Build는 실행 가능한 파일로 만드는 것 입니다.
 
@@ -46,7 +46,7 @@
 
 ### 빌드를 통해 프로그램이 만들어 지는 과
 
-![](../../.gitbook/assets/image%20%28274%29.png)
+![](<../../.gitbook/assets/image (274).png>)
 
 ### 빌드의 자동화
 
@@ -62,11 +62,11 @@ Visual Studio에서 Build 버튼을 누르면 Compile이 자동으로 되는 것
 
 
 
-### 바인딩\(Binding\)
+### 바인딩(Binding)
 
-바인딩\(Binding\) 이란 프로그램의 어떤 기본 단위가 가질 수 있는 구성요소의 구체적인 값, 성격을 확정하는 것을 말한다.
+바인딩(Binding) 이란 프로그램의 어떤 기본 단위가 가질 수 있는 구성요소의 구체적인 값, 성격을 확정하는 것을 말한다.
 
-C\#같은 경우
+C#같은 경우
 
 * 기본 단위 : value type, reference type
 * 구성요소의 구체적인 값 : 각 type에 맞는 값들
@@ -85,10 +85,10 @@ int a = 10;
 
 Binding되는 시간은 각각 다를 수 있고, 여러가지 의미를 내포하는 경우가 많은가 보다.
 
-1. 실행 시간\(Execution time\) : 런타임이라고 불리는 시간 / Dynamic Binding
-2. 번역 시간\(Translation Time\) : 컴파일러가 특정언어를 기반으로 코드를 해석하는 시간 / Static Binding
-3. 언어 정의 시간\(Language Definition Time\) : 언어가 정의될 시간에 확정되는 것들
-4. 언어 구현 시간\(Language Implementation Time\) : 언어를 구현될 시간에 확정되는 것
+1. 실행 시간(Execution time) : 런타임이라고 불리는 시간 / Dynamic Binding
+2. 번역 시간(Translation Time) : 컴파일러가 특정언어를 기반으로 코드를 해석하는 시간 / Static Binding
+3. 언어 정의 시간(Language Definition Time) : 언어가 정의될 시간에 확정되는 것들
+4. 언어 구현 시간(Language Implementation Time) : 언어를 구현될 시간에 확정되는 것
 
 
 
@@ -105,11 +105,11 @@ Binding되는 시간은 각각 다를 수 있고, 여러가지 의미를 내포�
 
 ### SOLID 원칙
 
-* 단일 책임의 원칙 \( SRP : Single Responsibility Principle \)
-* 개방 - 폐쇄의 원칙\( OCP : Open - Closed Principle \)
-* 리스코프 치환 원칙 \( Liskov Substitution Principle \)
-* 의존 역전 원칙 \( DIP : Dependency Inversion Principle \)
-* 인터페이스 분리 원칙 \( ISP : Interface Segregation Principle \)
+* 단일 책임의 원칙 ( SRP : Single Responsibility Principle )
+* 개방 - 폐쇄의 원칙( OCP : Open - Closed Principle )
+* 리스코프 치환 원칙 ( Liskov Substitution Principle )
+* 의존 역전 원칙 ( DIP : Dependency Inversion Principle )
+* 인터페이스 분리 원칙 ( ISP : Interface Segregation Principle )
 
 {% embed url="https://dev-momo.tistory.com/entry/SOLID-%EC%9B%90%EC%B9%99" %}
 
@@ -117,7 +117,7 @@ Binding되는 시간은 각각 다를 수 있고, 여러가지 의미를 내포�
 
 
 
-### CICD\(Continuous Integration / Continuous Delivery or Continuous Deploy\)
+### CICD(Continuous Integration / Continuous Delivery or Continuous Deploy)
 
 단어 그대로 지속적인 통합, 지속적인 배포 혹은 결합을 의미하며, **프로그램 개발 단계를 자동화 하여 보다 짧은 주기로 고객에게 제공하는 방법**입니다.
 
@@ -136,7 +136,7 @@ CD
 
 위 내용의 대한 개략적인 내용을 아래의 그림과 같습니다.
 
-![https://www.redhat.com/ko/topics/devops/what-is-ci-cd](../../.gitbook/assets/image%20%28231%29.png)
+![https://www.redhat.com/ko/topics/devops/what-is-ci-cd](<../../.gitbook/assets/image (231).png>)
 
 이 방법을 도입하여 구현하기 위해서는 많은 고려해야 할 점들이 있으며, 이를 해결하기 위해 나온 솔루션들은 다음과 같습니다.
 
@@ -148,7 +148,7 @@ CD
 
 ## 아
 
-### 인스턴스\(instance\)
+### 인스턴스(instance)
 
 구글링을 통해 여러가지 정보를 살펴봤지만, 각자 얘기하는 개념이 상이하고, 와닿지 않는 느낌이 강했습니다. 그렇기 때문에, 이해할 수 있는 가장 포괄적인 개념을 가지고 설명하겠습니다.
 
@@ -156,27 +156,27 @@ CD
 
 그렇다면 Class라는 설계도를 통해 new 키워드를 사용하여 메모리에 할당된 어떤 변수는 인스턴스인가?
 
-* 꼭 그렇지만은 않습니다. 왜냐하면 
-  * 애초에 객체를 생성하기 위해 Class가 필요하고 
-  * 그 결과물이 인스턴스라면 
+* 꼭 그렇지만은 않습니다. 왜냐하면&#x20;
+  * 애초에 객체를 생성하기 위해 Class가 필요하고&#x20;
+  * 그 결과물이 인스턴스라면&#x20;
 * 객체와 인스턴스에 대한 개념은 모호해지고 이러한 차이점은 나타나지 않을 것입니다.
 
 그럼에도 불구하고 다른 단어로 비슷한 개념을 설명하는 이유가 무엇인가?
 
 * 객체는 **대상을 가리키는 말. 즉, 개념**에 가깝고
-* 인스턴스는 **관계를 가리키는 말. 즉, 개념과의 관계** 에 가깝기 때문입니다.
+* 인스턴스는 **관계를 가리키는 말. 즉, 개념과의 관계 **에 가깝기 때문입니다.
 
 
 
 * OOP에서의 인스턴스
   * "**Class를 new 키워드를 통해 메모리에 할당한 객체**"를 실제로 사용할 때를 인스턴스라고 합니다.
-  * 클래스와 객체 사이의 관계로 한정 지어서 사용할 필요 없이, "**어떤 개념으로부터 생성된 복제본"** 이라고도 말합니다.
+  * 클래스와 객체 사이의 관계로 한정 지어서 사용할 필요 없이, "**어떤 개념으로부터 생성된 복제본" **이라고도 말합니다.
 * Unity에서의 인스턴스
   * 실제로 Game에서 돌아가게 하는 Prefab이나 GameObject들을 Scene에 배치하고 사용하게끔 하는 과정을 인스턴스화 라고 합니다.
 
 
 
-### SI\(System Integration\)
+### SI(System Integration)
 
 * 서비스에 필요한 하드웨어, 소프트웨어, 네트워크, 스토리지 등을 통합하는 서비스를 제공하는 것입니다.
 * 해당 분야의 업무는 클라이언트와의 미팅을 통해 원하는 서비스가 무엇인지, 어떤 기술을 요구하는지 파악하여 정의합니다.
@@ -184,11 +184,11 @@ CD
 
 
 
-### Event Driven Programming\(사건 기반 프로그래밍\)
+### Event Driven Programming(사건 기반 프로그래밍)
 
-분산된 시스템 간에 이벤트\(사건\)이 발생하면, 해당 이벤트\(사건\)에 맞는 행동을 생성, 발행\(Publishing\)하여 필요로 하는 수신자에게 전달하는 코드 작성 방식입니다.
+분산된 시스템 간에 이벤트(사건)이 발생하면, 해당 이벤트(사건)에 맞는 행동을 생성, 발행(Publishing)하여 필요로 하는 수신자에게 전달하는 코드 작성 방식입니다.
 
-Event Driven Architecture를 구성하기 위해 Event Driven Programming을 하려면 특정 패턴\(Event driven Pattern\)을 사용해야 하는데  해당 패턴의 구성요소는 보통 다음과 같습니다.
+Event Driven Architecture를 구성하기 위해 Event Driven Programming을 하려면 특정 패턴(Event driven Pattern)을 사용해야 하는데  해당 패턴의 구성요소는 보통 다음과 같습니다.
 
 * Event generator : 시스템 내, 외부의 상태 변화를 감지하여 표준화된 형식의 이벤트 생성
 * Event Channel : 이벤트를 필요로 하는 시스템 까지의 발송
@@ -201,16 +201,16 @@ Event Driven Architecture를 구성하기 위해 Event Driven Programming을 하
   * 실시간으로 생기는 작업을 처리할 때 유용하며, 처리시간과 비용의 손실이 적습니다.
 * Event Stream Processing
   * 중요도에 따라 필터링하여 걸러진 이벤트만을 전송합니다.
-  * 정보의 흐름을 처리할 때 사용하며, BAM\(Business Activity Monitoring\)에 유용합니다.
+  * 정보의 흐름을 처리할 때 사용하며, BAM(Business Activity Monitoring)에 유용합니다.
 * Complex Event Processing
   * 일상적인 패턴을 감지하여 더 복잡한 이벤트의 발생을 **추론**합니다.
-  * ex\) 사람의 패턴을 파악하기 위해, 상위 이벤트인 해당 국가의 성향이라는 이벤트를 추론할 수 있다는 의미입니다.
+  * ex) 사람의 패턴을 파악하기 위해, 상위 이벤트인 해당 국가의 성향이라는 이벤트를 추론할 수 있다는 의미입니다.
     * 예시가 너무 비약됐으, 이런 느낌이라는 것만 알아주시면 될 것 같습니다.
 
 이러한 프로그래밍의 방식은 아래와 같은 장단점을 가지고 있습니다.
 
 * 장점
-  * 느슨한 결합\(DeCoupling\)
+  * 느슨한 결합(DeCoupling)
   * 다른 시스템의 정보를 알 필요가 없다.
   * 확장성, 탄력성을 고려하기 쉽다.
 * 단점
@@ -218,13 +218,13 @@ Event Driven Architecture를 구성하기 위해 Event Driven Programming을 하
   * 디버깅이 어렵다.
   * Transaction 단위가 존재하면, 해당 Transaction을 Rollback해야하는 것을 고려해야 합니다.
 
-보통 Unity에서는 실시간으로 처리해야 할 일들이 많기 때문에, 보통 Simple Event Processing을 사용한 Event System을 자체적으로 제공하는 듯 합니다. Script 작성시 UnityEvent&lt;T0, .... T3&gt; generic Class를 보며, 이러한 추론을 했습니다. 
+보통 Unity에서는 실시간으로 처리해야 할 일들이 많기 때문에, 보통 Simple Event Processing을 사용한 Event System을 자체적으로 제공하는 듯 합니다. Script 작성시 UnityEvent\<T0, .... T3> generic Class를 보며, 이러한 추론을 했습니다.&#x20;
 
 이를 바탕으로 좀 장기적인 시선으로 본다면, 익숙해 지기만 한다면, GTA나 여러 오픈월드 게임을 비롯한 많은 Event가 발생하는 프로그램에서의 깊은 이해가 가능할 것 같습니다.
 
 
 
-### IDE\(Integrated Development Enviroment\)
+### IDE(Integrated Development Enviroment)
 
 통합 개발 환경이라는 직역 그대로의 의미이며, 통합된 개발 환경을 제공하기 위해 GUI를 제공하고, 필요한 기능의 집합입니다.
 
@@ -238,16 +238,16 @@ MS사가 개발한 API중 하나로써, 제각기 개발할 필요 없이 다음
 * Window10 Mobile
 * Xbox One
 * Microsoft HoloLens
-  * MS가 개발한 혼합현실 기반 착용 기기 
+  * MS가 개발한 혼합현실 기반 착용 기기&#x20;
 
 해당 플랫폼을 사용하는 장점은 다음과 같습니다.
 
 * 화면 종류 뿐만이 아니라 다양한 입력 수단을 지원
-  * 화면 종류 : iOS, Android, PC, Tablet, 
+  * 화면 종류 : iOS, Android, PC, Tablet,&#x20;
   * 입력 수단 : 키보드, 마우스, 터치, 펜
 * 대부분의 개발 프레임워크가 지원하는 환경
 * MS Store를 사용 가능
-  * 현재 MS Store의 관리와 관심이 없기 때문에 장점이긴 하지만, 단점인 면이 더 큽니다.\(...\)
+  * 현재 MS Store의 관리와 관심이 없기 때문에 장점이긴 하지만, 단점인 면이 더 큽니다.(...)
 * UWP 개발앱은 샌드박스 형식으로 설치, 제거됩니다.
   * 이전의 레지스트리를 변경하여 제거가 어려웠던 시점보다는 많이 편리해졌습니다.
 * 지속적인 UX 개
@@ -261,11 +261,12 @@ MS사가 개발한 API중 하나로써, 제각기 개발할 필요 없이 다음
 
 ### Interpreter
 
-* Complie 방식과는 달리 작성자가 코드를 짜는 도중에 실시간으로 기계어로 번역하는 프로그램 Binding 시간이 Runtime에 존재한다.
+* Complie 방식과는 달리 작성자가 코드를 짜는 도중에 실시간으로 기계어로 번역하는 프로그램\
+  Binding 시간이 Runtime에 존재한다.
 
 
 
-### 인증\(A**uthentication**\)
+### 인증(A**uthentication**)
 
 Unity를 사용다가 Google Firebase를 통해 사용자 정보를 로그인하고, Firebase DB에 저장하는 기능을 구현하는 부분이 있었다.
 
@@ -273,11 +274,11 @@ Unity를 사용다가 Google Firebase를 통해 사용자 정보를 로그인하
 ### **인증 : 참이라는 근거가 있는 무언가를 확인하거나 확증하는 행위**
 {% endhint %}
 
-Firebase는 결국 Google에서 사용자 정보를 확인하는 행위인데, 이 간단한 행위가 
+Firebase는 결국 Google에서 사용자 정보를 확인하는 행위인데, 이 간단한 행위가&#x20;
 
 
 
-### 인터넷 호스팅 서비스\(Internet Hosting Service\)
+### 인터넷 호스팅 서비스(Internet Hosting Service)
 
 인터넷 서버를 운영하는 서비스로 컨텐츠를 인터넷에 제공하는 것을 도와주는 다양한 서비스가 제공된다.
 
@@ -290,25 +291,25 @@ Firebase는 결국 Google에서 사용자 정보를 확인하는 행위인데, �
 
 
 
-개인 혹은 단체가 W3\(www.\)의 한 공간을 임대하는 행동을 Hosting이라고 한다.
+개인 혹은 단체가 W3(www.)의 한 공간을 임대하는 행동을 Hosting이라고 한다.
 
 Hosting이라는 행동을 통해 어떤 것을 전달하고 다른 사람에게 제공하는 가에 따라 서비스가 달라진다./
 
 * 서버를 제공하면 서버 호스팅 서비스
 * 웹사이트를 제공하면 웹 호스팅 서비스
-* IDC\(international Data Corporation\)에 서버를 두고 제공하는 콜로케이션\(Colocation\) 호스팅 서비스
+* IDC(international Data Corporation)에 서버를 두고 제공하는 콜로케이션(Colocation) 호스팅 서비스
 * 물리적인 시스템 자원을 여러 가상 VM으로 분할하여 개별 서버 자원처럼 운영하는 가상 서버 서비스
 
 
 
 ## 자
 
-### 잡 시스템\(C\# Job System\)
+### 잡 시스템(C# Job System)
 
-* C\#에서 멀티스레드 방식의 코드를 작성 할 수 있게끔 도와주는 System
+* C#에서 멀티스레드 방식의 코드를 작성 할 수 있게끔 도와주는 System
 * 멀티스레드 방식으로 프로그래밍하지만, 스레드를 별도로 생성하진 않습니다.
 
-Unity는 기본적으로 하나의 스레드에서 시스템이 동작합니다.  
+Unity는 기본적으로 하나의 스레드에서 시스템이 동작합니다.\
 Unity 내부에서는 여러가지 싱글 스레드가 존재하는데 다음과 같습니다.
 
 1. Main : 익숙하게 사용하고 있는 현재 작업을 진행하는 스레드
@@ -319,7 +320,7 @@ Unity 내부에서는 여러가지 싱글 스레드가 존재하는데 다음과
 
 
 
-이러한 Job System을 사용하기 위해서는 생성하고, 스레드에 예약을 걸어야 합니다.  
+이러한 Job System을 사용하기 위해서는 생성하고, 스레드에 예약을 걸어야 합니다.\
 Job 작성 방법은 다음과 같습니다.
 
 1. Job interface를 상속하고 Struct에 구현하기
@@ -364,7 +365,9 @@ public class Fractal : MonoBehaviour
 
 다음과 같은 Job System을 구현했을 때 장점은 다음과 같습니다.
 
-1. 엄청 빠릅니다. - Fractal을 만들어 1000개 이상의 Object를 회전시키는데, Batch가 10~20정도 입니다.   Job System을 사용하지 않는 경우의 Batch 7000 - 8000정도 입니다.
+1. 엄청 빠릅니다.\
+   \- Fractal을 만들어 1000개 이상의 Object를 회전시키는데, Batch가 10\~20정도 입니다.\
+   &#x20; Job System을 사용하지 않는 경우의 Batch 7000 - 8000정도 입니다.
 2. Worker Thread를 사용하여 다른 Thread를 추가하지 않기 때문에 메모리가 절약됩니다.
 3. Job System 내부에 Safety System이 있어서 Race Condition을 방지 합니다.
 4. Unity 자체 로직에 맞춰 돌아가서 안정적인 프레임이 기대됩니다.
@@ -372,10 +375,10 @@ public class Fractal : MonoBehaviour
 그러나 장점만 보기에는 멀티스레드 방식인 만큼 단점도 그대로 적용됩니다.
 
 1. Job에서 Static Data에 접근할 수 없습니다.
-2. 예약된 Batch는 무조건 Flush\(실행, 출력\)해야 합니다.
+2. 예약된 Batch는 무조건 Flush(실행, 출력)해야 합니다.
 3. NativeContainer의 Variable를 수정하기 위해서는 데이터를 임시로 복사하고 다시 저장해야 합니다.
-4. 일반 멀티 스레드에서는 무한루프 발생 시 해당 스레드만 무한루프에 빠지지만,  Unity는 전체가 무한루프에 빠진다.
+4. 일반 멀티 스레드에서는 무한루프 발생 시 해당 스레드만 무한루프에 빠지지만, \
+   Unity는 전체가 무한루프에 빠진다.
 5. Worker Thread에 무거운 기능을 추가하기가 어렵습니다.
 
 ## 차
-

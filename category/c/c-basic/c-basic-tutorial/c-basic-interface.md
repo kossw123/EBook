@@ -1,12 +1,12 @@
 ---
-description: 'C# Basic interface'
+description: C# Basic interface
 ---
 
-# C\# Basic interface
+# C# Basic interface
 
 ## 무엇을 하려고 하는가?
 
-* C\#의 주요기능중 하나인 interface에 대한 개념정리를 기술했습니다.
+* C#의 주요기능중 하나인 interface에 대한 개념정리를 기술했습니다.
 
 
 
@@ -14,9 +14,9 @@ description: 'C# Basic interface'
 
 * Class와 비슷하게 함수, 속성, 이벤트, 인덱서를 갖지만 "직접 구현하진 않고" 정의만 선언한 부분을 이야기 합니다.
 * 공통적인 기능에 대해 단일 구현을 제공하기 위해, interface 내부에 아래와 같이 static을 사용할수 있습니다.
-  * ex\) static string Name { get;  set; }
-* 기본적으로 interface 내부에는 정의만 쓰기 때문에, Syntax를 사용할 수 없지만 C\# 8.0부터는 사용이 가능하게 됐습니다.
-  * 위의 예시와 같이 int Num _**{ get;  set; }**_ ****
+  * ex) static string Name { get;  set; }
+* 기본적으로 interface 내부에는 정의만 쓰기 때문에, Syntax를 사용할 수 없지만 C# 8.0부터는 사용이 가능하게 됐습니다.
+  * 위의 예시와 같이 int Num _**{ get;  set; }**_** **
 * **그리고 재정의를 구현하지 않는 몇몇의 Class 및 Struct에 대한 기본적인 구현을 허용하게 됐습니다.**
 
 ## interface 사
@@ -95,7 +95,7 @@ static void Main(string[] args)
 }
 ```
 
-* 처음에는 interface를 생성하고 하나의 Class에 모두 상속한 뒤, Main\(\) 함수에서 Class에 대한 객체를 동적으로 생성합니다.
+* 처음에는 interface를 생성하고 하나의 Class에 모두 상속한 뒤, Main() 함수에서 Class에 대한 객체를 동적으로 생성합니다.
 * 다음으로 **"각 인터페이스에 대한 객체를 선언"**하고 Class를 가리키게 하여, interface에서 중복된 이름으로 생성한 함수를 사용할 수 있습니다.
   * \*\*\* 동적 생성이 아닌 선언입니다.
 
@@ -152,12 +152,12 @@ static void Main(string[] args)
 }
 ```
 
-* 위의 예시와 같은 경우 Class 내부에서 명시적 인터페이스를 통해 접근하지만, Main\(\) 함수에서의 사용은 interface 객체를 선언하고 Class를 가리키게 해서 Paint\(\) 함수에 접근하고 있습니다.
+* 위의 예시와 같은 경우 Class 내부에서 명시적 인터페이스를 통해 접근하지만, Main() 함수에서의 사용은 interface 객체를 선언하고 Class를 가리키게 해서 Paint() 함수에 접근하고 있습니다.
 * 그리고 Class 내부에서 interface에 대한 같은 Signiture를 가진 멤버에 대해 명시적으로 선언하여 확실하게 구현하고 있습니다.
 
 ### 선언한 interface의 멤버에 대한 구현
 
-* C\# 8.0부터 interface에 선언한 멤버를 구현할 수 있게 되었습니다.
+* C# 8.0부터 interface에 선언한 멤버를 구현할 수 있게 되었습니다.
 * 해당 경우에 대한 예시는 아래와 같습니다.
 
 ```csharp
@@ -180,4 +180,3 @@ static void Main(string[] args)
 ```
 
 * 위의 예시처럼 interface에 대한 짧은 내용은 lambda expression을 통해 선언이 가능합니다.
-

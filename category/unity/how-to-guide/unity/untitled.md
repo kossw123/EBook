@@ -133,8 +133,8 @@ public class Bandit: MonoBehaviour {
 {% endcode %}
 {% endtab %}
 
-{% tab title="Sensor\_Bandit.cs" %}
-{% code title="Sensor\_Bandit.cs" %}
+{% tab title="Sensor_Bandit.cs" %}
+{% code title="Sensor_Bandit.cs" %}
 ```csharp
 using UnityEngine;
 using System.Collections;
@@ -211,9 +211,9 @@ public class EnemyScript: MonoBehaviour {
 * 손쉽게 Melee Attack에 대한 기능을 완성 시켰습니다.
 * 코드에 대한 자세한 내용은 아래의 해설문서에서 작성하겠습니다.
 
-{% page-ref page="../../explanation/unity/explanation-melee-attack.md" %}
-
-
+{% content-ref url="../../explanation/unity/explanation-melee-attack.md" %}
+[explanation-melee-attack.md](../../explanation/unity/explanation-melee-attack.md)
+{% endcontent-ref %}
 
 
 

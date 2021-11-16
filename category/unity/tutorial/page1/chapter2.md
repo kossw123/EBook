@@ -10,7 +10,7 @@ description: TileMap을 이용한 Map Design 제작
 
 Tilemap의 기본적인 기능을 알아볼때 Scripting보다는 Editor상에서 필요한 작업량이 많기 때문에 Tutorial이 길게 작성할 수 밖에 없음을 사과드립니다.
 
-{% embed url="https://www.youtube.com/watch?v=ryISV\_nH8qw" %}
+{% embed url="https://www.youtube.com/watch?v=ryISV_nH8qw" %}
 
 아래의 링크를 타고 들어가시면 작성하려는 기능의 내용을 볼 수 있습니다.
 
@@ -25,51 +25,53 @@ Tilemap의 기본적인 기능을 알아볼때 Scripting보다는 Editor상에�
 Tilemap 기능에 대해 소개를 하고 RuleTile 및 Random Tile과 Procedural patterns이라는 Unity Tutorial을  통해 Map Design을 해보려고 합니다.
 
 * Tilemap을 이용한 간단한 Map Design 및 RuleTile 작성
-* 절차적인 패턴\(Procedural patterns\)을 이용한 Map Design 작성
+* 절차적인 패턴(Procedural patterns)을 이용한 Map Design 작성
 
 ## Tilemap 작성법
 
 Hierarchy창에서 Create, 혹은 우클릭은 눌러서 Tilemap Object를 생성합니다.
 
-![Create -&amp;gt; 2D Object -&amp;gt; Tilemap](../../../../.gitbook/assets/hierarchy-tilemap.png)
+![Create -> 2D Object -> Tilemap](../../../../.gitbook/assets/hierarchy-tilemap.png)
 
-Grid Object가 생성되고 자식 Object로 Tilemap Object가 생성되는 것을 확인할 수 있습니다.                                 Grid Object는 말그대로 격자를 표시하기 위한 Grid Component를 포함한 Object이고, Tilemap Object는 Grid Object에 들어갈 Tile을 표시하기 위한 Tilemap Renderer, Tilemap Component 포함되어 있습니다. 
+Grid Object가 생성되고 자식 Object로 Tilemap Object가 생성되는 것을 확인할 수 있습니다.                                 Grid Object는 말그대로 격자를 표시하기 위한 Grid Component를 포함한 Object이고, Tilemap Object는 Grid Object에 들어갈 Tile을 표시하기 위한 Tilemap Renderer, Tilemap Component 포함되어 있습니다.&#x20;
 
 이에 대한 자세한 기능들은 후에 Explanation 항목에 표시하겠습니다.
 
 Tilemap을 넣으려면 Tile Palette라는 기능이 필요하며, 이것은 말 그대로 미술시간때 필요한 팔레트 처럼 Tile Sprite들을 정리하고 섞기 필요한 도구입니다.
 
-![Window -&amp;gt; 2D -&amp;gt; Tile Palette](../../../../.gitbook/assets/tile-palette.png)
+![Window -> 2D -> Tile Palette](../../../../.gitbook/assets/tile-palette.png)
 
-Tile Palette 기능을 표시했다면 여기에 필요한 Tile들을 넣어야 합니다. 이를 위해 PhysicsObject에서 사용했던 2D Platformer Game의 Sprite들을 활용하여 넣겠습니다. 
+Tile Palette 기능을 표시했다면 여기에 필요한 Tile들을 넣어야 합니다. 이를 위해 PhysicsObject에서 사용했던 2D Platformer Game의 Sprite들을 활용하여 넣겠습니다.&#x20;
 
-![&#xC0C8;&#xB85C; &#xC0DD;&#xC131;&#xD55C; Test Tile Palette](../../../../.gitbook/assets/image%20%2815%29.png)
+![새로 생성한 Test Tile Palette](<../../../../.gitbook/assets/image (15).png>)
 
 이렇게 새로 생성했다면 드래그 앤 드롭으로 생성할 Tile의 Sprite들을 넣어줍니다. 여기서는 기본적으로 Sprite들이 Tileset Size로 Slice되어 있지만 안되어 있는 Sprite들도 존재합니다. 이에 대한 주의점은 후에 Explanation 문서에 기술 하겠습니다.
 
-![Test Palette&#xC5D0; &#xAE30;&#xC874;&#xC5D0; &#xC788;&#xB358; TileSet&#xB4E4;&#xC744; &#xB123;&#xC5B4;&#xC900; &#xACB0;&#xACFC;](../../../../.gitbook/assets/image%20%28110%29.png)
+![Test Palette에 기존에 있던 TileSet들을 넣어준 결과](<../../../../.gitbook/assets/image (110).png>)
 
 위 그림과 같이 Tile들이 격자형태로 나눠진 것을 확인할 수 있으며 이것을 가지고 Tilemap Object에 넣어 주면 TileMap을 배치 할 수 있습니다.
 
-![Tilemap&#xC744; &#xB123;&#xB294; &#xACFC;&#xC815;](../../../../.gitbook/assets/tilemap-insert.gif)
+![Tilemap을 넣는 과정](../../../../.gitbook/assets/tilemap-insert.gif)
 
 ## Rule Tile 작성법
 
 기존에 있던 Tilemap의 보조하는 기능으로써 Unity 내부에 자체적으로 존재하는것이 아니라 외부적으로      기능을 import해야합니다. 여기서는 아래의 Github에서 다운을 받아 Project에 직접 import 합니다.
 
-{% embed url="https://github.com/Unity-Technologies/2d-extras" caption="Asset Store에 가도 Rule Tile기능들은 존재합니다." %}
+{% embed url="https://github.com/Unity-Technologies/2d-extras" %}
+Asset Store에 가도 Rule Tile기능들은 존재합니다.
+{% endembed %}
 
 자료를 다운받아 압축을 풀고 Project에 넣는다면 2d-extras-master라는 File이 Project View에 생성되면서 "Project View"에서 우클릭 후 Create로 가면 가장 위쪽에 Tile이라는 항목이 생성되고 여기서 Rule Tile들을 생성할 수 있습니다.
 
-![Hierarchy&#xCC3D;&#xC5D0;&#xC11C; Create&#xD558;&#xBA74; &#xC0DD;&#xC131;&#xC774; &#xC548;&#xB418;&#xACE0; &quot;Project View&quot;&#xC5D0;&#xC11C; &#xC6B0;&#xD074;&#xB9AD;&#xC2DC; &#xC774;&#xB807;&#xAC8C; &#xB739;&#xB2C8;&#xB2E4;.](../../../../.gitbook/assets/image%20%28112%29.png)
+![Hierarchy창에서 Create하면 생성이 안되고 "Project View"에서 우클릭시 이렇게 뜹니다.](<../../../../.gitbook/assets/image (112).png>)
 
-여기서 Rule Tile에 대해 알아보겠습니다. 
+여기서 Rule Tile에 대해 알아보겠습니다.&#x20;
 
-Rule Tile이란? Tile을 만들 때 어떤 규칙이 정해진 타일이라는 것인데, 여기서 규칙이라는 것은 어느 방향을 이야기 합니다. 어느 방향으로는 그리면 안될지 결정한다는 것입니다. 
+Rule Tile이란? Tile을 만들 때 어떤 규칙이 정해진 타일이라는 것인데, 여기서 규칙이라는 것은 어느 방향을 이야기 합니다. 어느 방향으로는 그리면 안될지 결정한다는 것입니다.&#x20;
 
 어차피 Tilemap을 작성해 봤자 하나의 Sprite들을 가지고 여러개를 이어 붙여서 만든것인데, 굳이 필요한 이유를 말씀드리자면 아주 큰 Map Design을 작성할 시에 여러 Sprite를 이어서 만든 어떤 그림이 필요할 때가 종종 있습니다. 그를 대비해 알아둔다면 아주 유용하게 사용할 수 있을 것입니다.
 
-![Rule Tile&#xC758; &#xAE30;&#xBCF8;&#xD654;&#xBA74;](../../../../.gitbook/assets/image%20%28132%29.png)
+![Rule Tile의 기본화면](<../../../../.gitbook/assets/image (132).png>)
 
 Rule Tile을 생성했다면 위 그림과 같은 Inspector가 생성됩니다.
 
@@ -77,15 +79,15 @@ Rule Tile을 생성했다면 위 그림과 같은 Inspector가 생성됩니다.
 * 그 아래 Tiling Rules에는 어떤 규칙으로 하나의 그림을 생성할지에 대한 규칙이 담겨 있습니다.
 * 여기서는 Object들로 하지 않고 Tilemap의 Palette를 이용하여 그리기 때문에 Object관련한 내용을             따로 빼서 후에 Explanation 문서에서 작성하도록 하겠습니다.
 
-![PhysicsObject tutorial&#xC5D0;&#xC11C; &#xC37C;&#xB358; Tile&#xC744; &#xC774;&#xC6A9;&#xD55C; Rule &#xC785;&#xB825;](../../../../.gitbook/assets/image%20%2851%29.png)
+![PhysicsObject tutorial에서 썼던 Tile을 이용한 Rule 입력](<../../../../.gitbook/assets/image (51).png>)
 
-위 그림과 같이 PhysicsObject tutorial에서 썼던 Sprite들로 Rule을 작성해봤습니다. 어떤 나무를 그린다고 했을 때 위의 4개의 그림을 가지고 작성이 가능합니다. 
+위 그림과 같이 PhysicsObject tutorial에서 썼던 Sprite들로 Rule을 작성해봤습니다. 어떤 나무를 그린다고 했을 때 위의 4개의 그림을 가지고 작성이 가능합니다.&#x20;
 
-![9&#xAC1C;&#xC758; Tile &#xCD94;&#xAC00;](../../../../.gitbook/assets/image%20%28133%29.png)
+![9개의 Tile 추가](<../../../../.gitbook/assets/image (133).png>)
 
 위 그림은 9개의 Tile을 추가해서 원하는 모양이 나오도록 각 Tile에 Rule을 추가한 모습입니다. 각 Tile마다 화살표로 방향을 정해줘서 화살표 방향대로 생성되게끔 합니다. X라고 표시된 방향은 생성이 불가합니다.
 
-![RuleTile &#xC0DD;&#xC131;](../../../../.gitbook/assets/ruletile.gif)
+![RuleTile 생성](../../../../.gitbook/assets/ruletile.gif)
 
 방향을 제대로 설정했다면 위 그림과 같이 어떤 Size 상관없이 다음과 같은 블록이 생성됩니다.
 
@@ -97,15 +99,15 @@ Rule Tile을 생성했다면 위 그림과 같은 Inspector가 생성됩니다.
 
 
 
-  Rule Tile Project에서 작성한 결과물들을 가지고 새로운 LevelGenerator Object를 생성합니다.
+&#x20; Rule Tile Project에서 작성한 결과물들을 가지고 새로운 LevelGenerator Object를 생성합니다.
 
-![LevelGenerator &#xC0DD;&#xC131;](../../../../.gitbook/assets/image%20%2838%29.png)
+![LevelGenerator 생성](<../../../../.gitbook/assets/image (38).png>)
 
-그 후 새로운 C\# Script 3개를 생성하여 다음과 같은 내용들을 넣습니다.
+그 후 새로운 C# Script 3개를 생성하여 다음과 같은 내용들을 넣습니다.
 
 {% tabs %}
 {% tab title="LevelGenerator" %}
-```text
+```
 LevelGenerato.cs
 
 using System.Collections;
@@ -206,7 +208,7 @@ public class LevelGeneratorEditor: Editor {
 {% endtab %}
 
 {% tab title="MapFunctions" %}
-```text
+```
 MapFunctions.cs
 
 
@@ -779,7 +781,7 @@ public class MapFunctions {
 {% endtab %}
 
 {% tab title="MapSettings" %}
-```text
+```
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -880,24 +882,24 @@ public class MapSettings_Editor: Editor {
 
 그 후 LevelGenerator Object에 LevelGenerator.cs Script를 추가합니다. LevelGenerator에 필요한 Tilemap Object은 Heierarchy의 Grid의 자식Object인 Tilemap이며, Rule Tile은 위에서 만든 RuleTile을 사용합니다. 그러면 아래와 같은 그림의 Inspector가 존재하게 됩니다.
 
-![LevelGenerator.cs&#xB97C; Object&#xC5D0; &#xCD94;&#xAC00;&#xD55C; &#xD6C4; Inspector](../../../../.gitbook/assets/image%20%2870%29.png)
+![LevelGenerator.cs를 Object에 추가한 후 Inspector](<../../../../.gitbook/assets/image (70).png>)
 
- 다음은 LevelGenerator.cs의 MapSetting Component에 들어갈 MapSetting.asset을 생성해야 하는데 이미 Script에서 Editor수정을 통해 Project View에서 생성 가능하도록 코딩했기 때문에 Project View에서 우클릭으로 생성합니다.
+&#x20;다음은 LevelGenerator.cs의 MapSetting Component에 들어갈 MapSetting.asset을 생성해야 하는데 이미 Script에서 Editor수정을 통해 Project View에서 생성 가능하도록 코딩했기 때문에 Project View에서 우클릭으로 생성합니다.
 
-![MapSettings.cs&#xB97C; &#xD1B5;&#xD574; Editor &#xC218;&#xC815; &#xACB0;&#xACFC; Project View&#xC5D0;&#xC11C; &#xC0DD;&#xC131; &#xAC00;&#xB2A5;&#xD55C; MapSetting.asset](../../../../.gitbook/assets/image%20%2867%29.png)
+![MapSettings.cs를 통해 Editor 수정 결과 Project View에서 생성 가능한 MapSetting.asset](<../../../../.gitbook/assets/image (67).png>)
 
 이제 MapSetting이 끝났고, LevelGenerator에서 MapSetting을 추가하여 Generation Method를 통해 만들고 싶은 Pattern의 Method를 선택해서 사용합니다.
 
-![Cellular Automata Moore Method&#xB97C; &#xD1B5;&#xD55C; Generate &#xACB0;&#xACFC;](../../../../.gitbook/assets/image%20%2894%29.png)
+![Cellular Automata Moore Method를 통한 Generate 결과](<../../../../.gitbook/assets/image (94).png>)
 
 ## 마치며
 
-* Procedural Pattern Tilemap에 대해서는 How-to-guide가 짧을 수 있습니다. 
-* 해설문서\(Explanation\)에서 구체적인 Generate Method에 대해서 부연설명을 하겠습니다.
+* Procedural Pattern Tilemap에 대해서는 How-to-guide가 짧을 수 있습니다.&#x20;
+* 해설문서(Explanation)에서 구체적인 Generate Method에 대해서 부연설명을 하겠습니다.
 
-{% page-ref page="../../how-to-guide/unity/tilemap.md" %}
+{% content-ref url="../../how-to-guide/unity/tilemap.md" %}
+[tilemap.md](../../how-to-guide/unity/tilemap.md)
+{% endcontent-ref %}
 
 {% embed url="https://docs.unity3d.com/Manual/class-Tilemap.html" %}
-
-
 
