@@ -17,16 +17,20 @@
 
 
 
-우선 Invitation(관람) 객체를 구현해 보자&#x20;
+
+
+우선 Invitation(초대) 객체를 구현해 보자&#x20;
 
 ```csharp
 using System;
 
 public class Invitation
 {
-    private DataTime when;
+    private DateTime when;
 }
 ```
+
+
 
 
 
@@ -35,9 +39,12 @@ public class Invitation
 ```csharp
 public class Ticket
 {
-    public Long Fee {get; private set;}
+    private Long fee;
+    public long GetFee()            { return fee; }
 }
 ```
+
+
 
 
 
@@ -50,18 +57,27 @@ public class Ticket
 ```csharp
 public class Bag
 {
-    private Long amount;
-    private Invitation invitation;
-    private Ticket ticket;
+        private long amount;
+        private Invitation invitation;
+        private Ticket ticket;
 
-    public bool HasInvitation() => return invitation ?? throw new ArgumentNullException(nameof(invitation));
-    public bool HasTicket() => return ticket ?? throw new ArgumentNullException(nameof(ticket));
+        public Bag(long amount) : this(null, amount)        { }
+        public Bag(Invitation invitation, long amount)
+        {
+            this.invitation = invitation;
+            this.amount = amount;
+        }
 
-    public void SetTicket(Ticket ticket) => this.ticket = ticket;
-    public void MinusAmount(Long amount) => this.amount -= amount;
-    public void PlusAmount(Long amount) => this.amount += amount;
+        public bool HasInvitation()                 { return invitation != null; }
+        public bool HasTicket()                     { return ticket != null; }
+
+        public void SetTicket(Ticket ticket)        => this.ticket = ticket;
+        public void MinusAmount(long amount)        => this.amount -= amount;
+        public void PlusAmount(long amount)         => this.amount += amount;
 }
 ```
+
+
 
 
 
@@ -88,3 +104,29 @@ public class Bag
     }
 }
 ```
+
+
+
+
+
+그 다음 관람객의 객체를 구현해보자. 관람객은 소지품을 보관하기 위한 Bag Class를 가지고 있다.
+
+```csharp
+public class Audience
+{
+        private Bag bag;
+        public Audience(Bag bag)        { this.bag = bag; }
+        public Bag GetBag()             { return bag; }
+}
+```
+
+
+
+
+
+이때 관람객이 입장하기 위해서는 매표소에서 티켓으로 교환하거나 구매를 해야한다.&#x20;
+
+따라서 매표소에는 관람객에게 판매할 티켓의 판매 금액이 보관돼 있어야 한다. 이를 구현하기 위해 TicketOffice Class를 추가하도록 하자.
+
+TicketOffice에서는 판매하거나 교환해 줄 Ticket의 목록과 판매 금액을 가지고 있어야 한다. 부차적으로 판매 금액을 더하거나 차감하는 함수도 구현하도록 하자.
+
